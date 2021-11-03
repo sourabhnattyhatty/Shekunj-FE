@@ -15,7 +15,7 @@ function Header() {
         <div className='home_1'>
           <header>
             <div className='logo_1'>
-              <Link><img src={TitleIcon} alt='...' /></Link>
+              <img src={TitleIcon} alt='...' />
             </div>
 
             <form className="set_form">

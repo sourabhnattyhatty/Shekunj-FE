@@ -31,6 +31,28 @@ export const authReducer = (state = initialState, action) => {
         isAuth: false,
         error: action.payload,
       };
+    case authTypes.SIGNUP_REQUEST:
+      return {
+        ...state,
+        isLoading : true,
+        error : null
+      }
+    case authTypes.SIGNUP_FINISH:
+      return {
+        ...state,
+        isLoading : false,
+        user : action.payload,
+        isAuth : false,
+        error : null
+      }
+    case authTypes.SIGNUP_FAIL:
+      return{
+        ...state,
+        isLoading : false,
+        user : {},
+        isAuth : false,
+        error : action.payload
+      }
     default:
       return state;
   }

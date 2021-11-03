@@ -3,11 +3,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useHistory } from "react-router-dom";
 import "./Common.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Error from "../components/Error";
 import TitleIcon from "../assets/icons/logo.svg";
 import { onLogin } from "../store/auth/action";
+import {CircularProgress} from '@mui/material';
 
 
 const validationSchema = Yup.object({
@@ -20,6 +21,7 @@ const validationSchema = Yup.object({
 function LoginPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const {isLoading} = useSelector(state => state.authReducer)
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -80,7 +82,7 @@ function LoginPage() {
                 </div>
 
                 <button className='w-100 login-button' type='submit'>
-                  Submit
+                  {isLoading ? <CircularProgress color="inherit" /> : "Submit"}
                 </button>
               </form>
             </div>

@@ -5,9 +5,11 @@ import TitleIcon from "../assets/icons/logo.svg";
 
 import Error from "../components/Error";
 import "./Common.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { onSignup } from "../store/auth/action";
+import {CircularProgress} from '@mui/material';
+
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -21,6 +23,7 @@ const validationSchema = Yup.object({
 function SignupPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const {isLoading} = useSelector(state => state.authReducer)
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -114,7 +117,7 @@ function SignupPage() {
                   <Error error={errors.password} touched={touched.password} />
                 </div>
                 <button className='w-100 login-button' type='submit'>
-                  Create Account
+                  {isLoading ? <CircularProgress color="inherit" /> : "Create Account" }
                 </button>
               </form>
             </div>

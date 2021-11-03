@@ -7,6 +7,8 @@ const ForgotPage = React.lazy(() => import("./pages/ForgotPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage"));
 const LoginPage = React.lazy(() => import("./pages/LoginPage"));
 const HomePage = React.lazy(() => import("./pages/HomePage"));
+const VerifyPage = React.lazy(() => import("./pages/VerifyPage"));
+const VerifyEmail = React.lazy(() => import("./pages/VerifyEmailResult"));
 
 function App() {
   return (
@@ -17,6 +19,10 @@ function App() {
         <PublicRoute exact path='/signup' component={SignupPage} />
 
         <PublicRoute exact path='/forgot' component={ForgotPage} />
+
+        <PublicRoute exact path='/verify' component={VerifyPage} />
+
+        <PublicRoute exact path='/email-verify/:token' component={VerifyEmail} />
 
         <Route exact path='/' component={HomePage} />
       </Switch>

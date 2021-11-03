@@ -16,7 +16,6 @@ export const onLogin = (values, history) => async (dispatch) => {
   } 
   catch (error) {
     const err = transformError(error);
-    debugger
     if (err && err.statusCode === 401) {
       toast.error("Invalid credentials", toasterConfig);
     }else if(err && err.statusCode === 500){
@@ -30,9 +29,15 @@ export const onSignup = (values, history) => async(dispatch) => {
   try{
     dispatch({type : authTypes.SIGNUP_REQUEST});
     const res = await Post('register/', values);
+    dispatch({type : authTypes.SIGNUP_FINISH, payload : values});
     debugger
+    history.push("/verify");
   }
   catch(error){
     debugger
+    dispatch({type : authTypes.SIGNUP_FAIL})
+    if(error?.status === 400){
+      toast.error(error.data.errors.email);
+    }
   }
 }
