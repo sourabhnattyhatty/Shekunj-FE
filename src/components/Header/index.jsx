@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import TitleIcon from "../../assets/icons/logo.svg";
+import { useTranslation } from "react-i18next";
 
 import "./index.scss";
 
 function Header() {
 
   const [searchValue, setSearchValue] = useState('');
+  const {t} = useTranslation();
 
   return (
     <>
@@ -21,24 +23,24 @@ function Header() {
             <form className="set_form">
               <input 
                 type='text' 
-                placeholder='Find a course' 
+                placeholder={t('header.searchPlaceholder')} 
                 value={searchValue}
                 onChange={e => setSearchValue(e.target.value)}
               />
-              <button disabled={!searchValue.length}>Start Course</button>
+              <button disabled={!searchValue.length}>{t('header.courseButton')}</button>
             </form>
           </header>
 
           <div className="headings">
             <div className="navbar">
-              <Link to="/about">About</Link>
-              <Link to="/courses">Courses</Link>
-              <Link to="/guidance">Guidance</Link>
-              <Link to="/resume_builder">Resume Builder</Link>
-              <Link to="/career">Career</Link>
-              <Link to="/jobs">Jobs</Link>
-              <Link to="/blogs">Blogs</Link>
-              <Link to="/success_story">Success story</Link>
+              <Link to="/about">{t('header.heading.1')}</Link>
+              <Link to="/courses">{t('header.heading.2')}</Link>
+              <Link to="/guidance">{t('header.heading.3')}</Link>
+              <Link to="/resume_builder">{t('header.heading.4')}</Link>
+              <Link to="/career">{t('header.heading.5')}</Link>
+              <Link to="/jobs">{t('header.heading.6')}</Link>
+              <Link to="/blogs">{t('header.heading.7')}</Link>
+              <Link to="/success_story">{t('header.heading.8')}</Link>
             </div>
           </div>
         </div>

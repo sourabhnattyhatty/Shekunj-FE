@@ -1,0 +1,79 @@
+{
+    "login" : {
+        "heading" : "Login",
+        "label1" : "E-mail address",
+        "label2" : "Password",
+        "button" : "Submit",
+        "forgotLink" : "Forgot Password?",
+        "content" : "Not a member ? ",
+        "signupLink" : "Sign up now"
+    },
+
+    "signup" : {
+        "heading" : "Signup",
+        "label1" : "Name",
+        "label2" : "Contact",
+        "label3" : "E-mail address",
+        "label4" : "Password",
+        "label4Placeholder" : "6 + Characters",
+        "button" : "Create Account",
+        "content" : "Already member ?",
+        "loginLink" : "Login now"
+    },
+
+    "forgot" : {
+        "heading" : "Forgot Password",
+        "label" : "E-mail address",
+        "button" : "Submit"
+    },
+
+    "verify" : {
+        "heading" : "Verify your e-mail to finish signing for Sheकुंज",
+        "heading2" : "Thank you for choosing Sheकुंज",
+        "content" : "Please confirm that {{email}} is your e-mail address by clicking on the link on your given e-mail within 24 hours."
+    },
+
+    "verifyResult" : {
+        "heading" : "Verify email address",
+        "heading1" : "Thanks!",
+        "heading2" : "Your email address has been verified.",
+        "button" : "Login"
+    },
+
+    "header" : {
+        "searchPlaceholder" : "Find a course",
+        "courseButton" : "Start Course",
+        "heading" : {
+            "1" : "About",
+            "2" : "Courses",
+            "3" : "Guidance",
+            "4" : "Resume Builder",
+            "5" : "Career",
+            "6" : "Jobs",
+            "7" : "Blogs",
+            "8" : "Success story"
+        }
+    },
+
+    "footer" : {
+        "links" : {
+            "col1" : {
+                "1" : "Teach on Shekunj",
+                "2" : "Get the app",
+                "3" : "About us",
+                "4" : "Contact us"
+            },
+            "col2" : {
+                "1" : "Careers",
+                "2" : "Blog",
+                "3" : "Help and Support",
+                "4" : "Affliatate"
+            },
+            "col3" : {
+                "1" : "Terms",
+                "2" : "Privacy Policy",
+                "3" : "Sitemap"
+            }
+        }
+    }
+}

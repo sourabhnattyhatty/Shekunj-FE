@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import "./index.scss"
 
-function HomePae() {
+function HomePage() {
   return (
     <div className="home_page">
       <Header />
@@ -12,4 +12,4 @@ function HomePae() {
   );
 }
 
-export default HomePae;
+export default HomePage;

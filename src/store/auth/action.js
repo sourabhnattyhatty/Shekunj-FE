@@ -1,7 +1,6 @@
 import { authTypes } from "./types";
-import { transformError } from "../../utils/transformAxiosError";
 import { toast } from "react-toastify";
-import {Post} from "../../utils/ApiServices"
+import {Get, Post} from "../../utils/ApiServices"
 import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
 
@@ -15,11 +14,9 @@ export const onLogin = (values, history) => async (dispatch) => {
     history.push("/")
   } 
   catch (error) {
-    const err = transformError(error);
-    if (err && err.statusCode === 401) {
-      toast.error("Invalid credentials", toasterConfig);
-    }else if(err && err.statusCode === 500){
-      toast.error(err.message, toasterConfig);
+    dispatch({ type : authTypes.LOGIN_FAIL });
+    if(error && error.status === 500){
+      toast.error(error.data.errors.non_field_errors, toasterConfig);
     }
   }
 };
@@ -28,16 +25,26 @@ export const onLogin = (values, history) => async (dispatch) => {
 export const onSignup = (values, history) => async(dispatch) => {
   try{
     dispatch({type : authTypes.SIGNUP_REQUEST});
-    const res = await Post('register/', values);
+    await Post('register/', values);
     dispatch({type : authTypes.SIGNUP_FINISH, payload : values});
-    debugger
+    localStorage.setItem('email', values.email);
     history.push("/verify");
   }
   catch(error){
-    debugger
     dispatch({type : authTypes.SIGNUP_FAIL})
     if(error?.status === 400){
       toast.error(error.data.errors.email);
     }
+  }
+}
+
+export const emailVerify = (token) => async(dispatch) => {
+  try{
+    const res = await Get(`email-verify/?token=${token}`);
+    window.location.replace('success');
+    return res;
+  }
+  catch(error){
+    debugger
   }
 }

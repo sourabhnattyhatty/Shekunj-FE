@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import TitleIcon from "../assets/icons/logo.svg";
+import { useTranslation } from "react-i18next";
 
 import Error from "../components/Error";
 import "./Common.scss";
@@ -22,6 +23,8 @@ function ForgotPage() {
       },
     });
 
+    const {t} = useTranslation();
+
   return (
     <>
       <div className='container'>
@@ -30,14 +33,14 @@ function ForgotPage() {
         </div>
 
         <div className='main_div'>
-          <h3 className='text-center'>Forgot Password</h3>
+          <h3 className='text-center'>{t('forgot.heading')}</h3>
           <div className='row'>
             <div className='col-sm-4 col-md-4'></div>
             <div className='col-sm-4 col-md-4'>
               <form className='set_form' onSubmit={handleSubmit}>
                 <div className='err'>
                   <label htmlFor='email'>
-                    E-mail address <span>*</span>
+                    {t('forgot.label')} <span>*</span>
                   </label>
                   <input
                     name='email'
@@ -52,7 +55,7 @@ function ForgotPage() {
                 </div>
 
                 <button className='w-100 my-4 login-button' type='submit'>
-                  Submit
+                  {t('forgot.button')}
                 </button>
               </form>
             </div>

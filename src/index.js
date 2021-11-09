@@ -9,10 +9,11 @@ import store from "./store";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import './assets/i18n/i18n'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback='Loading~~~'>
+    <Suspense fallback={<h1>Loading~~~</h1>}>
       <Provider store={store}>
         <Router>
           <App />

@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Link, useHistory } from "react-router-dom";
 import "./Common.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from 'react-i18next';
 
 import Error from "../components/Error";
 import TitleIcon from "../assets/icons/logo.svg";
@@ -22,6 +23,8 @@ function LoginPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const {isLoading} = useSelector(state => state.authReducer)
+
+  const {t} = useTranslation();
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -44,13 +47,13 @@ function LoginPage() {
         </div>
 
         <div className='main_div'>
-          <h3 className='text-center'>Login</h3>
+          <h3 className='text-center'>{t('login.heading')}</h3>
           <div className='row'>
             <div className='col-sm-4 col-md-4'></div>
             <div className='col-sm-4 col-md-4'>
               <form className='set_form' onSubmit={handleSubmit}>
                 <label htmlFor='email'>
-                  E-mail address <span>*</span>
+                  {t('login.label1')} <span>*</span>
                 </label>
                 <div className='err'>
                   <input
@@ -67,7 +70,7 @@ function LoginPage() {
 
                 <div className='err'>
                   <label htmlFor='password'>
-                    Password <span>*</span>
+                  {t('login.label2')} <span>*</span>
                   </label>
                   <input
                     name='password'
@@ -82,7 +85,7 @@ function LoginPage() {
                 </div>
 
                 <button className='w-100 login-button' type='submit'>
-                  {isLoading ? <CircularProgress color="inherit" /> : "Submit"}
+                  {isLoading ? <CircularProgress color="secondary" className="my-2" /> : (t('login.button')) }
                 </button>
               </form>
             </div>
@@ -92,13 +95,13 @@ function LoginPage() {
 
         <div className='text-center for_pass'>
           <Link to='/forgot' className='forgot-link'>
-            Forgot Password ?
+            {t('login.forgotLink')}
           </Link>
         </div>
         <div className='text-center Sign_up'>
-          Not a member ?{" "}
+          {t('login.content')}{" "}
           <Link to='/signup' className='signup-link'>
-            Sign up now
+            {t('login.signupLink')}
           </Link>
         </div>
       </div>
