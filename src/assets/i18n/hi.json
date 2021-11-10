@@ -42,7 +42,7 @@
 
     "header" : {
         "searchPlaceholder" : "कोर्स खोजें",
-        "courseButton" : "कोर्स शुरू करें",
+        "courseButton" : "लॉग इन/रजिस्टर",
         "heading" : {
             "1" : "हमारे बारे में",
             "2" : "कोर्स",

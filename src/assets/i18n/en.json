@@ -42,7 +42,7 @@
 
     "header" : {
         "searchPlaceholder" : "Find a course",
-        "courseButton" : "Start Course",
+        "courseButton" : "Login/Register",
         "heading" : {
             "1" : "About",
             "2" : "Courses",

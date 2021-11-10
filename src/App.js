@@ -23,7 +23,7 @@ function App() {
 
         <PublicRoute exact path='/verify' component={Verify} />
 
-        <PublicRoute exact path='/email-verify/:token?' component={VerifyEmailResult} />
+        <PublicRoute exact path='/authentication/email-verify/:token?' component={VerifyEmailResult} />
 
         <Route exact path='/' component={HomePage} />
       </Switch>

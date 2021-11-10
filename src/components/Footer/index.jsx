@@ -32,9 +32,7 @@ function Footer() {
                         <Link><p>{t('footer.links.col3.3')}</p></Link>
                     </div>
 
-                    <div className='col-sm-6 col-md-6'>
-                        <ChangeLanguageButton/>
-                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ function VerifyEmailResult() {
     dispatch(emailVerify(token)).then((res) => {
         console.log(res);
     });
-  }, [token]);
+  }, [token,dispatch]);
 
   return (
     <>

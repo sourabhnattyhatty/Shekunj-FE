@@ -8,9 +8,9 @@ import Cookies from "js-cookie";
 export const onLogin = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.LOGIN_REQUEST });
-    const res = await Post('login/', values);
+    const res = await Post('authentication/login/', values);
     dispatch({type : authTypes.LOGIN_FINISH, payload : {name: res.data.name, email : res.data.email} })
-    Cookies.set('sheToken', res.data.tokens);
+    Cookies.set('sheToken', res.data.data.tokens);
     history.push("/")
   } 
   catch (error) {
@@ -25,7 +25,7 @@ export const onLogin = (values, history) => async (dispatch) => {
 export const onSignup = (values, history) => async(dispatch) => {
   try{
     dispatch({type : authTypes.SIGNUP_REQUEST});
-    await Post('register/', values);
+    await Post('authentication/register/', values);
     dispatch({type : authTypes.SIGNUP_FINISH, payload : values});
     localStorage.setItem('email', values.email);
     history.push("/verify");
@@ -40,7 +40,7 @@ export const onSignup = (values, history) => async(dispatch) => {
 
 export const emailVerify = (token) => async(dispatch) => {
   try{
-    const res = await Get(`email-verify/?token=${token}`);
+    const res = await Get(`authentication/email-verify/?token=${token}`);
     window.location.replace('success');
     return res;
   }
