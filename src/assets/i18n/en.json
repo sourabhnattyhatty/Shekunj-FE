@@ -27,6 +27,11 @@
         "button" : "Submit"
     },
 
+    "resetPassword" : {
+        "heading" : "Change Password",
+        "label" : "New Password"
+    },
+
     "verify" : {
         "heading" : "Verify your e-mail to finish signing for Sheकुंज",
         "heading2" : "Thank you for choosing Sheकुंज",
@@ -41,7 +46,7 @@
     },
 
     "header" : {
-        "searchPlaceholder" : "Find a course",
+        "searchPlaceholder" : "Career guidence, Online Courses, Success stories",
         "courseButton" : "Login/Register",
         "heading" : {
             "1" : "About",

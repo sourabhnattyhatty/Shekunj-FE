@@ -53,6 +53,26 @@ export const authReducer = (state = initialState, action) => {
         isAuth : false,
         error : action.payload
       }
+    case authTypes.EMAIL_VERIFY_REQUEST:
+      return{
+        ...state,
+        isLoading : true,
+        error : null
+      }
+    case authTypes.EMAIL_VERIFY_FINISH:
+      return{
+        ...state,
+        isLoading : false,
+        error : null
+      }
+    case authTypes.EMAIL_VERIFY_FAIL:
+      return{
+        ...state,
+        isLoading : false,
+        user : {},
+        isAuth : false,
+        error : action.payload
+      }
     default:
       return state;
   }

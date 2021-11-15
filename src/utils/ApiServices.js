@@ -4,7 +4,7 @@ const environment = process.env.REACT_APP_API_URL;
 
 axios.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("sheToken");
     if (environment) {
       config.url = `${environment}${config.url}`;
     }
@@ -17,13 +17,17 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   },
 );
-
+  
 axios.interceptors.response.use(undefined, (error) => {
   throw error.response;
 });
 
 export const Post = async (url, values) => {
   return axios.post(`${url}`, values);
+};
+
+export const Patch = async (url, values) => {
+  return axios.patch(`${url}`, values);
 };
 
 export const Put = async (url, value) => {

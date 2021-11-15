@@ -10,6 +10,7 @@ const LoginPage = React.lazy(() => import("./pages/LoginPage"));
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const Verify = React.lazy(() => import("./pages/VerifyPage"));
 const VerifyEmailResult = React.lazy(() => import("./pages/VerifyEmailResult"));
+const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
         <PublicRoute exact path='/verify' component={Verify} />
 
         <PublicRoute exact path='/authentication/email-verify/:token?' component={VerifyEmailResult} />
+
+        <PublicRoute exact path='/authentication/password-reset/:uidb/:token/' component={ResetPassword}/>
 
         <Route exact path='/' component={HomePage} />
       </Switch>

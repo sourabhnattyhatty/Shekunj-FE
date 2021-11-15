@@ -1,7 +1,6 @@
 import React from 'react'
 import './index.scss'
 import { Link } from 'react-router-dom';
-import ChangeLanguageButton from '../LanguageButton';
 import { useTranslation } from 'react-i18next';
 
 function Footer() {

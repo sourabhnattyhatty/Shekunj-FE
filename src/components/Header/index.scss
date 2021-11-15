@@ -6,7 +6,6 @@
   height: 58.2px;
   left: 215px;
   top: 21px;
-  left: 13.44%;
 }
 
 header {
@@ -85,7 +84,6 @@ header {
   justify-content: space-between;
 }
 
-
 .headings a {
   flex-direction: row;
   align-items: flex-start;
@@ -98,8 +96,11 @@ header {
   line-height: 27px;
   padding: 10px 20px 10px 20px;
 
-  &:hover{
-    background-color: #EC498A;
+  &:hover {
+    background-color: #ec498a;
     color: #ffffff;
+    transition: 0.3s ease;
   }
 }
+
+
