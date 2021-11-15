@@ -1,15 +1,15 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import TitleIcon from "../assets/icons/logo.svg";
+import TitleIcon from "../../assets/icons/logo.svg";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {useHistory} from 'react-router-dom'
 import {CircularProgress} from '@mui/material';
 
-import Error from "../components/Error";
-import "./Common.scss";
-import { requestRestEmail } from "../store/auth/action";
+import Error from "../../components/Error";
+import "../Common.scss";
+import { requestRestEmail } from "../../store/auth/action";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid emial").required("Email is required"),

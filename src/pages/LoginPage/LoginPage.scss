@@ -1,0 +1,27 @@
+
+
+
+.login_form{
+    background: rgba(237, 248, 248, 0.4);
+    border-radius: 20px 20px 0px 0px;
+    display: block;
+    height: 100%;
+    padding: 22px;
+  }
+  
+  .login_form h2{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 35px;
+    text-transform: capitalize;
+    color: #152523;
+  }
+  .login_form p{
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 30px;
+    color: #425466;
+  }
+  .login_form p .register{
+      color:#D62C79;
+  }

@@ -1,28 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap");
 
-.footer {
-  position: absolute;
-  width: 1600px;
-  height: 350px;
-  left: 0px;
-  bottom: 0px;
-  background: #1c1d1f;
+
+/*footer*/
+.footer_other{
+  background: #f9f8fe;
+  padding: 50px 0px 20px;
+}
+.footer_login{
+  background:#1C1D1F;
+  padding: 50px 0px 20px;
+}
+footer ul li {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+footer ul li a {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+  transition: 0.25s ease;
+}
+footer ul li a:hover {
+  color: #ec498a;
+  text-decoration: none;
+}
+.bottom-footer p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
 }
 
-.footer_links {
-  color: #ffffff;
-  margin-top: 61px;
-  left: 215px;
+.footer_login ul li a {
+    color: #fff;
+}
 
-  a {
-    text-decoration: none;
-    color: #ffffff;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-family: Sora;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 18px;
-  }
+.footer_login .bottom-footer p{
+  color: #fff;
 }

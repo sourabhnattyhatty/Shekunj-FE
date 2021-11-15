@@ -1,16 +1,19 @@
 import React from "react";
+import Header from "../../components/Header";
+import AuthContent from "../../components/AuthContent";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useHistory } from "react-router-dom";
-import "./Common.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
-import Error from "../components/Error";
-import TitleIcon from "../assets/icons/logo.svg";
-import { onLogin } from "../store/auth/action";
-import {CircularProgress} from '@mui/material';
+import Error from "../../components/Error";
+import TitleIcon from "../../assets/icons/logo.svg";
+import { onLogin } from "../../store/auth/action";
+import { CircularProgress } from "@mui/material";
 
+import Footer from "../../components/Footer";
+import "./LoginPage.scss";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -19,12 +22,12 @@ const validationSchema = Yup.object({
     .required("Password is required"),
 });
 
-function LoginPage() {
+function LoginPage({ p }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const {isLoading} = useSelector(state => state.authReducer)
+  const { isLoading } = useSelector((state) => state.authReducer);
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -38,10 +41,16 @@ function LoginPage() {
       },
     });
 
-
   return (
     <>
-      <div className='container'>
+      <div>
+        <Header loginPage={true} />
+
+        <AuthContent />
+
+        <Footer loginPage={true} />
+      </div>
+      {/* <div className='container'>
         <div className='logo_1'>
           <img src={TitleIcon} alt='...' />
         </div>
@@ -104,7 +113,7 @@ function LoginPage() {
             {t('login.signupLink')}
           </Link>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

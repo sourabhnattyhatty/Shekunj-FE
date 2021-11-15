@@ -1,13 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import TitleIcon from "../assets/icons/logo.svg";
+import TitleIcon from "../../assets/icons/logo.svg";
 
-import Error from "../components/Error";
-import "./Common.scss";
+import Error from "../../components/Error";
+import "../Common.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { onSignup } from "../store/auth/action";
+import { onSignup } from "../../store/auth/action";
 import {CircularProgress} from '@mui/material';
 import { useTranslation } from "react-i18next";
 

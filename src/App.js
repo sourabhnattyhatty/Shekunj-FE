@@ -4,9 +4,9 @@ import "./App.css";
 import PublicRoute from "./routers/PublicRouter";
 
 
-const ForgotPage = React.lazy(() => import("./pages/ForgotPage"));
-const SignupPage = React.lazy(() => import("./pages/SignupPage"));
-const LoginPage = React.lazy(() => import("./pages/LoginPage"));
+const ForgotPage = React.lazy(() => import("./pages/ForgotPage/ForgotPage"));
+const SignupPage = React.lazy(() => import("./pages/SignupPage/SignupPage"));
+const LoginPage = React.lazy(() => import("./pages/LoginPage/LoginPage"));
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const Verify = React.lazy(() => import("./pages/VerifyPage"));
 const VerifyEmailResult = React.lazy(() => import("./pages/VerifyEmailResult"));
