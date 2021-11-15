@@ -3,20 +3,20 @@ import "./index.scss";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Logo from "../../assets/images/whitelogo.svg";
+import ChangeLanguageButton from "../LanguageButton";
 
 // function Footer() {
 
-    const Footer = ({loginPage}) => {
-
+const Footer = ({ loginPage }) => {
   const { t } = useTranslation();
 
   return (
     <div>
-      <footer className={loginPage ? 'footer_login' : 'footer_other'}>
-        <div class='container'>
-          <div class='row'>
-            <div class='col-md-3 col-4'>
-              <ul>
+      <footer className={loginPage ? "footer_login" : "footer_other"}>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-3 col-4'>
+              <ul className='p-0'>
                 <li>
                   <Link>{t("footer.links.col1.1")}</Link>
                 </li>
@@ -35,8 +35,8 @@ import Logo from "../../assets/images/whitelogo.svg";
               </ul>
             </div>
 
-            <div class='col-md-3 col-4'>
-              <ul>
+            <div className='col-md-3 col-4'>
+              <ul className='p-0'>
                 <li>
                   <Link>{t("footer.links.col2.1")}</Link>
                 </li>
@@ -55,8 +55,8 @@ import Logo from "../../assets/images/whitelogo.svg";
               </ul>
             </div>
 
-            <div class='col-md-3 col-4'>
-              <ul>
+            <div className='col-md-3 col-4'>
+              <ul className='p-0'>
                 <li>
                   <Link>{t("footer.links.col3.1")}</Link>
                 </li>
@@ -70,18 +70,24 @@ import Logo from "../../assets/images/whitelogo.svg";
                 </li>
               </ul>
             </div>
+
+            <div className='col-md-3'>
+              <div className='set_language'>
+                <ChangeLanguageButton />
+              </div>
+            </div>
           </div>
 
-          <div class='bottom-footer mt-5'>
-            <div class='row'>
-              <div class='col-lg-9 col-md-8 col-5 text-left'>
-                <a class='' href='#'>
+          <div className='bottom-footer mt-5'>
+            <div className='row'>
+              <div className='col-lg-9 col-md-8 col-5 text-left'>
+                <a className='' href='#'>
                   <img src={Logo} alt='logo' />
                 </a>
               </div>
 
-              <div class='col-lg-3 col-md-4 col-7 text-left'>
-                <p class='mt-lg-4 mt-md-3'>&copy; 2021 SheKunj.Inc.</p>
+              <div className='col-lg-3 col-md-4 col-7 text-left'>
+                <p className='mt-lg-4 mt-md-3'>&copy; 2021 SheKunj.Inc.</p>
               </div>
             </div>
           </div>
@@ -116,6 +122,6 @@ import Logo from "../../assets/images/whitelogo.svg";
     //     </div>
     // </div>
   );
-}
+};
 
 export default Footer;

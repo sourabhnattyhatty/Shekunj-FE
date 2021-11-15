@@ -5,6 +5,7 @@ import Work from "../../assets/images/login/2.png";
 import Hinglish from "../../assets/images/login/3.png";
 
 import LoginForm from "../LoginForm";
+import SignupForm from "../SignupForm";
 
 import "./index.scss";
 
@@ -89,7 +90,8 @@ const AuthContent = () => {
             </div>
 
             <div className='col-md-4'>
-              <LoginForm />
+              {/* <LoginForm /> */}
+              <SignupForm />
             </div>
           </div>
         </div>

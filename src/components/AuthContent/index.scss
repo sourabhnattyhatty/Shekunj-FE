@@ -4,7 +4,7 @@
     position: relative;
     background-image: url("../../assets/images/login.png");
     background-repeat: no-repeat;
-    height: 700px;
+    background-position: left bottom;
   }
   .login_main .login_content h1{
     font-weight: 600;
@@ -88,4 +88,12 @@
 .login_form .policy_para a{
     color: #D62C79;
     font-weight: 600;
+}
+.login_form .policy_para a:hover{
+    text-decoration: none;
+}
+.login_form span.asterik {
+    color: #C42020;
+    font-size: 16px;
+    padding-left: 3px;
 }

@@ -8,12 +8,12 @@ const LoginForm = () => {
   return (
     <>
       <div className='login_form'>
-        <h2>Login on Shekunj</h2>
+        <h2>Signup on Shekunj </h2>
         <p>
-          Don't have an account?{" "}
-          <Link to='/signup' className='register'>
+          Already have an account?{" "}
+          <Link to='/login' className='register'>
             {" "}
-            REGISTER HERE{" "}
+            LOGIN NOW{" "}
           </Link>
         </p>
 
@@ -38,7 +38,28 @@ const LoginForm = () => {
 
           <div className='form-group'>
             <label>
+              Date of Birth <span className='asterik'> * </span>
+            </label>
+            <input type='text' className='form-control' />
+          </div>
+
+          <div className='form-group'>
+            <label>
+              Mobile Number <span className='asterik'> * </span>
+            </label>
+            <input type='text' className='form-control' />
+          </div>
+
+          <div className='form-group'>
+            <label>
               Password <span className='asterik'> * </span>
+            </label>
+            <input type='password' className='form-control' />
+          </div>
+
+          <div className='form-group'>
+            <label>
+              Confirm Password <span className='asterik'> * </span>
             </label>
             <input type='password' className='form-control' />
           </div>

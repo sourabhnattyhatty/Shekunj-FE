@@ -47,11 +47,11 @@ header {
   margin-top: 2px;
   position: absolute;
   right: 0;
+  top:0px;
   margin-bottom: 0;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  color: #d9230f;
   cursor: unset;
   z-index: 999;
 }
@@ -73,19 +73,44 @@ header {
 .login_head{
   box-shadow: none;
 }
-.middle_nav_login {
+.login_head .middle_nav_login {
   background: $navbgColor;
   margin: 10px 0px 30px;
 }
-.middle_nav_login .navbar-nav .nav-item {
+.login_head .middle_nav_login .navbar-nav .nav-item {
   margin: 0px 26px 0px;
 }
-.middle_nav_login .navbar-nav .nav-item .nav-link{
+.login_head .middle_nav_login .navbar-nav .nav-item .nav-link{
   font-family: Sora medium;
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
   color: $mainColor;
+}
+
+
+/*Middle navbar*/
+.other_head .middle_nav_login .navbar-nav .nav-item {
+  margin: 10px 16px 0px 10px;
+}
+.other_head .middle_nav_login .navbar-nav .nav-item .nav-link {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: #d62c79;
+  text-transform: capitalize;
+  padding: 7px 13px;
+  transition: 0.25s ease;
+}
+.other_head .middle_nav_login .navbar-nav .nav-item .nav-link:hover {
+  background: #ec498a;
+  color: #fff;
+}
+.other_head .middle_nav_login .navbar-nav .nav-item.active {
+  background: #ec498a;
+}
+.other_head .middle_nav_login .navbar-nav .nav-item.active .nav-link {
+  color: #fff;
 }
 
 // .logo_2 {
