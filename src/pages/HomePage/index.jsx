@@ -1,6 +1,8 @@
 import React from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+
+
 import Resume from "../../assets/images/resume.png";
 import Girl from "../../assets/images/job1.png";
 import Community from "../../assets/images/community.png";
@@ -12,6 +14,7 @@ import Slider from "react-slick";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./index.scss";
+import 'animate.css';
 
 function HomePage() {
   const settings = {
@@ -63,7 +66,7 @@ function HomePage() {
                     <h4 className='mt-5 pt-md-5 mb-3'>
                       Anytime, anywhere, Learn on your schedule from any device
                     </h4>
-                    <p className='mb-4'>
+                    <p className='mb-4 animate__animated animate__zoomInDown'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
@@ -84,7 +87,7 @@ function HomePage() {
                     <h4 className='mt-5 pt-md-5 mb-3'>
                       Anytime, anywhere, Learn on your schedule from any device
                     </h4>
-                    <p className='mb-4'>
+                    <p className='mb-4 animate__animated animate__zoomInDown'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
@@ -100,6 +103,9 @@ function HomePage() {
           </Slider>
         </div>
       </div>
+
+      {/* Slider */}
+      
 
       {/* resume */}
       <section class='resume same_padding mt-5'>

@@ -1,43 +1,63 @@
-import axios from "axios";
+import axios from 'axios';
 
-const environment = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.withCredentials = true;
 
-axios.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("sheToken");
-    if (environment) {
-      config.url = `${environment}${config.url}`;
-    }
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  },
-);
-  
-axios.interceptors.response.use(undefined, (error) => {
-  throw error.response;
+const responseBody = (response) => response.data;
+
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
 });
 
-export const Post = async (url, values) => {
-  return axios.post(`${url}`, values);
+axios.interceptors.response.use(
+  async (response) => {
+    return response;
+  },
+  (error) => {
+    //eslint-disable-next-line
+    const { data, status } = !error.response;
+    switch (status) {
+      case 401:
+        console.log('Logout user!');
+        break;
+      case 403:
+        console.log('You are not allowed to do that!');
+        break;
+      default:
+        break;
+    }
+    return Promise.reject(error.response);
+  },
+);
+
+const requests = {
+  get: (url, params) => axios.get(url, { params }).then(responseBody),
+  post: (url, body) => axios.post(url, body).then(responseBody),
+  put: (url, body) => axios.put(url, body).then(responseBody),
+  patch : (url, body) => axios.patch(url, body).then(responseBody),
+  delete: (url) => axios.delete(url).then(responseBody),
+  postForm: (url, data) =>
+    axios
+      .post(url, data, {
+        headers: { 'Content-type': 'multipart/form-data' },
+      })
+      .then(responseBody),
+  putForm: (url, data) =>
+    axios
+      .put(url, data, {
+        headers: { 'Content-type': 'multipart/form-data' },
+      })
+      .then(responseBody),
 };
 
-export const Patch = async (url, values) => {
-  return axios.patch(`${url}`, values);
-};
+export function createFormData(item) {
+  let formData = new FormData();
+  for (const key in item) {
+    formData.append(key, item[key]);
+  }
+  return formData;
+}
 
-export const Put = async (url, value) => {
-  return axios.put(`${url}`, value);
-};
-
-export const Get = async (url) => {
-  return axios.get(`${url}`);
-};
-
-export const Delete = async (url) => {
-  return axios.delete(`${url}`);
-};
+export default requests;

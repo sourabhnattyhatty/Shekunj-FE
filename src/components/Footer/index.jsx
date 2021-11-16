@@ -83,9 +83,9 @@ const Footer = ({ loginPage }) => {
             <div className='row'>
               <div className='col-lg-9 col-md-8 col-5 text-left'>
                 <a className='' href='#'>
-                  {loginPage && <img src={Logo} alt='logo' />}
+                  <img src={loginPage ? Logo : LogoBlack} alt='logo' /> 
 
-                  <img src={LogoBlack} alt='logo' />
+                  
                 </a>
               </div>
 

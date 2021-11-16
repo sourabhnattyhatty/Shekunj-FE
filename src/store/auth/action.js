@@ -1,6 +1,6 @@
 import { authTypes } from "./types";
 import { toast } from "react-toastify";
-import {Get, Post, Patch} from "../../utils/ApiServices"
+import httpServices from '../../utils/ApiServices'
 import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
 
@@ -8,10 +8,10 @@ import Cookies from "js-cookie";
 export const onLogin = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.LOGIN_REQUEST });
-    const res = await Post('authentication/login/', values);
+    const res = await httpServices.post('authentication/login/', values);
     debugger
     dispatch({type : authTypes.LOGIN_FINISH, payload : {name: res.data.name, email : res.data.email} })
-    Cookies.set('sheToken', res.data.data.tokens);
+    Cookies.set('sheToken', res.data.tokens);
     history.push("/")
   } 
   catch (error) {
@@ -29,7 +29,7 @@ export const onLogin = (values, history) => async (dispatch) => {
 export const onSignup = (values, history) => async(dispatch) => {
   try{
     dispatch({type : authTypes.SIGNUP_REQUEST});
-    await Post('authentication/register/', values);
+    await httpServices.post('authentication/register/', values);
     dispatch({type : authTypes.SIGNUP_FINISH, payload : values});
     localStorage.setItem('email', values.email);
     history.push("/verify");
@@ -44,7 +44,7 @@ export const onSignup = (values, history) => async(dispatch) => {
 
 export const emailVerify = (token) => async(dispatch) => {
   try{
-    const res = await Get(`authentication/email-verify/?token=${token}`);
+    const res = await httpServices.get(`authentication/email-verify/?token=${token}`);
     window.location.replace('success');
     return res;
   }
@@ -56,7 +56,7 @@ export const emailVerify = (token) => async(dispatch) => {
 export const requestRestEmail = (values,history) => async(dispatch) => {
   try{
     dispatch({type : authTypes.EMAIL_VERIFY_REQUEST})
-    const res = await Post('authentication/request-reset-email/', values);
+    const res = await httpServices.post('authentication/request-reset-email/', values);
     dispatch({type : authTypes.EMAIL_VERIFY_FINISH})
     history.push("/login");
     toast.success(res.data.success, toasterConfig);
@@ -70,7 +70,7 @@ export const requestRestEmail = (values,history) => async(dispatch) => {
 export const resetPassword = (values,history) => async(dispatch) => {
   try{
     dispatch({type : authTypes.EMAIL_VERIFY_REQUEST})
-    const res = await Patch('authentication/password-reset-complete/', values)
+    const res = await httpServices.patch('authentication/password-reset-complete/', values)
     dispatch({type : authTypes.EMAIL_VERIFY_FINISH})
     history.push('/login');
     toast.success(res.data.message, toasterConfig);
