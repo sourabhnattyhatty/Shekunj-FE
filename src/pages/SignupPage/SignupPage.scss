@@ -3,7 +3,7 @@
     border-radius: 20px 20px 0px 0px;
     display: block;
     height: 100%;
-    padding: 22px;
+    padding: 15px 22px;
   }
   
   .login_form h2{
@@ -24,3 +24,6 @@
       text-decoration: none;
       font-weight: 600;
   }
+  .login_form .form-group{
+    margin-bottom: 5px;
+}

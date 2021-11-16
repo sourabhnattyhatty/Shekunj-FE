@@ -88,6 +88,38 @@ header {
   color: $mainColor;
 }
 
+.other_head .btn.btn-bg-pink {
+  background: #ec498a;
+  border: 1px solid #ec498a;
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 40px;
+  padding: 8px 21px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #ffffff;
+  transition: 0.25s ease;
+}
+.other_head .btn.btn-bg-pink:hover {
+  background: #fff;
+  color: #ec498a;
+}
+.other_head .MuiButton-text.MuiButton-root {
+  background: #fff;
+  border: 1px solid #000000;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  height: 38px;
+  padding: 8px 21px;
+  transition: 0.25s ease;
+}
+.other_head .MuiButton-text.MuiButton-root:hover {
+  background: #ec498a;
+  color: #fff !important;
+}
 
 /*Middle navbar*/
 .other_head .middle_nav_login .navbar-nav .nav-item {

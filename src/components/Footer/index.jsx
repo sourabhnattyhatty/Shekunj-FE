@@ -3,6 +3,7 @@ import "./index.scss";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Logo from "../../assets/images/whitelogo.svg";
+import LogoBlack from "../../assets/images/logo.svg";
 import ChangeLanguageButton from "../LanguageButton";
 
 // function Footer() {
@@ -82,7 +83,9 @@ const Footer = ({ loginPage }) => {
             <div className='row'>
               <div className='col-lg-9 col-md-8 col-5 text-left'>
                 <a className='' href='#'>
-                  <img src={Logo} alt='logo' />
+                  {loginPage && <img src={Logo} alt='logo' />}
+
+                  <img src={LogoBlack} alt='logo' />
                 </a>
               </div>
 

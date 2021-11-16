@@ -46,7 +46,7 @@ function LoginPage({ p }) {
       <div>
         <Header loginPage={true} />
 
-        <AuthContent />
+        <AuthContent loginPage={true} />
 
         <Footer loginPage={true} />
       </div>

@@ -1,3 +1,366 @@
-.home_page{
-    background: #FFFFFF;
+.same_padding {
+    padding: 100px 0px;
+  }
+/* carousel */
+#myCarousel .carousel-item {
+  position: relative;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  transition: -webkit-transform 0.6s ease;
+  transition: transform 0.6s ease;
+  transition: transform 0.6s ease, -webkit-transform 0.6s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  height: 80vh;
+  width: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+#myCarousel .carousel_item1 {
+  background-image: url("../../assets/images/banner/1.png");
+}
+#myCarousel .carousel_item2 {
+  background-image: url("../../assets/images/banner/1.png");
+}
+
+#myCarousel .carousel-item h4 {
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 120%;
+}
+#myCarousel .carousel-item p {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  padding-right: 18%;
+}
+#myCarousel .carousel-item .banner_btn {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  font-family: Sora bold;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+  background: #ec498a;
+  border: none;
+  border-radius: 20px;
+  padding: 17px 50px;
+  display: inline-block;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+  height: 56px;
+}
+#myCarousel .carousel-item .banner_btn:hover {
+  text-decoration: none;
+  transition: 1s;
+  background: #fff;
+  color: #ec498a;
+}
+
+#myCarousel .carousel-item1 h4 {
+  color: #ffffff;
+}
+#myCarousel .carousel-item1 p {
+  color: #ffffff;
+}
+
+#myCarousel .carousel-item2 h4 {
+  color: #323232;
+}
+#myCarousel .carousel-item2 p {
+  color: #757984;
+}
+#myCarousel .slick-next, #myCarousel .slick-prev{
+    top: 52%;
+}
+#myCarousel .slick-next {
+  right: 80px;
+}
+#myCarousel .slick-prev,#myCarousel .slick-next  {
+    height: 80px;
+    width: 80px;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    transition: 0.25s ease;
+}
+#myCarousel .slick-prev:hover  {
+    border: 1px solid #ec498a;
+}
+#myCarousel .slick-next:hover  {
+    border: 1px solid #ec498a;
+}
+#myCarousel .slick-prev {
+    left: 50px;
+}
+#myCarousel .slick-prev:before{
+    content: "";
+    background-image: url("../../assets/icons/arrow_left.png");
+    border: 1px solid #DADADA;
+    width: 60px;
+    height: 60px;
+    background-size: auto;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100px;
+    padding: 20px;
+    left: 0px;
+    top: 10px;
+    right: 0;
+    margin: auto;
+}
+#myCarousel .slick-prev:hover:before, #myCarousel .slick-next:hover:before{
+    background-color: #EC498A;
+}
+#myCarousel .slick-next:before{
+    content: "";
+    background-image: url("../../assets/icons/arrow_right.png");
+    border: 1px solid #DADADA;
+    width: 60px;
+    height: 60px;
+    background-size: auto;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100px;
+    padding: 20px;
+    left: 0px;
+    top: 10px;
+    right: 0;
+    margin: auto;
+}
+#myCarousel .slick-prev,
+#myCarousel .slick-next {
+  transform: translate(0, -30%);
+  z-index: 99;
+}
+
+/*resume*/
+.resume {
+    position: relative;
+    background-image: url("../../assets/images/resumebg.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 500px;
+    padding: 48px 58px;
+  }
+  .resume .btn.btn-resume {
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #ec498a;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 16px;
+    transition: 0.25s ease;
+    padding: 13px 30px;
+    height: 56px;
+  }
+  .resume h4 {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 50px;
+    color: #000000;
+    margin-top: 120px;
+  }
+  .resume .btn.btn-resume:hover {
+    color: #ffffff;
+    background: #ec498a;
+  }
+  .resume .resumeimg {
+    position: absolute;
+    right: 70px;
+    bottom: 0px;
+    width: 560px;
+  }
+  .resume .resumeimg img {
+    max-width: 100%;
+  }
+
+  /*job-opprtunity*/
+.job-opprtunity-bg {
+    position: relative;
+    background-image: url("../../assets/images/joinbg.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 300px;
+    padding: 48px 58px;
+  }
+  .job-opprtunity-bg h3 {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 60px;
+    text-transform: capitalize;
+    color: #ffffff;
+  }
+  .job-opprtunity-bg p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+  }
+  .job-opprtunity-bg .btn.btn-job {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #323232;
+    background: #ffffff;
+    border-radius: 20px;
+    transition: 0.25s ease;
+    padding: 12px 23px;
+  }
+  .job-opprtunity-bg .btn.btn-job:hover {
+    color: #ffffff;
+    background: #ec498a;
+  }
+  
+  .job-opprtunity-bg .jobimg {
+    position: absolute;
+    right: 0px;
+    top: -18%;
+  }
+  .job-opprtunity-bg .jobimg img {
+    max-width: 85%;
+  }
+
+  /*career development*/
+.career_community {
+    background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
+  }
+  .career_community h3 {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 60px;
+    text-align: center;
+    color: #ffffff;
+  }
+  .career_community p {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
+  }
+  .community-img img {
+    max-width: 100%;
+  }
+  .btn.btn-start-course {
+    background: #ec498a;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #ffffff;
+    transition: 0.25s ease;
+    width: 100%;
+    text-align: center;
+    height: 56px;
+  }
+  .btn.btn-start-course:hover {
+    background: #fff;
+    color: #ec498a;
+  }
+  
+  /*certificate*/
+  .certificate {
+    /* background: #bababa; */
+    position: relative;
+    background-image: url("../../assets/images/bgcertificate.png");
+    background-repeat: no-repeat;
+    background-size: 100% 103%;
+    height: 550px;
+  }
+  .certificate_img img {
+    max-width: 100%;
+  }
+  .certificate h4 {
+    font-weight: bold;
+    font-size: 33px;
+    line-height: 52px;
+    color: #000000;
+  }
+  .certificate p {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    color: #828282;
+  }
+
+  /*highlight student*/
+.highlight_student {
+    background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
+  }
+  .highlight_student h3 {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 60px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+  }
+  .highlight_student p {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    color: #595f73;
+  }
+  .learn_more {
+    background: #ec498a;
+    border-radius: 10px;
+    font-family: Sora bold;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 42px;
+    color: #ffffff;
+    height: 44px;
+    width: 160px;
+    transition: 0.25s ease;
+    display: inline-block;
+    text-align: center;
+  }
+  .learn_more:hover {
+    background: #000;
+    color: #ec498a;
+    text-decoration: none;
+  }
+
+  /* .highlight_student .owl-slider #testimonial .owl-item:nth-of-type(1n+1){
+      margin-top: 50px;
+  } */
+  .highlight_student .semicircle-img1 {
+    position: absolute;
+    top: -15px;
+    right: -2px;
+  }
+  .highlight_student .semicircle-img2 {
+    position: absolute;
+    bottom: 0px;
+    left: -21px;
+  }
+  .highlight_student .circle-img {
+    position: absolute;
+    bottom: -15px;
+    right: -26px;
+  }
+  .highlight_student p.para-set {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 19px;
+    color: #404451;
+    position: absolute;
+    bottom: -35px;
+    right: -10%;
+    width: 100%;
+    margin: auto;
+  }

@@ -7,13 +7,14 @@ import Search from "../../assets/icons/search.png";
 
 import "./index.scss";
 
-const Header = ({loginPage}) => {
+const Header = ({ loginPage }) => {
   const [searchValue, setSearchValue] = useState("");
   const { t } = useTranslation();
 
   return (
     <div>
-      <header className={loginPage ? 'login_head' : 'other_head'}>
+      <header className='other_head'>
+        {/* <header className={loginPage ? "login_head" : "other_head"}> */}
         <div className='container'>
           {/* Topbar */}
           <div className='topbar'>
@@ -46,9 +47,30 @@ const Header = ({loginPage}) => {
                 </div>
 
                 <div className='top_bar_btn d-inline-block'>
-                  <button className='btn btn-bg-black ml-xl-3 ml-md-2'>
-                    Start Course
+                  <button className='btn btn-bg-pink ml-xl-3 ml-md-2'>
+                    Login/Register
                   </button>
+
+                  <div className='set_language d-inline-block ml-xl-3 ml-md-2'>
+                    <ChangeLanguageButton />
+                  </div>
+                  {/* {loginPage && (
+                    <button className='btn btn-bg-black ml-xl-3 ml-md-2'>
+                      Start Course
+                    </button>
+                  )}
+
+                  {!loginPage && (
+                    <>
+                      <button className='btn btn-bg-pink ml-xl-3 ml-md-2'>
+                        Login/Register
+                      </button>
+
+                      <div className='set_language d-inline-block ml-xl-3 ml-md-2'>
+                        <ChangeLanguageButton />
+                      </div>
+                    </>
+                  )} */}
                 </div>
               </div>
             </div>
@@ -67,31 +89,47 @@ const Header = ({loginPage}) => {
               <div className='collapse navbar-collapse' id='collapsibleNavbar'>
                 <ul className='navbar-nav'>
                   <li className='nav-item active'>
-                  <Link className='nav-link' to="/about">{t('header.heading.1')}</Link>
+                    <Link className='nav-link' to='/about'>
+                      {t("header.heading.1")}
+                    </Link>
                   </li>
                   <li className='nav-item'>
-                  <Link className='nav-link' to="/courses">{t('header.heading.2')}</Link>
+                    <Link className='nav-link' to='/courses'>
+                      {t("header.heading.2")}
+                    </Link>
                   </li>
                   <li className='nav-item'>
-                  <Link className='nav-link' to="/guidance">{t('header.heading.3')}</Link>
+                    <Link className='nav-link' to='/guidance'>
+                      {t("header.heading.3")}
+                    </Link>
                   </li>
                   <li className='nav-item'>
-                  <Link className='nav-link' to="/resume_builder">{t('header.heading.4')}</Link>
+                    <Link className='nav-link' to='/resume_builder'>
+                      {t("header.heading.4")}
+                    </Link>
                   </li>
                   <li className='nav-item'>
-                  <Link className='nav-link' to="/career">{t('header.heading.5')}</Link>
+                    <Link className='nav-link' to='/career'>
+                      {t("header.heading.5")}
+                    </Link>
                   </li>
 
                   <li className='nav-item'>
-                  <Link className='nav-link' to="/jobs">{t('header.heading.6')}</Link>
+                    <Link className='nav-link' to='/jobs'>
+                      {t("header.heading.6")}
+                    </Link>
                   </li>
 
                   <li className='nav-item'>
-                  <Link className='nav-link' to="/blogs">{t('header.heading.7')}</Link>
+                    <Link className='nav-link' to='/blogs'>
+                      {t("header.heading.7")}
+                    </Link>
                   </li>
 
                   <li className='nav-item'>
-                  <Link className='nav-link' to="/success_story">{t('header.heading.8')}</Link>
+                    <Link className='nav-link' to='/success_story'>
+                      {t("header.heading.8")}
+                    </Link>
                   </li>
                 </ul>
               </div>

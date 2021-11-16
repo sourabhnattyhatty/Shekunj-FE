@@ -3,24 +3,31 @@ import { Link } from "react-router-dom";
 import Practical from "../../assets/images/login/1.png";
 import Work from "../../assets/images/login/2.png";
 import Hinglish from "../../assets/images/login/3.png";
-
+// import Girl from "../../assets/images/login.png";
 import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
 
 import "./index.scss";
 
-const AuthContent = () => {
+const AuthContent = ({ loginPage }) => {
   return (
     <div className=''>
-      <div className='login_main mt-5'>
-        <div className='container'>
+      <div
+        className={
+          loginPage ? "login_bg_main login_main mt-3" : "login_main mt-3"
+        }
+      >
+        <div className='container logincontentbg'>
           <div className='row'>
-            <div className='col-md-8'>
+            <div className='col-md-4'>
+              {/* <div className='loginbg1'></div> */}
+            </div>
+            <div className='col-md-4'>
               <div className='login_content'>
                 <h1>Register for Easy & Real Learning to make you Job Ready</h1>
 
                 <div className='mt-4'>
-                  <div className='login_detail mb-3'>
+                  <div className='login_detail mb-2'>
                     <div className='row'>
                       <div className='col-md-2'>
                         <div className='login-content-img'>
@@ -43,7 +50,7 @@ const AuthContent = () => {
                     </div>
                   </div>
 
-                  <div className='login_detail mb-3'>
+                  <div className='login_detail mb-2'>
                     <div className='row'>
                       <div className='col-md-2'>
                         <div className='login-content-img'>
@@ -64,7 +71,7 @@ const AuthContent = () => {
                     </div>
                   </div>
 
-                  <div className='login_detail'>
+                  <div className='login_detail mb-3'>
                     <div className='row'>
                       <div className='col-md-2'>
                         <div className='login-content-img'>
@@ -90,8 +97,7 @@ const AuthContent = () => {
             </div>
 
             <div className='col-md-4'>
-              {/* <LoginForm /> */}
-              <SignupForm />
+              {loginPage ? <LoginForm /> : <SignupForm />}
             </div>
           </div>
         </div>

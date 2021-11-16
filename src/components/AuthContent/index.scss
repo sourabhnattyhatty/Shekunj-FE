@@ -1,32 +1,49 @@
 @import "../../Styles/variable";
 
-  .login_main{
+  .login_main .logincontentbg{
     position: relative;
     background-image: url("../../assets/images/login.png");
     background-repeat: no-repeat;
     background-position: left bottom;
+    // background-size: contain;
+    height:100%;
   }
+  .login_bg_main .logincontentbg{
+    position: relative;
+        background-image: url("../../assets/images/login.png");
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-size: contain;
+        height:100%;
+  }
+//   .login_bg_main{
+//     position: relative;
+//     background-image: url("../../assets/images/login.png");
+//     background-repeat: no-repeat;
+//     background-position: left top;
+//   }
   .login_main .login_content h1{
     font-weight: 600;
-    font-size: 36px;
-    line-height: 49px;
+    font-size: 30px;
+    line-height: 40px;
     color: #D62C79;
   }
 .login_content {
-    width: 433px;
+    // width: 433px;
     float: right;
     margin-top: 17px;
+    padding: 0px 0px 0px 30px;
 }
 .login_content .login-content-right h5{
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 30px;
     color: #000000;
 }
 .login_content .login-content-right p{
     font-weight: 300;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 21px;
     color: #535353;
 }
 .btn.btn-google{
@@ -48,11 +65,13 @@
     max-width: 98%;
 }
 
+
 .login_form label{
     font-weight: normal;
     font-size: 14px;
     line-height: 30px;
     color: #425466;
+    margin-bottom: 0px;
 }
 
 .login_form .form-control{
@@ -60,7 +79,7 @@
     border: 1px solid #E6E5EB;
     box-sizing: border-box;
     border-radius: 5px;
-    height: 50px;
+    height: 38px;
 }
 .login_form .form-control:focus{
     box-shadow: none;

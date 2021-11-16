@@ -31,21 +31,28 @@ const LoginForm = () => {
         <form>
           <div className='form-group'>
             <label>
-              E-mail address <span className='asterik'> * </span>
-            </label>
-            <input type='email' className='form-control' />
-          </div>
-
-          <div className='form-group'>
-            <label>
-              Date of Birth <span className='asterik'> * </span>
+              Full Name <span className='asterik'> * </span>
             </label>
             <input type='text' className='form-control' />
           </div>
 
           <div className='form-group'>
             <label>
+              E-mail <span className='asterik'> * </span>
+            </label>
+            <input type='email' className='form-control' />
+          </div>
+
+          <div className='form-group'>
+            <label>
               Mobile Number <span className='asterik'> * </span>
+            </label>
+            <input type='text' className='form-control' />
+          </div>
+
+          <div className='form-group'>
+            <label>
+              Date of Birth <span className='asterik'> * </span>
             </label>
             <input type='text' className='form-control' />
           </div>
