@@ -18,7 +18,6 @@ import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./index.scss";
 import 'animate.css';
-import Carousel from "../../components/Carousel";
 import star from '../../assets/images/Star 2.png';
 import Nikita from '../../assets/images/Nikita-Sharma.png';
 import 'aos/dist/aos.css'
@@ -123,13 +122,14 @@ function HomePage() {
         <div class='container'>
           <div class='row'>
             <div class='col-md-7'>
-              <h4>
+              <h4  data-aos='slide-right'>
                 Design your resume in real time and download a print-reday PDF.
               </h4>
-              <button class='btn btn-resume'>DESIGN MY RESUME</button>
+              <button class='btn btn-resume' data-aos="zoom-in">DESIGN MY RESUME</button>
             </div>
+            
 
-            <div class='resumeimg' data-aos='slide-up'>
+            <div class='resumeimg' data-aos='slide-left'>
               <img src={Resume} alt='...' />
             </div>
           </div>
@@ -151,13 +151,13 @@ function HomePage() {
                       Suspendisse vulputate ut nunc lorem mi ut lacus. Felis
                       vitae vel.
                     </p>
-                    <button class='btn btn-job'>
+                    <button data-aos="zoom-in" class='btn btn-job'>
                       view all job oppotunities
                     </button>
                   </div>
 
                   <div class='jobimg'>
-                    <img src={Girl} alt='...' />
+                    <img data-aos='slide-left' src={Girl} alt='...' />
                   </div>
                 </div>
               </div>
@@ -171,7 +171,7 @@ function HomePage() {
         <div class='container'>
           <div class='row justify-content-center'>
             <div class='col-md-11'>
-              <h3>Shekunj Career Development Community</h3>
+              <h3 data-aos="zoom-in">Shekunj Career Development Community</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
                 sapien nunc sit egestas amet magnis enim. Suspendisse vulputate
@@ -179,14 +179,14 @@ function HomePage() {
               </p>
 
               <div class='community-img mt-5'>
-                <img src={Community} alt='...' />
+                <img data-aos='slide-up' src={Community} alt='...' />
               </div>
             </div>
           </div>
 
           <div class='row justify-content-center'>
             <div class='col-md-4 text-center mt-5'>
-              <button class='btn btn-start-course'>Start Course</button>
+              <button class='btn btn-start-course' data-aos="zoom-in">Start Course</button>
             </div>
           </div>
         </div>
@@ -282,7 +282,7 @@ function HomePage() {
             </div>
 
             <div class='col-md-5 offset-md-1'>
-              <h3 class='mb-3 mt-4'>Our highlighted students revealing</h3>
+              <h3 class='mb-3 mt-4' data-aos='slide-left'>Our highlighted students revealing</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
                 donec molestie sit diam aliquam egestas erat tincidunt magna.
@@ -291,7 +291,7 @@ function HomePage() {
                 ornare ipsum. Tincidunt erat pulvinar viverra pharetra.
               </p>
 
-              <a href='#' class='learn_more'>
+              <a data-aos="zoom-in" href='#' class='learn_more'>
                 Learn more
               </a>
             </div>
