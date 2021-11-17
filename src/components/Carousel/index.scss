@@ -1,13 +1,13 @@
 .owl-theme {
-  max-width: 1150px;
-  margin: 4px auto;
+  max-width: 1250px;
+  margin-left: auto;
 }
 
 .item {
   color: #ffffff;
   background-color: #282c34;
-  height: 15rem;
-  width: 18.7rem;
+  height: 450px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,4 +27,235 @@
 .owl-carousel .owl-nav button.owl-next:hover {
   color: black;
   background-color: #FFFFFF !important;
+}
+.box {
+  width: 325px;
+  height: 460px;
+padding: 10px;
+  /* box-shadow: 2px 2px 30px rgb(0 0 0 / 20%); */
+  overflow: hidden;
+  margin: 9px;
+  background-color: #f5f5f5;
+  /* box-shadow: 0px 0px 50px rgb(0 0 0 / 10%); */
+  border-radius: 10px;
+}
+hr.line {
+  margin: 0;
+  border: 1px solid #E3E4EB;
+}
+.names {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.names p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin: 0;
+}
+.names span {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #EC498A;
+}
+.lSSlideOuter .lightSlider, .lSSlideOuter .lSPager{
+background-color: transparent !important;
+}
+.slide-img{
+height: 207px;
+position:relative;
+}
+.slide-img img{
+width:100%;
+height: 100%;
+object-fit: cover;
+box-sizing: border-box;
+}
+.detail-box{
+width: 100%;
+  /* display: flex;
+justify-content: space-between;
+align-items: center; */
+/* padding: 10px 20px; */
+box-sizing: border-box;
+font-family: calibri;
+}
+.type{
+display: flex;
+justify-content: space-between;
+}
+.type a {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding-right: 8px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #F2994A;
+  margin: 14px 0;
+}
+.type a span{
+  font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height, or 129% */
+
+
+/* Gray 3 */
+
+color: #828282;
+}
+.time {
+  display: flex;
+  justify-content: space-between;
+}
+.time p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+}
+.type span.std {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 40px;
+  color: #000000;
+}
+.type span{
+color:rgba(26,26,26,0.5);
+}
+.price{
+color: #333333;
+font-weight: 600;
+font-size: 1.1rem;
+font-family: poppins;
+letter-spacing: 0.5px;
+}
+.overlay{
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%,-50%);
+width:100%;
+height: 100%;
+background-color: rgba(0,0,0,0.6);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.buy-btn{
+width:160px;
+height: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #FFFFFF;
+color:#252525;
+font-weight: 700;
+letter-spacing: 1px;
+font-family: calibri;
+border-radius: 20px;
+box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+}
+.buy-btn:hover{
+color:#FFFFFF;
+background-color: #f15fa3;
+transition: all ease 0.3s;
+}
+.overlay{
+visibility: hidden;
+}
+.slide-img:hover .overlay{
+visibility: visible;
+animation:fade 0.5s;
+}
+
+@keyframes fade{
+0%{
+  opacity: 0;
+}
+100%{
+  opacity: 1;
+}
+}
+
+/* .slider{
+position: relative;
+display: flex;
+} */
+
+.lSSlideWrapper {
+  position: static !important;
+}
+.arrow_box {
+  width: 37%;
+  height: 432px;
+  background-color: #EC498A;
+  color: #fff;
+  float: left;
+  z-index: -1;
+}
+.lSAction > .lSNext {
+  background-position: -32px 0;
+left: 212px !important;
+  top: 42% !important;
+}
+.lSAction > .lSPrev {
+  left: 216px !important;
+}
+.lSAction > a {
+  top: 36% !important;
+  opacity: 1 !important;
+}
+.tag_btn button.btn.btn-info {
+  background: #FEDEFF;
+  border-radius: 100px;
+  border: none;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  color: #EF5DE9;
+margin-top: 10px;
+  margin-bottom: 14px;
+}
+.tag_btn h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+button.btn.btn_Courses {
+width: 190px;
+height: 56px;
+  background: #EC498A;
+  border-radius: 20px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0px auto;
+margin-bottom: 50px;
+  display: block;
 }

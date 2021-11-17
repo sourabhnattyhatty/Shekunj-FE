@@ -16,6 +16,8 @@ import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./index.scss";
 import 'animate.css';
 import Carousel from "../../components/Carousel";
+import star from '../../assets/images/Star 2.png';
+import Nikita from '../../assets/images/Nikita-Sharma.png';
 
 function HomePage() {
   const settings = {
@@ -207,13 +209,68 @@ function HomePage() {
         <div class='container'>
           <div class='row'>
             <div class='col-md-6'>
-              <img src={SemiCircle1} class='semicircle-img1' alt='Image' />
+              {/* <img src={SemiCircle1} class='semicircle-img1' alt='Image' />
               <img src={SemiCircle2} class='semicircle-img2' alt='Image' />
-              <img src={SemiCircle3} class='circle-img' alt='Image' />
+              <img src={SemiCircle3} class='circle-img' alt='Image' /> */}
 
-              <p class='para-set'>
+              <div className="row">
+                <div className="col-md-6">
+                <div className="tes_box tes-before">
+                <img src={Nikita} alt="" srcset="" />
+                <p>“I love their flexibility, Even when my request is too complicated to handle, the could still suggest something useful for me.”</p>
+                <ul className="star">
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                </ul>
+                <h2>Nikita Sharma</h2>
+                <h6>Content Writer</h6>
+              </div>
+
+              <div className="tes_box2">
+                <h2>“Best out of the best in the online learning field...”</h2>
+              </div>
+                </div>
+
+
+
+                <div className="col-md-6">
+                <div className="tes_box3">
+                <h2>4.9/5</h2>
+                <ul className="star">
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                </ul>
+                <h6>by 1000+ Students for 2500+ Sales</h6>
+                </div>
+
+
+                <div className="tes_box heg_cha">
+                <img src={Nikita} alt="" srcset="" />
+                <p>“Excellent guiding instructions. They are all great mentors at life & career</p>
+                <ul className="star">
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                </ul>
+                <h2>Nikita Sharma</h2>
+                <h6>Content Writer</h6>
+              </div>
+                </div>
+              </div>
+
+              
+
+              {/* <p class='para-set'>
                 “Best out of the best in the online learning field...”
-              </p>
+              </p> */}
             </div>
 
             <div class='col-md-5 offset-md-1'>
