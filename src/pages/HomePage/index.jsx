@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Slider from "react-slick";
+import Aos from 'aos';
+
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import Carousel from "../../components/Carousel";
 
 
 import Resume from "../../assets/images/resume.png";
@@ -10,7 +14,6 @@ import SemiCircle1 from "../../assets/images/testimonial/orangesemi.png";
 import SemiCircle2 from "../../assets/images/testimonial/greensemi.png";
 import SemiCircle3 from "../../assets/images/testimonial/circle.png";
 
-import Slider from "react-slick";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./index.scss";
@@ -18,6 +21,7 @@ import 'animate.css';
 import Carousel from "../../components/Carousel";
 import star from '../../assets/images/Star 2.png';
 import Nikita from '../../assets/images/Nikita-Sharma.png';
+import 'aos/dist/aos.css'
 
 function HomePage() {
   const settings = {
@@ -53,6 +57,10 @@ function HomePage() {
     ],
   };
 
+  useEffect(() => {
+    Aos.init({ duration : 2000 });
+  }, []);
+
   return (
     <div>
       <Header loginPage={false} />
@@ -69,13 +77,13 @@ function HomePage() {
                     <h4 className='mt-5 pt-md-5 mb-3'>
                       Anytime, anywhere, Learn on your schedule from any device
                     </h4>
-                    <p className='mb-4 animate__animated animate__zoomInDown'>
+                    <p className='mb-4' data-aos='fade-left'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#' className='banner_btn'>
+                    <a href='#!' className='banner_btn'>
                       Start Course
                     </a>
                   </div>
@@ -90,13 +98,13 @@ function HomePage() {
                     <h4 className='mt-5 pt-md-5 mb-3'>
                       Anytime, anywhere, Learn on your schedule from any device
                     </h4>
-                    <p className='mb-4 animate__animated animate__zoomInDown'>
+                    <p className='mb-4' data-aos='fade-left'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#' className='banner_btn'>
+                    <a href='#!' className='banner_btn'>
                       Start Course
                     </a>
                   </div>
@@ -121,8 +129,8 @@ function HomePage() {
               <button class='btn btn-resume'>DESIGN MY RESUME</button>
             </div>
 
-            <div class='resumeimg animate__animated animate__backInUp'>
-              <img src={Resume} alt='Image' />
+            <div class='resumeimg' data-aos='slide-up'>
+              <img src={Resume} alt='...' />
             </div>
           </div>
         </div>
@@ -149,7 +157,7 @@ function HomePage() {
                   </div>
 
                   <div class='jobimg'>
-                    <img src={Girl} alt='Image' />
+                    <img src={Girl} alt='...' />
                   </div>
                 </div>
               </div>
@@ -171,7 +179,7 @@ function HomePage() {
               </p>
 
               <div class='community-img mt-5'>
-                <img src={Community} alt='Image' />
+                <img src={Community} alt='...' />
               </div>
             </div>
           </div>

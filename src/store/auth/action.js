@@ -9,7 +9,6 @@ export const onLogin = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.LOGIN_REQUEST });
     const res = await httpServices.post('authentication/login/', values);
-    debugger
     dispatch({type : authTypes.LOGIN_FINISH, payload : {name: res.data.name, email : res.data.email} })
     Cookies.set('sheToken', res.data.tokens);
     history.push("/")

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from "js-cookie";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true;
@@ -6,7 +7,7 @@ axios.defaults.withCredentials = true;
 const responseBody = (response) => response.data;
 
 axios.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  const token = Cookies.get('sheToken');
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });

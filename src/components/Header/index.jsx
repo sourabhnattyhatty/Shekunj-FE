@@ -20,8 +20,8 @@ const Header = ({ loginPage }) => {
           <div className='topbar'>
             <div className='row'>
               <div className='col-md-3'>
-                <a className='navbar-brand' href='#'>
-                  <img src={Logo} alt='Image' />
+                <a className='navbar-brand' href='#!'>
+                  <img src={Logo} alt='...' />
                 </a>
               </div>
 
@@ -40,16 +40,16 @@ const Header = ({ loginPage }) => {
                     />
                     <span className='input-group-btn'>
                       <button type='button' disabled>
-                        <img src={Search} alt='Image' />
+                        <img src={Search} alt='...' />
                       </button>
                     </span>
                   </div>
                 </div>
 
                 <div className='top_bar_btn d-inline-block'>
-                  <button className='btn btn-bg-pink ml-xl-3 ml-md-2'>
+                  <Link className='btn btn-bg-pink ml-xl-3 ml-md-2' to="/login">
                     Login/Register
-                  </button>
+                  </Link>
 
                   <div className='set_language d-inline-block ml-xl-3 ml-md-2'>
                     <ChangeLanguageButton />
