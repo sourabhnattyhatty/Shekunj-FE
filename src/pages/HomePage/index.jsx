@@ -116,13 +116,14 @@ function HomePage() {
 
       {/* Slider */}
       <Carousel/>
+      
 
       {/* resume */}
       <section class='resume same_padding mt-5'>
         <div class='container'>
           <div class='row'>
-            <div class='col-md-7'>
-              <h4  data-aos='slide-right'>
+            <div class='col-md-7' data-aos='slide-right'>
+              <h4>
                 Design your resume in real time and download a print-reday PDF.
               </h4>
               <button class='btn btn-resume' data-aos="zoom-in">DESIGN MY RESUME</button>
@@ -136,8 +137,11 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Slider 2 */}
+      <Carousel/>
+
       {/* Job opportunity */}
-      <section class='job-opprtunity same_padding mt-5'>
+      <section class='job-opprtunity same_padding mt-5' data-aos='slide-right'>
         <div class='container'>
           <div class='row justify-content-center'>
             <div class='col-lg-10 col-md-11'>
