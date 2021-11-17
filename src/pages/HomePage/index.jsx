@@ -114,8 +114,9 @@ function HomePage() {
         </div>
       </div>
 
-      {/* Slider */}
-      <Carousel/>
+      {/* Slider 1 */}
+      <Carousel items={5} details="yes"/>
+      
 
       {/* resume */}
       <section class='resume same_padding mt-5'>
@@ -136,6 +137,9 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Slider 2 */}
+      <Carousel items={5} details="no"/>
+
       {/* Job opportunity */}
       <section class='job-opprtunity same_padding mt-5'>
         <div class='container'>
@@ -144,7 +148,7 @@ function HomePage() {
               <div class='job-opprtunity-bg'>
                 <div class='row'>
                   <div class='col-md-8'>
-                    <h3>Grab job oppotunities...</h3>
+                    <h3 data-aos='slide-right'>Grab job oppotunities...</h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Rutrum sapien nunc sit egestas amet magnis enim.
@@ -157,7 +161,7 @@ function HomePage() {
                   </div>
 
                   <div class='jobimg'>
-                    <img data-aos='slide-left' src={Girl} alt='...' />
+                    <img src={Girl} alt='...' />
                   </div>
                 </div>
               </div>
@@ -165,6 +169,9 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <Carousel items={5} details="no"/>
+
 
       {/* career development */}
       <section class='career_community same_padding mt-5'>

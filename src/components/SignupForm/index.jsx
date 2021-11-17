@@ -119,12 +119,12 @@ const LoginForm = () => {
             <Error error={errors.contact} touched={touched.contact} />
           </div>
 
-          <div className='form-group'>
+          {/* <div className='form-group'>
             <label>
               Date of Birth <span className='asterik'> * </span>
             </label>
             <input type='text' className='form-control' />
-          </div>
+          </div> */}
 
           <div className='form-group'>
             <label>
