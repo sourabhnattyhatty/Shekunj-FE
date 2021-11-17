@@ -1,29 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import OwlCarousel from "react-owl-carousel";
+import LinearProgress from "@mui/material/LinearProgress";
+
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "./index.scss";
 
 function Carousel() {
   const divRef = React.useRef();
+  let progress = 0
 
   const handleChange = (e) => {
+    const carousel = e?.relatedTarget;
     divRef.current.innerHTML = `${
-      e?.relatedTarget.relative(e.relatedTarget.current()) + 1
+      carousel.relative(carousel.current()) + 1
     }/12`;
+    setProgress((carousel.relative(carousel.current()) + 1) * 10);
   };
+
+  const setProgress = (step) => {
+    progress = step;
+  }
+  
+  console.log("progress" + progress);
 
   return (
     <>
       <div className='abc' ref={divRef}></div>
+      <div>
+        <LinearProgress variant='determinate' value={progress} />
+      </div>
       <OwlCarousel
         className='owl-theme'
         loop
         margin={10}
         nav
+        items={4}
         dots={false}
         smartSpeed='800'
-        onChanged={(e) => handleChange(e)}
+        onChanged={handleChange}
+        animateOut= 'fadeOut'
       >
         <div className='item'>
           <h4>1</h4>
@@ -54,12 +70,6 @@ function Carousel() {
         </div>
         <div className='item'>
           <h4>10</h4>
-        </div>
-        <div className='item'>
-          <h4>11</h4>
-        </div>
-        <div className='item'>
-          <h4>12</h4>
         </div>
       </OwlCarousel>
     </>
