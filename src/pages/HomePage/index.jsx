@@ -15,6 +15,7 @@ import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./index.scss";
 import 'animate.css';
+import Carousel from "../../components/Carousel";
 
 function HomePage() {
   const settings = {
@@ -105,7 +106,7 @@ function HomePage() {
       </div>
 
       {/* Slider */}
-      
+      <Carousel/>
 
       {/* resume */}
       <section class='resume same_padding mt-5'>
@@ -118,7 +119,7 @@ function HomePage() {
               <button class='btn btn-resume'>DESIGN MY RESUME</button>
             </div>
 
-            <div class='resumeimg'>
+            <div class='resumeimg animate__animated animate__backInUp'>
               <img src={Resume} alt='Image' />
             </div>
           </div>

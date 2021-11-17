@@ -1,0 +1,30 @@
+.owl-theme {
+  max-width: 1150px;
+  margin: 4px auto;
+}
+
+.item {
+  color: #ffffff;
+  background-color: #282c34;
+  height: 15rem;
+  width: 18.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.owl-nav {
+  position: absolute;
+  top: -4rem;
+  left: -11rem;
+}
+
+.owl-carousel .owl-nav button.owl-prev:hover {
+  color: black;
+  background-color: #FFFFFF !important;
+}
+
+.owl-carousel .owl-nav button.owl-next:hover {
+  color: black;
+  background-color: #FFFFFF !important;
+}
