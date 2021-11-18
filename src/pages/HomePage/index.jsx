@@ -127,7 +127,7 @@ function HomePage() {
             </div>
 
 
-            <div className='resumeimg' data-aos='slide-left'>
+            <div class='resumeimg'>
               <img src={Resume} alt='...' />
             </div>
           </div>

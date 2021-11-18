@@ -115,7 +115,7 @@ const LoginForm = () => {
               type='number'
               className='form-control'
               onChange={handleChange}
-              value={values.contact}
+              
               onBlur={handleBlur}
               autoComplete='off'
               placeholder="Mobile Number *"
@@ -132,19 +132,20 @@ const LoginForm = () => {
 
           <div className='form-group'>
             {/* <label>
-              Password <span className='asterik'> * </span>
+              Confirm Password <span className='asterik'> * </span>
             </label> */}
             <input
-              name='password'
-              type='password'
+              name='confirmPassword'
+              type=''
               className='form-control'
               onChange={handleChange}
-              value={values.password}
+             
               onBlur={handleBlur}
-              placeholder="Date of Birth *"
+              placeholder="OTP *"
             />
-            <Error error={errors.password} touched={touched.password} />
+            <Error error={errors.confirmPassword} touched={touched.confirmPassword} />
           </div>
+
 
           <div className='form-group'>
             {/* <label>
@@ -155,11 +156,14 @@ const LoginForm = () => {
               type='password'
               className='form-control'
               onChange={handleChange}
-              value={values.confirmPassword}
+              
               onBlur={handleBlur}
+              placeholder="Password *"
             />
             <Error error={errors.confirmPassword} touched={touched.confirmPassword} />
           </div>
+
+          
 
 
           <div className="rad_set">
@@ -180,16 +184,21 @@ const LoginForm = () => {
                     <p className="male">Male</p>
                     </div></div>
 
+                    
+
+
+                    
 
 
 
-              <button type='submit' className='btn btn_login w-100 mt-3'>
+
+              <button type='submit' className='btn btn_login w-100'>
                 Signup
               </button>
         </form>
 
             <div className='text-center'>
-              <p className='policy_para mt-4'>
+              <p className='policy_para'>
                 Please read our <a href='#!'> Privacy Notice </a> ,{" "}
                 <a href='#!'> Cookie Notice </a> and <a href='#!'> Legal terms </a>
                 to understand how we use your personal data.

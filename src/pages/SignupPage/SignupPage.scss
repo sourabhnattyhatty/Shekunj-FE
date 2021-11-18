@@ -31,8 +31,7 @@
     color: #425466;
     font-family: Poppins;
     font-style: normal;
-    margin-top: 5px;
-    margin-bottom: 25px;
+    margin: 0;
 }
 .or {
   margin: 20px auto;
@@ -52,6 +51,7 @@
 
 div.radio-with-Icon {
   display: flex;
+  height: 50px;
 }
 div.radio-with-Icon p.radioOption-Item {
   display: inline-block;
@@ -136,7 +136,7 @@ p.fel , p.male {
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
-  line-height: 21px;
+  line-height: 2.5;
   padding: 0 10px 26px 0;
   color: #000000;
 }
