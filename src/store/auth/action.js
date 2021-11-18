@@ -18,7 +18,7 @@ export const onLogin = (values, history) => async (dispatch) => {
     if(error && error.status === 500){
       toast.error(error.data.errors.non_field_errors, toasterConfig);
     }else if(error && error.status === 400){
-      toast.error(error.data.errors.error, toasterConfig);
+      toast.error(error.data.errors.error[0], toasterConfig);
     }
   }
 };

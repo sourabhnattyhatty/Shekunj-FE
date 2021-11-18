@@ -95,7 +95,7 @@ const LoginForm = () => {
           </div>
 
           <button type='submit' className='btn btn_login w-100 mt-3'>
-            {isLoading ? <CircularProgress color="secondary" /> : 'Login'}
+            {isLoading ? <CircularProgress color="secondary" size={20}/> : 'Login'}
           </button>
         </form> */}
 
