@@ -155,6 +155,7 @@ body{
     background-size: 100% 100%;
     height: 500px;
     padding: 48px 58px;
+    margin-bottom: 50px;
   }
   .resume .btn.btn-resume {
     font-size: 14px;
@@ -277,7 +278,7 @@ body{
   
   /*certificate*/
   .certificate {
-    /* background: #bababa; */
+    background: #f8f8f8;
     position: relative;
     background-image: url("../../assets/images/bgcertificate.png");
     background-repeat: no-repeat;
@@ -503,8 +504,51 @@ ul.star{
   margin-top: 22px;
   height: 253px;
 }
+.set {
+  display: flex;
+}
+.abc_box {
+  width: 585px;
+  height: 432px;
+  background: #EC498A;
+  position: relative;
+  font-family: Sora;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 52px;
+  text-transform: capitalize;
+  color: #FFFFFF;
+}
+.abc_box .abc {
+  color: #fff;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container.Our_text p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FBADA2;
+  margin: 0;
+}
 
-
+.container.Our_text h2{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 52px;
+  text-transform: capitalize;
+  color: #323232;
+  margin-bottom: 30px;
+}
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) { 
   #custom-search-input{
     width: 100%;

@@ -1,15 +1,11 @@
 .owl-theme {
   max-width: 1150px;
-  margin-left: auto;
+  margin-left: -50px;
+  margin-top: 105px;
 }
-
 .item {
   color: #ffffff;
-  background-color: #282c34;
-  height: 450px;
-  width: 100%;
-  // height: 15rem;
-  width: 17.7rem;
+  width: 310px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,28 +13,29 @@
 
 .owl-nav {
   position: absolute;
-  top: -4rem;
-  left: -11rem;
+  top: 20%;
+  left: -18%;
+  color: #fff;
+}
+.owl-nav button span {
+  font-size: 35px;
+  padding: 0;
+  margin: 0;
+}
+.owl-carousel .owl-item img{
+  max-width: 100%;
+  width: auto;
+}
+.owl-carousel .owl-item img{
+  display: inline-block;
 }
 
-.owl-carousel .owl-nav button.owl-prev:hover {
-  color: black;
-  background-color: #FFFFFF !important;
-}
-
-.owl-carousel .owl-nav button.owl-next:hover {
-  color: black;
-  background-color: #FFFFFF !important;
-}
 .box {
-  width: 325px;
-  /* height: 460px; */
+  width: 370px;
+  // height: 447px;
   padding: 10px;
-  /* box-shadow: 2px 2px 30px rgb(0 0 0 / 20%); */
   overflow: hidden;
-  /* margin: 9px; */
   background-color: #f5f5f5;
-  /* box-shadow: 0px 0px 50px rgb(0 0 0 / 10%); */
   border-radius: 10px;
 }
 hr.line {
@@ -58,13 +55,19 @@ hr.line {
   line-height: 20px;
   color: #000000;
   margin: 0;
+
+  img{
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
 }
 .names span {
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
-  line-height: 18px;
+  line-height: 36px;
   color: #EC498A;
 }
 .lSSlideOuter .lightSlider, .lSSlideOuter .lSPager{
@@ -82,10 +85,6 @@ box-sizing: border-box;
 }
 .detail-box{
 width: 100%;
-  /* display: flex;
-justify-content: space-between;
-align-items: center; */
-/* padding: 10px 20px; */
 box-sizing: border-box;
 font-family: calibri;
 }
@@ -111,7 +110,6 @@ font-style: normal;
 font-weight: normal;
 font-size: 14px;
 line-height: 18px;
-/* identical to box height, or 129% */
 
 
 /* Gray 3 */
@@ -196,10 +194,7 @@ animation:fade 0.5s;
 }
 }
 
-/* .slider{
-position: relative;
-display: flex;
-} */
+
 
 .lSSlideWrapper {
   position: static !important;
@@ -260,4 +255,8 @@ height: 56px;
   margin: 0px auto;
 margin-bottom: 50px;
   display: block;
+}
+
+.owl-carousel .owl-nav.disabled, .owl-carousel .owl-dots.disabled {
+  display: block !important;
 }
