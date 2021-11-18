@@ -73,6 +73,7 @@ function Carousel(props) {
           nav={true}
           items={4}
           dots={false}
+          autoPlay={true}
           smartSpeed='800'
           onChanged={(e) => handleChange(e)}
         >

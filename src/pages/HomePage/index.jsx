@@ -54,7 +54,7 @@ function HomePage() {
   };
 
   useEffect(() => {
-    Aos.init({ duration : 2000 });
+    Aos.init({ duration: 2000 });
   }, []);
 
   return (
@@ -70,7 +70,7 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3'>
+                    <h4 className='mt-5 pt-md-5 mb-3'  data-aos='fade-right'>
                       Anytime, anywhere, Learn on your schedule from any device
                     </h4>
                     <p className='mb-4' data-aos='fade-left'>
@@ -79,7 +79,7 @@ function HomePage() {
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn'>
+                    <a href='#!' className='banner_btn' data-aos="zoom-in">
                       Start Course
                     </a>
                   </div>
@@ -91,16 +91,16 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3'>
+                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='fade-left'>
                       Anytime, anywhere, Learn on your schedule from any device
                     </h4>
-                    <p className='mb-4' data-aos='fade-left'>
+                    <p className='mb-4' data-aos='fade-right'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn'>
+                    <a href='#!' className='banner_btn' data-aos="zoom-in">
                       Start Course
                     </a>
                   </div>
@@ -125,7 +125,7 @@ function HomePage() {
               </h4>
               <button className='btn btn-resume' data-aos="zoom-in">DESIGN MY RESUME</button>
             </div>
-            
+
 
             <div className='resumeimg' data-aos='slide-left'>
               <img src={Resume} alt='...' />
@@ -238,25 +238,27 @@ function HomePage() {
                 <h6>Content Writer</h6>
               </div>
 
-              <div className="tes_box2">
-                <h2>“Best out of the best in the online learning field...”</h2>
-              </div>
+                    <div className="tes_box2"  data-aos="slide-up">
+                      <h2>“Best out of the best in the online learning field...”</h2>
+                    </div>
                 </div>
 
 
 
                 <div className="col-md-6">
-                <div className="tes_box3">
-                <h2>4.9/5</h2>
-                <ul className="star">
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                </ul>
-                <h6>by 1000+ Students for 2500+ Sales</h6>
-                </div>
+                  <div data-aos="slide-down">
+                    <div className="tes_box3">
+                      <h2>4.9/5</h2>
+                      <ul className="star">
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                      </ul>
+                      <h6>by 1000+ Students for 2500+ Sales</h6>
+                    </div>
+                  </div>
 
 
                 <div className="tes_box heg_cha">
@@ -275,7 +277,7 @@ function HomePage() {
                 </div>
               </div>
 
-              
+
 
               
             </div>
