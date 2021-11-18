@@ -9,6 +9,8 @@ import Or from "../../assets/images/login/or.png";
 import { onLogin } from "../../store/auth/action";
 import Error from "../Error";
 import { CircularProgress } from "@mui/material";
+import LoginTabs from "../LoginTabs";
+
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -21,6 +23,12 @@ const LoginForm = () => {
   const { isLoading } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const [value, setValue] = React.useState('1');
+
+  const handleChanged = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -46,17 +54,14 @@ const LoginForm = () => {
           </Link>
         </p>
 
-        <div className='text-center'>
-          <button className='btn btn-google'>
-            <img src={Google} alt='...' className='mr-2' /> Register with Google
-          </button>
+        
 
-          <div className='mt-3 mb-3'>
-            <img src={Or} className='orimg' alt='...' />
-          </div>
-        </div>
 
-        <form onSubmit={handleSubmit}>
+        <LoginTabs/>
+
+       
+
+        {/* <form onSubmit={handleSubmit}>
           <div className='form-group'>
             <label>
               E-mail address <span className='asterik'> * </span>
@@ -92,15 +97,31 @@ const LoginForm = () => {
           <button type='submit' className='btn btn_login w-100 mt-3'>
             {isLoading ? <CircularProgress color="secondary" /> : 'Login'}
           </button>
-        </form>
+        </form> */}
 
         <div className='text-center'>
-          <p className='policy_para mt-4'>
+          <p className='policy_para'>
             Please read our <a href='#!'> Privacy Notice </a> ,{" "}
             <a href='#!'> Cookie Notice </a> and <a href='#!'> Legal terms </a>
             to understand how we use your personal data.
           </p>
         </div>
+
+
+        <div className='text-center'>
+        <div className='mt-3 mb-3'>
+            <img src={Or} className='orimg' alt='...' />
+          </div>
+        </div>
+
+          <button className='btn btn-google'>
+            <img src={Google} alt='...' className='mr-2' /> Register with Google
+          </button>
+
+          
+
+
+
       </div>
     </>
   );

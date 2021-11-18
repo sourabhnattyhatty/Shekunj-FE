@@ -130,7 +130,7 @@ function HomePage() {
             </div>
 
 
-            <div class='resumeimg' data-aos='slide-left'>
+            <div class='resumeimg'>
               <img src={Resume} alt='...' />
             </div>
           </div>
