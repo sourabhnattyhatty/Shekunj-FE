@@ -1,24 +1,42 @@
-.login_form{
+  .login_form {
     background: rgba(237, 248, 248, 0.4);
     border-radius: 20px 20px 0px 0px;
     display: block;
     height: 100%;
-    padding: 15px 22px;
+    padding: 30px 25px;
   }
-  
-  .login_form h2{
+  .login_form input::placeholder {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 30px;
+    color: #425466;
+}
+  .login_form h2 {
     font-weight: 600;
     font-size: 24px;
     line-height: 35px;
     text-transform: capitalize;
     color: #152523;
-  }
-  .login_form p{
+    font-family: Poppins;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+}
+.login_form p {
     font-weight: normal;
     font-size: 14px;
     line-height: 30px;
     color: #425466;
-  }
+    font-family: Poppins;
+    font-style: normal;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+.or {
+  margin: 20px auto;
+}
   .login_form p .register, .login_form p .register:hover{
       color:#D62C79;
       text-decoration: none;
@@ -26,4 +44,99 @@
   }
   .login_form .form-group{
     margin-bottom: 5px;
+}
+
+
+// Radio BUtton
+
+
+div.radio-with-Icon {
+  display: flex;
+}
+div.radio-with-Icon p.radioOption-Item {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  margin: 0 7px;
+  border: none;
+}
+div.radio-with-Icon p.radioOption-Item label {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  border-radius: 10px;
+  // border: 1px solid #C4C4C4;
+  border-radius: 50%;
+  color: #de1831;
+  cursor: pointer;
+  /* opacity: 0.8; */
+  transition: none;
+  /* padding-top: 25px; */
+  text-align: center;
+  margin: 0 !important;
+}
+div.radio-with-Icon p.radioOption-Item label:hover, div.radio-with-Icon p.radioOption-Item label:focus, div.radio-with-Icon p.radioOption-Item label:active {
+  opacity: .5;
+  background-color: #de1831;
+  color: #fff;
+  margin: 0 !important;
+}
+div.radio-with-Icon p.radioOption-Item label::after, div.radio-with-Icon p.radioOption-Item label:after, div.radio-with-Icon p.radioOption-Item label::before, div.radio-with-Icon p.radioOption-Item label:before {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+}
+div.radio-with-Icon p.radioOption-Item label i.fa {
+  display: block;
+  font-size: 50px;
+}
+div.radio-with-Icon p.radioOption-Item input[type="radio"] {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+div.radio-with-Icon p.radioOption-Item input[type="radio"]:active ~ label {
+  opacity: 1;
+}
+div.radio-with-Icon p.radioOption-Item input[type="radio"]:checked ~ label img{
+  display: none;
+}
+div.radio-with-Icon p.radioOption-Item input[type="radio"]:checked ~ label {
+  opacity: 1;
+  border: 2px solid #de1831;
+  /* background-color: #de1831; */
+  background-image: url("../../assets/images/login/active.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+div.radio-with-Icon p.radioOption-Item input[type="radio"]:hover, div.radio-with-Icon p.radioOption-Item input[type="radio"]:focus, div.radio-with-Icon p.radioOption-Item input[type="radio"]:active {
+  margin: 0 !important;
+}
+div.radio-with-Icon p.radioOption-Item input[type="radio"] + label:before, div.radio-with-Icon p.radioOption-Item input[type="radio"] + label:after {
+  margin: 0 !important;
+}
+p.gender {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 30px;
+  color: #425466;
+}
+p.gender span {
+  color: #ec498a;
+  margin-right: 13px;
+}
+p.fel , p.male {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  padding: 0 10px 26px 0;
+  color: #000000;
 }

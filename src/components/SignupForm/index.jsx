@@ -8,6 +8,7 @@ import Google from "../../assets/images/login/google.png";
 import Or from "../../assets/images/login/or.png";
 import { onSignup } from "../../store/auth/action";
 import Error from "../Error";
+import inactive from "../../assets/images/login/inactive.png";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -38,11 +39,11 @@ const LoginForm = () => {
       },
       validationSchema,
       onSubmit(values) {
-        const data ={
-          email : values.email,
-          name : values.name,
-          password : values.password,
-          contact : values.contact
+        const data = {
+          email: values.email,
+          name: values.name,
+          password: values.password,
+          contact: values.contact
         }
         dispatch(onSignup(data, history));
       },
@@ -53,10 +54,10 @@ const LoginForm = () => {
       <div className='login_form'>
         <h2>Signup on Shekunj </h2>
         <p>
-          Already have an account?{" "}
+          Already have an account? {" "}
           <Link to='/login' className='register'>
             {" "}
-            LOGIN NOW{" "}
+            &nbsp; LOGIN NOW{" "}
           </Link>
         </p>
 
@@ -65,16 +66,16 @@ const LoginForm = () => {
             <img src={Google} alt='...' className='mr-2' /> Register with Google
           </button>
 
-          <div className='mt-3 mb-3'>
+          <div className='or'>
             <img src={Or} className='orimg' alt='...' />
           </div>
         </div>
 
         <form onSubmit={handleSubmit}>
           <div className='form-group'>
-            <label>
+            {/* <label>
               Full Name <span className='asterik'> * </span>
-            </label>
+            </label> */}
             <input
               name='name'
               type='text'
@@ -83,14 +84,15 @@ const LoginForm = () => {
               value={values.name}
               onBlur={handleBlur}
               autoComplete='off'
+              placeholder="Name"
             />
             <Error error={errors.name} touched={touched.name} />
           </div>
 
           <div className='form-group'>
-            <label>
+            {/* <label>
               E-mail <span className='asterik'> * </span>
-            </label>
+            </label> */}
             <input
               name='email'
               type='email'
@@ -99,14 +101,15 @@ const LoginForm = () => {
               value={values.email}
               onBlur={handleBlur}
               autoComplete='off'
+              placeholder="Email *"
             />
             <Error error={errors.email} touched={touched.email} />
           </div>
 
           <div className='form-group'>
-            <label>
+            {/* <label>
               Mobile Number <span className='asterik'> * </span>
-            </label>
+            </label> */}
             <input
               name='contact'
               type='number'
@@ -115,6 +118,7 @@ const LoginForm = () => {
               value={values.contact}
               onBlur={handleBlur}
               autoComplete='off'
+              placeholder="Mobile Number *"
             />
             <Error error={errors.contact} touched={touched.contact} />
           </div>
@@ -127,9 +131,9 @@ const LoginForm = () => {
           </div> */}
 
           <div className='form-group'>
-            <label>
+            {/* <label>
               Password <span className='asterik'> * </span>
-            </label>
+            </label> */}
             <input
               name='password'
               type='password'
@@ -137,14 +141,15 @@ const LoginForm = () => {
               onChange={handleChange}
               value={values.password}
               onBlur={handleBlur}
+              placeholder="Date of Birth *"
             />
             <Error error={errors.password} touched={touched.password} />
           </div>
 
           <div className='form-group'>
-            <label>
+            {/* <label>
               Confirm Password <span className='asterik'> * </span>
-            </label>
+            </label> */}
             <input
               name='confirmPassword'
               type='password'
@@ -156,21 +161,43 @@ const LoginForm = () => {
             <Error error={errors.confirmPassword} touched={touched.confirmPassword} />
           </div>
 
-          <button type='submit' className='btn btn_login w-100 mt-3'>
-            Signup
-          </button>
+
+          <div className="rad_set">
+            <div className="radio-with-Icon">
+            <p className="gender">Gender <span>*</span></p>
+              <p className="radioOption-Item">
+                <input type="radio" name="BannerTypes" id="BannerType1" value="true" className="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" />
+                  <label for="BannerType1">
+                    <img src={inactive} alt="" srcset="" /> 
+                  </label></p>
+                    <p className="fel">Female</p>
+
+                <p className="radioOption-Item">
+                  <input type="radio" name="BannerTypes" id="BannerType2" value="false" className="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" />
+                    <label for="BannerType2">
+                    <img src={inactive} alt="" srcset="" />
+                    </label></p>
+                    <p className="male">Male</p>
+                    </div></div>
+
+
+
+
+              <button type='submit' className='btn btn_login w-100 mt-3'>
+                Signup
+              </button>
         </form>
 
-        <div className='text-center'>
-          <p className='policy_para mt-4'>
-            Please read our <a href='#!'> Privacy Notice </a> ,{" "}
-            <a href='#!'> Cookie Notice </a> and <a href='#!'> Legal terms </a>
-            to understand how we use your personal data.
-          </p>
-        </div>
-      </div>
+            <div className='text-center'>
+              <p className='policy_para mt-4'>
+                Please read our <a href='#!'> Privacy Notice </a> ,{" "}
+                <a href='#!'> Cookie Notice </a> and <a href='#!'> Legal terms </a>
+                to understand how we use your personal data.
+              </p>
+            </div>
+          </div>
     </>
-  );
+        );
 };
 
-export default LoginForm;
+        export default LoginForm;

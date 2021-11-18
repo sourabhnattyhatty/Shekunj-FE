@@ -57,7 +57,7 @@ function HomePage() {
   };
 
   useEffect(() => {
-    Aos.init({ duration : 2000 });
+    Aos.init({ duration: 2000 });
   }, []);
 
   return (
@@ -73,7 +73,7 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3'>
+                    <h4 className='mt-5 pt-md-5 mb-3'  data-aos='fade-right'>
                       Anytime, anywhere, Learn on your schedule from any device
                     </h4>
                     <p className='mb-4' data-aos='fade-left'>
@@ -82,7 +82,7 @@ function HomePage() {
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn'>
+                    <a href='#!' className='banner_btn' data-aos="zoom-in">
                       Start Course
                     </a>
                   </div>
@@ -94,16 +94,16 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3'>
+                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='fade-left'>
                       Anytime, anywhere, Learn on your schedule from any device
                     </h4>
-                    <p className='mb-4' data-aos='fade-left'>
+                    <p className='mb-4' data-aos='fade-right'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn'>
+                    <a href='#!' className='banner_btn' data-aos="zoom-in">
                       Start Course
                     </a>
                   </div>
@@ -115,20 +115,20 @@ function HomePage() {
       </div>
 
       {/* Slider 1 */}
-      <Carousel items={5} details="yes"/>
-      
+      <Carousel items={5} details="yes" />
+
 
       {/* resume */}
       <section class='resume same_padding mt-5'>
         <div class='container'>
           <div class='row'>
             <div class='col-md-7'>
-              <h4  data-aos='slide-right'>
+              <h4 data-aos='slide-right'>
                 Design your resume in real time and download a print-reday PDF.
               </h4>
               <button class='btn btn-resume' data-aos="zoom-in">DESIGN MY RESUME</button>
             </div>
-            
+
 
             <div class='resumeimg' data-aos='slide-left'>
               <img src={Resume} alt='...' />
@@ -138,7 +138,7 @@ function HomePage() {
       </section>
 
       {/* Slider 2 */}
-      <Carousel items={5} details="no"/>
+      <Carousel items={5} details="no" />
 
       {/* Job opportunity */}
       <section class='job-opprtunity same_padding mt-5'>
@@ -170,7 +170,7 @@ function HomePage() {
         </div>
       </section>
 
-      <Carousel items={5} details="no"/>
+      <Carousel items={5} details="no" />
 
 
       {/* career development */}
@@ -230,58 +230,64 @@ function HomePage() {
 
               <div className="row">
                 <div className="col-md-6">
-                <div className="tes_box tes-before">
-                <img src={Nikita} alt="" srcset="" />
-                <p>“I love their flexibility, Even when my request is too complicated to handle, the could still suggest something useful for me.”</p>
-                <ul className="star">
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                </ul>
-                <h2>Nikita Sharma</h2>
-                <h6>Content Writer</h6>
-              </div>
+                  <div data-aos="slide-right">
+                    <div className="tes_box tes-before" >
+                      <img src={Nikita} alt="" srcset="" />
+                      <p>“I love their flexibility, Even when my request is too complicated to handle, the could still suggest something useful for me.”</p>
+                      <ul className="star">
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                      </ul>
+                      <h2>Nikita Sharma</h2>
+                      <h6>Content Writer</h6>
+                    </div>
+                  </div>
 
-              <div className="tes_box2">
-                <h2>“Best out of the best in the online learning field...”</h2>
-              </div>
+                    <div className="tes_box2"  data-aos="slide-up">
+                      <h2>“Best out of the best in the online learning field...”</h2>
+                    </div>
                 </div>
 
 
 
                 <div className="col-md-6">
-                <div className="tes_box3">
-                <h2>4.9/5</h2>
-                <ul className="star">
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                </ul>
-                <h6>by 1000+ Students for 2500+ Sales</h6>
+                  <div data-aos="slide-down">
+                    <div className="tes_box3">
+                      <h2>4.9/5</h2>
+                      <ul className="star">
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                      </ul>
+                      <h6>by 1000+ Students for 2500+ Sales</h6>
+                    </div>
+                  </div>
+
+
+                  <div data-aos="slide-left">
+                    <div className="tes_box heg_cha">
+                      <img src={Nikita} alt="" srcset="" />
+                      <p>“Excellent guiding instructions. They are all great mentors at life & career</p>
+                      <ul className="star">
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                        <li><img src={star} alt="" /></li>
+                      </ul>
+                      <h2>Nikita Sharma</h2>
+                      <h6>Content Writer</h6>
+                    </div>
+                  </div>
                 </div>
-
-
-                <div className="tes_box heg_cha">
-                <img src={Nikita} alt="" srcset="" />
-                <p>“Excellent guiding instructions. They are all great mentors at life & career</p>
-                <ul className="star">
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                  <li><img src={star} alt="" /></li>
-                </ul>
-                <h2>Nikita Sharma</h2>
-                <h6>Content Writer</h6>
-              </div>
-                </div>
               </div>
 
-              
+
 
               {/* <p class='para-set'>
                 “Best out of the best in the online learning field...”
@@ -289,7 +295,7 @@ function HomePage() {
             </div>
 
             <div class='col-md-5 offset-md-1'>
-              <h3 class='mb-3 mt-4' data-aos='slide-left'>Our highlighted students revealing</h3>
+              <h3 class='mb-3 mt-4'>Our highlighted students revealing</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
                 donec molestie sit diam aliquam egestas erat tincidunt magna.
