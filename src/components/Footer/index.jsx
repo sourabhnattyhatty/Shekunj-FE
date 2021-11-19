@@ -19,39 +19,19 @@ const Footer = ({ loginPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link>{t("footer.links.col1.1")}</Link>
+                  <Link to="/">{t("footer.links.col1.1")}</Link>
                 </li>
 
                 <li>
-                  <Link>{t("footer.links.col1.2")}</Link>
+                  <Link to="/">{t("footer.links.col1.2")}</Link>
                 </li>
 
                 <li>
-                  <Link>{t("footer.links.col1.3")}</Link>
+                  <Link to="/">{t("footer.links.col1.3")}</Link>
                 </li>
 
                 <li>
-                  <Link>{t("footer.links.col1.4")}</Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className='col-md-3 col-4'>
-              <ul className='p-0'>
-                <li>
-                  <Link>{t("footer.links.col2.1")}</Link>
-                </li>
-
-                <li>
-                  <Link>{t("footer.links.col2.2")}</Link>
-                </li>
-
-                <li>
-                  <Link>{t("footer.links.col2.3")}</Link>
-                </li>
-
-                <li>
-                  <Link>{t("footer.links.col2.4")}</Link>
+                  <Link to="/">{t("footer.links.col1.4")}</Link>
                 </li>
               </ul>
             </div>
@@ -59,15 +39,35 @@ const Footer = ({ loginPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link>{t("footer.links.col3.1")}</Link>
+                  <Link to="/">{t("footer.links.col2.1")}</Link>
                 </li>
 
                 <li>
-                  <Link>{t("footer.links.col3.2")}</Link>
+                  <Link to="/">{t("footer.links.col2.2")}</Link>
                 </li>
 
                 <li>
-                  <Link>{t("footer.links.col3.3")}</Link>
+                  <Link to="/">{t("footer.links.col2.3")}</Link>
+                </li>
+
+                <li>
+                  <Link to="/">{t("footer.links.col2.4")}</Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className='col-md-3 col-4'>
+              <ul className='p-0'>
+                <li>
+                  <Link to="/">{t("footer.links.col3.1")}</Link>
+                </li>
+
+                <li>
+                  <Link to="/">{t("footer.links.col3.2")}</Link>
+                </li>
+
+                <li>
+                  <Link to="/">{t("footer.links.col3.3")}</Link>
                 </li>
               </ul>
             </div>
@@ -82,7 +82,7 @@ const Footer = ({ loginPage }) => {
           <div className='bottom-footer mt-5'>
             <div className='row'>
               <div className='col-lg-9 col-md-8 col-5 text-left'>
-                <a className='' href='#'>
+                <a className='' href='#!'>
                   <img src={loginPage ? Logo : LogoBlack} alt='logo' /> 
 
                   
@@ -98,32 +98,6 @@ const Footer = ({ loginPage }) => {
       </footer>
     </div>
 
-    // <div className='footer'>
-    //     <div className='container'>
-    //         <div className='row'>
-    //             <div className='col-sm-2 col-md-2'>
-    //                 <Link><p>{t('footer.links.col1.1')}</p></Link>
-    //                 <Link><p>{t('footer.links.col1.2')}</p></Link>
-    //                 <Link><p>{t('footer.links.col1.3')}</p></Link>
-    //                 <Link><p>{t('footer.links.col1.4')}</p></Link>
-    //             </div>
-
-    //             <div className='col-sm-2 col-md-2'>
-    //                 <Link><p>{t('footer.links.col2.1')}</p></Link>
-    //                 <Link><p>{t('footer.links.col2.2')}</p></Link>
-    //                 <Link><p>{t('footer.links.col2.3')}</p></Link>
-    //                 <Link><p>{t('footer.links.col2.4')}</p></Link>
-    //             </div>
-
-    //             <div className='col-sm-2 col-md-2'>
-    //                 <Link><p>{t('footer.links.col3.1')}</p></Link>
-    //                 <Link><p>{t('footer.links.col3.2')}</p></Link>
-    //                 <Link><p>{t('footer.links.col3.3')}</p></Link>
-    //             </div>
-
-    //         </div>
-    //     </div>
-    // </div>
   );
 };
 

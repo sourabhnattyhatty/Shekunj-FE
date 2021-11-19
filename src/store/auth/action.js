@@ -15,11 +15,10 @@ export const onLogin = (values, history) => async (dispatch) => {
   } 
   catch (error) {
     dispatch({ type : authTypes.LOGIN_FAIL });
-    debugger
     if(error && error.status === 500){
       toast.error(error.data.errors.non_field_errors, toasterConfig);
     }else if(error && error.status === 400){
-      toast.error(error.data.errors.error, toasterConfig);
+      toast.error(error.data.errors.error[0], toasterConfig);
     }
   }
 };
@@ -28,7 +27,7 @@ export const onLogin = (values, history) => async (dispatch) => {
 export const onSignup = (values, history) => async(dispatch) => {
   try{
     dispatch({type : authTypes.SIGNUP_REQUEST});
-    await httpServices.post('authentication/register/', values);
+    const res = await httpServices.post('authentication/register/', values);
     dispatch({type : authTypes.SIGNUP_FINISH, payload : values});
     localStorage.setItem('email', values.email);
     history.push("/verify");

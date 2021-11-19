@@ -14,15 +14,13 @@ const Header = ({ loginPage }) => {
   return (
     <div>
       <header className='other_head'>
-        {/* <header className={loginPage ? "login_head" : "other_head"}> */}
         <div className='container'>
-          {/* Topbar */}
           <div className='topbar'>
             <div className='row'>
               <div className='col-md-3'>
-                <a className='navbar-brand' href='#!'>
+                <Link className='navbar-brand' to="/">
                   <img src={Logo} alt='...' />
-                </a>
+                </Link>
               </div>
 
               <div className='col-md-9 pl-md-0 pl-lg-2 text-right'>

@@ -9,6 +9,7 @@ import Or from "../../assets/images/login/or.png";
 import { onSignup } from "../../store/auth/action";
 import Error from "../Error";
 import inactive from "../../assets/images/login/inactive.png";
+import { CircularProgress } from "@mui/material";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -43,8 +44,8 @@ const LoginForm = () => {
           email: values.email,
           name: values.name,
           password: values.password,
-          contact: values.contact
-        }
+          contact: values.contact,
+        };
         dispatch(onSignup(data, history));
       },
     });
@@ -54,7 +55,7 @@ const LoginForm = () => {
       <div className='login_form'>
         <h2>Signup on Shekunj </h2>
         <p>
-          Already have an account? {" "}
+          Already have an account?{" "}
           <Link to='/login' className='register'>
             {" "}
             &nbsp; LOGIN NOW{" "}
@@ -84,7 +85,7 @@ const LoginForm = () => {
               value={values.name}
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder="Name"
+              placeholder='Name'
             />
             <Error error={errors.name} touched={touched.name} />
           </div>
@@ -101,7 +102,7 @@ const LoginForm = () => {
               value={values.email}
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder="Email *"
+              placeholder='Email *'
             />
             <Error error={errors.email} touched={touched.email} />
           </div>
@@ -115,10 +116,9 @@ const LoginForm = () => {
               type='number'
               className='form-control'
               onChange={handleChange}
-              
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder="Mobile Number *"
+              placeholder='Mobile Number *'
             />
             <Error error={errors.contact} touched={touched.contact} />
           </div>
@@ -139,13 +139,14 @@ const LoginForm = () => {
               type=''
               className='form-control'
               onChange={handleChange}
-             
               onBlur={handleBlur}
-              placeholder="OTP *"
+              placeholder='OTP *'
             />
-            <Error error={errors.confirmPassword} touched={touched.confirmPassword} />
+            <Error
+              error={errors.confirmPassword}
+              touched={touched.confirmPassword}
+            />
           </div>
-
 
           <div className='form-group'>
             {/* <label>
@@ -156,57 +157,70 @@ const LoginForm = () => {
               type='password'
               className='form-control'
               onChange={handleChange}
-              
               onBlur={handleBlur}
-              placeholder="Password *"
+              placeholder='Password *'
             />
-            <Error error={errors.confirmPassword} touched={touched.confirmPassword} />
+            <Error
+              error={errors.confirmPassword}
+              touched={touched.confirmPassword}
+            />
           </div>
 
-          
-
-
-          <div className="rad_set">
-            <div className="radio-with-Icon">
-            <p className="gender">Gender <span>*</span></p>
-              <p className="radioOption-Item">
-                <input type="radio" name="BannerTypes" id="BannerType1" value="true" className="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" />
-                  <label for="BannerType1">
-                    <img src={inactive} alt="" srcset="" /> 
-                  </label></p>
-                    <p className="fel">Female</p>
-
-                <p className="radioOption-Item">
-                  <input type="radio" name="BannerTypes" id="BannerType2" value="false" className="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" />
-                    <label for="BannerType2">
-                    <img src={inactive} alt="" srcset="" />
-                    </label></p>
-                    <p className="male">Male</p>
-                    </div></div>
-
-                    
-
-
-                    
-
-
-
-
-              <button type='submit' className='btn btn_login w-100'>
-                Signup
-              </button>
-        </form>
-
-            <div className='text-center'>
-              <p className='policy_para'>
-                Please read our <a href='#!'> Privacy Notice </a> ,{" "}
-                <a href='#!'> Cookie Notice </a> and <a href='#!'> Legal terms </a>
-                to understand how we use your personal data.
+          <div className='rad_set'>
+            <div className='radio-with-Icon'>
+              <p className='gender'>
+                Gender <span>*</span>
               </p>
+              <p className='radioOption-Item'>
+                <input
+                  type='radio'
+                  name='BannerTypes'
+                  id='BannerType1'
+                  value='true'
+                  className='ng-valid ng-dirty ng-touched ng-empty'
+                />
+                <label for='BannerType1'>
+                  <img src={inactive} alt='' srcset='' />
+                </label>
+              </p>
+              <p className='fel'>Female</p>
+
+              <p className='radioOption-Item'>
+                <input
+                  type='radio'
+                  name='BannerTypes'
+                  id='BannerType2'
+                  value='false'
+                  className='ng-valid ng-dirty ng-touched ng-empty'
+                />
+                <label for='BannerType2'>
+                  <img src={inactive} alt='' srcset='' />
+                </label>
+              </p>
+              <p className='male'>Male</p>
             </div>
           </div>
+
+          <button type='submit' className='btn btn_login w-100 mt-3'>
+            Signup
+            {isLoading ? (
+              <CircularProgress color='secondary' size={20} />
+            ) : (
+              "Signup"
+            )}
+          </button>
+        </form>
+
+        <div className='text-center'>
+          <p className='policy_para'>
+            Please read our <a href='#!'> Privacy Notice </a> ,{" "}
+            <a href='#!'> Cookie Notice </a> and <a href='#!'> Legal terms </a>
+            to understand how we use your personal data.
+          </p>
+        </div>
+      </div>
     </>
-        );
+  );
 };
 
-        export default LoginForm;
+export default LoginForm;
