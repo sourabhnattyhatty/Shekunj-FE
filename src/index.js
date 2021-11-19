@@ -8,29 +8,33 @@ import { Provider } from "react-redux";
 import store from "./store";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-import './assets/i18n/i18n'
-import Loader from './components/Loader'
+import "react-toastify/dist/ReactToastify.css";
+import "./assets/i18n/i18n";
+import Loader from "./components/Loader";
+import { ThemeProvider } from "@mui/styles";
+import theme from "./utils/Theme";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<Loader/>}>
-      <Provider store={store}>
-        <Router>
-          <App />
-          <ToastContainer
-            position='top-right'
-            autoClose={2000}
-            hideProgressBar
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable={false}
-            pauseOnHover
-          />
-        </Router>
-      </Provider>
+    <Suspense fallback={<Loader />}>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Router>
+            <App />
+            <ToastContainer
+              position='top-right'
+              autoClose={2000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable={false}
+              pauseOnHover
+            />
+          </Router>
+        </Provider>
+      </ThemeProvider>
     </Suspense>
   </React.StrictMode>,
   document.getElementById("root"),

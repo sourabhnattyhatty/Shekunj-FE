@@ -18,7 +18,7 @@ const Header = ({ loginPage }) => {
           <div className='topbar'>
             <div className='row'>
               <div className='col-md-3'>
-                <Link className='navbar-brand' to="/">
+                <Link className='navbar-brand' to='/'>
                   <img src={Logo} alt='...' />
                 </Link>
               </div>
@@ -45,30 +45,13 @@ const Header = ({ loginPage }) => {
                 </div>
 
                 <div className='top_bar_btn d-inline-block'>
-                  <Link className='btn btn-bg-pink ml-xl-3 ml-md-2' to="/login">
+                  <Link className='btn btn-bg-pink ml-xl-3 ml-md-2' to='/login'>
                     Login/Register
                   </Link>
 
                   <div className='set_language d-inline-block ml-xl-3 ml-md-2'>
                     <ChangeLanguageButton />
                   </div>
-                  {/* {loginPage && (
-                    <button className='btn btn-bg-black ml-xl-3 ml-md-2'>
-                      Start Course
-                    </button>
-                  )}
-
-                  {!loginPage && (
-                    <>
-                      <button className='btn btn-bg-pink ml-xl-3 ml-md-2'>
-                        Login/Register
-                      </button>
-
-                      <div className='set_language d-inline-block ml-xl-3 ml-md-2'>
-                        <ChangeLanguageButton />
-                      </div>
-                    </>
-                  )} */}
                 </div>
               </div>
             </div>
@@ -102,9 +85,14 @@ const Header = ({ loginPage }) => {
                     </Link>
                   </li>
                   <li className='nav-item'>
-                    <Link className='nav-link' to='/resume_builder'>
+                    <a
+                      className='nav-link'
+                      rel='noreferrer'
+                      href='https://octahire.com/Resume_maker'
+                      target='_blank'
+                    >
                       {t("header.heading.4")}
-                    </Link>
+                    </a>
                   </li>
                   <li className='nav-item'>
                     <Link className='nav-link' to='/career'>
@@ -113,9 +101,14 @@ const Header = ({ loginPage }) => {
                   </li>
 
                   <li className='nav-item'>
-                    <Link className='nav-link' to='/jobs'>
+                    <a
+                      className='nav-link'
+                      rel='noreferrer'
+                      target='_blank'
+                      href='https://octahire.com/Recruiters/job_recruiters?location='
+                    >
                       {t("header.heading.6")}
-                    </Link>
+                    </a>
                   </li>
 
                   <li className='nav-item'>

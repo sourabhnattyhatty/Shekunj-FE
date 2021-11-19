@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
 import PublicRoute from "./routers/PublicRouter";
 
+
+import "./App.css";
 
 const ForgotPage = React.lazy(() => import("./pages/ForgotPage/ForgotPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage/SignupPage"));
@@ -24,9 +25,17 @@ function App() {
 
         <PublicRoute exact path='/verify' component={Verify} />
 
-        <PublicRoute exact path='/authentication/email-verify/:token?' component={VerifyEmailResult} />
+        <PublicRoute
+          exact
+          path='/authentication/email-verify/:token?'
+          component={VerifyEmailResult}
+        />
 
-        <PublicRoute exact path='/authentication/password-reset/:uidb/:token/' component={ResetPassword}/>
+        <PublicRoute
+          exact
+          path='/authentication/password-reset/:uidb/:token/'
+          component={ResetPassword}
+        />
 
         <Route exact path='/' component={HomePage} />
       </Switch>
