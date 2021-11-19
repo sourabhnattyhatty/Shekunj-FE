@@ -76,6 +76,27 @@ function Carousel(props) {
           autoPlay={true}
           smartSpeed='800'
           onChanged={(e) => handleChange(e)}
+          responsive={{
+            0:{
+                items:1,
+                nav:true
+            },
+            600:{
+                items:2,
+                nav:true,
+            },
+            1000:{
+                items:3,
+                nav:true,
+                loop:true
+            },
+            1280:{
+                items:3,
+                nav:true,
+                loop:true
+            }
+          }}
+         
         >
           {coursesArray.map((obj, ind) => (
             <div className='item' key={ind}>
