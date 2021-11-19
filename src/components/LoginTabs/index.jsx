@@ -5,43 +5,20 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import "./index.scss";
-import { useHistory } from "react-router-dom";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
 
-import { onLogin } from "../../store/auth/action";
-import Error from "../Error";
-import { CircularProgress } from "@mui/material";
+import LoginForm1 from "./LoginForm1";
+import LoginForm2 from "./LoginForm2";
 
-const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string()
-    .min(6, "At least 6 characters")
-    .required("Password is required"),
-});
+
 
 export default function LoginTabs() {
-  const { isLoading } = useSelector((state) => state.authReducer);
-  const dispatch = useDispatch();
-  const history = useHistory();
   const [value, setValue] = React.useState("1");
 
   const handleChanged = (event, newValue) => {
     setValue(newValue);
   };
 
-  const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
-    useFormik({
-      initialValues: {
-        email: "",
-        password: "",
-      },
-      validationSchema,
-      onSubmit(values) {
-        dispatch(onLogin(values, history));
-      },
-    });
+  
 
   return (
     <Box sx={{ width: "100%", typography: "body1" }}>
@@ -58,71 +35,11 @@ export default function LoginTabs() {
         </Box>
 
         <TabPanel value='1'>
-          <form onSubmit={handleSubmit}>
-            <div className='form-group'>
-              <input
-                name='email'
-                type='email'
-                className='form-control'
-                onChange={handleChange}
-                value={values.email}
-                onBlur={handleBlur}
-                autoComplete='off'
-                placeholder='E-mail'
-              />
-              <Error error={errors.email} touched={touched.email} />
-            </div>
-
-            <div className='form-group'>
-              <input
-                name='password'
-                type='password'
-                className='form-control'
-                onChange={handleChange}
-                value={values.password}
-                onBlur={handleBlur}
-                autoComplete='off'
-                placeholder='Password'
-              />
-              <Error error={errors.password} touched={touched.password} />
-            </div>
-
-            <button type='submit' className='btn btn_login w-100'>
-              {isLoading ? <CircularProgress color='secondary' /> : "Login"}
-            </button>
-          </form>
+          <LoginForm1/>
         </TabPanel>
 
         <TabPanel value='2'>
-          <div className='form-group'>
-            <input
-              name='password'
-              type='number'
-              className='form-control'
-              onChange={handleChange}
-              onBlur={handleBlur}
-              autoComplete='off'
-              placeholder='Mobile'
-              />
-            <Error error={errors.password} touched={touched.password} />
-          </div>
-
-          <div className='form-group'>
-            <input
-              name='password'
-              type='password'
-              className='form-control'
-              onChange={handleChange}
-              onBlur={handleBlur}
-              autoComplete='off'
-              placeholder='Password'
-            />
-            <Error error={errors.password} touched={touched.password} />
-          </div>
-
-          <button type='submit' className='btn btn_login w-100'>
-            {isLoading ? <CircularProgress color='secondary' /> : "Login"}
-          </button>
+          <LoginForm2/>
         </TabPanel>
       </TabContext>
     </Box>

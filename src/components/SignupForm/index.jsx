@@ -74,7 +74,6 @@ const LoginForm = () => {
 
         <form onSubmit={handleSubmit}>
           <div className='form-group'>
-
             <input
               name='name'
               type='text'
@@ -85,16 +84,11 @@ const LoginForm = () => {
               autoComplete='off'
               placeholder='Name'
             />
-            {/* <span className='asterik'> * </span> */}
 
             <Error error={errors.name} touched={touched.name} />
           </div>
 
           <div className='form-group'>
-            {/* <label>
-              E-mail <span className='asterik'> * </span>
-            </label> */}
-            
             <input
               name='email'
               type='email'
@@ -109,36 +103,22 @@ const LoginForm = () => {
           </div>
 
           <div className='form-group'>
-            {/* <label>
-              Mobile Number <span className='asterik'> * </span>
-            </label> */}
-            <div className="ver">
-            <span>Verify</span>
-            <input
-              name='contact'
-              type='number'
-              className='form-control'
-              onChange={handleChange}
-              onBlur={handleBlur}
-              autoComplete='off'
-              placeholder='Mobile Number'
-            />
-            
+            <div className='ver'>
+              <span>Verify</span>
+              <input
+                name='contact'
+                type='number'
+                className='form-control'
+                onChange={handleChange}
+                onBlur={handleBlur}
+                autoComplete='off'
+                placeholder='Mobile Number'
+              />
             </div>
             <Error error={errors.contact} touched={touched.contact} />
           </div>
 
-          {/* <div className='form-group'>
-            <label>
-              Date of Birth <span className='asterik'> * </span>
-            </label>
-            <input type='text' className='form-control' />
-          </div> */}
-
           <div className='form-group'>
-            {/* <label>
-              Confirm Password <span className='asterik'> * </span>
-            </label> */}
             <input
               name='confirmPassword'
               type=''
@@ -154,9 +134,6 @@ const LoginForm = () => {
           </div>
 
           <div className='form-group'>
-            {/* <label>
-              Confirm Password <span className='asterik'> * </span>
-            </label> */}
             <input
               name='confirmPassword'
               type='password'
