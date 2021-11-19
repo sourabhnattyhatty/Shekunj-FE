@@ -91,7 +91,7 @@ function Carousel(props) {
                 loop:true
             },
             1280:{
-                items:3,
+                items:4,
                 nav:true,
                 loop:true
             }
