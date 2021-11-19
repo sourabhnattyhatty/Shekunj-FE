@@ -107,6 +107,27 @@ function HomePage() {
                 </div>
               </div>
             </div>
+
+            <div className='carousel-item carousel_item3'>
+              <div className='container'>
+                <div className='row h_set'>
+                  <div className='col-md-7 col-12 mt-5'>
+                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='fade-left'>
+                      Anytime, anywhere, Learn on your schedule from any device
+                    </h4>
+                    <p className='mb-4' data-aos='fade-right'>
+                      {" "}
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      In sed fermentum massa semper mauris volutpat dictum
+                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
+                    </p>
+                    <a href='#!' className='banner_btn' data-aos="zoom-in">
+                      Start Course
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </Slider>
         </div>
       </div>
@@ -119,8 +140,8 @@ function HomePage() {
       <section className='resume same_padding mt-5'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-7' data-aos='slide-right'>
-              <h4>
+            <div className='col-md-7'>
+              <h4 data-aos='slide-right'>
                 Design your resume in real time and download a print-reday PDF.
               </h4>
               <button className='btn btn-resume' data-aos="zoom-in">DESIGN MY RESUME</button>
@@ -138,22 +159,22 @@ function HomePage() {
       <Carousel items={5} details={false} title1="challenging" title2="online tests"/>
 
       {/* Job opportunity */}
-      <section className='job-opprtunity same_padding mt-5' data-aos='slide-right'>
+      <section className='job-opprtunity same_padding mt-5'>
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-lg-10 col-md-11'>
               <div className='job-opprtunity-bg'>
                 <div className='row'>
                   <div className='col-md-8'>
-                    <h3 data-aos='slide-right'>Grab job oppotunities...</h3>
+                    <h3 data-aos='slide-right'>Grab job Opportunities...</h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Rutrum sapien nunc sit egestas amet magnis enim.
                       Suspendisse vulputate ut nunc lorem mi ut lacus. Felis
                       vitae vel.
                     </p>
-                    <button data-aos="zoom-in" className='btn btn-job'>
-                      view all job oppotunities
+                    <button data-aos="fade-up" className='btn btn-job'>
+                      view all job opportunities
                     </button>
                   </div>
 
@@ -224,6 +245,7 @@ function HomePage() {
 
               <div className="row">
                 <div className="col-md-6">
+                <div data-aos="slide-right">
                 <div className="tes_box tes-before">
                 <img src={Nikita} alt="" />
                 <p>“I love their flexibility, Even when my request is too complicated to handle, the could still suggest something useful for me.”</p>
@@ -236,6 +258,7 @@ function HomePage() {
                 </ul>
                 <h2>Nikita Sharma</h2>
                 <h6>Content Writer</h6>
+              </div>
               </div>
 
                     <div className="tes_box2"  data-aos="slide-up">
@@ -261,6 +284,7 @@ function HomePage() {
                   </div>
 
 
+                  <div data-aos="slide-left">
                 <div className="tes_box heg_cha">
                 <img src={Nikita} alt="" />
                 <p>“Excellent guiding instructions. They are all great mentors at life & career</p>
@@ -274,6 +298,7 @@ function HomePage() {
                 <h2>Nikita Sharma</h2>
                 <h6>Content Writer</h6>
               </div>
+              </div>
                 </div>
               </div>
 
@@ -283,7 +308,7 @@ function HomePage() {
             </div>
 
             <div className='col-md-5 offset-md-1'>
-              <h3 className='mb-3 mt-4' data-aos='slide-left'>Our highlighted students revealing</h3>
+              <h3 className='mb-3 mt-4'>Our highlighted students revealing</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
                 donec molestie sit diam aliquam egestas erat tincidunt magna.

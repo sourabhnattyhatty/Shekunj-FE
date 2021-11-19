@@ -74,9 +74,7 @@ const LoginForm = () => {
 
         <form onSubmit={handleSubmit}>
           <div className='form-group'>
-            {/* <label>
-              Full Name <span className='asterik'> * </span>
-            </label> */}
+
             <input
               name='name'
               type='text'
@@ -87,6 +85,8 @@ const LoginForm = () => {
               autoComplete='off'
               placeholder='Name'
             />
+            {/* <span className='asterik'> * </span> */}
+
             <Error error={errors.name} touched={touched.name} />
           </div>
 
@@ -94,6 +94,7 @@ const LoginForm = () => {
             {/* <label>
               E-mail <span className='asterik'> * </span>
             </label> */}
+            
             <input
               name='email'
               type='email'
@@ -102,7 +103,7 @@ const LoginForm = () => {
               value={values.email}
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder='Email *'
+              placeholder='Email'
             />
             <Error error={errors.email} touched={touched.email} />
           </div>
@@ -111,6 +112,8 @@ const LoginForm = () => {
             {/* <label>
               Mobile Number <span className='asterik'> * </span>
             </label> */}
+            <div className="ver">
+            <span>Verify</span>
             <input
               name='contact'
               type='number'
@@ -118,8 +121,10 @@ const LoginForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder='Mobile Number *'
+              placeholder='Mobile Number'
             />
+            
+            </div>
             <Error error={errors.contact} touched={touched.contact} />
           </div>
 
@@ -140,7 +145,7 @@ const LoginForm = () => {
               className='form-control'
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder='OTP *'
+              placeholder='OTP'
             />
             <Error
               error={errors.confirmPassword}
@@ -158,7 +163,7 @@ const LoginForm = () => {
               className='form-control'
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder='Password *'
+              placeholder='Password'
             />
             <Error
               error={errors.confirmPassword}
@@ -202,7 +207,7 @@ const LoginForm = () => {
           </div>
 
           <button type='submit' className='btn btn_login w-100 mt-3'>
-            Signup
+            
             {isLoading ? (
               <CircularProgress color='secondary' size={20} />
             ) : (

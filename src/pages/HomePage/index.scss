@@ -28,9 +28,11 @@ body{
   background-image: url("../../assets/images/banner/1.png");
 }
 #myCarousel .carousel_item2 {
-  background-image: url("../../assets/images/banner/1.png");
+  background-image: url("../../assets/images/banner/2.png");
 }
-
+#myCarousel .carousel_item3 {
+  background-image: url("../../assets/images/banner/3.png");
+}
 #myCarousel .carousel-item h4 {
   font-weight: bold;
   font-size: 48px;
@@ -100,14 +102,15 @@ body{
 }
 #myCarousel .slick-next:hover  {
     border: 1px solid #ec498a;
+
 }
 #myCarousel .slick-prev {
     left: 50px;
 }
 #myCarousel .slick-prev:before{
     content: "";
-    background-image: url("../../assets/icons/arrow_left.png");
-    border: 1px solid #DADADA;
+    background-image: url("../../assets/icons/left_icon.png");
+    border: 1px solid #EC498A;
     width: 60px;
     height: 60px;
     background-size: auto;
@@ -123,11 +126,20 @@ body{
 }
 #myCarousel .slick-prev:hover:before, #myCarousel .slick-next:hover:before{
     background-color: #EC498A;
+    opacity: 1;
+}
+#myCarousel .slick-prev:hover:before{
+  background-image: url('../../assets/icons/arrow_left.png');
+  background-repeat: no-repeat;
+}
+#myCarousel .slick-next:hover:before{
+    background-image: url('../../assets/icons/right_icon.png');
+    background-repeat: no-repeat;
 }
 #myCarousel .slick-next:before{
     content: "";
-    background-image: url("../../assets/icons/arrow_right.png");
-    border: 1px solid #DADADA;
+    background-image: url("../../assets/icons/right_icons.png");
+    border: 1px solid #EC498A;
     width: 60px;
     height: 60px;
     background-size: auto;
@@ -555,8 +567,22 @@ ul.star{
   }
   .owl-nav {
     left: -100px;
-}
+  }
+  #myCarousel .carousel-item{
+    height: 100vh;
+  }
+  #myCarousel .slick-prev {
+    left: 5px;
+  }
+  #myCarousel .slick-next{
+    right: 10px;
+  }
 // .owl-theme {
 //   max-width: 1050px;
 // }
+
+.resume h4 {
+  font-size: 28px;
+  max-width: 610px;
+}
 }

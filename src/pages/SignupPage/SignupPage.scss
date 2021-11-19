@@ -43,8 +43,22 @@
   }
   .login_form .form-group{
     margin-bottom: 5px;
+    position: relative;
 }
 
+.ver{
+  position: relative;
+}
+.ver span {
+  position: absolute;
+  right: 15px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 40px;
+  color: #EC498A;
+}
 
 // Radio BUtton
 
