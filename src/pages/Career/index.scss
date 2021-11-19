@@ -1,0 +1,142 @@
+section.Car_Ban{
+    width: 100%;
+    height: 700px;
+    background-image: url('../../assets/images/Career/certificate\ 1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.Car_con h2 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 60px;
+    text-transform: capitalize;
+    color: #323232;
+    margin: 0;
+}
+.learn_more {
+    background: #ec498a;
+    border-radius: 10px;
+    font-family: Sora bold;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 42px;
+    color: #ffffff;
+    height: 44px;
+    width: 160px;
+    transition: 0.25s ease;
+    display: inline-block;
+    text-align: center;
+}
+.learn_more:hover {
+    background: #000;
+    color: #ec498a;
+    text-decoration: none;
+}
+.Car_con p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: capitalize;
+    color: #323232;
+    margin-top: 29px !important;
+    margin: 0;
+}
+.Car_con {
+    margin-top: 210px;
+}
+
+.pseudo-search {
+    display: inline;
+    margin-top: 15px;
+    padding: 10px 15px;
+    transition: background-color 0.5 ease-in-out;
+    background: #FFFFFF;
+    border: 1px solid #F2EDED;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  
+    input {
+      border: 0;
+      background-color: transparent;
+      width: 200px;
+  
+      &:focus {
+        // Unsure how to fix this...
+        outline: none;
+      }
+    }
+    
+    button, img {
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 0;
+      vertical-align: text-bottom;
+    }
+    
+    select {
+      border: none;
+    }
+  
+  }
+  .choose_box {
+    background-color: #fff;
+    width: 100%;
+    height: 393px;
+    box-shadow: 0px 0px 15px #ccc;
+    border-radius: 15px;
+    // padding: 0px 10px;
+}
+section.choose_ses h2 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 52px;
+    text-transform: capitalize;
+    color: #323232;
+    padding-bottom: 48px;
+}
+.choose_box img {
+    width: 100%;
+    height: 125px;
+    background-size: cover;
+}
+.choose_con {
+    padding: 0px 10px;
+}
+.row_box {
+    margin-bottom: 57px;
+}
+.choose_con h3 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+    color: #323232;
+    padding-top: 30px;
+    padding-bottom: 13px;
+    margin: 0;
+}
+.choose_con p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4F4F4F;
+    margin: 0;
+    margin-bottom: 40px;
+}
+section.choose_ses {
+    background: linear-gradient(90deg, rgba(253, 251, 251, 0.5) 0%, rgba(235, 237, 238, 0.5) 100%);
+    padding: 40px 0;
+}
+
+

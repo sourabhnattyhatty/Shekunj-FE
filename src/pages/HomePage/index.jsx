@@ -112,16 +112,14 @@ function HomePage() {
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
                     <h4 className='mt-5 pt-md-5 mb-3' data-aos='fade-left'>
-                      Anytime, anywhere, Learn on your schedule from any device
+                    OWN YOUR FUTURE BY <span>Learning Skills</span>
                     </h4>
-                    <p className='mb-4' data-aos='fade-right'>
+                    {/* <p className='mb-4' data-aos='fade-right'>
                       {" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      In sed fermentum massa semper mauris volutpat dictum
-                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
-                    </p>
-                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
-                      Start Course
+                      {" "}
+                    </p> */}
+                    <a href='#!' className='banner_btn' data-aos="zoom-in">
+                    Start Course
                     </a>
                   </div>
                 </div>
