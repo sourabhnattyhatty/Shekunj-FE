@@ -90,8 +90,8 @@ function Carousel(props) {
                 nav:true,
                 loop:true
             },
-            1280:{
-                items:3,
+            1200:{
+                items:4,
                 nav:true,
                 loop:true
             }
