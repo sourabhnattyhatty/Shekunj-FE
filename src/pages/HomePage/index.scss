@@ -29,14 +29,26 @@ body{
 }
 #myCarousel .carousel_item2 {
   background-image: url("../../assets/images/banner/2.png");
+  // background-size: inherit;
 }
 #myCarousel .carousel_item3 {
   background-image: url("../../assets/images/banner/3.png");
 }
 #myCarousel .carousel-item h4 {
   font-weight: bold;
-  font-size: 48px;
+  font-size: 42px;
   line-height: 120%;
+  max-width: 510px;
+  width: 100%;
+}
+#myCarousel .carousel-item h4 span {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 72px;
+  text-transform: uppercase;
+  color: #000000;
 }
 #myCarousel .carousel-item p {
   font-weight: 300;

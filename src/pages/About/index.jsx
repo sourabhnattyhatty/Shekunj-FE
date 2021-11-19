@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import './index.scss';
@@ -6,8 +6,17 @@ import img1 from '../../assets/images/About/img1.png'
 import Nikita from '../../assets/images/Nikita-Sharma.png';
 import star from '../../assets/images/Star 2.png';
 import "../HomePage/index.scss";
+import Aos from 'aos';
+import "./index.scss";
+import 'animate.css';
+import 'aos/dist/aos.css'
 
-const index = () => {
+const Index = () => {
+
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+      }, []);
+
     return (
         <div>
             <Header loginPage={false} />
@@ -43,9 +52,11 @@ const index = () => {
 
 
                         <div className="col-md-6">
-                            <p>   Armed with the best pedagogy experts, learning modules, and certificate courses, SheKunj is determined to impart practical training and educate women. With the right blend of tech and non-tech skills, our drive is to make a community of motivated, highly-skilled and knowledgeable women who build inspiring careers and lead with full gusto.</p>
+                            <div className="sec2_con">
+                                <p>   Armed with the best pedagogy experts, learning modules, and certificate courses, SheKunj is determined to impart practical training and educate women. With the right blend of tech and non-tech skills, our drive is to make a community of motivated, highly-skilled and knowledgeable women who build inspiring careers and lead with full gusto.</p>
 
-                            <p>We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality.</p>
+                                <p>We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -121,7 +132,7 @@ const index = () => {
 
                         </div>
 
-             
+
                         <div className='col-md-6'>
                             <div className="our_his">
                                 <h2>Our highlighted students revealing</h2>
@@ -148,4 +159,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index
