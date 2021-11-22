@@ -90,6 +90,21 @@ const LoginForm = () => {
 
           <div className='form-group'>
             <input
+              name='name'
+              type='text'
+              className='form-control'
+              onChange={handleChange}
+              value={values.name}
+              onBlur={handleBlur}
+              autoComplete='off'
+              placeholder='Last Name'
+            />
+
+            <Error error={errors.name} touched={touched.name} />
+          </div>
+
+          <div className='form-group'>
+            <input
               name='email'
               type='email'
               className='form-control'

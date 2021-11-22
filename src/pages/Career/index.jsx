@@ -8,7 +8,16 @@ import Choose3 from "../../assets/images/Career/Choose3.png"
 import Choose4 from "../../assets/images/Career/Choose4.png"
 import Choose5 from "../../assets/images/Career/Choose5.png"
 import Choose6 from "../../assets/images/Career/Choose6.png"
+import Rankings from "../../assets/images/Career/Rankings.png"
+import exams from "../../assets/images/Career/exams.png"
+import exams_icon from "../../assets/images/Career/exams-icon.png"
 import './index.scss';
+import Carousel from "../../components/Carousel";
+import "../HomePage/index.scss";
+
+
+
+
 
 const index = () => {
     return (
@@ -37,6 +46,15 @@ const index = () => {
                     </div>
                 </div>
             </section>
+
+            <div className="care_csl">
+                <Carousel
+                    items={1}
+                    details={true}
+                    title1='Our'
+                    title2='Featured Colleges'
+                />
+            </div>
 
 
             <section className="choose_ses">
@@ -125,6 +143,78 @@ const index = () => {
 
                 </div>
             </section>
+
+
+            <div className="care_csl">
+                <Carousel
+                    items={1}
+                    details={true}
+                    title1='Our'
+                    title2='Most Popular Courses'
+                />
+            </div>
+
+
+
+            <section className="best_edu">
+                <div className="container">
+                    <div className="edu_tit">
+                        <h2>Choose the best education</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida tellus leo risus. Proin sagittis nec nisi tortor nisl purus et at.</p>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div className="ranking">
+                                <h3><img src={Rankings} alt="" /> Rankings</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate aliquam convallis urna volutpat, tortor, et eu. Mattis ac praesent .</p>
+                                <div className="tags">
+                                    <button className="btn btn-info">Top Engineering Colleges in India</button>
+                                    <button className="btn btn-info">Top MBA Colleges in India</button>
+                                </div>
+
+
+                                <div className="tags">
+                                    <button className="btn btn-info">Top Engineering Colleges in India</button>
+                                    <button className="btn btn-info">Top MBA Colleges in India</button>
+                                </div>
+                            </div>
+
+
+                            <div className="ranking exms">
+                                <h3><img src={exams_icon} alt="" /> Exams</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate aliquam convallis urna volutpat, tortor, et eu. Mattis ac praesent .</p>
+                                <div className="tags">
+                                    <button className="btn btn-info">JEE Main</button>
+                                    <button className="btn btn-info">GATE</button>
+                                    <button className="btn btn-info">NEET</button>
+                                    <button className="btn btn-info">NIFT Entrance Exam</button>
+                                    <button className="btn btn-info">CAT</button>
+                                    <button className="btn btn-info">CLAT</button>
+                                </div>
+
+
+                                <div className="tags">
+                                    <button className="btn btn-info">BITSAT</button>
+                                    <button className="btn btn-info">SRMJEEE</button>
+                                    <button className="btn btn-info">VITEEE</button>
+                                    <button className="btn btn-info">MET</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className="col-md-6">
+                            <div className="exams">
+                                <img src={exams} alt="" srcset="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Slider 1 */}
+
 
 
 

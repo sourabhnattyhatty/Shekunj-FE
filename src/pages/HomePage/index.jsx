@@ -78,7 +78,7 @@ function HomePage() {
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
+                    <a href='#!' className='banner_btn' data-aos='slide-right'>
                       Start Course
                     </a>
                   </div>
@@ -99,7 +99,7 @@ function HomePage() {
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
+                    <a href='#!' className='banner_btn' data-aos='slide-right'>
                       Start Course
                     </a>
                   </div>
@@ -118,7 +118,7 @@ function HomePage() {
                       {" "}
                       {" "}
                     </p> */}
-                    <a href='#!' className='banner_btn' data-aos="zoom-in">
+                    <a href='#!' className='banner_btn' data-aos="slide-right">
                     Start Course
                     </a>
                   </div>
@@ -150,7 +150,7 @@ function HomePage() {
                 href='https://octahire.com/Resume_maker'
                 target='_blank'
                 className='btn btn-resume'
-                data-aos='zoom-in'
+                data-aos='slide-right'
               >
                 DESIGN MY RESUME
               </a>
@@ -190,7 +190,7 @@ function HomePage() {
                       rel='noreferrer'
                       target='_blank'
                       href='https://octahire.com/Recruiters/job_recruiters?location='
-                      data-aos='fade-up'
+                      data-aos='slide-right'
                       className='btn btn-job'
                     >
                       view all job opportunities
@@ -219,7 +219,7 @@ function HomePage() {
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-md-11'>
-              <h3 data-aos='zoom-in'>Shekunj Career Development Community</h3>
+              <h3 data-aos='slide-right'>Shekunj Career Development Community</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
                 sapien nunc sit egestas amet magnis enim. Suspendisse vulputate
@@ -234,7 +234,7 @@ function HomePage() {
 
           <div className='row justify-content-center'>
             <div className='col-md-4 text-center mt-5'>
-              <button className='btn btn-start-course' data-aos='zoom-in'>
+              <button className='btn btn-start-course' data-aos='slide-right'>
                 Start Course
               </button>
             </div>
@@ -373,7 +373,7 @@ function HomePage() {
                 ornare ipsum. Tincidunt erat pulvinar viverra pharetra.
               </p>
 
-              <a data-aos='zoom-in' href='#!' className='learn_more'>
+              <a data-aos='slide-right' href='#!' className='learn_more'>
                 Learn more
               </a>
             </div>

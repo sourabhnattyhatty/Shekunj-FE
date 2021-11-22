@@ -11,6 +11,7 @@ const LoginPage = React.lazy(() => import("./pages/LoginPage/LoginPage"));
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const About = React.lazy(() => import("./pages/About"));
 const Career = React.lazy(() => import("./pages/Career"));
+const Courses = React.lazy(() => import("./pages/Courses"));
 const Verify = React.lazy(() => import("./pages/VerifyPage"));
 const VerifyEmailResult = React.lazy(() => import("./pages/VerifyEmailResult"));
 const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
@@ -42,6 +43,7 @@ function App() {
         <Route exact path='/' component={HomePage} />
         <Route exact path='/about' component={About} />
         <Route exact path='/career' component={Career} />
+        <Route exact path='/Courses' component={Courses} />
       </Switch>
     </>
   );

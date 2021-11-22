@@ -1,0 +1,106 @@
+.Cors_sec {
+    background-image: url('../../assets/images/Courses/Courses_ban.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 620px;
+    position: relative;
+}
+section.Cors_sec::before{
+    content: '';
+    background-image: url('../../assets/images/Courses/edit_icon.png');
+    width: 100px;
+    height: 153px;
+    position: absolute;
+    top: 50px;
+    left: 80px;
+}
+section.Cors_sec::after{
+    content: '';
+    background-image: url('../../assets/images/Courses/star.png');
+    width: 196px;
+    height: 170px;
+    position: absolute;
+    top: 50px;
+    right: 80px;
+}
+.cour_box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cors_con h2{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 68px;
+    line-height: 120%;
+    color: #EE5F98;
+    margin: 0;
+    padding-top: 68px;
+    padding-bottom: 33px;
+}
+.cour_box ul li img {
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+.cour_box ul {
+    padding: 0;
+    list-style: none;
+}
+ul.ulcon {
+    margin-left: 80px;
+}
+ul.ulcon li {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 120%;
+    color: #000000;
+}
+ul.ulcont {
+    display: flex;
+    gap: 1rem;
+    margin-left: 80px;
+}
+ul.ulcont li {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 120%;
+    color: #000000;
+}
+.Serc_type button.btn.btn-info {
+    background: #EC498A;
+    border-radius: 10px;
+    border: none;
+    width: 187px;
+    height: 50px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-left: 14px;
+}
+.Serc_type {
+    display: flex;
+    width: 100%;
+}
+.Serc_type input{
+    border: none;
+    width: 100%;
+}
+.inp_ser {
+    display: flex;
+    background: #FFFFFF;
+    border: 1px solid #F2EDED;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 12px 13px;
+    width: 100%;
+}
