@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Slider from "react-slick";
 import Aos from "aos";
+import { useTranslation } from "react-i18next";
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -19,6 +20,9 @@ import "animate.css";
 import "aos/dist/aos.css";
 
 function HomePage() {
+
+  const {t} = useTranslation();
+
   const settings = {
     dots: false,
     infinite: false,
@@ -58,7 +62,7 @@ function HomePage() {
 
   return (
     <div>
-      <Header loginPage={false} />
+      <Header loginPage={false} page="home"/>
 
       {/* slider */}
 
@@ -70,7 +74,7 @@ function HomePage() {
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
                     <h4 className='mt-5 pt-md-5 mb-3' data-aos='fade-right'>
-                      Anytime, anywhere, Learn on your schedule from any device
+                      {t('homePage.mainSlider.heading.1')}
                     </h4>
                     <p className='mb-4' data-aos='fade-left'>
                       {" "}
@@ -79,7 +83,7 @@ function HomePage() {
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
                     <a href='#!' className='banner_btn' data-aos='slide-right'>
-                      Start Course
+                      {t('homePage.mainSlider.button')}
                     </a>
                   </div>
                 </div>
@@ -91,7 +95,7 @@ function HomePage() {
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
                     <h4 className='mt-5 pt-md-5 mb-3' data-aos='fade-left'>
-                      Anytime, anywhere, Learn on your schedule from any device
+                      {t('homePage.mainSlider.heading.2')}
                     </h4>
                     <p className='mb-4' data-aos='fade-right'>
                       {" "}
@@ -100,7 +104,7 @@ function HomePage() {
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
                     <a href='#!' className='banner_btn' data-aos='slide-right'>
-                      Start Course
+                      {t('homePage.mainSlider.button')}
                     </a>
                   </div>
                 </div>
@@ -112,14 +116,11 @@ function HomePage() {
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
                     <h4 className='mt-5 pt-md-5 mb-3' data-aos='fade-left'>
-                    OWN YOUR FUTURE BY <span>Learning Skills</span>
+                    {t('homePage.mainSlider.heading.3.3.1')} <span>{t('homePage.mainSlider.heading.3.3.2')}</span>
                     </h4>
-                    {/* <p className='mb-4' data-aos='fade-right'>
-                      {" "}
-                      {" "}
-                    </p> */}
+                    
                     <a href='#!' className='banner_btn' data-aos="slide-right">
-                    Start Course
+                      {t('homePage.mainSlider.button')}
                     </a>
                   </div>
                 </div>
@@ -133,8 +134,8 @@ function HomePage() {
       <Carousel
         items={5}
         details={true}
-        title1='Our'
-        title2='Most Popular Courses'
+        title1={t('homePage.carousel1.heading.1')}
+        title2={t('homePage.carousel1.heading.2')}
       />
 
       {/* resume */}
@@ -143,7 +144,7 @@ function HomePage() {
           <div className='row'>
             <div className='col-md-7'>
               <h4 data-aos='slide-right'>
-                Design your resume in real time and download a print-reday PDF.
+                {t('homePage.resume.heading')}
               </h4>
               <a
                 rel='noreferrer'
@@ -152,7 +153,7 @@ function HomePage() {
                 className='btn btn-resume'
                 data-aos='slide-right'
               >
-                DESIGN MY RESUME
+                {t('homePage.resume.button')}
               </a>
             </div>
 
@@ -167,8 +168,8 @@ function HomePage() {
       <Carousel
         items={5}
         details={false}
-        title1='challenging'
-        title2='online tests'
+        title1={t('homePage.carousel2.heading.1')}
+        title2={t('homePage.carousel2.heading.2')}
       />
 
       {/* Job opportunity */}
@@ -179,7 +180,7 @@ function HomePage() {
               <div className='job-opprtunity-bg'>
                 <div className='row'>
                   <div className='col-md-8'>
-                    <h3 data-aos='slide-right'>Grab job Opportunities...</h3>
+                    <h3 data-aos='slide-right'>{t('homePage.jobopportunity.heading')}</h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Rutrum sapien nunc sit egestas amet magnis enim.
@@ -193,7 +194,7 @@ function HomePage() {
                       data-aos='slide-right'
                       className='btn btn-job'
                     >
-                      view all job opportunities
+                      {t('homePage.jobopportunity.button')}
                     </a>
                   </div>
 
@@ -210,8 +211,8 @@ function HomePage() {
       <Carousel
         items={5}
         details={true}
-        title1='Our'
-        title2='Most Popular Courses'
+        title1={t('homePage.carousel1.heading.1')}
+        title2={t('homePage.carousel1.heading.2')}
       />
 
       {/* career development */}
@@ -219,7 +220,7 @@ function HomePage() {
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-md-11'>
-              <h3 data-aos='slide-right'>Shekunj Career Development Community</h3>
+              <h3 data-aos='slide-right'>{t('homePage.community.heading')}</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
                 sapien nunc sit egestas amet magnis enim. Suspendisse vulputate
@@ -235,7 +236,7 @@ function HomePage() {
           <div className='row justify-content-center'>
             <div className='col-md-4 text-center mt-5'>
               <button className='btn btn-start-course' data-aos='slide-right'>
-                Start Course
+                {t('homePage.community.button')}
               </button>
             </div>
           </div>
@@ -248,7 +249,7 @@ function HomePage() {
           <div className='row'>
             <div className='col-md-6 offset-md-6 offset-lg-6 offset-xl-7'>
               <h4>
-                Gain Industry-Recognized <br /> UX Certificates
+              {t('homePage.certificate.heading.1')} <br /> {t('homePage.certificate.heading.2')}
               </h4>
 
               <p>
@@ -364,7 +365,7 @@ function HomePage() {
             </div>
 
             <div className='col-md-5 offset-md-1'>
-              <h3 className='mb-3 mt-4'>Our highlighted students revealing</h3>
+              <h3 className='mb-3 mt-4'>{t('homePage.highlightStudents.heading')}</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
                 donec molestie sit diam aliquam egestas erat tincidunt magna.
@@ -374,7 +375,7 @@ function HomePage() {
               </p>
 
               <a data-aos='slide-right' href='#!' className='learn_more'>
-                Learn more
+                {t('homePage.highlightStudents.button')}
               </a>
             </div>
           </div>

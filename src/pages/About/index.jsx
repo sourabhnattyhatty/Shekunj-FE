@@ -19,7 +19,7 @@ const Index = () => {
 
     return (
         <div>
-            <Header loginPage={false} />
+            <Header loginPage={false} page="about"/>
             <section className="about_ban">
                 <div className="container">
                     <div className="row">

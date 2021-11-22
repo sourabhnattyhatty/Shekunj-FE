@@ -27,7 +27,7 @@ const Footer = ({ loginPage }) => {
                 </li>
 
                 <li>
-                  <Link to="/">{t("footer.links.col1.3")}</Link>
+                  <Link to="/about">{t("footer.links.col1.3")}</Link>
                 </li>
 
                 <li>
@@ -39,7 +39,7 @@ const Footer = ({ loginPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link to="/">{t("footer.links.col2.1")}</Link>
+                  <Link to="/career">{t("footer.links.col2.1")}</Link>
                 </li>
 
                 <li>

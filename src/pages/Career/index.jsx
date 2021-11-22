@@ -22,7 +22,7 @@ import "../HomePage/index.scss";
 const index = () => {
     return (
         <div>
-            <Header loginPage={true} />
+            <Header loginPage={true} page="career"/>
 
 
 

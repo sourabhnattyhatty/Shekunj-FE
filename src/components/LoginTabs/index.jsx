@@ -4,6 +4,8 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import { useTranslation } from "react-i18next";
+
 import "./index.scss";
 
 import LoginForm1 from "./LoginForm1";
@@ -13,6 +15,7 @@ import LoginForm2 from "./LoginForm2";
 
 export default function LoginTabs() {
   const [value, setValue] = React.useState("1");
+  const {t} = useTranslation();
 
   const handleChanged = (event, newValue) => {
     setValue(newValue);
@@ -29,8 +32,8 @@ export default function LoginTabs() {
             aria-label='lab API tabs example'
             color='primary'
           >
-            <Tab className='xyz' label='E-mail' value='1' />
-            <Tab className='xyz' label='Mobile' value='2' />
+            <Tab className='xyz' label={t('login.tabLabel.1')} value='1' />
+            <Tab className='xyz' label={t('login.tabLabel.2')} value='2' />
           </TabList>
         </Box>
 

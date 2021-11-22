@@ -1,24 +1,28 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
-import Error from "../Error";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { onLogin } from "../../store/auth/action";
+import { useTranslation } from "react-i18next";
+
 import { CircularProgress } from "@mui/material";
 
-const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string()
-    .min(6, "At least 6 characters")
-    .required("Password is required"),
-});
+import Error from "../Error";
+import { onLogin } from "../../store/auth/action";
+
 
 function LoginForm1() {
   const { isLoading } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const history = useHistory();
+  const {t} = useTranslation();
+  
+  const validationSchema = Yup.object({
+    email: Yup.string().email(t('login.form1.emailError.invalid')).required(t('login.form1.emailError.required')),
+    password: Yup.string()
+      .min(6, t('login.form1.passError.min'))
+      .required(t('login.form1.passError.required')),
+  });
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -44,7 +48,7 @@ function LoginForm1() {
             value={values.email}
             onBlur={handleBlur}
             autoComplete='off'
-            placeholder='E-mail'
+            placeholder={t('login.form1.placeholder1')}
           />
           <Error error={errors.email} touched={touched.email} />
         </div>
@@ -58,7 +62,7 @@ function LoginForm1() {
             value={values.password}
             onBlur={handleBlur}
             autoComplete='off'
-            placeholder='Password'
+            placeholder={t('login.form1.placeholder2')}
           />
           <Error error={errors.password} touched={touched.password} />
         </div>
@@ -67,7 +71,7 @@ function LoginForm1() {
           {isLoading ? (
             <CircularProgress color='secondary' size={20} />
           ) : (
-            "Login"
+            t('login.button')
           )}
         </button>
       </form>

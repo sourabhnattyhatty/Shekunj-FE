@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useTranslation } from "react-i18next";
 
 import Google from "../../assets/images/login/google.png";
 import Or from "../../assets/images/login/or.png";
@@ -28,6 +29,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { isLoading } = useSelector((state) => state.authReducer);
+  const { t } = useTranslation();
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -53,18 +55,18 @@ const LoginForm = () => {
   return (
     <>
       <div className='login_form'>
-        <h2>Signup on Shekunj </h2>
+        <h2>{t("signup.heading")}</h2>
         <p>
-          Already have an account?{" "}
+          {t("signup.content")}{" "}
           <Link to='/login' className='register'>
             {" "}
-            &nbsp; LOGIN NOW{" "}
+            &nbsp; {t('signup.loginLink')}{" "}
           </Link>
         </p>
 
         <div className='text-center'>
           <button className='btn btn-google'>
-            <img src={Google} alt='...' className='mr-2' /> Register with Google
+            <img src={Google} alt='...' className='mr-2' /> {t('login.google')}
           </button>
 
           <div className='or'>
@@ -82,7 +84,7 @@ const LoginForm = () => {
               value={values.name}
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder='Name'
+              placeholder={t('signup.placeholder1')}
             />
 
             <Error error={errors.name} touched={touched.name} />
@@ -112,14 +114,14 @@ const LoginForm = () => {
               value={values.email}
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder='Email'
+              placeholder={t('signup.placeholder2')}
             />
             <Error error={errors.email} touched={touched.email} />
           </div>
 
           <div className='form-group'>
             <div className='ver'>
-              <span>Verify</span>
+              <span>{t('signup.verify')}</span>
               <input
                 name='contact'
                 type='number'
@@ -127,7 +129,7 @@ const LoginForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 autoComplete='off'
-                placeholder='Mobile Number'
+                placeholder={t('signup.placeholder3')}
               />
             </div>
             <Error error={errors.contact} touched={touched.contact} />
@@ -140,7 +142,7 @@ const LoginForm = () => {
               className='form-control'
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder='OTP'
+              placeholder={t('signup.placeholder4')}
             />
             <Error
               error={errors.confirmPassword}
@@ -155,7 +157,7 @@ const LoginForm = () => {
               className='form-control'
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder='Password'
+              placeholder={t('signup.placeholder5')}
             />
             <Error
               error={errors.confirmPassword}
@@ -166,7 +168,7 @@ const LoginForm = () => {
           <div className='rad_set'>
             <div className='radio-with-Icon'>
               <p className='gender'>
-                Gender <span>*</span>
+              {t('signup.label6.placeholder')} <span>*</span>
               </p>
               <p className='radioOption-Item'>
                 <input
@@ -180,7 +182,7 @@ const LoginForm = () => {
                   <img src={inactive} alt='' srcset='' />
                 </label>
               </p>
-              <p className='fel'>Female</p>
+              <p className='fel'>{t('signup.label6.1')}</p>
 
               <p className='radioOption-Item'>
                 <input
@@ -194,7 +196,7 @@ const LoginForm = () => {
                   <img src={inactive} alt='' srcset='' />
                 </label>
               </p>
-              <p className='male'>Male</p>
+              <p className='male'>{t('signup.label6.2')}</p>
             </div>
           </div>
 
@@ -202,16 +204,16 @@ const LoginForm = () => {
             {isLoading ? (
               <CircularProgress color='secondary' size={20} />
             ) : (
-              "Signup"
+              t('signup.button')
             )}
           </button>
         </form>
 
         <div className='text-center'>
           <p className='policy_para'>
-            Please read our <a href='#!'> Privacy Notice </a> ,{" "}
-            <a href='#!'> Cookie Notice </a> and <a href='#!'> Legal terms </a>
-            to understand how we use your personal data.
+            {t('login.T&C.content1')} <a href='#!'> {t('login.T&C.link1')} </a> ,{" "}
+            <a href='#!'> {t('login.T&C.link2')} </a> {t('login.T&C.content2')} <a href='#!'> {t('login.T&C.link3')} </a>
+            {t('login.T&C.content3')}
           </p>
         </div>
       </div>

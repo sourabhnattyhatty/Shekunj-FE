@@ -1,24 +1,72 @@
 {
     "login" : {
-        "heading" : "Login",
-        "label1" : "E-mail address",
-        "label2" : "Password",
-        "button" : "Submit",
-        "forgotLink" : "Forgot Password?",
-        "content" : "Not a member ? ",
-        "signupLink" : "Sign up now"
+        "authContent" : {
+            "heading" : "Register for Easy & Real Learning to make you Job Ready",
+            "content1" : {
+                "heading" : "Practical Focused Approach",
+                "cont" : "We believe Why is more important than How. You may know how to use a tool but you will only learn why it will work for the end-users when you engage in practicals under the guidance of mentors who have done 100s of projects for their clients."
+            },
+            "content2" : {
+                "heading" : "Get real work experience",
+                "cont" : "Our Master’s Program does not complete without an Internship because we want you to learn how Industry works."
+            },
+            "content3" : {
+                "heading" : "In Hinglish",
+                "cont" : "All our courses are in spoken language i.e Hindi + English. These tools or subjects can be a little tricky or complicated but our lectures are very simple to understand."
+            }
+        },
+        "heading" : "Login On Shekunj",
+        "tabLabel" : {
+            "1" : "E-MAIL",
+            "2" : "MOBILE"
+        },
+        "form1":{
+            "placeholder1" : "E-mail",
+            "placeholder2" : "Password",
+            "emailError" : {
+                "invalid" : "Invalid email",
+                "required" : "Email is required"
+            },
+            "passError" : {
+                "min" : "At least 6 characters",
+                "required" : "Password is required"
+            }
+        },
+        "form2":{
+            "placeholder1" : "Mobile",
+            "placeholder2" : "Password",
+            "contactError" : "Mobile number is required"
+        },
+        "button" : "Login",
+        "content" : "Don't have an account?",
+        "signupLink" : "REGISTER HERE",
+        "T&C" : {
+            "content1" : "Please read our",
+            "content2" : "and",
+            "content3" : "to understand how we use your personal data.",
+            "link1" : "Privacy Notice",
+            "link2" : "Cookie Notice",
+            "link3" : "Legal terms"
+        },
+        "google" : "Register with Google"
     },
 
     "signup" : {
-        "heading" : "Signup",
-        "label1" : "Name",
-        "label2" : "Contact",
-        "label3" : "E-mail address",
-        "label4" : "Password",
-        "label4Placeholder" : "6 + Characters",
-        "button" : "Create Account",
-        "content" : "Already member ?",
-        "loginLink" : "Login now"
+        "heading" : "Signup On Shekunj",
+        "placeholder1" : "Name",
+        "placeholder2" : "E-mail",
+        "placeholder3" : "Mobile Number",
+        "verify" : "Verify",
+        "placeholder4" : "OTP",
+        "placeholder5" : "Password",
+        "label6" : {
+            "placeholder" : "Gender",
+            "1" : "Female",
+            "2" : "Male"
+        },
+        "button" : "Signup",
+        "content" : "Already have a account ?",
+        "loginLink" : "LOGIN NOW"
     },
 
     "forgot" : {
@@ -47,7 +95,7 @@
 
     "header" : {
         "searchPlaceholder" : "Career guidence, Online Courses, Success stories",
-        "courseButton" : "Login/Register",
+        "authButton" : "Login/Register",
         "heading" : {
             "1" : "About",
             "2" : "Courses",
@@ -79,6 +127,54 @@
                 "2" : "Privacy Policy",
                 "3" : "Sitemap"
             }
+        }
+    },
+
+    "homePage" : {
+        "mainSlider":{
+            "heading" : {
+                "1":"Anytime, anywhere, Learn on your schedule from any device",
+                "2":"Anytime, anywhere, Learn on your schedule from any device",
+                "3": {
+                    "3.1" : "OWN YOUR FUTURE BY",
+                    "3.2" : "Learning Skills"
+                }
+            },
+            "button" : "Start Course"
+        },
+        "carousel1" : {
+            "heading" : {
+                "1" : "Our",
+                "2" : "Most Popular Courses"
+            }
+        },
+        "carousel2" : {
+            "heading" : {
+                "1" : "CHALLENGING",
+                "2" : "Online Tests"
+            }
+        },
+        "resume" : {
+            "heading" : "Design your resume in real time and download a print-reday PDF.",
+            "button" : "DESIGN MY RESUME"
+        },
+        "jobopportunity" : {
+            "heading" :"Grab job Opportunities...",
+            "button" : "view all job opportunities"
+        },
+        "community" : {
+            "heading" : "Shekunj Career Development Community",
+            "button" : "Start Course"
+        },
+        "certificate" : {
+            "heading" : {
+                "1" : "Gain Industry-Recognized",
+                "2" : "UX Certificates"
+            }
+        },
+        "highlightStudents" : {
+            "heading" : "Our highlighted students revealing",
+            "button" : "Learn more"
         }
     }
 }

@@ -121,7 +121,6 @@ div.radio-with-Icon p.radioOption-Item input[type="radio"]:checked ~ label img{
 div.radio-with-Icon p.radioOption-Item input[type="radio"]:checked ~ label {
   opacity: 1;
   border: 2px solid #de1831;
-  /* background-color: #de1831; */
   background-image: url("../../assets/images/login/active.png");
   background-size: cover;
   background-repeat: no-repeat;
