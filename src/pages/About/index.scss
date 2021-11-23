@@ -2,7 +2,7 @@ section.about_ban {
   width: 100%;
   height: 960px;
   background-image: url("../../assets/images/About/Banner.png");
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
 }
 .about_Con h2 {
@@ -71,8 +71,4 @@ section.about_testim {
   }
 }
 
-@media only screen and (max-width: 1320px) {
-  section.about_ban {
-    height: 800px;
-  }
-}
+

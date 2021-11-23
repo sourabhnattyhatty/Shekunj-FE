@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
-
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import Google from "../../assets/images/login/google.png";
 import Or from "../../assets/images/login/or.png";
 import { onSignup } from "../../store/auth/action";
@@ -99,13 +99,13 @@ const LoginForm = () => {
               value={values.name}
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder='Last Name'
+              placeholder='Surname'
             />
 
             <Error error={errors.name} touched={touched.name} />
           </div>
 
-          <div className='form-group'>
+          <div className='form-group rem_s'>
             <input
               name='email'
               type='email'
@@ -151,6 +151,7 @@ const LoginForm = () => {
           </div>
 
           <div className='form-group'>
+            
             <input
               name='confirmPassword'
               type='password'
@@ -159,6 +160,7 @@ const LoginForm = () => {
               onBlur={handleBlur}
               placeholder={t('signup.placeholder5')}
             />
+            <p className="eye"><VisibilityIcon /></p>
             <Error
               error={errors.confirmPassword}
               touched={touched.confirmPassword}
