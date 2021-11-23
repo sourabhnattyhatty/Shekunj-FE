@@ -1,0 +1,19 @@
+.back_to_top {
+  position: fixed;
+  padding: 7px;
+  height: 20px;
+  left: 95%;
+  bottom: 40px;
+  height: 35px;
+  font-size: 3rem;
+  z-index: 100;
+  color: #ec498a;
+  background-color: rgba(255, 182, 193, 0.5);
+  border-radius: 5px;
+  font-size: 38px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 182, 193, 0.8);
+  }
+}

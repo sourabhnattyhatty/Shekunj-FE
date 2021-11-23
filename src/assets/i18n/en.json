@@ -176,5 +176,23 @@
             "heading" : "Our highlighted students revealing",
             "button" : "Learn more"
         }
+    },
+
+    "aboutPage" : {
+        "heading" : "Empowering Women to Empower the Next Generation",
+        "content1" : "SheKunj’s cutting-edge learning and examination platform has been designed to equip modern-age females with in-demand tech and non-tech skills. By providing the right information to women, we help them get placed, develop their personalities, and explore career pathways.",
+        "content2" : "Armed with the best pedagogy experts, learning modules, and certificate courses, SheKunj is determined to impart practical training and educate women. With the right blend of tech and non-tech skills, our drive is to make a community of motivated, highly-skilled and knowledgeable women who build inspiring careers and lead with full gusto.",
+        "content3" : "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality."
+    },
+
+    "careerPage" : {
+        "heading" : "Start The Journey Of Education",
+        "searchPlaceholder" : "Serach...",
+        "carousel1" : {
+            "heading" : {
+                "1" : "Our",
+                "2" : "Featured Colleges"
+            }
+        }
     }
 }

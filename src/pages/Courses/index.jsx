@@ -1,6 +1,9 @@
 import React from 'react'
+
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import ScrollToTop from '../../components/ScrollToTop'
+
 import one from '../../assets/images/Courses/01.png'
 import two from '../../assets/images/Courses/02.png'
 import three from '../../assets/images/Courses/03.png'
@@ -13,12 +16,13 @@ import level from "../../assets/images/level.png";
 import list from "../../assets/images/list.png";
 import star from "../../assets/images/Star 2.png";
 import timer from "../../assets/images/timer.png";
+
 import './index.scss'
 
-const index = (props) => {
+const Index = (props) => {
     return (
         <div>
-            <Header loginPage={true} />
+            <Header loginPage={true} page="courses"/>
             <section className="Cors_sec">
                 <div className="container">
                     <div className="row">
@@ -74,10 +78,11 @@ const index = (props) => {
                 </div>
             </section>
 
+            <ScrollToTop/>    
 
             <Footer loginPage={false} />
         </div>
     )
 }
 
-export default index
+export default Index

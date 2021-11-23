@@ -1,6 +1,10 @@
 import React from 'react'
+
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import Carousel from "../../components/Carousel";
+import ScrollToTop from '../../components/ScrollToTop'
+
 import search from '../../assets/images/Career/search.png'
 import Choose1 from "../../assets/images/Career/Choose1.png"
 import Choose2 from "../../assets/images/Career/Choose2.png"
@@ -11,15 +15,16 @@ import Choose6 from "../../assets/images/Career/Choose6.png"
 import Rankings from "../../assets/images/Career/Rankings.png"
 import exams from "../../assets/images/Career/exams.png"
 import exams_icon from "../../assets/images/Career/exams-icon.png"
-import './index.scss';
-import Carousel from "../../components/Carousel";
+
+
 import "../HomePage/index.scss";
+import './index.scss';
 
 
 
 
 
-const index = () => {
+const Index = () => {
     return (
         <div>
             <Header loginPage={true} page="career"/>
@@ -219,7 +224,7 @@ const index = () => {
 
 
 
-
+            <ScrollToTop/>
 
 
             <Footer loginPage={false} />
@@ -228,4 +233,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index

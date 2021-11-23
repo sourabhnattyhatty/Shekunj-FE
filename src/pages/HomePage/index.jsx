@@ -18,6 +18,7 @@ import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./index.scss";
 import "animate.css";
 import "aos/dist/aos.css";
+import ScrollToTop from "../../components/ScrollToTop";
 
 function HomePage() {
 
@@ -381,6 +382,8 @@ function HomePage() {
           </div>
         </div>
       </section>
+      
+      <ScrollToTop/>
 
       <Footer loginPage={false} />
     </div>

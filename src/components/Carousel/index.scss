@@ -12,14 +12,14 @@
   transition-duration: 1s;
 }
 .item:hover {
-  margin-top: -20px;
+  margin-top: -10px;
   transition: 1s;
   height: 100%;
   cursor: pointer;
 }
 .owl-stage-outer {
   position: relative;
-  overflow: visible !important;
+  // overflow: visible !important;
   -webkit-transform: translate3d(0px, 0px, 0px);
   overflow-x: clip !important;
 }
@@ -324,3 +324,4 @@ margin-bottom: 50px;
 .owl-carousel .owl-nav.disabled, .owl-carousel .owl-dots.disabled {
   display: block !important;
 }
+
