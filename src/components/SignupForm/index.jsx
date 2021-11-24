@@ -8,21 +8,22 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import Google from "../../assets/images/login/google.png";
 import Or from "../../assets/images/login/or.png";
-import { onSignup } from "../../store/auth/action";
+import { contactVerify, onSignup } from "../../store/auth/action";
 import Error from "../Error";
 import inactive from "../../assets/images/login/inactive.png";
 import { CircularProgress } from "@mui/material";
+import { toast } from "react-toastify";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
-  surname: Yup.string().required("Surname is required"),
+  last_name: Yup.string().required("Surname is required"),
   contact: Yup.number().required("Contact is required").positive(),
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string()
     .min(6, "At least 6 characters")
     .required("Password is required"),
   otp: Yup.number().required("OTP is required"),
-  gender : Yup.string().required("Gender is required")
+  gender: Yup.string().required("Gender is required"),
 });
 
 const LoginForm = () => {
@@ -30,31 +31,38 @@ const LoginForm = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const { isLoading } = useSelector((state) => state.authReducer);
+  const { isLoading, verifyLoading } = useSelector(
+    (state) => state.authReducer,
+  );
   const { t } = useTranslation();
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
       initialValues: {
         name: "",
-        surname : "",
+        last_name: "",
         contact: "",
         email: "",
         password: "",
         otp: "",
-        gender : ""
+        gender: "female",
       },
       validationSchema,
       onSubmit(values) {
-        const data = {
-          email: values.email,
-          name: values.name,
-          password: values.password,
-          contact: values.contact,
-        };
-        dispatch(onSignup(data, history));
+        dispatch(onSignup(values, history));
       },
     });
+
+  const handleVerify = (e) => {
+    const contact = e.currentTarget.nextElementSibling.value;
+    if (contact === "") {
+      toast.error("Please provide contact number.");
+    } else if (contact.length > 10 || contact.length < 10) {
+      toast.error("Please provide valid contact number.");
+    } else {
+      dispatch(contactVerify({ contact }));
+    }
+  };
 
   return (
     <>
@@ -96,17 +104,17 @@ const LoginForm = () => {
 
           <div className='form-group'>
             <input
-              name='surname'
+              name='last_name'
               type='text'
               className='form-control'
               onChange={handleChange}
-              value={values.surname}
+              value={values.last_name}
               onBlur={handleBlur}
               autoComplete='off'
               placeholder={t("signup.placeholder6")}
             />
 
-            <Error error={errors.surname} touched={touched.surname} />
+            <Error error={errors.last_name} touched={touched.last_name} />
           </div>
 
           <div className='form-group rem_s'>
@@ -125,7 +133,17 @@ const LoginForm = () => {
 
           <div className='form-group'>
             <div className='ver'>
-              <span>{t("signup.verify")}</span>
+              <span onClick={handleVerify}>
+                {verifyLoading ? (
+                  <CircularProgress
+                    color='secondary'
+                    size={20}
+                    style={{ marginTop: "8px" }}
+                  />
+                ) : (
+                  t("signup.verify")
+                )}
+              </span>
               <input
                 name='contact'
                 type='number'
@@ -141,7 +159,7 @@ const LoginForm = () => {
 
           <div className='form-group'>
             <input
-              name='OTP'
+              name='otp'
               type='number'
               className='form-control'
               value={values.otp}
@@ -165,10 +183,7 @@ const LoginForm = () => {
               {visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </p>
 
-            <Error
-              error={errors.password}
-              touched={touched.password}
-            />
+            <Error error={errors.password} touched={touched.password} />
           </div>
 
           <div className='rad_set'>
@@ -183,7 +198,7 @@ const LoginForm = () => {
                   id='BannerType1'
                   value={values.gender}
                   className='ng-valid ng-dirty ng-touched ng-empty'
-                  defaultChecked={values.gender=== "female"}
+                  defaultChecked={values.gender === "female"}
                 />
                 <label for='BannerType1'>
                   <img src={inactive} alt='' srcset='' />
@@ -206,10 +221,7 @@ const LoginForm = () => {
               </p>
               <p className='male'>{t("signup.label6.2")}</p>
             </div>
-            <Error
-              error={errors.gender}
-              touched={touched.gender}
-            />
+            <Error error={errors.gender} touched={touched.gender} />
           </div>
 
           <button type='submit' className='btn btn_login w-100 mt-3'>

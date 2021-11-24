@@ -2,6 +2,7 @@ import { authTypes } from "./types";
 
 const initialState = {
   isLoading: false,
+  verifyLoading : false,
   user: {},
   isAuth: false,
   error: null,
@@ -53,22 +54,22 @@ export const authReducer = (state = initialState, action) => {
         isAuth : false,
         error : action.payload
       }
-    case authTypes.EMAIL_VERIFY_REQUEST:
+    case authTypes.CONTACT_VERIFY_REQUEST:
       return{
         ...state,
-        isLoading : true,
+        verifyLoading : true,
         error : null
       }
-    case authTypes.EMAIL_VERIFY_FINISH:
+    case authTypes.CONTACT_VERIFY_FINISH:
       return{
         ...state,
-        isLoading : false,
+        verifyLoading : false,
         error : null
       }
-    case authTypes.EMAIL_VERIFY_FAIL:
+    case authTypes.CONTACT_VERIFY_FAIL:
       return{
         ...state,
-        isLoading : false,
+        verifyLoading : false,
         user : {},
         isAuth : false,
         error : action.payload
