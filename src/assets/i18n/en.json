@@ -59,6 +59,7 @@
         "verify" : "Verify",
         "placeholder4" : "OTP",
         "placeholder5" : "Password",
+        "placeholder6" : "Surname",
         "label6" : {
             "placeholder" : "Gender",
             "1" : "Female",
@@ -187,11 +188,17 @@
 
     "careerPage" : {
         "heading" : "Start The Journey Of Education",
-        "searchPlaceholder" : "Serach...",
+        "searchPlaceholder" : "Search...",
         "carousel1" : {
             "heading" : {
-                "1" : "Our",
+                "1" : "Most",
                 "2" : "Featured Colleges"
+            }
+        },
+        "carousel2" : {
+            "heading" : {
+                "1" : "Most",
+                "2" : "Featured Schools"
             }
         }
     }

@@ -69,7 +69,7 @@ function Carousel(props) {
         <OwlCarousel
           className='owl-theme'
           loop
-          margin={200}
+          margin={210}
           nav={true}
           items={4}
           dots={false}

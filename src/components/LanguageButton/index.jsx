@@ -5,7 +5,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import LanguageIcon from "@mui/icons-material/Language";
-// import useStyle from './muiStyle'
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
@@ -59,7 +58,7 @@ function ChangeLanguageButton() {
         onClick={handleClick}
         startIcon={<LanguageIcon />}
       >
-        {language === "en" ? "English" : "Hindi"}
+        {language.startsWith("en")  ? "English" : "Hindi"}
       </Button>
       <Menu
         id='fade-menu'
