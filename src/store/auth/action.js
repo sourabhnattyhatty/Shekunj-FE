@@ -28,13 +28,11 @@ export const onSignup = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.SIGNUP_REQUEST });
     const res = await httpServices.post("authentication/register/", values);
-    debugger
     dispatch({ type: authTypes.SIGNUP_FINISH, payload: values });
     toast.success("Registration Successfully", toasterConfig);
     history.push("/login");
   } catch (error) {
     dispatch({ type: authTypes.SIGNUP_FAIL });
-    debugger
     if (error?.status === 400) {
       toast.error(error.data.errors.email, toasterConfig);
     } else if (error?.status === 500) {
