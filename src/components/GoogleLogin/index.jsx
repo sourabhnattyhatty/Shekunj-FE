@@ -13,14 +13,15 @@ function GoogleLoginComponent({ showOr }) {
   const { t } = useTranslation();
   const responseGoogle = (res) => {
     dispatch(registerWithGoogle({auth_token : res.tokenId}))
+    console.log(res.tokenId)
   };
   return (
     <>
       <div className='text-center'>
         <GoogleLogin
           clientId={clientId}
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
+          onSuccess={(res) => responseGoogle(res)}
+          onFailure={(res) => responseGoogle(res)}
           render={(renderProps) => (
             <>
               <button
