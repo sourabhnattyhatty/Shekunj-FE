@@ -15,7 +15,8 @@ footer ul li {
   margin-bottom: 10px;
 }
 footer ul li a {
-  font-weight: 300;
+  font-family: 'SegoeUI_medium';
+  font-weight: normal;
   font-size: 14px;
   line-height: 18px;
   color: #000000;
@@ -26,6 +27,7 @@ footer ul li a:hover {
   text-decoration: none;
 }
 .bottom-footer p {
+  font-family: 'SegoeUI_medium';
   font-weight: 300;
   font-size: 14px;
   line-height: 21px;

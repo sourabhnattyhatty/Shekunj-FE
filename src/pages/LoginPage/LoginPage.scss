@@ -6,13 +6,15 @@
     padding: 15px 22px;
   }
   
-  .login_form h2{
+  .login_form h2 {
+    font-family: 'SegoeUI_medium';
     font-weight: 600;
     font-size: 24px;
     line-height: 35px;
     text-transform: capitalize;
     color: #152523;
-  }
+    font-style: normal;
+}
   .login_form p{
     font-weight: normal;
     font-size: 14px;
