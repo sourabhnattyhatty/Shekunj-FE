@@ -13,6 +13,7 @@ function GoogleLoginComponent({ showOr }) {
   const { t } = useTranslation();
   const responseGoogle = (res) => {
     dispatch(registerWithGoogle({auth_token : res.tokenId}))
+    console.log(res.tokenId)
   };
   return (
     <>

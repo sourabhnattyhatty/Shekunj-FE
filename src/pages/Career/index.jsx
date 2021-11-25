@@ -119,7 +119,7 @@ const Index = () => {
                         <a
                           data-aos='zoom-in'
                           href='#!'
-                          class='learn_more aos-init aos-animate'
+                          className='learn_more aos-init aos-animate'
                         >
                           {t('homePage.highlightStudents.button')}
                         </a>
@@ -146,7 +146,7 @@ const Index = () => {
       <section className='best_edu'>
         <div className='container'>
           <div className='edu_tit'>
-            <h2>Choose the best education</h2>
+            <h2>{t('careerPage.heading3')}</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
               gravida tellus leo risus. Proin sagittis nec nisi tortor nisl
@@ -158,7 +158,7 @@ const Index = () => {
             <div className='col-md-7'>
               <div className='ranking'>
                 <h3>
-                  <img src={Rankings} alt='' /> Rankings
+                  <img src={Rankings} alt='' /> {t('careerPage.ranking')}
                 </h3>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
@@ -186,7 +186,7 @@ const Index = () => {
 
               <div className='ranking exms'>
                 <h3>
-                  <img src={exams_icon} alt='' /> Exams
+                  <img src={exams_icon} alt='' /> {t('careerPage.exam')}
                 </h3>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi

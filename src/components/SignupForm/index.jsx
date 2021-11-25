@@ -22,7 +22,7 @@ const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
   last_name: Yup.string().required("Surname is required"),
   contact: Yup.number().required("Contact is required").positive(),
-  email: Yup.string().email("Invalid email").required("Email is required"),
+  email: Yup.string().email("Invalid email"),
   password: Yup.string()
     .min(6, "At least 6 characters")
     .required("Password is required"),
