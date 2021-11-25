@@ -20,8 +20,8 @@ function GoogleLoginComponent({ showOr }) {
       <div className='text-center'>
         <GoogleLogin
           clientId={clientId}
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
+          onSuccess={(res) => responseGoogle(res)}
+          onFailure={(res) => responseGoogle(res)}
           render={(renderProps) => (
             <>
               <button
