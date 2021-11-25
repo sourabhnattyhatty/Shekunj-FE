@@ -1,9 +1,9 @@
-body{
+body {
   overflow-x: hidden;
 }
 .same_padding {
-    padding: 100px 0px;
-  }
+  padding: 100px 0px;
+}
 /* carousel */
 #myCarousel .carousel-item {
   position: relative;
@@ -96,75 +96,77 @@ body{
 #myCarousel .carousel-item2 p {
   color: #757984;
 }
-#myCarousel .slick-next, #myCarousel .slick-prev{
-    top: 52%;
+#myCarousel .slick-next,
+#myCarousel .slick-prev {
+  top: 52%;
 }
 #myCarousel .slick-next {
   right: 80px;
 }
-#myCarousel .slick-prev,#myCarousel .slick-next  {
-    height: 80px;
-    width: 80px;
-    text-align: center;
-    border: 1px solid transparent;
-    border-radius: 100px;
-    transition: 0.25s ease;
+#myCarousel .slick-prev,
+#myCarousel .slick-next {
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 100px;
+  transition: 0.25s ease;
 }
-#myCarousel .slick-prev:hover  {
-    border: 1px solid #ec498a;
+#myCarousel .slick-prev:hover {
+  border: 1px solid #ec498a;
 }
-#myCarousel .slick-next:hover  {
-    border: 1px solid #ec498a;
-
+#myCarousel .slick-next:hover {
+  border: 1px solid #ec498a;
 }
 #myCarousel .slick-prev {
-    left: 50px;
+  left: 50px;
 }
-#myCarousel .slick-prev:before{
-    content: "";
-    background-image: url("../../assets/icons/left_icon.png");
-    border: 1px solid #EC498A;
-    width: 60px;
-    height: 60px;
-    background-size: auto;
-    position: absolute;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 100px;
-    padding: 20px;
-    left: 0px;
-    top: 10px;
-    right: 0;
-    margin: auto;
+#myCarousel .slick-prev:before {
+  content: "";
+  background-image: url("../../assets/icons/left_icon.png");
+  border: 1px solid #ec498a;
+  width: 60px;
+  height: 60px;
+  background-size: auto;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  padding: 20px;
+  left: 0px;
+  top: 10px;
+  right: 0;
+  margin: auto;
 }
-#myCarousel .slick-prev:hover:before, #myCarousel .slick-next:hover:before{
-    background-color: #EC498A;
-    opacity: 1;
+#myCarousel .slick-prev:hover:before,
+#myCarousel .slick-next:hover:before {
+  background-color: #ec498a;
+  opacity: 1;
 }
-#myCarousel .slick-prev:hover:before{
-  background-image: url('../../assets/icons/arrow_left.png');
+#myCarousel .slick-prev:hover:before {
+  background-image: url("../../assets/icons/arrow_left.png");
   background-repeat: no-repeat;
 }
-#myCarousel .slick-next:hover:before{
-    background-image: url('../../assets/icons/right_icon.png');
-    background-repeat: no-repeat;
+#myCarousel .slick-next:hover:before {
+  background-image: url("../../assets/icons/right_icon.png");
+  background-repeat: no-repeat;
 }
-#myCarousel .slick-next:before{
-    content: "";
-    background-image: url("../../assets/icons/right_icons.png");
-    border: 1px solid #EC498A;
-    width: 60px;
-    height: 60px;
-    background-size: auto;
-    position: absolute;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 100px;
-    padding: 20px;
-    left: 0px;
-    top: 10px;
-    right: 0;
-    margin: auto;
+#myCarousel .slick-next:before {
+  content: "";
+  background-image: url("../../assets/icons/right_icons.png");
+  border: 1px solid #ec498a;
+  width: 60px;
+  height: 60px;
+  background-size: auto;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  padding: 20px;
+  left: 0px;
+  top: 10px;
+  right: 0;
+  margin: auto;
 }
 #myCarousel .slick-prev,
 #myCarousel .slick-next {
@@ -174,264 +176,264 @@ body{
 
 /*resume*/
 .resume {
-    position: relative;
-    background-image: url("../../assets/images/resumebg.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 500px;
-    padding: 48px 58px;
-    margin-bottom: 50px;
-  }
-  .resume .btn.btn-resume {
-    font-family: SegoeUI_bold;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    color: #ec498a;
-    background: #ffffff;
-    border: 1px solid #ffffff;
-    border-radius: 16px;
-    transition: 0.25s ease;
-    padding: 13px 30px;
-    transition-duration: 1s;
-    transition-timing-function: linear;
-    // height: 56px;
-  }
-  .resume h4 {
-    font-family: SegoeUI_bold;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 50px;
-    color: #000000;
-    margin-top: 120px;
-  }
-  .resume .btn.btn-resume:hover {
-    color: #ffffff;
-    background: #ec498a;
-    border-color: #ec498a;
-  }
-  .resume .resumeimg {
-    position: absolute;
-    right: 70px;
-    bottom: 0px;
-    width: 560px;
-  }
-  .resume .resumeimg img {
-    max-width: 100%;
-  }
-
-  /*job-opprtunity*/
-.job-opprtunity-bg {
-    position: relative;
-    background-image: url("../../assets/images/joinbg.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    padding: 65px 79px;
-    height: 348px;
-  }
-  .job-opprtunity-bg h3 {
-    font-family: 'Sora bold';
-    font-weight: bold;
-    font-style: normal;
-    font-size: 40px;
-    line-height: 60px;
-    text-transform: capitalize;
-    color: #ffffff;
+  position: relative;
+  background-image: url("../../assets/images/resumebg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 500px;
+  padding: 48px 58px;
+  margin-bottom: 50px;
 }
-  .job-opprtunity-bg p {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #ffffff;
-  }
-  .job-opprtunity-bg .btn.btn-job {
-    font-family: 'SegoeUI_bold';
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    text-transform: capitalize;
-    color: #323232;
-    background: #ffffff;
-    border-radius: 20px;
-    transition: 0.25s ease;
-    padding: 12px 23px;
-    transition-duration: 1s;
-    transition-timing-function: linear;
-  }
-  .job-opprtunity-bg .btn.btn-job:hover {
-    color: #ffffff;
-    background: #ec498a;
-  }
-  
-  .job-opprtunity-bg .jobimg {
-    position: absolute;
-    right: 0px;
-    top: -75px;
-  }
-  .job-opprtunity-bg .jobimg img {
-    max-width: 100%;
-  }
+.resume .btn.btn-resume {
+  font-family: SegoeUI_bold;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #ec498a;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 16px;
+  transition: 0.25s ease;
+  padding: 13px 30px;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+  // height: 56px;
+}
+.resume h4 {
+  font-family: SegoeUI_bold;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 50px;
+  color: #000000;
+  margin-top: 120px;
+}
+.resume .btn.btn-resume:hover {
+  color: #ffffff;
+  background: #ec498a;
+  border-color: #ec498a;
+}
+.resume .resumeimg {
+  position: absolute;
+  right: 70px;
+  bottom: 0px;
+  width: 560px;
+}
+.resume .resumeimg img {
+  max-width: 100%;
+}
 
-  /*career development*/
+/*job-opprtunity*/
+.job-opprtunity-bg {
+  position: relative;
+  background-image: url("../../assets/images/joinbg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 65px 79px;
+  height: 348px;
+}
+.job-opprtunity-bg h3 {
+  font-family: "Sora bold";
+  font-weight: bold;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 60px;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+.job-opprtunity-bg p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+}
+.job-opprtunity-bg .btn.btn-job {
+  font-family: "SegoeUI_bold";
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #323232;
+  background: #ffffff;
+  border-radius: 20px;
+  transition: 0.25s ease;
+  padding: 12px 23px;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+}
+.job-opprtunity-bg .btn.btn-job:hover {
+  color: #ffffff;
+  background: #ec498a;
+}
+
+.job-opprtunity-bg .jobimg {
+  position: absolute;
+  right: 0px;
+  top: -75px;
+}
+.job-opprtunity-bg .jobimg img {
+  max-width: 100%;
+}
+
+/*career development*/
 .career_community {
-    background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
-  }
-  .career_community h3 {
-    font-family: SegoeUI_bold;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 40px;
-    line-height: 60px;
-    text-align: center;
-    color: #ffffff;
+  background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
+}
+.career_community h3 {
+  font-family: SegoeUI_bold;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 60px;
+  text-align: center;
+  color: #ffffff;
 }
 .career_community p {
-  font-family: 'SegoeUI_medium';
+  font-family: "SegoeUI_medium";
   font-weight: normal;
   font-size: 20px;
   line-height: 30px;
   text-align: center;
   color: #000000;
 }
-  .community-img img {
-    max-width: 100%;
-  }
-  .btn.btn-start-course {
-    background: #ec498a;
-    border-radius: 20px;
-    font-family: 'SegoeUI_bold';
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    color: #ffffff;
-    transition-duration: 1s !important;
-    transition-timing-function: linear !important;
-    width: 100%;
-    text-align: center;
-    height: 56px;
-  }
-  .btn.btn-start-course:hover {
-    background: #fff;
-    color: #ec498a;
-    transition: 1s;
-  }
-  
-  /*certificate*/
-  .certificate {
-    background: #f8f8f8;
-    position: relative;
-    background-image: url("../../assets/images/bgcertificate.png");
-    background-repeat: no-repeat;
-    background-size: 100% 103%;
-    height: 550px;
-  }
-  .certificate_img img {
-    max-width: 100%;
-  }
-  .certificate h4 {
-    font-family: 'SegoeUI_bold';
-    font-weight: bold;
-    font-style: normal;
-    font-size: 33px;
-    line-height: 52px;
-    color: #000000;
+.community-img img {
+  max-width: 100%;
+}
+.btn.btn-start-course {
+  background: #ec498a;
+  border-radius: 20px;
+  font-family: "SegoeUI_bold";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #ffffff;
+  transition-duration: 1s !important;
+  transition-timing-function: linear !important;
+  width: 100%;
+  text-align: center;
+  height: 56px;
+}
+.btn.btn-start-course:hover {
+  background: #fff;
+  color: #ec498a;
+  transition: 1s;
+}
+
+/*certificate*/
+.certificate {
+  background: #f8f8f8;
+  position: relative;
+  background-image: url("../../assets/images/bgcertificate.png");
+  background-repeat: no-repeat;
+  background-size: 100% 103%;
+  height: 550px;
+}
+.certificate_img img {
+  max-width: 100%;
+}
+.certificate h4 {
+  font-family: "SegoeUI_bold";
+  font-weight: bold;
+  font-style: normal;
+  font-size: 33px;
+  line-height: 52px;
+  color: #000000;
 }
 .certificate p {
-  font-family: 'SegoeUI_medium';
+  font-family: "SegoeUI_medium";
   font-weight: normal;
   font-size: 20px;
   line-height: 30px;
   color: #828282;
 }
-  /*highlight student*/
+/*highlight student*/
 .highlight_student {
-    background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
-    position: relative;
-    z-index: 9;
-  }
-  .highlight_student h3 {
-    font-family: 'SegoeUI_bold';
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 50px;
-    display: flex;
-    align-items: center;
-    color: #fff;
+  background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
+  position: relative;
+  z-index: 9;
+}
+.highlight_student h3 {
+  font-family: "SegoeUI_bold";
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+  display: flex;
+  align-items: center;
+  color: #fff;
 }
 .highlight_student p {
-  font-family: 'SegoeUI_medium';
+  font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 22px;
   color: #595f73;
 }
-  .learn_more {
-    background: #ec498a;
-    border-radius: 10px;
-    font-family: 'SegoeUI_bold';
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 42px;
-    color: #ffffff;
-    height: 44px;
-    width: 160px;
-    transition-duration: 1s !important;
-    transition-timing-function: linear !important;
-    // transition: 0.25s ease;
-    display: inline-block;
-    text-align: center;
-    // transition-duration: 1s;
-  }
-  .learn_more:hover {
-    background: #fff;
-    color: #000;
-    text-decoration: none;
-    transition: 1s !important;
+.learn_more {
+  background: #ec498a;
+  border-radius: 10px;
+  font-family: "SegoeUI_bold";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 42px;
+  color: #ffffff;
+  height: 44px;
+  width: 160px;
+  transition-duration: 1s !important;
+  transition-timing-function: linear !important;
+  // transition: 0.25s ease;
+  display: inline-block;
+  text-align: center;
+  // transition-duration: 1s;
+}
+.learn_more:hover {
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  transition: 1s !important;
 }
 
-  /* .highlight_student .owl-slider #testimonial .owl-item:nth-of-type(1n+1){
+/* .highlight_student .owl-slider #testimonial .owl-item:nth-of-type(1n+1){
       margin-top: 50px;
   } */
-  .highlight_student .semicircle-img1 {
-    position: absolute;
-    top: -15px;
-    right: -2px;
-  }
-  .highlight_student .semicircle-img2 {
-    position: absolute;
-    bottom: 0px;
-    left: -21px;
-  }
-  .highlight_student .circle-img {
-    position: absolute;
-    bottom: -15px;
-    right: -26px;
-  }
-  .highlight_student p.para-set {
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 19px;
-    color: #404451;
-    position: absolute;
-    bottom: -35px;
-    right: -10%;
-    width: 100%;
-    margin: auto;
-  }
+.highlight_student .semicircle-img1 {
+  position: absolute;
+  top: -15px;
+  right: -2px;
+}
+.highlight_student .semicircle-img2 {
+  position: absolute;
+  bottom: 0px;
+  left: -21px;
+}
+.highlight_student .circle-img {
+  position: absolute;
+  bottom: -15px;
+  right: -26px;
+}
+.highlight_student p.para-set {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
+  color: #404451;
+  position: absolute;
+  bottom: -35px;
+  right: -10%;
+  width: 100%;
+  margin: auto;
+}
 
 // Testimonial css start
 
-  .tes_box {
-    background: #FFFFFF;
-    padding: 11px 25px;
-    box-shadow: 20px 20px 60px rgb(0 0 0 / 5%);
-    border-radius: 10px;
-    text-align: center;
-    width: 100%;
-    height: 286px;
-    position: relative;
+.tes_box {
+  background: #ffffff;
+  padding: 11px 25px;
+  box-shadow: 20px 20px 60px rgb(0 0 0 / 5%);
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  height: 286px;
+  position: relative;
 }
 .tes_box p {
   font-family: SegoeUI_bold;
@@ -440,7 +442,7 @@ body{
   font-size: 13px;
   line-height: 19px;
   text-align: center;
-  color: #BDBDBD;
+  color: #bdbdbd;
 }
 .tes_box h2 {
   font-family: SegoeUI_bold;
@@ -449,7 +451,7 @@ body{
   font-size: 13px;
   line-height: 19px;
   text-align: center;
-  color: #25243F;
+  color: #25243f;
 }
 .tes_box h6 {
   font-family: SegoeUI_bold;
@@ -458,10 +460,10 @@ body{
   font-size: 12px;
   line-height: 16px;
   text-align: center;
-  color: #3E414E;
+  color: #3e414e;
 }
 .tes_box2 {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 10px;
   width: 203px;
   float: right;
@@ -482,13 +484,13 @@ body{
   height: 131px;
   text-align: center;
   padding: 24px 12px 22px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 9px;
   position: relative;
 }
 .tes_box.tes-before::before {
   content: "";
-  background-image: url('../../assets/images/testimonial/greensemi.png');
+  background-image: url("../../assets/images/testimonial/greensemi.png");
   background-repeat: no-repeat;
   width: 65px;
   height: 61px;
@@ -498,22 +500,21 @@ body{
   z-index: -1;
 }
 .tes_box3::before {
-  content: '';
+  content: "";
   position: absolute;
   right: -50px;
   top: -20px;
-  background-image: url('../../assets/images/testimonial/orangesemi.png');
+  background-image: url("../../assets/images/testimonial/orangesemi.png");
   background-repeat: no-repeat;
   width: 65px;
   height: 61px;
   z-index: -1;
-
 }
 .tes_box.heg_cha::before {
-  content: '';
+  content: "";
   width: 100px;
   height: 100px;
-  background: #EDC988;
+  background: #edc988;
   border-radius: 50%;
   position: absolute;
   right: -50px;
@@ -530,23 +531,23 @@ body{
   margin: 0;
   color: #444851;
 }
-.tes_box3 h6{
+.tes_box3 h6 {
   font-family: SegoeUI_bold;
-font-style: normal;
-font-weight: normal;
-font-size: 12px;
-line-height: 18px;
-display: flex;
-align-items: center;
-text-align: center;
-color: #444851;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #444851;
 }
 ul.star li {
   display: inline-block;
   list-style: none;
   padding-left: 3px;
 }
-ul.star{
+ul.star {
   padding: 0;
   margin: 0;
 }
@@ -560,7 +561,7 @@ ul.star{
 .abc_box {
   width: 585px;
   height: 432px;
-  background: #EC498A;
+  background: #ec498a;
   position: relative;
   font-family: Sora;
   font-style: normal;
@@ -568,7 +569,7 @@ ul.star{
   font-size: 36px;
   line-height: 52px;
   text-transform: capitalize;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .container.Our_text p {
   font-family: SegoeUI_bold;
@@ -578,11 +579,11 @@ ul.star{
   line-height: 24px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #FBADA2;
+  color: #fbada2;
   margin: 0;
 }
 
-.container.Our_text h2{
+.container.Our_text h2 {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: bold;
@@ -592,12 +593,11 @@ ul.star{
   color: #323232;
   margin-bottom: 30px;
 }
-@media screen and (min-device-width: 50px) and (max-device-width: 767px) { 
-  #custom-search-input{
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  #custom-search-input {
     width: 100%;
   }
 }
-
 
 @media only screen and (max-width: 1280px) {
   .box {
@@ -606,19 +606,18 @@ ul.star{
   .owl-nav {
     left: -70px;
   }
-  #myCarousel .carousel-item{
+  #myCarousel .carousel-item {
     height: 100vh;
   }
   #myCarousel .slick-prev {
     left: 5px;
   }
-  #myCarousel .slick-next{
+  #myCarousel .slick-next {
     right: 10px;
   }
 
-
-.resume h4 {
-  font-size: 28px;
-  max-width: 610px;
-}
+  .resume h4 {
+    font-size: 28px;
+    max-width: 610px;
+  }
 }
