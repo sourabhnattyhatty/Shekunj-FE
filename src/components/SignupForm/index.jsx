@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import { contactVerify, onSignup } from "../../store/auth/action";
 import { useTranslation } from "react-i18next";
+
+import * as Yup from "yup";
+import Error from "../Error";
+
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import Google from "../../assets/images/login/google.png";
-import Or from "../../assets/images/login/or.png";
-import { contactVerify, onSignup } from "../../store/auth/action";
-import Error from "../Error";
-import inactive from "../../assets/images/login/inactive.png";
 import { CircularProgress } from "@mui/material";
+
+import GoogleLoginComponent from "../GoogleLogin";
+
 import { toast } from "react-toastify";
+
+import inactive from "../../assets/images/login/inactive.png";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -76,15 +80,7 @@ const LoginForm = () => {
           </Link>
         </p>
 
-        <div className='text-center'>
-          <button className='btn btn-google'>
-            <img src={Google} alt='...' className='mr-2' /> {t("login.google")}
-          </button>
-
-          <div className='or'>
-            <img src={Or} className='orimg' alt='...' />
-          </div>
-        </div>
+        <GoogleLoginComponent showOr={true} />
 
         <form onSubmit={handleSubmit}>
           <div className='form-group'>
@@ -178,6 +174,7 @@ const LoginForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               placeholder={t("signup.placeholder5")}
+              autoComplete='off'
             />
             <p className='eye' onClick={(e) => setVisible(!visible)}>
               {visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
@@ -200,8 +197,8 @@ const LoginForm = () => {
                   className='ng-valid ng-dirty ng-touched ng-empty'
                   defaultChecked={values.gender === "female"}
                 />
-                <label for='BannerType1'>
-                  <img src={inactive} alt='' srcset='' />
+                <label htmlFor='BannerType1'>
+                  <img src={inactive} alt='' srcSet='' />
                 </label>
               </p>
               <p className='fel'>{t("signup.label6.1")}</p>
@@ -215,8 +212,8 @@ const LoginForm = () => {
                   className='ng-valid ng-dirty ng-touched ng-empty'
                   disabled
                 />
-                <label for='BannerType2'>
-                  <img src={inactive} alt='' srcset='' />
+                <label htmlFor='BannerType2'>
+                  <img src={inactive} alt='' srcSet='' />
                 </label>
               </p>
               <p className='male'>{t("signup.label6.2")}</p>

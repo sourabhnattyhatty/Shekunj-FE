@@ -31,9 +31,9 @@ const Index = (props) => {
                                 <h2>Find your courses & make sure goal.</h2>
                                 <div className="cour_box">
                                     <ul>
-                                        <li><img src={one} alt="" srcset="" /></li>
-                                        <li><img src={two} alt="" srcset="" /></li>
-                                        <li><img src={three} alt="" srcset="" /></li>
+                                        <li><img src={one} alt="" srcSet="" /></li>
+                                        <li><img src={two} alt="" srcSet="" /></li>
+                                        <li><img src={three} alt="" srcSet="" /></li>
                                     </ul>
                                     <div className="rig_ul">
                                         <ul className="ulcont">

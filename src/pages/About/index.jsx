@@ -42,7 +42,7 @@ const Index = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>
-              <img src={img1} alt='' srcset='' />
+              <img src={img1} alt='' srcSet='' />
             </div>
 
             <div className='col-md-6'>

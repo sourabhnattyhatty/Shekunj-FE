@@ -41,6 +41,16 @@ export const onSignup = (values, history) => async (dispatch) => {
   }
 };
 
+export const registerWithGoogle = (value) => async (dispatch) => {
+  try {
+    debugger
+    const res = await httpServices.post("social_auth/google/", value);
+    debugger;
+  } catch (err) {
+    debugger;
+  }
+};
+
 export const contactVerify = (value) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.CONTACT_VERIFY_REQUEST });

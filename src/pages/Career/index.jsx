@@ -32,7 +32,7 @@ const Index = () => {
           <div className='row'>
             <div className='col-md-6 offset-6'>
               <div className='Car_con'>
-                <h2>{t('careerPage.heading')}</h2>
+                <h2>{t("careerPage.heading")}</h2>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Velit, in vitae in metus, mattis porttitor euismod ac
@@ -42,13 +42,13 @@ const Index = () => {
                 <div class='pseudo-search'>
                   <input
                     type='text'
-                    placeholder={t('careerPage.searchPlaceholder')}
+                    placeholder={t("careerPage.searchPlaceholder")}
                     autofocus=''
                     required=''
                   />
 
                   <button class='fa fa-search' type='submit'>
-                    <img src={search} alt='' srcset='' />
+                    <img src={search} alt='' srcSet='' />
                   </button>
                 </div>
               </div>
@@ -61,145 +61,74 @@ const Index = () => {
         <Carousel
           items={1}
           details={true}
-          title1={t('careerPage.carousel1.heading.1')}
-          title2={t('careerPage.carousel1.heading.2')}
+          title1={t("careerPage.carousel1.heading.1")}
+          title2={t("careerPage.carousel1.heading.2")}
         />
       </div>
 
       <section className='choose_ses'>
         <div className='container'>
-          <h2>Choose a Session</h2>
+          <h2>{t("careerPage.heading2")}</h2>
+
           <div className='row_box'>
             <div className='row'>
-              <div className='col-md-4'>
-                <div className='choose_box'>
-                  <img src={Choose1} alt='' />
-                  <div className='choose_con'>
-                    <h3>Resume Writing</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed aliquet sit urna amet ipsum ornare urna. Cras viverra
-                      orci eros, consequat purus dui.
-                    </p>
-                    <a
-                      data-aos='zoom-in'
-                      href='#!'
-                      class='learn_more aos-init aos-animate'
-                    >
-                      Learn more
-                    </a>
-                  </div>
-                </div>
-              </div>
 
-              <div className='col-md-4'>
-                <div className='choose_box'>
-                  <img src={Choose2} alt='' />
-                  <div className='choose_con'>
-                    <h3>Resume Writing</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed aliquet sit urna amet ipsum ornare urna. Cras viverra
-                      orci eros, consequat purus dui.
-                    </p>
-                    <a
-                      data-aos='zoom-in'
-                      href='#!'
-                      class='learn_more aos-init aos-animate'
-                    >
-                      Learn more
-                    </a>
+              {[Choose1, Choose2, Choose3].map((obj, ind) => (
+                <>
+                  <div className='col-md-4'>
+                    <div className='choose_box'>
+                      <img src={obj} alt='' />
+                      <div className='choose_con'>
+                        <h3>Resume Writing</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Sed aliquet sit urna amet ipsum ornare urna.
+                          Cras viverra orci eros, consequat purus dui.
+                        </p>
+                        <a
+                          data-aos='zoom-in'
+                          href='#!'
+                          class='learn_more aos-init aos-animate'
+                        >
+                          {t('homePage.highlightStudents.button')}
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </>
+              ))}
 
-              <div className='col-md-4'>
-                <div className='choose_box'>
-                  <img src={Choose3} alt='' />
-                  <div className='choose_con'>
-                    <h3>Resume Writing</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed aliquet sit urna amet ipsum ornare urna. Cras viverra
-                      orci eros, consequat purus dui.
-                    </p>
-                    <a
-                      data-aos='zoom-in'
-                      href='#!'
-                      class='learn_more aos-init aos-animate'
-                    >
-                      Learn more
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
           <div className='row_box'>
             <div className='row'>
-              <div className='col-md-4'>
-                <div className='choose_box'>
-                  <img src={Choose4} alt='' />
-                  <div className='choose_con'>
-                    <h3>Resume Writing</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed aliquet sit urna amet ipsum ornare urna. Cras viverra
-                      orci eros, consequat purus dui.
-                    </p>
-                    <a
-                      data-aos='zoom-in'
-                      href='#!'
-                      class='learn_more aos-init aos-animate'
-                    >
-                      Learn more
-                    </a>
-                  </div>
-                </div>
-              </div>
 
-              <div className='col-md-4'>
-                <div className='choose_box'>
-                  <img src={Choose5} alt='' />
-                  <div className='choose_con'>
-                    <h3>Resume Writing</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed aliquet sit urna amet ipsum ornare urna. Cras viverra
-                      orci eros, consequat purus dui.
-                    </p>
-                    <a
-                      data-aos='zoom-in'
-                      href='#!'
-                      class='learn_more aos-init aos-animate'
-                    >
-                      Learn more
-                    </a>
+              {[Choose4, Choose5, Choose6].map((obj, ind) => (
+                <>
+                  <div className='col-md-4'>
+                    <div className='choose_box'>
+                      <img src={obj} alt='' />
+                      <div className='choose_con'>
+                        <h3>Resume Writing</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Sed aliquet sit urna amet ipsum ornare urna.
+                          Cras viverra orci eros, consequat purus dui.
+                        </p>
+                        <a
+                          data-aos='zoom-in'
+                          href='#!'
+                          class='learn_more aos-init aos-animate'
+                        >
+                          {t('homePage.highlightStudents.button')}
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </>
+              ))}
 
-              <div className='col-md-4'>
-                <div className='choose_box'>
-                  <img src={Choose6} alt='' />
-                  <div className='choose_con'>
-                    <h3>Resume Writing</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed aliquet sit urna amet ipsum ornare urna. Cras viverra
-                      orci eros, consequat purus dui.
-                    </p>
-                    <a
-                      data-aos='zoom-in'
-                      href='#!'
-                      class='learn_more aos-init aos-animate'
-                    >
-                      Learn more
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -209,8 +138,8 @@ const Index = () => {
         <Carousel
           items={1}
           details={true}
-          title1={t('careerPage.carousel2.heading.1')}
-          title2={t('careerPage.carousel2.heading.2')}
+          title1={t("careerPage.carousel2.heading.1")}
+          title2={t("careerPage.carousel2.heading.2")}
         />
       </div>
 
@@ -284,7 +213,7 @@ const Index = () => {
 
             <div className='col-md-6 offset-md-1'>
               <div className='exams'>
-                <img src={exams} alt='' srcset='' />
+                <img src={exams} alt='' srcSet='' />
               </div>
             </div>
           </div>

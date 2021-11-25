@@ -29,7 +29,6 @@ body{
 }
 #myCarousel .carousel_item2 {
   background-image: url("../../assets/images/banner/2.png");
-  // background-size: inherit;
 }
 #myCarousel .carousel_item3 {
   background-image: url("../../assets/images/banner/3.png");
@@ -191,7 +190,6 @@ body{
     border-radius: 16px;
     transition: 0.25s ease;
     padding: 13px 30px;
-    // height: 56px;
   }
   .resume h4 {
     font-weight: 500;
@@ -589,9 +587,7 @@ ul.star{
   #myCarousel .slick-next{
     right: 10px;
   }
-// .owl-theme {
-//   max-width: 1050px;
-// }
+
 
 .resume h4 {
   font-size: 28px;

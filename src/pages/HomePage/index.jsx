@@ -158,7 +158,7 @@ function HomePage() {
               </a>
             </div>
 
-            <div class='resumeimg'>
+            <div className='resumeimg'>
               <img src={Resume} alt='...' />
             </div>
           </div>

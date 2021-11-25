@@ -17,7 +17,7 @@ axios.interceptors.response.use(
     return response;
   },
   (error) => {
-    //eslint-disable-next-line
+    // eslint-disable-next-line
     const { data, status } = !error.response;
     switch (status) {
       case 401:

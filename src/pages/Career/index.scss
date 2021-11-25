@@ -66,7 +66,6 @@ section.Car_Ban{
       width: 200px;
   
       &:focus {
-        // Unsure how to fix this...
         outline: none;
       }
     }
@@ -90,7 +89,6 @@ section.Car_Ban{
     height: 393px;
     box-shadow: 0px 0px 15px #ccc;
     border-radius: 15px;
-    // padding: 0px 10px;
 }
 section.choose_ses h2 {
     font-family: Poppins;
@@ -180,7 +178,6 @@ section.choose_ses {
 .ranking {
     background: #FFFFFF;
     border-radius: 20px;
-    // padding: 20px 26px;
 }
 .ranking.exms {
     margin-top: 70px;

@@ -6,7 +6,6 @@ import Logo from "../../assets/images/whitelogo.svg";
 import LogoBlack from "../../assets/images/logo.svg";
 import ChangeLanguageButton from "../LanguageButton";
 
-// function Footer() {
 
 const Footer = ({ loginPage }) => {
   const { t } = useTranslation();
