@@ -15,7 +15,11 @@ body{
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.MuiSvgIcon-fontSizeMedium.back_to_top {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
