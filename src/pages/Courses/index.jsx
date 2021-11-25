@@ -1,9 +1,7 @@
 import React from 'react'
-
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ScrollToTop from '../../components/ScrollToTop'
-
 import one from '../../assets/images/Courses/01.png'
 import two from '../../assets/images/Courses/02.png'
 import three from '../../assets/images/Courses/03.png'
@@ -22,7 +20,7 @@ import './index.scss'
 const Index = (props) => {
     return (
         <div>
-            <Header loginPage={true} page="courses"/>
+            <Header loginPage={true} page="courses" />
             <section className="Cors_sec">
                 <div className="container">
                     <div className="row">
@@ -70,15 +68,17 @@ const Index = (props) => {
                         </div>
                         <button className="btn btn-info">Search</button>
                     </div>
+                    
+
                     <h4>OUR COURSES</h4>
                     <h3>Study top quality & advanced course content in Hindi</h3>
 
-        
-                    
+
+
                 </div>
             </section>
 
-            <ScrollToTop/>    
+            <ScrollToTop />
 
             <Footer loginPage={false} />
         </div>

@@ -13,16 +13,23 @@ code {
 } */
 
 
-@font-face {
+/* @font-face {
   font-family: Sora bold;
   src: url("./assets/fonts/Sora/Sora-Bold.ttf") format("truetype");
-}
-
+} */
 @font-face {
+  font-family: SegoeUI_bold;
+  src: url("./assets/fonts/SegoeUI/Segoe UI Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: SegoeUI_medium;
+  src: url("./assets/fonts/SegoeUI/Segoe UI.ttf") format("truetype");
+}
+/* @font-face {
   font-family: Sora medium;
   src: url("./assets/fonts/Sora/Sora-Medium.ttf") format("truetype");
-}
+} */
 
 body {
-  font-family: "Poppins", sans-serif !important;
+  font-family: "SegoeUI_medium" !important;
 }

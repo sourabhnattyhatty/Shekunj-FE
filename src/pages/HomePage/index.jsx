@@ -83,7 +83,7 @@ function HomePage() {
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn' data-aos='slide-right'>
+                    <a href='#!' className='banner_btn' data-aos='slide-up'>
                       {t('homePage.mainSlider.button')}
                     </a>
                   </div>
@@ -104,7 +104,7 @@ function HomePage() {
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn' data-aos='slide-right'>
+                    <a href='#!' className='banner_btn' data-aos='slide-up'>
                       {t('homePage.mainSlider.button')}
                     </a>
                   </div>
@@ -120,7 +120,7 @@ function HomePage() {
                     {t('homePage.mainSlider.heading.3.3.1')} <span>{t('homePage.mainSlider.heading.3.3.2')}</span>
                     </h4>
                     
-                    <a href='#!' className='banner_btn' data-aos="slide-right">
+                    <a href='#!' className='banner_btn' data-aos="slide-up">
                       {t('homePage.mainSlider.button')}
                     </a>
                   </div>
@@ -144,7 +144,7 @@ function HomePage() {
         <div className='container'>
           <div className='row'>
             <div className='col-md-7'>
-              <h4 data-aos='slide-right'>
+              <h4 data-aos='slide-up'>
                 {t('homePage.resume.heading')}
               </h4>
               <a
@@ -152,7 +152,7 @@ function HomePage() {
                 href='https://octahire.com/Resume_maker'
                 target='_blank'
                 className='btn btn-resume'
-                data-aos='slide-right'
+                data-aos='slide-up'
               >
                 {t('homePage.resume.button')}
               </a>
@@ -177,11 +177,11 @@ function HomePage() {
       <section className='job-opprtunity same_padding mt-5'>
         <div className='container'>
           <div className='row justify-content-center'>
-            <div className='col-lg-10 col-md-11'>
+            <div className='col-lg-12 col-md-11'>
               <div className='job-opprtunity-bg'>
                 <div className='row'>
                   <div className='col-md-8'>
-                    <h3 data-aos='slide-right'>{t('homePage.jobopportunity.heading')}</h3>
+                    <h3 data-aos='slide-up'>{t('homePage.jobopportunity.heading')}</h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Rutrum sapien nunc sit egestas amet magnis enim.
@@ -192,7 +192,7 @@ function HomePage() {
                       rel='noreferrer'
                       target='_blank'
                       href='https://octahire.com/Recruiters/job_recruiters?location='
-                      data-aos='slide-right'
+                      data-aos='slide-up'
                       className='btn btn-job'
                     >
                       {t('homePage.jobopportunity.button')}
@@ -221,8 +221,8 @@ function HomePage() {
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-md-11'>
-              <h3 data-aos='slide-right'>{t('homePage.community.heading')}</h3>
-              <p>
+              <h3 data-aos='slide-up'>{t('homePage.community.heading')}</h3>
+              <p data-aos='slide-up'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
                 sapien nunc sit egestas amet magnis enim. Suspendisse vulputate
                 ut nunc lorem mi ut lacus. Felis vitae vel.
@@ -236,7 +236,7 @@ function HomePage() {
 
           <div className='row justify-content-center'>
             <div className='col-md-4 text-center mt-5'>
-              <button className='btn btn-start-course' data-aos='slide-right'>
+              <button className='btn btn-start-course' data-aos='slide-up'>
                 {t('homePage.community.button')}
               </button>
             </div>
@@ -375,7 +375,7 @@ function HomePage() {
                 ornare ipsum. Tincidunt erat pulvinar viverra pharetra.
               </p>
 
-              <a data-aos='slide-right' href='#!' className='learn_more'>
+              <a data-aos='slide-up' href='#!' className='learn_more'>
                 {t('homePage.highlightStudents.button')}
               </a>
             </div>

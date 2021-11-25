@@ -6,7 +6,7 @@ section.about_ban {
   background-repeat: no-repeat;
 }
 .about_Con h2 {
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: bold;
   font-size: 40px;
@@ -16,7 +16,7 @@ section.about_ban {
 }
 
 .about_Con p {
-  font-family: Poppins;
+  font-family: 'SegoeUI_medium';
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -35,7 +35,7 @@ section.ban_sec2 img {
   box-shadow: 0px 0px 20px #ccc;
 }
 section.ban_sec2 p {
-  font-family: Poppins;
+  font-family: 'SegoeUI_medium';
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -55,11 +55,19 @@ section.about_testim {
   margin: 0 50px;
 }
 .our_his h2 {
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: bold;
   font-size: 40px;
-  line-height: 60px;
+  line-height: 53px;
+  color: #323232;
+}
+.our_his p {
+  font-family: 'SegoeUI_medium';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
   color: #323232;
 }
 @media only screen and (max-width: 1280px) {

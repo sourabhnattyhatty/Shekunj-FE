@@ -90,6 +90,8 @@ ul.ulcont li {
 .Serc_type {
     display: flex;
     width: 100%;
+    margin-top: 15px;
+    margin-bottom: 31px;
 }
 .Serc_type input{
     border: none;
@@ -104,3 +106,44 @@ ul.ulcont li {
     padding: 12px 13px;
     width: 100%;
 }
+section.Srch_sec h2 {
+    font-family: 'SegoeUI_medium';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 33px;
+    color: #000000;
+    margin: 0;
+}
+section.Srch_sec h4 {
+    font-family: 'SegoeUI_medium';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 120%;
+    color: #D62C79;
+}
+section.Srch_sec {
+    margin-top: 60px;
+}
+.Serc_type input:focus{
+    outline: none;
+}
+section.Srch_sec h3 {
+    font-family: 'SegoeUI_bold';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 120%;
+    color: #323232;
+    margin: 0;
+}
+.Serc_type input::placeholder{
+    font-family: 'SegoeUI_medium';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #828282;
+}
+

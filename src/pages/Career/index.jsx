@@ -155,7 +155,7 @@ const Index = () => {
           </div>
 
           <div className='row'>
-            <div className='col-md-5 '>
+            <div className='col-md-7'>
               <div className='ranking'>
                 <h3>
                   <img src={Rankings} alt='' /> Rankings
@@ -211,7 +211,7 @@ const Index = () => {
               </div>
             </div>
 
-            <div className='col-md-6 offset-md-1'>
+            <div className='col-md-5'>
               <div className='exams'>
                 <img src={exams} alt='' srcSet='' />
               </div>

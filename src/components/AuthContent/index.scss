@@ -1,4 +1,7 @@
 @import "../../Styles/variable";
+body {
+  font-family: "SegoeUI_medium" !important;
+}
 
 .login_main .logincontentbg {
   position: relative;
@@ -18,6 +21,7 @@
 }
 
 .login_main .login_content h1 {
+  font-family: 'SegoeUI_bold';
   font-weight: 600;
   font-size: 30px;
   line-height: 40px;
@@ -26,15 +30,17 @@
 .login_content {
   float: right;
   margin-top: 17px;
-  padding: 0px 0px 0px 30px;
+  padding: 0px 0px 0px 0px;
 }
 .login_content .login-content-right h5 {
+  font-family: 'SegoeUI_bold';
   font-weight: 600;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 27px;
   color: #000000;
 }
 .login_content .login-content-right p {
+  font-family: 'SegoeUI_medium';
   font-weight: 300;
   font-size: 14px;
   line-height: 21px;
@@ -49,6 +55,7 @@
   width: 97%;
   padding: 9px 20px;
   margin: auto;
+  font-family: 'SegoeUI_medium';
   font-weight: 600;
   font-size: 13px;
   line-height: 19px;
@@ -83,6 +90,7 @@
 .btn.btn_login {
   background: #ec498a;
   font-weight: 600;
+  font-family: 'SegoeUI_medium';
   font-size: 16px;
   line-height: 30px;
   text-align: center;
@@ -96,10 +104,11 @@
   background: #000;
 }
 .login_form .policy_para {
+  font-family: 'SegoeUI_medium';
   font-weight: 300;
   font-size: 10px;
-  line-height: 16px;
-  color: $secondaryColor;
+  line-height: 13px;
+  color: #000;
 }
 .login_form .policy_para a {
   color: #d62c79;

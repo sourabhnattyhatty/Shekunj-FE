@@ -41,7 +41,7 @@ body{
   width: 100%;
 }
 #myCarousel .carousel-item h4 span {
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: normal;
   font-size: 48px;
@@ -50,15 +50,17 @@ body{
   color: #000000;
 }
 #myCarousel .carousel-item p {
+  font-family: SegoeUI_medium;
   font-weight: 300;
   font-size: 18px;
   line-height: 27px;
   padding-right: 18%;
 }
 #myCarousel .carousel-item .banner_btn {
+  font-family: SegoeUI_medium;
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
-  font-family: Sora bold;
+  // font-family: Sora bold;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -181,6 +183,7 @@ body{
     margin-bottom: 50px;
   }
   .resume .btn.btn-resume {
+    font-family: SegoeUI_bold;
     font-size: 14px;
     line-height: 21px;
     text-align: center;
@@ -190,8 +193,12 @@ body{
     border-radius: 16px;
     transition: 0.25s ease;
     padding: 13px 30px;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    // height: 56px;
   }
   .resume h4 {
+    font-family: SegoeUI_bold;
     font-weight: 500;
     font-size: 36px;
     line-height: 50px;
@@ -201,6 +208,7 @@ body{
   .resume .btn.btn-resume:hover {
     color: #ffffff;
     background: #ec498a;
+    border-color: #ec498a;
   }
   .resume .resumeimg {
     position: absolute;
@@ -218,16 +226,18 @@ body{
     background-image: url("../../assets/images/joinbg.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    height: 300px;
-    padding: 48px 58px;
+    padding: 65px 79px;
+    height: 348px;
   }
   .job-opprtunity-bg h3 {
+    font-family: 'Sora bold';
     font-weight: bold;
+    font-style: normal;
     font-size: 40px;
     line-height: 60px;
     text-transform: capitalize;
     color: #ffffff;
-  }
+}
   .job-opprtunity-bg p {
     font-weight: 500;
     font-size: 16px;
@@ -235,6 +245,7 @@ body{
     color: #ffffff;
   }
   .job-opprtunity-bg .btn.btn-job {
+    font-family: 'SegoeUI_bold';
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
@@ -245,6 +256,8 @@ body{
     border-radius: 20px;
     transition: 0.25s ease;
     padding: 12px 23px;
+    transition-duration: 1s;
+    transition-timing-function: linear;
   }
   .job-opprtunity-bg .btn.btn-job:hover {
     color: #ffffff;
@@ -254,10 +267,10 @@ body{
   .job-opprtunity-bg .jobimg {
     position: absolute;
     right: 0px;
-    top: -18%;
+    top: -75px;
   }
   .job-opprtunity-bg .jobimg img {
-    max-width: 85%;
+    max-width: 100%;
   }
 
   /*career development*/
@@ -265,30 +278,35 @@ body{
     background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
   }
   .career_community h3 {
+    font-family: SegoeUI_bold;
     font-weight: bold;
+    font-style: normal;
     font-size: 40px;
     line-height: 60px;
     text-align: center;
     color: #ffffff;
-  }
-  .career_community p {
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 30px;
-    text-align: center;
-    color: #000000;
-  }
+}
+.career_community p {
+  font-family: 'SegoeUI_medium';
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #000000;
+}
   .community-img img {
     max-width: 100%;
   }
   .btn.btn-start-course {
     background: #ec498a;
     border-radius: 20px;
+    font-family: 'SegoeUI_bold';
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     color: #ffffff;
-    transition: 0.25s ease;
+    transition-duration: 1s !important;
+    transition-timing-function: linear !important;
     width: 100%;
     text-align: center;
     height: 56px;
@@ -296,6 +314,7 @@ body{
   .btn.btn-start-course:hover {
     background: #fff;
     color: #ec498a;
+    transition: 1s;
   }
   
   /*certificate*/
@@ -311,18 +330,20 @@ body{
     max-width: 100%;
   }
   .certificate h4 {
+    font-family: 'SegoeUI_bold';
     font-weight: bold;
+    font-style: normal;
     font-size: 33px;
     line-height: 52px;
     color: #000000;
-  }
-  .certificate p {
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 30px;
-    color: #828282;
-  }
-
+}
+.certificate p {
+  font-family: 'SegoeUI_medium';
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  color: #828282;
+}
   /*highlight student*/
 .highlight_student {
     background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
@@ -330,38 +351,45 @@ body{
     z-index: 9;
   }
   .highlight_student h3 {
+    font-family: 'SegoeUI_bold';
     font-weight: bold;
     font-size: 40px;
-    line-height: 60px;
+    line-height: 50px;
     display: flex;
     align-items: center;
     color: #fff;
-  }
-  .highlight_student p {
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 22px;
-    color: #595f73;
-  }
+}
+.highlight_student p {
+  font-family: 'SegoeUI_medium';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #595f73;
+}
   .learn_more {
     background: #ec498a;
     border-radius: 10px;
-    font-family: Sora bold;
+    font-family: 'SegoeUI_bold';
     font-weight: 600;
     font-size: 14px;
     line-height: 42px;
     color: #ffffff;
     height: 44px;
     width: 160px;
-    transition: 0.25s ease;
+    transition-duration: 1s !important;
+    transition-timing-function: linear !important;
+    // transition: 0.25s ease;
     display: inline-block;
     text-align: center;
+    // transition-duration: 1s;
   }
   .learn_more:hover {
-    background: #000;
-    color: #ec498a;
+    background: #fff;
+    color: #000;
     text-decoration: none;
-  }
+    transition: 1s !important;
+}
 
   /* .highlight_student .owl-slider #testimonial .owl-item:nth-of-type(1n+1){
       margin-top: 50px;
@@ -406,7 +434,7 @@ body{
     position: relative;
 }
 .tes_box p {
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -415,7 +443,7 @@ body{
   color: #BDBDBD;
 }
 .tes_box h2 {
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -424,11 +452,11 @@ body{
   color: #25243F;
 }
 .tes_box h6 {
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
-  line-height: 18px;
+  line-height: 16px;
   text-align: center;
   color: #3E414E;
 }
@@ -441,7 +469,7 @@ body{
 }
 
 .tes_box2 h2 {
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -493,7 +521,7 @@ body{
   z-index: -1;
 }
 .tes_box3 h2 {
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -503,7 +531,7 @@ body{
   color: #444851;
 }
 .tes_box3 h6{
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
 font-style: normal;
 font-weight: normal;
 font-size: 12px;
@@ -543,7 +571,7 @@ ul.star{
   color: #FFFFFF;
 }
 .container.Our_text p {
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -555,7 +583,7 @@ ul.star{
 }
 
 .container.Our_text h2{
-  font-family: Poppins;
+  font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: bold;
   font-size: 40px;
