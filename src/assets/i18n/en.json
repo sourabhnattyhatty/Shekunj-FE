@@ -205,5 +205,15 @@
         },
         "ranking" : "Rankings",
         "exam" : "Exams"
+    },
+
+    "coursesPage" : {
+        "banner" : {
+            "heading" : "Find your courses & make sure goal.",
+            "1" : "LEARN AT YOUR OWN PACE",
+            "2.1" : "JOIN A COMMUNITY",
+            "2.2" : "OF professionals",
+            "3" : "Flexible PAYMENT PLANS"
+        }
     }
 }

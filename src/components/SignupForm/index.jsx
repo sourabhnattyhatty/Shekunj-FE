@@ -4,19 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { contactVerify, onSignup } from "../../store/auth/action";
 import { useTranslation } from "react-i18next";
-
-import * as Yup from "yup";
-import Error from "../Error";
-
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { CircularProgress } from "@mui/material";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
+import Error from "../Error";
 import GoogleLoginComponent from "../GoogleLogin";
 
-import { toast } from "react-toastify";
-
 import inactive from "../../assets/images/login/inactive.png";
+
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),

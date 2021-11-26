@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
+import Aos from "aos";
+import { useTranslation } from "react-i18next";
+
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ScrollToTop from "../../components/ScrollToTop";
+import Carousel from "../../components/Carousel";
+
 import one from "../../assets/images/Courses/01.png";
 import two from "../../assets/images/Courses/02.png";
 import three from "../../assets/images/Courses/03.png";
@@ -16,51 +21,14 @@ import star from "../../assets/images/Star 2.png";
 import timer from "../../assets/images/timer.png";
 import Dropdown from "./Dropdown/index";
 import Pro1 from "../../assets/images/P-1.png";
-import Carousel from "../../components/Carousel";
-import "../../pages/HomePage/index.scss";
-
-import Aos from "aos";
-import { useTranslation } from "react-i18next";
-
 
 import "./index.scss";
+import "../../pages/HomePage/index.scss";
+
 
 const Index = (props) => {
+  const { t } = useTranslation();
 
-    const {t} = useTranslation();
-
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    autoplay: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -74,7 +42,7 @@ const Index = (props) => {
           <div className='row'>
             <div className='col-md-7'>
               <div className='cors_con'>
-                <h2>Find your courses & make sure goal.</h2>
+                <h2>{t('coursesPage.banner.heading')}</h2>
                 <div className='cour_box'>
                   <ul>
                     <li>
@@ -92,7 +60,7 @@ const Index = (props) => {
                       <li>
                         <img src={img1} alt='' />
                       </li>
-                      <li> LEARN AT YOUR OWN PACE</li>
+                      <li> {t('coursesPage.banner.1')}</li>
                     </ul>
 
                     <ul className='ulcont'>
@@ -101,8 +69,8 @@ const Index = (props) => {
                       </li>
                       <li>
                         {" "}
-                        JOIN A COMMUNITY <br />
-                        OF professionals
+                        {t('coursesPage.banner.2.1')} <br />
+                        {t('coursesPage.banner.2.2')}
                       </li>
                     </ul>
 
@@ -110,7 +78,7 @@ const Index = (props) => {
                       <li>
                         <img src={img3} alt='' />
                       </li>
-                      <li> Flexible PAYMENT PLANS</li>
+                      <li> {t('coursesPage.banner.3')}</li>
                     </ul>
                   </div>
                 </div>
@@ -207,8 +175,8 @@ const Index = (props) => {
       <Carousel
         items={5}
         details={false}
-        title1={t('homePage.carousel2.heading.1')}
-        title2={t('homePage.carousel2.heading.2')}
+        title1={t("homePage.carousel2.heading.1")}
+        title2={t("homePage.carousel2.heading.2")}
       />
 
       <ScrollToTop />
