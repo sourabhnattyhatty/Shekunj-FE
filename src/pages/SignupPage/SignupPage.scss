@@ -73,7 +73,7 @@ div.radio-with-Icon p.radioOption-Item {
   width: 30px;
   height: 30px;
   box-sizing: border-box;
-  margin: 0 7px;
+  margin: 1px 7px;
   border: none;
 }
 div.radio-with-Icon p.radioOption-Item label {
@@ -156,4 +156,35 @@ p.eye {
   position: absolute;
   top: 10%;
   right: 3%;
+}
+p.eye svg{
+  color:#BDBDBD;
+}
+.alert_div{
+  height: 43px;
+    display: block;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #E6E5EB;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.alert_image{
+  background: #EC498A;
+    width: 35px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    height: 43px;
+    line-height: 36px;
+}
+.alert_div p{
+  width: calc(100% - 56px);
+    display: inline-block;
+    color: #425466;
+    opacity: 0.52;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 15px;
+    padding: 5px 13px;
 }

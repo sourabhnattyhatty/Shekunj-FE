@@ -2,6 +2,10 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import Mobile from "../../assets/icons/phone.png";
+import Lock from "../../assets/icons/lock.png";
 import Error from "../Error";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -39,7 +43,7 @@ function LoginForm2() {
     <>
       <form onSubmit={handleSubmit}>
         <div className='form-group mb-4'>
-          <input
+          <TextField
             name='contact'
             type='number'
             className='form-control'
@@ -48,12 +52,20 @@ function LoginForm2() {
             onBlur={handleBlur}
             autoComplete='off'
             placeholder={t("login.form2.placeholder1")}
+
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                 <img src={Mobile} alt="Image" />
+                </InputAdornment>
+              ),
+            }}
           />
           <Error error={errors.contact} touched={touched.contact} />
         </div>
 
         <div className='form-group'>
-          <input
+          <TextField
             name='password'
             type='password'
             className='form-control'
@@ -62,6 +74,13 @@ function LoginForm2() {
             onBlur={handleBlur}
             autoComplete='off'
             placeholder={t("login.form2.placeholder2")}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                 <img src={Lock} alt="Image" />
+                </InputAdornment>
+              ),
+            }}
           />
           <Error error={errors.password} touched={touched.password} />
         </div>

@@ -13,6 +13,16 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import Error from "../Error";
 import GoogleLoginComponent from "../GoogleLogin";
 
+import User from "../../assets/icons/user.png";
+import Lock from "../../assets/icons/lock.png";
+import Mail from "../../assets/icons/mail.png";
+import Phone from "../../assets/icons/phone.png";
+import Otp from "../../assets/icons/otp.png";
+import Alert from "../../assets/icons/alert.png";
+
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+
 import inactive from "../../assets/images/login/inactive.png";
 
 
@@ -82,7 +92,7 @@ const LoginForm = () => {
 
         <form onSubmit={handleSubmit}>
           <div className='form-group'>
-            <input
+            <TextField
               name='name'
               type='text'
               className='form-control'
@@ -91,13 +101,21 @@ const LoginForm = () => {
               onBlur={handleBlur}
               autoComplete='off'
               placeholder={t("signup.placeholder1")}
+
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                   <img src={User} alt="Image" />
+                  </InputAdornment>
+                ),
+              }}
             />
 
             <Error error={errors.name} touched={touched.name} />
           </div>
 
           <div className='form-group'>
-            <input
+            <TextField
               name='last_name'
               type='text'
               className='form-control'
@@ -106,13 +124,21 @@ const LoginForm = () => {
               onBlur={handleBlur}
               autoComplete='off'
               placeholder={t("signup.placeholder6")}
+
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                   <img src={User} alt="Image" />
+                  </InputAdornment>
+                ),
+              }}
             />
 
             <Error error={errors.last_name} touched={touched.last_name} />
           </div>
 
           <div className='form-group rem_s'>
-            <input
+            <TextField
               name='email'
               type='email'
               className='form-control'
@@ -121,6 +147,14 @@ const LoginForm = () => {
               onBlur={handleBlur}
               autoComplete='off'
               placeholder={t("signup.placeholder2")}
+
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                   <img src={Mail} alt="Image" />
+                  </InputAdornment>
+                ),
+              }}
             />
             <Error error={errors.email} touched={touched.email} />
           </div>
@@ -138,7 +172,7 @@ const LoginForm = () => {
                   t("signup.verify")
                 )}
               </span>
-              <input
+              <TextField
                 name='contact'
                 type='number'
                 className='form-control'
@@ -146,13 +180,21 @@ const LoginForm = () => {
                 onBlur={handleBlur}
                 autoComplete='off'
                 placeholder={t("signup.placeholder3")}
+
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                     <img src={Phone} alt="Image" />
+                    </InputAdornment>
+                  ),
+                }}
               />
             </div>
             <Error error={errors.contact} touched={touched.contact} />
           </div>
 
           <div className='form-group'>
-            <input
+            <TextField
               name='otp'
               type='number'
               className='form-control'
@@ -160,12 +202,20 @@ const LoginForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               placeholder={t("signup.placeholder4")}
+
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                   <img src={Otp} alt="Image" />
+                  </InputAdornment>
+                ),
+              }}
             />
             <Error error={errors.otp} touched={touched.otp} />
           </div>
 
           <div className='form-group'>
-            <input
+            <TextField
               name='password'
               type={visible ? "text" : "password"}
               className='form-control'
@@ -173,6 +223,14 @@ const LoginForm = () => {
               onBlur={handleBlur}
               placeholder={t("signup.placeholder5")}
               autoComplete='off'
+
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                   <img src={Lock} alt="Image" />
+                  </InputAdornment>
+                ),
+              }}
             />
             <p className='eye' onClick={(e) => setVisible(!visible)}>
               {visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
@@ -216,8 +274,20 @@ const LoginForm = () => {
               </p>
               <p className='male'>{t("signup.label6.2")}</p>
             </div>
-            <Error error={errors.gender} touched={touched.gender} />
+            {errors.gender && (
+              <Error error={errors.gender} touched={touched.gender} />
+            )}
           </div>
+
+              <div className="alert_div">
+                <div className="alert_image">
+                  <img src={Alert} alt="Image" />
+                </div>
+                <p>
+                "Hey there! Please select Girl as a gender, 
+as this website only promotes girls education."
+                </p>
+              </div>
 
           <button type='submit' className='btn btn_login w-100 mt-3'>
             {isLoading ? (

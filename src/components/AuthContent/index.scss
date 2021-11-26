@@ -81,7 +81,7 @@ body {
   box-sizing: border-box;
   border-radius: 5px;
   height: 40px;
-  padding: 0 21px;
+  padding: 0px;
 }
 .login_form .form-control:focus {
   box-shadow: none;
@@ -127,8 +127,8 @@ body {
   color: red;
   font-size: 14px;
   position: absolute;
-  top: 15px;
-  left: 10px;
+  top: 9px;
+  left: 36px;
 }
 .form-group.rem_s::after {
   color: #fff;

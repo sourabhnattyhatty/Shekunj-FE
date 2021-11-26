@@ -4,6 +4,11 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import User from "../../assets/icons/user.png";
+import Lock from "../../assets/icons/lock.png";
+
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
 
 import { CircularProgress } from "@mui/material";
 
@@ -40,7 +45,7 @@ function LoginForm1() {
     <>
       <form onSubmit={handleSubmit}>
         <div className='form-group mb-4'>
-          <input
+          <TextField
             name='email'
             type='email'
             className='form-control'
@@ -49,12 +54,20 @@ function LoginForm1() {
             onBlur={handleBlur}
             autoComplete='off'
             placeholder={t('login.form1.placeholder1')}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                 <img src={User} alt="Image" />
+                </InputAdornment>
+              ),
+            }}
           />
+         
           <Error error={errors.email} touched={touched.email} />
         </div>
 
         <div className='form-group'>
-          <input
+          <TextField
             name='password'
             type='password'
             className='form-control'
@@ -63,6 +76,13 @@ function LoginForm1() {
             onBlur={handleBlur}
             autoComplete='off'
             placeholder={t('login.form1.placeholder2')}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                 <img src={Lock} alt="Image" />
+                </InputAdornment>
+              ),
+            }}
           />
           <Error error={errors.password} touched={touched.password} />
         </div>

@@ -31,6 +31,7 @@ function HomePage() {
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    infinite:true,
 
     responsive: [
       {
@@ -74,16 +75,16 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='fade-right'>
+                    <h4 className='mt-5 pt-md-5 mb-3' data-aos="zoom-in">
                       {t('homePage.mainSlider.heading.1')}
                     </h4>
-                    <p className='mb-4' data-aos='fade-left'>
+                    <p className='mb-4' data-aos="zoom-in">
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn' data-aos='slide-up'>
+                    <a href='#!' className='banner_btn' data-aos="zoom-in">
                       {t('homePage.mainSlider.button')}
                     </a>
                   </div>
@@ -95,16 +96,16 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='fade-left'>
+                    <h4 className='mt-5 pt-md-5 mb-3' data-aos="zoom-in">
                       {t('homePage.mainSlider.heading.2')}
                     </h4>
-                    <p className='mb-4' data-aos='fade-right'>
+                    <p className='mb-4' data-aos="zoom-in">
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn' data-aos='slide-up'>
+                    <a href='#!' className='banner_btn' data-aos="zoom-in">
                       {t('homePage.mainSlider.button')}
                     </a>
                   </div>
@@ -116,11 +117,11 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='fade-left'>
+                    <h4 className='mt-5 pt-md-5 mb-3' data-aos="zoom-in">
                     {t('homePage.mainSlider.heading.3.3.1')} <span>{t('homePage.mainSlider.heading.3.3.2')}</span>
                     </h4>
                     
-                    <a href='#!' className='banner_btn' data-aos="slide-up">
+                    <a href='#!' className='banner_btn' data-aos="zoom-in">
                       {t('homePage.mainSlider.button')}
                     </a>
                   </div>
@@ -144,7 +145,7 @@ function HomePage() {
         <div className='container'>
           <div className='row'>
             <div className='col-md-7'>
-              <h4 data-aos='slide-up'>
+              <h4 data-aos="fade-right">
                 {t('homePage.resume.heading')}
               </h4>
               <a
@@ -152,7 +153,7 @@ function HomePage() {
                 href='https://octahire.com/Resume_maker'
                 target='_blank'
                 className='btn btn-resume'
-                data-aos='slide-up'
+                data-aos="fade-right"
               >
                 {t('homePage.resume.button')}
               </a>
@@ -180,8 +181,8 @@ function HomePage() {
             <div className='col-lg-12 col-md-11'>
               <div className='job-opprtunity-bg'>
                 <div className='row'>
-                  <div className='col-md-8'>
-                    <h3 data-aos='slide-up'>{t('homePage.jobopportunity.heading')}</h3>
+                  <div className='col-md-8' data-aos="fade-right">
+                    <h3>{t('homePage.jobopportunity.heading')}</h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Rutrum sapien nunc sit egestas amet magnis enim.
@@ -192,7 +193,7 @@ function HomePage() {
                       rel='noreferrer'
                       target='_blank'
                       href='https://octahire.com/Recruiters/job_recruiters?location='
-                      data-aos='slide-up'
+                    
                       className='btn btn-job'
                     >
                       {t('homePage.jobopportunity.button')}
