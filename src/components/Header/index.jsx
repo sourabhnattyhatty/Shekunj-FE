@@ -1,15 +1,28 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ChangeLanguageButton from "../LanguageButton";
 import Logo from "../../assets/images/logo.svg";
 import Search from "../../assets/icons/search.png";
 
 import "./index.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut, refreshPage } from "../../store/auth/action";
 
 const Header = ({ loginPage, page }) => {
   const [searchValue, setSearchValue] = useState("");
   const { t } = useTranslation();
+  const { isAuth } = useSelector((state) => state.authReducer);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    dispatch(refreshPage());
+  }, [dispatch]);
+
+  const handleLogout = () => {
+    dispatch(logOut(history));
+  } 
 
   return (
     <div>
@@ -45,9 +58,21 @@ const Header = ({ loginPage, page }) => {
                 </div>
 
                 <div className='top_bar_btn d-inline-block'>
-                  <Link className='btn btn-bg-pink ml-xl-3 ml-md-2' to='/login'>
-                  {t("header.authButton")}
-                  </Link>
+                  {isAuth ? (
+                    <button
+                      className='btn btn-bg-pink ml-xl-3 ml-md-2'
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+                  ) : (
+                    <Link
+                      className='btn btn-bg-pink ml-xl-3 ml-md-2'
+                      to='/login'
+                    >
+                      {t("header.authButton")}
+                    </Link>
+                  )}
 
                   <div className='set_language d-inline-block ml-xl-3 ml-md-2'>
                     <ChangeLanguageButton />
@@ -69,22 +94,38 @@ const Header = ({ loginPage, page }) => {
               </button>
               <div className='collapse navbar-collapse' id='collapsibleNavbar'>
                 <ul className='navbar-nav'>
-                  <li className={page === 'about' ? 'nav-item active' : 'nav-item'}>
+                  <li
+                    className={
+                      page === "about" ? "nav-item active" : "nav-item"
+                    }
+                  >
                     <Link className='nav-link' to='/about'>
                       {t("header.heading.1")}
                     </Link>
                   </li>
-                  <li className={page === 'courses' ? 'nav-item active' : 'nav-item'}>
+                  <li
+                    className={
+                      page === "courses" ? "nav-item active" : "nav-item"
+                    }
+                  >
                     <Link className='nav-link' to='/courses'>
                       {t("header.heading.2")}
                     </Link>
                   </li>
-                  <li className={page === 'guidance' ? 'nav-item active' : 'nav-item'}>
+                  <li
+                    className={
+                      page === "guidance" ? "nav-item active" : "nav-item"
+                    }
+                  >
                     <Link className='nav-link' to='/guidance'>
                       {t("header.heading.3")}
                     </Link>
                   </li>
-                  <li className={page === 'resume' ? 'nav-item active' : 'nav-item'}>
+                  <li
+                    className={
+                      page === "resume" ? "nav-item active" : "nav-item"
+                    }
+                  >
                     <a
                       className='nav-link'
                       rel='noreferrer'
@@ -94,13 +135,19 @@ const Header = ({ loginPage, page }) => {
                       {t("header.heading.4")}
                     </a>
                   </li>
-                  <li className={page === 'career' ? 'nav-item active' : 'nav-item'}>
+                  <li
+                    className={
+                      page === "career" ? "nav-item active" : "nav-item"
+                    }
+                  >
                     <Link className='nav-link' to='/career'>
                       {t("header.heading.5")}
                     </Link>
                   </li>
 
-                  <li className={page === 'jobs' ? 'nav-item active' : 'nav-item'}>
+                  <li
+                    className={page === "jobs" ? "nav-item active" : "nav-item"}
+                  >
                     <a
                       className='nav-link'
                       rel='noreferrer'
@@ -111,13 +158,21 @@ const Header = ({ loginPage, page }) => {
                     </a>
                   </li>
 
-                  <li className={page === 'blogs' ? 'nav-item active' : 'nav-item'}>
+                  <li
+                    className={
+                      page === "blogs" ? "nav-item active" : "nav-item"
+                    }
+                  >
                     <Link className='nav-link' to='/blogs'>
                       {t("header.heading.7")}
                     </Link>
                   </li>
 
-                  <li className={page === 'story' ? 'nav-item active' : 'nav-item'}>
+                  <li
+                    className={
+                      page === "story" ? "nav-item active" : "nav-item"
+                    }
+                  >
                     <Link className='nav-link' to='/success_story'>
                       {t("header.heading.8")}
                     </Link>
@@ -127,9 +182,7 @@ const Header = ({ loginPage, page }) => {
             </nav>
           </div>
         </div>
-
       </header>
-
     </div>
   );
 };
