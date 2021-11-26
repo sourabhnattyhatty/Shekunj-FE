@@ -24,17 +24,25 @@ export const onLogin = (values, history) => async (dispatch) => {
   }
 };
 
+export const logOut = (history) => async(dispatch) => {
+  Cookies.remove('sheToken');
+  dispatch({ type: authTypes.LOGIN_FAIL });
+  history.push("/login");
+}
+
 export const onSignup = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.SIGNUP_REQUEST });
     const res = await httpServices.post("authentication/register/", values);
+    debugger;
     dispatch({ type: authTypes.SIGNUP_FINISH, payload: values });
     toast.success("Registration Successfully", toasterConfig);
     history.push("/login");
   } catch (error) {
     dispatch({ type: authTypes.SIGNUP_FAIL });
+    debugger;
     if (error?.status === 400) {
-      toast.error(error.data.errors.email, toasterConfig);
+      toast.error(error.data.errors.error[0], toasterConfig);
     } else if (error?.status === 500) {
       toast.error("Not valid OTP", toasterConfig);
     }
@@ -43,7 +51,7 @@ export const onSignup = (values, history) => async (dispatch) => {
 
 export const registerWithGoogle = (value) => async (dispatch) => {
   try {
-    debugger
+    debugger;
     const res = await httpServices.post("social_auth/google/", value);
     debugger;
   } catch (err) {
@@ -105,5 +113,12 @@ export const resetPassword = (values, history) => async (dispatch) => {
     toast.success(res.data.message, toasterConfig);
   } catch (error) {
     toast.error("Internal Server Error", toasterConfig);
+  }
+};
+
+export const refreshPage = () => async (dispatch) => {
+  const token = Cookies.get("sheToken");
+  if(token){
+    dispatch({type: authTypes.REFRESH})
   }
 };

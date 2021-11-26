@@ -74,6 +74,11 @@ export const authReducer = (state = initialState, action) => {
         isAuth : false,
         error : action.payload
       }
+    case authTypes.REFRESH:
+      return{
+        ...state,
+        isAuth : true
+      }
     default:
       return state;
   }
