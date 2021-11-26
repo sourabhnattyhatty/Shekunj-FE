@@ -6,13 +6,21 @@ import Google from "../../assets/images/login/google.png";
 import Or from "../../assets/images/login/or.png";
 import { useDispatch } from "react-redux";
 import { registerWithGoogle } from "../../store/auth/action";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 function GoogleLoginComponent({ showOr }) {
   const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const history = useHistory();
+
   const responseGoogle = (res) => {
-    dispatch(registerWithGoogle({auth_token : res.tokenId}))
+    if (res && res.tokenId) {
+      dispatch(registerWithGoogle({ auth_token: res.tokenId }, history));
+    }else{
+      toast.error('Google login failed.');
+    }
   };
   return (
     <>
@@ -25,7 +33,7 @@ function GoogleLoginComponent({ showOr }) {
             <>
               <button
                 className='btn btn-google'
-                onClick={renderProps.onClick}
+                onClick={() => renderProps.onClick()}
                 disabled={renderProps.disabled}
               >
                 <img src={Google} alt='...' className='mr-2' />{" "}

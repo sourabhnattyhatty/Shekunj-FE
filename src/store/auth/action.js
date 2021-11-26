@@ -49,13 +49,17 @@ export const onSignup = (values, history) => async (dispatch) => {
   }
 };
 
-export const registerWithGoogle = (value) => async (dispatch) => {
+export const registerWithGoogle = (value, history) => async (dispatch) => {
   try {
-    debugger;
     const res = await httpServices.post("social_auth/google/", value);
-    debugger;
+    dispatch({
+      type: authTypes.LOGIN_FINISH,
+      payload: { name: res.data.username, email: res.data.email },
+    });
+    Cookies.set("sheToken", res.data.tokens.refresh);
+    history.push("/");
   } catch (err) {
-    debugger;
+    toast.error("Google Login failed.", toasterConfig)
   }
 };
 
