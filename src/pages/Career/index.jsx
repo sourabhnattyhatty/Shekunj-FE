@@ -16,6 +16,7 @@ import Choose6 from "../../assets/images/Career/Choose6.png";
 import Rankings from "../../assets/images/Career/Rankings.png";
 import exams from "../../assets/images/Career/exams.png";
 import exams_icon from "../../assets/images/Career/exams-icon.png";
+import Bookmark from "../../assets/icons/bookmark.png";
 
 import "../HomePage/index.scss";
 import "./index.scss";
@@ -72,14 +73,20 @@ const Index = () => {
 
           <div className='row_box'>
             <div className='row'>
-
               {[Choose1, Choose2, Choose3].map((obj, ind) => (
                 <>
                   <div className='col-md-4'>
                     <div className='choose_box'>
                       <img src={obj} alt='' />
                       <div className='choose_con'>
-                        <h3>Resume Writing</h3>
+                        <h3>
+                          Resume Writing{" "}
+                          <img
+                            src={Bookmark}
+                            className='ml-2 bookimg'
+                            alt='Image'
+                          />{" "}
+                        </h3>
                         <p>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Sed aliquet sit urna amet ipsum ornare urna.
@@ -90,27 +97,32 @@ const Index = () => {
                           href='#!'
                           class='learn_more aos-init aos-animate'
                         >
-                          {t('homePage.highlightStudents.button')}
+                          {t("homePage.highlightStudents.button")}
                         </a>
                       </div>
                     </div>
                   </div>
                 </>
               ))}
-
             </div>
           </div>
 
           <div className='row_box'>
             <div className='row'>
-
               {[Choose4, Choose5, Choose6].map((obj, ind) => (
                 <>
                   <div className='col-md-4'>
                     <div className='choose_box'>
                       <img src={obj} alt='' />
                       <div className='choose_con'>
-                        <h3>Resume Writing</h3>
+                        <h3>
+                          LinkedIn Profile Writing{" "}
+                          <img
+                            src={Bookmark}
+                            className='ml-2 bookimg'
+                            alt='Image'
+                          />{" "}
+                        </h3>
                         <p>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Sed aliquet sit urna amet ipsum ornare urna.
@@ -121,14 +133,13 @@ const Index = () => {
                           href='#!'
                           className='learn_more aos-init aos-animate'
                         >
-                          {t('homePage.highlightStudents.button')}
+                          {t("homePage.highlightStudents.button")}
                         </a>
                       </div>
                     </div>
                   </div>
                 </>
               ))}
-
             </div>
           </div>
         </div>
@@ -143,10 +154,10 @@ const Index = () => {
         />
       </div>
 
-      <section className='best_edu'>
+      <section className='best_edu mb-5'>
         <div className='container'>
           <div className='edu_tit'>
-            <h2>{t('careerPage.heading3')}</h2>
+            <h2>{t("careerPage.heading3")}</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
               gravida tellus leo risus. Proin sagittis nec nisi tortor nisl
@@ -158,7 +169,7 @@ const Index = () => {
             <div className='col-md-7'>
               <div className='ranking'>
                 <h3>
-                  <img src={Rankings} alt='' /> {t('careerPage.ranking')}
+                  <img src={Rankings} alt='' /> {t("careerPage.ranking")}
                 </h3>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
@@ -186,7 +197,7 @@ const Index = () => {
 
               <div className='ranking exms'>
                 <h3>
-                  <img src={exams_icon} alt='' /> {t('careerPage.exam')}
+                  <img src={exams_icon} alt='' /> {t("careerPage.exam")}
                 </h3>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi

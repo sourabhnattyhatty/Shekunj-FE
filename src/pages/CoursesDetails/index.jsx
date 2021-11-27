@@ -10,7 +10,7 @@ import certi from "../../assets/images/CoursesDetails/certi.png";
 import textImg from "../../assets/images/CoursesDetails/text.png";
 import "./index.scss";
 
-const index = () => {
+const CourseDetails = () => {
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -106,7 +106,7 @@ const index = () => {
               </div>
 
               <div className='sec1_des'>
-                <h2>Discription</h2>
+                <h2>Description</h2>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Viverra mauris quam eros, neque lorem tellus. Adipiscing non
@@ -128,9 +128,17 @@ const index = () => {
 
                 <h2>This course includes:</h2>
                 <ul>
-                  <li><img src={Device} alt="" srcset="" /> 2 hours on-demand video</li>
-                  <li><img src={textImg} alt="" srcset="" /> 1 article</li>
-                  <li><img src={certi} alt="" srcset="" /> Certificate of completion</li>
+                  <li>
+                    <img src={Device} alt='' srcset='' /> 2 hours on-demand
+                    video
+                  </li>
+                  <li>
+                    <img src={textImg} alt='' srcset='' /> 1 article
+                  </li>
+                  <li>
+                    <img src={certi} alt='' srcset='' /> Certificate of
+                    completion
+                  </li>
                 </ul>
 
                 <button className='btn_view'>View More Courses</button>
@@ -146,4 +154,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default CourseDetails;

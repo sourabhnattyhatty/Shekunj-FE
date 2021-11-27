@@ -1,0 +1,158 @@
+.card_courses .card {
+  background: #ffffff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  padding: 30px 20px;
+  border: none;
+  font-family: SegoeUI_medium;
+}
+.card_courses .card h3 {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 40px;
+  color: #000000;
+}
+.card_courses .card p {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #828282;
+  position: relative;
+}
+.about_courses_border {
+  border-bottom: 1px solid #e3e4eb;
+}
+.courses_about_div {
+  border: 1px solid #e3e4eb;
+  box-sizing: border-box;
+  filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.15));
+  padding:10px 0px;
+}
+.courses_about_div .about_courses {
+  padding: 15px 20px;
+}
+
+.courses_about_div .about_courses h5 {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 37px;
+  color: #000000;
+  font-family: SegoeUI_medium;
+}
+
+.courses_about_div .about_courses p {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #828282;
+}
+.courses_about_div .courses_number ul li{
+    list-style-type: none;
+    font-family: SegoeUI_medium;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #828282;
+}
+.courses_about_div .courses_number h6{
+    font-family: SegoeUI_medium;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #323232;
+}
+.courses_about_div .courses_number p{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #828282;
+}
+.courses_about_div .courses_number{
+    padding:15px 20px;
+}
+.read_more_text{
+  display: inline-block;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #D62C79;
+  right: 20px;
+  bottom: 0px;
+  cursor: pointer;
+}
+.prev_next_btn .prev_icon{
+  font-family: SegoeUI_medium;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  cursor: pointer;
+}
+.prev_next_btn .prev_icon:hover{
+  color: #EC498A;
+}
+.circular_progress_module{
+  font-family: SegoeUI_medium;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 20px;
+  color: #000000;
+  float: right;
+}
+.circular_progress_module .MuiCircularProgress-root.MuiCircularProgress-determinate {
+  color:#EC498A;
+  width:50px !important;
+  height:50px !important;
+  margin-top: -7px;
+}
+.accordion_box{
+  border: 1px solid #E3E4EB;
+  padding-bottom: 15px;
+}
+.accordion_box h4{
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  padding:10px 15px;
+}
+.accordion_box .MuiPaper-root.MuiPaper-elevation{
+  border:none;
+  background-color: transparent;
+}
+.accordion_box .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded{
+  background-color: #F9F8FE;
+  border-top: 1px solid #E3E4EB;
+  border-bottom: 1px solid #E3E4EB;
+}
+.accordion_box .MuiButtonBase-root.MuiAccordionSummary-root{
+  background-color: transparent;
+  border:none;
+}
+.accordion_box .MuiPaper-root.MuiPaper-elevation .MuiAccordionSummary-content .MuiTypography-root{
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  font-family: SegoeUI_medium;
+}
+.accordion_box .MuiAccordionDetails-root {
+  border:none
+}
+.accordion_box .MuiAccordionDetails-root ul li{
+  list-style-type: none;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #828282;
+  margin-bottom: 7px;
+}
+.btn.btn_test{
+  background: #EC498A;
+border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 10px 50px;
+}

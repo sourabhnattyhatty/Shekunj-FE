@@ -21,8 +21,7 @@ import "aos/dist/aos.css";
 import ScrollToTop from "../../components/ScrollToTop";
 
 function HomePage() {
-
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const settings = {
     dots: false,
@@ -31,7 +30,7 @@ function HomePage() {
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    infinite:true,
+    infinite: true,
 
     responsive: [
       {
@@ -64,7 +63,7 @@ function HomePage() {
 
   return (
     <div>
-      <Header loginPage={false} page="home"/>
+      <Header loginPage={false} page='home' />
 
       {/* slider */}
 
@@ -75,17 +74,17 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos="zoom-in">
-                      {t('homePage.mainSlider.heading.1')}
+                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='zoom-in'>
+                      {t("homePage.mainSlider.heading.1")}
                     </h4>
-                    <p className='mb-4' data-aos="zoom-in">
+                    <p className='mb-4' data-aos='zoom-in'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn' data-aos="zoom-in">
-                      {t('homePage.mainSlider.button')}
+                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
+                      {t("homePage.mainSlider.button")}
                     </a>
                   </div>
                 </div>
@@ -96,17 +95,17 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos="zoom-in">
-                      {t('homePage.mainSlider.heading.2')}
+                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='zoom-in'>
+                      {t("homePage.mainSlider.heading.2")}
                     </h4>
-                    <p className='mb-4' data-aos="zoom-in">
+                    <p className='mb-4' data-aos='zoom-in'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn' data-aos="zoom-in">
-                      {t('homePage.mainSlider.button')}
+                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
+                      {t("homePage.mainSlider.button")}
                     </a>
                   </div>
                 </div>
@@ -117,12 +116,36 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos="zoom-in">
-                    {t('homePage.mainSlider.heading.3.3.1')} <span>{t('homePage.mainSlider.heading.3.3.2')}</span>
+                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='zoom-in'>
+                      {t("homePage.mainSlider.heading.3.3.1")}
+                      <span>{t("homePage.mainSlider.heading.3.3.2")}</span>
                     </h4>
-                    
-                    <a href='#!' className='banner_btn' data-aos="zoom-in">
-                      {t('homePage.mainSlider.button')}
+
+                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
+                      {t("homePage.mainSlider.button")}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className='carousel-item carousel_item4'>
+              <div className='container'>
+                <div className='row h_set'>
+                  <div className='col-md-7 col-12 mt-5'>
+                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='zoom-in'>
+                      {t("homePage.mainSlider.heading.2")}
+                    </h4>
+
+                    <p className='mb-4' data-aos='zoom-in'>
+                      {" "}
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      In sed fermentum massa semper mauris volutpat dictum
+                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
+                    </p>
+
+                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
+                      {t("homePage.mainSlider.button")}
                     </a>
                   </div>
                 </div>
@@ -136,26 +159,23 @@ function HomePage() {
       <Carousel
         items={5}
         details={true}
-        title1={t('homePage.carousel1.heading.1')}
-        title2={t('homePage.carousel1.heading.2')}
+        title1={t("homePage.carousel1.heading.1")}
+        title2={t("homePage.carousel1.heading.2")}
       />
 
       {/* resume */}
       <section className='resume same_padding mt-5'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-7'>
-              <h4 data-aos="fade-right">
-                {t('homePage.resume.heading')}
-              </h4>
+            <div className='col-md-7' data-aos='slide-up'>
+              <h4>{t("homePage.resume.heading")}</h4>
               <a
                 rel='noreferrer'
                 href='https://octahire.com/Resume_maker'
                 target='_blank'
-                className='btn btn-resume'
-                data-aos="fade-right"
+                className='btn btn-resume mt-4'
               >
-                {t('homePage.resume.button')}
+                {t("homePage.resume.button")}
               </a>
             </div>
 
@@ -170,8 +190,8 @@ function HomePage() {
       <Carousel
         items={5}
         details={false}
-        title1={t('homePage.carousel2.heading.1')}
-        title2={t('homePage.carousel2.heading.2')}
+        title1={t("homePage.carousel2.heading.1")}
+        title2={t("homePage.carousel2.heading.2")}
       />
 
       {/* Job opportunity */}
@@ -181,8 +201,8 @@ function HomePage() {
             <div className='col-lg-12 col-md-11'>
               <div className='job-opprtunity-bg'>
                 <div className='row'>
-                  <div className='col-md-8' data-aos="fade-right">
-                    <h3>{t('homePage.jobopportunity.heading')}</h3>
+                  <div className='col-md-8' data-aos='fade-right'>
+                    <h3>{t("homePage.jobopportunity.heading")}</h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Rutrum sapien nunc sit egestas amet magnis enim.
@@ -193,10 +213,9 @@ function HomePage() {
                       rel='noreferrer'
                       target='_blank'
                       href='https://octahire.com/Recruiters/job_recruiters?location='
-                    
                       className='btn btn-job'
                     >
-                      {t('homePage.jobopportunity.button')}
+                      {t("homePage.jobopportunity.button")}
                     </a>
                   </div>
 
@@ -213,8 +232,8 @@ function HomePage() {
       <Carousel
         items={5}
         details={true}
-        title1={t('homePage.carousel1.heading.1')}
-        title2={t('homePage.carousel1.heading.2')}
+        title1={t("homePage.carousel1.heading.1")}
+        title2={t("homePage.carousel1.heading.2")}
       />
 
       {/* career development */}
@@ -222,7 +241,7 @@ function HomePage() {
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-md-11'>
-              <h3 data-aos='slide-up'>{t('homePage.community.heading')}</h3>
+              <h3 data-aos='slide-up'>{t("homePage.community.heading")}</h3>
               <p data-aos='slide-up'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
                 sapien nunc sit egestas amet magnis enim. Suspendisse vulputate
@@ -238,7 +257,7 @@ function HomePage() {
           <div className='row justify-content-center'>
             <div className='col-md-4 text-center mt-5'>
               <button className='btn btn-start-course' data-aos='slide-up'>
-                {t('homePage.community.button')}
+                {t("homePage.community.button")}
               </button>
             </div>
           </div>
@@ -251,7 +270,8 @@ function HomePage() {
           <div className='row'>
             <div className='col-md-6 offset-md-6 offset-lg-6 offset-xl-7'>
               <h4>
-              {t('homePage.certificate.heading.1')} <br /> {t('homePage.certificate.heading.2')}
+                {t("homePage.certificate.heading.1")} <br />{" "}
+                {t("homePage.certificate.heading.2")}
               </h4>
 
               <p>
@@ -367,7 +387,9 @@ function HomePage() {
             </div>
 
             <div className='col-md-5 offset-md-1'>
-              <h3 className='mb-3 mt-4'>{t('homePage.highlightStudents.heading')}</h3>
+              <h3 className='mb-3 mt-4'>
+                {t("homePage.highlightStudents.heading")}
+              </h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
                 donec molestie sit diam aliquam egestas erat tincidunt magna.
@@ -377,14 +399,14 @@ function HomePage() {
               </p>
 
               <a data-aos='slide-up' href='#!' className='learn_more'>
-                {t('homePage.highlightStudents.button')}
+                {t("homePage.highlightStudents.button")}
               </a>
             </div>
           </div>
         </div>
       </section>
-      
-      <ScrollToTop/>
+
+      <ScrollToTop />
 
       <Footer loginPage={false} />
     </div>

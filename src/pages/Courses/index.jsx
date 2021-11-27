@@ -25,10 +25,8 @@ import Pro1 from "../../assets/images/P-1.png";
 import "./index.scss";
 import "../../pages/HomePage/index.scss";
 
-
-const Index = (props) => {
+const Courses = (props) => {
   const { t } = useTranslation();
-
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -42,7 +40,7 @@ const Index = (props) => {
           <div className='row'>
             <div className='col-md-7'>
               <div className='cors_con'>
-                <h2>{t('coursesPage.banner.heading')}</h2>
+                <h2>{t("coursesPage.banner.heading")}</h2>
                 <div className='cour_box'>
                   <ul>
                     <li>
@@ -60,7 +58,7 @@ const Index = (props) => {
                       <li>
                         <img src={img1} alt='' />
                       </li>
-                      <li> {t('coursesPage.banner.1')}</li>
+                      <li> {t("coursesPage.banner.1")}</li>
                     </ul>
 
                     <ul className='ulcont'>
@@ -69,8 +67,8 @@ const Index = (props) => {
                       </li>
                       <li>
                         {" "}
-                        {t('coursesPage.banner.2.1')} <br />
-                        {t('coursesPage.banner.2.2')}
+                        {t("coursesPage.banner.2.1")} <br />
+                        {t("coursesPage.banner.2.2")}
                       </li>
                     </ul>
 
@@ -78,7 +76,7 @@ const Index = (props) => {
                       <li>
                         <img src={img3} alt='' />
                       </li>
-                      <li> {t('coursesPage.banner.3')}</li>
+                      <li> {t("coursesPage.banner.3")}</li>
                     </ul>
                   </div>
                 </div>
@@ -186,4 +184,4 @@ const Index = (props) => {
   );
 };
 
-export default Index;
+export default Courses;
