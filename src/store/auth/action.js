@@ -54,7 +54,7 @@ export const registerWithGoogle = (value, history) => async (dispatch) => {
       type: authTypes.LOGIN_FINISH,
       payload: { name: res.data.username, email: res.data.email },
     });
-    Cookies.set("sheToken", res.data.tokens.refresh);
+    Cookies.set("sheToken", res.data.tokens.access);
     history.push("/");
   } catch (err) {
     toast.error("Google Login failed.", toasterConfig)
@@ -63,11 +63,13 @@ export const registerWithGoogle = (value, history) => async (dispatch) => {
 
 export const contactVerify = (value) => async (dispatch) => {
   try {
+    
     dispatch({ type: authTypes.CONTACT_VERIFY_REQUEST });
-    const res = await httpServices.post(`authentication/user-send-otp/`, value);
+    const res = await httpServices.post(`authentication/user-send-otp/`, {contact : value.contact.toString()});
     dispatch({ type: authTypes.CONTACT_VERIFY_FINISH });
     toast.success(res.message, toasterConfig);
   } catch (error) {
+    debugger
     dispatch({ type: authTypes.CONTACT_VERIFY_FAIL });
     if (error?.status === 400) {
       toast.error("Invalid mobile number.");

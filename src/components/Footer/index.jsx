@@ -6,7 +6,6 @@ import Logo from "../../assets/images/whitelogo.svg";
 import LogoBlack from "../../assets/images/logo.svg";
 import ChangeLanguageButton from "../LanguageButton";
 
-
 const Footer = ({ loginPage }) => {
   const { t } = useTranslation();
 
@@ -18,39 +17,19 @@ const Footer = ({ loginPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link to="/">{t("footer.links.col1.1")}</Link>
+                  <Link to='/'>{t("footer.links.col1.1")}</Link>
                 </li>
 
                 <li>
-                  <Link to="/">{t("footer.links.col1.2")}</Link>
+                  <Link to='/'>{t("footer.links.col1.2")}</Link>
                 </li>
 
                 <li>
-                  <Link to="/about">{t("footer.links.col1.3")}</Link>
+                  <Link to='/about'>{t("footer.links.col1.3")}</Link>
                 </li>
 
                 <li>
-                  <Link to="/">{t("footer.links.col1.4")}</Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className='col-md-3 col-4'>
-              <ul className='p-0'>
-                <li>
-                  <Link to="/career">{t("footer.links.col2.1")}</Link>
-                </li>
-
-                <li>
-                  <Link to="/">{t("footer.links.col2.2")}</Link>
-                </li>
-
-                <li>
-                  <Link to="/">{t("footer.links.col2.3")}</Link>
-                </li>
-
-                <li>
-                  <Link to="/">{t("footer.links.col2.4")}</Link>
+                  <Link to='/'>{t("footer.links.col1.4")}</Link>
                 </li>
               </ul>
             </div>
@@ -58,15 +37,35 @@ const Footer = ({ loginPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link to="/">{t("footer.links.col3.1")}</Link>
+                  <Link to='/career'>{t("footer.links.col2.1")}</Link>
                 </li>
 
                 <li>
-                  <Link to="/">{t("footer.links.col3.2")}</Link>
+                  <Link to='/'>{t("footer.links.col2.2")}</Link>
                 </li>
 
                 <li>
-                  <Link to="/">{t("footer.links.col3.3")}</Link>
+                  <Link to='/'>{t("footer.links.col2.3")}</Link>
+                </li>
+
+                <li>
+                  <Link to='/'>{t("footer.links.col2.4")}</Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className='col-md-3 col-4'>
+              <ul className='p-0'>
+                <li>
+                  <Link to='/'>{t("footer.links.col3.1")}</Link>
+                </li>
+
+                <li>
+                  <Link to='/'>{t("footer.links.col3.2")}</Link>
+                </li>
+
+                <li>
+                  <Link to='/'>{t("footer.links.col3.3")}</Link>
                 </li>
               </ul>
             </div>
@@ -81,11 +80,9 @@ const Footer = ({ loginPage }) => {
           <div className='bottom-footer mt-5'>
             <div className='row'>
               <div className='col-lg-9 col-md-8 col-5 text-left'>
-                <a className='' href='#!'>
-                  <img src={loginPage ? Logo : LogoBlack} alt='logo' /> 
-
-                  
-                </a>
+                <Link className='' to="/">
+                  <img src={loginPage ? Logo : LogoBlack} alt='logo' />
+                </Link>
               </div>
 
               <div className='col-lg-3 col-md-4 col-7 text-left'>
@@ -96,7 +93,6 @@ const Footer = ({ loginPage }) => {
         </div>
       </footer>
     </div>
-
   );
 };
 

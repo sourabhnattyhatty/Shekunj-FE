@@ -1,19 +1,64 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
+import { constants } from "../../utils";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "./index.scss";
 
 import Pro1 from "../../assets/images/P-1.png";
-import Profile from '../../assets/images/testimonial/1.png'
+import Profile from "../../assets/images/testimonial/1.png";
 import star from "../../assets/images/Star 2.png";
 import timer from "../../assets/images/timer.png";
 import list from "../../assets/images/list.png";
 import level from "../../assets/images/level.png";
+import collage1 from "../../assets/images/Courses/collage1.png";
+import collage2 from "../../assets/images/Courses/collage2.png";
+import collage3 from "../../assets/images/Courses/collage3.png";
+import school1 from "../../assets/images/Courses/school1.png";
+import school2 from "../../assets/images/Courses/school2.png";
+import school3 from "../../assets/images/Courses/school3.png";
+import { useDispatch, useSelector } from "react-redux";
+import { allCourses } from "../../store/courses/action";
 
 function Carousel(props) {
   const divRef = React.useRef();
+  const {courses} = useSelector(state => state.coursesReducer)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(allCourses())
+  }, [dispatch]);
+
+  const collagesArr = [
+    {
+      img: collage1,
+      title: "University of Delhi",
+    },
+    {
+      img: collage2,
+      title: "Indian Institute of Technology - Kharagpur",
+    },
+    {
+      img: collage3,
+      title: "Narsee Monjee Institute of Management Studies",
+    },
+  ];
+
+  const schoolsArr = [
+    {
+      img: school1,
+      title: "St. Xavier’s Collegiate School, Kolkata",
+    },
+    {
+      img: school2,
+      title: "The Asian School, Dehradun",
+    },
+    {
+      img: school3,
+      title: "Delhi Public School, Vasant Kunj, Delhi",
+    },
+  ]
 
   const coursesArray = [
     {
@@ -51,7 +96,7 @@ function Carousel(props) {
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;
     divRef.current.innerHTML = `${carousel.relative(carousel.current()) + 1}/${
-      coursesArray.length
+      courses.length
     }`;
   };
 
@@ -77,80 +122,145 @@ function Carousel(props) {
           smartSpeed='800'
           onChanged={(e) => handleChange(e)}
           responsive={{
-            0:{
-                items:1,
-                nav:true
+            0: {
+              items: 1,
+              nav: true,
             },
-            600:{
-                items:2,
-                nav:true,
+            600: {
+              items: 2,
+              nav: true,
             },
-            1000:{
-                items:3,
-                nav:true,
-                loop:true
+            1000: {
+              items: 3,
+              nav: true,
+              loop: true,
             },
-            1200:{
-                items:4,
-                nav:true,
-                loop:true
-            }
+            1200: {
+              items: 4,
+              nav: true,
+              loop: true,
+            },
           }}
-         
         >
-          {coursesArray.map((obj, ind) => (
-            <div className='item' key={ind}>
-              <div className='box'>
-                <div className='slide-img'>
-                  <img alt='' src={Pro1} />
-                  <div className='overlay'></div>
-                </div>
-                {props.details ? (
-                  <>
+          {props.type === constants.carouselConstant.COURSES && (
+            <>
+              {courses.map((obj, ind) => (
+                <div className='item' key={ind}>
+                  <div className='box'>
+                    <div className='slide-img'>
+                      <img alt='' src={Pro1} />
+                      <div className='overlay'></div>
+                    </div>
+
                     <div className='tag_btn'>
-                      <button className='btn btn-info'>{obj?.title}</button>
-                      <h2>{obj?.subTitle}</h2>
+                      <button className='btn btn-info'>Design</button>
+                      <h2>{obj?.name}</h2>
                     </div>
                     <div className='detail-box'>
                       <div className='type'>
                         <a href='#!'>
-                          {obj.rating} <img src={star} alt='' />{" "}
-                          <span>({obj?.people})</span>
+                        4.5 <img src={star} alt='' />{" "}
+                          <span>(104,716)</span>
                         </a>
-                        <span className='std'>{obj?.students} Students</span>
+                        <span className='std'>36,995 Students</span>
                       </div>
                       <div className='time'>
                         <p>
-                          <img src={timer} alt='' /> {obj?.time}
+                          <img src={timer} alt='' /> 08 hr 20 mins
                         </p>
                         <p>
-                          <img src={list} alt='' /> {obj?.lectures} lectures
+                          <img src={list} alt='' /> 32 lectures
                         </p>
                         <p>
                           <img src={level} alt='' /> All level
                         </p>
                       </div>
                     </div>
-                  </>
-                ) : (
-                  <>
-                    <div className='tag_btn'>
-                      <button className='btn btn-info'>1 Test Set</button>
-                      <h2>Banking and Insurance</h2>
-                    </div>
-                  </>
-                )}
 
-                <hr className='line' />
-                <div className='names'>
-                  <p>
-                    <img src={Profile} alt='...'/> Ramadhir Krishna
-                  </p>
-                  <span>Free</span>
+                    <hr className='line' />
+                    <div className='names'>
+                      <p>
+                        <img src={Profile} alt='...' /> Ramadhir Krishna
+                      </p>
+                      <span>Free</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              ))}
+            </>
+          )}
+
+          {props.type === constants.carouselConstant.TEST && (
+            <>
+              {coursesArray.map((obj, ind) => (
+                <div className='item' key={ind}>
+                  <div className='box'>
+                    <div className='slide-img'>
+                      <img alt='' src={Pro1} />
+                      <div className='overlay'></div>
+                    </div>
+
+                    <>
+                      <div className='tag_btn'>
+                        <button className='btn btn-info'>1 Test Set</button>
+                        <h2>Banking and Insurance</h2>
+                      </div>
+                    </>
+
+                    <hr className='line' />
+                    <div className='names'>
+                      <p>
+                        <img src={Profile} alt='...' /> Ramadhir Krishna
+                      </p>
+                      <span>Free</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+
+          {props.type === constants.carouselConstant.COLLEGES && (
+            <>
+              {collagesArr.map((obj, ind) => (
+                <div className='item' key={ind}>
+                  <div className='box'>
+                    <div className='slide-img'>
+                      <img alt='' src={obj.img} />
+                      <div className='overlay'></div>
+                    </div>
+
+                    <>
+                      <div className='collage_name'>
+                        <h2>{obj.title}</h2>
+                      </div>
+                    </>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+
+          {props.type === constants.carouselConstant.SCHOOLS && (
+            <>
+              {schoolsArr.map((obj, ind) => (
+                <div className='item' key={ind}>
+                  <div className='box'>
+                    <div className='slide-img'>
+                      <img alt='' src={obj.img} />
+                      <div className='overlay'></div>
+                    </div>
+
+                    <>
+                      <div className='collage_name'>
+                        <h2>{obj.title}</h2>
+                      </div>
+                    </>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </OwlCarousel>
       </div>
     </>

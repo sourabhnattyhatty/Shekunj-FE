@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
+import { constants } from "../../utils";
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -25,7 +26,6 @@ function HomePage() {
 
   const settings = {
     dots: false,
-    infinite: false,
     speed: 500,
     autoplay: true,
     slidesToShow: 1,
@@ -158,9 +158,9 @@ function HomePage() {
       {/* Slider 1 */}
       <Carousel
         items={5}
-        details={true}
         title1={t("homePage.carousel1.heading.1")}
         title2={t("homePage.carousel1.heading.2")}
+        type={constants.carouselConstant.COURSES}
       />
 
       {/* resume */}
@@ -189,9 +189,9 @@ function HomePage() {
       {/* Slider 2 */}
       <Carousel
         items={5}
-        details={false}
         title1={t("homePage.carousel2.heading.1")}
         title2={t("homePage.carousel2.heading.2")}
+        type={constants.carouselConstant.TEST}
       />
 
       {/* Job opportunity */}
@@ -231,9 +231,9 @@ function HomePage() {
 
       <Carousel
         items={5}
-        details={true}
         title1={t("homePage.carousel1.heading.1")}
         title2={t("homePage.carousel1.heading.2")}
+        type={constants.carouselConstant.COURSES}
       />
 
       {/* career development */}

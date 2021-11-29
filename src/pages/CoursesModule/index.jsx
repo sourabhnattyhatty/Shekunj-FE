@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -200,7 +200,7 @@ const CourseModule = () => {
                     <Row>
                       <Col md={6} xs={6}>
                         <p className='prev_icon'>
-                          <img src={Previous} className='mr-2' alt='Image' />{" "}
+                          <img src={Previous} className='mr-2' alt='...' />{" "}
                           Previous
                         </p>
                       </Col>
@@ -208,7 +208,7 @@ const CourseModule = () => {
                       <Col md={6} xs={6} className='text-right'>
                         <p className='prev_icon'>
                           Next
-                          <img src={Next} className='ml-2' alt='Image' />{" "}
+                          <img src={Next} className='ml-2' alt='...' />{" "}
                         </p>
                       </Col>
                     </Row>

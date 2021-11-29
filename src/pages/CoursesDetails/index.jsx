@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ScrollToTop from "../../components/ScrollToTop";
+
 import banimg from "../../assets/images/CoursesDetails/ban_img.png";
 import star from "../../assets/images/CoursesDetails/star.png";
 import check from "../../assets/images/CoursesDetails/check.png";
 import Device from "../../assets/images/CoursesDetails/Device.png";
 import certi from "../../assets/images/CoursesDetails/certi.png";
 import textImg from "../../assets/images/CoursesDetails/text.png";
+
 import "./index.scss";
 
 const CourseDetails = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  },[])
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -124,7 +131,7 @@ const CourseDetails = () => {
 
             <div className='col-md-5'>
               <div className='sec2_right'>
-                <button className='btn btn_str_Cor'>View More Courses</button>
+                <Link to="/CoursesModule" className='btn btn_str_Cor'>Start Course</Link>
 
                 <h2>This course includes:</h2>
                 <ul>

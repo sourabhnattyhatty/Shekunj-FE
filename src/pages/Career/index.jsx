@@ -20,6 +20,7 @@ import Bookmark from "../../assets/icons/bookmark.png";
 
 import "../HomePage/index.scss";
 import "./index.scss";
+import { constants } from "../../utils";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -64,6 +65,7 @@ const Index = () => {
           details={true}
           title1={t("careerPage.carousel1.heading.1")}
           title2={t("careerPage.carousel1.heading.2")}
+          type={constants.carouselConstant.COLLEGES}
         />
       </div>
 
@@ -84,7 +86,7 @@ const Index = () => {
                           <img
                             src={Bookmark}
                             className='ml-2 bookimg'
-                            alt='Image'
+                            alt='...'
                           />{" "}
                         </h3>
                         <p>
@@ -120,7 +122,7 @@ const Index = () => {
                           <img
                             src={Bookmark}
                             className='ml-2 bookimg'
-                            alt='Image'
+                            alt='...'
                           />{" "}
                         </h3>
                         <p>
@@ -151,6 +153,7 @@ const Index = () => {
           details={true}
           title1={t("careerPage.carousel2.heading.1")}
           title2={t("careerPage.carousel2.heading.2")}
+          type={constants.carouselConstant.SCHOOLS}
         />
       </div>
 

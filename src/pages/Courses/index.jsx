@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -122,8 +123,8 @@ const Courses = (props) => {
 
           <div className='container'>
             <div className='row'>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((val) => (
-                <div className='col-md-4'>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((obj,val) => (
+                <Link to={`/CoursesDetails/${val}`} className='col-md-4'>
                   <div className='box box_hov'>
                     <div className='slide-img'>
                       <img alt='' src={Pro1} />
@@ -162,7 +163,7 @@ const Courses = (props) => {
                       <span>Free</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

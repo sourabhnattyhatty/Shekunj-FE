@@ -20,11 +20,10 @@ import Phone from "../../assets/icons/phone.png";
 import Otp from "../../assets/icons/otp.png";
 import Alert from "../../assets/icons/alert.png";
 
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
 
 import inactive from "../../assets/images/login/inactive.png";
-
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -66,10 +65,12 @@ const LoginForm = () => {
     });
 
   const handleVerify = (e) => {
-    const contact = e.currentTarget.nextElementSibling.value;
+    const contact = values.contact;
     if (contact === "") {
+      debugger
       toast.error("Please provide contact number.");
     } else if (contact.length > 10 || contact.length < 10) {
+      debugger
       toast.error("Please provide valid contact number.");
     } else {
       dispatch(contactVerify({ contact }));
@@ -101,11 +102,10 @@ const LoginForm = () => {
               onBlur={handleBlur}
               autoComplete='off'
               placeholder={t("signup.placeholder1")}
-
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                   <img src={User} alt="Image" />
+                  <InputAdornment position='start'>
+                    <img src={User} alt='...' />
                   </InputAdornment>
                 ),
               }}
@@ -124,11 +124,10 @@ const LoginForm = () => {
               onBlur={handleBlur}
               autoComplete='off'
               placeholder={t("signup.placeholder6")}
-
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                   <img src={User} alt="Image" />
+                  <InputAdornment position='start'>
+                    <img src={User} alt='...' />
                   </InputAdornment>
                 ),
               }}
@@ -147,11 +146,10 @@ const LoginForm = () => {
               onBlur={handleBlur}
               autoComplete='off'
               placeholder={t("signup.placeholder2")}
-
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                   <img src={Mail} alt="Image" />
+                  <InputAdornment position='start'>
+                    <img src={Mail} alt='...' />
                   </InputAdornment>
                 ),
               }}
@@ -175,16 +173,16 @@ const LoginForm = () => {
               <TextField
                 name='contact'
                 type='number'
+                value={values.contact}
                 className='form-control'
                 onChange={handleChange}
                 onBlur={handleBlur}
                 autoComplete='off'
                 placeholder={t("signup.placeholder3")}
-
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position="start">
-                     <img src={Phone} alt="Image" />
+                    <InputAdornment position='start'>
+                      <img src={Phone} alt='...' />
                     </InputAdornment>
                   ),
                 }}
@@ -202,11 +200,10 @@ const LoginForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               placeholder={t("signup.placeholder4")}
-
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                   <img src={Otp} alt="Image" />
+                  <InputAdornment position='start'>
+                    <img src={Otp} alt='...' />
                   </InputAdornment>
                 ),
               }}
@@ -223,11 +220,10 @@ const LoginForm = () => {
               onBlur={handleBlur}
               placeholder={t("signup.placeholder5")}
               autoComplete='off'
-
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                   <img src={Lock} alt="Image" />
+                  <InputAdornment position='start'>
+                    <img src={Lock} alt='...' />
                   </InputAdornment>
                 ),
               }}
@@ -279,15 +275,15 @@ const LoginForm = () => {
             )}
           </div>
 
-              <div className="alert_div">
-                <div className="alert_image">
-                  <img src={Alert} alt="Image" />
-                </div>
-                <p>
-                "Hey there! Please select Girl as a gender, 
-as this website only promotes girls education."
-                </p>
-              </div>
+          {/* <div className='alert_div'>
+            <div className='alert_image'>
+              <img src={Alert} alt='...' />
+            </div>
+            <p>
+              "Hey there! Please select Girl as a gender, as this website only
+              promotes girls education."
+            </p>
+          </div> */}
 
           <button type='submit' className='btn btn_login w-100 mt-3'>
             {isLoading ? (
