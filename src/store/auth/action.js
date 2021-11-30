@@ -35,8 +35,8 @@ export const onSignup = (values, history) => async (dispatch) => {
     dispatch({ type: authTypes.SIGNUP_REQUEST });
     const res = await httpServices.post("authentication/register/", values);
     dispatch({ type: authTypes.SIGNUP_FINISH, payload: values });
-    toast.success("Registration Successfully", toasterConfig);
-    history.push("/login");
+    Cookies.set("sheToken", res.data.token);
+    history.push("/");
   } catch (error) {
     dispatch({ type: authTypes.SIGNUP_FAIL });
     if (error?.status === 400) {

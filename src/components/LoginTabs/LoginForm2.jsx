@@ -56,7 +56,7 @@ function LoginForm2() {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                 <img src={Mobile} alt="Image" />
+                 <img src={Mobile} alt="..." />
                 </InputAdornment>
               ),
             }}
@@ -77,7 +77,7 @@ function LoginForm2() {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                 <img src={Lock} alt="Image" />
+                 <img src={Lock} alt="..." />
                 </InputAdornment>
               ),
             }}

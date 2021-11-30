@@ -1,8 +1,9 @@
-import {coursesTypes} from './types'
+import { coursesTypes } from "./types";
 
 const initialState = {
   isLoading: false,
-  courses : [],
+  courses: [],
+  course: {},
   error: null,
 };
 
@@ -18,7 +19,7 @@ export const coursesReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        courses : action.payload,
+        courses: action.payload,
         error: null,
       };
     case coursesTypes.COURSES_FAIL:
@@ -28,6 +29,25 @@ export const coursesReducer = (state = initialState, action) => {
         error: action.payload,
       };
 
+    case coursesTypes.COURSE_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.COURSE_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        course: action.payload,
+        error: null,
+      };
+    case coursesTypes.COURSE_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

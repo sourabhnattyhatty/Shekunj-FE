@@ -160,7 +160,7 @@ hr.line {
   display: flex;
   justify-content: space-between;
 }
-.type a {
+.type .span2 {
   font-weight: 700;
   letter-spacing: 0.5px;
   padding-right: 8px;
@@ -172,7 +172,7 @@ hr.line {
   color: #f2994a;
   margin: 14px 0;
 }
-.type a span {
+.type .span2 span {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: normal;

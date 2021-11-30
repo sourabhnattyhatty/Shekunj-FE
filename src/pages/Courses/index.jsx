@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { allCourses } from "../../store/courses/action";
+import { constants } from "../../utils";
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -28,6 +31,12 @@ import "../../pages/HomePage/index.scss";
 
 const Courses = (props) => {
   const { t } = useTranslation();
+  const {courses} = useSelector(state => state.coursesReducer)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(allCourses())
+  }, [dispatch]);
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -89,7 +98,7 @@ const Courses = (props) => {
 
       <section className='Srch_sec'>
         <div className='container'>
-          <h2>Search Courses and Programs</h2>
+          <h2>{t("coursesPage.searchHeading")}</h2>
           <div className='Serc_type'>
             <div className='inp_ser'>
               <img src={Search} alt='...' />
@@ -97,7 +106,7 @@ const Courses = (props) => {
                 type='search'
                 name=''
                 id=''
-                placeholder='What do you want to learn?'
+                placeholder={t("coursesPage.placeholder")}
               />
             </div>
             <button className='btn btn-info'>Search</button>
@@ -113,9 +122,9 @@ const Courses = (props) => {
             <div className='col-md-2'>
               <Dropdown title='Program' />
             </div>
-            <div className='col-md-2'>
+            {/* <div className='col-md-2'>
               <Dropdown title='Level' />
-            </div>
+            </div> */}
           </div>
 
           <h4>OUR COURSES</h4>
@@ -123,8 +132,8 @@ const Courses = (props) => {
 
           <div className='container'>
             <div className='row'>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((obj,val) => (
-                <Link to={`/CoursesDetails/${val}`} className='col-md-4'>
+              {courses?.map((obj) => (
+                <Link to={`/CoursesDetails/${obj.id}`} className='col-md-4' key={obj.id}>
                   <div className='box box_hov'>
                     <div className='slide-img'>
                       <img alt='' src={Pro1} />
@@ -133,13 +142,13 @@ const Courses = (props) => {
 
                     <div className='tag_btn'>
                       <button className='btn btn-info'>Design</button>
-                      <h6>Adobe photoshop training: From beginner to PRO</h6>
+                      <h6>{obj.name}</h6>
                     </div>
                     <div className='detail-box'>
                       <div className='type'>
-                        <a href='#!'>
+                        <span className="span1">
                           4.0 <img src={star} alt='' /> <span>104,567</span>
-                        </a>
+                        </span>
                         <span className='std'>5600 Students</span>
                       </div>
                       <div className='time'>
@@ -176,6 +185,7 @@ const Courses = (props) => {
         details={false}
         title1={t("homePage.carousel2.heading.1")}
         title2={t("homePage.carousel2.heading.2")}
+        type={constants.carouselConstant.TEST}
       />
 
       <ScrollToTop />

@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {singleCourseDetails} from '../../store/courses/action'
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -15,9 +17,17 @@ import textImg from "../../assets/images/CoursesDetails/text.png";
 import "./index.scss";
 
 const CourseDetails = () => {
+  const dispatch = useDispatch();
+  const {id} = useParams();
+
+  const {course} = useSelector(state => state.coursesReducer)
+
   useEffect(() => {
+    dispatch(singleCourseDetails(id));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  },[])
+  },[id,dispatch])
+
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -26,11 +36,11 @@ const CourseDetails = () => {
           <div className='row'>
             <div className='col-md-7'>
               <div className='CouDtl_con'>
-                <h2>Master English Speaking and Grammar Easily</h2>
+                <h2>{course?.name}</h2>
                 <h3>Speak English Clearly</h3>
                 <div className='ban_rat'>
                   <p>
-                    45 <img src={star} alt='' srcset='' /> (104,716)
+                    45 <img src={star} alt='' srcSet='' /> (104,716)
                   </p>
                   <p>36,995 Students</p>
                 </div>
@@ -42,7 +52,7 @@ const CourseDetails = () => {
 
             <div className='col-md-5'>
               <div className='CouDtl'>
-                <img src={banimg} alt='' srcset='' />
+                <img src={banimg} alt='' srcSet='' />
               </div>
             </div>
           </div>
@@ -60,13 +70,13 @@ const CourseDetails = () => {
                     <ul>
                       <li>
                         <span>
-                          <img src={check} alt='' srcset='' />
+                          <img src={check} alt='' srcSet='' />
                         </span>{" "}
                         Lorem ipsum dolor sit amet.
                       </li>
                       <li>
                         <span>
-                          <img src={check} alt='' srcset='' />
+                          <img src={check} alt='' srcSet='' />
                         </span>{" "}
                         Lorem ipsum dolor sit amet.
                       </li>
@@ -76,13 +86,13 @@ const CourseDetails = () => {
                     <ul>
                       <li>
                         <span>
-                          <img src={check} alt='' srcset='' />
+                          <img src={check} alt='' srcSet='' />
                         </span>{" "}
                         Lorem ipsum dolor sit amet.
                       </li>
                       <li>
                         <span>
-                          <img src={check} alt='' srcset='' />
+                          <img src={check} alt='' srcSet='' />
                         </span>{" "}
                         Lorem ipsum dolor sit amet.
                       </li>
@@ -136,14 +146,14 @@ const CourseDetails = () => {
                 <h2>This course includes:</h2>
                 <ul>
                   <li>
-                    <img src={Device} alt='' srcset='' /> 2 hours on-demand
+                    <img src={Device} alt='' srcSet='' /> 2 hours on-demand
                     video
                   </li>
                   <li>
-                    <img src={textImg} alt='' srcset='' /> 1 article
+                    <img src={textImg} alt='' srcSet='' /> 1 article
                   </li>
                   <li>
-                    <img src={certi} alt='' srcset='' /> Certificate of
+                    <img src={certi} alt='' srcSet='' /> Certificate of
                     completion
                   </li>
                 </ul>

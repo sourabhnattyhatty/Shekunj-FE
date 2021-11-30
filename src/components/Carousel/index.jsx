@@ -20,6 +20,7 @@ import school2 from "../../assets/images/Courses/school2.png";
 import school3 from "../../assets/images/Courses/school3.png";
 import { useDispatch, useSelector } from "react-redux";
 import { allCourses } from "../../store/courses/action";
+import { Link } from "react-router-dom";
 
 function Carousel(props) {
   const divRef = React.useRef();
@@ -145,7 +146,7 @@ function Carousel(props) {
           {props.type === constants.carouselConstant.COURSES && (
             <>
               {courses.map((obj, ind) => (
-                <div className='item' key={ind}>
+                <Link to={`/CoursesDetails/${obj.id}`} className='item' key={ind}>
                   <div className='box'>
                     <div className='slide-img'>
                       <img alt='' src={Pro1} />
@@ -158,10 +159,10 @@ function Carousel(props) {
                     </div>
                     <div className='detail-box'>
                       <div className='type'>
-                        <a href='#!'>
+                        <span className="span2">
                         4.5 <img src={star} alt='' />{" "}
                           <span>(104,716)</span>
-                        </a>
+                        </span>
                         <span className='std'>36,995 Students</span>
                       </div>
                       <div className='time'>
@@ -185,7 +186,7 @@ function Carousel(props) {
                       <span>Free</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </>
           )}

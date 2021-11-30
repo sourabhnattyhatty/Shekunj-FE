@@ -19,11 +19,10 @@ import Mail from "../../assets/icons/mail.png";
 import Phone from "../../assets/icons/phone.png";
 import Otp from "../../assets/icons/otp.png";
 import Alert from "../../assets/icons/alert.png";
+import inactive from "../../assets/images/login/inactive.png";
 
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-
-import inactive from "../../assets/images/login/inactive.png";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -39,6 +38,7 @@ const validationSchema = Yup.object({
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
+  const [alertVisible, setAlertVisible] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -67,14 +67,18 @@ const LoginForm = () => {
   const handleVerify = (e) => {
     const contact = values.contact;
     if (contact === "") {
-      debugger
+      debugger;
       toast.error("Please provide contact number.");
     } else if (contact.length > 10 || contact.length < 10) {
-      debugger
+      debugger;
       toast.error("Please provide valid contact number.");
     } else {
       dispatch(contactVerify({ contact }));
     }
+  };
+
+  const restrictMale = () => {
+    setAlertVisible(true);
   };
 
   return (
@@ -249,7 +253,7 @@ const LoginForm = () => {
                   className='ng-valid ng-dirty ng-touched ng-empty'
                   defaultChecked={values.gender === "female"}
                 />
-                <label htmlFor='BannerType1'>
+                <label htmlFor='BannerType1' onClick={() => setAlertVisible(false)}>
                   <img src={inactive} alt='' srcSet='' />
                 </label>
               </p>
@@ -264,7 +268,7 @@ const LoginForm = () => {
                   className='ng-valid ng-dirty ng-touched ng-empty'
                   disabled
                 />
-                <label htmlFor='BannerType2'>
+                <label htmlFor='BannerType2' onClick={restrictMale}>
                   <img src={inactive} alt='' srcSet='' />
                 </label>
               </p>
@@ -275,15 +279,17 @@ const LoginForm = () => {
             )}
           </div>
 
-          {/* <div className='alert_div'>
-            <div className='alert_image'>
-              <img src={Alert} alt='...' />
+          {alertVisible && (
+            <div className='alert_div'>
+              <div className='alert_image'>
+                <img src={Alert} alt='...' />
+              </div>
+              <p>
+                "Hey there! We let you know that, this website only
+                promote girls education."
+              </p>
             </div>
-            <p>
-              "Hey there! Please select Girl as a gender, as this website only
-              promotes girls education."
-            </p>
-          </div> */}
+          )}
 
           <button type='submit' className='btn btn_login w-100 mt-3'>
             {isLoading ? (

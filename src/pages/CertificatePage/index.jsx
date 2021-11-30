@@ -20,11 +20,11 @@ const CertificatePage = () => {
           <Row>
             <Col md={12}>
               <div className='star_content mt-md-5 mb-5'>
-                <img src={Star} className='star_rate_1' alt='Image' />
-                <img src={Star} className='star_rate_2' alt='Image' />
-                <img src={Star} className='star_rate_3' alt='Image' />
-                <img src={Star} className='star_rate_4' alt='Image' />
-                <img src={Star} className='star_rate_5' alt='Image' />
+                <img src={Star} className='star_rate_1' alt='...' />
+                <img src={Star} className='star_rate_2' alt='...' />
+                <img src={Star} className='star_rate_3' alt='...' />
+                <img src={Star} className='star_rate_4' alt='...' />
+                <img src={Star} className='star_rate_5' alt='...' />
               </div>
             </Col>
 
@@ -38,7 +38,7 @@ const CertificatePage = () => {
 
           <div className='clock_section text-center mt-5 mb-5'>
             <div className='clock_section_first pt-5'>
-              <img src={Marks} alt='Image' />
+              <img src={Marks} alt='...' />
               <div className='clock_section_first_content'>
                 <p>total Marks</p>
                 <span>100</span>
@@ -46,7 +46,7 @@ const CertificatePage = () => {
             </div>
 
             <div className='clock_section_second'>
-              <img src={Question} alt='Image' />
+              <img src={Question} alt='...' />
               <div className='clock_section_first_content'>
                 <p>
                   Question <br /> Attempt
@@ -56,7 +56,7 @@ const CertificatePage = () => {
             </div>
 
             <div className='clock_section_third pt-5'>
-              <img src={Time} alt='Image' />
+              <img src={Time} alt='...' />
               <div className='clock_section_first_content'>
                 <p>total Time</p>
                 <span>45 Mins</span>
