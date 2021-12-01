@@ -1,36 +1,40 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import Mobile from "../../assets/icons/phone.png";
-import Lock from "../../assets/icons/lock.png";
-import Error from "../Error";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { onLogin } from "../../store/auth/action";
-import { CircularProgress } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
+import User from "../../../../assets/icons/user.png";
+import Lock from "../../../../assets/icons/lock.png";
 
-function LoginForm2() {
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+
+import { CircularProgress } from "@mui/material";
+
+import Error from "../../../../components/Error";
+import { onLogin } from "../../../../store/auth/action";
+
+function LoginForm1() {
   const { isLoading } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const history = useHistory();
   const { t } = useTranslation();
 
   const validationSchema = Yup.object({
-    contact: Yup.number().required(t('login.form2.contactError')),
+    email: Yup.string()
+      .email(t("login.form1.emailError.invalid"))
+      .required(t("login.form1.emailError.required")),
     password: Yup.string()
-    .min(6, t('login.form1.passError.min'))
-    .required(t('login.form1.passError.required')),
+      .min(6, t("login.form1.passError.min"))
+      .required(t("login.form1.passError.required")),
   });
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
       initialValues: {
-        contact: "",
+        email: "",
         password: "",
       },
       validationSchema,
@@ -44,24 +48,24 @@ function LoginForm2() {
       <form onSubmit={handleSubmit}>
         <div className='form-group mb-4'>
           <TextField
-            name='contact'
-            type='number'
+            name='email'
+            type='email'
             className='form-control'
             onChange={handleChange}
-            value={values.contact}
+            value={values.email}
             onBlur={handleBlur}
             autoComplete='off'
-            placeholder={t("login.form2.placeholder1")}
-
+            placeholder={t("login.form1.placeholder1")}
             InputProps={{
               startAdornment: (
-                <InputAdornment position="start">
-                 <img src={Mobile} alt="..." />
+                <InputAdornment position='start'>
+                  <img src={User} alt='...' />
                 </InputAdornment>
               ),
             }}
           />
-          <Error error={errors.contact} touched={touched.contact} />
+
+          <Error error={errors.email} touched={touched.email} />
         </div>
 
         <div className='form-group'>
@@ -73,11 +77,11 @@ function LoginForm2() {
             value={values.password}
             onBlur={handleBlur}
             autoComplete='off'
-            placeholder={t("login.form2.placeholder2")}
+            placeholder={t("login.form1.placeholder2")}
             InputProps={{
               startAdornment: (
-                <InputAdornment position="start">
-                 <img src={Lock} alt="..." />
+                <InputAdornment position='start'>
+                  <img src={Lock} alt='...' />
                 </InputAdornment>
               ),
             }}
@@ -97,4 +101,4 @@ function LoginForm2() {
   );
 }
 
-export default LoginForm2;
+export default LoginForm1;

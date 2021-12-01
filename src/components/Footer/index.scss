@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap");
 
-
 /*footer*/
-.footer_other{
+.footer_other {
   background: #f9f8fe;
   padding: 50px 0px 20px;
 }
-.footer_login{
-  background:#1C1D1F;
+.footer_login {
+  background: #1c1d1f;
   padding: 50px 0px 20px;
 }
 footer ul li {
@@ -15,7 +14,7 @@ footer ul li {
   margin-bottom: 10px;
 }
 footer ul li a {
-  font-family: 'SegoeUI_medium';
+  font-family: "SegoeUI_medium";
   font-weight: normal;
   font-size: 14px;
   line-height: 18px;
@@ -27,25 +26,25 @@ footer ul li a:hover {
   text-decoration: none;
 }
 .bottom-footer p {
-  font-family: 'SegoeUI_medium';
+  font-family: "SegoeUI_medium";
   font-weight: 300;
   font-size: 14px;
   line-height: 21px;
 }
 
 .footer_login ul li a {
-    color: #fff;
-}
-
-.footer_login .bottom-footer p{
   color: #fff;
 }
 
-footer .set_language .MuiButton-text.MuiButton-textPrimary{
-    color: #fff !important;
-    font-weight: 300 !important;
-font-size: 16px !important;
-line-height: 20px !important;
-border: 1px solid #FFFFFF !important; 
-text-align: left !important;
+.footer_login .bottom-footer p {
+  color: #fff;
+}
+
+footer .set_language .MuiButton-text.MuiButton-textPrimary {
+  color: #fff !important;
+  font-weight: 300 !important;
+  font-size: 16px !important;
+  line-height: 20px !important;
+  border: 1px solid #ffffff !important;
+  text-align: left !important;
 }

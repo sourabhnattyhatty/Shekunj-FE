@@ -1,226 +1,231 @@
 {
-    "login" : {
-        "authContent" : {
-            "heading" : "Register for Easy & Real Learning to make you Job Ready",
-            "content1" : {
-                "heading" : "Practical Focused Approach",
-                "cont" : "We believe Why is more important than How. You may know how to use a tool but you will only learn why it will work for the end-users when you engage in practicals under the guidance of mentors who have done 100s of projects for their clients."
-            },
-            "content2" : {
-                "heading" : "Get real work experience",
-                "cont" : "Our Master’s Program does not complete without an Internship because we want you to learn how Industry works."
-            },
-            "content3" : {
-                "heading" : "In Hinglish",
-                "cont" : "All our courses are in spoken language i.e Hindi + English. These tools or subjects can be a little tricky or complicated but our lectures are very simple to understand."
-            }
-        },
-        "heading" : "Login On Shekunj",
-        "tabLabel" : {
-            "1" : "E-MAIL",
-            "2" : "MOBILE"
-        },
-        "form1":{
-            "placeholder1" : "E-mail",
-            "placeholder2" : "Password",
-            "emailError" : {
-                "invalid" : "Invalid email",
-                "required" : "Email is required"
-            },
-            "passError" : {
-                "min" : "At least 6 characters",
-                "required" : "Password is required"
-            }
-        },
-        "form2":{
-            "placeholder1" : "Mobile",
-            "placeholder2" : "Password",
-            "contactError" : "Mobile number is required"
-        },
-        "button" : "Login",
-        "content" : "Don't have an account?",
-        "signupLink" : "REGISTER HERE",
-        "T&C" : {
-            "content1" : "Please read our",
-            "content2" : "and",
-            "content3" : "to understand how we use your personal data.",
-            "link1" : "Privacy Notice",
-            "link2" : "Cookie Notice",
-            "link3" : "Legal terms"
-        },
-        "google" : "Register with Google"
+  "login": {
+    "authContent": {
+      "heading": "Register for Easy & Real Learning to make you Job Ready",
+      "content1": {
+        "heading": "Practical Focused Approach",
+        "cont": "We believe Why is more important than How. You may know how to use a tool but you will only learn why it will work for the end-users when you engage in practicals under the guidance of mentors who have done 100s of projects for their clients."
+      },
+      "content2": {
+        "heading": "Get real work experience",
+        "cont": "Our Master’s Program does not complete without an Internship because we want you to learn how Industry works."
+      },
+      "content3": {
+        "heading": "In Hinglish",
+        "cont": "All our courses are in spoken language i.e Hindi + English. These tools or subjects can be a little tricky or complicated but our lectures are very simple to understand."
+      }
     },
-
-    "signup" : {
-        "heading" : "Signup On Shekunj",
-        "placeholder1" : "Name",
-        "placeholder2" : "E-mail",
-        "placeholder3" : "Mobile Number",
-        "verify" : "Verify",
-        "placeholder4" : "OTP",
-        "placeholder5" : "Password",
-        "placeholder6" : "Surname",
-        "label6" : {
-            "placeholder" : "Gender",
-            "1" : "Female",
-            "2" : "Male"
-        },
-        "button" : "Signup",
-        "content" : "Already have a account ?",
-        "loginLink" : "LOGIN NOW"
+    "heading": "Login On Shekunj",
+    "tabLabel": {
+      "1": "E-MAIL",
+      "2": "MOBILE"
     },
-
-    "forgot" : {
-        "heading" : "Forgot Password",
-        "label" : "E-mail address",
-        "button" : "Submit"
+    "form1": {
+      "placeholder1": "E-mail",
+      "placeholder2": "Password",
+      "emailError": {
+        "invalid": "Invalid email",
+        "required": "Email is required"
+      },
+      "passError": {
+        "min": "At least 6 characters",
+        "required": "Password is required"
+      }
     },
-
-    "resetPassword" : {
-        "heading" : "Change Password",
-        "label" : "New Password"
+    "form2": {
+      "placeholder1": "Mobile",
+      "placeholder2": "Password",
+      "contactError": "Mobile number is required"
     },
-
-    "verify" : {
-        "heading" : "Verify your e-mail to finish signing for Sheकुंज",
-        "heading2" : "Thank you for choosing Sheकुंज",
-        "content" : "Please confirm that {{email}} is your e-mail address by clicking on the link on your given e-mail within 24 hours."
+    "button": "Login",
+    "content": "Don't have an account?",
+    "signupLink": "REGISTER HERE",
+    "T&C": {
+      "content1": "Please read our",
+      "content2": "and",
+      "content3": "to understand how we use your personal data.",
+      "link1": "Privacy Notice",
+      "link2": "Cookie Notice",
+      "link3": "Legal terms"
     },
+    "google": "Register with Google"
+  },
 
-    "verifyResult" : {
-        "heading" : "Verify email address",
-        "heading1" : "Thanks!",
-        "heading2" : "Your email address has been verified.",
-        "button" : "Login"
+  "signup": {
+    "heading": "Signup On Shekunj",
+    "placeholder1": "Name",
+    "placeholder2": "E-mail",
+    "placeholder3": "Mobile Number",
+    "verify": "Verify",
+    "placeholder4": "OTP",
+    "placeholder5": "Password",
+    "placeholder6": "Surname",
+    "label6": {
+      "placeholder": "Gender",
+      "1": "Female",
+      "2": "Male"
     },
+    "button": "Signup",
+    "content": "Already have a account ?",
+    "loginLink": "LOGIN NOW",
+    "alert": "Hey there! We let you know that, this website only promote girls education."
+  },
 
-    "header" : {
-        "searchPlaceholder" : "Career guidence, Online Courses, Success stories",
-        "authButton" : "Login/Register",
-        "heading" : {
-            "1" : "About",
-            "2" : "Courses",
-            "3" : "Guidance",
-            "4" : "Resume Builder",
-            "5" : "Career",
-            "6" : "Jobs",
-            "7" : "Blogs",
-            "8" : "Success story"
-        }
-    },
+  "forgot": {
+    "heading": "Forgot Password",
+    "label": "E-mail address",
+    "button": "Submit"
+  },
 
-    "footer" : {
-        "links" : {
-            "col1" : {
-                "1" : "Teach on Shekunj",
-                "2" : "Get the app",
-                "3" : "About us",
-                "4" : "Contact us"
-            },
-            "col2" : {
-                "1" : "Careers",
-                "2" : "Blog",
-                "3" : "Help and Support",
-                "4" : "Affliatate"
-            },
-            "col3" : {
-                "1" : "Terms",
-                "2" : "Privacy Policy",
-                "3" : "Sitemap"
-            }
-        }
-    },
+  "resetPassword": {
+    "heading": "Change Password",
+    "label": "New Password"
+  },
 
-    "homePage" : {
-        "mainSlider":{
-            "heading" : {
-                "1":"Anytime, anywhere, Learn on your schedule from any device",
-                "2":"Anytime, anywhere, Learn on your schedule from any device",
-                "3": {
-                    "3.1" : "OWN YOUR FUTURE BY",
-                    "3.2" : "Learning Skills"
-                }
-            },
-            "button" : "Start Course"
-        },
-        "carousel1" : {
-            "heading" : {
-                "1" : "Our",
-                "2" : "Most Popular Courses"
-            }
-        },
-        "carousel2" : {
-            "heading" : {
-                "1" : "CHALLENGING",
-                "2" : "Online Tests"
-            }
-        },
-        "resume" : {
-            "heading" : "Design your resume in real time and download a print-reday PDF.",
-            "button" : "DESIGN MY RESUME"
-        },
-        "jobopportunity" : {
-            "heading" :"Grab job Opportunities...",
-            "button" : "view all job opportunities"
-        },
-        "community" : {
-            "heading" : "Shekunj Career Development Community",
-            "button" : "Start Course"
-        },
-        "certificate" : {
-            "heading" : {
-                "1" : "Gain Industry-Recognized",
-                "2" : "UX Certificates"
-            }
-        },
-        "highlightStudents" : {
-            "heading" : "Our highlighted students revealing",
-            "button" : "Learn more"
-        }
-    },
+  "verify": {
+    "heading": "Verify your e-mail to finish signing for Sheकुंज",
+    "heading2": "Thank you for choosing Sheकुंज",
+    "content": "Please confirm that {{email}} is your e-mail address by clicking on the link on your given e-mail within 24 hours."
+  },
 
-    "aboutPage" : {
-        "heading" : "Empowering Women to Empower the Next Generation",
-        "content1" : "SheKunj’s cutting-edge learning and examination platform has been designed to equip modern-age females with in-demand tech and non-tech skills. By providing the right information to women, we help them get placed, develop their personalities, and explore career pathways.",
-        "content2" : "Armed with the best pedagogy experts, learning modules, and certificate courses, SheKunj is determined to impart practical training and educate women. With the right blend of tech and non-tech skills, our drive is to make a community of motivated, highly-skilled and knowledgeable women who build inspiring careers and lead with full gusto.",
-        "content3" : "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality."
-    },
+  "verifyResult": {
+    "heading": "Verify email address",
+    "heading1": "Thanks!",
+    "heading2": "Your email address has been verified.",
+    "button": "Login"
+  },
 
-    "careerPage" : {
-        "heading" : "Start The Journey Of Education",
-        "heading2" : "Choose A Session",
-        "heading3" : "Choose The Best Education",
-        "searchPlaceholder" : "Search...",
-        "carousel1" : {
-            "heading" : {
-                "1" : "Most",
-                "2" : "Featured Colleges"
-            }
-        },
-        "carousel2" : {
-            "heading" : {
-                "1" : "Most",
-                "2" : "Featured Schools"
-            }
-        },
-        "ranking" : "Rankings",
-        "exam" : "Exams"
-    },
-
-    "coursesPage" : {
-        "banner" : {
-            "heading" : "Find your courses & make sure goal.",
-            "1" : "LEARN AT YOUR OWN PACE",
-            "2.1" : "JOIN A COMMUNITY",
-            "2.2" : "OF professionals",
-            "3" : "Flexible PAYMENT PLANS"
-        },
-        "searchHeading" : "Search Courses and Programs",
-        "placeholder" : "What do you want to learn?",
-        "dropdownTitle" : {
-            "1" : "Subject",
-            "2" : "Partner",
-            "3" : "Program"
-        }
+  "header": {
+    "searchPlaceholder": "Career guidence, Online Courses, Success stories",
+    "authButton": "Login/Register",
+    "heading": {
+      "1": "About",
+      "2": "Courses",
+      "3": "Guidance",
+      "4": "Resume Builder",
+      "5": "Career",
+      "6": "Jobs",
+      "7": "Blogs",
+      "8": "Success story"
     }
+  },
+
+  "footer": {
+    "links": {
+      "col1": {
+        "1": "Teach on Shekunj",
+        "2": "Get the app",
+        "3": "About us",
+        "4": "Contact us"
+      },
+      "col2": {
+        "1": "Careers",
+        "2": "Blog",
+        "3": "Help and Support",
+        "4": "Affliatate"
+      },
+      "col3": {
+        "1": "Terms",
+        "2": "Privacy Policy",
+        "3": "Sitemap"
+      }
+    }
+  },
+
+  "homePage": {
+    "mainSlider": {
+      "heading": {
+        "1": "Anytime, anywhere, Learn on your schedule from any device",
+        "2": "Anytime, anywhere, Learn on your schedule from any device",
+        "3": {
+          "3.1": "OWN YOUR FUTURE BY",
+          "3.2": "Learning Skills"
+        }
+      },
+      "button": "Start Course"
+    },
+    "carousel1": {
+      "heading": {
+        "1": "Our",
+        "2": "Most Popular Courses"
+      }
+    },
+    "carousel2": {
+      "heading": {
+        "1": "CHALLENGING",
+        "2": "Online Tests"
+      }
+    },
+    "resume": {
+      "heading": "Design your resume in real time and download a print-reday PDF.",
+      "button": "DESIGN MY RESUME"
+    },
+    "jobopportunity": {
+      "heading": "Grab job Opportunities...",
+      "button": "view all job opportunities"
+    },
+    "community": {
+      "heading": "Shekunj Career Development Community",
+      "button": "Start Course"
+    },
+    "certificate": {
+      "heading": {
+        "1": "Gain Industry-Recognized",
+        "2": "UX Certificates"
+      }
+    },
+    "highlightStudents": {
+      "heading": "Our highlighted students revealing",
+      "button": "Learn more"
+    }
+  },
+
+  "aboutPage": {
+    "heading": "Empowering Women to Empower the Next Generation",
+    "content1": "SheKunj’s cutting-edge learning and examination platform has been designed to equip modern-age females with in-demand tech and non-tech skills. By providing the right information to women, we help them get placed, develop their personalities, and explore career pathways.",
+    "content2": "Armed with the best pedagogy experts, learning modules, and certificate courses, SheKunj is determined to impart practical training and educate women. With the right blend of tech and non-tech skills, our drive is to make a community of motivated, highly-skilled and knowledgeable women who build inspiring careers and lead with full gusto.",
+    "content3": "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality."
+  },
+
+  "careerPage": {
+    "heading": "Start The Journey Of Education",
+    "heading2": "Choose A Session",
+    "heading3": "Choose The Best Education",
+    "searchPlaceholder": "Search...",
+    "carousel1": {
+      "heading": {
+        "1": "Most",
+        "2": "Featured Colleges"
+      }
+    },
+    "carousel2": {
+      "heading": {
+        "1": "Most",
+        "2": "Featured Schools"
+      }
+    },
+    "ranking": "Rankings",
+    "exam": "Exams"
+  },
+
+  "coursesPage": {
+    "banner": {
+      "heading": "Find your courses & make sure goal.",
+      "1": "LEARN AT YOUR OWN PACE",
+      "2.1": "JOIN A COMMUNITY",
+      "2.2": "OF professionals",
+      "3": "Flexible PAYMENT PLANS"
+    },
+    "searchHeading": "Search Courses and Programs",
+    "placeholder": "What do you want to learn?",
+    "dropdownTitle": {
+      "1": "Subject",
+      "2": "Partner",
+      "3": "Program"
+    },
+    "heading": {
+      "1": "OUR COURSES",
+      "2": "Study top quality & advanced course content in Hindi"
+    }
+  }
 }

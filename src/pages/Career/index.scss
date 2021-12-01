@@ -1,239 +1,243 @@
-section.Car_Ban{
-    width: 100%;
-    height: 700px;
-    background-image: url('../../assets/images/Career/certificate\ 1.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+section.Car_Ban {
+  width: 100%;
+  height: 700px;
+  background-image: url("../../assets/images/Career/certificate\ 1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .Car_con h2 {
-    font-family: SegoeUI_bold;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 50px;
-    line-height: 60px;
-    text-transform: capitalize;
-    color: #323232;
-    margin: 0;
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 60px;
+  text-transform: capitalize;
+  color: #323232;
+  margin: 0;
 }
 .learn_more {
-    background: #ec498a;
-    border-radius: 10px;
-    font-family: 'SegoeUI_bold';
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 42px;
-    color: #ffffff;
-    height: 44px;
-    width: 160px;
-    transition: 0.25s ease;
-    display: inline-block;
-    text-align: center;
+  background: #ec498a;
+  border-radius: 10px;
+  font-family: "SegoeUI_bold";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 42px;
+  color: #ffffff;
+  height: 44px;
+  width: 160px;
+  transition: 0.25s ease;
+  display: inline-block;
+  text-align: center;
 }
 .learn_more:hover {
-    background: #000;
-    color: #ec498a;
-    text-decoration: none;
+  background: #000;
+  color: #ec498a;
+  text-decoration: none;
 }
 .Car_con p {
-    font-family: 'SegoeUI_medium';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 24px;
-    text-transform: capitalize;
-    color: #323232;
-    margin-top: 29px !important;
-    margin: 0;
-    width: 450px;
-    max-width: 100%;
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #323232;
+  margin-top: 29px !important;
+  margin: 0;
+  width: 450px;
+  max-width: 100%;
 }
 .Car_con {
-    margin-top: 210px;
+  margin-top: 210px;
 }
-.pseudo-search input::placeholder{
-    font-family: 'SegoeUI_medium';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 120%;
-    color: #000000;
-    opacity: 0.3;
+.pseudo-search input::placeholder {
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 120%;
+  color: #000000;
+  opacity: 0.3;
 }
 
 .pseudo-search {
-    display: inline;
-    margin-top: 15px;
-    padding: 10px 15px;
-    transition: background-color 0.5 ease-in-out;
-    background: #FFFFFF;
-    border: 1px solid #F2EDED;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  
-    input {
-      border: 0;
-      background-color: transparent;
-      width: 200px;
-  
-      &:focus {
-        outline: none;
-      }
+  display: inline;
+  margin-top: 15px;
+  padding: 10px 15px;
+  transition: background-color 0.5 ease-in-out;
+  background: #ffffff;
+  border: 1px solid #f2eded;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  input {
+    border: 0;
+    background-color: transparent;
+    width: 200px;
+
+    &:focus {
+      outline: none;
     }
-    
-    button, img {
-      border: none;
-      background: none;
-      cursor: pointer;
-      padding: 0;
-      vertical-align: text-bottom;
-      margin: -2px;
-    }
-    
-    select {
-      border: none;
-    }
-  
   }
-  .choose_box {
-    background-color: #fff;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0px 0px 15px #ccc;
-    border-radius: 15px;
-    padding-bottom: 25px;
+
+  button,
+  img {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    vertical-align: text-bottom;
+    margin: -2px;
+  }
+
+  select {
+    border: none;
+  }
+}
+.choose_box {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 15px #ccc;
+  border-radius: 15px;
+  padding-bottom: 25px;
 }
 section.choose_ses h2 {
-    font-family: SegoeUI_bold;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 52px;
-    text-transform: capitalize;
-    color: #323232;
-    padding-bottom: 46px;
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 52px;
+  text-transform: capitalize;
+  color: #323232;
+  padding-bottom: 46px;
 }
 .choose_box img {
-    width: 100%;
-    height: 125px;
-    background-size: cover;
+  width: 100%;
+  height: 125px;
+  background-size: cover;
 }
 .choose_con {
-    padding: 0px 10px;
+  padding: 0px 10px;
 }
 .row_box {
-    margin-bottom: 57px;
+  margin-bottom: 57px;
 }
 .choose_con h3 {
-    font-family: SegoeUI_medium;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 20px;
-    color: #323232;
-    padding-top: 30px;
-    padding-bottom: 17px;
-    margin: 0;
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 20px;
+  color: #323232;
+  padding-top: 30px;
+  padding-bottom: 17px;
+  margin: 0;
 }
 .choose_con p {
-    font-family: 'SegoeUI_medium';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    color: #4F4F4F;
-    margin: 0;
-    margin-bottom: 70px;
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #4f4f4f;
+  margin: 0;
+  margin-bottom: 70px;
 }
 section.choose_ses {
-    background: linear-gradient(90deg, rgba(253, 251, 251, 0.5) 0%, rgba(235, 237, 238, 0.5) 100%);
-    padding: 40px 0;
+  background: linear-gradient(
+    90deg,
+    rgba(253, 251, 251, 0.5) 0%,
+    rgba(235, 237, 238, 0.5) 100%
+  );
+  padding: 40px 0;
 }
 .tags button {
-    font-family: 'SegoeUI_medium';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 24px;
-    text-transform: capitalize;
-    color: #4F4F4F;
-    background-color: transparent;
-    border: 1px solid #d8d8d8;
-    border-radius: 50px;
-    margin-right: 15px;
-    margin-bottom: 21px;
-    padding: 3px 13px;
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #4f4f4f;
+  background-color: transparent;
+  border: 1px solid #d8d8d8;
+  border-radius: 50px;
+  margin-right: 15px;
+  margin-bottom: 21px;
+  padding: 3px 13px;
 }
 .edu_tit h2 {
-    font-family: SegoeUI_bold;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 52px;
-    text-transform: capitalize;
-    color: #323232;
-    margin: 0;
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 52px;
+  text-transform: capitalize;
+  color: #323232;
+  margin: 0;
 }
 .edu_tit p {
-    font-family: 'SegoeUI_medium';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 24px;
-    text-transform: capitalize;
-    color: #4F4F4F;
-    width: 610px;
-    max-width: 100%;
-    margin: 0;
-    padding-top: 15px;
-    padding-bottom: 56px;
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #4f4f4f;
+  width: 610px;
+  max-width: 100%;
+  margin: 0;
+  padding-top: 15px;
+  padding-bottom: 56px;
 }
 .ranking {
-    background: #FFFFFF;
-    box-shadow: 0px 0px 25px #e6e6e6;
-    border-radius: 20px;
-    padding: 20px 26px;
+  background: #ffffff;
+  box-shadow: 0px 0px 25px #e6e6e6;
+  border-radius: 20px;
+  padding: 20px 26px;
 }
 .ranking h3 {
-    font-family: 'SegoeUI_medium';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 28px;
-    line-height: 52px;
-    text-transform: capitalize;
-    color: #323232;
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 52px;
+  text-transform: capitalize;
+  color: #323232;
 }
 .ranking.exms {
-    margin-top: 70px;
-    padding-bottom: 19px;
+  margin-top: 70px;
+  padding-bottom: 19px;
 }
 .exams img {
-    width: 431px;
-    max-width: 100%;
-    float: right;
+  width: 431px;
+  max-width: 100%;
+  float: right;
 }
 .ranking p {
-    font-family: 'SegoeUI_medium';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 24px;
-    text-transform: capitalize;
-    color: #4F4F4F;
-    padding: 15px 0;
-    margin: 0;
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #4f4f4f;
+  padding: 15px 0;
+  margin: 0;
 }
 .care_csl {
-    padding: 91px 0;
+  padding: 91px 0;
 }
-.choose_box img.bookimg{
-    height: 20px;
-    width: 20px;
+.choose_box img.bookimg {
+  height: 20px;
+  width: 20px;
 }
 .best_edu .exams {
-    display: flex;
-    vertical-align: middle;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100%;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
 }

@@ -1,12 +1,10 @@
 import React from "react";
-// import { Container } from "react-bootstrap";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
+
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import "./index.scss";
 
-const index = () => {
+const GuidancePage = () => {
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -16,4 +14,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default GuidancePage;

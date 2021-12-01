@@ -10,9 +10,8 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import ScrollToTop from "../../components/ScrollToTop";
+import { Header, Footer, ScrollToTop } from "../../components";
+
 import Previous from "../../assets/icons/chevron-left.png";
 import Next from "../../assets/icons/chevron-right.png";
 

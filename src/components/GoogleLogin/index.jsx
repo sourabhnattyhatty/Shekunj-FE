@@ -18,8 +18,8 @@ function GoogleLoginComponent({ showOr }) {
   const responseGoogle = (res) => {
     if (res && res.tokenId) {
       dispatch(registerWithGoogle({ auth_token: res.tokenId }, history));
-    }else{
-      toast.error('Google login failed.');
+    } else {
+      toast.error("Google login failed.");
     }
   };
   return (

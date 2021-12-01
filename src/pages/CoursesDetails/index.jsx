@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {singleCourseDetails} from '../../store/courses/action'
+import { singleCourseDetails } from "../../store/courses/action";
 
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import ScrollToTop from "../../components/ScrollToTop";
+import { Header, Footer, ScrollToTop, SEO } from "../../components";
 
 import banimg from "../../assets/images/CoursesDetails/ban_img.png";
 import star from "../../assets/images/CoursesDetails/star.png";
@@ -18,18 +16,18 @@ import "./index.scss";
 
 const CourseDetails = () => {
   const dispatch = useDispatch();
-  const {id} = useParams();
+  const { id } = useParams();
 
-  const {course} = useSelector(state => state.coursesReducer)
+  const { course } = useSelector((state) => state.coursesReducer);
 
   useEffect(() => {
     dispatch(singleCourseDetails(id));
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  },[id,dispatch])
-
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [id, dispatch]);
 
   return (
     <div>
+      <SEO title="Sheकुंज - Course Detail"/>
       <Header loginPage={true} page='courses' />
       <section className='CouDtl_ban'>
         <div className='container'>
@@ -141,7 +139,9 @@ const CourseDetails = () => {
 
             <div className='col-md-5'>
               <div className='sec2_right'>
-                <Link to="/CoursesModule" className='btn btn_str_Cor'>Start Course</Link>
+                <Link to='/CoursesModule' className='btn btn_str_Cor'>
+                  Start Course
+                </Link>
 
                 <h2>This course includes:</h2>
                 <ul>

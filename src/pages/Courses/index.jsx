@@ -6,10 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { allCourses } from "../../store/courses/action";
 import { constants } from "../../utils";
 
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import ScrollToTop from "../../components/ScrollToTop";
-import Carousel from "../../components/Carousel";
+import { Carousel, Header, Footer, ScrollToTop, SEO } from "../../components";
 
 import one from "../../assets/images/Courses/01.png";
 import two from "../../assets/images/Courses/02.png";
@@ -31,11 +28,11 @@ import "../../pages/HomePage/index.scss";
 
 const Courses = (props) => {
   const { t } = useTranslation();
-  const {courses} = useSelector(state => state.coursesReducer)
+  const { courses } = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(allCourses())
+    dispatch(allCourses());
   }, [dispatch]);
 
   useEffect(() => {
@@ -44,6 +41,7 @@ const Courses = (props) => {
 
   return (
     <div>
+      <SEO title="Sheकुंज - Courses"/>
       <Header loginPage={true} page='courses' />
       <section className='Cors_sec'>
         <div className='container'>
@@ -114,26 +112,27 @@ const Courses = (props) => {
 
           <div className='row'>
             <div className='col-md-2'>
-              <Dropdown title='Subject' />
+              <Dropdown title={t("coursesPage.dropdownTitle.1")} />
             </div>
             <div className='col-md-2'>
-              <Dropdown title='Partner' />
+              <Dropdown title={t("coursesPage.dropdownTitle.2")} />
             </div>
             <div className='col-md-2'>
-              <Dropdown title='Program' />
+              <Dropdown title={t("coursesPage.dropdownTitle.3")} />
             </div>
-            {/* <div className='col-md-2'>
-              <Dropdown title='Level' />
-            </div> */}
           </div>
 
-          <h4>OUR COURSES</h4>
-          <h3>Study top quality & advanced course content in Hindi</h3>
+          <h4>{t("coursesPage.heading.1")}</h4>
+          <h3>{t("coursesPage.heading.2")}</h3>
 
           <div className='container'>
             <div className='row'>
               {courses?.map((obj) => (
-                <Link to={`/CoursesDetails/${obj.id}`} className='col-md-4' key={obj.id}>
+                <Link
+                  to={`/CoursesDetails/${obj.id}`}
+                  className='col-md-4'
+                  key={obj.id}
+                >
                   <div className='box box_hov'>
                     <div className='slide-img'>
                       <img alt='' src={Pro1} />
@@ -146,7 +145,7 @@ const Courses = (props) => {
                     </div>
                     <div className='detail-box'>
                       <div className='type'>
-                        <span className="span1">
+                        <span className='span1'>
                           4.0 <img src={star} alt='' /> <span>104,567</span>
                         </span>
                         <span className='std'>5600 Students</span>

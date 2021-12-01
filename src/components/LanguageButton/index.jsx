@@ -58,7 +58,7 @@ function ChangeLanguageButton() {
         onClick={handleClick}
         startIcon={<LanguageIcon />}
       >
-        {language.startsWith("en")  ? "English" : "Hindi"}
+        {language.startsWith("en") ? "English" : "Hindi"}
       </Button>
       <Menu
         id='fade-menu'

@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import LoginTabs from "../LoginTabs";
-import GoogleLoginComponent from "../GoogleLogin";
+import LoginTabs from "./LoginTabs";
+import GoogleLoginComponent from "../../../components/GoogleLogin";
 
 const LoginForm = () => {
   const { t } = useTranslation();

@@ -66,7 +66,6 @@ body {
   font-family: SegoeUI_medium;
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
-  // font-family: Sora bold;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -203,7 +202,6 @@ body {
   padding: 13px 30px;
   transition-duration: 1s;
   transition-timing-function: linear;
-  // height: 56px;
 }
 .resume h4 {
   font-family: SegoeUI_bold;
@@ -387,10 +385,8 @@ body {
   width: 160px;
   transition-duration: 1s !important;
   transition-timing-function: linear !important;
-  // transition: 0.25s ease;
   display: inline-block;
   text-align: center;
-  // transition-duration: 1s;
 }
 .learn_more:hover {
   background: #fff;
@@ -399,9 +395,6 @@ body {
   transition: 1s !important;
 }
 
-/* .highlight_student .owl-slider #testimonial .owl-item:nth-of-type(1n+1){
-      margin-top: 50px;
-  } */
 .highlight_student .semicircle-img1 {
   position: absolute;
   top: -15px;

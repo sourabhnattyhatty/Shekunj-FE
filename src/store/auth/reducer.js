@@ -2,7 +2,7 @@ import { authTypes } from "./types";
 
 const initialState = {
   isLoading: false,
-  verifyLoading : false,
+  verifyLoading: false,
   user: {},
   isAuth: false,
   error: null,
@@ -35,50 +35,50 @@ export const authReducer = (state = initialState, action) => {
     case authTypes.SIGNUP_REQUEST:
       return {
         ...state,
-        isLoading : true,
-        error : null
-      }
+        isLoading: true,
+        error: null,
+      };
     case authTypes.SIGNUP_FINISH:
       return {
         ...state,
-        isLoading : false,
-        user : action.payload,
-        isAuth : false,
-        error : null
-      }
+        isLoading: false,
+        user: action.payload,
+        isAuth: false,
+        error: null,
+      };
     case authTypes.SIGNUP_FAIL:
-      return{
+      return {
         ...state,
-        isLoading : false,
-        user : {},
-        isAuth : false,
-        error : action.payload
-      }
+        isLoading: false,
+        user: {},
+        isAuth: false,
+        error: action.payload,
+      };
     case authTypes.CONTACT_VERIFY_REQUEST:
-      return{
+      return {
         ...state,
-        verifyLoading : true,
-        error : null
-      }
+        verifyLoading: true,
+        error: null,
+      };
     case authTypes.CONTACT_VERIFY_FINISH:
-      return{
+      return {
         ...state,
-        verifyLoading : false,
-        error : null
-      }
+        verifyLoading: false,
+        error: null,
+      };
     case authTypes.CONTACT_VERIFY_FAIL:
-      return{
+      return {
         ...state,
-        verifyLoading : false,
-        user : {},
-        isAuth : false,
-        error : action.payload
-      }
+        verifyLoading: false,
+        user: {},
+        isAuth: false,
+        error: action.payload,
+      };
     case authTypes.REFRESH:
-      return{
+      return {
         ...state,
-        isAuth : true
-      }
+        isAuth: true,
+      };
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import httpServices from "../../utils/ApiServices";
 import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
 
+
 export const onLogin = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.LOGIN_REQUEST });
@@ -24,11 +25,11 @@ export const onLogin = (values, history) => async (dispatch) => {
   }
 };
 
-export const logOut = (history) => async(dispatch) => {
-  Cookies.remove('sheToken');
+export const logOut = (history) => async (dispatch) => {
+  Cookies.remove("sheToken");
   dispatch({ type: authTypes.LOGIN_FAIL });
   history.push("/login");
-}
+};
 
 export const onSignup = (values, history) => async (dispatch) => {
   try {
@@ -57,35 +58,23 @@ export const registerWithGoogle = (value, history) => async (dispatch) => {
     Cookies.set("sheToken", res.data.tokens.access);
     history.push("/");
   } catch (err) {
-    toast.error("Google Login failed.", toasterConfig)
+    toast.error("Google Login failed.", toasterConfig);
   }
 };
 
 export const contactVerify = (value) => async (dispatch) => {
   try {
-    
     dispatch({ type: authTypes.CONTACT_VERIFY_REQUEST });
-    const res = await httpServices.post(`authentication/user-send-otp/`, {contact : value.contact.toString()});
+    const res = await httpServices.post(`authentication/user-send-otp/`, {
+      contact: value.contact.toString(),
+    });
     dispatch({ type: authTypes.CONTACT_VERIFY_FINISH });
     toast.success(res.message, toasterConfig);
   } catch (error) {
-    debugger
     dispatch({ type: authTypes.CONTACT_VERIFY_FAIL });
     if (error?.status === 400) {
       toast.error("Invalid mobile number.");
     }
-  }
-};
-
-export const emailVerify = (token) => async (dispatch) => {
-  try {
-    const res = await httpServices.get(
-      `authentication/email-verify/?token=${token}`,
-    );
-    window.location.replace("success");
-    return res;
-  } catch (error) {
-    toast.error();
   }
 };
 
@@ -122,7 +111,7 @@ export const resetPassword = (values, history) => async (dispatch) => {
 
 export const refreshPage = () => async (dispatch) => {
   const token = Cookies.get("sheToken");
-  if(token){
-    dispatch({type: authTypes.REFRESH})
+  if (token) {
+    dispatch({ type: authTypes.REFRESH });
   }
 };

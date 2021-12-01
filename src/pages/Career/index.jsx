@@ -1,10 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import Carousel from "../../components/Carousel";
-import ScrollToTop from "../../components/ScrollToTop";
+import { Carousel, Footer, Header, ScrollToTop, SEO } from "../../components";
 
 import search from "../../assets/images/Career/search.png";
 import Choose1 from "../../assets/images/Career/Choose1.png";
@@ -22,11 +19,12 @@ import "../HomePage/index.scss";
 import "./index.scss";
 import { constants } from "../../utils";
 
-const Index = () => {
+const CareerPage = () => {
   const { t } = useTranslation();
 
   return (
     <div>
+      <SEO title="Sheकुंज - Career"/>
       <Header loginPage={true} page='career' />
 
       <section className='Car_Ban'>
@@ -243,4 +241,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default CareerPage;

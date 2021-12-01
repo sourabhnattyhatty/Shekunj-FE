@@ -80,7 +80,7 @@ const Footer = ({ loginPage }) => {
           <div className='bottom-footer mt-5'>
             <div className='row'>
               <div className='col-lg-9 col-md-8 col-5 text-left'>
-                <Link className='' to="/">
+                <Link className='' to='/'>
                   <img src={loginPage ? Logo : LogoBlack} alt='logo' />
                 </Link>
               </div>

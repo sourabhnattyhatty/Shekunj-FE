@@ -16,16 +16,16 @@ const resources = {
 };
 
 i18n
-    .use(detector)
-    .use(initReactI18next)
-    .use(LanguageDetector)
+  .use(detector)
+  .use(initReactI18next)
+  .use(LanguageDetector)
 
-    .init({
-        resources,
-        fallbackLng : "en",
-        interpolation : {
-            escapeValue : false
-        }
-    })
+  .init({
+    resources,
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false,
+    },
+  });
 
 export default i18n;

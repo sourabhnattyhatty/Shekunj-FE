@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-import { contactVerify, onSignup } from "../../store/auth/action";
+import { contactVerify, onSignup } from "../../../store/auth/action";
 import { useTranslation } from "react-i18next";
 import { CircularProgress } from "@mui/material";
 import { toast } from "react-toastify";
@@ -10,16 +10,15 @@ import * as Yup from "yup";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
-import Error from "../Error";
-import GoogleLoginComponent from "../GoogleLogin";
+import { Error, GoogleLoginComponent } from "../../../components";
 
-import User from "../../assets/icons/user.png";
-import Lock from "../../assets/icons/lock.png";
-import Mail from "../../assets/icons/mail.png";
-import Phone from "../../assets/icons/phone.png";
-import Otp from "../../assets/icons/otp.png";
-import Alert from "../../assets/icons/alert.png";
-import inactive from "../../assets/images/login/inactive.png";
+import User from "../../../assets/icons/user.png";
+import Lock from "../../../assets/icons/lock.png";
+import Mail from "../../../assets/icons/mail.png";
+import Phone from "../../../assets/icons/phone.png";
+import Otp from "../../../assets/icons/otp.png";
+import Alert from "../../../assets/icons/alert.png";
+import inactive from "../../../assets/images/login/inactive.png";
 
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -67,10 +66,8 @@ const LoginForm = () => {
   const handleVerify = (e) => {
     const contact = values.contact;
     if (contact === "") {
-      debugger;
       toast.error("Please provide contact number.");
     } else if (contact.length > 10 || contact.length < 10) {
-      debugger;
       toast.error("Please provide valid contact number.");
     } else {
       dispatch(contactVerify({ contact }));
@@ -253,7 +250,10 @@ const LoginForm = () => {
                   className='ng-valid ng-dirty ng-touched ng-empty'
                   defaultChecked={values.gender === "female"}
                 />
-                <label htmlFor='BannerType1' onClick={() => setAlertVisible(false)}>
+                <label
+                  htmlFor='BannerType1'
+                  onClick={() => setAlertVisible(false)}
+                >
                   <img src={inactive} alt='' srcSet='' />
                 </label>
               </p>
@@ -284,10 +284,7 @@ const LoginForm = () => {
               <div className='alert_image'>
                 <img src={Alert} alt='...' />
               </div>
-              <p>
-                "Hey there! We let you know that, this website only
-                promote girls education."
-              </p>
+              <p>"{t("signup.alert")}"</p>
             </div>
           )}
 

@@ -22,7 +22,7 @@ const Header = ({ loginPage, page }) => {
 
   const handleLogout = () => {
     dispatch(logOut(history));
-  } 
+  };
 
   return (
     <div>

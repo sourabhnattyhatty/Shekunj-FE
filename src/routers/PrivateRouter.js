@@ -3,17 +3,17 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { Redirect } from "react-router";
 
-function PublicRoute({ component: Component, ...rest }) {
+function PrivateRoute({ component: Component, ...rest }) {
   const token = Cookies.get("sheToken");
-  
+
   return (
     <Route
       {...rest}
       render={(props) =>
-        token ? <Redirect to='/' /> : <Component {...props} />
+        token ? <Component {...props} /> : <Redirect to='/login' />
       }
     />
   );
 }
 
-export default PublicRoute;
+export default PrivateRoute;

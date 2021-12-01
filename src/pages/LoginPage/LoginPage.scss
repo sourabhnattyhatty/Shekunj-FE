@@ -1,31 +1,32 @@
-.login_form{
-    background: rgba(237, 248, 248, 0.4);
-    border-radius: 20px 20px 0px 0px;
-    display: block;
-    height: 100%;
-    padding: 15px 22px;
-  }
-  
-  .login_form h2 {
-    font-family: 'SegoeUI_medium';
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 35px;
-    text-transform: capitalize;
-    color: #152523;
-    font-style: normal;
+.login_form {
+  background: rgba(237, 248, 248, 0.4);
+  border-radius: 20px 20px 0px 0px;
+  display: block;
+  height: 100%;
+  padding: 15px 22px;
 }
-  .login_form p{
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 30px;
-    color: #425466;
-  }
-  .login_form p .register, .login_form p .register:hover{
-      color:#D62C79;
-      font-weight: 600;
-  }
-  .login_form .form-group{
-    margin-bottom: 5px;
-    position: relative;
+
+.login_form h2 {
+  font-family: "SegoeUI_medium";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 35px;
+  text-transform: capitalize;
+  color: #152523;
+  font-style: normal;
+}
+.login_form p {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 30px;
+  color: #425466;
+}
+.login_form p .register,
+.login_form p .register:hover {
+  color: #d62c79;
+  font-weight: 600;
+}
+.login_form .form-group {
+  margin-bottom: 5px;
+  position: relative;
 }

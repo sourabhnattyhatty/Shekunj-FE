@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import PublicRoute from "./routers/PublicRouter";
-
+import PrivateRoute from "./routers/PrivateRouter";
 
 import "./App.css";
 
@@ -16,8 +16,6 @@ const CoursesDetails = React.lazy(() => import("./pages/CoursesDetails"));
 const CoursesModule = React.lazy(() => import("./pages/CoursesModule"));
 const GuidancePage = React.lazy(() => import("./pages/GuidancePage"));
 const CertificatePage = React.lazy(() => import("./pages/CertificatePage"));
-const Verify = React.lazy(() => import("./pages/VerifyPage"));
-const VerifyEmailResult = React.lazy(() => import("./pages/VerifyEmailResult"));
 const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
 
 function App() {
@@ -25,19 +23,8 @@ function App() {
     <>
       <Switch>
         <PublicRoute exact path='/login' component={LoginPage} />
-
         <PublicRoute exact path='/signup' component={SignupPage} />
-
         <PublicRoute exact path='/forgot' component={ForgotPage} />
-
-        <PublicRoute exact path='/verify' component={Verify} />
-
-        <PublicRoute
-          exact
-          path='/authentication/email-verify/:token?'
-          component={VerifyEmailResult}
-        />
-
         <PublicRoute
           exact
           path='/authentication/password-reset/:uidb/:token/'
@@ -49,9 +36,10 @@ function App() {
         <Route exact path='/career' component={Career} />
         <Route exact path='/Courses' component={Courses} />
         <Route exact path='/CoursesDetails/:id' component={CoursesDetails} />
-        <Route exact path='/CoursesModule' component={CoursesModule} />
         <Route exact path='/GuidancePage' component={GuidancePage} />
         <Route exact path='/CertificatePage' component={CertificatePage} />
+
+        <PrivateRoute exact path='/CoursesModule' component={CoursesModule} />
       </Switch>
     </>
   );

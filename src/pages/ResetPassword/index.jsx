@@ -34,11 +34,11 @@ function ResetPassword() {
       validationSchema,
       onSubmit(values) {
         const data = {
-            ...values,
-            token,
-            uidb64 : uidb
-        }
-        dispatch(resetPassword(data, history))
+          ...values,
+          token,
+          uidb64: uidb,
+        };
+        dispatch(resetPassword(data, history));
       },
     });
 

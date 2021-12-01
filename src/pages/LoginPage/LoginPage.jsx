@@ -1,16 +1,13 @@
 import React from "react";
-import Header from "../../components/Header";
-import AuthContent from "../../components/AuthContent";
-import Footer from "../../components/Footer";
+import { Header, AuthContent, Footer, SEO } from "../../components";
 
 import "./LoginPage.scss";
 
-
-function LoginPage({ p }) {
-
+function LoginPage() {
   return (
     <>
       <div>
+        <SEO title="Sheकुंज - Login"/>
         <Header loginPage={true} />
 
         <AuthContent loginPage={true} />

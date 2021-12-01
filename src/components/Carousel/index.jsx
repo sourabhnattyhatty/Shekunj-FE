@@ -24,11 +24,11 @@ import { Link } from "react-router-dom";
 
 function Carousel(props) {
   const divRef = React.useRef();
-  const {courses} = useSelector(state => state.coursesReducer)
+  const { courses } = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(allCourses())
+    dispatch(allCourses());
   }, [dispatch]);
 
   const collagesArr = [
@@ -59,7 +59,7 @@ function Carousel(props) {
       img: school3,
       title: "Delhi Public School, Vasant Kunj, Delhi",
     },
-  ]
+  ];
 
   const coursesArray = [
     {
@@ -146,7 +146,11 @@ function Carousel(props) {
           {props.type === constants.carouselConstant.COURSES && (
             <>
               {courses.map((obj, ind) => (
-                <Link to={`/CoursesDetails/${obj.id}`} className='item' key={ind}>
+                <Link
+                  to={`/CoursesDetails/${obj.id}`}
+                  className='item'
+                  key={ind}
+                >
                   <div className='box'>
                     <div className='slide-img'>
                       <img alt='' src={Pro1} />
@@ -159,9 +163,8 @@ function Carousel(props) {
                     </div>
                     <div className='detail-box'>
                       <div className='type'>
-                        <span className="span2">
-                        4.5 <img src={star} alt='' />{" "}
-                          <span>(104,716)</span>
+                        <span className='span2'>
+                          4.5 <img src={star} alt='' /> <span>(104,716)</span>
                         </span>
                         <span className='std'>36,995 Students</span>
                       </div>

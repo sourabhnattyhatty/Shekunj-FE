@@ -2,15 +2,15 @@ import React from "react";
 
 import "../Common.scss";
 
-import Header from "../../components/Header";
-import AuthContent from "../../components/AuthContent";
-import Footer from "../../components/Footer";
+import { Header, AuthContent, Footer, SEO } from "../../components";
+
 import "./SignupPage.scss";
 
 function SignupPage() {
   return (
     <>
       <div>
+      <SEO title="Sheकुंज - Signup"/>
         <Header loginPage={true} />
 
         <AuthContent />

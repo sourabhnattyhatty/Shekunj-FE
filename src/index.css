@@ -12,7 +12,6 @@ code {
     monospace;
 } */
 
-
 /* @font-face {
   font-family: Sora bold;
   src: url("./assets/fonts/Sora/Sora-Bold.ttf") format("truetype");
@@ -33,11 +32,11 @@ code {
 body {
   font-family: "SegoeUI_medium" !important;
 }
-@media screen and (min-device-width: 1400px) and (max-device-width: 1450px) { 
-.owl-nav {
-  left: -12% !important;
-}
-.owl-theme {
-  max-width: 1100px;
-}
+@media screen and (min-device-width: 1400px) and (max-device-width: 1450px) {
+  .owl-nav {
+    left: -12% !important;
+  }
+  .owl-theme {
+    max-width: 1100px;
+  }
 }

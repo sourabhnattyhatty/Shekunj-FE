@@ -59,10 +59,12 @@
   width: 400px;
   margin: auto;
 }
-.clock_section_first, .clock_section_second, .clock_section_third {
+.clock_section_first,
+.clock_section_second,
+.clock_section_third {
   position: relative;
   display: inline-block;
-  margin:0px 20px;
+  margin: 0px 20px;
   vertical-align: top;
 }
 .clock_section p {
@@ -75,65 +77,65 @@
   margin-bottom: 0px;
 }
 .clock_section span {
-    font-family: SegoeUI_bold;
-    font-weight: bold;
-    font-size: 36px;
-    line-height: 36px;
-    text-transform: uppercase;
-    color: #4B4B4B;
-    display: block;
-    width: 100%;
+  font-family: SegoeUI_bold;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 36px;
+  text-transform: uppercase;
+  color: #4b4b4b;
+  display: block;
+  width: 100%;
 }
-.clock_section_first_content{
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 45%;
-    text-align: center;
+.clock_section_first_content {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 45%;
+  text-align: center;
 }
-.clock_section_second_content{
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 45%;
-    text-align: center;
+.clock_section_second_content {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 45%;
+  text-align: center;
 }
-.clock_section_third_content{
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 45%;
-    text-align: center;
+.clock_section_third_content {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 45%;
+  text-align: center;
 }
-.download_btn{
-    background: #EC498A;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 24px;
-    font-family: SegoeUI_medium;
-    text-align: center;
-    color: #FFFFFF;
-    display: inline-block;
-    padding: 9px 13px;
-    border: none;
+.download_btn {
+  background: #ec498a;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: SegoeUI_medium;
+  text-align: center;
+  color: #ffffff;
+  display: inline-block;
+  padding: 9px 13px;
+  border: none;
 }
-.certificate_para p{
-    font-family: SegoeUI_bold;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 19px;
-    text-align: center;
-    color: #DC2970;
-    margin-bottom: 0px;
+.certificate_para p {
+  font-family: SegoeUI_bold;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #dc2970;
+  margin-bottom: 0px;
 }
-.certificate_para span{
-    display: block;
-    font-family: SegoeUI_bold;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 19px;
-    text-align: center;
-    color: #000;
-    margin-bottom: 0px;
+.certificate_para span {
+  display: block;
+  font-family: SegoeUI_bold;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #000;
+  margin-bottom: 0px;
 }

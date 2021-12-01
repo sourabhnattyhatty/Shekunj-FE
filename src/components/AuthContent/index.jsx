@@ -5,8 +5,8 @@ import Practical from "../../assets/images/login/1.png";
 import Work from "../../assets/images/login/2.png";
 import Hinglish from "../../assets/images/login/3.png";
 
-import LoginForm from "../LoginForm";
-import SignupForm from "../SignupForm";
+import LoginForm from "../../pages/LoginPage/LoginForm";
+import SignupForm from "../../pages/SignupPage/SignupForm";
 
 import "./index.scss";
 
@@ -76,9 +76,11 @@ const AuthContent = ({ loginPage }) => {
 
                       <div className='col-md-10'>
                         <div className='login-content-right'>
-                          <h5 className='mt-1'>{t("login.authContent.content3.heading")}</h5>
+                          <h5 className='mt-1'>
+                            {t("login.authContent.content3.heading")}
+                          </h5>
                           <p className='mb-0'>
-                          {t("login.authContent.content3.cont")}
+                            {t("login.authContent.content3.cont")}
                           </p>
                         </div>
                       </div>

@@ -3,10 +3,9 @@ import Slider from "react-slick";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
 import { constants } from "../../utils";
+import { Link } from "react-router-dom";
 
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import Carousel from "../../components/Carousel";
+import { Header, Footer, Carousel, ScrollToTop, SEO } from "../../components";
 
 import Resume from "../../assets/images/resume.png";
 import Girl from "../../assets/images/job1.png";
@@ -19,7 +18,6 @@ import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./index.scss";
 import "animate.css";
 import "aos/dist/aos.css";
-import ScrollToTop from "../../components/ScrollToTop";
 
 function HomePage() {
   const { t } = useTranslation();
@@ -63,6 +61,7 @@ function HomePage() {
 
   return (
     <div>
+      <SEO/>
       <Header loginPage={false} page='home' />
 
       {/* slider */}
@@ -83,9 +82,13 @@ function HomePage() {
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
+                    <Link
+                      to='/courses'
+                      className='banner_btn'
+                      data-aos='zoom-in'
+                    >
                       {t("homePage.mainSlider.button")}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -104,9 +107,13 @@ function HomePage() {
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
+                    <Link
+                      to='/courses'
+                      className='banner_btn'
+                      data-aos='zoom-in'
+                    >
                       {t("homePage.mainSlider.button")}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -121,9 +128,13 @@ function HomePage() {
                       <span>{t("homePage.mainSlider.heading.3.3.2")}</span>
                     </h4>
 
-                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
+                    <Link
+                      to='/courses'
+                      className='banner_btn'
+                      data-aos='zoom-in'
+                    >
                       {t("homePage.mainSlider.button")}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -144,9 +155,13 @@ function HomePage() {
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
 
-                    <a href='#!' className='banner_btn' data-aos='zoom-in'>
+                    <Link
+                      to='/courses'
+                      className='banner_btn'
+                      data-aos='zoom-in'
+                    >
                       {t("homePage.mainSlider.button")}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

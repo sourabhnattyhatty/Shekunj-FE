@@ -31,7 +31,7 @@ ReactDOM.render(
               pauseOnFocusLoss
               draggable={false}
               pauseOnHover
-              theme="colored"
+              theme='colored'
             />
           </Router>
         </Provider>

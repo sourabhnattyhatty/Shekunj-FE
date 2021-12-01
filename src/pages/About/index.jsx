@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
 
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import ScrollToTop from "../../components/ScrollToTop";
+import { Header, Footer, ScrollToTop, SEO } from "../../components";
 
 import img1 from "../../assets/images/About/img1.png";
 import Nikita from "../../assets/images/Nikita-Sharma.png";
@@ -15,7 +13,7 @@ import "./index.scss";
 import "aos/dist/aos.css";
 import "animate.css";
 
-const Index = () => {
+const AboutusPage = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -24,6 +22,7 @@ const Index = () => {
 
   return (
     <div>
+      <SEO title="Sheकुंज - About us"/>
       <Header loginPage={false} page='about' />
       <section className='about_ban'>
         <div className='container'>
@@ -182,4 +181,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default AboutusPage;

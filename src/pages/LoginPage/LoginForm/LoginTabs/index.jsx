@@ -11,17 +11,13 @@ import "./index.scss";
 import LoginForm1 from "./LoginForm1";
 import LoginForm2 from "./LoginForm2";
 
-
-
 export default function LoginTabs() {
   const [value, setValue] = React.useState("1");
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const handleChanged = (event, newValue) => {
     setValue(newValue);
   };
-
-  
 
   return (
     <Box sx={{ width: "100%", typography: "body1" }}>
@@ -32,17 +28,17 @@ export default function LoginTabs() {
             aria-label='lab API tabs example'
             color='primary'
           >
-            <Tab className='xyz' label={t('login.tabLabel.1')} value='1' />
-            <Tab className='xyz' label={t('login.tabLabel.2')} value='2' />
+            <Tab className='xyz' label={t("login.tabLabel.1")} value='1' />
+            <Tab className='xyz' label={t("login.tabLabel.2")} value='2' />
           </TabList>
         </Box>
 
         <TabPanel value='1'>
-          <LoginForm1/>
+          <LoginForm1 />
         </TabPanel>
 
         <TabPanel value='2'>
-          <LoginForm2/>
+          <LoginForm2 />
         </TabPanel>
       </TabContext>
     </Box>
