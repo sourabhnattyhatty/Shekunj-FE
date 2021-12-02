@@ -1,5 +1,6 @@
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
+import Dashboard from "./Dashboard";
 import ForgotPage from "./ForgotPage";
 import AboutusPage from "./About";
 import CareerPage from "./Career";
@@ -22,4 +23,5 @@ export {
   HomePage,
   LoginPage,
   SignupPage,
+  Dashboard
 };

@@ -1,0 +1,41 @@
+.dashboard_main h1{
+    font-weight: bold;
+    font-size: 35px;
+    line-height: 140%;
+    color: #EC498A;
+}
+.dashboard_main .dashboard_back {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+    color: #4F4F4F;
+}
+.dashboard_main .current_course{
+    padding: 10px;
+}
+.dashboard_main h3{
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 140%;
+    color: #000000;
+}
+.dashboard_main .course_explore{
+    background: #EC498A;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+}
+.dashboard_main .current_course .course_explore h6{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+.course_explore ul li{
+    list-style-type: none;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
