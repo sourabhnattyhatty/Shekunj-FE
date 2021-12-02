@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import { constants } from "../../utils";
+import { useDispatch, useSelector } from "react-redux";
+import { allCourses } from "../../store/courses/action";
+import { Link } from "react-router-dom";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -18,9 +21,6 @@ import collage3 from "../../assets/images/Courses/collage3.png";
 import school1 from "../../assets/images/Courses/school1.png";
 import school2 from "../../assets/images/Courses/school2.png";
 import school3 from "../../assets/images/Courses/school3.png";
-import { useDispatch, useSelector } from "react-redux";
-import { allCourses } from "../../store/courses/action";
-import { Link } from "react-router-dom";
 
 function Carousel(props) {
   const divRef = React.useRef();
@@ -96,9 +96,23 @@ function Carousel(props) {
 
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;
-    divRef.current.innerHTML = `${carousel.relative(carousel.current()) + 1}/${
-      courses.length
-    }`;
+    if (props.type === constants.carouselConstant.COURSES) {
+      divRef.current.innerHTML = `${
+        carousel.relative(carousel.current()) + 1
+      }/${courses.length}`;
+    } else if (props.type === constants.carouselConstant.TEST) {
+      divRef.current.innerHTML = `${
+        carousel.relative(carousel.current()) + 1
+      }/3`;
+    } else if (props.type === constants.carouselConstant.COLLEGES) {
+      divRef.current.innerHTML = `${
+        carousel.relative(carousel.current()) + 1
+      }/3`;
+    } else if (props.type === constants.carouselConstant.SCHOOLS) {
+      divRef.current.innerHTML = `${
+        carousel.relative(carousel.current()) + 1
+      }/3`;
+    }
   };
 
   return (
