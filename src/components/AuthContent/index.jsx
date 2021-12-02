@@ -22,7 +22,8 @@ const AuthContent = ({ loginPage }) => {
       >
         <div className='container logincontentbg'>
           <div className='row'>
-            <div className='col-md-4'></div>
+            <div className='col-md-4'>
+            </div>
             <div className='col-md-4'>
               <div className='login_content'>
                 <h1>{t("login.authContent.heading")}</h1>

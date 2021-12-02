@@ -79,13 +79,13 @@ const Footer = ({ loginPage }) => {
 
           <div className='bottom-footer mt-5'>
             <div className='row'>
-              <div className='col-lg-9 col-md-8 col-5 text-left'>
+              <div className='col-lg-9 col-md-8 col-6 text-left'>
                 <Link className='' to='/'>
                   <img src={loginPage ? Logo : LogoBlack} alt='logo' />
                 </Link>
               </div>
 
-              <div className='col-lg-3 col-md-4 col-7 text-left'>
+              <div className='col-lg-3 col-md-4 col-6 text-left'>
                 <p className='mt-lg-4 mt-md-3'>&copy; 2021 SheKunj.Inc.</p>
               </div>
             </div>

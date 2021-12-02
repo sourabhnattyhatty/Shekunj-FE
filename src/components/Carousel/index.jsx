@@ -128,7 +128,7 @@ function Carousel(props) {
               nav: true,
             },
             600: {
-              items: 2,
+              items: 1,
               nav: true,
             },
             1000: {
