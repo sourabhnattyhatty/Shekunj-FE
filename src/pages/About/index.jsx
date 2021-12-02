@@ -27,7 +27,7 @@ const AboutusPage = () => {
       <section className='about_ban'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-5'>
+            <div className='col-lg-5 col-md-7'>
               <div className='about_Con'>
                 <h2>{t("aboutPage.heading")}</h2>
                 <p>{t("aboutPage.content1")}</p>
@@ -158,7 +158,7 @@ const AboutusPage = () => {
             <div className='col-md-6'>
               <div className='our_his'>
                 <h2>{t("homePage.highlightStudents.heading")}</h2>
-                <p>
+                <p className="mb-5">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
                   donec molestie sit diam aliquam egestas erat tincidunt magna.
                   Tincidunt et faucibus a curabitur sed at sagittis orci id.
