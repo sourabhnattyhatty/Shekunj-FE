@@ -308,19 +308,19 @@ hr.line {
   line-height: 120%;
   color: #323232;
 }
-.courses_para{
+.Srch_sec .courses_para{
   font-weight: normal;
   font-size: 18px;
   line-height: 150%;
   color: #828282;
 }
-.result_head{
+.Srch_sec .result_head{
   font-weight: 600;
   font-size: 18px;
   line-height: 120%;
   color: #000000;
 }
-.filter_added .filter_content{
+.Srch_sec .filter_added .filter_content{
   font-weight: normal;
   font-size: 18px;
   line-height: 120%;
@@ -331,7 +331,15 @@ hr.line {
   border-radius: 110px;
   display: inline-block;
   padding: 10px 16px;
+  margin-right: 15px;
 }
-.filter_added .filter_content img{
+.Srch_sec .filter_added .filter_content img{
   cursor: pointer;
+}
+.Srch_sec .reset_content p{
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 120%;
+  text-transform: capitalize;
+  color: #D62C79;
 }

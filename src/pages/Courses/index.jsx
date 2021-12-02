@@ -27,6 +27,8 @@ import Dropdown from "./Dropdown/index";
 import Pro1 from "../../assets/images/P-1.png";
 
 import Cross from "../../assets/icons/cross.png";
+import Reset from "../../assets/icons/reset.png";
+
 
 import "./index.scss";
 import "../../pages/HomePage/index.scss";
@@ -149,6 +151,9 @@ const Courses = (props) => {
                 <SimpleAccordion />
               </div>
               <div className='col-md-8 col-sm-8'>
+                <div className="content_right">
+
+                
                 <h3 className="result_head">
                 Results: 32 Courses
                 </h3>
@@ -159,12 +164,22 @@ const Courses = (props) => {
                         <div className="filter_content">
                         Graphic Design <img src={Cross} className="ml-3" alt="Image" />
                         </div>
+
+                        <div className="filter_content">
+                        web development <img src={Cross} className="ml-3" alt="Image" />
+                        </div>
                     </div>
                   </Col>
 
                   <Col md={3} xs={12}>
+                    <div className="reset_content pt-2">
+                        <p>
+                          <img src={Reset} className="mr-2" alt="Image" /> Reset filters
+                        </p>
+                    </div>
                   </Col>
                 </Row>
+                </div>
                 <div className='row'>
                   {courses?.map((obj) => (
                     <Link
