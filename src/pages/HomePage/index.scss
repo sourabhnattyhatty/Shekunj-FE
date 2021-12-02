@@ -596,6 +596,12 @@ ul.star {
   body {
     overflow-x: hidden;
   }
+  .tes_box.heg_cha::before {
+    right: 0;
+  }
+  section.highlight_student.same_padding {
+    overflow: hidden;
+  }
   .navbar-nav {
     width: 100%;
   }
@@ -691,8 +697,8 @@ ul.star {
   header {
     position: relative;
   }
-  span.navbar-toggler-icon{
-    background-image: url('../../assets/images/menu.png');
+  span.navbar-toggler-icon {
+    background-image: url("../../assets/images/menu.png");
     background-repeat: no-repeat;
   }
   button.navbar-toggler {
@@ -713,10 +719,10 @@ ul.star {
   }
   #myCarousel .slick-prev:hover {
     border: none;
-}
-#myCarousel .slick-next:hover{
-  border: none;
-}
+  }
+  #myCarousel .slick-next:hover {
+    border: none;
+  }
 }
 
 @media only screen and (max-width: 1280px) {
