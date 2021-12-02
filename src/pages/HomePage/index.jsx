@@ -216,7 +216,7 @@ function HomePage() {
             <div className='col-lg-12 col-md-11'>
               <div className='job-opprtunity-bg'>
                 <div className='row'>
-                  <div className='col-md-8' data-aos='fade-right'>
+                  <div className='col-lg-8' data-aos='fade-right'>
                     <h3>{t("homePage.jobopportunity.heading")}</h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -234,8 +234,10 @@ function HomePage() {
                     </a>
                   </div>
 
+                  <div className='col-lg-4'>
                   <div className='jobimg'>
                     <img src={Girl} alt='...' />
+                  </div>
                   </div>
                 </div>
               </div>
