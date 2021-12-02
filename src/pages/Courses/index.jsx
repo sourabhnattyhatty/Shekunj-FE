@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+import { Container } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -22,6 +25,8 @@ import star from "../../assets/images/Star 2.png";
 import timer from "../../assets/images/timer.png";
 import Dropdown from "./Dropdown/index";
 import Pro1 from "../../assets/images/P-1.png";
+
+import Cross from "../../assets/icons/cross.png";
 
 import "./index.scss";
 import "../../pages/HomePage/index.scss";
@@ -95,10 +100,10 @@ const Courses = (props) => {
         </div>
       </section>
 
-      <section className='Srch_sec'>
+      <section className='Srch_sec mb-5'>
         <div className='container'>
-          <h2>{t("coursesPage.searchHeading")}</h2>
-          <div className='Serc_type'>
+          {/* <h2>{t("coursesPage.searchHeading")}</h2> */}
+          {/* <div className='Serc_type'>
             <div className='inp_ser'>
               <img src={Search} alt='...' />
               <input
@@ -109,9 +114,9 @@ const Courses = (props) => {
               />
             </div>
             <button className='btn btn-info'>Search</button>
-          </div>
+          </div> */}
 
-          <div className='row'>
+          {/* <div className='row'>
             <div className='col-md-2'>
               <Dropdown title={t("coursesPage.dropdownTitle.1")} />
             </div>
@@ -124,14 +129,42 @@ const Courses = (props) => {
           </div>
 
           <h4>{t("coursesPage.heading.1")}</h4>
-          <h3>{t("coursesPage.heading.2")}</h3>
+          <h3>{t("coursesPage.heading.2")}</h3> */}
 
           <div className='container'>
+            <Row>
+              <Col md={7} xs={12}>
+              <h1>
+            Online Courses
+            </h1>
+            <p className="courses_para mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget pretium nisl vitae porttitor aliquet id posuere tortor. Id turpis neque urna elit pellentesque est curabitur. Tincidunt fringilla viverra ut feugiat leo porta. Ridiculus viverra cum aliquam curabitur.
+            </p>
+              </Col>
+            </Row>
+           
+
             <div className='row'>
               <div className='col-md-4 col-sm-4'>
                 <SimpleAccordion />
               </div>
               <div className='col-md-8 col-sm-8'>
+                <h3 className="result_head">
+                Results: 32 Courses
+                </h3>
+
+                <Row>
+                  <Col md={9} xs={12}>
+                    <div className="filter_added">
+                        <div className="filter_content">
+                        Graphic Design <img src={Cross} className="ml-3" alt="Image" />
+                        </div>
+                    </div>
+                  </Col>
+
+                  <Col md={3} xs={12}>
+                  </Col>
+                </Row>
                 <div className='row'>
                   {courses?.map((obj) => (
                     <Link
@@ -187,13 +220,13 @@ const Courses = (props) => {
       </section>
 
       {/* Slider 2 */}
-      <Carousel
+      {/* <Carousel
         items={5}
         details={false}
         title1={t("homePage.carousel2.heading.1")}
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
-      />
+      /> */}
 
       <ScrollToTop />
 
