@@ -36,7 +36,7 @@ const Dashboard = () => {
   return (
     <div>
       <SEO title='Sheकुंज - Courses' />
-      <Header loginPage={true} page='courses' />
+      <Header loginPage={true}  />
 
       <div className='dashboard_main pt-5 pb-5'>
         <Container>
