@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import User from "../../../../assets/icons/user.png";
@@ -31,6 +31,16 @@ function LoginForm1() {
       .required(t("login.form1.passError.required")),
   });
 
+  function useQuery() {
+    const { search } = useLocation();
+  
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+  let query = useQuery();
+
+  const redirect = query.get("redirect")
+  
+
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
       initialValues: {
@@ -39,7 +49,7 @@ function LoginForm1() {
       },
       validationSchema,
       onSubmit(values) {
-        dispatch(onLogin(values, history));
+        dispatch(onLogin(values, history, redirect));
       },
     });
 

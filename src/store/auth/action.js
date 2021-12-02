@@ -4,8 +4,7 @@ import httpServices from "../../utils/ApiServices";
 import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
 
-
-export const onLogin = (values, history) => async (dispatch) => {
+export const onLogin = (values, history, redirect) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.LOGIN_REQUEST });
     const res = await httpServices.post("authentication/login/", values);
@@ -14,7 +13,11 @@ export const onLogin = (values, history) => async (dispatch) => {
       payload: { name: res.data.name, email: res.data.email },
     });
     Cookies.set("sheToken", res.data.tokens);
-    history.push("/");
+    if (redirect) {
+      history.push(redirect);
+    }else{
+      history.push('/');
+    }
   } catch (error) {
     dispatch({ type: authTypes.LOGIN_FAIL });
     if (error && error.status === 500) {

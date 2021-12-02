@@ -10,7 +10,7 @@ import Lock from "../../../../assets/icons/lock.png";
 
 import Error from "../../../../components/Error";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { onLogin } from "../../../../store/auth/action";
 import { CircularProgress } from "@mui/material";
 import { useTranslation } from "react-i18next";
@@ -28,6 +28,15 @@ function LoginForm2() {
       .required(t("login.form1.passError.required")),
   });
 
+  function useQuery() {
+    const { search } = useLocation();
+  
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+  let query = useQuery();
+
+  const redirect = query.get("redirect")
+
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
       initialValues: {
@@ -36,7 +45,7 @@ function LoginForm2() {
       },
       validationSchema,
       onSubmit(values) {
-        dispatch(onLogin(values, history));
+        dispatch(onLogin(values, history, redirect));
       },
     });
 

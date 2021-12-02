@@ -25,6 +25,7 @@ import Pro1 from "../../assets/images/P-1.png";
 
 import "./index.scss";
 import "../../pages/HomePage/index.scss";
+import SimpleAccordion from "./Accordian";
 
 const Courses = (props) => {
   const { t } = useTranslation();
@@ -41,7 +42,7 @@ const Courses = (props) => {
 
   return (
     <div>
-      <SEO title="Sheकुंज - Courses"/>
+      <SEO title='Sheकुंज - Courses' />
       <Header loginPage={true} page='courses' />
       <section className='Cors_sec'>
         <div className='container'>
@@ -127,52 +128,59 @@ const Courses = (props) => {
 
           <div className='container'>
             <div className='row'>
-              {courses?.map((obj) => (
-                <Link
-                  to={`/CoursesDetails/${obj.id}`}
-                  className='col-md-4'
-                  key={obj.id}
-                >
-                  <div className='box box_hov'>
-                    <div className='slide-img'>
-                      <img alt='' src={Pro1} />
-                      <div className='overlay'></div>
-                    </div>
+              <div className='col-md-4 col-sm-4'>
+                <SimpleAccordion />
+              </div>
+              <div className='col-md-8 col-sm-8'>
+                <div className='row'>
+                  {courses?.map((obj) => (
+                    <Link
+                      to={`/CoursesDetails/${obj.id}`}
+                      className='col-md-6'
+                      key={obj.id}
+                    >
+                      <div className='box box_hov'>
+                        <div className='slide-img'>
+                          <img alt='' src={Pro1} />
+                          <div className='overlay'></div>
+                        </div>
 
-                    <div className='tag_btn'>
-                      <button className='btn btn-info'>Design</button>
-                      <h6>{obj.name}</h6>
-                    </div>
-                    <div className='detail-box'>
-                      <div className='type'>
-                        <span className='span1'>
-                          4.0 <img src={star} alt='' /> <span>104,567</span>
-                        </span>
-                        <span className='std'>5600 Students</span>
-                      </div>
-                      <div className='time'>
-                        <p>
-                          <img src={timer} alt='' /> 11h 40min
-                        </p>
-                        <p>
-                          <img src={list} alt='' /> 20 lectures
-                        </p>
-                        <p>
-                          <img src={level} alt='' /> All level
-                        </p>
-                      </div>
-                    </div>
+                        <div className='tag_btn'>
+                          <button className='btn btn-info'>Design</button>
+                          <h6>{obj.name}</h6>
+                        </div>
+                        <div className='detail-box'>
+                          <div className='type'>
+                            <span className='span1'>
+                              4.0 <img src={star} alt='' /> <span>104,567</span>
+                            </span>
+                            <span className='std'>5600 Students</span>
+                          </div>
+                          <div className='time'>
+                            <p>
+                              <img src={timer} alt='' /> 11h 40min
+                            </p>
+                            <p>
+                              <img src={list} alt='' /> 20 lectures
+                            </p>
+                            <p>
+                              <img src={level} alt='' /> All level
+                            </p>
+                          </div>
+                        </div>
 
-                    <hr className='line' />
-                    <div className='names'>
-                      <p>
-                        <img src={Profile} alt='...' /> Ramadhir Krishna
-                      </p>
-                      <span>Free</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                        <hr className='line' />
+                        <div className='names'>
+                          <p>
+                            <img src={Profile} alt='...' /> Ramadhir Krishna
+                          </p>
+                          <span>Free</span>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
