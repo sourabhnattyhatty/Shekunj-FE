@@ -58,6 +58,7 @@ section.CouDtl_ban .row {
 .CouDtl img {
   position: absolute;
   bottom: 0;
+  max-width: 100%;
 }
 .sec1_con {
   background: #ffffff;
@@ -190,4 +191,58 @@ section.CouDtl_ban .row {
 }
 .sec2_right ul li img {
   padding-right: 15px;
+}
+
+
+@media screen and (min-width:992px) and (max-width:1200px){
+  .sec2_right .btn.btn_str_Cor, .sec2_right button.btn_view{
+    width:100%;
+  }
+  .CouDtl_con h2{
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (min-width:768px) and (max-width:991px){
+  .sec2_right .btn.btn_str_Cor, .sec2_right button.btn_view{
+    width:100%;
+  }
+}
+
+@media screen and (max-width:767px){
+  section.CouDtl_ban{
+    height: 600px;
+  }
+  .CouDtl_con h2{
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .CouDtl_con h3{
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .ban_rat{
+    margin-bottom: 15px;
+  }
+  .CouDtl img{
+    position: relative;
+    max-width: 100%;
+  }
+  .CouDtl_con h4{
+    font-size: 25px;
+    line-height: 16px;
+    margin-bottom: 35px;
+  }
+  .sec2_right .btn.btn_str_Cor, .sec2_right button.btn_view{
+    width:100%;
+  }
+  .sec2_right h2, .sec1_con2 h2{
+    font-size: 25px;
+    line-height: 35px;
+  }
+  .sec1_con2 ul li{
+    font-size: 17px;
+    line-height: 24px;
+  }
 }

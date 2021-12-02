@@ -128,6 +128,10 @@
 .accordion_box .MuiButtonBase-root.MuiAccordionSummary-root {
   background-color: transparent;
   border: none;
+  flex-direction: inherit;
+}
+.accordion_box .MuiAccordionSummary-content{
+  margin:0px;
 }
 .accordion_box
   .MuiPaper-root.MuiPaper-elevation

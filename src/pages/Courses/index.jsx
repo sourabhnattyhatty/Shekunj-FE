@@ -29,7 +29,6 @@ import Pro1 from "../../assets/images/P-1.png";
 import Cross from "../../assets/icons/cross.png";
 import Reset from "../../assets/icons/reset.png";
 
-
 import "./index.scss";
 import "../../pages/HomePage/index.scss";
 import SimpleAccordion from "./Accordian";
@@ -133,102 +132,85 @@ const Courses = (props) => {
           <h4>{t("coursesPage.heading.1")}</h4>
           <h3>{t("coursesPage.heading.2")}</h3> */}
 
-          <div className='container'>
-            <Row>
-              <Col md={7} xs={12}>
-              <h1>
-            Online Courses
-            </h1>
-            <p className="courses_para mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget pretium nisl vitae porttitor aliquet id posuere tortor. Id turpis neque urna elit pellentesque est curabitur. Tincidunt fringilla viverra ut feugiat leo porta. Ridiculus viverra cum aliquam curabitur.
-            </p>
-              </Col>
-            </Row>
-           
+          <Row>
+            <Col md={7} xs={12}>
+              <h1>Online Courses</h1>
+              <p className='courses_para mb-4'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Pellentesque eget pretium nisl vitae porttitor aliquet id
+                posuere tortor. Id turpis neque urna elit pellentesque est
+                curabitur. Tincidunt fringilla viverra ut feugiat leo porta.
+                Ridiculus viverra cum aliquam curabitur.
+              </p>
+            </Col>
+          </Row>
 
-            <div className='row'>
-              <div className='col-md-4 col-sm-4'>
-                <SimpleAccordion />
-              </div>
-              <div className='col-md-8 col-sm-8'>
-                <div className="content_right">
-
-                
-                <h3 className="result_head">
-                Results: 32 Courses
-                </h3>
+          <div className='row'>
+            <div className='col-md-4 col-sm-4'>
+              <SimpleAccordion />
+            </div>
+            <div className='col-md-8 col-sm-8'>
+              <div className='content_right'>
+                <h3 className='result_head'>Results: 32 Courses</h3>
 
                 <Row>
                   <Col md={9} xs={12}>
-                    <div className="filter_added">
-                        <div className="filter_content">
-                        Graphic Design <img src={Cross} className="ml-3" alt="Image" />
-                        </div>
+                    <div className='filter_added mb-5'>
+                      <div className='filter_content'>
+                        Graphic Design{" "}
+                        <img src={Cross} className='ml-3' alt='Image' />
+                      </div>
 
-                        <div className="filter_content">
-                        web development <img src={Cross} className="ml-3" alt="Image" />
-                        </div>
+                      <div className='filter_content'>
+                        web development{" "}
+                        <img src={Cross} className='ml-3' alt='Image' />
+                      </div>
                     </div>
                   </Col>
 
                   <Col md={3} xs={12}>
-                    <div className="reset_content pt-2">
-                        <p>
-                          <img src={Reset} className="mr-2" alt="Image" /> Reset filters
-                        </p>
+                    <div className='reset_content pt-2'>
+                      <p>
+                        <img src={Reset} className='mr-2' alt='Image' /> Reset
+                        filters
+                      </p>
                     </div>
                   </Col>
                 </Row>
-                </div>
-                <div className='row'>
-                  {courses?.map((obj) => (
-                    <Link
-                      to={`/CoursesDetails/${obj.id}`}
-                      className='col-md-6'
-                      key={obj.id}
-                    >
-                      <div className='box box_hov'>
-                        <div className='slide-img'>
-                          <img alt='' src={Pro1} />
-                          <div className='overlay'></div>
-                        </div>
-
-                        <div className='tag_btn'>
-                          <button className='btn btn-info'>Design</button>
-                          <h6>{obj.name}</h6>
-                        </div>
-                        <div className='detail-box'>
-                          <div className='type'>
-                            <span className='span1'>
-                              4.0 <img src={star} alt='' /> <span>104,567</span>
-                            </span>
-                            <span className='std'>5600 Students</span>
-                          </div>
-                          <div className='time'>
-                            <p>
-                              <img src={timer} alt='' /> 11h 40min
-                            </p>
-                            <p>
-                              <img src={list} alt='' /> 20 lectures
-                            </p>
-                            <p>
-                              <img src={level} alt='' /> All level
-                            </p>
-                          </div>
-                        </div>
-
-                        <hr className='line' />
-                        <div className='names'>
-                          <p>
-                            <img src={Profile} alt='...' /> Ramadhir Krishna
-                          </p>
-                          <span>Free</span>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
               </div>
+              <div className="filter_right_content">
+
+              
+              <div className='row'>
+                {courses?.map((obj) => (
+                  <Link
+                    to={`/CoursesDetails/${obj.id}`}
+                    className='col-md-6'
+                    key={obj.id}
+                  >
+                    <div className='box box_hov'>
+                      <div className='slide-img'>
+                        <img alt='' src={Pro1} />
+                        <div className='overlay'></div>
+                      </div>
+
+                      <div className='tag_btn'>
+                        <button className='btn btn-info'>Design</button>
+                        <h6>{obj.name}</h6>
+                      </div>
+
+                      <hr className='line' />
+                      <div className='names'>
+                        <p>
+                          <img src={Profile} alt='...' /> Ramadhir Krishna
+                        </p>
+                        <span>Free</span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
             </div>
           </div>
         </div>

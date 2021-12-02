@@ -84,11 +84,6 @@ section.about_testim {
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1280px) {
-#custom-search-input {
-  margin: 10px 0px 0px 0px;
-  padding: 0;
-  width: 392px;
-}
 .about_Con h2, .our_his h2{
   font-size: 30px;
 }
@@ -134,27 +129,7 @@ section.about_testim {
   .tes_box{
     padding: 11px 10px 0px;
   }
-  .other_head .middle_nav_login .navbar-nav .nav-item .nav-link {
-    font-size: 15px;
-    line-height: 26px;
-    padding: 7px 10px;
-  }
-  .other_head .middle_nav_login .navbar-nav .nav-item {
-    margin: 10px 0px 0px 5px;
-  }
-  #custom-search-input {
-    margin: 10px 0px 0px 0px;
-    width: 218px;
-    vertical-align: middle;
-}
-.top_bar_btn{
-  margin:0px;
-}
-#custom-search-input .search-query::-webkit-input-placeholder{
-  overflow: hidden;
-    text-overflow: ellipsis;
-    width: 90%;
-}
+
 }
 
 @media screen and (max-width: 767px) {

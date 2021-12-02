@@ -56,7 +56,7 @@ export default function SimpleAccordion() {
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <div className='accordion_box'>
+    <div className='accordion_box_all'>
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}

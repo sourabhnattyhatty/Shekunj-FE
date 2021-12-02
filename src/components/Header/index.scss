@@ -153,3 +153,34 @@ header {
 .other_head .middle_nav_login .navbar-nav .nav-item.active .nav-link {
   color: #fff;
 }
+@media only screen and (min-width: 992px) and (max-width: 1280px) {
+  #custom-search-input {
+    margin: 10px 0px 0px 0px;
+    padding: 0;
+    width: 392px;
+  }
+}
+
+@media screen and (min-width:768px) and (max-width:991px){
+  .other_head .middle_nav_login .navbar-nav .nav-item .nav-link {
+    font-size: 15px;
+    line-height: 26px;
+    padding: 7px 10px;
+  }
+  .other_head .middle_nav_login .navbar-nav .nav-item {
+    margin: 10px 0px 0px 5px;
+  }
+  #custom-search-input {
+    margin: 10px 0px 0px 0px;
+    width: 218px;
+    vertical-align: middle;
+}
+.top_bar_btn{
+  margin:0px;
+}
+#custom-search-input .search-query::-webkit-input-placeholder{
+  overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+}
+}
