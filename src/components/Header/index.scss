@@ -52,10 +52,10 @@
     overflow: hidden;
     top: 0;
     position: fixed;
-    height: calc(100vh - 30px) !important;
+    height: calc(100vh - 0px) !important;
     background: #fff;
     left: -100vw !important;
-    height: 100% !important;
+    /* height: 100% !important; */
     width: 100%;
     transition: ease all 0.5s;
     padding: 0px;
@@ -63,7 +63,7 @@
     display: block !important;
     visibility: hidden;
     z-index: 999999999;
-  }
+}
 }
 @media screen and (max-width: 767px){
 .navbar .open.collapse.show {
