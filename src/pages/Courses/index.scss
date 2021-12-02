@@ -299,3 +299,39 @@ hr.line {
     padding-top: 25px;
   }
 }
+
+
+/*new*/
+.Srch_sec h1{
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 120%;
+  color: #323232;
+}
+.courses_para{
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 150%;
+  color: #828282;
+}
+.result_head{
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 120%;
+  color: #000000;
+}
+.filter_added .filter_content{
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 120%;
+  text-transform: capitalize;
+  color: #828282;
+  background: #FFFFFF;
+  border: 1px solid #828282;
+  border-radius: 110px;
+  display: inline-block;
+  padding: 10px 16px;
+}
+.filter_added .filter_content img{
+  cursor: pointer;
+}
