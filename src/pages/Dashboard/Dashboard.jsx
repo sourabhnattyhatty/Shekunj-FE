@@ -11,10 +11,10 @@ import { constants } from "../../utils";
 import Calendar from "../../assets/icons/calendar.png";
 import Clock from "../../assets/icons/clock.png";
 
-import PropTypes from 'prop-types';
-import CircularProgress from '@mui/material/CircularProgress';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import PropTypes from "prop-types";
+import CircularProgress from "@mui/material/CircularProgress";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 import { Carousel, Header, Footer, ScrollToTop, SEO } from "../../components";
 
@@ -38,62 +38,76 @@ const Dashboard = () => {
       <SEO title='Sheकुंज - Courses' />
       <Header loginPage={true} page='courses' />
 
-      <div className="dashboard_main pt-5 pb-5">
-          <Container>
-                <Row>
-                    <Col md={12}>
-                        <h1>
-                            Hello Name!
-                        </h1>
-                        <p className="dashboard_back">
-                        Good to see you back!
-                        </p>
+      <div className='dashboard_main pt-5 pb-5'>
+        <Container>
+          <Row>
+            <Col md={12}>
+              <h1>Hello Name!</h1>
+              <p className='dashboard_back'>Good to see you back!</p>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={6} xs={12}></Col>
+
+            <Col md={6} xs={12}>
+              <div className='current_course'>
+                <h3>Current Course</h3>
+
+                <div className='course_explore'>
+                  <Row>
+                    <Col md={3} xs={3}>
+                      <h6>Adobe Photoshop</h6>
                     </Col>
-                </Row>
 
-                <Row>
-                    <Col md={6} xs={12}>
+                    <Col md={2} xs={3}>
+                      <div>
+                        <Box
+                          sx={{ position: "relative", display: "inline-flex" }}
+                        >
+                          <CircularProgress variant='determinate' value={80}/>
+                          <Box
+                            sx={{
+                              top: 0,
+                              left: 0,
+                              bottom: 0,
+                              right: 0,
+                              position: "absolute",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <Typography
+                              variant='caption'
+                              component='div'
+                              color='text.secondary'
+                            >
+                              80%
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </div>
                     </Col>
 
-                    <Col md={6} xs={12}>
-                        <div className="current_course">
-                            <h3>
-                            Current Course
-                            </h3>
+                    <Col md={4} xs={3}>
+                      <ul className='p-0'>
+                        <li>
+                          <img src={Calendar} alt='...' /> May 20, 2021
+                        </li>
 
-                            <div className="course_explore">
-                                <Row>
-                                    <Col md={3} xs={3}>
-                                        <h6>
-                                        Adobe
-Photoshop
-                                        </h6>
-                                    </Col>
-
-                                    <Col md={2} xs={3}>
-                                        <div>
-                                            CIrcular progress bar
-                                        </div>
-                                    </Col>
-                                    
-                                    <Col md={4} xs={3}>
-                                        <ul className="p-0">
-                                            <li>
-                                                <img src={Calendar} alt="Image" /> May 20, 2021
-                                            </li>
-
-                                            <li>
-                                            <img src={Calendar} alt="Image" /> 6h 30 min
-                                                </li>
-                                        </ul>
-                                    </Col>
-                                </Row>
-                            </div>
-                        </div>
+                        <li>
+                          <img src={Calendar} alt='...' /> 6h 30 min
+                        </li>
+                      </ul>
                     </Col>
-                </Row>
-          </Container>
-        </div>
+                  </Row>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
 
       <ScrollToTop />
 
