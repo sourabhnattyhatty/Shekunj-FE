@@ -57,14 +57,14 @@ const CourseDetails = () => {
         </div>
       </section>
 
-      <section className='Coutl_sec1'>
+      <section className='Coutl_sec1 mb-5'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-7'>
               <div className='sec1_con'>
                 <h2>What you’ll learn</h2>
                 <div className='row'>
-                  <div className='col-md-6'>
+                  <div className='col-xl-6 col-md-12'>
                     <ul>
                       <li>
                         <span>
@@ -80,7 +80,7 @@ const CourseDetails = () => {
                       </li>
                     </ul>
                   </div>
-                  <div className='col-md-6'>
+                  <div className='col-xl-6 col-md-12'>
                     <ul>
                       <li>
                         <span>
@@ -101,7 +101,7 @@ const CourseDetails = () => {
 
               <div className='sec1_con2'>
                 <div className='row'>
-                  <div className='col-md-6'>
+                  <div className='col-xl-6 col-md-12'>
                     <h2>Requirements</h2>
                     <ul>
                       <li>Lorem ipsum dolor sit amet.</li>
@@ -109,7 +109,7 @@ const CourseDetails = () => {
                       <li>Lorem ipsum dolor sit amet.</li>
                     </ul>
                   </div>
-                  <div className='col-md-6'>
+                  <div className='col-xl-6 col-md-12'>
                     <h2>Who this course is for:</h2>
                     <ul>
                       <li>Lorem ipsum dolor sit amet.</li>
