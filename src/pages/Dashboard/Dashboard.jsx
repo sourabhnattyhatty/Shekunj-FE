@@ -3,29 +3,30 @@ import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Aos from "aos";
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+// import { useTranslation } from "react-i18next";
+// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { allCourses } from "../../store/courses/action";
-import { constants } from "../../utils";
+// import { constants } from "../../utils";
 import Calendar from "../../assets/icons/calendar.png";
 import Clock from "../../assets/icons/clock.png";
 import Calendarblack from "../../assets/icons/calendar-black.png";
 import Clockblack from "../../assets/icons/clock-black.png";
 import Certificate from "../../assets/images/certificate1.png";
 
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import { Carousel, Header, Footer, ScrollToTop, SEO } from "../../components";
+import { Header, Footer, ScrollToTop, SEO } from "../../components";
 
 import "./Dashboard.scss";
 
 const Dashboard = () => {
-  const { t } = useTranslation();
-  const { courses } = useSelector((state) => state.coursesReducer);
+  // const { t } = useTranslation();
+  // const { courses } = useSelector((state) => state.coursesReducer);
+  const {user} = useSelector(state => state.authReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
   return (
@@ -45,7 +47,7 @@ const Dashboard = () => {
         <Container>
           <Row>
             <Col md={12}>
-              <h1>Hello Name!</h1>
+              <h1>Hello {user?.name}!</h1>
               <p className='dashboard_back'>Good to see you back!</p>
             </Col>
           </Row>

@@ -16,7 +16,7 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
     if (redirect) {
       history.push(redirect);
     }else{
-      history.push('/');
+      history.push('/dashboard');
     }
   } catch (error) {
     dispatch({ type: authTypes.LOGIN_FAIL });
@@ -40,7 +40,7 @@ export const onSignup = (values, history) => async (dispatch) => {
     const res = await httpServices.post("authentication/register/", values);
     dispatch({ type: authTypes.SIGNUP_FINISH, payload: values });
     Cookies.set("sheToken", res.data.token);
-    history.push("/");
+    history.push("/dashboard");
   } catch (error) {
     dispatch({ type: authTypes.SIGNUP_FAIL });
     if (error?.status === 400) {
