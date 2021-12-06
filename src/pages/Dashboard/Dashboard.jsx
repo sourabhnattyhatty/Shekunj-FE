@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Aos from "aos";
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 // import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { allCourses } from "../../store/courses/action";
@@ -24,9 +24,9 @@ import { Header, Footer, ScrollToTop, SEO } from "../../components";
 import "./Dashboard.scss";
 
 const Dashboard = () => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   // const { courses } = useSelector((state) => state.coursesReducer);
-  const {user} = useSelector(state => state.authReducer);
+  const { user } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,21 +41,21 @@ const Dashboard = () => {
   return (
     <div>
       <SEO title='Sheकुंज - Courses' />
-      <Header loginPage={true}  />
+      <Header loginPage={true} />
 
       <div className='dashboard_main pt-5 pb-5'>
         <Container>
           <Row>
             <Col md={12}>
-              <h1>Hello {user?.name}!</h1>
-              <p className='dashboard_back'>Good to see you back!</p>
+              <h1>{t("dashboardPage.greeting", { name: user?.name })}</h1>
+              <p className='dashboard_back'>{t("dashboardPage.wish")}</p>
             </Col>
           </Row>
 
           <Row>
             <Col md={7} xs={12}>
               <div className='current_course'>
-                <h3>Current Course</h3>
+                <h3>{t("dashboardPage.current")}</h3>
 
                 <div className='course_explore'>
                   <Row>
@@ -68,7 +68,7 @@ const Dashboard = () => {
                         <Box
                           sx={{ position: "relative", display: "inline-flex" }}
                         >
-                          <CircularProgress variant='determinate' value={80}/>
+                          <CircularProgress variant='determinate' value={80} />
                           <Box
                             sx={{
                               top: 0,
@@ -96,166 +96,182 @@ const Dashboard = () => {
                     <Col md={4} xs={3}>
                       <ul className='p-0'>
                         <li>
-                          <img src={Calendar} alt='...' className="pr-2" /> May 20, 2021
+                          <img src={Calendar} alt='...' className='pr-2' /> May
+                          20, 2021
                         </li>
 
                         <li>
-                          <img src={Clock} alt='...' className="pr-2"/> 6h 30 min
+                          <img src={Clock} alt='...' className='pr-2' /> 6h 30
+                          min
                         </li>
                       </ul>
                     </Col>
-                    <Col md={3} xs={3} className="p-0">
-                      <div className="button_paddingarea">
-                        <button className="explore_button btn">Explore</button>
+                    <Col md={3} xs={3} className='p-0'>
+                      <div className='button_paddingarea'>
+                        <button className='explore_button btn'>{t('dashboardPage.explore')}</button>
                       </div>
                     </Col>
                   </Row>
                 </div>
               </div>
-                <div className='current_course'>
-                  <h3>Course in prograss</h3>
-                  {/* --------- */}
-                  <div className='course_inprogress mb-3'>
-                    <Row>
-                      <Col md={7} xs={3}>
-                        <h6>Adobe Photoshop</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tellus quam sollicitudin augue nunc.</p>
-                        <ul className='p-0 list-style-none list-inline'>
-                          <li className="list-inline-item mr-4" >
-                            <img src={Calendarblack} alt='...' className="pr-2" /> May 20, 2021
-                          </li>
+              <div className='current_course'>
+                <h3>{t("dashboardPage.inProgress")}</h3>
+                <div className='course_inprogress mb-3'>
+                  <Row>
+                    <Col md={7} xs={3}>
+                      <h6>Adobe Photoshop</h6>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nulla tellus quam sollicitudin augue nunc.
+                      </p>
+                      <ul className='p-0 list-style-none list-inline'>
+                        <li className='list-inline-item mr-4'>
+                          <img src={Calendarblack} alt='...' className='pr-2' />{" "}
+                          May 20, 2021
+                        </li>
 
-                          <li className="list-inline-item">
-                            <img src={Clockblack} alt='...' className="pr-2"/> 6h 30 min
-                          </li>
+                        <li className='list-inline-item'>
+                          <img src={Clockblack} alt='...' className='pr-2' /> 6h
+                          30 min
+                        </li>
                       </ul>
-                      </Col>
-                      <Col md={2} xs={3} className="p-0">
-                        <div className="progress-coursebardiv">
+                    </Col>
+                    <Col md={2} xs={3} className='p-0'>
+                      <div className='progress-coursebardiv'>
+                        <Box
+                          sx={{ position: "relative", display: "inline-flex" }}
+                        >
+                          <CircularProgress variant='determinate' value={80} />
                           <Box
-                            sx={{ position: "relative", display: "inline-flex" }}
+                            sx={{
+                              top: 0,
+                              left: 0,
+                              bottom: 0,
+                              right: 0,
+                              position: "absolute",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
                           >
-                            <CircularProgress variant='determinate' value={80}/>
-                            <Box
-                              sx={{
-                                top: 0,
-                                left: 0,
-                                bottom: 0,
-                                right: 0,
-                                position: "absolute",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                              }}
+                            <Typography
+                              variant='caption'
+                              component='div'
+                              color='text.secondary'
                             >
-                              <Typography
-                                variant='caption'
-                                component='div'
-                                color='text.secondary'
-                              >
-                                100%
-                              </Typography>
-                            </Box>
+                              100%
+                            </Typography>
                           </Box>
-                        </div>
-                      </Col>
-                      <Col md={3} xs={3}>
-                        <div className="button_paddingarea">
-                          <button className="btn certificate_button">Certificate</button>
-                        </div>
-                      </Col>
-                    </Row>
-                  </div>
-                  {/* ------------------ */}
-                  <div className='course_inprogress'>
-                    <Row>
-                      <Col md={7} xs={3}>
-                        <h6>Adobe Illustrator - Graphic Design Software</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tellus quam sollicitudin augue nunc.</p>
-                        <ul className='p-0 list-style-none list-inline'>
-                          <li className="list-inline-item mr-4">
-                            <img src={Calendarblack} alt='...' className="pr-2" /> May 20, 2021
-                          </li>
-
-                          <li className="list-inline-item">
-                            <img src={Clockblack} alt='...' className="pr-2"/> 6h 30 min
-                          </li>
-                      </ul>
-                      </Col>
-                      <Col md={2} xs={3} className="p-0">
-                        <div className="progress-coursebardiv">
-                          <Box
-                            sx={{ position: "relative", display: "inline-flex" }}
-                          >
-                            <CircularProgress variant='determinate' value={80}/>
-                            <Box
-                              sx={{
-                                top: 0,
-                                left: 0,
-                                bottom: 0,
-                                right: 0,
-                                position: "absolute",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                              }}
-                            >
-                              <Typography
-                                variant='caption'
-                                component='div'
-                                color='text.secondary'
-                              >
-                                80%
-                              </Typography>
-                            </Box>
-                          </Box>
-                        </div>
-                      </Col>
-                      <Col md={3} xs={3}>
-                        <div className="button_paddingarea">
-                          <button className="btn certificate_button">Certificate</button>
-                        </div>
-                      </Col>
-                    </Row>
-                  </div>
+                        </Box>
+                      </div>
+                    </Col>
+                    <Col md={3} xs={3}>
+                      <div className='button_paddingarea'>
+                        <button className='btn certificate_button'>
+                          {t('dashboardPage.certificate')}
+                        </button>
+                      </div>
+                    </Col>
+                  </Row>
                 </div>
+                {/* ------------------ */}
+                <div className='course_inprogress'>
+                  <Row>
+                    <Col md={7} xs={3}>
+                      <h6>Adobe Illustrator - Graphic Design Software</h6>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nulla tellus quam sollicitudin augue nunc.
+                      </p>
+                      <ul className='p-0 list-style-none list-inline'>
+                        <li className='list-inline-item mr-4'>
+                          <img src={Calendarblack} alt='...' className='pr-2' />{" "}
+                          May 20, 2021
+                        </li>
+
+                        <li className='list-inline-item'>
+                          <img src={Clockblack} alt='...' className='pr-2' /> 6h
+                          30 min
+                        </li>
+                      </ul>
+                    </Col>
+                    <Col md={2} xs={3} className='p-0'>
+                      <div className='progress-coursebardiv'>
+                        <Box
+                          sx={{ position: "relative", display: "inline-flex" }}
+                        >
+                          <CircularProgress variant='determinate' value={80} />
+                          <Box
+                            sx={{
+                              top: 0,
+                              left: 0,
+                              bottom: 0,
+                              right: 0,
+                              position: "absolute",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <Typography
+                              variant='caption'
+                              component='div'
+                              color='text.secondary'
+                            >
+                              80%
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </div>
+                    </Col>
+                    <Col md={3} xs={3}>
+                      <div className='button_paddingarea'>
+                        <button className='btn certificate_button'>
+                        {t('dashboardPage.certificate')}
+                        </button>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </div>
             </Col>
             {/* right side content */}
             <Col md={5} xs={12}>
-              <div className="course_completedright">
-              </div>
-              <div className="certificate-section">
+              <div className='course_completedright'></div>
+              <div className='certificate-section'>
                 <Row>
                   <Col md={7}>
-                    <h6>Certificate</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut commodo .</p>
+                    <h6>{t('dashboardPage.certificate')}</h6>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Ut commodo .
+                    </p>
                   </Col>
-                  <Col md={5} className="p-0">
-                    <img src={Certificate} alt='...' className=""/>
+                  <Col md={5} className='p-0'>
+                    <img src={Certificate} alt='...' className='' />
                   </Col>
                 </Row>
                 <div>
-                  <button className="btn all_certificatebutton">All Certificates</button>
+                  <button className='btn all_certificatebutton'>
+                    All Certificates
+                  </button>
                 </div>
               </div>
-              <div className="your-testdiv">
+              <div className='your-testdiv'>
                 <h6>Your test</h6>
-                <div className="your-testcontent">
-                    <Row>
-                      <Col md={6}>
-                        <div className="first-test">
-                            <h3>Adobe Photoshop</h3>
-                        </div>
-                      </Col>
-                      <Col md={6}>
-                        <div className="first-test">
-
-                        </div>
-                      </Col>
-                    </Row>
+                <div className='your-testcontent'>
+                  <Row>
+                    <Col md={6}>
+                      <div className='first-test'>
+                        <h3>Adobe Photoshop</h3>
+                      </div>
+                    </Col>
+                    <Col md={6}>
+                      <div className='first-test'></div>
+                    </Col>
+                  </Row>
                 </div>
               </div>
-              
             </Col>
           </Row>
         </Container>

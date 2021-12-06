@@ -227,5 +227,14 @@
       "1": "OUR COURSES",
       "2": "Study top quality & advanced course content in Hindi"
     }
+  },
+
+  "dashboardPage" : {
+    "greeting" : "Hello {{name}}!",
+    "wish" : "Good to see you back!",
+    "current" : "Current Course",
+    "inProgress" : "Course in prograss",
+    "certificate" : "Certificate",
+    "explore" : "Explore"
   }
 }

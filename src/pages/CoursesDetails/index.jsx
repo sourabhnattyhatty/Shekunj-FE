@@ -19,6 +19,7 @@ const CourseDetails = () => {
   const { id } = useParams();
 
   const { course } = useSelector((state) => state.coursesReducer);
+  console.log(">>>>>>>>>>>>>>>>>>>>>",course);
 
   useEffect(() => {
     dispatch(singleCourseDetails(id));

@@ -13,6 +13,8 @@ import "./index.scss";
 import "aos/dist/aos.css";
 import "animate.css";
 
+import httpServices from "./../../utils/ApiServices";
+
 const AboutusPage = () => {
   const { t } = useTranslation();
 
@@ -20,9 +22,27 @@ const AboutusPage = () => {
     Aos.init({ duration: 2000 });
   }, []);
 
+  const [course, setCourse] = React.useState(null);
+
+  React.useEffect(() => {
+    httpServices.get(`/course/list/`).then((res) => {
+      console.log({
+        res,
+      });
+      const obj = res?.results?.find((r) => r.id === 14);
+      setCourse(obj?.coursemodule_set[0]?.description);
+      console.log({ obj });
+    });
+  }, []);
+
   return (
     <div>
-      <SEO title="Sheकुंज - About us"/>
+      {/* <div
+        dangerouslySetInnerHTML={{
+          __html: course,
+        }}
+      /> */}
+      <SEO title='Sheकुंज - About us' />
       <Header loginPage={false} page='about' />
       <section className='about_ban'>
         <div className='container'>
@@ -158,7 +178,7 @@ const AboutusPage = () => {
             <div className='col-md-6'>
               <div className='our_his'>
                 <h2>{t("homePage.highlightStudents.heading")}</h2>
-                <p className="mb-5">
+                <p className='mb-5'>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
                   donec molestie sit diam aliquam egestas erat tincidunt magna.
                   Tincidunt et faucibus a curabitur sed at sagittis orci id.
