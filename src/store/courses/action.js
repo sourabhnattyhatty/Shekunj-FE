@@ -5,7 +5,8 @@ export const allCourses = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.COURSES_REQUEST });
     const res = await httpServices.get("/course/list/");
-    dispatch({ type: coursesTypes.COURSES_FINISH, payload: res.data });
+    debugger
+    dispatch({ type: coursesTypes.COURSES_FINISH, payload: res.results });
   } catch (error) {
     dispatch({ type: coursesTypes.COURSES_FAIL });
   }

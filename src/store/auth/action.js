@@ -20,8 +20,9 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
     }
   } catch (error) {
     dispatch({ type: authTypes.LOGIN_FAIL });
+    debugger
     if (error && error.status === 500) {
-      toast.error(error.data.errors.non_field_errors, toasterConfig);
+      toast.error(error.data.message, toasterConfig);
     } else if (error && error.status === 400) {
       toast.error(error.data.errors.error[0], toasterConfig);
     }

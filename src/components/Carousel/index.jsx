@@ -99,7 +99,7 @@ function Carousel(props) {
     if (props.type === constants.carouselConstant.COURSES) {
       divRef.current.innerHTML = `${
         carousel.relative(carousel.current()) + 1
-      }/${courses.length}`;
+      }/${courses?.length}`;
     } else if (props.type === constants.carouselConstant.TEST) {
       divRef.current.innerHTML = `${
         carousel.relative(carousel.current()) + 1
@@ -159,7 +159,7 @@ function Carousel(props) {
         >
           {props.type === constants.carouselConstant.COURSES && (
             <>
-              {courses.map((obj, ind) => (
+              {courses?.map((obj, ind) => (
                 <Link
                   to={`/CoursesDetails/${obj.id}`}
                   className='item'
@@ -210,7 +210,7 @@ function Carousel(props) {
 
           {props.type === constants.carouselConstant.TEST && (
             <>
-              {coursesArray.map((obj, ind) => (
+              {coursesArray?.map((obj, ind) => (
                 <div className='item' key={ind}>
                   <div className='box'>
                     <div className='slide-img'>
@@ -240,7 +240,7 @@ function Carousel(props) {
 
           {props.type === constants.carouselConstant.COLLEGES && (
             <>
-              {collagesArr.map((obj, ind) => (
+              {collagesArr?.map((obj, ind) => (
                 <div className='item' key={ind}>
                   <div className='box'>
                     <div className='slide-img'>
@@ -261,7 +261,7 @@ function Carousel(props) {
 
           {props.type === constants.carouselConstant.SCHOOLS && (
             <>
-              {schoolsArr.map((obj, ind) => (
+              {schoolsArr?.map((obj, ind) => (
                 <div className='item' key={ind}>
                   <div className='box'>
                     <div className='slide-img'>
