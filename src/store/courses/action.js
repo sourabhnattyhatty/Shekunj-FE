@@ -4,11 +4,20 @@ import httpServices from "../../utils/ApiServices";
 export const allCourses = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.COURSES_REQUEST });
-    const res = await httpServices.get("/course/list/");
-    debugger
-    dispatch({ type: coursesTypes.COURSES_FINISH, payload: res.results });
+    const res = await httpServices.get("/course/home/");
+    dispatch({ type: coursesTypes.COURSES_FINISH, payload: res.data.popular_course });
   } catch (error) {
     dispatch({ type: coursesTypes.COURSES_FAIL });
+  }
+};
+
+export const allTests = () => async (dispatch) => {
+  try {
+    dispatch({ type: coursesTypes.TESTS_REQUEST });
+    const res = await httpServices.get("/course/online-test-category-list/");
+    dispatch({ type: coursesTypes.TESTS_FINISH, payload: res.data });
+  } catch (error) {
+    dispatch({ type: coursesTypes.TESTS_FAIL });
   }
 };
 

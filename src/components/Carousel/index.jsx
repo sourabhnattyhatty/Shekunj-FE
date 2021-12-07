@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import { constants } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
-import { allCourses } from "../../store/courses/action";
+import { allCourses, allTests } from "../../store/courses/action";
 import { Link } from "react-router-dom";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -24,11 +24,12 @@ import school3 from "../../assets/images/Courses/school3.png";
 
 function Carousel(props) {
   const divRef = React.useRef();
-  const { courses } = useSelector((state) => state.coursesReducer);
+  const { courses, tests } = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(allCourses());
+    dispatch(allTests());
   }, [dispatch]);
 
   const collagesArr = [
@@ -61,38 +62,7 @@ function Carousel(props) {
     },
   ];
 
-  const coursesArray = [
-    {
-      img: Pro1,
-      title: "Design",
-      subTitle: "Adobe photoshop training: From beginner to PRO",
-      rating: "4.5",
-      people: "104,716",
-      students: "46,995",
-      time: "11 hr 20 mins",
-      lectures: "20",
-    },
-    {
-      img: Pro1,
-      title: "Life Style",
-      subTitle: "Cat behaviour, Psychology and Care training to Pro",
-      rating: "4.5",
-      people: "104,716",
-      students: "46,995",
-      time: "11 hr 20 mins",
-      lectures: "20",
-    },
-    {
-      img: Pro1,
-      title: "Development",
-      subTitle: "Python Programming Masterclass Beginner to Advanced",
-      rating: "4.5",
-      people: "104,716",
-      students: "36,995",
-      time: "08 hr 20 mins",
-      lectures: "32",
-    },
-  ];
+
 
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;
@@ -103,7 +73,7 @@ function Carousel(props) {
     } else if (props.type === constants.carouselConstant.TEST) {
       divRef.current.innerHTML = `${
         carousel.relative(carousel.current()) + 1
-      }/3`;
+      }/${tests?.length}`;
     } else if (props.type === constants.carouselConstant.COLLEGES) {
       divRef.current.innerHTML = `${
         carousel.relative(carousel.current()) + 1
@@ -210,7 +180,7 @@ function Carousel(props) {
 
           {props.type === constants.carouselConstant.TEST && (
             <>
-              {coursesArray?.map((obj, ind) => (
+              {tests?.map((obj, ind) => (
                 <div className='item' key={ind}>
                   <div className='box'>
                     <div className='slide-img'>
@@ -221,7 +191,7 @@ function Carousel(props) {
                     <>
                       <div className='tag_btn'>
                         <button className='btn btn-info'>1 Test Set</button>
-                        <h2>Banking and Insurance</h2>
+                        <h2>{obj?.name}</h2>
                       </div>
                     </>
 

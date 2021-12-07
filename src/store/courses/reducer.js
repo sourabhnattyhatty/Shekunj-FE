@@ -4,6 +4,7 @@ const initialState = {
   isLoading: false,
   courses: [],
   course: {},
+  tests: [],
   error: null,
 };
 
@@ -29,6 +30,26 @@ export const coursesReducer = (state = initialState, action) => {
         error: action.payload,
       };
 
+      case coursesTypes.TESTS_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.TESTS_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        tests: action.payload,
+        error: null,
+      };
+    case coursesTypes.TESTS_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+
     case coursesTypes.COURSE_REQUEST:
       return {
         ...state,
@@ -42,6 +63,7 @@ export const coursesReducer = (state = initialState, action) => {
         course: action.payload,
         error: null,
       };
+      
     case coursesTypes.COURSE_FAIL:
       return {
         ...state,
