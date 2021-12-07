@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import OwlCarousel from "react-owl-carousel";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { singleCourseDetails } from "../../store/courses/action";
@@ -11,15 +12,16 @@ import check from "../../assets/images/CoursesDetails/check.png";
 import Device from "../../assets/images/CoursesDetails/Device.png";
 import certi from "../../assets/images/CoursesDetails/certi.png";
 import textImg from "../../assets/images/CoursesDetails/text.png";
+import Pro1 from "../../assets/images/P-1.png";
 
 import "./index.scss";
+
 
 const CourseDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
   const { course } = useSelector((state) => state.coursesReducer);
-  console.log(">>>>>>>>>>>>>>>>>>>>>",course);
 
   useEffect(() => {
     dispatch(singleCourseDetails(id));
@@ -28,7 +30,7 @@ const CourseDetails = () => {
 
   return (
     <div>
-      <SEO title="Sheकुंज - Course Detail"/>
+      <SEO title='Sheकुंज - Course Detail' />
       <Header loginPage={true} page='courses' />
       <section className='CouDtl_ban'>
         <div className='container'>
@@ -144,7 +146,7 @@ const CourseDetails = () => {
                   Start Course
                 </Link>
 
-                <h2>This course includes:</h2>
+                {/* <h2>This course includes:</h2>
                 <ul>
                   <li>
                     <img src={Device} alt='' srcSet='' /> 2 hours on-demand
@@ -157,7 +159,52 @@ const CourseDetails = () => {
                     <img src={certi} alt='' srcSet='' /> Certificate of
                     completion
                   </li>
-                </ul>
+                </ul> */}
+                <h3 className="similar-coursestext">Similar Courses</h3>
+
+                <div className="similar-coursesslider">
+                  <OwlCarousel
+                    // className='owl-theme'
+                    loop
+                    margin={10}
+                    nav={false}
+                    items={1}
+                    dots={false}
+                    autoPlay={true}
+                    smartSpeed='800'
+                    responsive={{
+                      0: {
+                        items: 1,
+                        nav: false,
+                      },
+                      600: {
+                        items: 1,
+                        nav: false,
+                      },
+                      1000: {
+                        items: 3,
+                        nav: false,
+                        loop: true,
+                      },
+                      1200: {
+                        items: 1.4,
+                        nav: false,
+                        loop: true,
+                      },
+                    }}
+                  >
+                    <div className='boxnew'>
+                      <div className='slide-img1'>
+                        <img alt='' src={Pro1} />
+                        <div className='overlay'></div>
+                      </div>
+
+                      <div className='tag_btn'>
+                        <p>Adobe photoshop training:From beginner to PRO</p>
+                      </div>
+                    </div>
+                  </OwlCarousel>
+                </div>
 
                 <button className='btn_view'>View More Courses</button>
               </div>

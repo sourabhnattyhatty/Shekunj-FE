@@ -1,5 +1,7 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
+
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
@@ -51,6 +53,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function SimpleAccordion() {
   const [expanded, setExpanded] = React.useState("panel1");
+  const {t} = useTranslation();
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -62,7 +65,7 @@ export default function SimpleAccordion() {
         onChange={handleChange("panel1")}
       >
         <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
-          <Typography>Categories</Typography>
+          <Typography>{t('coursesPage.accordion.1.heading')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <ul className='pl-0'>
@@ -70,21 +73,21 @@ export default function SimpleAccordion() {
               <li>
                 <FormControlLabel
                   control={<Checkbox defaultChecked />}
-                  label='Graphic Design'
+                  label={t('coursesPage.accordion.1.1')}
                 />
               </li>
 
               <li>
                 <FormControlLabel
                   control={<Checkbox />}
-                  label='career development'
+                  label={t('coursesPage.accordion.1.2')}
                 />
               </li>
 
               <li>
                 <FormControlLabel
                   control={<Checkbox defaultChecked />}
-                  label='Web Development'
+                  label={t('coursesPage.accordion.1.3')}
                 />
               </li>
             </FormGroup>
@@ -96,7 +99,7 @@ export default function SimpleAccordion() {
         onChange={handleChange("panel2")}
       >
         <AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
-          <Typography>course length</Typography>
+          <Typography>{t('coursesPage.accordion.2.heading')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
      
@@ -105,28 +108,28 @@ export default function SimpleAccordion() {
               <li>
                 <FormControlLabel
                   control={<Checkbox />}
-                  label='under 2 hours'
+                  label={t('coursesPage.accordion.2.1')}
                 />
               </li>
 
               <li>
                 <FormControlLabel
                   control={<Checkbox />}
-                  label='2-10 hours'
+                  label={t('coursesPage.accordion.2.2')}
                 />
               </li>
 
               <li>
                 <FormControlLabel
                   control={<Checkbox />}
-                  label='11-20 hours'
+                  label={t('coursesPage.accordion.2.3')}
                 />
               </li>
 
               <li>
                 <FormControlLabel
                   control={<Checkbox />}
-                  label='20+ hours'
+                  label={t('coursesPage.accordion.2.4')}
                 />
               </li>
             </FormGroup>
@@ -139,7 +142,7 @@ export default function SimpleAccordion() {
         onChange={handleChange("panel3")}
       >
         <AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-          <Typography>course dificulty</Typography>
+          <Typography>{t('coursesPage.accordion.3.heading')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
         <ul className='pl-0'>
@@ -147,21 +150,21 @@ export default function SimpleAccordion() {
               <li>
                 <FormControlLabel
                   control={<Checkbox />}
-                  label='beginner'
+                  label={t('coursesPage.accordion.3.1')}
                 />
               </li>
 
               <li>
                 <FormControlLabel
                   control={<Checkbox />}
-                  label='intermediate'
+                  label={t('coursesPage.accordion.3.2')}
                 />
               </li>
 
               <li>
                 <FormControlLabel
                   control={<Checkbox />}
-                  label='advanced'
+                  label={t('coursesPage.accordion.3.3')}
                 />
               </li>
 
@@ -176,7 +179,7 @@ export default function SimpleAccordion() {
         onChange={handleChange("panel4")}
       >
         <AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-          <Typography>course provider</Typography>
+          <Typography>{t('coursesPage.accordion.4.heading')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
         <ul className='pl-0'>

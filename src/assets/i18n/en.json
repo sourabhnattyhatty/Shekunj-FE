@@ -216,25 +216,42 @@
       "2.2": "OF professionals",
       "3": "Flexible PAYMENT PLANS"
     },
-    "searchHeading": "Search Courses and Programs",
-    "placeholder": "What do you want to learn?",
-    "dropdownTitle": {
-      "1": "Subject",
-      "2": "Partner",
-      "3": "Program"
-    },
     "heading": {
-      "1": "OUR COURSES",
+      "1": "Online Courses",
       "2": "Study top quality & advanced course content in Hindi"
+    },
+    "accordion": {
+      "1": {
+        "heading": "Categories",
+        "1": "Graphic Design",
+        "2": "career development",
+        "3": "Web Development"
+      },
+      "2": {
+        "heading": "course length",
+        "1": "under 2 hours",
+        "2": "2-10 hours",
+        "3": "11-20 hours",
+        "4": "20+ hours"
+      },
+      "3": {
+        "heading": "course difficulty",
+        "1": "beginner",
+        "2": "intermediate",
+        "3": "advanced"
+      },
+      "4": {
+        "heading": "course provider"
+      }
     }
   },
 
-  "dashboardPage" : {
-    "greeting" : "Hello {{name}}!",
-    "wish" : "Good to see you back!",
-    "current" : "Current Course",
-    "inProgress" : "Course in prograss",
-    "certificate" : "Certificate",
-    "explore" : "Explore"
+  "dashboardPage": {
+    "greeting": "Hello {{name}}!",
+    "wish": "Good to see you back!",
+    "current": "Current Course",
+    "inProgress": "Course in prograss",
+    "certificate": "Certificate",
+    "explore": "Explore"
   }
 }

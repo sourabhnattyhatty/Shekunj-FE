@@ -94,19 +94,29 @@ section.CouDtl_ban .row {
   padding-right: 11px;
 }
 .sec2_right .btn.btn_str_Cor {
-  background: #d62c79;
-  border-radius: 10px;
+  background: #EC498A;
+  border-radius: 2px;
+  font-family: "SegoeUI_bold";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 40px;
+  color: #ffffff;
+  width: 365px;
+  height: 56px;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 32px;
+}
+.similar-coursestext{
   font-family: "SegoeUI_bold";
   font-style: normal;
   font-weight: bold;
   font-size: 28px;
-  line-height: 49px;
-  color: #ffffff;
-  width: 365px;
-  height: 71px;
-  margin: 0 auto;
-  display: block;
-  margin-bottom: 32px;
+  line-height: 37px;
+  color: #000000;
+  padding: 136px 0px 16px 0px;
+  margin: 0;
 }
 .sec2_right {
   height: 100%;
@@ -139,18 +149,47 @@ section.CouDtl_ban .row {
   margin-bottom: 5px;
 }
 .sec2_right button.btn_view {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
+  background: #FFFFFF;
+  border: 1px solid #EC498A;
+  box-sizing: border-box;
+  border-radius: 2px;
+  width: 365px;
+  height: 56px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #EC498A;
+  margin-top: 37px;
+}
+.similar-coursesslider .owl-nav.disabled{
+  display: none !important;
+}
+.similar-coursesslider .boxnew{
+  background: #FFFFFF;
+  border: 1px solid #E3E4EB;
   box-sizing: border-box;
   border-radius: 10px;
-  width: 365px;
-  height: 71px;
-  font-family: "SegoeUI_bold";
+  width: 100%;
+  padding: 10px;
+  overflow: hidden
+}
+.similar-coursesslider .boxnew .tag_btn p{
   font-style: normal;
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 37px;
-  color: #4f4f4f;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  padding: 12px 0px 5px 0px;
+  font-family: "SegoeUI_medium";
+  margin: 0;
+}
+.similar-coursesslider .slide-img1 img{
+  width: 234px;
+  height: 130px;
+  border-radius: 10px 10px 0px 0px;
 }
 .sec1_con2 h2 {
   font-family: "SegoeUI_bold";

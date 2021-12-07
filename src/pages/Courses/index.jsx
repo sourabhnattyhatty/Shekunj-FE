@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Aos from "aos";
@@ -7,9 +6,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { allCourses } from "../../store/courses/action";
-import { constants } from "../../utils";
 
-import { Carousel, Header, Footer, ScrollToTop, SEO } from "../../components";
+import { Header, Footer, ScrollToTop, SEO } from "../../components";
 
 import one from "../../assets/images/Courses/01.png";
 import two from "../../assets/images/Courses/02.png";
@@ -17,13 +15,7 @@ import three from "../../assets/images/Courses/03.png";
 import img1 from "../../assets/images/Courses/img1.png";
 import img2 from "../../assets/images/Courses/img2.png";
 import img3 from "../../assets/images/Courses/img3.png";
-import Search from "../../assets/icons/search.png";
 import Profile from "../../assets/images/testimonial/1.png";
-import level from "../../assets/images/level.png";
-import list from "../../assets/images/list.png";
-import star from "../../assets/images/Star 2.png";
-import timer from "../../assets/images/timer.png";
-import Dropdown from "./Dropdown/index";
 import Pro1 from "../../assets/images/P-1.png";
 
 import Cross from "../../assets/icons/cross.png";
@@ -103,38 +95,9 @@ const Courses = (props) => {
 
       <section className='Srch_sec mb-5'>
         <div className='container'>
-          {/* <h2>{t("coursesPage.searchHeading")}</h2> */}
-          {/* <div className='Serc_type'>
-            <div className='inp_ser'>
-              <img src={Search} alt='...' />
-              <input
-                type='search'
-                name=''
-                id=''
-                placeholder={t("coursesPage.placeholder")}
-              />
-            </div>
-            <button className='btn btn-info'>Search</button>
-          </div> */}
-
-          {/* <div className='row'>
-            <div className='col-md-2'>
-              <Dropdown title={t("coursesPage.dropdownTitle.1")} />
-            </div>
-            <div className='col-md-2'>
-              <Dropdown title={t("coursesPage.dropdownTitle.2")} />
-            </div>
-            <div className='col-md-2'>
-              <Dropdown title={t("coursesPage.dropdownTitle.3")} />
-            </div>
-          </div>
-
-          <h4>{t("coursesPage.heading.1")}</h4>
-          <h3>{t("coursesPage.heading.2")}</h3> */}
-
           <Row>
             <Col md={7} xs={12}>
-              <h1>Online Courses</h1>
+              <h1>{t("coursesPage.heading.1")}</h1>
               <p className='courses_para mb-4'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Pellentesque eget pretium nisl vitae porttitor aliquet id
@@ -158,12 +121,12 @@ const Courses = (props) => {
                     <div className='filter_added mb-5'>
                       <div className='filter_content'>
                         Graphic Design{" "}
-                        <img src={Cross} className='ml-3' alt='Image' />
+                        <img src={Cross} className='ml-3' alt='...' />
                       </div>
 
                       <div className='filter_content'>
                         web development{" "}
-                        <img src={Cross} className='ml-3' alt='Image' />
+                        <img src={Cross} className='ml-3' alt='...' />
                       </div>
                     </div>
                   </Col>
@@ -171,46 +134,44 @@ const Courses = (props) => {
                   <Col md={3} xs={12}>
                     <div className='reset_content pt-2'>
                       <p>
-                        <img src={Reset} className='mr-2' alt='Image' /> Reset
+                        <img src={Reset} className='mr-2' alt='...' /> Reset
                         filters
                       </p>
                     </div>
                   </Col>
                 </Row>
               </div>
-              <div className="filter_right_content">
+              <div className='filter_right_content'>
+                <div className='row'>
+                  {courses?.map((obj) => (
+                    <Link
+                      to={`/CoursesDetails/${obj.id}`}
+                      className='col-md-6'
+                      key={obj.id}
+                    >
+                      <div className='box box_hov'>
+                        <div className='slide-img'>
+                          <img alt='' src={Pro1} />
+                          <div className='overlay'></div>
+                        </div>
 
-              
-              <div className='row'>
-                {courses?.map((obj) => (
-                  <Link
-                    to={`/CoursesDetails/${obj.id}`}
-                    className='col-md-6'
-                    key={obj.id}
-                  >
-                    <div className='box box_hov'>
-                      <div className='slide-img'>
-                        <img alt='' src={Pro1} />
-                        <div className='overlay'></div>
-                      </div>
+                        <div className='tag_btn'>
+                          <button className='btn btn-info'>Design</button>
+                          <h6>{obj.name}</h6>
+                        </div>
 
-                      <div className='tag_btn'>
-                        <button className='btn btn-info'>Design</button>
-                        <h6>{obj.name}</h6>
+                        <hr className='line' />
+                        <div className='names'>
+                          <p>
+                            <img src={Profile} alt='...' /> Ramadhir Krishna
+                          </p>
+                          <span>Free</span>
+                        </div>
                       </div>
-
-                      <hr className='line' />
-                      <div className='names'>
-                        <p>
-                          <img src={Profile} alt='...' /> Ramadhir Krishna
-                        </p>
-                        <span>Free</span>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
