@@ -1,0 +1,2 @@
+(this["webpackJsonpshekung-frontend"]=this["webpackJsonpshekung-frontend"]||[]).push([[20],{512:function(n,e,s){"use strict";s.r(e);s(0);var t=s(3);e.default=function(){return Object(t.jsx)("div",{children:"Course Test"})}}}]);
+//# sourceMappingURL=20.bc5d4827.chunk.js.map

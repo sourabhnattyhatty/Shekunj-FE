@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/CourseTest/index.jsx"],"names":["CourseTest"],"mappings":"6HAAA,uBAUeA,UARf,WACI,OACI","file":"static/js/20.bc5d4827.chunk.js","sourcesContent":["import React from 'react'\n\nfunction CourseTest() {\n    return (\n        <div>\n            Course Test\n        </div>\n    )\n}\n\nexport default CourseTest\n"],"sourceRoot":""}
