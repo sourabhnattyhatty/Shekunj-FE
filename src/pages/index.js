@@ -10,6 +10,7 @@ import CourseDetails from "./CoursesDetails";
 import CourseModule from "./CoursesModule";
 import GuidancePage from "./GuidancePage";
 import HomePage from "./HomePage";
+import CourseTest from "./CourseTest";
 
 export {
   AboutusPage,
@@ -17,6 +18,7 @@ export {
   CertificatePage,
   CourseDetails,
   CourseModule,
+  CourseTest,
   Courses,
   ForgotPage,
   GuidancePage,

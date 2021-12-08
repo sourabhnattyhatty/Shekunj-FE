@@ -1,15 +1,30 @@
 .card_courses .card {
-  background: #ffffff;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  padding: 30px 20px;
+  background: #f9f8fe;
+  box-shadow: none;
+  padding: 0px 20px;
   border: none;
   font-family: SegoeUI_medium;
+}
+.course_module{
+  background: #F9F8FE;
+}
+.accordion_box .active-accordiantext{
+  color: #EC498A !important;
+}
+.accordion_box .active-accordiantext img{
+  position: absolute;
+  left: 17px;
+  top: 7px;
 }
 .card_courses .card h3 {
   font-weight: 500;
   font-size: 28px;
   line-height: 40px;
   color: #000000;
+  width: 462px;
+  max-width: 100%;
+  font-family: 'SegoeUI_bold';
+  padding-top: 70px;
 }
 .card_courses .card p {
   font-weight: normal;
@@ -96,7 +111,39 @@
   font-size: 20px;
   line-height: 20px;
   color: #000000;
-  float: right;
+  // float: right;
+}
+.circular_progress_module{
+  margin-bottom: 47px;
+}
+.circular_progress_module .css-e53awj-MuiStack-root{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 20px;
+  color: #000000;
+  margin-bottom: 19px;
+}
+.circular_progress_module .MuiLinearProgress-root.MuiLinearProgress-colorPrimary {
+  border: 1px solid #BDBDBD;
+  box-sizing: border-box;
+  height: 13px;
+  background-color: transparent;
+}
+.circular_progress_module .label-progressbar{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 20px;
+  color: #000000;
+  position: absolute;
+  right: 15px;
+  top: 0;
+}
+.circular_progress_module .MuiLinearProgress-bar.MuiLinearProgress-barColorPrimary{
+  background-color: #D62C79;
 }
 .circular_progress_module
   .MuiCircularProgress-root.MuiCircularProgress-determinate {
@@ -106,8 +153,19 @@
   margin-top: -7px;
 }
 .accordion_box {
-  border: 1px solid #e3e4eb;
-  padding-bottom: 15px;
+  border: 0;
+  padding: 20px;
+  height: 100%;
+  background-color: #fff;
+}
+.accordion_box .MuiAccordion-region p{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #828282;
+  padding-left: 45px;
 }
 .accordion_box h4 {
   font-weight: normal;
@@ -116,14 +174,31 @@
   color: #000000;
   padding: 10px 15px;
 }
+.accordion_box .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium {
+  display: none;
+}
+.accordion_box .number-bgbox{
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  background: #828282;
+  text-align: center;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+  color: #FFFFFF;
+  margin-right: 20px;
+}
 .accordion_box .MuiPaper-root.MuiPaper-elevation {
   border: none;
   background-color: transparent;
 }
 .accordion_box .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded {
-  background-color: #f9f8fe;
-  border-top: 1px solid #e3e4eb;
-  border-bottom: 1px solid #e3e4eb;
+  background-color: transparent;
+  border-top:0;
+  border-bottom: 0;
 }
 .accordion_box .MuiButtonBase-root.MuiAccordionSummary-root {
   background-color: transparent;
@@ -152,7 +227,7 @@
   font-size: 16px;
   line-height: 24px;
   color: #828282;
-  margin-bottom: 7px;
+  margin-bottom: 15px;
 }
 .btn.btn_test {
   background: #ec498a;
@@ -163,4 +238,34 @@
   text-align: center;
   color: #ffffff;
   padding: 10px 50px;
+}
+.prev_next_btn .back_button{
+  background: #E3E4EB;
+  border-radius: 10px;
+  border: 0;
+  width: 190px;
+  height: 50px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  text-transform: capitalize;
+}
+.prev_next_btn .next_button{
+  background: #EC498A;
+  border-radius: 10px;
+  border: 0;
+  width: 190px;
+  height: 50px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  text-transform: capitalize;
 }

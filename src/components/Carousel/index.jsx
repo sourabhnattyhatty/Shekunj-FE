@@ -32,6 +32,7 @@ function Carousel(props) {
     dispatch(allTests());
   }, [dispatch]);
 
+
   const collagesArr = [
     {
       img: collage1,
@@ -61,8 +62,6 @@ function Carousel(props) {
       title: "Delhi Public School, Vasant Kunj, Delhi",
     },
   ];
-
-
 
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;
@@ -97,11 +96,15 @@ function Carousel(props) {
         </div>
 
         <OwlCarousel
-          className='owl-theme'
+          className={
+            props.page === "courseDetail"
+              ? "similar-coursesslider"
+              : "owl-theme"
+          }
           loop
-          margin={210}
-          nav={true}
-          items={4}
+          margin={props.page === "courseDetail" ? 10 : 210}
+          nav={props.page === "courseDetail" ? false : true}
+          items={props.page === "courseDetail" ? 1.4 : 4}
           dots={false}
           autoPlay={true}
           smartSpeed='800'
@@ -116,17 +119,31 @@ function Carousel(props) {
               nav: true,
             },
             1000: {
-              items: 3,
+              items: props.page === "courseDetail" ? 1.4 : 1.4,
               nav: true,
               loop: true,
             },
             1200: {
-              items: 4,
+              items: props.page === "courseDetail"  ? 1.4 : 4,
               nav: true,
               loop: true,
             },
           }}
         >
+          {props.page === "courseDetail" && (
+            <>
+              <div className='boxnew'>
+                <div className='slide-img1'>
+                  <img alt='' src={Pro1} />
+                  <div className='overlay'></div>
+                </div>
+
+                <div className='tag_btn'>
+                  <p>Adobe photoshop training:From beginner to PRO</p>
+                </div>
+              </div>
+            </>
+          )}
           {props.type === constants.carouselConstant.COURSES && (
             <>
               {courses?.map((obj, ind) => (

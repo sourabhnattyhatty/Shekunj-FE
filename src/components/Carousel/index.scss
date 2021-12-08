@@ -98,6 +98,31 @@
   display: inline-block;
 }
 
+.similar-coursesslider .boxnew{
+  background: #FFFFFF;
+  border: 1px solid #E3E4EB;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  overflow: hidden
+}
+.similar-coursesslider .boxnew .tag_btn p{
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  padding: 12px 0px 5px 0px;
+  font-family: "SegoeUI_medium";
+  margin: 0;
+}
+.similar-coursesslider .slide-img1 img{
+  width: 234px;
+  height: 130px;
+  border-radius: 10px 10px 0px 0px;
+}
+
 .box {
   width: 100%;
   padding: 10px;
