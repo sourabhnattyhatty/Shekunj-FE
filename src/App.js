@@ -43,7 +43,7 @@ function App() {
         <Route exact path='/CertificatePage' component={CertificatePage} />
 
         <PrivateRoute exact path='/CoursesDetails/:id' component={CoursesDetails} />
-        <PrivateRoute exact path='/CoursesModule' component={CoursesModule} />
+        <PrivateRoute exact path='/CoursesModule/:id' component={CoursesModule} />
         <PrivateRoute exact path='/CoursesTest' component={CourseTest} />
         <PrivateRoute exact path='/CourseResult' component={CourseResult} />
       </Switch>

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import OwlCarousel from "react-owl-carousel";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { singleCourseDetails } from "../../store/courses/action";
@@ -12,7 +11,6 @@ import check from "../../assets/images/CoursesDetails/check.png";
 import Device from "../../assets/images/CoursesDetails/Device.png";
 import certi from "../../assets/images/CoursesDetails/certi.png";
 import textImg from "../../assets/images/CoursesDetails/text.png";
-// import Pro1 from "../../assets/images/P-1.png";
 
 import "./index.scss";
 
@@ -40,7 +38,7 @@ const CourseDetails = () => {
                 <h3>Speak English Clearly</h3>
                 <div className='ban_rat'>
                   <p>
-                    45 <img src={star} alt='' srcSet='' /> (104,716)
+                    4.5 <img src={star} alt='' srcSet='' /> (104,716)
                   </p>
                   <p>36,995 Students</p>
                 </div>
@@ -63,7 +61,7 @@ const CourseDetails = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-md-7'>
-            <div className='sec1_des'>
+              <div className='sec1_des'>
                 <h2>Description</h2>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -79,7 +77,7 @@ const CourseDetails = () => {
                 </p>
               </div>
               <div className='sec1_con'>
-                <h2>What you’ll learn</h2>
+                <h2>What you'll learn</h2>
                 <div className='row'>
                   <div className='col-xl-6 col-md-12'>
                     <ul>
@@ -117,7 +115,7 @@ const CourseDetails = () => {
               </div>
               <div className='sec1_con2'>
                 <h2>Features:</h2>
-                <ul className="list-style-none">
+                <ul className='list-style-none'>
                   <li>
                     <img src={Device} alt='' srcSet='' /> 2 hours on-demand
                     video
@@ -129,101 +127,19 @@ const CourseDetails = () => {
                     <img src={certi} alt='' srcSet='' /> Certificate of
                     completion
                   </li>
-                </ul> 
+                </ul>
               </div>
-
-              {/* <div className='sec1_con2'>
-                <div className='row'>
-                  <div className='col-xl-6 col-md-12'>
-                    <h2>Requirements</h2>
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                    </ul>
-                  </div>
-                  <div className='col-xl-6 col-md-12'>
-                    <h2>Who this course is for:</h2>
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div> */}
-
-              
             </div>
 
             <div className='col-md-5'>
               <div className='sec2_right'>
-                <Link to='/CoursesModule' className='btn btn_str_Cor'>
+                <Link to={`/CoursesModule/${id}`} className='btn btn_str_Cor'>
                   Start Course
                 </Link>
 
-                {/* <h2>This course includes:</h2>
-                <ul>
-                  <li>
-                    <img src={Device} alt='' srcSet='' /> 2 hours on-demand
-                    video
-                  </li>
-                  <li>
-                    <img src={textImg} alt='' srcSet='' /> 1 article
-                  </li>
-                  <li>
-                    <img src={certi} alt='' srcSet='' /> Certificate of
-                    completion
-                  </li>
-                </ul> */}
                 <h3 className='similar-coursestext'>Similar Courses</h3>
 
-                {/* <div className="similar-coursesslider">
-                  <OwlCarousel
-                    // className='owl-theme'
-                    loop
-                    margin={10}
-                    nav={false}
-                    items={1}
-                    dots={false}
-                    autoPlay={true}
-                    smartSpeed='800'
-                    responsive={{
-                      0: {
-                        items: 1,
-                        nav: false,
-                      },
-                      600: {
-                        items: 1,
-                        nav: false,
-                      },
-                      1000: {
-                        items: 3,
-                        nav: false,
-                        loop: true,
-                      },
-                      1200: {
-                        items: 1.4,
-                        nav: false,
-                        loop: true,
-                      },
-                    }}
-                  >
-                    <div className='boxnew'>
-                      <div className='slide-img1'>
-                        <img alt='' src={Pro1} />
-                        <div className='overlay'></div>
-                      </div>
-
-                      <div className='tag_btn'>
-                        <p>Adobe photoshop training:From beginner to PRO</p>
-                      </div>
-                    </div>
-                  </OwlCarousel>
-
-                </div> */}
-
-                <Carousel  page='courseDetail' />
+                <Carousel page='courseDetail' />
 
                 <button className='btn_view'>View More Courses</button>
               </div>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import { constants } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
-import { allCourses, allTests } from "../../store/courses/action";
+import { allCourses } from "../../store/courses/action";
 import { Link } from "react-router-dom";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -29,7 +29,6 @@ function Carousel(props) {
 
   useEffect(() => {
     dispatch(allCourses());
-    // dispatch(allTests());
   }, [dispatch]);
 
   const collagesArr = [

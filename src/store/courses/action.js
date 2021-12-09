@@ -34,3 +34,13 @@ export const singleCourseDetails = (id) => async (dispatch) => {
     dispatch({ type: coursesTypes.COURSE_FAIL });
   }
 };
+
+export const startCourse = (id,page=1) => async (dispatch) => {
+  try {
+    dispatch({ type: coursesTypes.COURSE_REQUEST });
+    const res = await httpServices.get(`/course/start-user-course/${id}?page=${page}`);
+    dispatch({ type: coursesTypes.COURSE_FINISH, payload: res.data });
+  } catch (error) {
+    dispatch({ type: coursesTypes.COURSE_FAIL });
+  }
+};

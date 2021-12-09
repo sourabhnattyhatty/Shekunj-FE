@@ -12,15 +12,15 @@ import Typography from "@mui/material/Typography";
 
 import { Header, Footer, ScrollToTop } from "../../components";
 
-import Previous from "../../assets/icons/chevron-left.png";
-import Next from "../../assets/icons/chevron-right.png";
 import Rightcheck from "../../assets/images/Courses/right.png";
 import Stack from "@mui/material/Stack";
-import CircularProgress from "@mui/material/CircularProgress";
 import close from "../../assets/images/Courses/close.png";
 import toggle from "../../assets/images/Courses/toggle.png";
 import "./index.scss";
-import { LinearProgress } from "@mui/material";
+import { LinearProgress, Skeleton } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { singleCourseDetails, startCourse } from "../../store/courses/action";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -63,7 +63,16 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 const CourseModule = () => {
   const [progress, setProgress] = React.useState(0);
+  const [show, setShow] = React.useState(true);
   const [expanded, setExpanded] = React.useState("panel1");
+  const { course, isLoading } = useSelector((state) => state.coursesReducer);
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
+
+  React.useEffect(() => {
+    dispatch(startCourse(id));
+  }, [dispatch, id]);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -81,285 +90,260 @@ const CourseModule = () => {
     setExpanded(newExpanded ? panel : false);
   };
 
+  const handleAccordian = () => {
+    setShow((prev) => !prev);
+  };
+
+  const handlePrevModule = (page) => {
+    dispatch(startCourse(id, page));
+  };
+
+  const handleNextModule = (page) => {
+    dispatch(startCourse(id, page));
+  };
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
       <div className='course_module mt-md-0 mb-md-0 mt-4 mb-4'>
         <Container>
-          <Row className="pt-md-5 pb-md-5">
+          <Row className='pt-md-5 pb-md-5'>
             <Col md={12} xs={12} className='text-left'>
               <div className='circular_progress_module'>
                 <Stack spacing={2} direction='row'>
                   {" "}
                   Your Progress
                 </Stack>
-                <LinearProgress variant="determinate" value={20}/>
-                <div className="label-progressbar"> 20%</div>
+                <LinearProgress variant='determinate' value={30} />
+                <div className='label-progressbar'> 30%</div>
               </div>
             </Col>
-            <Col md={4} xs={12}>
-              <div className='accordion_box'>
-              <div className="close_btn">
-                <h4><img src={toggle} alt="" /> Course content</h4>
-                <img src={close} alt="" />
+
+            {!show && (
+              <div className='tog_set'>
+                <img src={toggle} alt='' onClick={handleAccordian} />
+              </div>
+            )}
+            {show && (
+              <Col md={4} xs={12}>
+                <div className='accordion_box'>
+                  <div className='close_btn'>
+                    <h4>Course content</h4>
+                    <img
+                      src={close}
+                      alt='...'
+                      style={{ cursor: "pointer" }}
+                      onClick={handleAccordian}
+                    />
+                  </div>
+                  <Accordion
+                    expanded={expanded === "panel1"}
+                    onChange={handleChange("panel1")}
+                  >
+                    <AccordionSummary
+                      aria-controls='panel1d-content'
+                      id='panel1d-header'
+                    >
+                      <Typography>
+                        <div className='number-bgbox'>1</div>
+                        Introduction
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <ul className='pl-5 position-relative'>
+                        <li className='active-accordiantext'>
+                          <img src={Rightcheck} className='ml-2' alt='...' />
+                          1.1 Course Introduction
+                        </li>
+                        <li>1.2 Assesment</li>
+                      </ul>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel2"}
+                    onChange={handleChange("panel2")}
+                  >
+                    <AccordionSummary
+                      aria-controls='panel2d-content'
+                      id='panel2d-header'
+                    >
+                      <Typography>
+                        <div className='number-bgbox'>2</div>
+                        Basic tools
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse malesuada lacus ex, sit amet blandit leo
+                        lobortis eget. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Suspendisse malesuada lacus ex, sit
+                        amet blandit leo lobortis eget.
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel3"}
+                    onChange={handleChange("panel3")}
+                  >
+                    <AccordionSummary
+                      aria-controls='panel3d-content'
+                      id='panel3d-header'
+                    >
+                      <Typography>
+                        <div className='number-bgbox'>3</div>
+                        Advanced tool
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse malesuada lacus ex, sit amet blandit leo
+                        lobortis eget. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Suspendisse malesuada lacus ex, sit
+                        amet blandit leo lobortis eget.
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel4"}
+                    onChange={handleChange("panel4")}
+                  >
+                    <AccordionSummary
+                      aria-controls='panel4d-content'
+                      id='panel4d-header'
+                    >
+                      <Typography>
+                        <div className='number-bgbox'>4</div>
+                        Effects
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse malesuada lacus ex, sit amet blandit leo
+                        lobortis eget. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Suspendisse malesuada lacus ex, sit
+                        amet blandit leo lobortis eget.
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel5"}
+                    onChange={handleChange("panel5")}
+                  >
+                    <AccordionSummary
+                      aria-controls='panel5d-content'
+                      id='panel5d-header'
+                    >
+                      <Typography>
+                        <div className='number-bgbox'>5</div>
+                        Panels
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse malesuada lacus ex, sit amet blandit leo
+                        lobortis eget. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Suspendisse malesuada lacus ex, sit
+                        amet blandit leo lobortis eget.
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel6"}
+                    onChange={handleChange("panel6")}
+                  >
+                    <AccordionSummary
+                      aria-controls='panel6d-content'
+                      id='panel6d-header'
+                    >
+                      <Typography>
+                        <div className='number-bgbox'>6</div>
+                        Examples
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse malesuada lacus ex, sit amet blandit leo
+                        lobortis eget. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Suspendisse malesuada lacus ex, sit
+                        amet blandit leo lobortis eget.
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
                 </div>
-                <Accordion
-                  expanded={expanded === "panel1"}
-                  onChange={handleChange("panel1")}
-                >
-                  <AccordionSummary
-                    aria-controls='panel1d-content'
-                    id='panel1d-header'
-                  >
-                    <Typography>
-                      <div className="number-bgbox">1</div>
-                      Introduction
-                      </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <ul className='pl-5 position-relative'>
-                      <li className="active-accordiantext">
-                      <img src={Rightcheck} className='ml-2' alt='...' />
-                      1.1 Course Introduction</li>
-                      <li>1.2 Assesment</li>
-                    </ul>
-                  </AccordionDetails>
-                </Accordion>
-                <Accordion
-                  expanded={expanded === "panel2"}
-                  onChange={handleChange("panel2")}
-                >
-                  <AccordionSummary
-                    aria-controls='panel2d-content'
-                    id='panel2d-header'
-                  >
-                    <Typography> 
-                      <div className="number-bgbox">2</div>
-                      Basic tools
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Suspendisse malesuada lacus ex, sit amet blandit leo
-                      lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit. Suspendisse malesuada lacus ex, sit amet
-                      blandit leo lobortis eget.
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-                <Accordion
-                  expanded={expanded === "panel3"}
-                  onChange={handleChange("panel3")}
-                >
-                  <AccordionSummary
-                    aria-controls='panel3d-content'
-                    id='panel3d-header'
-                  >
-                    <Typography>
-                      <div className="number-bgbox">3</div>
-                      Advanced tool
-                      </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Suspendisse malesuada lacus ex, sit amet blandit leo
-                      lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit. Suspendisse malesuada lacus ex, sit amet
-                      blandit leo lobortis eget.
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-                <Accordion
-                  expanded={expanded === "panel3"}
-                  onChange={handleChange("panel3")}
-                >
-                  <AccordionSummary
-                    aria-controls='panel3d-content'
-                    id='panel3d-header'
-                  >
-                    <Typography>
-                    <div className="number-bgbox">4</div>
-                      Effects
-                      </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Suspendisse malesuada lacus ex, sit amet blandit leo
-                      lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit. Suspendisse malesuada lacus ex, sit amet
-                      blandit leo lobortis eget.
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-                <Accordion
-                  expanded={expanded === "panel3"}
-                  onChange={handleChange("panel3")}
-                >
-                  <AccordionSummary
-                    aria-controls='panel3d-content'
-                    id='panel3d-header'
-                  >
-                    <Typography>
-                    <div className="number-bgbox">5</div>
-                      Panels
-                      </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Suspendisse malesuada lacus ex, sit amet blandit leo
-                      lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit. Suspendisse malesuada lacus ex, sit amet
-                      blandit leo lobortis eget.
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-                <Accordion
-                  expanded={expanded === "panel3"}
-                  onChange={handleChange("panel3")}
-                >
-                  <AccordionSummary
-                    aria-controls='panel3d-content'
-                    id='panel3d-header'
-                  >
-                    <Typography>
-                    <div className="number-bgbox">6</div>
-                      Examples
-                      </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Suspendisse malesuada lacus ex, sit amet blandit leo
-                      lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit. Suspendisse malesuada lacus ex, sit amet
-                      blandit leo lobortis eget.
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-              </div>
-            </Col>
+              </Col>
+            )}
 
-            <Col md={8} xs={12}>
+            <Col md={show ? 8 : 12} xs={12}>
               <div className='card_courses'>
-              
                 <div className='card'>
-                  <h3>Adobe photoshop training: From Beginner to PRO</h3>
-
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer diam non, imperdiet justo semper proin cursus morbi.
-                    Morbi amet in vehicula nunc a ac odio felis urna. Diam ut
-                    ullamcorper luctus urna, urna sollicitudin. Non nunc
-                    elementum orci.
-                  </p>
-
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer diam non, imperdiet justo semper proin cursus morbi.
-                    Morbi amet in vehicula nunc a ac odio felis urna. Diam ut
-                    ullamcorper luctus urna, urna sollicitudin. Non nunc
-                    elementum orci.
-                  </p>
-
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer diam non, imperdiet justo semper proin. Integer diam
-                    non, imperdiet justo semper proin cursus morbi. Morbi amet
-                    in vehicula nunc a ac odio felis urna. Diam ut ullamcorper
-                    luctus urna, urna sollicitudin. ipsum dolor sit amet,
-                    consectetur adipiscing elit. Integer diam non, imperdiet
-                    justo semper proin cursus morbi.{" "}
-                    <span className='read_more_text'>Read more...</span>
-                  </p>
+                  {isLoading ? (
+                    <>
+                      {[1, 2].map((a) => (
+                        <div className="mb-5">
+                          <Skeleton
+                            variant='rectangular'
+                            width={750}
+                            height={45}
+                            animation='wave'
+                            style={{ marginBottom: 6 }}
+                          />
+                          <Skeleton
+                            variant='rectangular'
+                            width={750}
+                            height={25}
+                            animation='wave'
+                            style={{ marginBottom: 15 }}
+                          />
+                          {[1, 2, 3, 4, 5].map((a) => (
+                            <Skeleton
+                              variant='rectangular'
+                              width={750}
+                              height={15}
+                              animation='wave'
+                              style={{ marginBottom: 6 }}
+                            />
+                          ))}
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: course?.description,
+                      }}
+                    />
+                  )}
 
                   <div className='prev_next_btn'>
                     <Row>
                       <Col md={6} xs={6}>
-                        <button className="back_button">back</button>
-                        {/* <p className='prev_icon'>
-                          <img src={Previous} className='mr-2' alt='...' />{" "}
-                          Previous
-                        </p> */}
+                        <button
+                          className='back_button'
+                          onClick={() => handlePrevModule(course?.prev_module)}
+                        >
+                          back
+                        </button>
                       </Col>
 
                       <Col md={6} xs={6} className='text-right'>
-                        <button className="next_button">next</button>
-                        {/* <p className='prev_icon'>
-                          Next
-                          <img src={Next} className='ml-2' alt='...' />{" "}
-                        </p> */}
+                        <button
+                          className='next_button'
+                          onClick={() => handleNextModule(course?.next_module)}
+                        >
+                          next
+                        </button>
                       </Col>
                     </Row>
                   </div>
                 </div>
-
-                {/* <button className='btn btn_test mt-4'>Start Test</button> */}
               </div>
             </Col>
           </Row>
-
-          {/* <div className='courses_about_div mt-md-5 mb-4'>
-            <div className='about_courses_border'>
-              <div className='about_courses'>
-                <Row>
-                  <Col md={12} xs={12}>
-                    <h5>About this courses</h5>
-                    <p>Full course of adobe photoshop by a simple way</p>
-                  </Col>
-                </Row>
-              </div>
-            </div>
-
-            <div className='about_courses_border'>
-              <div className='courses_number'>
-                <Row className='mt-4'>
-                  <Col md={4} xs={12}>
-                    <h6>By the numbers</h6>
-                  </Col>
-
-                  <Col md={4} xs={12}>
-                    <ul className='p-0'>
-                      <li>Skill level: All Levels</li>
-                      <li>Students: 135663</li>
-                      <li>Languages: Hindi and English</li>
-                    </ul>
-                  </Col>
-
-                  <Col md={4} xs={12}>
-                    <ul className='p-0'>
-                      <li> Lectures: 52</li>
-                      <li>Pages: 45</li>
-                    </ul>
-                  </Col>
-                </Row>
-              </div>
-            </div>
-
-            <div className='courses_number'>
-              <Row className='mt-4'>
-                <Col md={4}>
-                  <h6>Description</h6>
-                </Col>
-
-                <Col md={8} xs={12}>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Pellentesque a pretium amet blandit venenatis hac faucibus.
-                    Viverra pellentesque gravida purus turpis tortor mi,
-                    egestas. Magna ipsum mi ornare vestibulum nunc volutpat
-                    sagittis. amet est scelerisque adipiscing sollicitudin
-                    gravida non. Diam ut magna sagittis dui mi sed ultrices id
-                    non. Ac neque id pellentesque duis sapien, nisl nec neque,
-                    in. Cursus ullamcorper mi magna maecenas amet id faucibus.
-                  </p>
-                </Col>
-              </Row>
-            </div>
-          </div> */}
         </Container>
       </div>
       <ScrollToTop />
