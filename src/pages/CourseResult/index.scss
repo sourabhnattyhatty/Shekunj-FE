@@ -1,8 +1,8 @@
 
-$borderWidth: 5px;
+$borderWidth: 7px;
 $animationTime: .5s;
 $border-color-default: #efefef;
-$border-color-fill: #ffb43e;
+$border-color-fill: #828282;
 $size: 130px;
 $howManySteps: 100; //this needs to be even. 
 
@@ -47,8 +47,8 @@ $howManySteps: 100; //this needs to be even.
   }
   .progress-left .progress-bar {
     left: 100%;
-    border-top-right-radius: ($size/2);;
-    border-bottom-right-radius: ($size/2);;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
     border-left: 0;
     -webkit-transform-origin: center left;
     transform-origin: center left;
@@ -58,8 +58,8 @@ $howManySteps: 100; //this needs to be even.
     right: 0;
     .progress-bar {
       left: -100%;
-      border-top-left-radius: ($size/2);;
-      border-bottom-left-radius: ($size/2);;
+      border-top-left-radius: 100px;
+      border-bottom-left-radius: 100px;
       border-right: 0;
       -webkit-transform-origin: center right;
       transform-origin: center right;
@@ -71,7 +71,7 @@ $howManySteps: 100; //this needs to be even.
     border-radius: 50%;
     font-size: 1rem;
     text-align: center;
-    line-height: 20px;
+    line-height: 0px;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -81,8 +81,13 @@ $howManySteps: 100; //this needs to be even.
       //margin-top: 10px;
     }
     span {
-      font-size: 12px;
-      text-transform: uppercase;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        text-align: center;
+        color: #828282;
     }
   }
 }
@@ -141,9 +146,55 @@ Due to the split circle of progress-left and progress right, we must use the ani
     color: #000000;
 }
 .cou_resultBg {
-    text-align: center;
+    
 }
 .cou_resultBg {
+    background-image: url('../../assets//images/Courses/Couse_result_bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 870px;
     padding-top: 106px;
     padding-bottom: 123px;
+    text-align: center;
+}
+.cou_resultBg button.get_certif {
+    background: #EC498A;
+    border: 1px solid #EC498A;
+    font-family: Sora;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: #FFFFFF;
+    padding: 15px 70px;
+}
+.progress-value p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+.progress-value p span {
+    color: #000 !important;
+}
+.pro_div .row {
+    align-items: center;
+}
+.progress.pink_pro {
+    width: 180px;
+    height: 180px;
+}
+.progress.pink_pro .progress-value p {
+    color: #ec498a;
+}
+span.progress-bar.col_chg {
+    border-color: #ec498a;
+}
+.pro_div {
+    margin: 45px 0;
 }

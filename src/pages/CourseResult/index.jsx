@@ -12,10 +12,11 @@ function CourseTest() {
   return (
     <div>
       <Header loginPage={true} page='courses' />
-      <Container>
-        <div className='cou_resultBg'>
+
+      <div className='cou_resultBg'>
+        <Container>
           <Row>
-            <Col md={6} xs={12} className="offset-2">
+            <Col md={6} xs={12} className='offset-1'>
               <div className='cou_result_cont'>
                 <h2>Your Result</h2>
                 <img src={win} alt='' />
@@ -27,72 +28,79 @@ function CourseTest() {
                 </p>
               </div>
 
-              <Row>
-                <Col md={4} xs={12}>
-                  <div class='container p-5'>
-                    <div class='progress' data-percentage='100'>
-                      <span class='progress-left'>
-                        <span class='progress-bar'></span>
-                      </span>
-                      <span class='progress-right'>
-                        <span class='progress-bar'></span>
-                      </span>
-                      <div class='progress-value'>
-                        <div>
-                          100%
-                          <br />
-                          <span>Correct Answers</span>
+              <div className='pro_div'>
+                <Row>
+                  <Col md={3} xs={12}>
+                    
+                      <div class='progress' data-percentage='100'>
+                        <span class='progress-left'>
+                          <span class='progress-bar'></span>
+                        </span>
+                        <span class='progress-right'>
+                          <span class='progress-bar'></span>
+                        </span>
+                        <div class='progress-value'>
+                          <div>
+                            <p>100%</p>
+                            <br />
+                            <span>
+                              Correct <br /> Answers
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </Col>
+                    
+                  </Col>
 
-                <Col md={4} xs={12}>
-                  <div class='container p-5'>
-                    <div class='progress' data-percentage='78'>
-                      <span class='progress-left'>
-                        <span class='progress-bar'></span>
-                      </span>
-                      <span class='progress-right'>
-                        <span class='progress-bar'></span>
-                      </span>
-                      <div class='progress-value'>
-                        <div>
-                          78%
-                          <br />
-                          <span>Candidate’s Score</span>
+                  <Col md={6} xs={12}>
+                    
+                      <div class='progress pink_pro' data-percentage='78'>
+                        <span class='progress-left'>
+                          <span class='progress-bar col_chg'></span>
+                        </span>
+                        <span class='progress-right'>
+                          <span class='progress-bar col_chg'></span>
+                        </span>
+                        <div class='progress-value'>
+                          <div>
+                            <p>78%</p>
+                            <br />
+                            <span>
+                              Candidate’s <br /> Score
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </Col>
+                  
+                  </Col>
 
-                <Col md={4} xs={12}>
-                  <div class='container p-5'>
-                    <div class='progress' data-percentage='45'>
-                      <span class='progress-left'>
-                        <span class='progress-bar'></span>
-                      </span>
-                      <span class='progress-right'>
-                        <span class='progress-bar'></span>
-                      </span>
-                      <div class='progress-value'>
-                        <div>
-                          45%
-                          <br />
-                          <span>Total Time</span>
+                  <Col md={3} xs={12}>
+                    
+                      <div class='progress' data-percentage='45'>
+                        <span class='progress-left'>
+                          <span class='progress-bar'></span>
+                        </span>
+                        <span class='progress-right'>
+                          <span class='progress-bar'></span>
+                        </span>
+                        <div class='progress-value'>
+                          <div>
+                            <p>45% <span>min</span></p> 
+                            <br />
+                            <span>Total Time</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-              <button className="get_certif">Get Your Certificate</button>
+                   
+                  </Col>
+                </Row>
+              </div>
+              <button className='get_certif'>Get Your Certificate</button>
             </Col>
           </Row>
-        </div>
-      </Container>
+        </Container>
+      </div>
+
       <ScrollToTop />
       <Footer loginPage={false} />
     </div>
