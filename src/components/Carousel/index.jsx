@@ -29,9 +29,8 @@ function Carousel(props) {
 
   useEffect(() => {
     dispatch(allCourses());
-    dispatch(allTests());
+    // dispatch(allTests());
   }, [dispatch]);
-
 
   const collagesArr = [
     {
@@ -51,7 +50,7 @@ function Carousel(props) {
   const schoolsArr = [
     {
       img: school1,
-      title: "St. Xavier’s Collegiate School, Kolkata",
+      title: "St. Xavier's Collegiate School, Kolkata",
     },
     {
       img: school2,
@@ -124,7 +123,7 @@ function Carousel(props) {
               loop: true,
             },
             1200: {
-              items: props.page === "courseDetail"  ? 1.4 : 4,
+              items: props.page === "courseDetail" ? 1.4 : 4,
               nav: true,
               loop: true,
             },
@@ -159,13 +158,16 @@ function Carousel(props) {
                     </div>
 
                     <div className='tag_btn'>
-                      <button className='btn btn-info'>Design</button>
+                      <button className='btn btn-info'>
+                        {obj?.category_name}
+                      </button>
                       <h2>{obj?.name}</h2>
                     </div>
                     <div className='detail-box'>
                       <div className='type'>
                         <span className='span2'>
-                          4.5 <img src={star} alt='' /> <span>(104,716)</span>
+                          4.5 <img src={star} alt='' />{" "}
+                          <span>({obj?.no_of_student_review})</span>
                         </span>
                         <span className='std'>36,995 Students</span>
                       </div>
@@ -174,7 +176,8 @@ function Carousel(props) {
                           <img src={timer} alt='' /> 08 hr 20 mins
                         </p>
                         <p>
-                          <img src={list} alt='' /> 32 lectures
+                          <img src={list} alt='' /> {obj?.no_of_lectures}{" "}
+                          lecture{obj?.no_of_lectures.length > 1 ? "s" : ""}
                         </p>
                         <p>
                           <img src={level} alt='' /> All level

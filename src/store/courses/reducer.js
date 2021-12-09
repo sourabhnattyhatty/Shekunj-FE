@@ -21,6 +21,7 @@ export const coursesReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         courses: action.payload,
+        tests : action.payload2,
         error: null,
       };
     case coursesTypes.COURSES_FAIL:
