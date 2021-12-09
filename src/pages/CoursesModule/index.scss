@@ -269,3 +269,10 @@
   color: #FFFFFF;
   text-transform: capitalize;
 }
+.close_btn {
+  display: flex;
+  justify-content: space-between;
+}
+.close_btn img {
+  object-fit: contain;
+}

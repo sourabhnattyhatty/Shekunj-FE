@@ -203,6 +203,9 @@ header {
   visibility: hidden;
   z-index: 9999999999999999;
 }
+#custom-search-input {
+  width: 100% !important;
+}
 .navbar-collapse.show{
   left: 0vw!important;
   transition: ease all .5s;

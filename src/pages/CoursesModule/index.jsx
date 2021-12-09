@@ -17,7 +17,8 @@ import Next from "../../assets/icons/chevron-right.png";
 import Rightcheck from "../../assets/images/Courses/right.png";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
-
+import close from "../../assets/images/Courses/close.png";
+import toggle from "../../assets/images/Courses/toggle.png";
 import "./index.scss";
 import { LinearProgress } from "@mui/material";
 
@@ -98,7 +99,10 @@ const CourseModule = () => {
             </Col>
             <Col md={4} xs={12}>
               <div className='accordion_box'>
-                <h4>Course content</h4>
+              <div className="close_btn">
+                <h4><img src={toggle} alt="" /> Course content</h4>
+                <img src={close} alt="" />
+                </div>
                 <Accordion
                   expanded={expanded === "panel1"}
                   onChange={handleChange("panel1")}
@@ -241,6 +245,7 @@ const CourseModule = () => {
 
             <Col md={8} xs={12}>
               <div className='card_courses'>
+              
                 <div className='card'>
                   <h3>Adobe photoshop training: From Beginner to PRO</h3>
 
