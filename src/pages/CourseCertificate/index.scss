@@ -142,4 +142,15 @@ p.cou_tit {
     .skill_flex {
         flex-wrap: wrap;
     }
+    .cou_resultBg {
+        height: auto;
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:991px){
+    .skill_flex {
+        flex-wrap: wrap;
+    }
 }

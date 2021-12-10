@@ -169,6 +169,9 @@ header {
     line-height: 26px;
     padding: 7px 10px;
   }
+  .navbar-nav {
+    width: 100%;
+  }
   .other_head .middle_nav_login .navbar-nav .nav-item {
     margin: 10px 0px 0px 5px;
   }
@@ -187,6 +190,10 @@ header {
 }
 }
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+
+  .other_head .btn.btn-bg-pink {
+    margin-right: 15px;
+  }
 
 .navbar-collapse{
   overflow: hidden;

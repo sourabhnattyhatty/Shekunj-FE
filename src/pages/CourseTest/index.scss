@@ -106,6 +106,25 @@ div#col_grey p {
     line-height: 21px;
     color: #000000;
     list-style: none;
+    position: relative;
+}
+.ans_not ul li span.dotte1 {
+    width: 14px;
+    height: 14px;
+    background-color: #7FDF05;
+    border-radius: 50%;
+    position: absolute;
+    left: -20px;
+    top: 3px;
+}
+.ans_not ul li span.dotte2 {
+    width: 14px;
+    height: 14px;
+    background-color: #E3E4EB;
+    border-radius: 50%;
+    position: absolute;
+    left: -20px;
+    top: 3px;
 }
 .ans_not ul {
     display: flex;
@@ -115,4 +134,25 @@ div#col_grey p {
 }
 .ans_not {
     margin: 20px 0;
+}
+.circular_progress_module h3 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 45px;
+    color: #323232;
+}
+
+span.MuiLinearProgress-root {
+    border-radius: 15px;
+}
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) { 
+    .que_box {
+        padding: 30px 16px;
+    }
+    .maindiv_prog {
+        margin: 45px 0;
+    }
 }

@@ -198,3 +198,12 @@ span.progress-bar.col_chg {
 .pro_div {
     margin: 45px 0;
 }
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) { 
+    .progress.pink_pro {
+        margin: 30px auto;
+    }
+    .cou_resultBg {
+        height: auto;
+        padding: 35px 0;
+    }
+}
