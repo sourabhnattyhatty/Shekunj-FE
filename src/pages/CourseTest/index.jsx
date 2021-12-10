@@ -3,12 +3,28 @@ import React from "react";
 import Stack from "@mui/material/Stack";
 import { Row, Col } from "react-bootstrap";
 import { LinearProgress } from "@mui/material";
+import { isMobile } from "react-device-detect";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
+
 import { Header, Footer, ScrollToTop } from "../../components";
+
 import "./index.scss";
 import "../CoursesModule/index.scss";
+
 import time from "../../assets/images/Courses/time.png";
 
 function CourseTest() {
+
+  const history = useHistory();
+
+  React.useEffect(() => {
+    if(isMobile){
+      toast.error("This page is not availble in mobile view.")
+      history.push("/")
+    }
+  }, [history]);
+
   return (
     <div>
       <Header loginPage={true} page='courses' />

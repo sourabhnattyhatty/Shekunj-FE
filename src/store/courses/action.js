@@ -44,3 +44,13 @@ export const startCourse = (id,page=1) => async (dispatch) => {
     dispatch({ type: coursesTypes.COURSE_FAIL });
   }
 };
+
+export const getSingleCourseModule = (id) => async(dispatch) => {
+  try{
+    dispatch({ type: coursesTypes.ACCORDIAN_LIST_REQUEST });
+    const res = await httpServices.get(`/course/course-module-list/${id}/`);
+    dispatch({type:coursesTypes.ACCORDIAN_LIST_FINISH, payload : res.data});
+  } catch(error) {
+    dispatch({ type: coursesTypes.ACCORDIAN_LIST_FAIL });
+  }
+}

@@ -5,6 +5,7 @@ const initialState = {
   courses: [],
   course: {},
   tests: [],
+  courseModulesList: [],
   error: null,
 };
 
@@ -66,6 +67,27 @@ export const coursesReducer = (state = initialState, action) => {
       };
       
     case coursesTypes.COURSE_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+
+      case coursesTypes.ACCORDIAN_LIST_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.ACCORDIAN_LIST_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        courseModulesList: action.payload,
+        error: null,
+      };
+      
+    case coursesTypes.ACCORDIAN_LIST_FAIL:
       return {
         ...state,
         isLoading: false,

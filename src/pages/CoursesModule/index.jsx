@@ -1,4 +1,5 @@
 import React from "react";
+import { isMobile } from "react-device-detect";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -18,9 +19,10 @@ import close from "../../assets/images/Courses/close.png";
 import toggle from "../../assets/images/Courses/toggle.png";
 import "./index.scss";
 import { LinearProgress, Skeleton } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { singleCourseDetails, startCourse } from "../../store/courses/action";
+import { getSingleCourseModule, startCourse } from "../../store/courses/action";
+import { toast } from "react-toastify";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -62,29 +64,29 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 const CourseModule = () => {
-  const [progress, setProgress] = React.useState(0);
   const [show, setShow] = React.useState(true);
   const [expanded, setExpanded] = React.useState("panel1");
-  const { course, isLoading } = useSelector((state) => state.coursesReducer);
+  const { courseModulesList, course, isLoading } = useSelector(
+    (state) => state.coursesReducer,
+  );
   const dispatch = useDispatch();
 
+  console.log("%%%%%%%%%", course);
+  console.log("**********", courseModulesList);
+
   const { id } = useParams();
+  const history = useHistory();
+  React.useEffect(() => {
+    if (isMobile) {
+      toast.error("This page is not availble in mobile view.");
+      history.push("/");
+    }
+  }, [history]);
 
   React.useEffect(() => {
     dispatch(startCourse(id));
+    dispatch(getSingleCourseModule(id));
   }, [dispatch, id]);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress >= 100 ? 0 : prevProgress + 10,
-      );
-    }, 800);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -151,14 +153,31 @@ const CourseModule = () => {
                     </AccordionSummary>
                     <AccordionDetails>
                       <ul className='pl-5 position-relative'>
-                        <li className='active-accordiantext'>
-                          <img src={Rightcheck} className='ml-2' alt='...' />
-                          1.1 Course Introduction
-                        </li>
-                        <li>1.2 Assesment</li>
+                        {courseModulesList
+                          .slice(0)
+                          .reverse()
+                          .map((obj, ind) => (
+                            <li
+                              className={
+                                Number(course?.current_module) === obj?.id
+                                  ? "active-accordiantext"
+                                  : ""
+                              }
+                            >
+                              {Number(course?.current_module) === obj?.id && (
+                                <img
+                                  src={Rightcheck}
+                                  className='ml-2'
+                                  alt='...'
+                                />
+                              )}
+                              1.{obj.id} {obj?.title}
+                            </li>
+                          ))}
                       </ul>
                     </AccordionDetails>
                   </Accordion>
+                  {/*                   
                   <Accordion
                     expanded={expanded === "panel2"}
                     onChange={handleChange("panel2")}
@@ -273,7 +292,7 @@ const CourseModule = () => {
                         amet blandit leo lobortis eget.
                       </Typography>
                     </AccordionDetails>
-                  </Accordion>
+                  </Accordion> */}
                 </div>
               </Col>
             )}
@@ -284,7 +303,7 @@ const CourseModule = () => {
                   {isLoading ? (
                     <>
                       {[1, 2].map((a) => (
-                        <div className="mb-5">
+                        <div className='mb-5'>
                           <Skeleton
                             variant='rectangular'
                             width={750}
