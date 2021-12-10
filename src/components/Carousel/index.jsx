@@ -117,7 +117,7 @@ function Carousel(props) {
               nav: true,
             },
             1000: {
-              items: props.page === "courseDetail" ? 1.4 : 1.4,
+              items: props.page === "courseDetail" ? 1.4 : 3,
               nav: true,
               loop: true,
             },
@@ -162,7 +162,7 @@ function Carousel(props) {
                       </button>
                       <h2>{obj?.name}</h2>
                     </div>
-                    <div className='detail-box'>
+                    {/* <div className='detail-box'>
                       <div className='type'>
                         <span className='span2'>
                           4.5 <img src={star} alt='' />{" "}
@@ -182,7 +182,7 @@ function Carousel(props) {
                           <img src={level} alt='' /> All level
                         </p>
                       </div>
-                    </div>
+                    </div> */}
 
                     <hr className='line' />
                     <div className='names'>
@@ -193,6 +193,8 @@ function Carousel(props) {
                     </div>
                   </div>
                 </Link>
+
+                
               ))}
             </>
           )}
@@ -269,7 +271,10 @@ function Carousel(props) {
             </>
           )}
         </OwlCarousel>
+
+        
       </div>
+      
     </>
   );
 }

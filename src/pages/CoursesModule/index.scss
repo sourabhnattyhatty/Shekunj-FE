@@ -5,11 +5,11 @@
   border: none;
   font-family: SegoeUI_medium;
 }
-.course_module{
-  background: #F9F8FE;
+.course_module {
+  background: #f9f8fe;
 }
-.accordion_box .active-accordiantext{
-  color: #EC498A !important;
+.accordion_box .active-accordiantext {
+  color: #ec498a !important;
 }
 .accordion_box .active-accordiantext img{
   margin-right: 7px;
@@ -117,10 +117,10 @@
   color: #000000;
   // float: right;
 }
-.circular_progress_module{
-  margin-bottom: 47px;
-}
-.circular_progress_module .css-e53awj-MuiStack-root{
+// .circular_progress_module{
+//   margin-bottom: 47px;
+// }
+.circular_progress_module .css-e53awj-MuiStack-root {
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
@@ -129,13 +129,14 @@
   color: #000000;
   margin-bottom: 19px;
 }
-.circular_progress_module .MuiLinearProgress-root.MuiLinearProgress-colorPrimary {
-  border: 1px solid #BDBDBD;
+.circular_progress_module
+  .MuiLinearProgress-root.MuiLinearProgress-colorPrimary {
+  border: 1px solid #bdbdbd;
   box-sizing: border-box;
   height: 13px;
   background-color: transparent;
 }
-.circular_progress_module .label-progressbar{
+.circular_progress_module .label-progressbar {
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
@@ -146,8 +147,9 @@
   right: 15px;
   top: 0;
 }
-.circular_progress_module .MuiLinearProgress-bar.MuiLinearProgress-barColorPrimary{
-  background-color: #D62C79;
+.circular_progress_module
+  .MuiLinearProgress-bar.MuiLinearProgress-barColorPrimary {
+  background-color: #d62c79;
 }
 .circular_progress_module
   .MuiCircularProgress-root.MuiCircularProgress-determinate {
@@ -162,7 +164,7 @@
   height: 100%;
   background-color: #fff;
 }
-.accordion_box .MuiAccordion-region p{
+.accordion_box .MuiAccordion-region p {
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
@@ -181,7 +183,7 @@
 .accordion_box .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium {
   display: none;
 }
-.accordion_box .number-bgbox{
+.accordion_box .number-bgbox {
   display: inline-block;
   width: 26px;
   height: 26px;
@@ -192,7 +194,7 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 28px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-right: 20px;
 }
 .accordion_box .MuiPaper-root.MuiPaper-elevation {
@@ -201,7 +203,7 @@
 }
 .accordion_box .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded {
   background-color: transparent;
-  border-top:0;
+  border-top: 0;
   border-bottom: 0;
 }
 .accordion_box .MuiButtonBase-root.MuiAccordionSummary-root {
@@ -209,8 +211,8 @@
   border: none;
   flex-direction: inherit;
 }
-.accordion_box .MuiAccordionSummary-content{
-  margin:0px;
+.accordion_box .MuiAccordionSummary-content {
+  margin: 0px;
 }
 .accordion_box
   .MuiPaper-root.MuiPaper-elevation
@@ -243,8 +245,8 @@
   color: #ffffff;
   padding: 10px 50px;
 }
-.prev_next_btn .back_button{
-  background: #E3E4EB;
+.prev_next_btn .back_button {
+  background: #e3e4eb;
   border-radius: 10px;
   border: 0;
   width: 190px;
@@ -258,8 +260,8 @@
   color: #000000;
   text-transform: capitalize;
 }
-.prev_next_btn .next_button{
-  background: #EC498A;
+.prev_next_btn .next_button {
+  background: #ec498a;
   border-radius: 10px;
   border: 0;
   width: 190px;
@@ -270,7 +272,7 @@
   line-height: 18px;
   align-items: center;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: capitalize;
 }
 .close_btn {
@@ -279,4 +281,16 @@
 }
 .close_btn img {
   object-fit: contain;
+}
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  .prev_next_btn {
+    margin: 15px auto;
+  }
+  .prev_next_btn .back_button {
+    width: 100%;
+  }
+  .prev_next_btn .next_button {
+    width: 100%;
+  }
 }

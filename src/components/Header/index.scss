@@ -103,7 +103,7 @@ header {
   background: #ec498a;
   border: 1px solid #ec498a;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 2px;
   height: 40px;
   padding: 8px 21px;
   font-weight: 600;
@@ -111,10 +111,12 @@ header {
   line-height: 21px;
   color: #ffffff;
   transition: 0.25s ease;
+  transition-timing-function: linear;
 }
 .other_head .btn.btn-bg-pink:hover {
   background: #fff;
   color: #ec498a;
+  transition: 1s;
 }
 .other_head .MuiButton-text.MuiButton-root {
   background: #fff;
@@ -126,10 +128,13 @@ header {
   height: 38px;
   padding: 8px 21px;
   transition: 0.25s ease;
+  transition-timing-function: linear;
 }
 .other_head .MuiButton-text.MuiButton-root:hover {
   background: #ec498a;
   color: #fff !important;
+  border: none !important;
+  transition: 1s;
 }
 
 /*Middle navbar*/
@@ -169,6 +174,9 @@ header {
     line-height: 26px;
     padding: 7px 10px;
   }
+  .navbar-nav {
+    width: 100%;
+  }
   .other_head .middle_nav_login .navbar-nav .nav-item {
     margin: 10px 0px 0px 5px;
   }
@@ -187,6 +195,10 @@ header {
 }
 }
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+
+  .other_head .btn.btn-bg-pink {
+    margin-right: 15px;
+  }
 
 .navbar-collapse{
   overflow: hidden;

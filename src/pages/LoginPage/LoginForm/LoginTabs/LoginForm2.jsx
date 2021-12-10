@@ -53,6 +53,7 @@ function LoginForm2() {
     <>
       <form onSubmit={handleSubmit}>
         <div className='form-group mb-4'>
+        <label>Mobile Number</label>
           <TextField
             name='contact'
             type='number'
@@ -74,6 +75,7 @@ function LoginForm2() {
         </div>
 
         <div className='form-group'>
+        <label>Password <span>*</span></label>
           <TextField
             name='password'
             type='password'

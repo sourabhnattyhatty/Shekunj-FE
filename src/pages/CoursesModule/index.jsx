@@ -331,7 +331,7 @@ const CourseModule = () => {
                       ))}
                     </>
                   ) : (
-                    <div
+                    <div className="bkset"
                       dangerouslySetInnerHTML={{
                         __html: course?.description,
                       }}

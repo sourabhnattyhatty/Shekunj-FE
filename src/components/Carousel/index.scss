@@ -3,6 +3,9 @@
   margin-left: -150px;
   margin-top: 105px;
 }
+a.item {
+  text-decoration: none;
+}
 .item {
   color: #ffffff;
   width: 330px;
@@ -236,7 +239,29 @@ hr.line {
   font-family: SegoeUI_bold;
   letter-spacing: 0.5px;
 }
-
+button.view_test_cate {
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  color: #FFFFFF;
+  background: #EC498A;
+  border-radius: 2px;
+  padding: 20px 42px;
+  border: none;
+  text-align: center;
+  display: block;
+  margin: 50px auto;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+}
+button.view_test_cate:hover {
+  border: 1px solid #ec498a;
+  background-color: transparent;
+  color: #ec498a;
+  transition: 1s;
+}
 .buy-btn {
   width: 160px;
   height: 40px;

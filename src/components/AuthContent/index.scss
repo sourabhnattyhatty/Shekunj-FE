@@ -5,7 +5,7 @@ body {
 
 .login_main .logincontentbg {
   position: relative;
-  background-image: url("../../assets/images/login.png");
+  // background-image: url("../../assets/images/login.png");
   background-size: auto;
   background-repeat: no-repeat;
   background-position: left bottom;
@@ -13,13 +13,23 @@ body {
 }
 .login_bg_main .logincontentbg {
   position: relative;
-  background-image: url("../../assets/images/login.png");
+  // background-image: url("../../assets/images/login.png");
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: contain;
   height: 100%;
 }
-
+.logincontentbg img.girl_img {
+  max-width: 100%;
+}
+input:-internal-autofill-selected {
+  background-color: red !important;
+  appearance :inherit;
+  padding: 8px;
+}
+input:autofill {
+  border: 3px solid blue;
+}
 .login_main .login_content h1 {
   font-family: "SegoeUI_bold";
   font-weight: 600;
@@ -74,7 +84,15 @@ body {
   color: #425466;
   margin-bottom: 0px;
 }
-
+.login_form label span {
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 30px;
+  color: #C42020;
+  vertical-align: middle;
+}
 .login_form .form-control {
   background: #ffffff;
   border: 1px solid #e6e5eb;

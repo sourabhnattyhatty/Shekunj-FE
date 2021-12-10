@@ -7,6 +7,7 @@ import Hinglish from "../../assets/images/login/3.png";
 
 import LoginForm from "../../pages/LoginPage/LoginForm";
 import SignupForm from "../../pages/SignupPage/SignupForm";
+import login from "../../assets/images/login.png";
 
 import "./index.scss";
 
@@ -23,6 +24,7 @@ const AuthContent = ({ loginPage }) => {
         <div className='container logincontentbg'>
           <div className='row'>
             <div className='col-md-4'>
+            <img className="girl_img" src={login} alt="" />
             </div>
             <div className='col-md-4'>
               <div className='login_content'>

@@ -74,7 +74,7 @@ body {
   color: #ffffff;
   background: #ec498a;
   border: none;
-  border-radius: 20px;
+  border-radius: 2px;
   padding: 17px 50px;
   display: inline-block;
   transition-duration: 1s;
@@ -196,8 +196,8 @@ body {
   text-align: center;
   color: #ec498a;
   background: #ffffff;
-  border: 1px solid #ffffff;
-  border-radius: 16px;
+  // border: 1px solid #3f3838;
+  border-radius: 2px;
   transition: 0.25s ease;
   padding: 13px 30px;
   transition-duration: 1s;
@@ -305,7 +305,7 @@ body {
 }
 .btn.btn-start-course {
   background: #ec498a;
-  border-radius: 20px;
+  border-radius: 2px;
   font-family: "SegoeUI_bold";
   font-weight: 600;
   font-size: 14px;
@@ -327,7 +327,7 @@ body {
 .certificate {
   background: #f8f8f8;
   position: relative;
-  background-image: url("../../assets/images/bgcertificate.png");
+  background-image: url("../../assets/images/certificate1.jpg");
   background-repeat: no-repeat;
   background-size: 100% 103%;
   height: 550px;
@@ -375,7 +375,7 @@ body {
 }
 .learn_more {
   background: #ec498a;
-  border-radius: 10px;
+  border-radius: 2px;
   font-family: "SegoeUI_bold";
   font-weight: 600;
   font-size: 14px;
@@ -601,9 +601,6 @@ ul.star {
   }
   section.highlight_student.same_padding {
     overflow: hidden;
-  }
-  .navbar-nav {
-    width: 100%;
   }
   #myCarousel .carousel-item {
     height: 75vh;
