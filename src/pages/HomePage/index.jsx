@@ -10,7 +10,8 @@ import { Header, Footer, Carousel, ScrollToTop, SEO } from "../../components";
 import Resume from "../../assets/images/resume.png";
 import Girl from "../../assets/images/job1.png";
 import Community from "../../assets/images/community.png";
-import Nikita from "../../assets/images/Nikita-Sharma.png";
+import Nikita from "../../assets/images/testimonial/1.png";
+import Priya from "../../assets/images/testimonial/2.png";
 import star from "../../assets/images/Star 2.png";
 
 import "../../../node_modules/slick-carousel/slick/slick.css";
@@ -143,7 +144,7 @@ function HomePage() {
             <div className='carousel-item carousel_item4'>
               <div className='container'>
                 <div className='row h_set'>
-                  <div className='col-md-7 col-12 mt-5'>
+                  <div className='col-md-7 col-12 mt-5 offset-lg-6'>
                     <h4 className='mt-5 pt-md-5 mb-3' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
@@ -177,6 +178,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
+      <button className="view_test_cate">View All Test Categories</button>
 
       {/* resume */}
       <section className='resume same_padding mt-5'>
@@ -208,6 +210,7 @@ function HomePage() {
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
       />
+      <button className="view_test_cate">View All Test Categories</button>
 
       {/* Job opportunity */}
       <section className='job-opprtunity same_padding mt-5'>
@@ -252,6 +255,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
+      <button className="view_test_cate">View All Test Categories</button>
 
       {/* career development */}
       <section className='career_community same_padding mt-5'>
@@ -373,7 +377,7 @@ function HomePage() {
 
                   <div data-aos='slide-left'>
                     <div className='tes_box heg_cha'>
-                      <img src={Nikita} alt='' />
+                      <img src={Priya} alt='' />
                       <p>
                         “Excellent guiding instructions. They are all great
                         mentors at life & career

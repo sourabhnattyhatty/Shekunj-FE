@@ -117,7 +117,7 @@ const Header = ({ loginPage, page }) => {
                       page === "guidance" ? "nav-item active" : "nav-item"
                     }
                   >
-                    <Link className='nav-link' to='/guidance'>
+                    <Link className='nav-link' to='/GuidanceBook'>
                       {t("header.heading.3")}
                     </Link>
                   </li>

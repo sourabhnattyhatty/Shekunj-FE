@@ -15,7 +15,7 @@
         "cont": "All our courses are in spoken language i.e Hindi + English. These tools or subjects can be a little tricky or complicated but our lectures are very simple to understand."
       }
     },
-    "heading": "Login On Shekunj",
+    "heading": "Login on Shekunj",
     "tabLabel": {
       "1": "E-MAIL",
       "2": "MOBILE"
@@ -52,7 +52,7 @@
   },
 
   "signup": {
-    "heading": "Signup On Shekunj",
+    "heading": "Signup on Shekunj",
     "placeholder1": "Name",
     "placeholder2": "E-mail",
     "placeholder3": "Mobile Number",
