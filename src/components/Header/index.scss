@@ -36,9 +36,11 @@ header {
   font-weight: normal;
   font-size: 14px;
   line-height: 21px;
+  padding-right: 50px;
 }
 #custom-search-input .input-group-btn img {
   padding: 4px;
+  background-color: #fff;
 }
 
 #custom-search-input .search-query::-webkit-input-placeholder {
@@ -270,5 +272,13 @@ header {
 .navbar .open.collapse.show {
     left: 0px !important;
     text-align: left;
+}
+}
+@media screen and (max-width: 1080px){
+  .navbar-nav {
+    width: 100%;
+  }
+  .other_head .middle_nav_login .navbar-nav .nav-item {
+    margin: 0;
 }
 }

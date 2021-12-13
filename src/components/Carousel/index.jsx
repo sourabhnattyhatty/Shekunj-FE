@@ -126,6 +126,11 @@ function Carousel(props) {
               nav: true,
               loop: true,
             },
+            1920: {
+              items: 5,
+              margin: 250
+
+            },
           }}
         >
           {props.page === "courseDetail" && (

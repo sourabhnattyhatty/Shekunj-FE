@@ -62,7 +62,7 @@ function HomePage() {
 
   return (
     <div>
-      <SEO/>
+      <SEO />
       <Header loginPage={false} page='home' />
 
       {/* slider */}
@@ -178,7 +178,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <button className="view_test_cate">View All Test Categories</button>
+      <button className='view_test_cate'>View All Test Categories</button>
 
       {/* resume */}
       <section className='resume same_padding mt-5'>
@@ -210,7 +210,7 @@ function HomePage() {
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
       />
-      <button className="view_test_cate">View All Test Categories</button>
+      <button className='view_test_cate'>View All Test Categories</button>
 
       {/* Job opportunity */}
       <section className='job-opprtunity same_padding mt-5'>
@@ -238,9 +238,9 @@ function HomePage() {
                   </div>
 
                   <div className='col-lg-4'>
-                  <div className='jobimg'>
-                    <img src={Girl} alt='...' />
-                  </div>
+                    <div className='jobimg'>
+                      <img src={Girl} alt='...' />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -255,7 +255,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <button className="view_test_cate">View All Test Categories</button>
+      <button className='view_test_cate'>View All Test Categories</button>
 
       {/* career development */}
       <section className='career_community same_padding mt-5'>
@@ -290,17 +290,19 @@ function HomePage() {
         <div className='container'>
           <div className='row'>
             <div className='col-md-6 offset-md-6 offset-lg-6 offset-xl-7'>
-              <h4>
-                {t("homePage.certificate.heading.1")} <br />{" "}
-                {t("homePage.certificate.heading.2")}
-              </h4>
+              <div className='certif_con'>
+                <h4>
+                  {t("homePage.certificate.heading.1")} {" "}
+                  {t("homePage.certificate.heading.2")}
+                </h4>
 
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat
-                sed vel scelerisque sodales tristique porttitor vitae. Ornare
-                phasellus nibh in orci. Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Feugiat sed vel scelerisque
-              </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Feugiat sed vel scelerisque sodales tristique porttitor vitae.
+                  Ornare phasellus nibh in orci. Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit. Feugiat sed vel scelerisque
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -1,0 +1,92 @@
+.CompExams .MuiTabs-flexContainer {
+  align-items: baseline;
+}
+.CompExams .MuiTabs-scroller {
+  width: 100%;
+  text-align: left;
+}
+.CompExams button {
+  padding: 0;
+  text-align: left !important;
+  margin: 0;
+  align-items: end;
+}
+.CompExams button {
+  padding: 0;
+  text-align: left !important;
+  margin: 0;
+  align-items: end;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  color: #000000;
+}
+.Com_title h2 {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  color: #000000;
+}
+.CompExams .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #000000;
+  font-weight: bold;
+}
+div#vertical-tabpanel-0 {
+  width: 100%;
+}
+.tabs_box {
+  background: #ffffff;
+  border: 1px solid #e3e4eb;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 17px 25px;
+  transition-duration: 1s;
+}
+.tabs_box:hover {
+    border-color: #EC498A;
+    cursor: pointer;
+    transition: 1s;
+}
+.tabs_box h2 {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000000;
+}
+.tabs_box p {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: #4f4f4f;
+}
+.tabs_box button {
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    color: #EC498A;
+    border: none;
+    background: transparent;
+}
+.CompExams .MuiTabs-root.MuiTabs-vertical {
+    height: 875px;
+    overflow-y: scroll;
+}
+.CompExams span.MuiTabs-indicator {
+    display: none;
+}
+.CompExams .MuiBox-root {
+    padding: 0;
+}
+.CompExams .css-1ehaqqx-MuiButtonBase-root-MuiTabScrollButton-root.Mui-disabled {
+    display: none;
+}
