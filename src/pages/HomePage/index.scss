@@ -106,7 +106,7 @@ body {
   top: 52%;
 }
 #myCarousel .slick-next {
-  right: 80px;
+  right: 41px;
 }
 #myCarousel .slick-prev,
 #myCarousel .slick-next {
@@ -124,7 +124,7 @@ body {
   border: 1px solid #ec498a;
 }
 #myCarousel .slick-prev {
-  left: 50px;
+  left: 41px;
 }
 #myCarousel .slick-prev:before {
   content: "";
@@ -581,7 +581,9 @@ ul.star {
   color: #fbada2;
   margin: 0;
 }
-
+.certif_con {
+  margin: 30px 0px;
+}
 .container.Our_text h2 {
   font-family: SegoeUI_bold;
   font-style: normal;
@@ -741,4 +743,19 @@ ul.star {
     font-size: 28px;
     max-width: 610px;
   }
+}
+@media screen and (max-width: 1920px) {
+  .certificate {
+    background-size: contain;
+  }
+}
+
+
+@media screen and (max-width: 1080px) {
+#myCarousel .carousel-item {
+  height: 60vh;
+}
+#myCarousel .carousel-item h4 {
+  font-size: 32px;
+}
 }

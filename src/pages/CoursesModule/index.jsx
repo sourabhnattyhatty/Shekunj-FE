@@ -216,8 +216,7 @@ const CourseModule = () => {
                       ))}
                     </>
                   ) : (
-                    <div
-                      className='bkset'
+                    <div className="des_dynamic_con"
                       dangerouslySetInnerHTML={{
                         __html: course?.description,
                       }}

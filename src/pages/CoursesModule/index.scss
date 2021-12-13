@@ -12,7 +12,7 @@
   color: #ec498a !important;
   margin-left: -31px;
 }
-.accordion_box .active-accordiantext img{
+.accordion_box .active-accordiantext img {
   margin-right: 7px;
 }
 .card_courses .card h3 {
@@ -22,7 +22,7 @@
   color: #000000;
   width: 462px;
   max-width: 100%;
-  font-family: 'SegoeUI_bold';
+  font-family: "SegoeUI_bold";
   padding-top: 30px;
 }
 .tog_set img {
@@ -122,6 +122,7 @@
 //   margin-bottom: 47px;
 // }
 .circular_progress_module .css-e53awj-MuiStack-root {
+  justify-content: space-between;
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
@@ -141,12 +142,12 @@
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 20px;
   color: #000000;
   position: absolute;
+  top: 65px;
   right: 15px;
-  top: 0;
 }
 .circular_progress_module
   .MuiLinearProgress-bar.MuiLinearProgress-barColorPrimary {
@@ -247,7 +248,7 @@
 }
 .prev_next_btn .back_button {
   background: #e3e4eb;
-  border-radius: 10px;
+  border-radius: 2px;
   border: 0;
   width: 190px;
   height: 50px;
@@ -262,7 +263,7 @@
 }
 .prev_next_btn .next_button {
   background: #ec498a;
-  border-radius: 10px;
+  border-radius: 2px;
   border: 0;
   width: 190px;
   height: 50px;
@@ -296,6 +297,33 @@
 }
 .close_btn img {
   object-fit: contain;
+}
+.des_dynamic_con h1 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 40px;
+  color: #000000;
+}
+.des_dynamic_con p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #828282;
+}
+.des_dynamic_con {
+  margin: 30px 0;
+}
+.des_dynamic_con ul li {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 31px;
+  color: #000000;
 }
 
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {

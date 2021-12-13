@@ -101,16 +101,16 @@ a.item {
   display: inline-block;
 }
 
-.similar-coursesslider .boxnew{
-  background: #FFFFFF;
-  border: 1px solid #E3E4EB;
+.similar-coursesslider .boxnew {
+  background: #ffffff;
+  border: 1px solid #e3e4eb;
   box-sizing: border-box;
   border-radius: 10px;
   width: 100%;
   padding: 10px;
-  overflow: hidden
+  overflow: hidden;
 }
-.similar-coursesslider .boxnew .tag_btn p{
+.similar-coursesslider .boxnew .tag_btn p {
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -120,7 +120,7 @@ a.item {
   font-family: "SegoeUI_medium";
   margin: 0;
 }
-.similar-coursesslider .slide-img1 img{
+.similar-coursesslider .slide-img1 img {
   width: 234px;
   height: 130px;
   border-radius: 10px 10px 0px 0px;
@@ -245,8 +245,8 @@ button.view_test_cate {
   font-weight: bold;
   font-size: 14px;
   line-height: 19px;
-  color: #FFFFFF;
-  background: #EC498A;
+  color: #ffffff;
+  background: #ec498a;
   border-radius: 2px;
   padding: 20px 42px;
   border: 1px solid #ffffff;
@@ -385,5 +385,10 @@ button.btn.btn_Courses {
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
+  }
+}
+@media screen and (min-device-width: 1919px) and (max-device-width: 1920px) { 
+  .owl-theme {
+    max-width: 1480px;
   }
 }
