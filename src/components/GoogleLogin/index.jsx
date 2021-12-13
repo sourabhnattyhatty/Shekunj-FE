@@ -18,6 +18,7 @@ function GoogleLoginComponent({ showOr }) {
   const responseGoogle = (res) => {
     if (res && res.tokenId) {
       dispatch(registerWithGoogle({ auth_token: res.tokenId }, history));
+      console.log(res.tokenId);
     } else {
       toast.error("Google login failed.");
     }
@@ -37,7 +38,7 @@ function GoogleLoginComponent({ showOr }) {
                 disabled={renderProps.disabled}
               >
                 <img src={Google} alt='...' className='mr-2' />{" "}
-                {t("login.google")}
+                {!showOr ? "Login with Google" : t("login.google")}
               </button>
               {showOr && (
                 <div className='or'>

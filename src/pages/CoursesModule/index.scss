@@ -10,6 +10,7 @@
 }
 .accordion_box .active-accordiantext {
   color: #ec498a !important;
+  margin-left: -31px;
 }
 .accordion_box .active-accordiantext img{
   margin-right: 7px;
@@ -161,7 +162,6 @@
 .accordion_box {
   border: 0;
   padding: 20px;
-  height: 100%;
   background-color: #fff;
 }
 .accordion_box .MuiAccordion-region p {
@@ -261,6 +261,21 @@
   text-transform: capitalize;
 }
 .prev_next_btn .next_button {
+  background: #ec498a;
+  border-radius: 10px;
+  border: 0;
+  width: 190px;
+  height: 50px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+.prev_next_btn .text-right a{
   background: #ec498a;
   border-radius: 10px;
   border: 0;

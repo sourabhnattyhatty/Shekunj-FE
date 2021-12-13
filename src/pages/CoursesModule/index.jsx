@@ -1,5 +1,4 @@
 import React from "react";
-import { isMobile } from "react-device-detect";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,10 +18,11 @@ import close from "../../assets/images/Courses/close.png";
 import toggle from "../../assets/images/Courses/toggle.png";
 import "./index.scss";
 import { LinearProgress, Skeleton } from "@mui/material";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleCourseModule, startCourse } from "../../store/courses/action";
 import { toast } from "react-toastify";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -70,18 +70,17 @@ const CourseModule = () => {
     (state) => state.coursesReducer,
   );
   const dispatch = useDispatch();
+  const detect = useDeviceDetect();
 
-  console.log("%%%%%%%%%", course);
-  console.log("**********", courseModulesList);
 
   const { id } = useParams();
   const history = useHistory();
   React.useEffect(() => {
-    if (isMobile) {
+    if (detect.isMobile) {
       toast.error("This page is not availble in mobile view.");
       history.push("/");
     }
-  }, [history]);
+  }, [history, detect]);
 
   React.useEffect(() => {
     dispatch(startCourse(id));
@@ -110,7 +109,7 @@ const CourseModule = () => {
       <div className='course_module mt-md-0 mb-md-0 mt-4 mb-4'>
         <Container>
           <Row className='pt-md-5 pb-md-5'>
-            <Col md={12} xs={12} className='text-left'>
+            <Col md={12} xs={12} className='text-left mb-5'>
               <div className='circular_progress_module'>
                 <Stack spacing={2} direction='row'>
                   {" "}
@@ -158,13 +157,14 @@ const CourseModule = () => {
                           .reverse()
                           .map((obj, ind) => (
                             <li
+                              key={obj?.id}
                               className={
-                                Number(course?.current_module) === obj?.id
+                                Number(course?.current_module) > obj?.id
                                   ? "active-accordiantext"
                                   : ""
                               }
                             >
-                              {Number(course?.current_module) === obj?.id && (
+                              {Number(course?.current_module) > obj?.id && (
                                 <img
                                   src={Rightcheck}
                                   className='ml-2'
@@ -177,122 +177,6 @@ const CourseModule = () => {
                       </ul>
                     </AccordionDetails>
                   </Accordion>
-                  {/*                   
-                  <Accordion
-                    expanded={expanded === "panel2"}
-                    onChange={handleChange("panel2")}
-                  >
-                    <AccordionSummary
-                      aria-controls='panel2d-content'
-                      id='panel2d-header'
-                    >
-                      <Typography>
-                        <div className='number-bgbox'>2</div>
-                        Basic tools
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse malesuada lacus ex, sit amet blandit leo
-                        lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Suspendisse malesuada lacus ex, sit
-                        amet blandit leo lobortis eget.
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel3"}
-                    onChange={handleChange("panel3")}
-                  >
-                    <AccordionSummary
-                      aria-controls='panel3d-content'
-                      id='panel3d-header'
-                    >
-                      <Typography>
-                        <div className='number-bgbox'>3</div>
-                        Advanced tool
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse malesuada lacus ex, sit amet blandit leo
-                        lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Suspendisse malesuada lacus ex, sit
-                        amet blandit leo lobortis eget.
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel4"}
-                    onChange={handleChange("panel4")}
-                  >
-                    <AccordionSummary
-                      aria-controls='panel4d-content'
-                      id='panel4d-header'
-                    >
-                      <Typography>
-                        <div className='number-bgbox'>4</div>
-                        Effects
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse malesuada lacus ex, sit amet blandit leo
-                        lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Suspendisse malesuada lacus ex, sit
-                        amet blandit leo lobortis eget.
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel5"}
-                    onChange={handleChange("panel5")}
-                  >
-                    <AccordionSummary
-                      aria-controls='panel5d-content'
-                      id='panel5d-header'
-                    >
-                      <Typography>
-                        <div className='number-bgbox'>5</div>
-                        Panels
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse malesuada lacus ex, sit amet blandit leo
-                        lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Suspendisse malesuada lacus ex, sit
-                        amet blandit leo lobortis eget.
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel6"}
-                    onChange={handleChange("panel6")}
-                  >
-                    <AccordionSummary
-                      aria-controls='panel6d-content'
-                      id='panel6d-header'
-                    >
-                      <Typography>
-                        <div className='number-bgbox'>6</div>
-                        Examples
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse malesuada lacus ex, sit amet blandit leo
-                        lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Suspendisse malesuada lacus ex, sit
-                        amet blandit leo lobortis eget.
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion> */}
                 </div>
               </Col>
             )}
@@ -303,7 +187,7 @@ const CourseModule = () => {
                   {isLoading ? (
                     <>
                       {[1, 2].map((a) => (
-                        <div className='mb-5'>
+                        <div className='mb-5' key={a}>
                           <Skeleton
                             variant='rectangular'
                             width={750}
@@ -320,6 +204,7 @@ const CourseModule = () => {
                           />
                           {[1, 2, 3, 4, 5].map((a) => (
                             <Skeleton
+                              key={a}
                               variant='rectangular'
                               width={750}
                               height={15}
@@ -331,7 +216,8 @@ const CourseModule = () => {
                       ))}
                     </>
                   ) : (
-                    <div className="bkset"
+                    <div
+                      className='bkset'
                       dangerouslySetInnerHTML={{
                         __html: course?.description,
                       }}
@@ -344,18 +230,30 @@ const CourseModule = () => {
                         <button
                           className='back_button'
                           onClick={() => handlePrevModule(course?.prev_module)}
+                          disabled={course?.current_module === "1"}
                         >
                           back
                         </button>
                       </Col>
 
                       <Col md={6} xs={6} className='text-right'>
-                        <button
-                          className='next_button'
-                          onClick={() => handleNextModule(course?.next_module)}
-                        >
-                          next
-                        </button>
+                        {course?.next_module === null ? (
+                          <button
+                            className='next_button'
+                            onClick={() => history.push("/CoursesTest")}
+                          >
+                            finish
+                          </button>
+                        ) : (
+                          <button
+                            className='next_button'
+                            onClick={() =>
+                              handleNextModule(course?.next_module)
+                            }
+                          >
+                            next
+                          </button>
+                        )}
                       </Col>
                     </Row>
                   </div>

@@ -13,7 +13,6 @@ import "./index.scss";
 import "aos/dist/aos.css";
 import "animate.css";
 
-import httpServices from "./../../utils/ApiServices";
 
 const AboutusPage = () => {
   const { t } = useTranslation();
@@ -22,26 +21,10 @@ const AboutusPage = () => {
     Aos.init({ duration: 2000 });
   }, []);
 
-  const [course, setCourse] = React.useState(null);
-
-  React.useEffect(() => {
-    httpServices.get(`/course/list/`).then((res) => {
-      console.log({
-        res,
-      });
-      const obj = res?.results?.find((r) => r.id === 14);
-      setCourse(obj?.coursemodule_set[0]?.description);
-      console.log({ obj });
-    });
-  }, []);
-
+  
   return (
     <div>
-      {/* <div
-        dangerouslySetInnerHTML={{
-          __html: course,
-        }}
-      /> */}
+      
       <SEO title='Sheकुंज - About us' />
       <Header loginPage={false} page='about' />
       <section className='about_ban'>
@@ -185,7 +168,7 @@ const AboutusPage = () => {
                   Odio nunc, purus a, ut integer. Ultricies orci nulla eu,
                   libero ornare ipsum. Tincidunt erat pulvinar viverra pharetra.
                 </p>
-                <a data-aos='zoom-in' href='#!' class='learn_more aos-init'>
+                <a data-aos='zoom-in' href='#!' className='learn_more aos-init'>
                   {t("homePage.highlightStudents.button")}
                 </a>
               </div>

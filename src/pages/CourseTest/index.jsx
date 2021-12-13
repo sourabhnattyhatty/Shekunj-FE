@@ -3,9 +3,9 @@ import React from "react";
 import Stack from "@mui/material/Stack";
 import { Row, Col } from "react-bootstrap";
 import { LinearProgress } from "@mui/material";
-import { isMobile } from "react-device-detect";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 import { Header, Footer, ScrollToTop } from "../../components";
 
@@ -17,13 +17,14 @@ import time from "../../assets/images/Courses/time.png";
 function CourseTest() {
 
   const history = useHistory();
+  const detect = useDeviceDetect();
 
   React.useEffect(() => {
-    if(isMobile){
+    if(detect.isMobile){
       toast.error("This page is not availble in mobile view.")
       history.push("/")
     }
-  }, [history]);
+  }, [history, detect]);
 
   return (
     <div>

@@ -178,7 +178,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <button className="view_test_cate">View All Test Categories</button>
+      <button className="view_test_cate">View All Courses</button>
 
       {/* resume */}
       <section className='resume same_padding mt-5'>
@@ -255,7 +255,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <button className="view_test_cate">View All Test Categories</button>
+      <button className="view_test_cate">View All Courses</button>
 
       {/* career development */}
       <section className='career_community same_padding mt-5'>

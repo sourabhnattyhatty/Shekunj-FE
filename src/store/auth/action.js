@@ -60,7 +60,7 @@ export const registerWithGoogle = (value, history) => async (dispatch) => {
       payload: { name: res.data.username, email: res.data.email },
     });
     Cookies.set("sheToken", res.data.tokens.access);
-    history.push("/");
+    history.push("/dashboard");
   } catch (err) {
     toast.error("Google Login failed.", toasterConfig);
   }
