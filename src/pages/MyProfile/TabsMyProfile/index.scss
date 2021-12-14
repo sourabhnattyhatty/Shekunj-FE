@@ -1,0 +1,101 @@
+.user_detail {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.myProfile_box h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  color: #323232;
+}
+.user_detail ul {
+  padding: 0;
+}
+.user_detail ul li {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 3;
+  color: #000000;
+  list-style: none;
+}
+.myProfile_box button.edit_profile_btn {
+  background: #ec498a;
+  border: 1px solid #ec498a;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #ffffff;
+  padding: 14px 50px;
+  transition-duration: 1s;
+}
+.myProfile_box button.edit_profile_btn:hover {
+  border: 1px solid #ec498a;
+  color: #ec498a;
+  background-color: transparent;
+  transition: 1s;
+}
+.my_pro_tabs .MuiTabs-flexContainer button.MuiButtonBase-root {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  color: #000000;
+}
+.my_pro_tabs .MuiBox-root {
+  border: none;
+}
+span.MuiTabs-indicator {
+  background-color: #ec498a;
+}
+.my_pro_tabs {
+  background: #ffffff;
+  box-shadow: 0px 0px 50px rgb(0 0 0 / 10%);
+  border-radius: 15px;
+  padding: 33px 30px;
+  margin-top: -19%;
+  margin-bottom: 137px;
+  height: 482px;
+}
+.profile_con h2 {
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 53px;
+  color: #333333;
+}
+.profile_con p {
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #333333;
+}
+.profile_con {
+  padding-top: 83px;
+}
+.myProfile_img {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: space-evenly;
+    background: #FFFFFF;
+    border: 1px solid #E3E4EB;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
