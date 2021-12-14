@@ -7,6 +7,7 @@ const initialState = {
   tests: [],
   courseModulesList: [],
   error: null,
+  moduleprogress: 0,
 };
 
 export const coursesReducer = (state = initialState, action) => {
@@ -64,6 +65,7 @@ export const coursesReducer = (state = initialState, action) => {
         isLoading: false,
         course: action.payload,
         error: null,
+        moduleprogress : action.progress
       };
       
     case coursesTypes.COURSE_FAIL:

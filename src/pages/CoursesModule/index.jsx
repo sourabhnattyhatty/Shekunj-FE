@@ -9,7 +9,7 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import Slider from '@mui/material/Slider';
+import Slider from "@mui/material/Slider";
 
 import { Header, Footer, ScrollToTop } from "../../components";
 
@@ -18,27 +18,15 @@ import Stack from "@mui/material/Stack";
 import close from "../../assets/images/Courses/close.png";
 import toggle from "../../assets/images/Courses/toggle.png";
 import "./index.scss";
-import { LinearProgress, Skeleton } from "@mui/material";
+import { Skeleton } from "@mui/material";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleCourseModule, startCourse } from "../../store/courses/action";
 import { toast } from "react-toastify";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
+import Cookies from "js-cookie";
 
-const marks = [
-  {
-    value: 0,
-  },
-  {
-    value: 20,
-  },
-  {
-    value: 37,
-  },
-  {
-    value: 100,
-  },
-];
+
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -80,7 +68,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 const iOSBoxShadow =
-  '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
+  "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
 
 const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
@@ -135,14 +123,18 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 const CourseModule = () => {
   const [show, setShow] = React.useState(true);
   const [expanded, setExpanded] = React.useState("panel1");
-  const { courseModulesList, course, isLoading } = useSelector(
+  const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
     (state) => state.coursesReducer,
   );
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
-
   const { id } = useParams();
   const history = useHistory();
+
+  const progress = Math.round(100 / courseModulesList.length);
+
+  console.log("moduleprogress", moduleprogress)
+
   React.useEffect(() => {
     if (detect.isMobile) {
       toast.error("This page is not availble in mobile view.");
@@ -155,6 +147,11 @@ const CourseModule = () => {
     dispatch(getSingleCourseModule(id));
   }, [dispatch, id]);
 
+  React.useEffect(() => {
+    const page = Cookies.get("module");
+    dispatch(startCourse(id,page,((page-1)*progress)));
+  }, [course.progress]);
+
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
@@ -164,11 +161,15 @@ const CourseModule = () => {
   };
 
   const handlePrevModule = (page) => {
-    dispatch(startCourse(id, page));
+    Cookies.set("module",page)
+    const p = (page - 1) * progress;
+    dispatch(startCourse(id, page, p));
   };
 
   const handleNextModule = (page) => {
-    dispatch(startCourse(id, page));
+    Cookies.set("module",page)
+    const p = (page - 1) * progress;
+    dispatch(startCourse(id, page, p));
   };
 
   return (
@@ -180,16 +181,13 @@ const CourseModule = () => {
             <Col md={12} xs={12} className='text-left mb-5'>
               <div className='circular_progress_module'>
                 <Stack spacing={2} direction='row'>
-                  <h2>
-                  Your Progress</h2>
+                  <h2>Your Progress</h2>
                 </Stack>
-                {/* <LinearProgress variant='determinate' value={30} />
-                <div className='label-progressbar'> 30%</div> */}
+
                 <IOSSlider
                   aria-label='ios slider'
-                  defaultValue={30}
-                  marks={marks}
-                  valueLabelFormat = {value => <div>{value}%</div>}
+                  defaultValue={moduleprogress}
+                  valueLabelFormat={(value) => <div>{value}%</div>}
                   valueLabelDisplay='on'
                   disabled
                 />

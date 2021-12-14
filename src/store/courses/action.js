@@ -35,11 +35,11 @@ export const singleCourseDetails = (id) => async (dispatch) => {
   }
 };
 
-export const startCourse = (id,page=1) => async (dispatch) => {
+export const startCourse = (id,page=1,p=0) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.COURSE_REQUEST });
-    const res = await httpServices.get(`/course/start-user-course/${id}?page=${page}`);
-    dispatch({ type: coursesTypes.COURSE_FINISH, payload: res.data });
+    const res = await httpServices.get(`/course/start-user-course/${id}?page=${page}&progress=${p}`);
+    dispatch({ type: coursesTypes.COURSE_FINISH, payload: res.data, progress : Number(res.data.progress) });
   } catch (error) {
     dispatch({ type: coursesTypes.COURSE_FAIL });
   }
