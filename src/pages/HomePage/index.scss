@@ -743,6 +743,9 @@ ul.star {
     font-size: 28px;
     max-width: 610px;
   }
+  #myCarousel .carousel-item {
+    height: 73vh;
+  }
 }
 @media screen and (max-width: 1920px) {
   .certificate {

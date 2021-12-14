@@ -5,6 +5,8 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Container, Row, Col } from "react-bootstrap";
+import {Link} from "react-router-dom";
+
 import "./index.scss";
 
 function TabPanel(props) {
@@ -96,6 +98,97 @@ export default function VerticalTabs() {
             <TabPanel value={value} index={0}>
               <Row>
                 <Col md={6} xs={12}>
+                <Link to="/success2">
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                  </Link>
+                </Col>
+
+                <Col md={6} xs={12}>
+                <Link to="/success2">
+                  <div className='tabs_box'>
+                    <h2>Railway Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                  </Link>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <Link to="/success2">
+                    <div className='tabs_box'>
+                      <h2>Banking Exams</h2>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Odio justo et amet varius velit. Eu, ac amet elit orci
+                        ullamcorper proin pellentesque.{" "}
+                      </p>
+                      <button>Read More</button>
+                    </div>
+                  </Link>
+                </Col>
+
+                <Col md={6} xs={12}>
+                <Link to="/success2">
+                  <div className='tabs_box'>
+                    <h2>Railway Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                  </Link>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              <Row>
+                <Col md={6} xs={12}>
+                <Link to="/success2">
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                  </Link>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Railway Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+              <Row>
+                <Col md={6} xs={12}>
                   <div className='tabs_box'>
                     <h2>Banking Exams</h2>
                     <p>
@@ -109,7 +202,7 @@ export default function VerticalTabs() {
 
                 <Col md={6} xs={12}>
                   <div className='tabs_box'>
-                    <h2>Banking Exams</h2>
+                    <h2>Railway Exams</h2>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Odio justo et amet varius velit. Eu, ac amet elit orci
@@ -120,7 +213,7 @@ export default function VerticalTabs() {
                 </Col>
               </Row>
             </TabPanel>
-            <TabPanel value={value} index={1}>
+            <TabPanel value={value} index={4}>
               <Row>
                 <Col md={6} xs={12}>
                   <div className='tabs_box'>
@@ -147,20 +240,383 @@ export default function VerticalTabs() {
                 </Col>
               </Row>
             </TabPanel>
-            <TabPanel value={value} index={2}>
-              Item Three
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-              Item Four
-            </TabPanel>
-            <TabPanel value={value} index={4}>
-              Item Five
-            </TabPanel>
             <TabPanel value={value} index={5}>
-              Item Six
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
             </TabPanel>
             <TabPanel value={value} index={6}>
-              Item Seven
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={7}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={8}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={9}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={10}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={11}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={12}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={13}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={14}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={15}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={16}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={17}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
+            </TabPanel>
+            <TabPanel value={value} index={18}>
+              <Row>
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+
+                <Col md={6} xs={12}>
+                  <div className='tabs_box'>
+                    <h2>Banking Exams</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Odio justo et amet varius velit. Eu, ac amet elit orci
+                      ullamcorper proin pellentesque.{" "}
+                    </p>
+                    <button>Read More</button>
+                  </div>
+                </Col>
+              </Row>
             </TabPanel>
           </Col>
         </Row>

@@ -1,243 +1,121 @@
-section.Car_Ban {
-  width: 100%;
-  height: 700px;
-  background-image: url("../../assets/images/Career/certificate\ 1.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+.mainDiv_career {
+  padding: 80px 0;
 }
-.Car_con h2 {
-  font-family: SegoeUI_bold;
+.career_tit {
+  margin-bottom: 50px;
+}
+.career_tit h2 {
+  font-family: Poppins;
   font-style: normal;
   font-weight: bold;
-  font-size: 50px;
-  line-height: 60px;
-  text-transform: capitalize;
+  font-size: 40px;
+  line-height: 52px;
   color: #323232;
-  margin: 0;
 }
-.learn_more {
+.career_tit p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #828282;
+}
+.career_box {
+  background: #ffffff;
+  width: 100%;
+  height: 268px;
+  box-shadow: 0px 4px 50px rgb(0 0 0 / 10%);
+  border-radius: 10px;
+  padding: 30px;
+  align-items: center;
+  display: flex;
+  margin-bottom: 30px;
+}
+.career_img img {
+  max-width: 100%;
+  border-radius: 15px;
+}
+.css-ztrqiq-MuiImageListItemBar-root {
+  border-radius: 15px;
+}
+.career_img {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.career_box h3 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+  color: #323232;
+  margin-bottom: 19px;
+}
+.career_box p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #828282;
+  margin-bottom: 19px;
+}
+.career_box p span {
+  color: #4f4f4f;
+}
+.career_box ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style: none;
+  max-width: 255px;
+  margin-bottom: 30px;
+}
+.career_box ul li {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #828282;
+}
+.career_box ul li span {
+  color: #4f4f4f;
+}
+.career_box button {
   background: #ec498a;
+  border: 1px solid #ec498a;
+  box-sizing: border-box;
   border-radius: 2px;
-  font-family: "SegoeUI_bold";
+  font-family: Poppins;
+  font-style: normal;
   font-weight: 600;
   font-size: 14px;
-  line-height: 42px;
+  line-height: 21px;
+  text-align: center;
+  text-transform: capitalize;
   color: #ffffff;
-  height: 44px;
-  width: 160px;
-  transition: 0.25s ease;
-  display: inline-block;
+  padding: 13px 31px;
+}
+.css-1lizpae-MuiImageListItemBar-titleWrap {
+  padding: 65px 16px;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 163px;
   text-align: center;
 }
-.learn_more:hover {
-  background: #000;
-  color: #ec498a;
-  text-decoration: none;
-}
-.Car_con p {
-  font-family: "SegoeUI_medium";
+.MuiImageListItemBar-title.css-dasnyc-MuiImageListItemBar-title , .MuiImageListItemBar-subtitle.css-hk6gwf-MuiImageListItemBar-subtitle{
+  font-family: Poppins;
   font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 24px;
-  text-transform: capitalize;
-  color: #323232;
-  margin-top: 29px !important;
-  margin: 0;
-  width: 450px;
-  max-width: 100%;
-}
-.Car_con {
-  margin-top: 210px;
-}
-.pseudo-search input::placeholder {
-  font-family: "SegoeUI_medium";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 120%;
-  color: #000000;
-  opacity: 0.3;
-}
-
-.pseudo-search {
-  display: inline;
-  margin-top: 15px;
-  padding: 10px 15px;
-  transition: background-color 0.5 ease-in-out;
-  background: #ffffff;
-  border: 1px solid #f2eded;
-  box-sizing: border-box;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-
-  input {
-    border: 0;
-    background-color: transparent;
-    width: 200px;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  button,
-  img {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    vertical-align: text-bottom;
-    margin: -2px;
-  }
-
-  select {
-    border: none;
-  }
-}
-.choose_box {
-  background-color: #fff;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0px 0px 15px #ccc;
-  border-radius: 15px;
-  padding-bottom: 25px;
-}
-section.choose_ses h2 {
-  font-family: SegoeUI_bold;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 52px;
-  text-transform: capitalize;
-  color: #323232;
-  padding-bottom: 46px;
-}
-.choose_box img {
-  width: 100%;
-  height: 125px;
-  background-size: cover;
-}
-.choose_con {
-  padding: 0px 10px;
-}
-.row_box {
-  margin-bottom: 57px;
-}
-.choose_con h3 {
-  font-family: SegoeUI_medium;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 20px;
-  color: #323232;
-  padding-top: 30px;
-  padding-bottom: 17px;
-  margin: 0;
-}
-.choose_con p {
-  font-family: "SegoeUI_medium";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-  color: #4f4f4f;
-  margin: 0;
-  margin-bottom: 70px;
-}
-section.choose_ses {
-  background: linear-gradient(
-    90deg,
-    rgba(253, 251, 251, 0.5) 0%,
-    rgba(235, 237, 238, 0.5) 100%
-  );
-  padding: 40px 0;
-}
-.tags button {
-  font-family: "SegoeUI_medium";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 24px;
-  text-transform: capitalize;
-  color: #4f4f4f;
-  background-color: transparent;
-  border: 1px solid #d8d8d8;
-  border-radius: 50px;
-  margin-right: 15px;
-  margin-bottom: 21px;
-  padding: 3px 13px;
-}
-.edu_tit h2 {
-  font-family: SegoeUI_bold;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 52px;
-  text-transform: capitalize;
-  color: #323232;
-  margin: 0;
-}
-.edu_tit p {
-  font-family: "SegoeUI_medium";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 24px;
-  text-transform: capitalize;
-  color: #4f4f4f;
-  width: 610px;
-  max-width: 100%;
-  margin: 0;
-  padding-top: 15px;
-  padding-bottom: 56px;
-}
-.ranking {
-  background: #ffffff;
-  box-shadow: 0px 0px 25px #e6e6e6;
-  border-radius: 20px;
-  padding: 20px 26px;
-}
-.ranking h3 {
-  font-family: "SegoeUI_medium";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 28px;
-  line-height: 52px;
-  text-transform: capitalize;
-  color: #323232;
-}
-.ranking.exms {
-  margin-top: 70px;
-  padding-bottom: 19px;
-}
-.exams img {
-  width: 431px;
-  max-width: 100%;
-  float: right;
-}
-.ranking p {
-  font-family: "SegoeUI_medium";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 24px;
-  text-transform: capitalize;
-  color: #4f4f4f;
-  padding: 15px 0;
-  margin: 0;
-}
-.care_csl {
-  padding: 91px 0;
-}
-.choose_box img.bookimg {
-  height: 20px;
-  width: 20px;
-}
-.best_edu .exams {
-  display: flex;
-  vertical-align: middle;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
 }
