@@ -174,6 +174,7 @@ function HomePage() {
       {/* Slider 1 */}
       <Carousel
         items={5}
+        page="homePage"
         title1={t("homePage.carousel1.heading.1")}
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
@@ -206,6 +207,7 @@ function HomePage() {
       {/* Slider 2 */}
       <Carousel
         items={5}
+        page="homePage"
         title1={t("homePage.carousel2.heading.1")}
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
@@ -251,6 +253,7 @@ function HomePage() {
 
       <Carousel
         items={5}
+        page="homePage"
         title1={t("homePage.carousel1.heading.1")}
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}

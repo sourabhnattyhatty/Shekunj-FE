@@ -96,9 +96,9 @@ const Courses = (props) => {
       <section className='Srch_sec mb-5'>
         <div className='container'>
           <Row>
-            <Col md={7} xs={12}>
+            <Col md={10} xs={12}>
               <h1>{t("coursesPage.heading.1")}</h1>
-              <p className='courses_para mb-4'>
+              <p className='courses_para mb-5'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Pellentesque eget pretium nisl vitae porttitor aliquet id
                 posuere tortor. Id turpis neque urna elit pellentesque est

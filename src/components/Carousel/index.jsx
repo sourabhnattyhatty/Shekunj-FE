@@ -31,36 +31,6 @@ function Carousel(props) {
     dispatch(allCourses());
   }, [dispatch]);
 
-  const collagesArr = [
-    {
-      img: collage1,
-      title: "University of Delhi",
-    },
-    {
-      img: collage2,
-      title: "Indian Institute of Technology - Kharagpur",
-    },
-    {
-      img: collage3,
-      title: "Narsee Monjee Institute of Management Studies",
-    },
-  ];
-
-  const schoolsArr = [
-    {
-      img: school1,
-      title: "St. Xavier's Collegiate School, Kolkata",
-    },
-    {
-      img: school2,
-      title: "The Asian School, Dehradun",
-    },
-    {
-      img: school3,
-      title: "Delhi Public School, Vasant Kunj, Delhi",
-    },
-  ];
-
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;
     if (props.type === constants.carouselConstant.COURSES) {
@@ -71,14 +41,6 @@ function Carousel(props) {
       divRef.current.innerHTML = `${
         carousel.relative(carousel.current()) + 1
       }/${tests?.length}`;
-    } else if (props.type === constants.carouselConstant.COLLEGES) {
-      divRef.current.innerHTML = `${
-        carousel.relative(carousel.current()) + 1
-      }/3`;
-    } else if (props.type === constants.carouselConstant.SCHOOLS) {
-      divRef.current.innerHTML = `${
-        carousel.relative(carousel.current()) + 1
-      }/3`;
     }
   };
 
@@ -89,9 +51,11 @@ function Carousel(props) {
         <h2>{props.title2}</h2>
       </div>
       <div className='set'>
-        <div className='abc_box'>
-          <div className='abc' ref={divRef}></div>
-        </div>
+        {props.page === "homePage" && (
+          <div className='abc_box'>
+            <div className='abc' ref={divRef}></div>
+          </div>
+        )}
 
         <OwlCarousel
           className={
@@ -128,8 +92,7 @@ function Carousel(props) {
             },
             1920: {
               items: 5,
-              margin: 250
-
+              margin: 250,
             },
           }}
         >
@@ -167,27 +130,6 @@ function Carousel(props) {
                       </button>
                       <h2>{obj?.name}</h2>
                     </div>
-                    {/* <div className='detail-box'>
-                      <div className='type'>
-                        <span className='span2'>
-                          4.5 <img src={star} alt='' />{" "}
-                          <span>({obj?.no_of_student_review})</span>
-                        </span>
-                        <span className='std'>36,995 Students</span>
-                      </div>
-                      <div className='time'>
-                        <p>
-                          <img src={timer} alt='' /> 08 hr 20 mins
-                        </p>
-                        <p>
-                          <img src={list} alt='' /> {obj?.no_of_lectures}{" "}
-                          lecture{obj?.no_of_lectures.length > 1 ? "s" : ""}
-                        </p>
-                        <p>
-                          <img src={level} alt='' /> All level
-                        </p>
-                      </div>
-                    </div> */}
 
                     <hr className='line' />
                     <div className='names'>
@@ -198,8 +140,6 @@ function Carousel(props) {
                     </div>
                   </div>
                 </Link>
-
-                
               ))}
             </>
           )}
@@ -233,53 +173,8 @@ function Carousel(props) {
               ))}
             </>
           )}
-
-          {props.type === constants.carouselConstant.COLLEGES && (
-            <>
-              {collagesArr?.map((obj, ind) => (
-                <div className='item' key={ind}>
-                  <div className='box'>
-                    <div className='slide-img'>
-                      <img alt='' src={obj.img} />
-                      <div className='overlay'></div>
-                    </div>
-
-                    <>
-                      <div className='collage_name'>
-                        <h2>{obj.title}</h2>
-                      </div>
-                    </>
-                  </div>
-                </div>
-              ))}
-            </>
-          )}
-
-          {props.type === constants.carouselConstant.SCHOOLS && (
-            <>
-              {schoolsArr?.map((obj, ind) => (
-                <div className='item' key={ind}>
-                  <div className='box'>
-                    <div className='slide-img'>
-                      <img alt='' src={obj.img} />
-                      <div className='overlay'></div>
-                    </div>
-
-                    <>
-                      <div className='collage_name'>
-                        <h2>{obj.title}</h2>
-                      </div>
-                    </>
-                  </div>
-                </div>
-              ))}
-            </>
-          )}
         </OwlCarousel>
-
-        
       </div>
-      
     </>
   );
 }

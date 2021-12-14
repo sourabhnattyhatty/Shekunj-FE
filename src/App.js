@@ -12,6 +12,8 @@ const Dashboard = React.lazy(() => import("./pages/Dashboard/Dashboard"));
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const About = React.lazy(() => import("./pages/About"));
 const Career = React.lazy(() => import("./pages/Career"));
+const Career1 = React.lazy(() => import("./pages/Career1"));
+const Career2 = React.lazy(() => import("./pages/Career2"));
 const Courses = React.lazy(() => import("./pages/Courses"));
 const CoursesDetails = React.lazy(() => import("./pages/CoursesDetails"));
 const CoursesModule = React.lazy(() => import("./pages/CoursesModule"));
@@ -44,6 +46,8 @@ function App() {
         <Route exact path='/' component={HomePage} />
         <Route exact path='/about' component={About} />
         <Route exact path='/career' component={Career} />
+        <Route exact path='/career1' component={Career1} />
+        <Route exact path='/career2' component={Career2} />
         <Route exact path='/Courses' component={Courses} />
         <Route exact path='/GuidanceBook' component={GuidanceBook} />
         <Route exact path='/CertificatePage' component={CertificatePage} />

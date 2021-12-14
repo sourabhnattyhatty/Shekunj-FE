@@ -331,6 +331,7 @@ hr.line {
   font-size: 18px;
   line-height: 120%;
   color: #000000;
+  margin-bottom: 13px;
 }
 .Srch_sec .filter_added .filter_content{
   font-weight: normal;
@@ -354,4 +355,8 @@ hr.line {
   line-height: 120%;
   text-transform: capitalize;
   color: #D62C79;
+}
+.filter_right_content a {
+  list-style: none;
+  text-decoration: none;
 }

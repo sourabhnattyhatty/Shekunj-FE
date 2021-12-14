@@ -9,6 +9,7 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
+import Slider from '@mui/material/Slider';
 
 import { Header, Footer, ScrollToTop } from "../../components";
 
@@ -23,6 +24,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleCourseModule, startCourse } from "../../store/courses/action";
 import { toast } from "react-toastify";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
+
+const marks = [
+  {
+    value: 0,
+  },
+  {
+    value: 20,
+  },
+  {
+    value: 37,
+  },
+  {
+    value: 100,
+  },
+];
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -61,6 +77,59 @@ const AccordionSummary = styled((props) => (
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderTop: "1px solid rgba(0, 0, 0, .125)",
+}));
+
+const iOSBoxShadow =
+  '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
+
+const IOSSlider = styled(Slider)(({ theme }) => ({
+  color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
+  height: 10,
+  padding: "15px 0",
+  "& .MuiSlider-thumb": {
+    height: 28,
+    width: 28,
+    backgroundColor: "#fff",
+    boxShadow: iOSBoxShadow,
+    "&:focus, &:hover, &.Mui-active": {
+      boxShadow:
+        "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)",
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        boxShadow: iOSBoxShadow,
+      },
+    },
+  },
+  "& .MuiSlider-valueLabel": {
+    fontSize: 12,
+    fontWeight: "normal",
+    top: -6,
+    backgroundColor: "unset",
+    color: theme.palette.text.primary,
+    "&:before": {
+      display: "none",
+    },
+    "& *": {
+      background: "transparent",
+      color: theme.palette.mode === "dark" ? "#fff" : "#000",
+    },
+  },
+  "& .MuiSlider-track": {
+    border: "none",
+  },
+  "& .MuiSlider-rail": {
+    opacity: 0.5,
+    backgroundColor: "#bfbfbf",
+  },
+  "& .MuiSlider-mark": {
+    backgroundColor: "#bfbfbf",
+    height: 13,
+    width: 1,
+    "&.MuiSlider-markActive": {
+      opacity: 1,
+      backgroundColor: "currentColor",
+    },
+  },
 }));
 
 const CourseModule = () => {
@@ -111,17 +180,26 @@ const CourseModule = () => {
             <Col md={12} xs={12} className='text-left mb-5'>
               <div className='circular_progress_module'>
                 <Stack spacing={2} direction='row'>
-                  {" "}
-                  Your Progress
+                  <h2>
+                  Your Progress</h2>
                 </Stack>
-                <LinearProgress variant='determinate' value={30} />
-                <div className='label-progressbar'> 30%</div>
+                {/* <LinearProgress variant='determinate' value={30} />
+                <div className='label-progressbar'> 30%</div> */}
+                <IOSSlider
+                  aria-label='ios slider'
+                  defaultValue={30}
+                  marks={marks}
+                  valueLabelFormat = {value => <div>{value}%</div>}
+                  valueLabelDisplay='on'
+                  disabled
+                />
               </div>
             </Col>
 
             {!show && (
               <div className='tog_set'>
                 <img src={toggle} alt='' onClick={handleAccordian} />
+                <div className='number-bgbox'>1</div>
                 <ul className='pl-2 position-relative'>
                   {courseModulesList
                     .slice(0)
