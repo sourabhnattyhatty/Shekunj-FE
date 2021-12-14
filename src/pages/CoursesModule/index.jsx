@@ -18,7 +18,7 @@ import close from "../../assets/images/Courses/close.png";
 import toggle from "../../assets/images/Courses/toggle.png";
 import "./index.scss";
 import { LinearProgress, Skeleton } from "@mui/material";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleCourseModule, startCourse } from "../../store/courses/action";
 import { toast } from "react-toastify";
@@ -72,7 +72,6 @@ const CourseModule = () => {
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
 
-
   const { id } = useParams();
   const history = useHistory();
   React.useEffect(() => {
@@ -123,6 +122,23 @@ const CourseModule = () => {
             {!show && (
               <div className='tog_set'>
                 <img src={toggle} alt='' onClick={handleAccordian} />
+                <ul className='pl-2 position-relative'>
+                  {courseModulesList
+                    .slice(0)
+                    .reverse()
+                    .map((obj, ind) => (
+                      <li
+                        key={obj?.id}
+                        className={
+                          Number(course?.current_module) > obj?.id
+                            ? "active-accordiantext"
+                            : ""
+                        }
+                      >
+                        1.{obj.id}
+                      </li>
+                    ))}
+                </ul>
               </div>
             )}
             {show && (
@@ -181,7 +197,7 @@ const CourseModule = () => {
               </Col>
             )}
 
-            <Col md={show ? 8 : 12} xs={12}>
+            <Col md={show ? 8 : 11} xs={12}>
               <div className='card_courses'>
                 <div className='card'>
                   {isLoading ? (
@@ -216,7 +232,8 @@ const CourseModule = () => {
                       ))}
                     </>
                   ) : (
-                    <div className="des_dynamic_con"
+                    <div
+                      className='des_dynamic_con'
                       dangerouslySetInnerHTML={{
                         __html: course?.description,
                       }}
