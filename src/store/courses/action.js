@@ -2,6 +2,8 @@ import Cookies from "js-cookie";
 
 import { coursesTypes } from "./types";
 import httpServices from "../../utils/ApiServices";
+import { toast } from "react-toastify";
+import { toasterConfig } from "../../utils";
 
 export const allCourses = () => async (dispatch) => {
   try {
@@ -80,18 +82,45 @@ export const getSimilarCourses = (categoryId) => async (dispatch) => {
     const res = await httpServices.get(
       `/course/category-detail/${categoryId}/`,
     );
-    dispatch({ type: coursesTypes.SIMILAR_COURSES_FINISH, payload: res.data });
+    dispatch({ type: coursesTypes.SIMILAR_COURSES_FINISH, payload: res.data.course_set });
   } catch (error) {
     dispatch({ type: coursesTypes.SIMILAR_COURSES_FAIL });
   }
 };
 
-export const getUserTestQuestion = (id) => async (dispatch) => {
+export const getUserTestQuestion = (id, history) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.TEST_QUEDTION_REQUEST });
     const res = await httpServices.get(`/course/user-test-course/${id}`);
     dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
-  } catch {
+  } catch (err){
+    debugger
+    if(err?.status === 400){
+      history?.push(`/CourseResult`);
+    }else if(err.data.status_code === 500){
+      history?.push(`/CourseResult`);
+      toast.error(err.data.message, toasterConfig)
+    }
     dispatch({ type: coursesTypes.TEST_QUEDTION_FAIL });
   }
 };
+
+export const postAnswer = (values,id) => async(dispatch) => {
+  try{
+    dispatch({type:coursesTypes.POST_ANSWER_REQUEST})
+    await httpServices.post(`/course/user-test-course/${id}`,values);
+    dispatch({type: coursesTypes.POST_ANSWER_FINISH})
+  }catch(err){
+    dispatch({type:coursesTypes.POST_ANSWER_FAIL});
+  }
+}
+
+export const testCountSummery = (id, history) => async (dispatch) => {
+  try{
+    dispatch({type : coursesTypes.QUESTION_COUNT_REQUEST})
+    const res = await httpServices.get(`/course/user-test-count/${id}`);
+    dispatch({type : coursesTypes.QUESTION_COUNT_FINISH, payload :res.data })
+  }catch(err){
+    dispatch({type : coursesTypes.QUESTION_COUNT_FAIL})
+  }
+}

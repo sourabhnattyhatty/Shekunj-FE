@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import { constants } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
-import { allCourses } from "../../store/courses/action";
+import { allCourses, getSimilarCourses } from "../../store/courses/action";
 import { Link } from "react-router-dom";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -11,25 +11,17 @@ import "./index.scss";
 
 import Pro1 from "../../assets/images/P-1.png";
 import Profile from "../../assets/images/testimonial/1.png";
-import star from "../../assets/images/Star 2.png";
-import timer from "../../assets/images/timer.png";
-import list from "../../assets/images/list.png";
-import level from "../../assets/images/level.png";
-import collage1 from "../../assets/images/Courses/collage1.png";
-import collage2 from "../../assets/images/Courses/collage2.png";
-import collage3 from "../../assets/images/Courses/collage3.png";
-import school1 from "../../assets/images/Courses/school1.png";
-import school2 from "../../assets/images/Courses/school2.png";
-import school3 from "../../assets/images/Courses/school3.png";
 
 function Carousel(props) {
   const divRef = React.useRef();
-  const { courses, tests, similarCourses } = useSelector((state) => state.coursesReducer);
+  const { courses, course, tests, similarCourses } = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(allCourses());
-  }, [dispatch]);
+    dispatch(getSimilarCourses(course?.category_id));
+  }, [dispatch,course?.category_id]);
 
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;
@@ -98,7 +90,7 @@ function Carousel(props) {
         >
           {props.page === "courseDetail" && (
             <>
-              {similarCourses?.course_set?.map((course) => (
+              {similarCourses?.map((course) => (
                 <>
                   <div key={course?.id} className='boxnew'>
                     <div className='slide-img1'>

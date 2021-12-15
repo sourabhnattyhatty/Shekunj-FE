@@ -129,7 +129,7 @@ const CourseModule = () => {
   const { id } = useParams();
   const history = useHistory();
 
-  const progress = Math.round(100 / courseModulesList.length);
+  const progress = Math.round(100 / courseModulesList.length );
 
   React.useEffect(() => {
     if (detect.isMobile) {
@@ -145,7 +145,7 @@ const CourseModule = () => {
 
   // React.useEffect(() => {
   //   const page = Cookies.get("module");
-  //   dispatch(startCourse(id,page,((page-1)*progress)));
+  //   dispatch(startCourse(id,page,(page*progress)));
   // }, [course.progress]);
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -168,13 +168,13 @@ const CourseModule = () => {
     dispatch(startCourse(id, page, p, true));
   };
 
-  const renderProgress = (count) => {
+  const renderProgress = (count = 0) => {
     return (
       <IOSSlider
         aria-label='ios slider'
         value={count}
         valueLabelFormat={(value) => <div>{value}%</div>}
-        valueLabelDisplay='on'
+        valueLabelDisplay='auto'
         disabled
       />
     );

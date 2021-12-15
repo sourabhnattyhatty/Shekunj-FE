@@ -10,6 +10,7 @@ const initialState = {
   moduleprogress: 0,
   similarCourses: [],
   question: {},
+  questionCount : {}
 };
 
 export const coursesReducer = (state = initialState, action) => {
@@ -132,6 +133,43 @@ export const coursesReducer = (state = initialState, action) => {
         error: null,
       };
     case coursesTypes.TEST_QUEDTION_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case coursesTypes.POST_ANSWER_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.POST_ANSWER_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+      };
+    case coursesTypes.POST_ANSWER_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case coursesTypes.QUESTION_COUNT_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.QUESTION_COUNT_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        questionCount : action.payload,
+        error: null,
+      };
+    case coursesTypes.QUESTION_COUNT_FAIL:
       return {
         ...state,
         isLoading: false,

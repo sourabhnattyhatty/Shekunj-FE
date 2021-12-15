@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSimilarCourses, singleCourseDetails } from "../../store/courses/action";
+import {  singleCourseDetails } from "../../store/courses/action";
 
 import { Header, Footer, ScrollToTop, SEO, Carousel } from "../../components";
 
@@ -18,18 +18,13 @@ const CourseDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const { course, similarCourses } = useSelector((state) => state.coursesReducer);
+  const { course } = useSelector((state) => state.coursesReducer);
 
   useEffect(() => {
     dispatch(singleCourseDetails(id));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [id, dispatch]);
 
-  useEffect(() => {
-    if (course?.category_id) {
-      dispatch(getSimilarCourses(course?.category_id));
-    }
-  }, [course, dispatch]);
 
   return (
     <div>

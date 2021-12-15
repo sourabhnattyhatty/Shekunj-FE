@@ -3,6 +3,7 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
+  Skeleton,
 } from "@mui/material";
 import React from "react";
 import Stack from "@mui/material/Stack";
@@ -19,23 +20,53 @@ import "../CoursesModule/index.scss";
 
 import time from "../../assets/images/Courses/time.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserTestQuestion } from "../../store/courses/action";
+import {
+  getUserTestQuestion,
+  postAnswer,
+  testCountSummery,
+} from "../../store/courses/action";
 
 function CourseTest() {
+  const [answer, setAnswer] = React.useState();
+  const [toggle, setToggle] = React.useState(true);
   const history = useHistory();
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
   const { id } = useParams();
-  const { question } = useSelector((state) => state.coursesReducer);
-  console.log(question);
+  const { question, questionCount, isLoading } = useSelector(
+    (state) => state.coursesReducer,
+  );
 
   React.useEffect(() => {
-    dispatch(getUserTestQuestion(id));
+    dispatch(getUserTestQuestion(id, history));
+    dispatch(testCountSummery(id, history));
     if (detect.isMobile) {
       toast.error("This page is not availble in mobile view.");
       history.push("/");
     }
   }, [history, detect.isMobile, id, dispatch]);
+
+  React.useEffect(() => {
+    dispatch(testCountSummery(id, history));
+  },[dispatch,toggle])
+
+  const handleNextQuestion = () => {
+    const data = {
+      answer,
+      course_test: question?.id,
+    };
+    if (answer) {
+      dispatch(postAnswer(data, id));
+      dispatch(getUserTestQuestion(id));
+      setToggle((prev) => !prev);
+    } else {
+      toast.error("Choose correct option");
+    }
+  };
+
+  const handlePrevQuestion = () => {
+    dispatch(getUserTestQuestion(id));
+  };
 
   return (
     <div>
@@ -66,9 +97,13 @@ function CourseTest() {
           <Col md={8} xs={12}>
             <div className='que_box'>
               <h2>Question</h2>
-              <p>
-                {question?.id}. {question?.question}
-              </p>
+              {isLoading ? (
+                <Skeleton></Skeleton>
+              ) : (
+                <p>
+                  {question?.id}. {question?.question}
+                </p>
+              )}
               {question && (
                 <RadioGroup aria-label='gender' name='radio-buttons-group'>
                   {question?.optionA && (
@@ -76,6 +111,7 @@ function CourseTest() {
                       value={question?.optionA}
                       control={<Radio />}
                       label={question?.optionA}
+                      onChange={(e) => setAnswer(e.target.value)}
                     />
                   )}
                   {question?.optionB && (
@@ -83,6 +119,7 @@ function CourseTest() {
                       value={question?.optionB}
                       control={<Radio />}
                       label={question?.optionB}
+                      onChange={(e) => setAnswer(e.target.value)}
                     />
                   )}
                   {question?.optionC && (
@@ -90,6 +127,7 @@ function CourseTest() {
                       value={question?.optionC}
                       control={<Radio />}
                       label={question?.optionC}
+                      onChange={(e) => setAnswer(e.target.value)}
                     />
                   )}
                   {question?.optionD && (
@@ -97,6 +135,7 @@ function CourseTest() {
                       value={question?.optionD}
                       control={<Radio />}
                       label={question?.optionD}
+                      onChange={(e) => setAnswer(e.target.value)}
                     />
                   )}
                 </RadioGroup>
@@ -106,11 +145,21 @@ function CourseTest() {
             <div className='prev_next_btn'>
               <Row>
                 <Col md={6} xs={6}>
-                  <button className='back_button'>back</button>
+                  <button
+                    className='back_button'
+                    onClick={() => handlePrevQuestion()}
+                  >
+                    back
+                  </button>
                 </Col>
 
                 <Col md={6} xs={6} className='text-right'>
-                  <button className='next_button'>next</button>
+                  <button
+                    className='next_button'
+                    onClick={() => handleNextQuestion()}
+                  >
+                    next
+                  </button>
                 </Col>
               </Row>
             </div>
@@ -119,72 +168,21 @@ function CourseTest() {
           <Col md={4} xs={12}>
             <div className='que_status'>
               <h2>Questions Status</h2>
-              <div className='que_num' id='col_gre'>
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
-                <p>6</p>
-                <p>7</p>
-                <p>8</p>
-                <p>9</p>
-              </div>
-              <div className='que_num' id='col_grey'>
-                <p>10</p>
-                <p>11</p>
-                <p>12</p>
-                <p>13</p>
-                <p>14</p>
-                <p>15</p>
-                <p>16</p>
-                <p>17</p>
-                <p>18</p>
-              </div>
-              <div className='que_num' id='col_grey'>
-                <p>19</p>
-                <p>20</p>
-                <p>21</p>
-                <p>22</p>
-                <p>23</p>
-                <p>24</p>
-                <p>25</p>
-                <p>26</p>
-                <p>27</p>
-              </div>
-              <div className='que_num' id='col_grey'>
-                <p>28</p>
-                <p>29</p>
-                <p>30</p>
-                <p>31</p>
-                <p>32</p>
-                <p>33</p>
-                <p>34</p>
-                <p>35</p>
-                <p>36</p>
-              </div>
-              <div className='que_num' id='col_grey'>
-                <p>37</p>
-                <p>38</p>
-                <p>39</p>
-                <p>40</p>
-                <p>41</p>
-                <p>42</p>
-                <p>43</p>
-                <p>44</p>
-                <p>45</p>
-              </div>
-              <div className='que_num' id='col_grey'>
-                <p>46</p>
-                <p>47</p>
-                <p>48</p>
-                <p>49</p>
-                <p>50</p>
-                <span> </span>
-                <span> </span>
-                <span> </span>
-                <span> </span>
-                <span> </span>
+              <div className='que_num'>
+                {[...Array(questionCount?.total_course_que).keys()].map(
+                  (obj) => (
+                    <p
+                      id={
+                        obj+1 <= questionCount?.user_course_test_count
+                        
+                          ? "col_gre"
+                          : "col_grey"
+                      }
+                    >
+                      {obj + 1}
+                    </p>
+                  ),
+                )}
               </div>
             </div>
 
