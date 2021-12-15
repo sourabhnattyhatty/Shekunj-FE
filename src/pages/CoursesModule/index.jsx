@@ -26,8 +26,6 @@ import { toast } from "react-toastify";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import Cookies from "js-cookie";
 
-
-
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -131,9 +129,7 @@ const CourseModule = () => {
   const { id } = useParams();
   const history = useHistory();
 
-  const progress = Math.round(100 / courseModulesList.length);
-
-  console.log("moduleprogress", moduleprogress)
+  const progress = Math.round(100 / courseModulesList.length || 0);
 
   React.useEffect(() => {
     if (detect.isMobile) {
@@ -147,10 +143,10 @@ const CourseModule = () => {
     dispatch(getSingleCourseModule(id));
   }, [dispatch, id]);
 
-  React.useEffect(() => {
-    const page = Cookies.get("module");
-    dispatch(startCourse(id,page,((page-1)*progress)));
-  }, [course.progress]);
+  // React.useEffect(() => {
+  //   const page = Cookies.get("module");
+  //   dispatch(startCourse(id,page,((page-1)*progress)));
+  // }, [course.progress]);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -161,15 +157,27 @@ const CourseModule = () => {
   };
 
   const handlePrevModule = (page) => {
-    Cookies.set("module",page)
+    Cookies.set("module", page);
     const p = (page - 1) * progress;
-    dispatch(startCourse(id, page, p));
+    dispatch(startCourse(id, page, p, true));
   };
 
   const handleNextModule = (page) => {
-    Cookies.set("module",page)
+    Cookies.set("module", page);
     const p = (page - 1) * progress;
-    dispatch(startCourse(id, page, p));
+    dispatch(startCourse(id, page, p, true));
+  };
+
+  const renderProgress = (count) => {
+    return (
+      <IOSSlider
+        aria-label='ios slider'
+        value={count}
+        valueLabelFormat={(value) => <div>{value}%</div>}
+        valueLabelDisplay='on'
+        disabled
+      />
+    );
   };
 
   return (
@@ -181,16 +189,17 @@ const CourseModule = () => {
             <Col md={12} xs={12} className='text-left mb-5'>
               <div className='circular_progress_module'>
                 <Stack spacing={2} direction='row'>
-                  <h2>Your Progress</h2>
+                  <h2>Your Progress {moduleprogress}</h2>
                 </Stack>
 
-                <IOSSlider
+                {/* <IOSSlider
                   aria-label='ios slider'
                   defaultValue={moduleprogress}
                   valueLabelFormat={(value) => <div>{value}%</div>}
                   valueLabelDisplay='on'
                   disabled
-                />
+                /> */}
+                {renderProgress(moduleprogress)}
               </div>
             </Col>
 

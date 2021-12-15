@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 import { coursesTypes } from "./types";
 import httpServices from "../../utils/ApiServices";
 
@@ -35,32 +37,51 @@ export const singleCourseDetails = (id) => async (dispatch) => {
   }
 };
 
-export const startCourse = (id,page=1,p=0) => async (dispatch) => {
-  try {
-    dispatch({ type: coursesTypes.COURSE_REQUEST });
-    const res = await httpServices.get(`/course/start-user-course/${id}?page=${page}&progress=${p}`);
-    dispatch({ type: coursesTypes.COURSE_FINISH, payload: res.data, progress : Number(res.data.progress) });
-  } catch (error) {
-    dispatch({ type: coursesTypes.COURSE_FAIL });
-  }
-};
+export const startCourse =
+  (id, page = 1, progress = 0, onLoad = false) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({ type: coursesTypes.COURSE_REQUEST });
+      const currentModule = Cookies.get("module");
+      if (currentModule && !onLoad) {
+        const singleCourse = await dispatch(getSingleCourseModule(id));
+        if (singleCourse && singleCourse.length > 0) {
+          progress = Math.round(100 / singleCourse.length || 0);
+        }
+      }
+      const res = await httpServices.get(
+        `/course/start-user-course/${id}?page=${page}&progress=${progress}`,
+      );
+      dispatch({
+        type: coursesTypes.COURSE_FINISH,
+        payload: res.data,
+        progress: res.data.progress ? parseInt(res.data.progress, 10) : 0,
+      });
+    } catch (error) {
+      dispatch({ type: coursesTypes.COURSE_FAIL });
+    }
+  };
 
-export const getSingleCourseModule = (id) => async(dispatch) => {
-  try{
+export const getSingleCourseModule = (id) => async (dispatch) => {
+  try {
     dispatch({ type: coursesTypes.ACCORDIAN_LIST_REQUEST });
     const res = await httpServices.get(`/course/course-module-list/${id}/`);
-    dispatch({type:coursesTypes.ACCORDIAN_LIST_FINISH, payload : res.data});
-  } catch(error) {
+    dispatch({ type: coursesTypes.ACCORDIAN_LIST_FINISH, payload: res.data });
+    return res?.data;
+  } catch (error) {
     dispatch({ type: coursesTypes.ACCORDIAN_LIST_FAIL });
+    return error;
   }
-}
+};
 
 export const getSimilarCourses = (categoryId) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.SIMILAR_COURSES_REQUEST });
-    const res = await httpServices.get(`/course/category-detail/${categoryId}/`);
-    dispatch({ type:coursesTypes.SIMILAR_COURSES_FINISH, payload : res.data });
-  } catch(error) {
+    const res = await httpServices.get(
+      `/course/category-detail/${categoryId}/`,
+    );
+    dispatch({ type: coursesTypes.SIMILAR_COURSES_FINISH, payload: res.data });
+  } catch (error) {
     dispatch({ type: coursesTypes.SIMILAR_COURSES_FAIL });
   }
-}
+};
