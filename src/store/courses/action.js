@@ -54,3 +54,13 @@ export const getSingleCourseModule = (id) => async(dispatch) => {
     dispatch({ type: coursesTypes.ACCORDIAN_LIST_FAIL });
   }
 }
+
+export const getSimilarCourses = (categoryId) => async (dispatch) => {
+  try {
+    dispatch({ type: coursesTypes.SIMILAR_COURSES_REQUEST });
+    const res = await httpServices.get(`/course/category-detail/${categoryId}/`);
+    dispatch({ type:coursesTypes.SIMILAR_COURSES_FINISH, payload : res.data });
+  } catch(error) {
+    dispatch({ type: coursesTypes.SIMILAR_COURSES_FAIL });
+  }
+}

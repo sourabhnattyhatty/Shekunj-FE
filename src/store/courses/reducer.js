@@ -8,6 +8,7 @@ const initialState = {
   courseModulesList: [],
   error: null,
   moduleprogress: 0,
+  similarCourses: []
 };
 
 export const coursesReducer = (state = initialState, action) => {
@@ -90,6 +91,27 @@ export const coursesReducer = (state = initialState, action) => {
       };
       
     case coursesTypes.ACCORDIAN_LIST_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case coursesTypes.SIMILAR_COURSES_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.SIMILAR_COURSES_FINISH:
+      debugger
+      return {
+        ...state,
+        isLoading: false,
+        similarCourses: action.payload,
+        error: null,
+      };
+      
+    case coursesTypes.SIMILAR_COURSES_FAIL:
       return {
         ...state,
         isLoading: false,

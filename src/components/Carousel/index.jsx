@@ -24,7 +24,7 @@ import school3 from "../../assets/images/Courses/school3.png";
 
 function Carousel(props) {
   const divRef = React.useRef();
-  const { courses, tests } = useSelector((state) => state.coursesReducer);
+  const { courses, tests, similarCourses } = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -98,16 +98,19 @@ function Carousel(props) {
         >
           {props.page === "courseDetail" && (
             <>
-              <div className='boxnew'>
-                <div className='slide-img1'>
-                  <img alt='' src={Pro1} />
-                  <div className='overlay'></div>
-                </div>
-
-                <div className='tag_btn'>
-                  <p>Adobe photoshop training:From beginner to PRO</p>
-                </div>
-              </div>
+              {similarCourses?.course_set?.map((course) => (
+                <>
+                  <div key={course?.id} className='boxnew'>
+                    <div className='slide-img1'>
+                      <img alt='' src={course?.file} />
+                      <div className='overlay'></div>
+                    </div>
+                    <div className='tag_btn'>
+                      <p>{course?.name}</p>
+                    </div>
+                  </div>
+                </>
+              ))}
             </>
           )}
           {props.type === constants.carouselConstant.COURSES && (
