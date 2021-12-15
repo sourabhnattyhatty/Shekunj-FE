@@ -1,10 +1,15 @@
-import { Container } from "@mui/material";
+import {
+  Container,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 import React from "react";
 import Stack from "@mui/material/Stack";
 import { Row, Col } from "react-bootstrap";
 import { LinearProgress } from "@mui/material";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 import { Header, Footer, ScrollToTop } from "../../components";
@@ -13,18 +18,24 @@ import "./index.scss";
 import "../CoursesModule/index.scss";
 
 import time from "../../assets/images/Courses/time.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserTestQuestion } from "../../store/courses/action";
 
 function CourseTest() {
-
   const history = useHistory();
+  const dispatch = useDispatch();
   const detect = useDeviceDetect();
+  const { id } = useParams();
+  const { question } = useSelector((state) => state.coursesReducer);
+  console.log(question);
 
   React.useEffect(() => {
-    if(detect.isMobile){
-      toast.error("This page is not availble in mobile view.")
-      history.push("/")
+    dispatch(getUserTestQuestion(id));
+    if (detect.isMobile) {
+      toast.error("This page is not availble in mobile view.");
+      history.push("/");
     }
-  }, [history, detect]);
+  }, [history, detect.isMobile, id, dispatch]);
 
   return (
     <div>
@@ -56,33 +67,50 @@ function CourseTest() {
             <div className='que_box'>
               <h2>Question</h2>
               <p>
-                13. Which state has topped the highest employability rate, as
-                per latest India Skills Report 2019
+                {question?.id}. {question?.question}
               </p>
-              <ul>
-                <li>Andhra Pradesh</li>
-                <li>Karnataka</li>
-                <li>Tamil Nadu</li>
-                <li>Rajasthan</li>
-              </ul>
+              {question && (
+                <RadioGroup aria-label='gender' name='radio-buttons-group'>
+                  {question?.optionA && (
+                    <FormControlLabel
+                      value={question?.optionA}
+                      control={<Radio />}
+                      label={question?.optionA}
+                    />
+                  )}
+                  {question?.optionB && (
+                    <FormControlLabel
+                      value={question?.optionB}
+                      control={<Radio />}
+                      label={question?.optionB}
+                    />
+                  )}
+                  {question?.optionC && (
+                    <FormControlLabel
+                      value={question?.optionC}
+                      control={<Radio />}
+                      label={question?.optionC}
+                    />
+                  )}
+                  {question?.optionD && (
+                    <FormControlLabel
+                      value={question?.optionD}
+                      control={<Radio />}
+                      label={question?.optionD}
+                    />
+                  )}
+                </RadioGroup>
+              )}
             </div>{" "}
             <br />
             <div className='prev_next_btn'>
               <Row>
                 <Col md={6} xs={6}>
                   <button className='back_button'>back</button>
-                  {/* <p className='prev_icon'>
-                          <img src={Previous} className='mr-2' alt='...' />{" "}
-                          Previous
-                        </p> */}
                 </Col>
 
                 <Col md={6} xs={6} className='text-right'>
                   <button className='next_button'>next</button>
-                  {/* <p className='prev_icon'>
-                          Next
-                          <img src={Next} className='ml-2' alt='...' />{" "}
-                        </p> */}
                 </Col>
               </Row>
             </div>

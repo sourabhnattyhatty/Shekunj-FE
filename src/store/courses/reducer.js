@@ -8,7 +8,8 @@ const initialState = {
   courseModulesList: [],
   error: null,
   moduleprogress: 0,
-  similarCourses: []
+  similarCourses: [],
+  question: {},
 };
 
 export const coursesReducer = (state = initialState, action) => {
@@ -24,7 +25,7 @@ export const coursesReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         courses: action.payload,
-        tests : action.payload2,
+        tests: action.payload2,
         error: null,
       };
     case coursesTypes.COURSES_FAIL:
@@ -34,7 +35,7 @@ export const coursesReducer = (state = initialState, action) => {
         error: action.payload,
       };
 
-      case coursesTypes.TESTS_REQUEST:
+    case coursesTypes.TESTS_REQUEST:
       return {
         ...state,
         isLoading: true,
@@ -66,9 +67,9 @@ export const coursesReducer = (state = initialState, action) => {
         isLoading: false,
         course: action.payload,
         error: null,
-        moduleprogress : action.progress
+        moduleprogress: action.progress,
       };
-      
+
     case coursesTypes.COURSE_FAIL:
       return {
         ...state,
@@ -76,7 +77,7 @@ export const coursesReducer = (state = initialState, action) => {
         error: action.payload,
       };
 
-      case coursesTypes.ACCORDIAN_LIST_REQUEST:
+    case coursesTypes.ACCORDIAN_LIST_REQUEST:
       return {
         ...state,
         isLoading: true,
@@ -89,7 +90,7 @@ export const coursesReducer = (state = initialState, action) => {
         courseModulesList: action.payload,
         error: null,
       };
-      
+
     case coursesTypes.ACCORDIAN_LIST_FAIL:
       return {
         ...state,
@@ -103,15 +104,34 @@ export const coursesReducer = (state = initialState, action) => {
         error: null,
       };
     case coursesTypes.SIMILAR_COURSES_FINISH:
-      debugger
       return {
         ...state,
         isLoading: false,
         similarCourses: action.payload,
         error: null,
       };
-      
+
     case coursesTypes.SIMILAR_COURSES_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+
+    case coursesTypes.TEST_QUEDTION_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.TEST_QUEDTION_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        question: action.payload,
+        error: null,
+      };
+    case coursesTypes.TEST_QUEDTION_FAIL:
       return {
         ...state,
         isLoading: false,

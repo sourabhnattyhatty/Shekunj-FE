@@ -129,7 +129,7 @@ const CourseModule = () => {
   const { id } = useParams();
   const history = useHistory();
 
-  const progress = Math.round(100 / courseModulesList.length || 0);
+  const progress = Math.round(100 / courseModulesList.length);
 
   React.useEffect(() => {
     if (detect.isMobile) {
@@ -180,6 +180,11 @@ const CourseModule = () => {
     );
   };
 
+  const handleFinish = () => {
+    Cookies.remove("module");
+    history.push(`/CoursesTest/${id}`);
+  };
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -189,7 +194,7 @@ const CourseModule = () => {
             <Col md={12} xs={12} className='text-left mb-5'>
               <div className='circular_progress_module'>
                 <Stack spacing={2} direction='row'>
-                  <h2>Your Progress {moduleprogress}</h2>
+                  <h2>Your Progress</h2>
                 </Stack>
 
                 {/* <IOSSlider
@@ -341,7 +346,7 @@ const CourseModule = () => {
                         {course?.next_module === null ? (
                           <button
                             className='next_button'
-                            onClick={() => history.push("/CoursesTest")}
+                            onClick={() => handleFinish()}
                           >
                             finish
                           </button>

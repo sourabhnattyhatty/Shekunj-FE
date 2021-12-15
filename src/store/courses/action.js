@@ -85,3 +85,13 @@ export const getSimilarCourses = (categoryId) => async (dispatch) => {
     dispatch({ type: coursesTypes.SIMILAR_COURSES_FAIL });
   }
 };
+
+export const getUserTestQuestion = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: coursesTypes.TEST_QUEDTION_REQUEST });
+    const res = await httpServices.get(`/course/user-test-course/${id}`);
+    dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
+  } catch {
+    dispatch({ type: coursesTypes.TEST_QUEDTION_FAIL });
+  }
+};
