@@ -5,14 +5,28 @@ import httpServices from "../../utils/ApiServices";
 import { toast } from "react-toastify";
 import { toasterConfig } from "../../utils";
 
+export const allHomeCourses = () => async (dispatch) => {
+  try {
+    dispatch({ type: coursesTypes.HOME_COURSE_REQUEST });
+    const res = await httpServices.get("/course/home/");
+    debugger;
+    dispatch({
+      type: coursesTypes.HOME_COURSE_FINISH,
+      payload: res.data.popular_course,
+      payload2: res.data.popular_career_test,
+    });
+  } catch (error) {
+    dispatch({ type: coursesTypes.HOME_COURSE_FAIL });
+  }
+};
+
 export const allCourses = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.COURSES_REQUEST });
-    const res = await httpServices.get("/course/home/");
+    const res = await httpServices.get("/course/list/");
     dispatch({
       type: coursesTypes.COURSES_FINISH,
-      payload: res.data.popular_course,
-      payload2: res.data.popular_career_test,
+      payload: res.results,
     });
   } catch (error) {
     dispatch({ type: coursesTypes.COURSES_FAIL });
@@ -98,11 +112,13 @@ export const getUserTestQuestion =
       let res;
       if (module) {
         res = await httpServices.get(`/course/user-test-course/${id}?test_id=${module}`);
+        debugger
       } else {
         res = await httpServices.get(`/course/user-test-course/${id}`);
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
+      debugger
       if (err?.status === 400) {
         history?.push(`/CourseResult`);
       } else if (err.data.status_code === 500) {

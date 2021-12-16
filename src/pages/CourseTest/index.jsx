@@ -12,6 +12,7 @@ import { LinearProgress } from "@mui/material";
 import { toast } from "react-toastify";
 import { useHistory, useParams } from "react-router-dom";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
+import Slider from "@mui/material/Slider";
 
 import { Header, Footer, ScrollToTop } from "../../components";
 
@@ -25,6 +26,62 @@ import {
   postAnswer,
   testCountSummery,
 } from "../../store/courses/action";
+import { styled } from "@mui/material/styles";
+
+const iOSBoxShadow =
+  "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
+
+const IOSSlider = styled(Slider)(({ theme }) => ({
+  color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
+  marginTop: 20,
+  height: 10,
+  padding: "15px 0",
+  "& .MuiSlider-thumb": {
+    height: 28,
+    width: 28,
+    backgroundColor: "#fff",
+    boxShadow: iOSBoxShadow,
+    "&:focus, &:hover, &.Mui-active": {
+      boxShadow:
+        "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)",
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        boxShadow: iOSBoxShadow,
+      },
+    },
+  },
+  "& .MuiSlider-valueLabel": {
+    fontSize: 12,
+    fontWeight: "normal",
+    top: -6,
+    backgroundColor: "unset",
+    color: theme.palette.text.primary,
+    "&:before": {
+      display: "none",
+    },
+    "& *": {
+      background: "transparent",
+      color: theme.palette.mode === "dark" ? "#fff" : "#000",
+    },
+  },
+  "& .MuiSlider-track": {
+    border: "none",
+  },
+  "& .MuiSlider-rail": {
+    opacity: 0.5,
+    backgroundColor: "#bfbfbf",
+  },
+  "& .MuiSlider-mark": {
+    backgroundColor: "#bfbfbf",
+    height: 13,
+    width: 1,
+    "&.MuiSlider-markActive": {
+      opacity: 1,
+      backgroundColor: "currentColor",
+    },
+  },
+}));
+
 
 function CourseTest() {
   const [answer, setAnswer] = React.useState();
@@ -51,13 +108,13 @@ function CourseTest() {
   }, [dispatch, toggle]);
 
   const handleNextQuestion = () => {
-    console.log("HJGKIHUVKHGV", questionCount?.user_course_test_count + 1);
     const data = {
       answer,
       course_test: question?.id,
     };
     if (answer) {
       dispatch(postAnswer(data, id));
+      setAnswer('');
       dispatch(getUserTestQuestion(id, history, question?.next_module));
       setToggle((prev) => !prev);
     } else {
@@ -69,6 +126,18 @@ function CourseTest() {
 
   const handlePrevQuestion = () => {
     dispatch(getUserTestQuestion(id, history, question?.prev_module));
+  };
+
+  const renderProgress = (count = 0) => {
+    return (
+      <IOSSlider
+        aria-label='ios slider'
+        value={count}
+        valueLabelFormat={(value) => <div>{value}%</div>}
+        valueLabelDisplay='on'
+        disabled
+      />
+    );
   };
 
   return (
@@ -83,8 +152,9 @@ function CourseTest() {
                   {" "}
                   <h3>Your Progress</h3>
                 </Stack>
-                <LinearProgress variant='determinate' value={20} />
-                <div className='label-progressbar'> 20%</div>
+                {/* <LinearProgress variant='determinate' value={20} />
+                <div className='label-progressbar'> 20%</div> */}
+                {renderProgress(10)}
               </div>
             </Col>
           </Row>

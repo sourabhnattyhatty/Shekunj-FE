@@ -11,11 +11,32 @@ const initialState = {
   similarCourses: [],
   question: {},
   questionCount: {},
-  successStories : []
+  successStories: [],
+  allCourses: [],
 };
 
 export const coursesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case coursesTypes.HOME_COURSE_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.HOME_COURSE_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        courses: action.payload,
+        tests: action.payload2,
+        error: null,
+      };
+    case coursesTypes.HOME_COURSE_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
     case coursesTypes.COURSES_REQUEST:
       return {
         ...state,
@@ -26,8 +47,7 @@ export const coursesReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        courses: action.payload,
-        tests: action.payload2,
+        allCourses: action.payload,
         error: null,
       };
     case coursesTypes.COURSES_FAIL:
@@ -36,7 +56,6 @@ export const coursesReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload,
       };
-
     case coursesTypes.TESTS_REQUEST:
       return {
         ...state,

@@ -27,7 +27,7 @@ import SimpleAccordion from "./Accordian";
 
 const Courses = (props) => {
   const { t } = useTranslation();
-  const { courses } = useSelector((state) => state.coursesReducer);
+  const state = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -143,21 +143,23 @@ const Courses = (props) => {
               </div>
               <div className='filter_right_content'>
                 <div className='row'>
-                  {courses?.map((obj) => (
+                  {state?.allCourses?.map((obj) => (
                     <Link
                       to={`/CoursesDetails/${obj.id}`}
                       className='col-md-6'
-                      key={obj.id}
+                      key={obj?.id}
                     >
                       <div className='box box_hov'>
                         <div className='slide-img'>
-                          <img alt='' src={Pro1} />
+                          <img alt='' src={obj?.image} />
                           <div className='overlay'></div>
                         </div>
 
                         <div className='tag_btn'>
-                          <button className='btn btn-info'>Design</button>
-                          <h6>{obj.name}</h6>
+                          <button className='btn btn-info'>
+                            {obj?.category_name}
+                          </button>
+                          <h6>{obj?.name}</h6>
                         </div>
 
                         <hr className='line' />
