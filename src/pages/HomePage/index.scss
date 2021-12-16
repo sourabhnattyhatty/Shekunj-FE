@@ -621,12 +621,8 @@ ul.star {
     font-size: 28px;
     line-height: 40px;
   }
- 
-  .top_bar_btn.d-inline-block {
-    display: flex !important;
-    width: 100%;
-    justify-content: space-between;
-  }
+
+
   #myCarousel .carousel-item h4 {
     font-size: 30px;
   }
@@ -691,23 +687,7 @@ ul.star {
     width: 100%;
     right: 0px;
   }
-  header {
-    position: relative;
-  }
-  span.navbar-toggler-icon {
-    background-image: url("../../assets/images/menu.png");
-    background-repeat: no-repeat;
-  }
-  button.navbar-toggler {
-    position: absolute;
-    z-index: 9999999999999999999999;
-    top: 20px;
-    right: 20px;
-  }
-  nav.navbar.navbar-expand-md {
-    position: inherit;
-    padding: 0;
-  }
+ 
   #myCarousel .slick-prev:before {
     display: none;
   }
@@ -753,12 +733,11 @@ ul.star {
   }
 }
 
-
 @media screen and (max-width: 1080px) {
-#myCarousel .carousel-item {
-  height: 60vh;
-}
-#myCarousel .carousel-item h4 {
-  font-size: 32px;
-}
+  #myCarousel .carousel-item {
+    height: 60vh;
+  }
+  #myCarousel .carousel-item h4 {
+    font-size: 32px;
+  }
 }

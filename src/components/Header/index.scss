@@ -133,6 +133,9 @@ header {
   transition: 0.25s ease;
   transition-timing-function: linear;
 }
+.sign_in p {
+  display: none;
+}
 .other_head .MuiButton-text.MuiButton-root:hover {
   background: #ec498a;
   color: #fff !important;
@@ -242,6 +245,10 @@ header {
 }
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
   transform: rotate(45deg);
+}
+
+#custom-search-input {
+  display: none !important;
 }
 }
 @media screen and (max-width: 767px){

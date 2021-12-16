@@ -201,7 +201,8 @@ span.MuiSlider-rail {
   font-size: 16px;
   line-height: 24px;
   color: #000000;
-  padding: 10px 15px;
+  padding: 0px 15px;
+  margin: 0;
 }
 .accordion_box .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium {
   display: none;
@@ -241,11 +242,11 @@ span.MuiSlider-rail {
   .MuiPaper-root.MuiPaper-elevation
   .MuiAccordionSummary-content
   .MuiTypography-root {
+  font-family: Poppins;
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
   color: #000000;
-  font-family: SegoeUI_medium;
 }
 .accordion_box .MuiAccordionDetails-root {
   border: none;
@@ -270,8 +271,8 @@ span.MuiSlider-rail {
 }
 .prev_next_btn .back_button {
   border-radius: 2px;
-  background: #FFFFFF;
-  border: 1px solid #EC498A;
+  background: #ffffff;
+  border: 1px solid #ec498a;
   box-sizing: border-box;
   width: 190px;
   height: 50px;
@@ -282,10 +283,10 @@ span.MuiSlider-rail {
   line-height: 16px;
   text-align: center;
   text-transform: capitalize;
-  color: #EC498A;
+  color: #ec498a;
 }
 .prev_next_btn .back_button:hover {
-  background-color: #EC498A;
+  background-color: #ec498a;
   color: #fff;
   transition: 1s;
   cursor: pointer;
@@ -306,11 +307,10 @@ span.MuiSlider-rail {
   text-transform: capitalize;
 }
 .prev_next_btn .next_button:hover {
-  border: 1px solid #EC498A;
+  border: 1px solid #ec498a;
   background-color: transparent;
   transition: 1s;
-  color: #EC498A;
-
+  color: #ec498a;
 }
 .prev_next_btn .text-right a {
   background: #ec498a;
@@ -330,6 +330,8 @@ span.MuiSlider-rail {
 .close_btn {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
 }
 .close_btn img {
   object-fit: contain;
@@ -409,6 +411,48 @@ span.MuiSlider-mark {
 }
 span.MuiSlider-mark.MuiSlider-markActive {
   display: none;
+}
+.owl-nav button.owl-prev::before {
+  content: "";
+  background-image: url("../../assets/icons/arrow_left.png");
+  border: 1px solid #dadada;
+  width: 44px;
+  height: 44px;
+  background-size: auto;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  padding: 20px;
+  left: 0px;
+  top: 0%;
+  right: 0;
+  margin: auto;
+}
+.owl-nav button.owl-next::before {
+  content: "";
+  background-image: url("../../assets/icons/arrow_right.png");
+  border: 1px solid #dadada;
+  width: 44px;
+  height: 44px;
+  background-size: auto;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  padding: 20px;
+  left: 0px;
+  top: 70px;
+  right: 0;
+  margin: auto;
+}
+
+.owl-carousel .owl-item img {
+  max-width: 100%;
+  width: auto;
+}
+.owl-carousel .owl-item img {
+  display: inline-block;
 }
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
   .prev_next_btn {

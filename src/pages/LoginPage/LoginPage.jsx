@@ -1,5 +1,6 @@
 import React from "react";
 import { Header, AuthContent, Footer, SEO } from "../../components";
+import "../../pages/responsive.scss";
 
 import "./LoginPage.scss";
 

@@ -1,5 +1,5 @@
 .SuccStory_banner {
-    background-image: url('../../assets/images/Success/sus_banner.png');
+    background-image: url('../../assets/images/Success/sus_banner.jpg');
     background-repeat: no-repeat;
     width: 100%;
     height: 620px;
@@ -13,6 +13,12 @@
     line-height: 110%;
     color: #FFFFFF;
     margin-top: 130px;
+}
+.global_img {
+    margin-top: 100px;
+}
+.global_img img {
+    max-width: 100%;
 }
 .SuccStory_banner p {
     font-family: SegoeUI_medium;

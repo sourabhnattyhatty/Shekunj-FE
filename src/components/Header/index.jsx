@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import ChangeLanguageButton from "../LanguageButton";
 import Logo from "../../assets/images/logo.svg";
 import Search from "../../assets/icons/search.png";
+import close from "../../assets/icons/x.png";
 
 import "./index.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,9 +32,13 @@ const Header = ({ loginPage, page }) => {
           <div className='topbar'>
             <div className='row'>
               <div className='col-md-3'>
+              <div className="sign_in">
                 <Link className='navbar-brand' to='/'>
                   <img src={Logo} alt='...' />
                 </Link>
+                
+                  <p>Sign In</p>
+                </div>
               </div>
 
               <div className='col-md-9 pl-md-0 pl-lg-2 text-right'>
@@ -93,6 +98,14 @@ const Header = ({ loginPage, page }) => {
                 <span className='navbar-toggler-icon'></span>
               </button>
               <div className='collapse navbar-collapse' id='collapsibleNavbar'>
+                <button
+                  className='navbar-toggler close_set'
+                  type='button'
+                  data-toggle='collapse'
+                  data-target='#collapsibleNavbar'
+                >
+                  <img src={close} alt="" />
+                </button>
                 <ul className='navbar-nav'>
                   <li
                     className={
