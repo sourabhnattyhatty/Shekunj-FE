@@ -129,7 +129,9 @@ const CourseModule = () => {
   const { id } = useParams();
   const history = useHistory();
 
-  const progress = Math.round(100 / courseModulesList.length );
+  const progress = Math.round(100 / courseModulesList.length);
+
+  console.log(courseModulesList);
 
   React.useEffect(() => {
     if (detect.isMobile) {
@@ -142,8 +144,6 @@ const CourseModule = () => {
     dispatch(startCourse(id));
     dispatch(getSingleCourseModule(id));
   }, [dispatch, id]);
-
-  
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -194,7 +194,6 @@ const CourseModule = () => {
                   <h2>Your Progress</h2>
                 </Stack>
 
-                
                 {renderProgress(moduleprogress)}
               </div>
             </Col>
@@ -204,21 +203,18 @@ const CourseModule = () => {
                 <img src={toggle} alt='' onClick={handleAccordian} />
                 <div className='number-bgbox'>1</div>
                 <ul className='pl-2 position-relative'>
-                  {courseModulesList
-                    .slice(0)
-                    .reverse()
-                    .map((obj, ind) => (
-                      <li
-                        key={obj?.id}
-                        className={
-                          Number(course?.current_module) > obj?.id
-                            ? "active-accordiantext"
-                            : ""
-                        }
-                      >
-                        1.{obj.id}
-                      </li>
-                    ))}
+                  {courseModulesList.map((obj, ind) => (
+                    <li
+                      key={obj?.id}
+                      className={
+                        Number(course?.current_module) > obj?.id
+                          ? "active-accordiantext"
+                          : ""
+                      }
+                    >
+                      1.{obj.id}
+                    </li>
+                  ))}
                 </ul>
               </div>
             )}
@@ -249,28 +245,25 @@ const CourseModule = () => {
                     </AccordionSummary>
                     <AccordionDetails>
                       <ul className='pl-5 position-relative'>
-                        {courseModulesList
-                          .slice(0)
-                          .reverse()
-                          .map((obj, ind) => (
-                            <li
-                              key={obj?.id}
-                              className={
-                                Number(course?.current_module) > obj?.id
-                                  ? "active-accordiantext"
-                                  : ""
-                              }
-                            >
-                              {Number(course?.current_module) > obj?.id && (
-                                <img
-                                  src={Rightcheck}
-                                  className='ml-2'
-                                  alt='...'
-                                />
-                              )}
-                              1.{obj.id} {obj?.title}
-                            </li>
-                          ))}
+                        {courseModulesList.map((obj, ind) => (
+                          <li
+                            key={obj?.id}
+                            className={
+                              Number(course?.current_module) > obj?.id
+                                ? "active-accordiantext"
+                                : ""
+                            }
+                          >
+                            {Number(course?.current_module) > obj?.id && (
+                              <img
+                                src={Rightcheck}
+                                className='ml-2'
+                                alt='...'
+                              />
+                            )}
+                            1.{obj.id} {obj?.title}
+                          </li>
+                        ))}
                       </ul>
                     </AccordionDetails>
                   </Accordion>
