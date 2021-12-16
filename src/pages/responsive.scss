@@ -1,19 +1,95 @@
-@media screen and (min-device-width: 50px) and (max-device-width: 767px) { 
-    .navbar-brand img {
-        margin-left: 27px;
-    }
-    button.navbar-toggler.close_set img {
-        max-width: 100%;
-        position: absolute;
-        right: 15px;
-    }
-    button.navbar-toggler.close_set {
-        width: 100%;
-    }
-    .other_head .middle_nav_login .navbar-nav .nav-item .nav-link {
-        padding: 7px 15px;
-    }
-    .navbar-nav{
-        margin-top: 30px;
-    }
+// Login media quary Start
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  .logincontentbg img.girl_img {
+    display: none;
+  }
+  .login_content {
+    display: none;
+  }
+  .login_form .MuiOutlinedInput-root {
+    width: 100%;
+  }
+  .login_form {
+    background-color: transparent;
+  }
+  .login_form h2 {
+    margin: 0;
+  }
+  .top_bar_btn.d-inline-block {
+    display: none !important;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .login_form p {
+    margin-bottom: 20px !important;
+  }
+  .sign_in {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sign_in p {
+    display: block;
+    margin: 0;
+    font-family: SegoeUI_medium;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+  }
+  .login_form .form-group {
+    margin-bottom: 20px !important;
+    position: relative;
+  }
+  .btn.btn_login {
+    margin-top: 3px;
+    margin-bottom: 20px;
+  }
+  .login_form {
+    max-height: initial;
+    overflow-y: hidden
+  }
+}
+
+// Login media quary Close
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  header {
+    position: relative;
+    box-shadow: none;
+  }
+  span.navbar-toggler-icon {
+    background-image: url("../assets/icons/menu.png");
+    background-repeat: no-repeat;
+  }
+  button.navbar-toggler {
+    position: absolute;
+    top: 30px;
+    left: 0;
+  }
+  nav.navbar.navbar-expand-md {
+    position: inherit;
+    padding: 0;
+  }
+  .navbar-brand img {
+    margin-left: 27px;
+  }
+  button.navbar-toggler.close_set img {
+    max-width: 100%;
+    position: absolute;
+    right: 15px;
+  }
+  button.navbar-toggler.close_set {
+    width: 100%;
+  }
+  .other_head .middle_nav_login .navbar-nav .nav-item .nav-link {
+    padding: 7px 15px;
+  }
+  .navbar-nav {
+    margin-top: 30px;
+  }
 }

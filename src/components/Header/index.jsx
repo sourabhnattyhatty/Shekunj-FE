@@ -32,9 +32,13 @@ const Header = ({ loginPage, page }) => {
           <div className='topbar'>
             <div className='row'>
               <div className='col-md-3'>
+              <div className="sign_in">
                 <Link className='navbar-brand' to='/'>
                   <img src={Logo} alt='...' />
                 </Link>
+                
+                  <p>Sign In</p>
+                </div>
               </div>
 
               <div className='col-md-9 pl-md-0 pl-lg-2 text-right'>

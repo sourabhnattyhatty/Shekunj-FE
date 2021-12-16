@@ -31,6 +31,8 @@ const LoginForm = () => {
           </p>
         </div>
 
+        {/* <div class="or"><img src={} class="orimg" alt="..." /></div> */}
+
         <GoogleLoginComponent showOr={false} />
       </div>
     </>

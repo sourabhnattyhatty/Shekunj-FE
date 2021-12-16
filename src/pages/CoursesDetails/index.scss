@@ -44,7 +44,7 @@ section.CouDtl_ban .row {
   font-weight: 600;
   font-size: 30px;
   line-height: 40px;
-  color: #4F4F4F;
+  color: #4f4f4f;
   margin-bottom: 19px;
 }
 .ban_rat {
@@ -103,9 +103,9 @@ section.CouDtl_ban .row {
   list-style: none;
   padding: 0;
 }
-section.Coutl_sec1.mb-5 .owl-nav.disabled {
-  display: none !important;
-}
+// section.Coutl_sec1.mb-5 .owl-nav.disabled {
+//   display: none !important;
+// }
 .sec1_con ul li {
   font-family: "SegoeUI_medium";
   font-style: normal;
@@ -119,7 +119,7 @@ section.Coutl_sec1.mb-5 .owl-nav.disabled {
   padding-right: 11px;
 }
 .sec2_right .btn.btn_str_Cor {
-  background: #EC498A;
+  background: #ec498a;
   border-radius: 2px;
   font-family: "SegoeUI_bold";
   font-style: normal;
@@ -131,12 +131,12 @@ section.Coutl_sec1.mb-5 .owl-nav.disabled {
   height: 56px;
   margin: 0 auto;
   display: block;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
 }
-.sec1_des{
+.sec1_des {
   padding-top: 24px;
 }
-.similar-coursestext{
+.similar-coursestext {
   font-family: "SegoeUI_bold";
   font-style: normal;
   font-weight: bold;
@@ -150,7 +150,7 @@ section.Coutl_sec1.mb-5 .owl-nav.disabled {
   height: auto;
   background: #fff;
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
-  padding: 24px 38px;
+  padding: 24px 0 24px 27px;
 }
 .sec2_right h2 {
   font-family: "SegoeUI_bold";
@@ -177,8 +177,8 @@ section.Coutl_sec1.mb-5 .owl-nav.disabled {
   margin-bottom: 5px;
 }
 .sec2_right button.btn_view {
-  background: #FFFFFF;
-  border: 1px solid #EC498A;
+  background: #ffffff;
+  border: 1px solid #ec498a;
   box-sizing: border-box;
   border-radius: 2px;
   width: 365px;
@@ -189,22 +189,22 @@ section.Coutl_sec1.mb-5 .owl-nav.disabled {
   line-height: 19px;
   text-align: center;
   text-transform: capitalize;
-  color: #EC498A;
+  color: #ec498a;
   margin-top: 37px;
 }
-.similar-coursesslider .owl-nav.disabled{
-  display: none !important;
-}
-.similar-coursesslider .boxnew{
-  background: #FFFFFF;
-  border: 1px solid #E3E4EB;
+// .similar-coursesslider .owl-nav.disabled{
+//   display: none !important;
+// }
+.similar-coursesslider .boxnew {
+  background: #ffffff;
+  border: 1px solid #e3e4eb;
   box-sizing: border-box;
   border-radius: 10px;
   width: 100%;
   padding: 10px;
-  overflow: hidden
+  overflow: hidden;
 }
-.similar-coursesslider .boxnew .tag_btn p{
+.similar-coursesslider .boxnew .tag_btn p {
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -214,7 +214,7 @@ section.Coutl_sec1.mb-5 .owl-nav.disabled {
   font-family: "SegoeUI_medium";
   margin: 0;
 }
-.similar-coursesslider .slide-img1 img{
+.similar-coursesslider .slide-img1 img {
   width: 234px;
   height: 130px;
   border-radius: 10px 10px 0px 0px;
@@ -257,18 +257,18 @@ section.Coutl_sec1.mb-5 .owl-nav.disabled {
   line-height: 24px;
   color: #828282;
 }
-.sec1_con2 ul.list-style-none li img{
+.sec1_con2 ul.list-style-none li img {
   margin-right: 17px;
 }
-.sec1_con2 ul.list-style-none li{
+.sec1_con2 ul.list-style-none li {
   font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
-  color: #4F4F4F;
+  color: #4f4f4f;
 }
-.sec1_con2 ul.list-style-none{
+.sec1_con2 ul.list-style-none {
   list-style: none;
   padding: 16px 0px;
 }
@@ -279,7 +279,7 @@ section.Coutl_sec1.mb-5 .owl-nav.disabled {
   display: flex;
   grid-gap: 0.9rem;
   gap: 0.9rem;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 5px rgb(0 0 0 / 10%);
   border-radius: 5px;
   padding: 15px;
@@ -305,55 +305,102 @@ section.Coutl_sec1.mb-5 .owl-nav.disabled {
   text-transform: capitalize;
   color: #828282;
 }
+.sec2_right .owl-nav button.owl-prev::before {
+  content: "";
+  background-image: url("../../assets/images/CoursesDetails/left_arrow.png");
+  border: none;
+  max-width: 100%;
+  background-size: auto;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  padding: 20px;
+  left: 27px;
+  top: 75px;
+  margin: auto;
+}
+.sec2_right .set {
+  margin-left: 30px;
+}
+.sec2_right .owl-nav button.owl-next::before {
+  content: "";
+  background-image: url("../../assets/images/CoursesDetails/right_arrow.png");
+  border: none;
+  max-width: 100%;
+  background-size: auto;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  padding: 20px;
+  top: 75px;
+  left: 411px;
+  margin: auto;
+}
 
-@media screen and (min-width:992px) and (max-width:1200px){
-  .sec2_right .btn.btn_str_Cor, .sec2_right button.btn_view{
-    width:100%;
+.sec2_right .owl-carousel .owl-item img {
+  max-width: 100%;
+  width: auto;
+}
+.sec2_right .owl-carousel .owl-item img {
+  display: inline-block;
+}
+.sec2_right .similar-coursestext {
+  padding: 0px 0px 7px 0px;
+}
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .sec2_right .btn.btn_str_Cor,
+  .sec2_right button.btn_view {
+    width: 100%;
   }
-  .CouDtl_con h2{
+  .CouDtl_con h2 {
     font-size: 30px;
     line-height: 40px;
   }
 }
 
-@media screen and (min-width:768px) and (max-width:991px){
-  .sec2_right .btn.btn_str_Cor, .sec2_right button.btn_view{
-    width:100%;
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .sec2_right .btn.btn_str_Cor,
+  .sec2_right button.btn_view {
+    width: 100%;
   }
 }
 
-@media screen and (max-width:767px){
-  section.CouDtl_ban{
+@media screen and (max-width: 767px) {
+  section.CouDtl_ban {
     height: 600px;
   }
-  .CouDtl_con h2{
+  .CouDtl_con h2 {
     font-size: 30px;
     line-height: 40px;
   }
-  .CouDtl_con h3{
+  .CouDtl_con h3 {
     font-size: 20px;
     line-height: 30px;
   }
-  .ban_rat{
+  .ban_rat {
     margin-bottom: 15px;
   }
-  .CouDtl img{
+  .CouDtl img {
     position: relative;
     max-width: 100%;
   }
-  .CouDtl_con h4{
+  .CouDtl_con h4 {
     font-size: 25px;
     line-height: 16px;
     margin-bottom: 35px;
   }
-  .sec2_right .btn.btn_str_Cor, .sec2_right button.btn_view{
-    width:100%;
+  .sec2_right .btn.btn_str_Cor,
+  .sec2_right button.btn_view {
+    width: 100%;
   }
-  .sec2_right h2, .sec1_con2 h2{
+  .sec2_right h2,
+  .sec1_con2 h2 {
     font-size: 25px;
     line-height: 35px;
   }
-  .sec1_con2 ul li{
+  .sec1_con2 ul li {
     font-size: 17px;
     line-height: 24px;
   }

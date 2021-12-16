@@ -133,6 +133,9 @@ header {
   transition: 0.25s ease;
   transition-timing-function: linear;
 }
+.sign_in p {
+  display: none;
+}
 .other_head .MuiButton-text.MuiButton-root:hover {
   background: #ec498a;
   color: #fff !important;

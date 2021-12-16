@@ -622,11 +622,7 @@ ul.star {
     line-height: 40px;
   }
 
-  .top_bar_btn.d-inline-block {
-    display: flex !important;
-    width: 100%;
-    justify-content: space-between;
-  }
+
   #myCarousel .carousel-item h4 {
     font-size: 30px;
   }
@@ -691,22 +687,7 @@ ul.star {
     width: 100%;
     right: 0px;
   }
-  header {
-    position: relative;
-  }
-  span.navbar-toggler-icon {
-    background-image: url("../../assets/icons/menu.png");
-    background-repeat: no-repeat;
-  }
-  button.navbar-toggler {
-    position: absolute;
-    top: 30px;
-    left: 0;
-  }
-  nav.navbar.navbar-expand-md {
-    position: inherit;
-    padding: 0;
-  }
+ 
   #myCarousel .slick-prev:before {
     display: none;
   }
