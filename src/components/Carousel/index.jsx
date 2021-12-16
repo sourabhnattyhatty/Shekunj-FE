@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import { constants } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
-import { allCourses, getSimilarCourses } from "../../store/courses/action";
+import {
+  allCourses,
+  getSimilarCourses,
+  allHomeCourses,
+} from "../../store/courses/action";
 import { Link } from "react-router-dom";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -20,10 +24,11 @@ function Carousel(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(allCourses());
-    if (course?.category_id) {
-      dispatch(getSimilarCourses(course?.category_id));
-    }
+    dispatch(allHomeCourses());
+    // dispatch(allCourses());
+    // if (course?.category_id) {
+    //   dispatch(getSimilarCourses(course?.category_id));
+    // }
   }, [dispatch, course?.category_id]);
 
   const handleChange = (e) => {
@@ -31,11 +36,11 @@ function Carousel(props) {
     if (props.type === constants.carouselConstant.COURSES) {
       divRef.current.innerHTML = `${
         carousel.relative(carousel.current()) + 1
-      }/${courses?.length}`;
+      }/${courses?.length || 0}`;
     } else if (props.type === constants.carouselConstant.TEST) {
       divRef.current.innerHTML = `${
         carousel.relative(carousel.current()) + 1
-      }/${tests?.length}`;
+      }/${tests?.length || 0}`;
     }
   };
 
@@ -97,7 +102,10 @@ function Carousel(props) {
                 <>
                   <div key={course?.id} className='boxnew'>
                     <div className='slide-img1'>
-                      <img alt='...' src={`http://3.109.195.234${course?.file}`} />
+                      <img
+                        alt='...'
+                        src={`http://3.109.195.234${course?.file}`}
+                      />
                       <div className='overlay'></div>
                     </div>
                     <div className='tag_btn'>
@@ -112,13 +120,13 @@ function Carousel(props) {
             <>
               {courses?.map((obj, ind) => (
                 <Link
-                  to={`/CoursesDetails/${obj.id}`}
+                  to={`/CoursesDetails/${obj?.id}`}
                   className='item'
                   key={ind}
                 >
                   <div className='box'>
                     <div className='slide-img'>
-                      <img alt='' src={Pro1} />
+                      <img alt='' src={obj?.image} />
                       <div className='overlay'></div>
                     </div>
 
@@ -148,13 +156,13 @@ function Carousel(props) {
                 <div className='item' key={ind}>
                   <div className='box'>
                     <div className='slide-img'>
-                      <img alt='' src={Pro1} />
+                      <img alt='' src={obj?.image} />
                       <div className='overlay'></div>
                     </div>
 
                     <>
                       <div className='tag_btn'>
-                        <button className='btn btn-info'>1 Test Set</button>
+                        {/* <button className='btn btn-info'>1 Test Set</button> */}
                         <h2>{obj?.name}</h2>
                       </div>
                     </>

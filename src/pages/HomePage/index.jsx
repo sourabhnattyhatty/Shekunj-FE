@@ -19,9 +19,12 @@ import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./index.scss";
 import "animate.css";
 import "aos/dist/aos.css";
+import { useDispatch } from "react-redux";
+import { allHomeCourses } from "../../store/courses/action";
 
 function HomePage() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const settings = {
     dots: false,
@@ -57,6 +60,7 @@ function HomePage() {
   };
 
   useEffect(() => {
+    // dispatch(allHomeCourses());
     Aos.init({ duration: 2000 });
   }, []);
 
@@ -174,12 +178,12 @@ function HomePage() {
       {/* Slider 1 */}
       <Carousel
         items={5}
-        page="homePage"
+        page='homePage'
         title1={t("homePage.carousel1.heading.1")}
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <button className="view_test_cate">View All Courses</button>
+      <button className='view_test_cate'>View All Courses</button>
 
       {/* resume */}
       <section className='resume same_padding mt-5'>
@@ -207,7 +211,7 @@ function HomePage() {
       {/* Slider 2 */}
       <Carousel
         items={5}
-        page="homePage"
+        page='homePage'
         title1={t("homePage.carousel2.heading.1")}
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
@@ -253,12 +257,12 @@ function HomePage() {
 
       <Carousel
         items={5}
-        page="homePage"
+        page='homePage'
         title1={t("homePage.carousel1.heading.1")}
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <button className="view_test_cate">View All Courses</button>
+      <button className='view_test_cate'>View All Courses</button>
 
       {/* career development */}
       <section className='career_community same_padding mt-5'>
@@ -295,7 +299,7 @@ function HomePage() {
             <div className='col-md-6 offset-md-6 offset-lg-6 offset-xl-7'>
               <div className='certif_con'>
                 <h4>
-                  {t("homePage.certificate.heading.1")} {" "}
+                  {t("homePage.certificate.heading.1")}{" "}
                   {t("homePage.certificate.heading.2")}
                 </h4>
 
