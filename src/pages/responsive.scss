@@ -1,0 +1,19 @@
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) { 
+    .navbar-brand img {
+        margin-left: 27px;
+    }
+    button.navbar-toggler.close_set img {
+        max-width: 100%;
+        position: absolute;
+        right: 15px;
+    }
+    button.navbar-toggler.close_set {
+        width: 100%;
+    }
+    .other_head .middle_nav_login .navbar-nav .nav-item .nav-link {
+        padding: 7px 15px;
+    }
+    .navbar-nav{
+        margin-top: 30px;
+    }
+}

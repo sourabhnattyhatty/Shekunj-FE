@@ -621,7 +621,7 @@ ul.star {
     font-size: 28px;
     line-height: 40px;
   }
- 
+
   .top_bar_btn.d-inline-block {
     display: flex !important;
     width: 100%;
@@ -695,14 +695,13 @@ ul.star {
     position: relative;
   }
   span.navbar-toggler-icon {
-    background-image: url("../../assets/images/menu.png");
+    background-image: url("../../assets/icons/menu.png");
     background-repeat: no-repeat;
   }
   button.navbar-toggler {
     position: absolute;
-    z-index: 9999999999999999999999;
-    top: 20px;
-    right: 20px;
+    top: 30px;
+    left: 0;
   }
   nav.navbar.navbar-expand-md {
     position: inherit;
@@ -753,12 +752,11 @@ ul.star {
   }
 }
 
-
 @media screen and (max-width: 1080px) {
-#myCarousel .carousel-item {
-  height: 60vh;
-}
-#myCarousel .carousel-item h4 {
-  font-size: 32px;
-}
+  #myCarousel .carousel-item {
+    height: 60vh;
+  }
+  #myCarousel .carousel-item h4 {
+    font-size: 32px;
+  }
 }

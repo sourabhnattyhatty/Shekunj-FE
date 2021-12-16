@@ -243,6 +243,10 @@ header {
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
   transform: rotate(45deg);
 }
+
+#custom-search-input {
+  display: none !important;
+}
 }
 @media screen and (max-width: 767px){
 .navbar-collapse.show {

@@ -6,7 +6,7 @@ import { constants } from "../../utils";
 import { Link } from "react-router-dom";
 
 import { Header, Footer, Carousel, ScrollToTop, SEO } from "../../components";
-
+import "../../pages/responsive.scss"
 import Resume from "../../assets/images/resume.png";
 import Girl from "../../assets/images/job1.png";
 import Community from "../../assets/images/community.png";

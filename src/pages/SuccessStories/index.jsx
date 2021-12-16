@@ -6,6 +6,7 @@ import card1 from "../../assets/images/Success/card1.png";
 import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
 import double_quote from "../../assets/icons/double_quote.png";
+import global from "../../assets/icons/global.png";
 
 function SuccessStory() {
   const [show, setShow] = React.useState(true);
@@ -16,7 +17,12 @@ function SuccessStory() {
       <div className='SuccStory_banner'>
         <Container>
           <Row>
-            <Col md={6} className='offset-lg-1'>
+            <Col md={1}>
+              <div className='global_img'>
+                <img src={global} alt='' />
+              </div>
+            </Col>
+            <Col md={6}>
               <h2>Over 5,000 students have learned with us</h2>
               <p>
                 All over Indian Girl students are taking their web design
@@ -203,7 +209,7 @@ function SuccessStory() {
       <div className='want'>
         <Container>
           <h2>Want to become our next success story?</h2>
-          <button className="want_btn">Start Learning</button>
+          <button className='want_btn'>Start Learning</button>
         </Container>
       </div>
 
