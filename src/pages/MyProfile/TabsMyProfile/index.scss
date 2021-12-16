@@ -38,7 +38,8 @@
   text-align: center;
   text-transform: capitalize;
   color: #ffffff;
-  padding: 14px 50px;
+  padding: 15px;
+  width: 225px;
   transition-duration: 1s;
 }
 .myProfile_box button.edit_profile_btn:hover {
@@ -68,7 +69,8 @@ span.MuiTabs-indicator {
   padding: 33px 30px;
   margin-top: -19%;
   margin-bottom: 137px;
-  height: 482px;
+  // height: 482px;
+  height: auto;
 }
 .profile_con h2 {
   font-family: SegoeUI_bold;
@@ -90,12 +92,175 @@ span.MuiTabs-indicator {
   padding-top: 83px;
 }
 .myProfile_img {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    justify-content: space-evenly;
-    background: #FFFFFF;
-    border: 1px solid #E3E4EB;
-    box-sizing: border-box;
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: space-evenly;
+  background: #ffffff;
+  border: 1px solid #e3e4eb;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.change_pass .form-control {
+  background: #ffffff;
+  border: 1px solid #e6e5eb;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0px;
+}
+p.eye {
+  cursor: pointer;
+  position: absolute;
+  top: 53%;
+  right: 2%;
+}
+p.eye1 {
+  cursor: pointer;
+  position: absolute;
+  top: 53%;
+  right: 2%;
+}
+p.eye2 {
+  cursor: pointer;
+  position: absolute;
+  top: 53%;
+  right: 2%;
+}
+.change_pass svg {
+  color: #B0B2B5;
+}
+.change_pass .form-group {
+  position: relative;
+}
+.change_pass button:hover {
+  background-color: #ec498a;
+  color: #fff;
+  transition: 1s;
+}
+.change_pass button {
+  background: #ffffff;
+  border: 1px solid #ec498a;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  transition-duration: 1s;
+  text-align: center;
+  text-transform: capitalize;
+  color: #ec498a;
+  padding: 14px 35px;
+}
+.change_pass label {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
+  color: #000000;
+}
+.change_pass .MuiOutlinedInput-root {
+  height: 40px;
+  // padding: 0px 0 0px 6px;
+}
+.change_pass fieldset.MuiOutlinedInput-notchedOutline:hover {
+  border-color: transparent !important;
+}
+.change_pass fieldset.MuiOutlinedInput-notchedOutline {
+  border-color: transparent !important;
+}
+// .change_pass .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+//   padding: 0;
+// }
+.edit_profile .form-control {
+  background: #ffffff;
+  border: 1px solid #e6e5eb;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 48px;
+  padding: 5px 0;
+  margin-bottom: 34px;
+  margin-top: 8px;
+}
+.edit_profile fieldset.MuiOutlinedInput-notchedOutline {
+  border-color: transparent !important;
+}
+.edit_profile fieldset.MuiOutlinedInput-notchedOutline:hover {
+  border-color: transparent !important;
+}
+.edit_profile input.MuiOutlinedInput-input {
+  padding: 7.5px 0;
+}
+.edit_profile label {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
+  color: #000000;
+  margin: 0;
+}
+.edit_profile .form-group {
+  margin: 0;
+}
+button.Save_profile_btn {
+  background: #ec498a;
+  border: 1px solid #ec498a;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #ffffff;
+  padding: 15px;
+  margin: 0 auto;
+  width: 225px;
+  display: block;
+  transition-duration: 1s;
+}
+button.Save_profile_btn:hover {
+  border: 1px solid #ec498a;
+  color: #ec498a;
+  background-color: transparent;
+  transition: 1s;
+}
+.form-group.mzero .MuiFormControl-root {
+  width: 100%;
+  // background-color: #FCFCFD;
+  border: 1px solid #e6e5eb;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 48px;
+  margin-bottom: 34px;
+  margin-top: 8px;
+  margin-left: 0;
+}
+.form-group.mzero svg.MuiSvgIcon-root {
+  background-image: url("../../../assets/icons/down.png") !important;
+  background-repeat: no-repeat;
+  color: #fff !important;
+}
+.form-group.mzero svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-1636szt {
+  right: 5px !important;
+  top: calc(50% - 0.15em) !important;
+}
+.form-group.mzero svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.MuiSelect-iconOpen.css-1yhq19e {
+  right: 15px !important;
+  top: calc(50% - 1em) !important;
+}
+.form-group.mzero .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+  color: #fff;
+  top: calc(50% - 5px);
+}
+.form-group.mzero .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
+  color: #fff;
+  right: 18px;
+    top: calc(50% - 0.9em);
 }

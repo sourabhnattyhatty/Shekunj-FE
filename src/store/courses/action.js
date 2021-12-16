@@ -124,3 +124,13 @@ export const testCountSummery = (id, history) => async (dispatch) => {
     dispatch({type : coursesTypes.QUESTION_COUNT_FAIL})
   }
 }
+
+export const successStories = () => async(dispatch) => {
+  try {
+    dispatch({type : coursesTypes.SUCCESS_STORY_REQUEST})
+    const res = await httpServices.get("/course/success-story");
+    dispatch({type : coursesTypes.SUCCESS_STORY_FINISH, payload : res.data})
+  }catch(err){
+    dispatch({type : coursesTypes.SUCCESS_STORY_FAIL})
+  }
+}

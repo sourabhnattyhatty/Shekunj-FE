@@ -163,9 +163,14 @@ const Header = ({ loginPage, page }) => {
                       page === "blogs" ? "nav-item active" : "nav-item"
                     }
                   >
-                    <Link className='nav-link' to='/blogs'>
+                    <a
+                      className='nav-link'
+                      rel='noreferrer'
+                      target='_blank'
+                      href='http://www.thehrnotes.com/'
+                    >
                       {t("header.heading.7")}
-                    </Link>
+                    </a>
                   </li>
 
                   <li
@@ -173,7 +178,7 @@ const Header = ({ loginPage, page }) => {
                       page === "story" ? "nav-item active" : "nav-item"
                     }
                   >
-                    <Link className='nav-link' to='/success_story'>
+                    <Link className='nav-link' to='/SuccessStories'>
                       {t("header.heading.8")}
                     </Link>
                   </li>

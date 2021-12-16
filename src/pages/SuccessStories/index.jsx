@@ -6,13 +6,21 @@ import card1 from "../../assets/images/Success/card1.png";
 import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
 import double_quote from "../../assets/icons/double_quote.png";
+import { useDispatch, useSelector } from "react-redux";
+import { successStories } from "../../store/courses/action";
 
 function SuccessStory() {
   const [show, setShow] = React.useState(true);
+  const dispatch = useDispatch();
+  const {successStories} = useSelector(state => state.courseReducer)
+
+  React.useEffect(() => {
+    dispatch(successStories());
+  }, [dispatch])
 
   return (
     <div>
-      <Header loginPage={true} page='guidance' />
+      <Header loginPage={true} page='story' />
       <div className='SuccStory_banner'>
         <Container>
           <Row>

@@ -14,14 +14,17 @@ import Profile from "../../assets/images/testimonial/1.png";
 
 function Carousel(props) {
   const divRef = React.useRef();
-  const { courses, course, tests, similarCourses } = useSelector((state) => state.coursesReducer);
+  const { courses, course, tests, similarCourses } = useSelector(
+    (state) => state.coursesReducer,
+  );
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(allCourses());
-    dispatch(getSimilarCourses(course?.category_id));
-  }, [dispatch,course?.category_id]);
+    if (course?.category_id) {
+      dispatch(getSimilarCourses(course?.category_id));
+    }
+  }, [dispatch, course?.category_id]);
 
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;
@@ -94,7 +97,7 @@ function Carousel(props) {
                 <>
                   <div key={course?.id} className='boxnew'>
                     <div className='slide-img1'>
-                      <img alt='' src={course?.file} />
+                      <img alt='...' src={`http://3.109.195.234${course?.file}`} />
                       <div className='overlay'></div>
                     </div>
                     <div className='tag_btn'>

@@ -174,7 +174,7 @@ const CourseModule = () => {
         aria-label='ios slider'
         value={count}
         valueLabelFormat={(value) => <div>{value}%</div>}
-        valueLabelDisplay='auto'
+        valueLabelDisplay='on'
         disabled
       />
     );
@@ -197,13 +197,7 @@ const CourseModule = () => {
                   <h2>Your Progress</h2>
                 </Stack>
 
-                {/* <IOSSlider
-                  aria-label='ios slider'
-                  defaultValue={moduleprogress}
-                  valueLabelFormat={(value) => <div>{value}%</div>}
-                  valueLabelDisplay='on'
-                  disabled
-                /> */}
+                
                 {renderProgress(moduleprogress)}
               </div>
             </Col>

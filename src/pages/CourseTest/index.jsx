@@ -65,7 +65,7 @@ function CourseTest() {
   };
 
   const handlePrevQuestion = () => {
-    dispatch(getUserTestQuestion(id));
+    dispatch(getUserTestQuestion(id, question?.prev_module));
   };
 
   return (

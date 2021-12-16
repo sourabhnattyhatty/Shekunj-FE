@@ -36,6 +36,15 @@ code {
 body {
   font-family: "SegoeUI_medium" !important;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    background-color: transparent !important;
+}
+input:focus {
+  box-shadow: none !important;
+}
 @media screen and (min-device-width: 1400px) and (max-device-width: 1450px) {
   .owl-nav {
     left: -12% !important;
