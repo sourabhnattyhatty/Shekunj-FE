@@ -38,13 +38,13 @@ const CourseDetails = () => {
           <div className='row'>
             <div className='col-md-7'>
               <div className='CouDtl_con'>
-                <h2>{course?.name}</h2>
-                <h5>Speak English Clearly</h5>
+                <h2>{course?.category_name}</h2>
+                <h5>{course?.name}</h5>
                 <div className='ban_rat'>
-                  <p>
+                  {/* <p>
                     4.5 <img src={star} alt='' srcSet='' /> (104,716)
                   </p>
-                  <p>36,995 Students</p>
+                  <p>36,995 Students</p> */}
                 </div>
                 <h4>
                   Created by <span>SheKunj</span>

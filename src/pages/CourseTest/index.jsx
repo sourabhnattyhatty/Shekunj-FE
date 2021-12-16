@@ -48,24 +48,27 @@ function CourseTest() {
 
   React.useEffect(() => {
     dispatch(testCountSummery(id, history));
-  },[dispatch,toggle])
+  }, [dispatch, toggle]);
 
   const handleNextQuestion = () => {
+    console.log("HJGKIHUVKHGV", questionCount?.user_course_test_count + 1);
     const data = {
       answer,
       course_test: question?.id,
     };
     if (answer) {
       dispatch(postAnswer(data, id));
-      dispatch(getUserTestQuestion(id));
+      dispatch(getUserTestQuestion(id, history, question?.next_module));
       setToggle((prev) => !prev);
     } else {
-      toast.error("Choose correct option");
+      toast.error("Select option for next question", {
+        position: "bottom-center",
+      });
     }
   };
 
   const handlePrevQuestion = () => {
-    dispatch(getUserTestQuestion(id, question?.prev_module));
+    dispatch(getUserTestQuestion(id, history, question?.prev_module));
   };
 
   return (
@@ -105,7 +108,11 @@ function CourseTest() {
                 </p>
               )}
               {question && (
-                <RadioGroup aria-label='gender' name='radio-buttons-group'>
+                <RadioGroup
+                  aria-label='gender'
+                  name='radio-buttons-group'
+                  defaultValue={question?.answer ? question?.answer : ""}
+                >
                   {question?.optionA && (
                     <FormControlLabel
                       value={question?.optionA}
@@ -158,7 +165,10 @@ function CourseTest() {
                     className='next_button'
                     onClick={() => handleNextQuestion()}
                   >
-                    next
+                    {questionCount?.total_course_que ===
+                    questionCount?.user_course_test_count + 1
+                      ? "finish"
+                      : "next"}
                   </button>
                 </Col>
               </Row>
@@ -173,8 +183,7 @@ function CourseTest() {
                   (obj) => (
                     <p
                       id={
-                        obj+1 <= questionCount?.user_course_test_count
-                        
+                        obj + 1 <= questionCount?.user_course_test_count
                           ? "col_gre"
                           : "col_grey"
                       }
