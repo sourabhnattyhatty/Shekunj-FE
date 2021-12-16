@@ -16,7 +16,7 @@ function CourseTest() {
       <div className='cou_resultBg'>
         <Container>
           <Row>
-            <Col md={6} xs={12} className='offset-lg-1'>
+            <Col md={8} xs={12} className='offset-lg-2'>
               <div className='cou_result_cont'>
                 <h2>Your Result</h2>
                 <img src={win} alt='' />
