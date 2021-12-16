@@ -20,18 +20,22 @@ export const allHomeCourses = () => async (dispatch) => {
   }
 };
 
-export const allCourses = () => async (dispatch) => {
-  try {
-    dispatch({ type: coursesTypes.COURSES_REQUEST });
-    const res = await httpServices.get("/course/list/");
-    dispatch({
-      type: coursesTypes.COURSES_FINISH,
-      payload: res.results,
-    });
-  } catch (error) {
-    dispatch({ type: coursesTypes.COURSES_FAIL });
-  }
-};
+export const allCourses =
+  (filter = null) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: coursesTypes.COURSES_REQUEST });
+      const res = await httpServices.get(
+        filter ? `/course/list/${filter}` : `/course/list/`,
+      );
+      dispatch({
+        type: coursesTypes.COURSES_FINISH,
+        payload: res,
+      });
+    } catch (error) {
+      dispatch({ type: coursesTypes.COURSES_FAIL });
+    }
+  };
 
 export const allTests = () => async (dispatch) => {
   try {
@@ -158,3 +162,19 @@ export const successStories = () => async (dispatch) => {
     dispatch({ type: coursesTypes.SUCCESS_STORY_FAIL });
   }
 };
+
+export const getCategoryList = () => async (dispatch) => {
+  try {
+    dispatch({ type: coursesTypes.CATEGORY_LIST_REQUEST });
+    const res = await httpServices.get("course/category-list/");
+    dispatch({ type: coursesTypes.CATEGORY_LIST_FINISH, payload: res.results });
+  } catch (error) {
+    dispatch({ type: coursesTypes.CATEGORY_LIST_FAIL });
+  }
+};
+
+export const setFilter =
+  (payload = null) =>
+  async (dispatch) => {
+    dispatch({ type: coursesTypes.SELECTED_FILTER, payload });
+  };

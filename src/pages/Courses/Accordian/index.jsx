@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { styled } from "@mui/material/styles";
-import { useTranslation } from "react-i18next";
 
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControl from "@mui/material/FormControl";
+
+import {
+  allCourses as fetchAllCourses,
+  getCategoryList,
+  setFilter,
+} from "../../../store/courses/action";
+
 import "./index.scss";
 
 const Accordion = styled((props) => (
@@ -52,164 +60,95 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function SimpleAccordion() {
-  const [expanded, setExpanded] = React.useState("panel1");
-  const {t} = useTranslation();
+  const [expanded, setExpanded] = React.useState(1);
+  const [selectedFilter, setSelectedFilter] = React.useState(null);
+  const { allCourses, categoryList } = useSelector(
+    (state) => state.coursesReducer,
+  );
 
-  const handleChange = (panel) => (event, newExpanded) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setFilter(null));
+    dispatch(getCategoryList());
+  }, []);
+
+  const handleChange = (panel) => (_, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
+    if (!newExpanded) {
+      dispatch(fetchAllCourses(null));
+      dispatch(setFilter(null));
+
+      dispatch({ type: "SELECTED_FILTER", payload: null });
+    }
+    setSelectedFilter(null);
   };
+
+  const transformData = (coursesData = []) => {
+    const groupedMap = coursesData.reduce(
+      (entryMap, e) =>
+        entryMap.set(e?.category_name, [
+          ...(entryMap.get(e?.category_name) || []),
+          e,
+        ]),
+      new Map(),
+    );
+
+    const filters = [];
+    for (const [key, value] of groupedMap.entries()) {
+      const foundObj = allCourses?.results?.find(
+        (a) => a?.category_name === key,
+      );
+      if (foundObj && value.length > 0) {
+        filters.push({
+          id: foundObj?.id,
+          name: foundObj?.name,
+          category_id: foundObj?.category_id,
+          category_name: foundObj?.category_name,
+          rows: value,
+        });
+      }
+    }
+    return filters;
+  };
+
+  const handleCheckboxChange = (_, obj) => {
+    dispatch(fetchAllCourses(`?id=${obj.id}`));
+    dispatch(setFilter([obj]));
+    setSelectedFilter(obj.id);
+  };
+
   return (
     <div className='accordion_box_all'>
-      <Accordion
-        expanded={expanded === "panel1"}
-        onChange={handleChange("panel1")}
-      >
-        <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
-          <Typography>{t('coursesPage.accordion.1.heading')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <ul className='pl-0'>
-            <FormGroup>
-              <li>
-                <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label={t('coursesPage.accordion.1.1')}
-                />
-              </li>
-
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={t('coursesPage.accordion.1.2')}
-                />
-              </li>
-
-              <li>
-                <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label={t('coursesPage.accordion.1.3')}
-                />
-              </li>
-            </FormGroup>
-          </ul>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel2"}
-        onChange={handleChange("panel2")}
-      >
-        <AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
-          <Typography>{t('coursesPage.accordion.2.heading')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-     
-          <ul className='pl-0'>
-            <FormGroup>
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={t('coursesPage.accordion.2.1')}
-                />
-              </li>
-
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={t('coursesPage.accordion.2.2')}
-                />
-              </li>
-
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={t('coursesPage.accordion.2.3')}
-                />
-              </li>
-
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={t('coursesPage.accordion.2.4')}
-                />
-              </li>
-            </FormGroup>
-          </ul>
-       
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel3"}
-        onChange={handleChange("panel3")}
-      >
-        <AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-          <Typography>{t('coursesPage.accordion.3.heading')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-        <ul className='pl-0'>
-            <FormGroup>
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={t('coursesPage.accordion.3.1')}
-                />
-              </li>
-
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={t('coursesPage.accordion.3.2')}
-                />
-              </li>
-
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={t('coursesPage.accordion.3.3')}
-                />
-              </li>
-
-             
-            </FormGroup>
-          </ul>
-        </AccordionDetails>
-      </Accordion>
-
-      <Accordion
-        expanded={expanded === "panel4"}
-        onChange={handleChange("panel4")}
-      >
-        <AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-          <Typography>{t('coursesPage.accordion.4.heading')}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-        <ul className='pl-0'>
-            <FormGroup>
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label='1'
-                />
-              </li>
-
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label='2'
-                />
-              </li>
-
-              <li>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label='3'
-                />
-              </li>
-
-             
-            </FormGroup>
-          </ul>
-        </AccordionDetails>
-      </Accordion>
+      {categoryList?.map((obj) => (
+        <Accordion
+          expanded={expanded === obj?.id}
+          onChange={handleChange(obj?.id)}
+        >
+          <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
+            <Typography>{obj?.name}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <ul className='pl-0'>
+              <FormControl component='fieldset'>
+                {obj?.course_set?.map((r) => (
+                  <RadioGroup
+                    value={selectedFilter}
+                    onChange={(e) => handleCheckboxChange(e, r)}
+                  >
+                    <FormControlLabel
+                      id={r.id}
+                      value={r.id}
+                      control={<Radio />}
+                      label={r?.name}
+                    />
+                  </RadioGroup>
+                ))}
+              </FormControl>
+            </ul>
+          </AccordionDetails>
+        </Accordion>
+      ))}
     </div>
   );
 }

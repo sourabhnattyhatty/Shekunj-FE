@@ -13,6 +13,8 @@ const initialState = {
   questionCount: {},
   successStories: [],
   allCourses: [],
+  selectedFilter: null,
+  categoryList: [],
 };
 
 export const coursesReducer = (state = initialState, action) => {
@@ -209,6 +211,32 @@ export const coursesReducer = (state = initialState, action) => {
         error: null,
       };
     case coursesTypes.SUCCESS_STORY_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case coursesTypes.SELECTED_FILTER:
+      return {
+        ...state,
+        isLoading: false,
+        selectedFilter: action.payload,
+      };
+
+    case coursesTypes.CATEGORY_LIST_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.CATEGORY_LIST_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        categoryList: action.payload,
+        error: null,
+      };
+    case coursesTypes.CATEGORY_LIST_FAIL:
       return {
         ...state,
         isLoading: false,
