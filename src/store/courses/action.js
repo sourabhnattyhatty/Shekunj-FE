@@ -5,6 +5,8 @@ import httpServices from "../../utils/ApiServices";
 import { toast } from "react-toastify";
 import { toasterConfig } from "../../utils";
 
+export const noImage = 'https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg';
+
 export const allHomeCourses = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.HOME_COURSE_REQUEST });
@@ -110,13 +112,14 @@ export const getSimilarCourses = (categoryId) => async (dispatch) => {
 };
 
 export const getUserTestQuestion =
-  (id, history, module) => async (dispatch) => {
+  (id, history, module, progress) => async (dispatch) => {
     try {
       dispatch({ type: coursesTypes.TEST_QUEDTION_REQUEST });
       let res;
       if (module) {
-        res = await httpServices.get(`/course/user-test-course/${id}?test_id=${module}`);
-        debugger
+        res = await httpServices.get(`/course/user-test-course/${id}?test_id=${module}&progress=${progress}`);
+      }else if(progress){
+        res = await httpServices.get(`/course/user-test-course/${id}?progress=${progress}`);
       } else {
         res = await httpServices.get(`/course/user-test-course/${id}`);
       }

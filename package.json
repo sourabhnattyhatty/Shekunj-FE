@@ -18,6 +18,7 @@
     "aos": "^2.3.4",
     "axios": "^0.24.0",
     "bootstrap": "^4.6.1",
+    "confetti-js": "0.0.18",
     "formik": "^2.2.9",
     "i18next": "^21.4.1",
     "i18next-browser-languagedetector": "^6.1.2",

@@ -5,7 +5,7 @@ import Aos from "aos";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { allCourses, setFilter } from "../../store/courses/action";
+import { allCourses, setFilter, noImage } from "../../store/courses/action";
 
 import { Header, Footer, ScrollToTop, SEO } from "../../components";
 
@@ -162,7 +162,16 @@ const Courses = (props) => {
                     >
                       <div className='box box_hov'>
                         <div className='slide-img'>
-                          <img alt='' src={obj?.image} />
+                          <img
+                            alt=''
+                            src={
+                              obj.image
+                                ? obj?.image?.includes("http://3.109.195.234")
+                                  ? obj?.image
+                                  : `http://3.109.195.234${obj?.image}`
+                                : noImage
+                            }
+                          />
                           <div className='overlay'></div>
                         </div>
 

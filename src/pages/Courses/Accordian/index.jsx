@@ -62,7 +62,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 export default function SimpleAccordion() {
   const [expanded, setExpanded] = React.useState(1);
   const [selectedFilter, setSelectedFilter] = React.useState(null);
-  const { allCourses, categoryList } = useSelector(
+  const { selectedFilter: currentFilter, categoryList } = useSelector(
     (state) => state.coursesReducer,
   );
 
@@ -84,39 +84,17 @@ export default function SimpleAccordion() {
     setSelectedFilter(null);
   };
 
-  const transformData = (coursesData = []) => {
-    const groupedMap = coursesData.reduce(
-      (entryMap, e) =>
-        entryMap.set(e?.category_name, [
-          ...(entryMap.get(e?.category_name) || []),
-          e,
-        ]),
-      new Map(),
-    );
-
-    const filters = [];
-    for (const [key, value] of groupedMap.entries()) {
-      const foundObj = allCourses?.results?.find(
-        (a) => a?.category_name === key,
-      );
-      if (foundObj && value.length > 0) {
-        filters.push({
-          id: foundObj?.id,
-          name: foundObj?.name,
-          category_id: foundObj?.category_id,
-          category_name: foundObj?.category_name,
-          rows: value,
-        });
-      }
-    }
-    return filters;
-  };
-
   const handleCheckboxChange = (_, obj) => {
     dispatch(fetchAllCourses(`?id=${obj.id}`));
     dispatch(setFilter([obj]));
     setSelectedFilter(obj.id);
   };
+
+  useEffect(() => {
+    if (currentFilter === null) {
+      setSelectedFilter(null);
+    }
+  }, [currentFilter]);
 
   return (
     <div className='accordion_box_all'>
