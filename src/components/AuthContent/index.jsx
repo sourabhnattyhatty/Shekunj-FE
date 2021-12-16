@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-
+import "../../pages/responsive.scss";
 import Practical from "../../assets/images/login/1.png";
 import Work from "../../assets/images/login/2.png";
 import Hinglish from "../../assets/images/login/3.png";

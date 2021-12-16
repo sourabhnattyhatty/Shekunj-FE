@@ -21,9 +21,6 @@
     width: 100%;
     justify-content: space-between;
   }
-  .login_form p {
-    margin-bottom: 20px !important;
-  }
   .sign_in {
     display: flex;
     justify-content: space-between;
@@ -51,13 +48,121 @@
   }
   .login_form {
     max-height: initial;
-    overflow-y: hidden
+    overflow-y: hidden;
   }
+  .login_bg_main.login_main.mt-3 button.btn.btn-google {
+    margin-top: 0;
+  }
+  .login_bg_main.login_main.mt-3 button.btn.btn-google .or {
+    margin-top: 31px;
+    margin-bottom: 25px;
+  }
+  .login_form {
+    padding: 30px 22px 50px !important;
+    background-color: transparent !important;
+  }
+  .login_form .or {
+    margin-top: 31px;
+    margin-bottom: 25px;
+  }
+  .login_form p {
+    margin-bottom: 20px !important;
+  }
+  .login_form {
+    max-height: none !important;
+  }
+  .login_bg_main.login_main.mt-3 {
+    margin: 0 !important;
+  }
+  .login_main.mt-3 {
+    margin: 0 !important;
+  }
+  .sign_in p {
+    display: block !important;
+}
 }
 
 // Login media quary Close
 
+// MyProfile media quary Start
+
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  .my_profile_div {
+    height: 210px !important;
+  }
+  .profile_con h2 {
+    font-size: 24px !important;
+    margin: 0;
+    line-height: 32px !important;
+  }
+  .user_detail {
+      display: block !important;
+  }
+  .user_detail ul {
+      margin: 0;
+  }
+  .myProfile_box button.edit_profile_btn {
+      margin-top: 30px;
+      width: 100% !important;
+  }
+  .myProfile_box h2 {
+      margin-bottom: 30px;
+  }
+  .my_pro_tabs {
+      margin-bottom: 50px !important;
+  }
+  .change_pass button {
+      width: 100%;
+  }
+  .change_pass button {
+      margin-top: 30px;
+      margin-bottom: 100px;
+  }
+  .profile_con p {
+    font-size: 16px !important;
+    line-height: 21px !important;
+  }
+  .profile_con {
+    padding-top: 40px !important;
+  }
+  .my_pro_tabs {
+    padding: 25px 0px !important;
+}
+.myProfile_img {
+    width: 115px;
+    height: 115px !important;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.myProfile_img img {
+    width: 78px;
+}
+.myProfile_box h2 {
+    text-align: center;
+    display: block !important;
+}
+.edit_profile {
+    padding: 0 24px;
+}
+.my_pro_tabs .MuiTabs-flexContainer {
+    justify-content: space-between;
+}
+}
+// MyProfile media quary Close
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+
+    .set .owl-carousel.owl-theme.owl-loaded.owl-drag {
+        margin-top: 0;
+    }
+    .abc_box {
+        display: none;
+    }
+    #myCarousel .carousel-item {
+        height: 100vh !important;
+    }
   header {
     position: relative;
     box-shadow: none;

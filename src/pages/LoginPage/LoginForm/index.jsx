@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import LoginTabs from "./LoginTabs";
 import GoogleLoginComponent from "../../../components/GoogleLogin";
+import or from "../../../assets/images/login/or.png";
 
 const LoginForm = () => {
   const { t } = useTranslation();
@@ -22,6 +23,7 @@ const LoginForm = () => {
 
         <LoginTabs />
 
+
         <div className='text-center'>
           <p className='policy_para'>
             {t("login.T&C.content1")} <a href='#!'> {t("login.T&C.link1")} </a>{" "}
@@ -30,6 +32,8 @@ const LoginForm = () => {
             {t("login.T&C.content3")}
           </p>
         </div>
+
+        <div class="or"><img src={or} class="orimg" alt="..." /></div>
 
         {/* <div class="or"><img src={} class="orimg" alt="..." /></div> */}
 

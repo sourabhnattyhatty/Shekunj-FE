@@ -4,9 +4,9 @@ import Aos from "aos";
 import { useTranslation } from "react-i18next";
 import { constants } from "../../utils";
 import { Link } from "react-router-dom";
-
+import "../../pages/responsive.scss";
 import { Header, Footer, Carousel, ScrollToTop, SEO } from "../../components";
-import "../../pages/responsive.scss"
+import "../../pages/responsive.scss";
 import Resume from "../../assets/images/resume.png";
 import Girl from "../../assets/images/job1.png";
 import Community from "../../assets/images/community.png";

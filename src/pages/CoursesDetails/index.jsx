@@ -138,7 +138,7 @@ const CourseDetails = () => {
                         <img src={Device} alt='' srcSet='' />
                       </div>
                       <div>
-                        <h6>Instructor-led Live Sessions</h6>
+                        <h6>100% Online</h6>
                         <p>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Vel ipsum netus semper feugiat.
@@ -154,7 +154,7 @@ const CourseDetails = () => {
                         <h6>Lifetime Access</h6>
                         <p>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat.
+                          elit. Vel ipsum netus semper feugiat eget.
                         </p>
                       </div>
                     </div>
@@ -164,10 +164,10 @@ const CourseDetails = () => {
                         <img src={certificate} alt='' srcSet='' />
                       </div>
                       <div>
-                        <h6>Certification</h6>
+                        <h6>Shareable Certificate</h6>
                         <p>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat.
+                          elit. Vel ipsum netus semper feugiat eget.
                         </p>
                       </div>
                     </div>
@@ -182,7 +182,7 @@ const CourseDetails = () => {
                         <h6>Assignments</h6>
                         <p>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat.
+                          elit. Vel ipsum netus semper.
                         </p>
                       </div>
                     </div>
@@ -192,10 +192,10 @@ const CourseDetails = () => {
                         <img src={Support} alt='' srcSet='' />
                       </div>
                       <div>
-                        <h6>24 x 7 Expert Support</h6>
+                        <h6>Flexible Deadline</h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Vel ipsum netus semper.
                         </p>
                       </div>
                     </div>
@@ -205,11 +205,8 @@ const CourseDetails = () => {
                         <img src={forum} alt='' srcSet='' />
                       </div>
                       <div>
-                        <h6>Forum</h6>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat.
-                        </p>
+                        <h6>Language</h6>
+                        <p>Hindi, English</p>
                       </div>
                     </div>
                   </Col>

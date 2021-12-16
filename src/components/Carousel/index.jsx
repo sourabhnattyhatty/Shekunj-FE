@@ -81,6 +81,11 @@ function Carousel(props) {
               items: 1,
               nav: true,
             },
+            375: {
+              items: 1.5,
+              nav: true,
+              margin: 50,
+            },
             1000: {
               items: props.page === "courseDetail" ? 1.4 : 3,
               nav: true,

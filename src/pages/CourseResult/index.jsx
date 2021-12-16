@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { Header, Footer, ScrollToTop } from "../../components";
+import Confetti from "react-confetti";
 
 import "./index.scss";
 import "../CoursesModule/index.scss";
@@ -14,8 +15,9 @@ function CourseTest() {
 
       <div className='cou_resultBg'>
         <Container>
-          <Row style={{ zIndex: 9999 }}>
-            <Col md={6} xs={12} className='offset-lg-1'>
+          <Confetti style={{ marginTop: "154px" }} height={850} width={1500} />
+          <Row>
+            <Col md={8} xs={12} className='offset-lg-2'>
               <div className='cou_result_cont'>
                 <h2>Your Result</h2>
                 <img src={win} alt='' />
