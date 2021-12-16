@@ -16,22 +16,42 @@ section.CouDtl_ban .row {
   color: #fff;
   margin: 0;
   text-transform: capitalize;
+  margin-bottom: 25px;
 }
+// .CouDtl_con h3 {
+//   font-family: "SegoeUI_medium";
+//   font-style: normal;
+//   font-weight: 600;
+//   font-size: 30px;
+//   line-height: 40px;
+//   color: #000;
+//   margin-top: 10px;
+//   margin-bottom: 22px;
+// }
 .CouDtl_con h3 {
-  font-family: "SegoeUI_medium";
+  font-family: "SegoeUI_bold";
+  font-style: normal;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  font-size: 40px;
+  line-height: 53px;
+}
+.CouDtl_con h5 {
+  font-family: SegoeUI_medium;
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
   line-height: 40px;
-  color: #000;
-  margin-top: 10px;
-  margin-bottom: 22px;
+  color: #4F4F4F;
+  margin-bottom: 19px;
 }
 .ban_rat {
   display: flex;
   justify-content: space-between;
   width: 330px;
-  margin-bottom: 25px;
+  margin-bottom: 19px;
 }
 .ban_rat p {
   font-family: "SegoeUI_medium";
@@ -40,9 +60,10 @@ section.CouDtl_ban .row {
   font-size: 16px;
   line-height: 18px;
   color: #4f4f4f;
+  margin: 0;
 }
 .CouDtl_con {
-  margin-top: 80px;
+  margin-top: 67px;
 }
 .CouDtl_con h4 {
   font-family: "SegoeUI_medium";
@@ -81,6 +102,9 @@ section.CouDtl_ban .row {
 .sec1_con ul {
   list-style: none;
   padding: 0;
+}
+section.Coutl_sec1.mb-5 .owl-nav.disabled {
+  display: none !important;
 }
 .sec1_con ul li {
   font-family: "SegoeUI_medium";
@@ -203,6 +227,7 @@ section.CouDtl_ban .row {
   line-height: 37px;
   color: #000000;
   margin: 0;
+  margin-bottom: 30px;
 }
 .sec1_con2 ul {
   padding: 16px 25px;
@@ -250,7 +275,36 @@ section.CouDtl_ban .row {
 .sec2_right ul li img {
   padding-right: 15px;
 }
+.features_box {
+  display: flex;
+  grid-gap: 0.9rem;
+  gap: 0.9rem;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 5px rgb(0 0 0 / 10%);
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  height: 120px;
+}
+.features_box h6 {
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #000000;
+}
 
+.features_box p {
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: #828282;
+}
 
 @media screen and (min-width:992px) and (max-width:1200px){
   .sec2_right .btn.btn_str_Cor, .sec2_right button.btn_view{

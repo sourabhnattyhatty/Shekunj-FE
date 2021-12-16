@@ -2,15 +2,18 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { singleCourseDetails } from "../../store/courses/action";
-
+import { Row, Col } from "react-bootstrap";
 import { Header, Footer, ScrollToTop, SEO, Carousel } from "../../components";
 
 import banimg from "../../assets/images/CoursesDetails/ban_img.png";
 import star from "../../assets/images/CoursesDetails/star.png";
 import check from "../../assets/images/CoursesDetails/check.png";
 import Device from "../../assets/images/CoursesDetails/Device.png";
-import certi from "../../assets/images/CoursesDetails/certi.png";
-import textImg from "../../assets/images/CoursesDetails/text.png";
+import clock from "../../assets/images/CoursesDetails/clock.png";
+import certificate from "../../assets/images/CoursesDetails/certificate.png";
+import clipboard from "../../assets/images/CoursesDetails/clipboard.png";
+import Support from "../../assets/images/CoursesDetails/Support.png";
+import forum from "../../assets/images/CoursesDetails/forum.png";
 
 import "./index.scss";
 
@@ -35,7 +38,7 @@ const CourseDetails = () => {
             <div className='col-md-7'>
               <div className='CouDtl_con'>
                 <h2>{course?.name}</h2>
-                <h3>Speak English Clearly</h3>
+                <h5>Speak English Clearly</h5>
                 <div className='ban_rat'>
                   <p>
                     4.5 <img src={star} alt='' srcSet='' /> (104,716)
@@ -115,19 +118,90 @@ const CourseDetails = () => {
               </div>
               <div className='sec1_con2'>
                 <h2>Features:</h2>
-                <ul className='list-style-none'>
-                  <li>
-                    <img src={Device} alt='' srcSet='' /> 2 hours on-demand
-                    video
-                  </li>
-                  <li>
-                    <img src={textImg} alt='' srcSet='' /> 1 article
-                  </li>
-                  <li>
-                    <img src={certi} alt='' srcSet='' /> Certificate of
-                    completion
-                  </li>
-                </ul>
+
+                <Row>
+                  <Col md={6} xs={12}>
+                    <div className='features_box'>
+                      <div>
+                        <img src={Device} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <h6>Instructor-led Live Sessions</h6>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Vel ipsum netus semper feugiat.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className='features_box'>
+                      <div>
+                        <img src={clock} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <h6>Lifetime Access</h6>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Vel ipsum netus semper feugiat.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className='features_box'>
+                      <div>
+                        <img src={certificate} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <h6>Certification</h6>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Vel ipsum netus semper feugiat.
+                        </p>
+                      </div>
+                    </div>
+                  </Col>
+
+                  <Col md={6} xs={12}>
+                    <div className='features_box'>
+                      <div>
+                        <img src={clipboard} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <h6>Assignments</h6>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Vel ipsum netus semper feugiat.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className='features_box'>
+                      <div>
+                        <img src={Support} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <h6>24 x 7 Expert Support</h6>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Vel ipsum netus semper feugiat.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className='features_box'>
+                      <div>
+                        <img src={forum} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <h6>Forum</h6>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Vel ipsum netus semper feugiat.
+                        </p>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
               </div>
             </div>
 

@@ -148,10 +148,14 @@ const GuidancePage = () => {
                       placeholder='Enter Your Message'
                     />
                   </div>
+
+                  <button className="book_sess_btn">Book a Session</button>
                 </form>
               </div>
             </Col>
           </Row>
+
+          
         </Container>
       </div>
       <Footer loginPage={false} />

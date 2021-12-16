@@ -26,10 +26,10 @@
   padding-top: 30px;
 }
 .tog_set img {
-  margin-top: 21px;
+  margin-top: 11px;
   background-color: #fff;
-  padding: 0 5px;
-  margin-bottom: 43px;
+  /* padding: 0 5px; */
+  margin-bottom: 32px;
   cursor: pointer;
   max-width: 100%;
 }
@@ -195,6 +195,8 @@ span.MuiSlider-rail {
   padding-left: 45px;
 }
 .accordion_box h4 {
+  font-family: Poppins;
+  font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
@@ -364,6 +366,7 @@ span.MuiSlider-rail {
   height: 26px;
   background: #ec498a;
   text-align: center;
+  border-radius: 2px;
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
