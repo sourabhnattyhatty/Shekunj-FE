@@ -2,6 +2,7 @@ import React from "react";
 import { Header, Footer, ScrollToTop } from "../../components";
 import { Container } from "@mui/material";
 import BasicTabs from "./../MyProfile/TabsMyProfile/index";
+import "../../pages/responsive.scss";
 import "./index.scss";
 
 function index() {
