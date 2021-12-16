@@ -598,6 +598,13 @@ ul.star {
   body {
     overflow-x: hidden;
   }
+  .set {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .item {
+    width: 100%;
+  }
   .tes_box.heg_cha::before {
     right: 0;
   }
@@ -622,7 +629,6 @@ ul.star {
     line-height: 40px;
   }
 
-
   #myCarousel .carousel-item h4 {
     font-size: 30px;
   }
@@ -640,7 +646,7 @@ ul.star {
     font-size: 30px;
   }
   .owl-item.active {
-    margin: 0px 20px !important;
+    margin: 0px 0 0 20px !important;
     display: block !important;
   }
   .owl-nav button.owl-prev::before {
@@ -687,7 +693,7 @@ ul.star {
     width: 100%;
     right: 0px;
   }
- 
+
   #myCarousel .slick-prev:before {
     display: none;
   }

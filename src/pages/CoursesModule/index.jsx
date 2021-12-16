@@ -143,10 +143,7 @@ const CourseModule = () => {
     dispatch(getSingleCourseModule(id));
   }, [dispatch, id]);
 
-  // React.useEffect(() => {
-  //   const page = Cookies.get("module");
-  //   dispatch(startCourse(id,page,(page*progress)));
-  // }, [course.progress]);
+  
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);

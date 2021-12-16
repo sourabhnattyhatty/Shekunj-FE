@@ -99,6 +99,7 @@ a.item {
 }
 .owl-carousel .owl-item img {
   display: inline-block;
+  width: auto;
 }
 
 .similar-coursesslider .boxnew {
@@ -174,7 +175,7 @@ hr.line {
   position: relative;
 }
 .slide-img img {
-  width: 100%;
+  width: 100% !important;
   height: 100%;
   object-fit: cover;
   box-sizing: border-box;

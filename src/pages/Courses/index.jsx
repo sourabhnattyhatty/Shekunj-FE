@@ -5,7 +5,7 @@ import Aos from "aos";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { allCourses } from "../../store/courses/action";
+import { allCourses, setFilter, noImage } from "../../store/courses/action";
 
 import { Header, Footer, ScrollToTop, SEO } from "../../components";
 
@@ -37,6 +37,11 @@ const Courses = (props) => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+
+  const handleResetFilter = () => {
+    dispatch(allCourses(null));
+    dispatch(setFilter(null));
+  };
 
   return (
     <div>
@@ -114,26 +119,32 @@ const Courses = (props) => {
             </div>
             <div className='col-md-8 col-sm-8'>
               <div className='content_right'>
-                <h3 className='result_head'>Results: 32 Courses</h3>
+                <h3 className='result_head'>
+                  Results: {state?.allCourses?.results?.length || 0} Courses
+                </h3>
 
                 <Row>
                   <Col md={9} xs={12}>
                     <div className='filter_added mb-5'>
-                      <div className='filter_content'>
-                        Graphic Design{" "}
-                        <img src={Cross} className='ml-3' alt='...' />
-                      </div>
-
-                      <div className='filter_content'>
-                        web development{" "}
-                        <img src={Cross} className='ml-3' alt='...' />
-                      </div>
+                      {state?.selectedFilter &&
+                        state?.selectedFilter?.length > 0 &&
+                        state?.selectedFilter.map((s) => (
+                          <div key={s.id} className='filter_content'>
+                            {s.name}{" "}
+                            <img
+                              src={Cross}
+                              onClick={() => handleResetFilter()}
+                              className='ml-3'
+                              alt='...'
+                            />
+                          </div>
+                        ))}
                     </div>
                   </Col>
 
                   <Col md={3} xs={12}>
                     <div className='reset_content pt-2'>
-                      <p>
+                      <p onClick={() => handleResetFilter()}>
                         <img src={Reset} className='mr-2' alt='...' /> Reset
                         filters
                       </p>
@@ -143,7 +154,7 @@ const Courses = (props) => {
               </div>
               <div className='filter_right_content'>
                 <div className='row'>
-                  {state?.allCourses?.map((obj) => (
+                  {state?.allCourses?.results?.map((obj) => (
                     <Link
                       to={`/CoursesDetails/${obj.id}`}
                       className='col-md-6'
@@ -151,7 +162,16 @@ const Courses = (props) => {
                     >
                       <div className='box box_hov'>
                         <div className='slide-img'>
-                          <img alt='' src={obj?.image} />
+                          <img
+                            alt=''
+                            src={
+                              obj.image
+                                ? obj?.image?.includes("http://3.109.195.234")
+                                  ? obj?.image
+                                  : `http://3.109.195.234${obj?.image}`
+                                : noImage
+                            }
+                          />
                           <div className='overlay'></div>
                         </div>
 

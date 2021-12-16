@@ -6,6 +6,7 @@ import {
   allCourses,
   getSimilarCourses,
   allHomeCourses,
+  noImage,
 } from "../../store/courses/action";
 import { Link } from "react-router-dom";
 
@@ -80,6 +81,11 @@ function Carousel(props) {
               items: 1,
               nav: true,
             },
+            375: {
+              items: 1.5,
+              nav: true,
+              margin: 50,
+            },
             1000: {
               items: props.page === "courseDetail" ? 1.4 : 3,
               nav: true,
@@ -98,20 +104,32 @@ function Carousel(props) {
         >
           {props.page === "courseDetail" && (
             <>
-              {similarCourses?.map((course) => (
+              {similarCourses?.map((course, ind) => (
                 <>
-                  <div key={course?.id} className='boxnew'>
-                    <div className='slide-img1'>
-                      <img
-                        alt='...'
-                        src={`http://3.109.195.234${course?.file}`}
-                      />
-                      <div className='overlay'></div>
+                  <Link
+                    to={`/CoursesDetails/${course?.id}`}
+                    className='item'
+                    key={ind}
+                  >
+                    <div key={course?.id} className='boxnew'>
+                      <div className='slide-img1'>
+                        <img
+                          alt='...'
+                          src={
+                            course.image
+                              ? course?.image?.includes("http://3.109.195.234")
+                                ? course?.image
+                                : `http://3.109.195.234${course?.image}`
+                              : noImage
+                          }
+                        />
+                        <div className='overlay'></div>
+                      </div>
+                      <div className='tag_btn'>
+                        <p>{course?.name}</p>
+                      </div>
                     </div>
-                    <div className='tag_btn'>
-                      <p>{course?.name}</p>
-                    </div>
-                  </div>
+                  </Link>
                 </>
               ))}
             </>
@@ -126,7 +144,16 @@ function Carousel(props) {
                 >
                   <div className='box'>
                     <div className='slide-img'>
-                      <img alt='' src={obj?.image} />
+                      <img
+                        alt=''
+                        src={
+                          course.image
+                            ? course?.image?.includes("http://3.109.195.234")
+                              ? course?.image
+                              : `http://3.109.195.234${course?.image}`
+                            : noImage
+                        }
+                      />
                       <div className='overlay'></div>
                     </div>
 
@@ -156,13 +183,21 @@ function Carousel(props) {
                 <div className='item' key={ind}>
                   <div className='box'>
                     <div className='slide-img'>
-                      <img alt='' src={obj?.image} />
+                      <img
+                        alt=''
+                        src={
+                          course.image
+                            ? course?.image?.includes("http://3.109.195.234")
+                              ? course?.image
+                              : `http://3.109.195.234${course?.image}`
+                            : null
+                        }
+                      />
                       <div className='overlay'></div>
                     </div>
 
                     <>
                       <div className='tag_btn'>
-                        {/* <button className='btn btn-info'>1 Test Set</button> */}
                         <h2>{obj?.name}</h2>
                       </div>
                     </>

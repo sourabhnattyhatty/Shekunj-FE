@@ -8,7 +8,6 @@ import {
 import React from "react";
 import Stack from "@mui/material/Stack";
 import { Row, Col } from "react-bootstrap";
-import { LinearProgress } from "@mui/material";
 import { toast } from "react-toastify";
 import { useHistory, useParams } from "react-router-dom";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
@@ -82,7 +81,6 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
   },
 }));
 
-
 function CourseTest() {
   const [answer, setAnswer] = React.useState();
   const [toggle, setToggle] = React.useState(true);
@@ -93,6 +91,8 @@ function CourseTest() {
   const { question, questionCount, isLoading } = useSelector(
     (state) => state.coursesReducer,
   );
+
+  const progress = Math.round(100 / questionCount?.total_course_que);
 
   React.useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
@@ -105,18 +105,36 @@ function CourseTest() {
 
   React.useEffect(() => {
     dispatch(testCountSummery(id, history));
-  }, [dispatch, toggle]);
+  }, [dispatch, toggle, history, id]);
 
   const handleNextQuestion = () => {
     const data = {
       answer,
       course_test: question?.id,
     };
+    const newProgress = (questionCount?.user_course_test_count+1) * progress;
+    
     if (answer) {
       dispatch(postAnswer(data, id));
-      setAnswer('');
-      dispatch(getUserTestQuestion(id, history, question?.next_module));
+      setAnswer("");
+      dispatch(getUserTestQuestion(id, history, question?.next_module, newProgress));
       setToggle((prev) => !prev);
+    } else {
+      toast.error("Select option for next question", {
+        position: "bottom-center",
+      });
+    }
+  };
+
+  const handleFinishQuestion = () => {
+    const data = {
+      answer,
+      course_test: question?.id,
+    };
+    if (answer) {
+      dispatch(postAnswer(data, id));
+      setAnswer("");
+      history.push("/CourseResult")
     } else {
       toast.error("Select option for next question", {
         position: "bottom-center",
@@ -152,9 +170,7 @@ function CourseTest() {
                   {" "}
                   <h3>Your Progress</h3>
                 </Stack>
-                {/* <LinearProgress variant='determinate' value={20} />
-                <div className='label-progressbar'> 20%</div> */}
-                {renderProgress(10)}
+                {renderProgress(question?.progress)}
               </div>
             </Col>
           </Row>
@@ -174,7 +190,7 @@ function CourseTest() {
                 <Skeleton></Skeleton>
               ) : (
                 <p>
-                  {question?.id}. {question?.question}
+                  {questionCount?.user_course_test_count+1}. {question?.question}
                 </p>
               )}
               {question && (
@@ -231,15 +247,24 @@ function CourseTest() {
                 </Col>
 
                 <Col md={6} xs={6} className='text-right'>
-                  <button
-                    className='next_button'
-                    onClick={() => handleNextQuestion()}
-                  >
-                    {questionCount?.total_course_que ===
-                    questionCount?.user_course_test_count + 1
-                      ? "finish"
-                      : "next"}
-                  </button>
+                  {questionCount?.total_course_que ===
+                  questionCount?.user_course_test_count + 1 ? (
+                    <button
+                      className='next_button'
+                      onClick={() => handleFinishQuestion()}
+                      
+                    >
+                      finish
+                    </button>
+                  ) : (
+                    <button
+                      className='next_button'
+                      onClick={() => handleNextQuestion()}
+                    >
+                      next
+                    </button>
+                  )}
+                  
                 </Col>
               </Row>
             </div>

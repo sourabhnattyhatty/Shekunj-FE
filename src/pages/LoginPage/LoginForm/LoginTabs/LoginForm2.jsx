@@ -4,7 +4,6 @@ import * as Yup from "yup";
 
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-
 import Mobile from "../../../../assets/icons/phone.png";
 import Lock from "../../../../assets/icons/lock.png";
 
@@ -96,6 +95,8 @@ function LoginForm2() {
           <Error error={errors.password} touched={touched.password} />
         </div>
 
+        
+
         <button type='submit' className='btn btn_login w-100'>
           {isLoading ? (
             <CircularProgress color='secondary' size={20} />
@@ -103,6 +104,8 @@ function LoginForm2() {
             t("login.button")
           )}
         </button>
+
+        
       </form>
     </>
   );
