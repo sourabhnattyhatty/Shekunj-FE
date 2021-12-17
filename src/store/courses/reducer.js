@@ -204,7 +204,7 @@ export const coursesReducer = (state = initialState, action) => {
         error: null,
       };
     case coursesTypes.SUCCESS_STORY_FINISH:
-      return {
+    return {
         ...state,
         isLoading: false,
         successStories: action.payload,

@@ -5,13 +5,13 @@ import httpServices from "../../utils/ApiServices";
 import { toast } from "react-toastify";
 import { toasterConfig } from "../../utils";
 
-export const noImage = 'https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg';
+export const noImage =
+  "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
 
 export const allHomeCourses = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.HOME_COURSE_REQUEST });
     const res = await httpServices.get("/course/home/");
-    debugger;
     dispatch({
       type: coursesTypes.HOME_COURSE_FINISH,
       payload: res.data.popular_course,
@@ -117,15 +117,19 @@ export const getUserTestQuestion =
       dispatch({ type: coursesTypes.TEST_QUEDTION_REQUEST });
       let res;
       if (module) {
-        res = await httpServices.get(`/course/user-test-course/${id}?test_id=${module}&progress=${progress}`);
-      }else if(progress){
-        res = await httpServices.get(`/course/user-test-course/${id}?progress=${progress}`);
+        res = await httpServices.get(
+          `/course/user-test-course/${id}?test_id=${module}&progress=${progress}`,
+        );
+      } else if (progress) {
+        res = await httpServices.get(
+          `/course/user-test-course/${id}?progress=${progress}`,
+        );
       } else {
         res = await httpServices.get(`/course/user-test-course/${id}`);
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
-      debugger
+      debugger;
       if (err?.status === 400) {
         history?.push(`/CourseResult`);
       } else if (err.data.status_code === 500) {
@@ -160,7 +164,19 @@ export const successStories = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.SUCCESS_STORY_REQUEST });
     const res = await httpServices.get("/course/success-story");
-    dispatch({ type: coursesTypes.SUCCESS_STORY_FINISH, payload: res.data });
+    dispatch({
+      type: coursesTypes.SUCCESS_STORY_FINISH,
+      payload:
+        res?.data?.map((d) => ({
+          ...d,
+          image: d.image
+            ? d?.image?.includes("http://3.109.195.234")
+              ? d?.image
+              : `http://3.109.195.234${d?.image}`
+            : noImage,
+          is_collapse: false,
+        })) || [],
+    });
   } catch (err) {
     dispatch({ type: coursesTypes.SUCCESS_STORY_FAIL });
   }
@@ -181,3 +197,17 @@ export const setFilter =
   async (dispatch) => {
     dispatch({ type: coursesTypes.SELECTED_FILTER, payload });
   };
+
+export const setCollapseSuccessStory = (id, action) => (dispatch, getState) => {
+  const { coursesReducer } = getState();
+  const { successStories } = coursesReducer;
+  const updatedPayload = [...successStories];
+  const idx = updatedPayload.findIndex((u) => u.id === id);
+  if (idx !== -1) {
+    updatedPayload[idx].is_collapse = action;
+  }
+  dispatch({
+    type: coursesTypes.SUCCESS_STORY_FINISH,
+    payload: updatedPayload,
+  });
+};
