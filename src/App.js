@@ -75,7 +75,7 @@ function App() {
 
         <PrivateRoute exact path='/CoursesTest/:id' component={CourseTest} />
 
-        <PrivateRoute exact path='/CourseResult' component={CourseResult} />
+        <PrivateRoute exact path='/CourseResult/:id' component={CourseResult} />
         <PrivateRoute exact path='/CourseCertificate' component={CourseCertificate} />
         <PrivateRoute exact path='/CertificateFullView' component={CertificateFullView} />
         <PrivateRoute exact path='/MyProgress' component={MyProgress} />

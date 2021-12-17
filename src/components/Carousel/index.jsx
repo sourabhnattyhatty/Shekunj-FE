@@ -64,7 +64,8 @@ function Carousel(props) {
               ? "similar-coursesslider"
               : "owl-theme"
           }
-          loop
+          // loop={props.page === "courseDetail" ? false : true}
+          loop={false}
           margin={props.page === "courseDetail" ? 10 : 210}
           nav={props.page === "courseDetail" ? false : true}
           items={props.page === "courseDetail" ? 1.4 : 4}
@@ -89,12 +90,12 @@ function Carousel(props) {
             1000: {
               items: props.page === "courseDetail" ? 1.4 : 3,
               nav: true,
-              loop: true,
+              loop: props.page === "courseDetail" ? false : true,
             },
             1200: {
               items: props.page === "courseDetail" ? 1.4 : 4,
               nav: true,
-              loop: true,
+              loop: props.page === "courseDetail" ? false : true,
             },
             1920: {
               items: 5,

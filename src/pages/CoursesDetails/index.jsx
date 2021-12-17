@@ -91,43 +91,7 @@ const CourseDetails = () => {
                   diam id hendrerit posuere sit.
                 </p>
               </div>
-              {/* <div className='sec1_con'>
-                <h2>What you'll learn</h2>
-                <div className='row'>
-                  <div className='col-xl-6 col-md-12'>
-                    <ul>
-                      <li>
-                        <span>
-                          <img src={check} alt='' srcSet='' />
-                        </span>{" "}
-                        Lorem ipsum dolor sit amet.
-                      </li>
-                      <li>
-                        <span>
-                          <img src={check} alt='' srcSet='' />
-                        </span>{" "}
-                        Lorem ipsum dolor sit amet.
-                      </li>
-                    </ul>
-                  </div>
-                  <div className='col-xl-6 col-md-12'>
-                    <ul>
-                      <li>
-                        <span>
-                          <img src={check} alt='' srcSet='' />
-                        </span>{" "}
-                        Lorem ipsum dolor sit amet.
-                      </li>
-                      <li>
-                        <span>
-                          <img src={check} alt='' srcSet='' />
-                        </span>{" "}
-                        Lorem ipsum dolor sit amet.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div> */}
+              
               <div className='sec1_con2'>
                 <h2>Features:</h2>
 
@@ -224,7 +188,7 @@ const CourseDetails = () => {
 
                 <Carousel page='courseDetail' />
 
-                <button className='btn_view'>View More Courses</button>
+                <Link to="/courses" className='btn_view'>View More Courses</Link>
               </div>
             </div>
           </div>

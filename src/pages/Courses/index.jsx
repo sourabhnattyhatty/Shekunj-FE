@@ -39,7 +39,9 @@ const Courses = (props) => {
   }, []);
 
   const handleResetFilter = () => {
-    dispatch(allCourses(null));
+    if (state?.selectedFilter) {
+      dispatch(allCourses(null));
+    }
     dispatch(setFilter(null));
   };
 
@@ -199,14 +201,7 @@ const Courses = (props) => {
         </div>
       </section>
 
-      {/* Slider 2 */}
-      {/* <Carousel
-        items={5}
-        details={false}
-        title1={t("homePage.carousel2.heading.1")}
-        title2={t("homePage.carousel2.heading.2")}
-        type={constants.carouselConstant.TEST}
-      /> */}
+      
 
       <ScrollToTop />
 

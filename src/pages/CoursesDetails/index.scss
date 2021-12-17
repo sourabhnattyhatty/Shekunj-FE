@@ -183,13 +183,11 @@ section.CouDtl_ban .row {
   list-style: none;
   margin-bottom: 5px;
 }
-.sec2_right button.btn_view {
+.sec2_right a.btn_view {
   background: #ffffff;
   border: 1px solid #ec498a;
   box-sizing: border-box;
   border-radius: 2px;
-  width: 365px;
-  height: 56px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -197,7 +195,10 @@ section.CouDtl_ban .row {
   text-align: center;
   text-transform: capitalize;
   color: #ec498a;
-  margin-top: 37px;
+  padding: 23px 124px;
+  line-height: 148px;
+  text-decoration: none;
+  cursor: pointer !important;
 }
 // .similar-coursesslider .owl-nav.disabled{
 //   display: none !important;

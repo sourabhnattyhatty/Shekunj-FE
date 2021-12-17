@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { useHistory, useParams } from "react-router-dom";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import Slider from "@mui/material/Slider";
+import Timer from "react-compound-timer";
 
 import { Header, Footer, ScrollToTop } from "../../components";
 
@@ -21,6 +22,7 @@ import "../CoursesModule/index.scss";
 import time from "../../assets/images/Courses/time.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  endTest,
   getUserTestQuestion,
   postAnswer,
   testCountSummery,
@@ -94,6 +96,8 @@ function CourseTest() {
 
   const progress = Math.round(100 / questionCount?.total_course_que);
 
+  // let testTimer;
+
   React.useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
     dispatch(testCountSummery(id, history));
@@ -107,17 +111,24 @@ function CourseTest() {
     dispatch(testCountSummery(id, history));
   }, [dispatch, toggle, history, id]);
 
+  // React.useEffect(() => {
+  //   testTimer = (questionCount?.counse_time)*60000;
+  //   console.log("())()())",testTimer);
+  // },[questionCount?.counse_time])
+
   const handleNextQuestion = () => {
     const data = {
       answer,
       course_test: question?.id,
     };
-    const newProgress = (questionCount?.user_course_test_count+1) * progress;
-    
+    const newProgress = (questionCount?.user_course_test_count + 1) * progress;
+
     if (answer) {
       dispatch(postAnswer(data, id));
       setAnswer("");
-      dispatch(getUserTestQuestion(id, history, question?.next_module, newProgress));
+      dispatch(
+        getUserTestQuestion(id, history, question?.next_module, newProgress),
+      );
       setToggle((prev) => !prev);
     } else {
       toast.error("Select option for next question", {
@@ -133,8 +144,9 @@ function CourseTest() {
     };
     if (answer) {
       dispatch(postAnswer(data, id));
+      dispatch(endTest(id))
       setAnswer("");
-      history.push("/CourseResult")
+      history.push(`/CourseResult/${id}`);
     } else {
       toast.error("Select option for next question", {
         position: "bottom-center",
@@ -143,7 +155,7 @@ function CourseTest() {
   };
 
   const handlePrevQuestion = () => {
-    dispatch(getUserTestQuestion(id, history, question?.prev_module));
+    dispatch(getUserTestQuestion(id, history, question?.prev_module, progress));
   };
 
   const renderProgress = (count = 0) => {
@@ -178,7 +190,16 @@ function CourseTest() {
 
         <div className='time_set'>
           <p>
-            <img src={time} alt='' /> Time left: 44:55
+            <img src={time} alt='' /> Time left:{" "}
+            <Timer initialTime={1200000} direction="backward">
+              {() => (
+                <>
+                  <Timer.Hours /> :
+                  <Timer.Minutes />:
+                  <Timer.Seconds/>
+                </>
+              )}
+            </Timer>
           </p>
         </div>
 
@@ -190,7 +211,8 @@ function CourseTest() {
                 <Skeleton></Skeleton>
               ) : (
                 <p>
-                  {questionCount?.user_course_test_count+1}. {question?.question}
+                  {questionCount?.user_course_test_count + 1}.{" "}
+                  {question?.question}
                 </p>
               )}
               {question && (
@@ -241,6 +263,7 @@ function CourseTest() {
                   <button
                     className='back_button'
                     onClick={() => handlePrevQuestion()}
+                    disabled
                   >
                     back
                   </button>
@@ -252,7 +275,6 @@ function CourseTest() {
                     <button
                       className='next_button'
                       onClick={() => handleFinishQuestion()}
-                      
                     >
                       finish
                     </button>
@@ -264,7 +286,6 @@ function CourseTest() {
                       next
                     </button>
                   )}
-                  
                 </Col>
               </Row>
             </div>
