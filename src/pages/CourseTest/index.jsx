@@ -96,7 +96,6 @@ function CourseTest() {
 
   const progress = Math.round(100 / questionCount?.total_course_que);
 
-  // let testTimer;
 
   React.useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
@@ -111,10 +110,7 @@ function CourseTest() {
     dispatch(testCountSummery(id, history));
   }, [dispatch, toggle, history, id]);
 
-  // React.useEffect(() => {
-  //   testTimer = (questionCount?.counse_time)*60000;
-  //   console.log("())()())",testTimer);
-  // },[questionCount?.counse_time])
+  
 
   const handleNextQuestion = () => {
     const data = {
@@ -263,7 +259,7 @@ function CourseTest() {
                   <button
                     className='back_button'
                     onClick={() => handlePrevQuestion()}
-                    disabled
+                    // disabled
                   >
                     back
                   </button>

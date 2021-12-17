@@ -36,11 +36,11 @@ function Carousel(props) {
     const carousel = e?.relatedTarget;
     if (props.type === constants.carouselConstant.COURSES) {
       divRef.current.innerHTML = `${
-        carousel.relative(carousel.current()) + 1
+        carousel.relative(carousel.current()) + 1 || 0
       }/${courses?.length || 0}`;
     } else if (props.type === constants.carouselConstant.TEST) {
       divRef.current.innerHTML = `${
-        carousel.relative(carousel.current()) + 1
+        carousel.relative(carousel.current()) + 1  || 0
       }/${tests?.length || 0}`;
     }
   };

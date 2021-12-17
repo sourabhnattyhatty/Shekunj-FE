@@ -51,12 +51,7 @@ const CourseDetails = () => {
               <div className='CouDtl_con'>
                 <h2>{course?.category_name}</h2>
                 <h5>{course?.name}</h5>
-                <div className='ban_rat'>
-                  {/* <p>
-                    4.5 <img src={star} alt='' srcSet='' /> (104,716)
-                  </p>
-                  <p>36,995 Students</p> */}
-                </div>
+                <div className='ban_rat'></div>
                 <h4>
                   Created by <span>SheKunj</span>
                 </h4>
@@ -65,7 +60,7 @@ const CourseDetails = () => {
 
             <div className='col-md-5'>
               <div className='CouDtl'>
-                <img src={banimg} alt='' srcSet='' />
+                <img src={`http://3.109.195.234${course?.image}`} alt='' srcSet='' />
               </div>
             </div>
           </div>
@@ -79,16 +74,7 @@ const CourseDetails = () => {
               <div className='sec1_des'>
                 <h2>Description</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Viverra mauris quam eros, neque lorem tellus. Adipiscing non
-                  molestie lacus cras potenti turpis tellus. At enim, malesuada
-                  vitae blandit enim congue nibh elit. Arcu cursus elit integer
-                  ornare nec enim. Nunc et duis porttitor lorem sit pretium
-                  malesuada ultrices. Nulla nibh adipiscing arcu id diam
-                  feugiat. Magna nullam amet, ut dui placerat. Non ultricies et,
-                  adipiscing est rhoncus, cras fusce. In suscipit netus metus
-                  nec convallis nulla laoreet. Mi consectetur leo massa gravida
-                  diam id hendrerit posuere sit.
+                {course?.description}
                 </p>
               </div>
               

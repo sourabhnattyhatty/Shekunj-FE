@@ -131,6 +131,8 @@ const CourseModule = () => {
 
   const progress = Math.round(100 / courseModulesList.length);
 
+  console.log("GGGGGGGGGGG",course);
+
   React.useEffect(() => {
     if (detect.isMobile) {
       toast.error("This page is not availble in mobile view.");

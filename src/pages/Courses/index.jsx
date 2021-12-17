@@ -146,10 +146,12 @@ const Courses = (props) => {
 
                   <Col md={3} xs={12}>
                     <div className='reset_content pt-2'>
-                      <p onClick={() => handleResetFilter()}>
-                        <img src={Reset} className='mr-2' alt='...' /> Reset
-                        filters
-                      </p>
+                      {state?.allCourses && (
+                        <p onClick={() => handleResetFilter()}>
+                          <img src={Reset} className='mr-2' alt='...' /> Reset
+                          filters
+                        </p>
+                      )}
                     </div>
                   </Col>
                 </Row>
@@ -184,13 +186,7 @@ const Courses = (props) => {
                           <h6>{obj?.name}</h6>
                         </div>
 
-                        <hr className='line' />
-                        <div className='names'>
-                          <p>
-                            <img src={Profile} alt='...' /> Ramadhir Krishna
-                          </p>
-                          <span>Free</span>
-                        </div>
+                        
                       </div>
                     </Link>
                   ))}
@@ -200,8 +196,6 @@ const Courses = (props) => {
           </div>
         </div>
       </section>
-
-      
 
       <ScrollToTop />
 
