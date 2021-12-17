@@ -167,7 +167,19 @@ export const successStories = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.SUCCESS_STORY_REQUEST });
     const res = await httpServices.get("/course/success-story");
-    dispatch({ type: coursesTypes.SUCCESS_STORY_FINISH, payload: res.data });
+    dispatch({
+      type: coursesTypes.SUCCESS_STORY_FINISH,
+      payload:
+        res?.data?.map((d) => ({
+          ...d,
+          image: d.image
+            ? d?.image?.includes("http://3.109.195.234")
+              ? d?.image
+              : `http://3.109.195.234${d?.image}`
+            : noImage,
+          is_collapse: false,
+        })) || [],
+    });
   } catch (err) {
     dispatch({ type: coursesTypes.SUCCESS_STORY_FAIL });
   }
@@ -202,3 +214,16 @@ export const testResult = (id) => async(dispatch) => {
     dispatch({type:coursesTypes.RESULT_FINISH,payload : err.data});
   }
 }
+export const setCollapseSuccessStory = (id, action) => (dispatch, getState) => {
+  const { coursesReducer } = getState();
+  const { successStories } = coursesReducer;
+  const updatedPayload = [...successStories];
+  const idx = updatedPayload.findIndex((u) => u.id === id);
+  if (idx !== -1) {
+    updatedPayload[idx].is_collapse = action;
+  }
+  dispatch({
+    type: coursesTypes.SUCCESS_STORY_FINISH,
+    payload: updatedPayload,
+  });
+};
