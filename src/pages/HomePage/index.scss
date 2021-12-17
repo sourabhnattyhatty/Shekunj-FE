@@ -204,7 +204,7 @@ body {
   transition-timing-function: linear;
 }
 .resume h4 {
-  font-family: SegoeUI_bold;
+  font-family: SegoeUI_medium;
   font-weight: 500;
   font-size: 36px;
   line-height: 50px;
@@ -234,9 +234,10 @@ body {
   background-size: 100% 100%;
   padding: 65px 79px;
   height: 348px;
+  text-align: center;
 }
 .job-opprtunity-bg h3 {
-  font-family: "Sora bold";
+  font-family: "SegoeUI_bold";
   font-weight: bold;
   font-style: normal;
   font-size: 40px;
@@ -327,7 +328,7 @@ body {
 .certificate {
   background: #f8f8f8;
   position: relative;
-  background-image: url("../../assets/images/certificate1.jpg");
+  // background-image: url("../../assets/images/certificate1.jpg");
   background-repeat: no-repeat;
   background-size: 100% 103%;
   height: 550px;
@@ -612,7 +613,7 @@ ul.star {
     overflow: hidden;
   }
   #myCarousel .carousel-item {
-    height: 75vh;
+    height: 655px;
   }
   .resume h4 {
     line-height: 40px;
@@ -634,10 +635,11 @@ ul.star {
   }
   #myCarousel .carousel-item p {
     font-family: SegoeUI_medium;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 28px;
-    padding-right: 0%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 110%;
+    color: #706d6d;
   }
   #myCarousel .carousel-item h4 span {
     font-size: 30px;
@@ -662,16 +664,20 @@ ul.star {
     background-color: #463434;
   }
   .job-opprtunity-bg h3 {
-    font-size: 28px;
-    line-height: 45px;
+    font-size: 24px;
+    line-height: 32px;
   }
   .career_community h3 {
-    font-size: 28px;
-    line-height: 40px;
+    font-size: 24px;
+    line-height: 30px;
   }
   .certificate {
-    background-image: none;
+    background-image: url("../../assets/images/mob_certif.png");
+    position: relative;
   }
+  section.career_community.same_padding.mt-5 {
+    padding: 35px 0px;
+}
   .certificate h4 {
     font-size: 28px;
     line-height: 40px;
@@ -688,6 +694,8 @@ ul.star {
   .resume {
     height: 580px;
     padding: 0;
+    background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
+    text-align: center;
   }
   .resume .resumeimg {
     width: 100%;
@@ -706,6 +714,50 @@ ul.star {
   #myCarousel .slick-next:hover {
     border: none;
   }
+
+  #myCarousel .carousel_item1 {
+    background-image: url("../../assets/images/banner/mob1.jpg");
+    position: relative;
+  }
+  .row.h_set {
+    position: absolute;
+    bottom: 70px;
+    width: 100%;
+  }
+  #myCarousel .carousel_item2 {
+    background-image: url("../../assets/images/banner/mob2.png");
+    position: relative;
+  }
+  #myCarousel .carousel_item3 {
+    background-image: url("../../assets/images/banner/mob3.png");
+    position: relative;
+  }
+
+  #myCarousel .carousel_item4 {
+    background-image: url("../../assets/images/banner/mob4.png");
+    position: relative;
+  }
+
+  #myCarousel .carousel-item .banner_btn {
+    margin: 0 auto;
+    display: block;
+    width: 190px;
+  }
+  .job-opprtunity-bg p {
+    font-size: 14px;
+    line-height: 19px;
+    margin: 0;
+}
+.job-opprtunity-bg .btn.btn-job {
+  border-radius: 2px;
+  margin-top: 20px;
+  margin-bottom: 64px;
+}
+.career_community p {
+  font-size: 14px;
+  line-height: 19px;
+  color: #393D48;
+}
 }
 
 @media only screen and (max-width: 1280px) {
@@ -726,12 +778,19 @@ ul.star {
   }
 
   .resume h4 {
-    font-size: 28px;
     max-width: 610px;
-  }
-  #myCarousel .carousel-item {
-    height: 73vh;
-  }
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #333333;
+}
+  // #myCarousel .carousel-item {
+  //   height: 73vh;
+  // }
 }
 @media screen and (max-width: 1920px) {
   .certificate {
@@ -740,10 +799,10 @@ ul.star {
 }
 
 @media screen and (max-width: 1080px) {
-  #myCarousel .carousel-item {
-    height: 60vh;
-  }
+  // #myCarousel .carousel-item {
+  //   height: 60vh;
+  // }
   #myCarousel .carousel-item h4 {
-    font-size: 32px;
+    font-size: 30px;
   }
 }
