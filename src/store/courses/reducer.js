@@ -15,6 +15,7 @@ const initialState = {
   allCourses: [],
   selectedFilter: null,
   categoryList: [],
+  result : {}
 };
 
 export const coursesReducer = (state = initialState, action) => {
@@ -237,6 +238,25 @@ export const coursesReducer = (state = initialState, action) => {
         error: null,
       };
     case coursesTypes.CATEGORY_LIST_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+      case coursesTypes.RESULT_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.RESULT_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        result: action.payload,
+        error: null,
+      };
+    case coursesTypes.RESULT_FAIL:
       return {
         ...state,
         isLoading: false,

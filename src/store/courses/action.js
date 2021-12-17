@@ -5,13 +5,13 @@ import httpServices from "../../utils/ApiServices";
 import { toast } from "react-toastify";
 import { toasterConfig } from "../../utils";
 
-export const noImage = 'https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg';
+export const noImage =
+  "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
 
 export const allHomeCourses = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.HOME_COURSE_REQUEST });
     const res = await httpServices.get("/course/home/");
-    debugger;
     dispatch({
       type: coursesTypes.HOME_COURSE_FINISH,
       payload: res.data.popular_course,
@@ -117,19 +117,26 @@ export const getUserTestQuestion =
       dispatch({ type: coursesTypes.TEST_QUEDTION_REQUEST });
       let res;
       if (module) {
-        res = await httpServices.get(`/course/user-test-course/${id}?test_id=${module}&progress=${progress}`);
-      }else if(progress){
-        res = await httpServices.get(`/course/user-test-course/${id}?progress=${progress}`);
+        res = await httpServices.get(
+          `/course/user-test-course/${id}?test_id=${module}&progress=${progress}`,
+        );
+      } else if (progress) {
+        res = await httpServices.get(
+          `/course/user-test-course/${id}?progress=${progress}`,
+        );
       } else {
         res = await httpServices.get(`/course/user-test-course/${id}`);
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
-      debugger
       if (err?.status === 400) {
-        history?.push(`/CourseResult`);
+        if (err.data.message === "Time out") {
+          history?.push(`/CourseResult/${id}`);
+          toast.error(err.data.message, toasterConfig);
+        }
+        history?.push(`/CourseResult/${id}`);
       } else if (err.data.status_code === 500) {
-        history?.push(`/CourseResult`);
+        history?.push(`/CourseResult/${id}`);
         toast.error(err.data.message, toasterConfig);
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FAIL });
@@ -181,3 +188,17 @@ export const setFilter =
   async (dispatch) => {
     dispatch({ type: coursesTypes.SELECTED_FILTER, payload });
   };
+
+export const endTest = (id) => async(dispatch) => {
+  await httpServices.post(`/course/user-course-end-time/${id}`);
+}
+
+export const testResult = (id) => async(dispatch) => {
+  try{
+    dispatch({type:coursesTypes.RESULT_REQUEST})
+    const res = await httpServices.get(`/course/user-course-result/${id}`);
+    dispatch({type:coursesTypes.RESULT_FINISH,payload : res.data});
+  }catch(err){
+    dispatch({type:coursesTypes.RESULT_FINISH,payload : err.data});
+  }
+}

@@ -7,22 +7,39 @@ import Confetti from "react-confetti";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import win from "../../assets/images/Courses/win.png";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { testResult } from "../../store/courses/action";
 
 function CourseTest() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { result } = useSelector((state) => state.coursesReducer);
+
+  React.useEffect(() => {
+    dispatch(testResult(id));
+  }, [dispatch, id]);
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
 
       <div className='cou_resultBg'>
         <Container>
-          <Confetti style={{ marginTop: "154px" }} height={850} width={1500} />
+          {Math.round(result?.result) >= 75 && (
+            <Confetti
+              style={{ marginTop: "154px" }}
+              height={850}
+              width={1500}
+            />
+          )}
           <Row>
             <Col md={8} xs={12} className='offset-lg-2'>
               <div className='cou_result_cont'>
                 <h2>Your Result</h2>
                 <img src={win} alt='' />
                 <h2>
-                  Congratulation <b>Swati Jain!</b>
+                  Congratulation <b>{result?.name}!</b>
                 </h2>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
@@ -43,7 +60,7 @@ function CourseTest() {
                       </span>
                       <div class='progress-value'>
                         <div>
-                          <p>90</p>
+                          <p>{result?.total_score}</p>
                           <br />
                           <span>
                             Correct <br /> Answers
@@ -63,7 +80,7 @@ function CourseTest() {
                       </span>
                       <div class='progress-value'>
                         <div>
-                          <p>78</p>
+                          <p>{Math.round(result?.result)}</p>
                           <br />
                           <span>
                             Candidate’s <br /> Score
@@ -84,7 +101,7 @@ function CourseTest() {
                       <div class='progress-value'>
                         <div>
                           <p>
-                            45 <span>min</span>
+                            {result?.test_time && (result?.test_time).toFixed(2)} <span>min</span>
                           </p>
                           <br />
                           <span>Total Time</span>
