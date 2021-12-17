@@ -323,12 +323,14 @@ body {
   color: #ec498a;
   transition: 1s;
 }
-
+.cer_img {
+  display: none;
+}
 /*certificate*/
 .certificate {
   background: #f8f8f8;
   position: relative;
-  // background-image: url("../../assets/images/certificate1.jpg");
+  background-image: url("../../assets/images/certificate1.jpg");
   background-repeat: no-repeat;
   background-size: 100% 103%;
   height: 550px;
@@ -512,13 +514,13 @@ body {
 }
 .tes_box.heg_cha::before {
   content: "";
-  width: 100px;
-  height: 100px;
+  width: 55px;
+  height: 55px;
   background: #edc988;
   border-radius: 50%;
   position: absolute;
   right: -50px;
-  bottom: -50px;
+  bottom: -20px;
   z-index: -1;
 }
 .tes_box3 h2 {
@@ -607,7 +609,7 @@ ul.star {
     width: 100%;
   }
   .tes_box.heg_cha::before {
-    right: 0;
+    right: -15px;
   }
   section.highlight_student.same_padding {
     overflow: hidden;
@@ -672,12 +674,13 @@ ul.star {
     line-height: 30px;
   }
   .certificate {
-    background-image: url("../../assets/images/mob_certif.png");
+    background-image: none;
+    height: auto;
     position: relative;
   }
   section.career_community.same_padding.mt-5 {
     padding: 35px 0px;
-}
+  }
   .certificate h4 {
     font-size: 28px;
     line-height: 40px;
@@ -737,7 +740,15 @@ ul.star {
     background-image: url("../../assets/images/banner/mob4.png");
     position: relative;
   }
-
+  .cer_img {
+    display: block;
+}
+  .cer_img img {
+    max-width: 100%;
+  }
+  section.certificate.same_padding {
+    padding: 40px 0px;
+  }
   #myCarousel .carousel-item .banner_btn {
     margin: 0 auto;
     display: block;
@@ -747,16 +758,75 @@ ul.star {
     font-size: 14px;
     line-height: 19px;
     margin: 0;
+  }
+  .job-opprtunity-bg .btn.btn-job {
+    border-radius: 2px;
+    margin-top: 20px;
+    margin-bottom: 64px;
+  }
+  .career_community p {
+    font-size: 14px;
+    line-height: 19px;
+    color: #393d48;
+  }
+  .tes_box {
+    height: auto !important;
+    padding: 5px 10px !important;
+  }
+  .tes_box p {
+    font-size: 10px !important;
+    line-height: 11px !important;
+    margin: 0;
 }
-.job-opprtunity-bg .btn.btn-job {
-  border-radius: 2px;
-  margin-top: 20px;
-  margin-bottom: 64px;
+
+.tes_box3 {
+  width: 145px;
+  height: auto;
+  padding: 12px 12px 1px;
 }
-.career_community p {
-  font-size: 14px;
+.tes_box3 h2 {
+  font-size: 10px;
+  line-height: 13px;
+}
+.tes_box3 h6 {
+  font-size: 8px;
+  line-height: 11px;
+}
+.tes_box.heg_cha {
+  margin-top: 22px;
+  height: auto;
+}
+.tes_box2 {
+  width: 100%;
+}
+.tes_box2 h2 {
+  font-size: 10px;
+  line-height: 13px;
+  margin: 0;
+}
+.tes_box h2 {
+  font-size: 10px;
   line-height: 19px;
-  color: #393D48;
+  margin: 0;
+}
+.tes_box h6 {
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.tes_box.heg_cha::before {
+  right: -50px;
+  bottom: -20px;
+}
+.tes_box.heg_cha::before {
+  right: -15px;
+}
+.tes_box.tes-before::before {
+  background-size: cover;
+  width: 35px;
+  height: 33px;
+  left: -15px;
+  bottom: -20px;
 }
 }
 
@@ -787,7 +857,7 @@ ul.star {
     align-items: center;
     text-align: center;
     color: #333333;
-}
+  }
   // #myCarousel .carousel-item {
   //   height: 73vh;
   // }

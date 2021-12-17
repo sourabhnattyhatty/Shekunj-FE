@@ -13,6 +13,7 @@ import Community from "../../assets/images/community.png";
 import Nikita from "../../assets/images/testimonial/1.png";
 import Priya from "../../assets/images/testimonial/2.png";
 import star from "../../assets/images/Star 2.png";
+import certif from "../../assets/images/certif.jpg";
 
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
@@ -297,7 +298,9 @@ function HomePage() {
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>
-              
+              <div className='cer_img'>
+                <img src={certif} alt='' />
+              </div>
             </div>
             <div className='col-md-6'>
               <div className='certif_con'>
@@ -324,7 +327,7 @@ function HomePage() {
           <div className='row'>
             <div className='col-md-6'>
               <div className='row'>
-                <div className='col-md-6'>
+                <div className='col-md-6 col-6'>
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
                       <img src={Nikita} alt='' />
@@ -362,7 +365,7 @@ function HomePage() {
                   </div>
                 </div>
 
-                <div className='col-md-6'>
+                <div className='col-md-6 col-6'>
                   <div data-aos='slide-down'>
                     <div className='tes_box3'>
                       <h2>4.9/5</h2>

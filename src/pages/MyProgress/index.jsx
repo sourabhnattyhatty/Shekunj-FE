@@ -42,11 +42,11 @@ function index() {
                 <h3>Current Course</h3>
                 <div className='course_explore'>
                   <Row>
-                    <Col md={3} xs={3}>
+                    <Col md={3} xs={6}>
                       <h6>Adobe Photoshop</h6>
                     </Col>
 
-                    <Col md={2} xs={3}>
+                    <Col md={2} xs={6}>
                       <div>
                         <Box
                           sx={{ position: "relative", display: "inline-flex" }}
@@ -76,7 +76,7 @@ function index() {
                       </div>
                     </Col>
 
-                    <Col md={4} xs={3}>
+                    <Col md={4} xs={6}>
                       <ul className='p-0'>
                         <li>
                           <img src={Calendar} alt='...' className='pr-2' /> May
@@ -89,7 +89,7 @@ function index() {
                         </li>
                       </ul>
                     </Col>
-                    <Col md={3} xs={3} className='p-0'>
+                    <Col md={3} xs={6} className='p-0'>
                       <div className='button_paddingarea'>
                         <button className='explore_button btn'>Explore</button>
                       </div>
@@ -101,7 +101,7 @@ function index() {
                 <h3>Course in prograss</h3>
                 <div className='course_inprogress'>
                   <Row>
-                    <Col md={7} xs={3}>
+                    <Col md={7} xs={9}>
                       <h6>Adobe Photoshop</h6>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -148,7 +148,7 @@ function index() {
                         </Box>
                       </div>
                     </Col>
-                    <Col md={3} xs={3}>
+                    <Col md={3} xs={12}>
                       <div className='button_paddingarea'>
                         <button className='btn certificate_button'>
                           Certificate
@@ -160,7 +160,7 @@ function index() {
                 {/* ------------------ */}
                 <div className='course_inprogress'>
                   <Row>
-                    <Col md={7} xs={3}>
+                    <Col md={7} xs={9}>
                       <h6>Adobe Illustrator - Graphic Design Software</h6>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -218,7 +218,7 @@ function index() {
                 {/* ------------------ */}
                 <div className='course_inprogress'>
                   <Row>
-                    <Col md={7} xs={3}>
+                    <Col md={7} xs={9}>
                       <h6>Adobe Illustrator - Graphic Design Software</h6>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -276,7 +276,7 @@ function index() {
                 {/* ------------------ */}
                 <div className='course_inprogress'>
                   <Row>
-                    <Col md={7} xs={3}>
+                    <Col md={7} xs={9}>
                       <h6>Adobe Illustrator - Graphic Design Software</h6>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -334,7 +334,7 @@ function index() {
                 {/* ------------------ */}
                 <div className='course_inprogress'>
                   <Row>
-                    <Col md={7} xs={3}>
+                    <Col md={7} xs={9}>
                       <h6>Adobe Illustrator - Graphic Design Software</h6>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -394,9 +394,9 @@ function index() {
             <Col md={5} xs={12}>
               <div className='course_completedright'>
                 <Row>
-                  <Col md={7} xs={12}></Col>
+                  <Col md={7} xs={6}></Col>
 
-                  <Col md={5} xs={12}>
+                  <Col md={5} xs={6}>
                     <div className="course_prog pink_col">
                       <h6>6</h6>
                       <h3>Courses <br /> Inprogress</h3>
@@ -434,7 +434,7 @@ function index() {
                 <h6>Your test</h6>
                 <div className='your-testcontent'>
                   <Row>
-                    <Col md={6} xs={12}>
+                    <Col md={6} xs={6}>
                       <div className='first-test'>
                         <h5>
                           Adobe <br /> Photoshop
@@ -444,18 +444,7 @@ function index() {
                         </p>
                       </div>
                     </Col>
-                    <Col md={6} xs={12}>
-                      <div className='first-test'>
-                        <h5>
-                          Adobe <br /> Photoshop
-                        </h5>
-                        <p>
-                          100% <br /> <img src={arrowright} alt='' />
-                        </p>
-                      </div>
-                    </Col>
-
-                    <Col md={6} xs={12}>
+                    <Col md={6} xs={6}>
                       <div className='first-test'>
                         <h5>
                           Adobe <br /> Photoshop
@@ -466,7 +455,7 @@ function index() {
                       </div>
                     </Col>
 
-                    <Col md={6} xs={12}>
+                    <Col md={6} xs={6}>
                       <div className='first-test'>
                         <h5>
                           Adobe <br /> Photoshop
@@ -477,7 +466,7 @@ function index() {
                       </div>
                     </Col>
 
-                    <Col md={6} xs={12}>
+                    <Col md={6} xs={6}>
                       <div className='first-test'>
                         <h5>
                           Adobe <br /> Photoshop
@@ -488,7 +477,18 @@ function index() {
                       </div>
                     </Col>
 
-                    <Col md={6} xs={12}>
+                    <Col md={6} xs={6}>
+                      <div className='first-test'>
+                        <h5>
+                          Adobe <br /> Photoshop
+                        </h5>
+                        <p>
+                          100% <br /> <img src={arrowright} alt='' />
+                        </p>
+                      </div>
+                    </Col>
+
+                    <Col md={6} xs={6}>
                       <div className='first-test'>
                         <h5>
                           Adobe <br /> Photoshop

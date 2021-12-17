@@ -7,6 +7,7 @@ import { Header, Footer, ScrollToTop, SEO } from "../../components";
 import img1 from "../../assets/images/About/img1.png";
 import Nikita from "../../assets/images/Nikita-Sharma.png";
 import star from "../../assets/images/Star 2.png";
+import mob_banner from "../../assets/images/About/mob_banner.png";
 
 import "../HomePage/index.scss";
 import "./index.scss";
@@ -30,6 +31,11 @@ const AboutusPage = () => {
       <section className='about_ban'>
         <div className='container'>
           <div className='row'>
+            <div className='col-lg-0 col-md-0'>
+              <div className="mob_abo_banner">
+                <img src={mob_banner} alt="" />
+              </div>
+            </div>
             <div className='col-lg-5 col-md-7'>
               <div className='about_Con'>
                 <h2>{t("aboutPage.heading")}</h2>
@@ -63,7 +69,7 @@ const AboutusPage = () => {
           <div className='row'>
             <div className='col-md-6'>
               <div className='row'>
-                <div className='col-md-6'>
+                <div className='col-md-6 col-6'>
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
                       <img src={Nikita} alt='' />
@@ -101,7 +107,7 @@ const AboutusPage = () => {
                   </div>
                 </div>
 
-                <div className='col-md-6'>
+                <div className='col-md-6 col-6'>
                   <div data-aos='slide-down'>
                     <div className='tes_box3'>
                       <h2>4.9/5</h2>
