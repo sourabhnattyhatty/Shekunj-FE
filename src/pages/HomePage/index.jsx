@@ -296,7 +296,10 @@ function HomePage() {
       <section className='certificate same_padding'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-6 offset-md-6 offset-lg-6 offset-xl-7'>
+            <div className='col-md-6'>
+              
+            </div>
+            <div className='col-md-6'>
               <div className='certif_con'>
                 <h4>
                   {t("homePage.certificate.heading.1")}{" "}

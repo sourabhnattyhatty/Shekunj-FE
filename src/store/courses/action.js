@@ -11,12 +11,12 @@ export const allHomeCourses = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.HOME_COURSE_REQUEST });
     const res = await httpServices.get("/course/home/");
-    debugger;
-    dispatch({
-      type: coursesTypes.HOME_COURSE_FINISH,
-      payload: res.data.popular_course,
-      payload2: res.data.popular_career_test,
-    });
+    // debugger;
+    // dispatch({
+    //   type: coursesTypes.HOME_COURSE_FINISH,
+    //   payload: res.data.popular_course,
+    //   payload2: res.data.popular_career_test,
+    // });
   } catch (error) {
     dispatch({ type: coursesTypes.HOME_COURSE_FAIL });
   }

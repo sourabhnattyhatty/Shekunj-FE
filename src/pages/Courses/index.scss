@@ -349,12 +349,13 @@ hr.line {
 .Srch_sec .filter_added .filter_content img{
   cursor: pointer;
 }
-.Srch_sec .reset_content p{
+.Srch_sec .reset_content p{ 
   font-weight: normal;
   font-size: 20px;
   line-height: 120%;
   text-transform: capitalize;
   color: #D62C79;
+  cursor: pointer;
 }
 .filter_right_content a {
   list-style: none;
