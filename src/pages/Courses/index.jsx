@@ -184,9 +184,7 @@ const Courses = (props) => {
                             {obj?.category_name}
                           </button>
                           <h6>{obj?.name}</h6>
-                        </div>
-
-                        
+                        </div>                        
                       </div>
                     </Link>
                   ))}

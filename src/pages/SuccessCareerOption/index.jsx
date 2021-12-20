@@ -7,7 +7,7 @@ import "./index.scss";
 function SuccessCareerOption() {
   return (
     <div>
-      <Header loginPage={true} page='courses' />
+      <Header loginPage={true} page='guidance' />
 
       <div className='SucOption'>
         <Container>

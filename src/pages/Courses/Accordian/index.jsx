@@ -71,7 +71,7 @@ export default function SimpleAccordion() {
   useEffect(() => {
     dispatch(setFilter(null));
     dispatch(getCategoryList());
-  }, []);
+  }, [dispatch]);
 
   const handleChange = (panel) => (_, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -98,15 +98,15 @@ export default function SimpleAccordion() {
 
   return (
     <div className='accordion_box_all'>
-      {categoryList?.map((obj) => (
         <Accordion
-          expanded={expanded === obj?.id}
-          onChange={handleChange(obj?.id)}
-        >
+          // expanded={expanded === obj?.id}
+          // onChange={handleChange(obj?.id)}
+          >
           <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
-            <Typography>{obj?.name}</Typography>
+            <Typography>Category</Typography>
           </AccordionSummary>
           <AccordionDetails>
+          {categoryList?.map((obj) => (
             <ul className='pl-0'>
               <FormControl component='fieldset'>
                 {obj?.course_set?.map((r) => (
@@ -121,12 +121,12 @@ export default function SimpleAccordion() {
                       label={r?.name}
                     />
                   </RadioGroup>
-                ))}
+              ))}
               </FormControl>
             </ul>
+          ))}
           </AccordionDetails>
         </Accordion>
-      ))}
     </div>
   );
 }

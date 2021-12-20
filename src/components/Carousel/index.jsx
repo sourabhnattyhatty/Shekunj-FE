@@ -165,13 +165,13 @@ function Carousel(props) {
                       <h2>{obj?.name}</h2>
                     </div>
 
-                    <hr className='line' />
+                    {/* <hr className='line' />
                     <div className='names'>
                       <p>
                         <img src={Profile} alt='...' /> Ramadhir Krishna
                       </p>
                       <span>Free</span>
-                    </div>
+                    </div> */}
                   </div>
                 </Link>
               ))}
@@ -203,13 +203,13 @@ function Carousel(props) {
                       </div>
                     </>
 
-                    <hr className='line' />
+                    {/* <hr className='line' />
                     <div className='names'>
                       <p>
                         <img src={Profile} alt='...' /> Ramadhir Krishna
                       </p>
                       <span>Free</span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))}

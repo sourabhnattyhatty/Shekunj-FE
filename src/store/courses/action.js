@@ -129,6 +129,7 @@ export const getUserTestQuestion =
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
+      debugger
       if (err?.status === 400) {
         if (err.data.message === "Time out") {
           history?.push(`/CourseResult/${id}`);

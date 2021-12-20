@@ -131,7 +131,6 @@ const CourseModule = () => {
 
   const progress = Math.round(100 / courseModulesList.length);
 
-  console.log("GGGGGGGGGGG",course);
 
   React.useEffect(() => {
     if (detect.isMobile) {

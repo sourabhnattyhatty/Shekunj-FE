@@ -328,7 +328,7 @@ body {
 .certificate {
   background: #f8f8f8;
   position: relative;
-  // background-image: url("../../assets/images/certificate1.jpg");
+  background-image: url("../../assets/images/certificate1.jpg");
   background-repeat: no-repeat;
   background-size: 100% 103%;
   height: 550px;
@@ -804,5 +804,15 @@ ul.star {
   // }
   #myCarousel .carousel-item h4 {
     font-size: 30px;
+  }
+}
+@media screen and (min-device-width: 1400px) and (max-device-width:1440px) { 
+  #myCarousel .carousel-item{
+    height: 62vh;
+  }
+}
+@media screen and (min-device-width: 1200px) and (max-device-width:1300px) { 
+  #myCarousel .carousel-item{
+    height: 55vh;
   }
 }

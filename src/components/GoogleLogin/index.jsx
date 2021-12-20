@@ -37,7 +37,7 @@ function GoogleLoginComponent({ showOr }) {
                 disabled={renderProps.disabled}
               >
                 <img src={Google} alt='...' className='mr-2' />{" "}
-                {!showOr ? "Login with Google" : t("login.google")}
+                Login with Google
               </button>
               {showOr && (
                 <div className='or'>

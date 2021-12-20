@@ -9,6 +9,7 @@ import close from "../../assets/icons/x.png";
 import "./index.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut, refreshPage } from "../../store/auth/action";
+import { Avatar, Menu, MenuItem } from "@mui/material";
 
 const Header = ({ loginPage, page }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -17,13 +18,112 @@ const Header = ({ loginPage, page }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl1, setAnchorEl1] = React.useState(null);
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+
+  const open = Boolean(anchorEl);
+  const open1 = Boolean(anchorEl1);
+  const open2 = Boolean(anchorEl2);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleClick1 = (event) => {
+    setAnchorEl1(event.currentTarget);
+  };
+  const handleClose1 = () => {
+    setAnchorEl1(null);
+  };
+
+  const handleClick2 = (event) => {
+    setAnchorEl2(event.currentTarget);
+  };
+  const handleClose2 = () => {
+    setAnchorEl2(null);
+  };
+
   useEffect(() => {
     dispatch(refreshPage());
   }, [dispatch]);
 
   const handleLogout = () => {
     dispatch(logOut(history));
+    setAnchorEl(null);
   };
+
+  const handleProfile = () => {
+    history.push("/myprofile");
+    setAnchorEl(null);
+  };
+  const handleProgress = () => {
+    history.push("/MyProgress");
+    setAnchorEl(null);
+  };
+
+  const handleCertificate = () => {
+    history.push("/AllCertificatePage");
+    setAnchorEl(null);
+  };
+
+  const handleColleges = () => {
+    history.push("/career");
+    setAnchorEl1(null);
+  };
+  const handleSchools = () => {
+    history.push("/career1");
+    setAnchorEl1(null);
+  };
+  const handleExams = () => {
+    history.push("/career2");
+    setAnchorEl1(null);
+  };
+
+  const handleGuidance1 = () => {
+    history.push("/SuccessCareerOption");
+    setAnchorEl2(null);
+  };
+  const handleGuidance2 = () => {
+    history.push("/SuccessCareerTest");
+    setAnchorEl2(null);
+  };
+  const handleGuidance3 = () => {
+    history.push("/GuidanceBook");
+    setAnchorEl2(null);
+  };
+
+  function stringToColor(string) {
+    let hash = 0;
+    let i;
+
+    /* eslint-disable no-bitwise */
+    for (i = 0; i < string.length; i += 1) {
+      hash = string.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    let color = "#";
+
+    for (i = 0; i < 3; i += 1) {
+      const value = (hash >> (i * 8)) & 0xff;
+      color += `00${value.toString(16)}`.substr(-2);
+    }
+    /* eslint-enable no-bitwise */
+
+    return color;
+  }
+
+  function stringAvatar(name) {
+    return {
+      sx: {
+        bgcolor: stringToColor(name),
+      },
+      children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+    };
+  }
 
   return (
     <div>
@@ -32,11 +132,11 @@ const Header = ({ loginPage, page }) => {
           <div className='topbar'>
             <div className='row'>
               <div className='col-md-3'>
-              <div className="sign_in">
-                <Link className='navbar-brand' to='/'>
-                  <img src={Logo} alt='...' />
-                </Link>
-                
+                <div className='sign_in'>
+                  <Link className='navbar-brand' to='/'>
+                    <img src={Logo} alt='...' />
+                  </Link>
+
                   <p>Sign In</p>
                 </div>
               </div>
@@ -64,12 +164,45 @@ const Header = ({ loginPage, page }) => {
 
                 <div className='top_bar_btn d-inline-block'>
                   {isAuth ? (
-                    <button
-                      className='btn btn-bg-pink ml-xl-3 ml-md-2'
-                      onClick={handleLogout}
-                    >
-                      Logout
-                    </button>
+                    <>
+                      <Avatar
+                        className='ml-xl-3 ml-md-2'
+                        style={{ cursor: "pointer" }}
+                        {...stringAvatar("Tim Neutkens")}
+                      />{" "}
+                      <span
+                        style={{
+                          lineHeight: "38px",
+                          marginLeft: "10px",
+                          cursor: "pointer",
+                        }}
+                        id='basic-button'
+                        aria-controls='basic-menu'
+                        aria-haspopup='true'
+                        aria-expanded={open ? "true" : undefined}
+                        onClick={handleClick}
+                      >
+                        Username
+                      </span>
+                      <Menu
+                        id='basic-menu'
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                      >
+                        <MenuItem onClick={handleProfile}>My Profile</MenuItem>
+                        <MenuItem onClick={handleProgress}>
+                          My Progress
+                        </MenuItem>
+                        <MenuItem onClick={handleCertificate}>
+                          My Certificates
+                        </MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                      </Menu>
+                    </>
                   ) : (
                     <Link
                       className='btn btn-bg-pink ml-xl-3 ml-md-2'
@@ -104,7 +237,7 @@ const Header = ({ loginPage, page }) => {
                   data-toggle='collapse'
                   data-target='#collapsibleNavbar'
                 >
-                  <img src={close} alt="" />
+                  <img src={close} alt='' />
                 </button>
                 <ul className='navbar-nav'>
                   <li
@@ -130,9 +263,33 @@ const Header = ({ loginPage, page }) => {
                       page === "guidance" ? "nav-item active" : "nav-item"
                     }
                   >
-                    <Link className='nav-link' to='/GuidanceBook'>
+                    <button
+                      className='nav-link guidence_button'
+                      id='basic-button2'
+                      aria-controls='basic-menu2'
+                      aria-haspopup='true'
+                      aria-expanded={open2 ? "true" : undefined}
+                      onClick={handleClick2}
+                    >
                       {t("header.heading.3")}
-                    </Link>
+                    </button>
+                    <Menu
+                      id='basic-menu2'
+                      anchorEl={anchorEl2}
+                      open={open2}
+                      onClose={handleClose2}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button2",
+                      }}
+                    >
+                      <MenuItem onClick={handleGuidance1}>
+                        Career Option
+                      </MenuItem>
+                      <MenuItem onClick={handleGuidance2}>Career Test</MenuItem>
+                      <MenuItem onClick={handleGuidance3}>
+                        Book a Counsellor
+                      </MenuItem>
+                    </Menu>
                   </li>
                   <li
                     className={
@@ -153,9 +310,31 @@ const Header = ({ loginPage, page }) => {
                       page === "career" ? "nav-item active" : "nav-item"
                     }
                   >
-                    <Link className='nav-link' to='/career'>
+                    <button
+                      className='nav-link guidence_button'
+                      id='basic-button1'
+                      aria-controls='basic-menu1'
+                      aria-haspopup='true'
+                      aria-expanded={open1 ? "true" : undefined}
+                      onClick={handleClick1}
+                    >
                       {t("header.heading.5")}
-                    </Link>
+                    </button>
+                    <Menu
+                      id='basic-menu1'
+                      anchorEl={anchorEl1}
+                      open={open1}
+                      onClose={handleClose1}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button1",
+                      }}
+                    >
+                      <MenuItem onClick={handleColleges}>Top Colleges</MenuItem>
+                      <MenuItem onClick={handleSchools}>Top Schools</MenuItem>
+                      <MenuItem onClick={handleExams}>
+                        Governmant Exams
+                      </MenuItem>
+                    </Menu>
                   </li>
 
                   <li

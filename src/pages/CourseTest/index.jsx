@@ -29,28 +29,14 @@ import {
 } from "../../store/courses/action";
 import { styled } from "@mui/material/styles";
 
-const iOSBoxShadow =
-  "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
+
 
 const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
   marginTop: 20,
   height: 10,
   padding: "15px 0",
-  "& .MuiSlider-thumb": {
-    height: 28,
-    width: 28,
-    backgroundColor: "#fff",
-    boxShadow: iOSBoxShadow,
-    "&:focus, &:hover, &.Mui-active": {
-      boxShadow:
-        "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)",
-      // Reset on touch devices, it doesn't add specificity
-      "@media (hover: none)": {
-        boxShadow: iOSBoxShadow,
-      },
-    },
-  },
+
   "& .MuiSlider-valueLabel": {
     fontSize: 12,
     fontWeight: "normal",
@@ -59,26 +45,6 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
     color: theme.palette.text.primary,
     "&:before": {
       display: "none",
-    },
-    "& *": {
-      background: "transparent",
-      color: theme.palette.mode === "dark" ? "#fff" : "#000",
-    },
-  },
-  "& .MuiSlider-track": {
-    border: "none",
-  },
-  "& .MuiSlider-rail": {
-    opacity: 0.5,
-    backgroundColor: "#bfbfbf",
-  },
-  "& .MuiSlider-mark": {
-    backgroundColor: "#bfbfbf",
-    height: 13,
-    width: 1,
-    "&.MuiSlider-markActive": {
-      opacity: 1,
-      backgroundColor: "currentColor",
     },
   },
 }));
@@ -96,7 +62,6 @@ function CourseTest() {
 
   const progress = Math.round(100 / questionCount?.total_course_que);
 
-
   React.useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
     dispatch(testCountSummery(id, history));
@@ -109,8 +74,6 @@ function CourseTest() {
   React.useEffect(() => {
     dispatch(testCountSummery(id, history));
   }, [dispatch, toggle, history, id]);
-
-  
 
   const handleNextQuestion = () => {
     const data = {
@@ -140,7 +103,7 @@ function CourseTest() {
     };
     if (answer) {
       dispatch(postAnswer(data, id));
-      dispatch(endTest(id))
+      dispatch(endTest(id));
       setAnswer("");
       history.push(`/CourseResult/${id}`);
     } else {
@@ -158,6 +121,10 @@ function CourseTest() {
     return (
       <IOSSlider
         aria-label='ios slider'
+        className={
+          (question?.progress <= 33 && "red-progress") ||
+          (question?.progress <= 66 && "yellow-progress")
+        }
         value={count}
         valueLabelFormat={(value) => <div>{value}%</div>}
         valueLabelDisplay='on'
@@ -187,12 +154,12 @@ function CourseTest() {
         <div className='time_set'>
           <p>
             <img src={time} alt='' /> Time left:{" "}
-            <Timer initialTime={1200000} direction="backward">
+            <Timer initialTime={1200000} direction='backward'>
               {() => (
                 <>
                   <Timer.Hours /> :
                   <Timer.Minutes />:
-                  <Timer.Seconds/>
+                  <Timer.Seconds />
                 </>
               )}
             </Timer>

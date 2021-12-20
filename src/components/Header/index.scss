@@ -64,6 +64,10 @@ header {
   z-index: 999;
 }
 
+.d-inline-block {
+  display: inline-flex !important;
+}
+
 .btn.btn-bg-black {
   background: #000000;
   font-weight: 600;
@@ -166,6 +170,13 @@ header {
 .other_head .middle_nav_login .navbar-nav .nav-item.active .nav-link {
   color: #fff;
 }
+.guidence_button{
+  background: transparent;
+  border: 0;
+}
+
+
+
 @media only screen and (min-width: 992px) and (max-width: 1280px) {
   #custom-search-input {
     margin: 10px 0px 0px 0px;

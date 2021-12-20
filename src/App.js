@@ -8,7 +8,7 @@ import "./App.css";
 const ForgotPage = React.lazy(() => import("./pages/ForgotPage/ForgotPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage/SignupPage"));
 const LoginPage = React.lazy(() => import("./pages/LoginPage/LoginPage"));
-const Dashboard = React.lazy(() => import("./pages/Dashboard/Dashboard"));
+// const Dashboard = React.lazy(() => import("./pages/Dashboard/Dashboard"));
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const About = React.lazy(() => import("./pages/About"));
 const Career = React.lazy(() => import("./pages/Career"));
@@ -45,7 +45,7 @@ function App() {
           component={ResetPassword}
         />
 
-        <Route exact path='/dashboard' component={Dashboard} />
+        {/* <Route exact path='/dashboard' component={Dashboard} /> */}
         <Route exact path='/' component={HomePage} />
         <Route exact path='/about' component={About} />
         <Route exact path='/career' component={Career} />
