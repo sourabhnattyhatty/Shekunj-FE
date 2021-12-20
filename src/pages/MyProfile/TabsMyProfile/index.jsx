@@ -16,9 +16,9 @@ import User from "../../../assets/images/MyProfile/user.png";
 import phone from "../../../assets/images/MyProfile/phone.png";
 import Stream from "../../../assets/images/MyProfile/Stream.png";
 import education from "../../../assets/images/MyProfile/education.png";
-import GuidanceSelect from "../../GuidanceBook/Select/index"
+import GuidanceSelect from "../../GuidanceBook/Select/index";
 import "./index.scss";
-import Date_Birth from "../Date_Birth";
+import DateBirth from "../Date_Birth";
 
 // import DateType from "../DateType";
 
@@ -58,6 +58,7 @@ function a11yProps(index) {
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const [visible, setVisible] = React.useState(false);
+  const [showDetails, setShowDetails] = React.useState(true);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -100,7 +101,12 @@ export default function BasicTabs() {
                   <li>Madhya Pradesh</li>
                 </ul>
               </div>
-              <button className='edit_profile_btn'>Edit Profile</button>
+              <button
+                className='edit_profile_btn'
+                onClick={() => setShowDetails((prew) => !prew)}
+              >
+                Edit Profile
+              </button>
             </Col>
           </Row>
         </div>
@@ -185,7 +191,6 @@ export default function BasicTabs() {
               />
             </div>
 
-
             <div className='form-group'>
               <label htmlFor=''>Email</label>
               <TextField
@@ -203,7 +208,6 @@ export default function BasicTabs() {
                 }}
               />
             </div>
-
 
             <div className='form-group'>
               <label htmlFor=''>High Education</label>
@@ -223,12 +227,10 @@ export default function BasicTabs() {
               />
             </div>
 
-
             <div className='form-group'>
               <label htmlFor=''>Date of birth</label>
-              <Date_Birth/>
+              <DateBirth />
             </div>
-
 
             <div className='form-group'>
               <label htmlFor=''>City</label>
@@ -247,8 +249,8 @@ export default function BasicTabs() {
                 }}
               /> */}
               <div className='form-group mzero'>
-                    <GuidanceSelect />
-                  </div>
+                <GuidanceSelect />
+              </div>
             </div>
           </div>
         </Col>
@@ -273,7 +275,6 @@ export default function BasicTabs() {
               />
             </div>
 
-
             <div className='form-group'>
               <label htmlFor=''>Mobile Number</label>
               <TextField
@@ -292,7 +293,6 @@ export default function BasicTabs() {
               />
             </div>
 
-
             <div className='form-group'>
               <label htmlFor=''>Stream</label>
               {/* <TextField
@@ -310,19 +310,16 @@ export default function BasicTabs() {
                 }}
               /> */}
               <div className='form-group mzero'>
-                    <GuidanceSelect />
-                  </div>
+                <GuidanceSelect />
+              </div>
             </div>
-
 
             <div className='form-group'>
               <label htmlFor=''>State</label>
               <div className='form-group mzero'>
-                    <GuidanceSelect />
-                  </div>
+                <GuidanceSelect />
+              </div>
             </div>
-
-            
           </div>
         </Col>
       </Row>
