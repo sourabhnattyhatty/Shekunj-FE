@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { ImageListItem, ImageListItemBar } from "@mui/material";
 
 import {
@@ -9,12 +10,14 @@ import {
   ScrollToTop,
   SEO,
 } from "../../components";
-
+import { getTopSchools } from "../../store/career";
 import pune_college from "../../assets/images/Career/pune_college.png";
 import "../HomePage/index.scss";
 import "./index.scss";
 
 const CareerPage1 = () => {
+  const dispatch = useDispatch();
+  const { topSchools } = useSelector((state) => state.careerReducer);
   const STATES = {
     name: "STATES",
     rows: [
@@ -123,10 +126,14 @@ const CareerPage1 = () => {
     ],
   };
 
+  useEffect(() => {
+    dispatch(getTopSchools());
+  }, [dispatch]);
+
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
-      <Header loginPage={true} page='career' subPage="schools"/>
+      <Header loginPage={true} page='career' subPage='schools' />
 
       <div className='mainDiv_career'>
         <Container>

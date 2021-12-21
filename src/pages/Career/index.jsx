@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { ImageListItem, ImageListItemBar } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   AccordionComponent,
@@ -9,13 +9,15 @@ import {
   ScrollToTop,
   SEO,
 } from "../../components";
-import christian_collage from "../../assets/images/Career/christian_collage.png";
-import pune_college from "../../assets/images/Career/pune_college.png";
+import { getTopCollages } from "../../store/career";
+import { noImage } from "../../store/courses/action";
 
 import "../HomePage/index.scss";
 import "./index.scss";
 
 const CareerPage = () => {
+  const dispatch = useDispatch();
+  const { topCollages } = useSelector((state) => state.careerReducer);
   const STREAM = {
     name: "STREAM",
     rows: [
@@ -123,6 +125,26 @@ const CareerPage = () => {
       },
     ],
   };
+
+  useEffect(() => {
+    dispatch(getTopCollages());
+  }, [dispatch]);
+
+  const transformPrice = (price) => {
+    let nf = new Intl.NumberFormat("en-US");
+    return nf.format(
+      Number.isNaN(parseInt(price, 10)) ? 0 : parseInt(price, 10) || 0,
+    );
+  };
+
+  const transformImg = (image) => {
+    return image
+      ? image?.includes("http://3.109.195.234")
+        ? image
+        : `http://3.109.195.234${image}`
+      : noImage;
+  };
+
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
@@ -145,157 +167,45 @@ const CareerPage = () => {
             </Col>
 
             <Col md={8} xs={12}>
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>CMC Vellore - Christian Medical College</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View more details</button>
-                  </Col>
+              {topCollages?.length > 0 ? (
+                topCollages?.map((c) => (
+                  <div className='career_box' key={c?.id}>
+                    <Row>
+                      <Col md={7} xs={12}>
+                        <h3>{c?.name || "N/A"}</h3>
+                        <p>
+                          {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
+                          <span>{c?.collage_type || "N/A"}</span>
+                        </p>
+                        <ul>
+                          <li>
+                            <span>Fees</span> : ₹ {transformPrice(c?.fees)}{" "}
+                          </li>
+                          <li>
+                            <span>Exam</span> : {c?.exam || "N/A"}
+                          </li>
+                        </ul>
+                        <button className='btn_viewCour'>
+                          View more details
+                        </button>
+                      </Col>
 
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <img src={christian_collage} alt='' />
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>KMC Mangalore - Kasturba Medical College</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View more details</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>KMC Mangalore - Kasturba Medical College</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View more details</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>
-                      SRM University Chennai - SRM Institute of Science and
-                      Technology
-                    </h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View more details</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>JMI New Delhi - Jamia Millia Islamia College</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View more details</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
+                      <Col md={5} xs={12}>
+                        <div className='career_img'>
+                          <img src={transformImg(c?.image)} alt='' />
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+                ))
+              ) : (
+                <div className='text-center'>No data found!</div>
+              )}
             </Col>
           </Row>
         </Container>
       </div>
-
       <ScrollToTop />
-
       <Footer loginPage={false} />
     </div>
   );

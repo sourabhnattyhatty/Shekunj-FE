@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { ImageListItem, ImageListItemBar } from "@mui/material";
 
 import {
@@ -9,12 +10,14 @@ import {
   ScrollToTop,
   SEO,
 } from "../../components";
+import { getGovernmentExams } from "../../store/career";
 import pune_college from "../../assets/images/Career/pune_college.png";
-
 import "../HomePage/index.scss";
 import "./index.scss";
 
 const CareerPage2 = () => {
+  const dispatch = useDispatch();
+  const { governmentExams } = useSelector((state) => state.careerReducer);
   const CATEGORIES = {
     name: "CATEGORIES",
     rows: [
@@ -76,10 +79,14 @@ const CareerPage2 = () => {
     ],
   };
 
+  useEffect(() => {
+    dispatch(getGovernmentExams());
+  }, [dispatch]);
+
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
-      <Header loginPage={true} page='career' subPage="govExams"/>
+      <Header loginPage={true} page='career' subPage='govExams' />
 
       <div className='mainDiv_career'>
         <Container>
