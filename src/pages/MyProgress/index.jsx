@@ -20,7 +20,7 @@ function index() {
   return (
     <div>
       <SEO title='Sheकुंज - Courses' />
-      <Header loginPage={true} />
+      <Header loginPage={true} subPage="myProgress" />
 
       <div className='dashboard_main pt-5 pb-5'>
         <Container>
