@@ -59,7 +59,7 @@ function CourseTest() {
               <p className='cou_tit'>Course & Certificate</p>
               <div className='certi_img'>
                 <p>
-                  <div class='content' onClick={history.push("/CertificateFullView")}>
+                  <div class='content' onClick={() => history.push("/CertificateFullView")}>
                     <a
                       href='#!'
                       target='_blank'

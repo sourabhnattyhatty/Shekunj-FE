@@ -129,13 +129,13 @@ export const getUserTestQuestion =
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
-      debugger
       if (err?.status === 400) {
-        if (err.data.message === "Time out") {
+        if (err.data.message === "Already course test is completed") {
+          history?.push(`/CourseCertificate`);
+          toast.success(err.data.message, toasterConfig);
+        } else {
           history?.push(`/CourseResult/${id}`);
-          toast.error(err.data.message, toasterConfig);
         }
-        history?.push(`/CourseResult/${id}`);
       } else if (err.data.status_code === 500) {
         history?.push(`/CourseResult/${id}`);
         toast.error(err.data.message, toasterConfig);
@@ -202,19 +202,19 @@ export const setFilter =
     dispatch({ type: coursesTypes.SELECTED_FILTER, payload });
   };
 
-export const endTest = (id) => async(dispatch) => {
+export const endTest = (id) => async (dispatch) => {
   await httpServices.post(`/course/user-course-end-time/${id}`);
-}
+};
 
-export const testResult = (id) => async(dispatch) => {
-  try{
-    dispatch({type:coursesTypes.RESULT_REQUEST})
+export const testResult = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: coursesTypes.RESULT_REQUEST });
     const res = await httpServices.get(`/course/user-course-result/${id}`);
-    dispatch({type:coursesTypes.RESULT_FINISH,payload : res.data});
-  }catch(err){
-    dispatch({type:coursesTypes.RESULT_FINISH,payload : err.data});
+    dispatch({ type: coursesTypes.RESULT_FINISH, payload: res.data });
+  } catch (err) {
+    dispatch({ type: coursesTypes.RESULT_FINISH, payload: err.data });
   }
-}
+};
 export const setCollapseSuccessStory = (id, action) => (dispatch, getState) => {
   const { coursesReducer } = getState();
   const { successStories } = coursesReducer;

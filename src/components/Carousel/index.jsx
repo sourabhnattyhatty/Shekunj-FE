@@ -2,20 +2,12 @@ import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import { constants } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  allCourses,
-  getSimilarCourses,
-  allHomeCourses,
-  noImage,
-} from "../../store/courses/action";
-import { Link } from "react-router-dom";
+import { allHomeCourses, noImage } from "../../store/courses/action";
+import { Link, useParams } from "react-router-dom";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "./index.scss";
-
-import Pro1 from "../../assets/images/P-1.png";
-import Profile from "../../assets/images/testimonial/1.png";
 
 function Carousel(props) {
   const divRef = React.useRef();
@@ -23,13 +15,10 @@ function Carousel(props) {
     (state) => state.coursesReducer,
   );
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(allHomeCourses());
-    // dispatch(allCourses());
-    // if (course?.category_id) {
-    //   dispatch(getSimilarCourses(course?.category_id));
-    // }
   }, [dispatch, course?.category_id]);
 
   const handleChange = (e) => {
@@ -40,7 +29,7 @@ function Carousel(props) {
       }/${courses?.length || 0}`;
     } else if (props.type === constants.carouselConstant.TEST) {
       divRef.current.innerHTML = `${
-        carousel.relative(carousel.current()) + 1  || 0
+        carousel.relative(carousel.current()) + 1 || 0
       }/${tests?.length || 0}`;
     }
   };
@@ -64,8 +53,7 @@ function Carousel(props) {
               ? "similar-coursesslider"
               : "owl-theme"
           }
-          // loop={props.page === "courseDetail" ? false : true}
-          loop={false}
+          loop={courses?.length > 5}
           margin={props.page === "courseDetail" ? 10 : 210}
           nav={props.page === "courseDetail" ? false : true}
           items={props.page === "courseDetail" ? 1.4 : 4}
@@ -90,12 +78,12 @@ function Carousel(props) {
             1000: {
               items: props.page === "courseDetail" ? 1.4 : 3,
               nav: true,
-              loop: props.page === "courseDetail" ? false : true,
+              // loop: props.page === "courseDetail" ? false : true,
             },
             1200: {
               items: props.page === "courseDetail" ? 1.4 : 4,
               nav: true,
-              loop: props.page === "courseDetail" ? false : true,
+              // loop: props.page === "courseDetail" ? false : true,
             },
             1920: {
               items: 5,
@@ -105,8 +93,11 @@ function Carousel(props) {
         >
           {props.page === "courseDetail" && (
             <>
-              {similarCourses?.map((course, ind) => (
-                <>
+              {similarCourses?.map((course, ind) => {
+                if (course?.id === Number(id)) {
+                  return null;
+                }
+                return (
                   <Link
                     to={`/CoursesDetails/${course?.id}`}
                     className='item'
@@ -131,8 +122,8 @@ function Carousel(props) {
                       </div>
                     </div>
                   </Link>
-                </>
-              ))}
+                );
+              })}
             </>
           )}
           {props.type === constants.carouselConstant.COURSES && (

@@ -76,7 +76,7 @@ export const contactVerify = (value) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: authTypes.CONTACT_VERIFY_FAIL });
     if (error?.status === 400) {
-      toast.error("Invalid mobile number.");
+      toast.error(error.data.errors.error[0], toasterConfig);
     }
   }
 };

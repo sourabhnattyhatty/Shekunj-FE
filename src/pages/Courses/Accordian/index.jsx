@@ -98,35 +98,39 @@ export default function SimpleAccordion() {
 
   return (
     <div className='accordion_box_all'>
-        <Accordion
-          // expanded={expanded === obj?.id}
-          // onChange={handleChange(obj?.id)}
-          >
-          <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
-            <Typography>Category</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-          {categoryList?.map((obj) => (
-            <ul className='pl-0'>
-              <FormControl component='fieldset'>
-                {obj?.course_set?.map((r) => (
-                  <RadioGroup
-                    value={selectedFilter}
-                    onChange={(e) => handleCheckboxChange(e, r)}
-                  >
-                    <FormControlLabel
-                      id={r.id}
-                      value={r.id}
-                      control={<Radio />}
-                      label={r?.name}
-                    />
-                  </RadioGroup>
-              ))}
-              </FormControl>
-            </ul>
-          ))}
-          </AccordionDetails>
-        </Accordion>
+      <Accordion
+      // expanded={expanded === obj?.id}
+      // onChange={handleChange(obj?.id)}
+      >
+        <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
+          <Typography>Category</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          {categoryList?.map((obj) => {
+            return (
+              obj?.course_set?.length>0 && (
+                <ul className='pl-0'>
+                  <FormControl component='fieldset'>
+                    {obj?.course_set?.map((r) => (
+                      <RadioGroup
+                        value={selectedFilter}
+                        onChange={(e) => handleCheckboxChange(e, r)}
+                      >
+                        <FormControlLabel
+                          id={r.id}
+                          value={r.id}
+                          control={<Radio />}
+                          label={r?.name}
+                        />
+                      </RadioGroup>
+                    ))}
+                  </FormControl>
+                </ul>
+              )
+            );
+          })}
+        </AccordionDetails>
+      </Accordion>
     </div>
   );
 }

@@ -60,7 +60,7 @@ function CourseTest() {
                       </span>
                       <div class='progress-value'>
                         <div>
-                          <p>{result?.total_score}</p>
+                          <p>{result?.no_of_correct_answer}</p>
                           <br />
                           <span>
                             Correct <br /> Answers

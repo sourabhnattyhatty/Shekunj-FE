@@ -60,7 +60,7 @@ function CourseTest() {
     (state) => state.coursesReducer,
   );
 
-  const progress = Math.round(100 / questionCount?.total_course_que);
+  const progress = Math.round(100 / (questionCount?.total_course_que || 0)) || 0;
 
   React.useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
@@ -182,7 +182,6 @@ function CourseTest() {
                 <RadioGroup
                   aria-label='gender'
                   name='radio-buttons-group'
-                  defaultValue={question?.answer ? question?.answer : ""}
                 >
                   {question?.optionA && (
                     <FormControlLabel
@@ -226,7 +225,7 @@ function CourseTest() {
                   <button
                     className='back_button'
                     onClick={() => handlePrevQuestion()}
-                    // disabled
+                    disabled={!question?.prev_module}
                   >
                     back
                   </button>

@@ -8,9 +8,7 @@ import {
 import { Row, Col } from "react-bootstrap";
 import { Header, Footer, ScrollToTop, SEO, Carousel } from "../../components";
 
-import banimg from "../../assets/images/CoursesDetails/ban_img.png";
-import star from "../../assets/images/CoursesDetails/star.png";
-import check from "../../assets/images/CoursesDetails/check.png";
+
 import Device from "../../assets/images/CoursesDetails/Device.png";
 import clock from "../../assets/images/CoursesDetails/clock.png";
 import certificate from "../../assets/images/CoursesDetails/certificate.png";
@@ -172,7 +170,7 @@ const CourseDetails = () => {
 
                 <h3 className='similar-coursestext'>Similar Courses</h3>
 
-                <Carousel page='courseDetail' />
+                <Carousel page='courseDetail'  />
 
                 <Link to="/courses" className='btn_view'>View More Courses</Link>
               </div>
