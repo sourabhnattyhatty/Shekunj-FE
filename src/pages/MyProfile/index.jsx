@@ -1,11 +1,15 @@
 import React from "react";
-import { Header, Footer, ScrollToTop } from "../../components";
+import { useSelector } from "react-redux";
 import { Container } from "@mui/material";
+
+import { Header, Footer, ScrollToTop } from "../../components";
 import BasicTabs from "./../MyProfile/TabsMyProfile/index";
 import "../../pages/responsive.scss";
 import "./index.scss";
 
-function index() {
+function MyProfile() {
+  const { user } = useSelector((state) => state.authReducer);
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -13,7 +17,7 @@ function index() {
       <div className='my_profile_div'>
         <Container>
           <div className='profile_con'>
-            <h2>Hello Swati Jain</h2>
+            <h2>Hello {user?.name || "N/A"}</h2>
             <p>My Profile</p>
           </div>
         </Container>
@@ -31,4 +35,4 @@ function index() {
   );
 }
 
-export default index;
+export default MyProfile;

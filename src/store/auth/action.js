@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import httpServices from "../../utils/ApiServices";
 import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
+import { noImage } from "../courses/action";
+import moment from "moment";
 
 export const onLogin = (values, history, redirect) => async (dispatch) => {
   try {
@@ -15,8 +17,8 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
     Cookies.set("sheToken", res.data.tokens);
     if (redirect) {
       history.push(redirect);
-    }else{
-      history.push('/MyProgress');
+    } else {
+      history.push("/MyProgress");
     }
   } catch (error) {
     dispatch({ type: authTypes.LOGIN_FAIL });
@@ -116,5 +118,38 @@ export const refreshPage = () => async (dispatch) => {
   const token = Cookies.get("sheToken");
   if (token) {
     dispatch({ type: authTypes.REFRESH });
+  }
+};
+
+export const getUserProfile = () => async (dispatch) => {
+  try {
+    dispatch({ type: authTypes.USER_PROFILE_REQUEST });
+    const res = await httpServices.get("/authentication/user-profile/");
+    dispatch({
+      type: authTypes.USER_PROFILE_FINISH,
+      payload: {
+        ...res?.data,
+        contact: res?.data?.contact
+          ? !res?.data?.contact?.includes("+91")
+            ? `+91 ${res?.data?.contact}`
+            : res?.data?.contact
+          : null,
+        profile_pic: res?.data?.profile_pic
+          ? res?.data?.profile_pic?.includes("http://3.109.195.234")
+            ? res?.data?.profile_pic
+            : `http://3.109.195.234${res?.data?.profile_pic}`
+          : null,
+        dob: res?.data?.dob
+          ? moment(res?.data?.dob).format("DD-MM-YYYY")
+          : null,
+      },
+    });
+  } catch (error) {
+    dispatch({ type: authTypes.USER_PROFILE_FAIL });
+    if (error?.status === 400) {
+      toast.error(error.data.errors.error[0], toasterConfig);
+    } else if (error?.status === 500) {
+      toast.error("Internal Server Error", toasterConfig);
+    }
   }
 };

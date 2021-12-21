@@ -7,7 +7,8 @@ import Header from "./Header";
 import ChangeLanguageButton from "./LanguageButton";
 import Loader from "./Loader";
 import ScrollToTop from "./ScrollToTop";
-import SEO from './SEO'
+import SEO from "./SEO";
+import AccordionComponent from "./Accordian";
 
 export {
   AuthContent,
@@ -19,5 +20,6 @@ export {
   Header,
   Loader,
   ScrollToTop,
-  SEO
+  SEO,
+  AccordionComponent,
 };

@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { Avatar, Menu, MenuItem } from "@mui/material";
+
+import { getUserProfile, logOut, refreshPage } from "../../store/auth/action";
 import ChangeLanguageButton from "../LanguageButton";
 import Logo from "../../assets/images/logo.svg";
 import Search from "../../assets/icons/search.png";
 import close from "../../assets/icons/x.png";
 
 import "./index.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { logOut, refreshPage } from "../../store/auth/action";
-import { Avatar, Menu, MenuItem } from "@mui/material";
 
-const Header = ({ loginPage, page }) => {
+const Header = ({ page }) => {
   const [searchValue, setSearchValue] = useState("");
   const { t } = useTranslation();
-  const { isAuth } = useSelector((state) => state.authReducer);
+  const { isAuth, user } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -29,6 +30,7 @@ const Header = ({ loginPage, page }) => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -36,6 +38,7 @@ const Header = ({ loginPage, page }) => {
   const handleClick1 = (event) => {
     setAnchorEl1(event.currentTarget);
   };
+
   const handleClose1 = () => {
     setAnchorEl1(null);
   };
@@ -43,12 +46,14 @@ const Header = ({ loginPage, page }) => {
   const handleClick2 = (event) => {
     setAnchorEl2(event.currentTarget);
   };
+
   const handleClose2 = () => {
     setAnchorEl2(null);
   };
 
   useEffect(() => {
     dispatch(refreshPage());
+    dispatch(getUserProfile());
   }, [dispatch]);
 
   const handleLogout = () => {
@@ -74,10 +79,12 @@ const Header = ({ loginPage, page }) => {
     history.push("/career");
     setAnchorEl1(null);
   };
+
   const handleSchools = () => {
     history.push("/career1");
     setAnchorEl1(null);
   };
+
   const handleExams = () => {
     history.push("/career2");
     setAnchorEl1(null);
@@ -87,43 +94,16 @@ const Header = ({ loginPage, page }) => {
     history.push("/SuccessCareerOption");
     setAnchorEl2(null);
   };
+
   const handleGuidance2 = () => {
     history.push("/SuccessCareerTest");
     setAnchorEl2(null);
   };
+
   const handleGuidance3 = () => {
     history.push("/GuidanceBook");
     setAnchorEl2(null);
   };
-
-  function stringToColor(string) {
-    let hash = 0;
-    let i;
-
-    /* eslint-disable no-bitwise */
-    for (i = 0; i < string.length; i += 1) {
-      hash = string.charCodeAt(i) + ((hash << 5) - hash);
-    }
-
-    let color = "#";
-
-    for (i = 0; i < 3; i += 1) {
-      const value = (hash >> (i * 8)) & 0xff;
-      color += `00${value.toString(16)}`.substr(-2);
-    }
-    /* eslint-enable no-bitwise */
-
-    return color;
-  }
-
-  function stringAvatar(name) {
-    return {
-      sx: {
-        bgcolor: stringToColor(name),
-      },
-      children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-    };
-  }
 
   return (
     <div>
@@ -165,11 +145,18 @@ const Header = ({ loginPage, page }) => {
                 <div className='top_bar_btn d-inline-block'>
                   {isAuth ? (
                     <>
-                      <Avatar
-                        className='ml-xl-3 ml-md-2'
-                        style={{ cursor: "pointer" }}
-                        {...stringAvatar("Tim Neutkens")}
-                      />{" "}
+                      {user && user?.profile_pic ? (
+                        <img
+                          src={user?.profile_pic}
+                          className='profile-img'
+                          alt={user?.name || "N/A"}
+                        />
+                      ) : (
+                        <Avatar
+                          className='ml-xl-3 ml-md-2'
+                          style={{ cursor: "pointer" }}
+                        />
+                      )}
                       <span
                         style={{
                           lineHeight: "38px",
@@ -182,7 +169,7 @@ const Header = ({ loginPage, page }) => {
                         aria-expanded={open ? "true" : undefined}
                         onClick={handleClick}
                       >
-                        Username
+                        {user?.name || "N/A"}
                       </span>
                       <Menu
                         id='basic-menu'
