@@ -126,7 +126,7 @@ const CareerPage1 = () => {
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
-      <Header loginPage={true} page='career' />
+      <Header loginPage={true} page='career' subPage="schools"/>
 
       <div className='mainDiv_career'>
         <Container>

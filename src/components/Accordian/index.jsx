@@ -117,7 +117,7 @@ export default function AccordionComponent({
             </AccordionDetails>
           </Accordion>
 
-          <Accordion>
+          {/* <Accordion>
             <AccordionSummary
               aria-controls='panel1d-content'
               id={courseDifficulty?.name}
@@ -143,7 +143,7 @@ export default function AccordionComponent({
                 </div>
               )}
             </AccordionDetails>
-          </Accordion>
+          </Accordion> */}
         </>
       )}
       {type === "schools" && (

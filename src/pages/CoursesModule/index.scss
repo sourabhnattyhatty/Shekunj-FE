@@ -377,24 +377,24 @@ span.MuiSlider-rail {
   color: #ffffff;
   margin: 0px 5px 22px;
 }
-.MuiSlider-track {
-  border: none;
-  height: 13px;
-  -webkit-text-fill-color: transparent;
-  background: linear-gradient(
-    90deg,
-    #d62c79 0%,
-    #ffcc7b 226.38%,
-    #208674 443.51%
-  );
-  border-radius: 10px;
-}
-span.MuiSlider-thumbColorPrimary {
-  height: 26px;
-  width: 26px;
-  background: #d62c79 !important;
-  box-shadow: 0px 0px 10px rgb(236 124 211) !important;
-}
+// .MuiSlider-track {
+//   border: none;
+//   height: 13px;
+//   -webkit-text-fill-color: transparent;
+//   background: linear-gradient(
+//     90deg,
+//     #d62c79 0%,
+//     #ffcc7b 226.38%,
+//     #208674 443.51%
+//   );
+//   border-radius: 10px;
+// }
+// span.MuiSlider-thumbColorPrimary {
+//   height: 26px;
+//   width: 26px;
+//   background: #d62c79 !important;
+//   box-shadow: 0px 0px 10px rgb(236 124 211) !important;
+// }
 span.MuiSlider-valueLabelOpen.MuiSlider-valueLabel {
   font-family: SegoeUI_medium;
   font-style: normal;

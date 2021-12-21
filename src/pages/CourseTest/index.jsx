@@ -122,8 +122,11 @@ function CourseTest() {
       <IOSSlider
         aria-label='ios slider'
         className={
-          (question?.progress <= 33 && "red-progress") ||
-          (question?.progress <= 66 && "yellow-progress")
+          (question?.progress <= 20 && "red1-progress") ||
+          (question?.progress <= 40 && "red2-progress") ||
+          (question?.progress <= 60 && "yellow1-progress") ||
+          (question?.progress <= 80 && "yellow2-progress") ||
+          (question?.progress <= 100 && "green1-progress") 
         }
         value={count}
         valueLabelFormat={(value) => <div>{value}%</div>}

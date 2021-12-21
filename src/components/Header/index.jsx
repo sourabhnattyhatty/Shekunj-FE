@@ -12,7 +12,7 @@ import close from "../../assets/icons/x.png";
 
 import "./index.scss";
 
-const Header = ({ page }) => {
+const Header = ({ page, subPage }) => {
   const [searchValue, setSearchValue] = useState("");
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
@@ -76,17 +76,17 @@ const Header = ({ page }) => {
   };
 
   const handleColleges = () => {
-    history.push("/career");
+    history.push("/top-collages");
     setAnchorEl1(null);
   };
 
   const handleSchools = () => {
-    history.push("/career1");
+    history.push("/top-schools");
     setAnchorEl1(null);
   };
 
   const handleExams = () => {
-    history.push("/career2");
+    history.push("/government-exams");
     setAnchorEl1(null);
   };
 
@@ -269,11 +269,22 @@ const Header = ({ page }) => {
                         "aria-labelledby": "basic-button2",
                       }}
                     >
-                      <MenuItem onClick={handleGuidance1}>
+                      <MenuItem
+                        onClick={handleGuidance1}
+                        className={subPage === "careerOption" && "active"}
+                      >
                         Career Option
                       </MenuItem>
-                      <MenuItem onClick={handleGuidance2}>Career Test</MenuItem>
-                      <MenuItem onClick={handleGuidance3}>
+                      <MenuItem
+                        onClick={handleGuidance2}
+                        className={subPage === "careerTest" && "active"}
+                      >
+                        Career Test
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleGuidance3}
+                        className={subPage === "bookCounsller" && "active"}
+                      >
                         Book a Counsellor
                       </MenuItem>
                     </Menu>
@@ -316,9 +327,22 @@ const Header = ({ page }) => {
                         "aria-labelledby": "basic-button1",
                       }}
                     >
-                      <MenuItem onClick={handleColleges}>Top Colleges</MenuItem>
-                      <MenuItem onClick={handleSchools}>Top Schools</MenuItem>
-                      <MenuItem onClick={handleExams}>
+                      <MenuItem
+                        onClick={handleColleges}
+                        className={subPage === "colleges" && "active"}
+                      >
+                        Top Colleges
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleSchools}
+                        className={subPage === "schools" && "active"}
+                      >
+                        Top Schools
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleExams}
+                        className={subPage === "govExams" && "active"}
+                      >
                         Governmant Exams
                       </MenuItem>
                     </Menu>

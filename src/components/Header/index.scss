@@ -173,6 +173,12 @@ header {
   border: 0;
 }
 
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper
+  li.active {
+  color: #fff;
+  background: #e83e8c;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1280px) {
   #custom-search-input {
     margin: 10px 0px 0px 0px;

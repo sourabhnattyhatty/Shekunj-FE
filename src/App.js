@@ -48,9 +48,9 @@ function App() {
         {/* <Route exact path='/dashboard' component={Dashboard} /> */}
         <Route exact path='/' component={HomePage} />
         <Route exact path='/about' component={About} />
-        <Route exact path='/career' component={Career} />
-        <Route exact path='/career1' component={Career1} />
-        <Route exact path='/career2' component={Career2} />
+        <Route exact path='/top-collages' component={Career} />
+        <Route exact path='/top-schools' component={Career1} />
+        <Route exact path='/government-exams' component={Career2} />
         <Route exact path='/Courses' component={Courses} />
         <Route exact path='/CoursesDetails' component={CoursesDetails} />
         <Route exact path='/myprofile' component={MyProfile} />

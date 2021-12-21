@@ -12,7 +12,7 @@ function MyProfile() {
 
   return (
     <div>
-      <Header loginPage={true} page='courses' />
+      <Header loginPage={true}  />
 
       <div className='my_profile_div'>
         <Container>

@@ -9,7 +9,6 @@ import Book_img from "../../assets/images/Guidance/Book_img.png";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import User2 from "../../assets/icons/user2.png";
-import User from "../../assets/icons/user.png";
 import "./index.scss";
 import "../LoginPage/LoginForm/LoginTabs/index.scss";
 import { TextareaAutosize } from "@mui/material";
@@ -17,7 +16,7 @@ import { TextareaAutosize } from "@mui/material";
 const GuidancePage = () => {
   return (
     <div>
-      <Header loginPage={true} page='guidance' />
+      <Header loginPage={true} page='guidance' subPage="bookCounsller"/>
       <div className='guidance_book'>
         <Container>
           <Row>
@@ -35,9 +34,9 @@ const GuidancePage = () => {
             <Col md={7} xs={12}>
               <div className='guidance_book_form'>
                 <form action=''>
-                  <div className='form-group mzero'>
+                  {/* <div className='form-group mzero'>
                     <GuidanceSelect title='User' icon={true} />
-                  </div>
+                  </div> */}
 
                   <div className='form-group'>
                     <TextField

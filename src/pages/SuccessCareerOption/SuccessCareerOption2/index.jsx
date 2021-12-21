@@ -1,6 +1,6 @@
 import React from "react";
 import { Header, Footer, ScrollToTop } from "../../../components";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import TabsExams from "../TabsExams/index"
 import "./index.scss";
 import "./../index.scss"
@@ -8,7 +8,7 @@ import "./../index.scss"
 function SuccessCareerOption2() {
   return (
     <div>
-      <Header loginPage={true} page='courses' />
+      <Header loginPage={true} page='guidance' subPage="careerOption"/>
 
       <div className='SucOption'>
         <Container>

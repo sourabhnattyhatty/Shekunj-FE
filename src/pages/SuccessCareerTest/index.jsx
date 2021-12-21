@@ -27,7 +27,7 @@ function CourseTest() {
 
   return (
     <div>
-      <Header loginPage={true} page='guidance' />
+      <Header loginPage={true} page='guidance' subPage="careerTest"/>
       <Container>
         <div className='maindiv_prog setmain'>
           <Row className='pt-md-5 pb-md-5'>

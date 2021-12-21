@@ -126,7 +126,7 @@ const CareerPage = () => {
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
-      <Header loginPage={true} page='career' />
+      <Header loginPage={true} page='career' subPage='colleges' />
 
       <div className='mainDiv_career'>
         <Container>
@@ -160,7 +160,7 @@ const CareerPage = () => {
                         <span>Exam</span> : NEET
                       </li>
                     </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
+                    <button className='btn_viewCour'>View more details</button>
                   </Col>
 
                   <Col md={5} xs={12}>
@@ -186,7 +186,7 @@ const CareerPage = () => {
                         <span>Exam</span> : NEET
                       </li>
                     </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
+                    <button className='btn_viewCour'>View more details</button>
                   </Col>
 
                   <Col md={5} xs={12}>
@@ -215,7 +215,7 @@ const CareerPage = () => {
                         <span>Exam</span> : NEET
                       </li>
                     </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
+                    <button className='btn_viewCour'>View more details</button>
                   </Col>
 
                   <Col md={5} xs={12}>
@@ -247,7 +247,7 @@ const CareerPage = () => {
                         <span>Exam</span> : NEET
                       </li>
                     </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
+                    <button className='btn_viewCour'>View more details</button>
                   </Col>
 
                   <Col md={5} xs={12}>
@@ -276,7 +276,7 @@ const CareerPage = () => {
                         <span>Exam</span> : NEET
                       </li>
                     </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
+                    <button className='btn_viewCour'>View more details</button>
                   </Col>
 
                   <Col md={5} xs={12}>
