@@ -1,0 +1,74 @@
+.accordion_box_all .MuiPaper-root.MuiPaper-elevation {
+  border: none;
+  box-shadow: none;
+}
+.accordion_box_all .MuiButtonBase-root.MuiAccordionSummary-root {
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+  flex-direction: inherit;
+}
+.accordion_box_all .MuiAccordionDetails-root {
+  border: none;
+  padding: 0px 0px 0px 10px;
+}
+.accordion_box_all .MuiAccordionSummary-content {
+  margin-left: 0px;
+}
+.accordion_box_all .MuiAccordionSummary-content .MuiTypography-root {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #000000;
+  font-family: "SegoeUI_medium";
+}
+.accordion_box_all ul li {
+  list-style-type: none;
+  margin: 10px 0px 10px;
+}
+.accordion_box_all
+  ul
+  li
+  .MuiCheckbox-root.MuiCheckbox-colorPrimary.Mui-checked {
+  color: #ec498a;
+  border-radius: 4.45605px;
+}
+.accordion_box_all
+  ul
+  li
+  .MuiCheckbox-root.MuiCheckbox-colorPrimary.Mui-checked
+  ~ .MuiFormControlLabel-label {
+  color: #d62c79;
+}
+.accordion_box_all ul li .MuiCheckbox-root.MuiCheckbox-colorPrimary {
+  padding: 0px;
+  margin-right: 15px;
+  width: 25px;
+  height: 25px;
+  color: #e4e4e4;
+  box-sizing: border-box;
+  box-shadow: 0px 5.25px 48px rgba(0, 0, 0, 0.07);
+  border-radius: 4.5px;
+}
+.accordion_box_all ul li .MuiCheckbox-root.MuiCheckbox-colorPrimary svg {
+  font-size: 30px;
+}
+.accordion_box_all ul li .MuiFormControlLabel-label {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 120%;
+  text-transform: capitalize;
+  color: #828282;
+  font-family: "SegoeUI_medium";
+}
+.accordion_box_all
+  .MuiAccordionSummary-expandIconWrapper
+  svg.MuiSvgIcon-fontSizeMedium {
+  color: #000;
+}
+
+.has-more {
+  color: #d62c79;
+}

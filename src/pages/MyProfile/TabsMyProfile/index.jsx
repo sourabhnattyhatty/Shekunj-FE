@@ -4,23 +4,23 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import swati_jain from "../../../assets/images/MyProfile/swati_jain.png";
 import { Row, Col } from "react-bootstrap";
+import { useSelector } from "react-redux";
+
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import Lock from "../../../assets/icons/lock.png";
-import { Error, GoogleLoginComponent } from "../../../components";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
+
 import User from "../../../assets/images/MyProfile/user.png";
+import swati_jain from "../../../assets/images/MyProfile/swati_jain.png";
 import phone from "../../../assets/images/MyProfile/phone.png";
-import Stream from "../../../assets/images/MyProfile/Stream.png";
 import education from "../../../assets/images/MyProfile/education.png";
 import GuidanceSelect from "../../GuidanceBook/Select/index";
-import "./index.scss";
 import DateBirth from "../Date_Birth";
 
-// import DateType from "../DateType";
+import { noImage } from "../../../store/courses/action";
+import "./index.scss";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -56,6 +56,8 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs() {
+  const { user } = useSelector((state) => state.authReducer);
+
   const [value, setValue] = React.useState(0);
   const [visible, setVisible] = React.useState(false);
   const [showDetails, setShowDetails] = React.useState(true);
@@ -81,29 +83,33 @@ export default function BasicTabs() {
           <Row>
             <Col md={3} xs={12}>
               <div className='myProfile_img'>
-                <img src={swati_jain} alt='' />
+                <img
+                  src={user?.profile_pic || noImage}
+                  style={{ width: "-webkit-fill-available" }}
+                  alt={user?.name || "N/A"}
+                />
               </div>
             </Col>
 
             <Col md={5} xs={12}>
-              <h2>Swati Jain</h2>
+              <h2>{user?.name || "N/A"}</h2>
               <div className='user_detail'>
                 <ul>
-                  <li>abc@shekunj.com</li>
-                  <li>High Education</li>
-                  <li>06/04/1988</li>
-                  <li>Indore</li>
+                  <li>{user?.email || "N/A"}</li>
+                  <li>{user?.highest_education || "N/A"}</li>
+                  <li>{user?.dob || "N/A"}</li>
+                  <li>{user?.city || "N/A"}</li>
                 </ul>
 
                 <ul>
-                  <li>+91 9876543210</li>
-                  <li>Stream</li>
-                  <li>Madhya Pradesh</li>
+                  <li>{user?.contact || "N/A"}</li>
+                  <li>{user?.stream || "N/A"}</li>
+                  <li>{user?.state || "N/A"}</li>
                 </ul>
               </div>
               <button
                 className='edit_profile_btn'
-                onClick={() => setShowDetails((prew) => !prew)}
+                onClick={() => setShowDetails((prev) => !prev)}
               >
                 Edit Profile
               </button>
@@ -116,7 +122,11 @@ export default function BasicTabs() {
         <Row>
           <Col md={3} xs={12}>
             <div className='myProfile_img'>
-              <img src={swati_jain} alt='' />
+              <img
+                src={user?.profile_pic || noImage}
+                alt={user?.name || "N/A"}
+                style={{ width: "-webkit-fill-available" }}
+              />
             </div>
           </Col>
 

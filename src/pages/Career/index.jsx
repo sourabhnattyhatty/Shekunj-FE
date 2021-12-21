@@ -1,18 +1,128 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
-import { Carousel, Footer, Header, ScrollToTop, SEO } from "../../components";
-import christian_collage from "../../assets/images/Career/christian_collage.png";
-import pune_college from "../../assets/images/Career/pune_college.png";
-import Acoordian from "../../pages/Courses/Accordian/index";
-import "../HomePage/index.scss";
-import "./index.scss";
-import { constants } from "../../utils";
 import { ImageListItem, ImageListItemBar } from "@mui/material";
 
-const CareerPage = () => {
-  const { t } = useTranslation();
+import {
+  AccordionComponent,
+  Footer,
+  Header,
+  ScrollToTop,
+  SEO,
+} from "../../components";
+import christian_collage from "../../assets/images/Career/christian_collage.png";
+import pune_college from "../../assets/images/Career/pune_college.png";
 
+import "../HomePage/index.scss";
+import "./index.scss";
+
+const CareerPage = () => {
+  const STREAM = {
+    name: "STREAM",
+    rows: [
+      {
+        id: 1,
+        name: "Computer Application",
+        isChecked: false,
+      },
+      {
+        id: 2,
+        name: "Sciences",
+        isChecked: false,
+      },
+      {
+        id: 3,
+        name: "Engineering And Architecture",
+        isChecked: false,
+      },
+      {
+        id: 4,
+        name: "Id",
+        isChecked: false,
+      },
+      {
+        id: 5,
+        name: "Civil",
+        isChecked: false,
+      },
+    ],
+  };
+
+  const COURSE_LENGTH = {
+    name: "COURSE LENGTH",
+    rows: [
+      {
+        id: 1,
+        name: "Private",
+        isChecked: false,
+      },
+      {
+        id: 2,
+        name: "Public/Government",
+        isChecked: false,
+      },
+    ],
+  };
+
+  const COURSE_DIFFICULTY = {
+    name: "COURSE DIFICULTY",
+    rows: [
+      {
+        id: 1,
+        name: "JEE Main",
+        isChecked: false,
+      },
+      {
+        id: 2,
+        name: "NEET",
+        isChecked: false,
+      },
+      {
+        id: 3,
+        name: "CAT",
+        isChecked: false,
+      },
+      {
+        id: 4,
+        name: "GATE",
+        isChecked: false,
+      },
+      {
+        id: 5,
+        name: "MATE",
+        isChecked: false,
+      },
+      {
+        id: 6,
+        name: "CMAT",
+        isChecked: false,
+      },
+      {
+        id: 7,
+        name: "CET",
+        isChecked: false,
+      },
+      {
+        id: 8,
+        name: "PSC",
+        isChecked: false,
+      },
+      {
+        id: 9,
+        name: "NIT",
+        isChecked: false,
+      },
+      {
+        id: 10,
+        name: "AIMS",
+        isChecked: false,
+      },
+      {
+        id: 11,
+        name: "PAT",
+        isChecked: false,
+      },
+    ],
+  };
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
@@ -26,7 +136,12 @@ const CareerPage = () => {
           </div>
           <Row>
             <Col md={4} xs={12}>
-              <Acoordian />
+              <AccordionComponent
+                type='colleges'
+                stream={STREAM}
+                courseLength={COURSE_LENGTH}
+                courseDifficulty={COURSE_DIFFICULTY}
+              />
             </Col>
 
             <Col md={8} xs={12}>
@@ -57,7 +172,7 @@ const CareerPage = () => {
               </div>
 
               <div className='career_box'>
-              <Row>
+                <Row>
                   <Col md={7} xs={12}>
                     <h3>KMC Mangalore - Kasturba Medical College</h3>
                     <p>
@@ -76,16 +191,9 @@ const CareerPage = () => {
 
                   <Col md={5} xs={12}>
                     <div className='career_img'>
-                    <ImageListItem >
-                        <img
-                          srcSet={pune_college}
-                          alt="..."
-                          loading='lazy'
-                        />
-                        <ImageListItemBar
-                          title="+9"
-                          subtitle=" Photos"
-                        />
+                      <ImageListItem>
+                        <img srcSet={pune_college} alt='...' loading='lazy' />
+                        <ImageListItemBar title='+9' subtitle=' Photos' />
                       </ImageListItem>
                     </div>
                   </Col>
@@ -112,16 +220,9 @@ const CareerPage = () => {
 
                   <Col md={5} xs={12}>
                     <div className='career_img'>
-                    <ImageListItem >
-                        <img
-                          srcSet={pune_college}
-                          alt="..."
-                          loading='lazy'
-                        />
-                        <ImageListItemBar
-                          title="+9"
-                          subtitle=" Photos"
-                        />
+                      <ImageListItem>
+                        <img srcSet={pune_college} alt='...' loading='lazy' />
+                        <ImageListItemBar title='+9' subtitle=' Photos' />
                       </ImageListItem>
                     </div>
                   </Col>
@@ -151,16 +252,9 @@ const CareerPage = () => {
 
                   <Col md={5} xs={12}>
                     <div className='career_img'>
-                    <ImageListItem >
-                        <img
-                          srcSet={pune_college}
-                          alt="..."
-                          loading='lazy'
-                        />
-                        <ImageListItemBar
-                          title="+9"
-                          subtitle=" Photos"
-                        />
+                      <ImageListItem>
+                        <img srcSet={pune_college} alt='...' loading='lazy' />
+                        <ImageListItemBar title='+9' subtitle=' Photos' />
                       </ImageListItem>
                     </div>
                   </Col>
@@ -187,16 +281,9 @@ const CareerPage = () => {
 
                   <Col md={5} xs={12}>
                     <div className='career_img'>
-                    <ImageListItem >
-                        <img
-                          srcSet={pune_college}
-                          alt="..."
-                          loading='lazy'
-                        />
-                        <ImageListItemBar
-                          title="+9"
-                          subtitle=" Photos"
-                        />
+                      <ImageListItem>
+                        <img srcSet={pune_college} alt='...' loading='lazy' />
+                        <ImageListItemBar title='+9' subtitle=' Photos' />
                       </ImageListItem>
                     </div>
                   </Col>
