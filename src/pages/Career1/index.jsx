@@ -11,9 +11,11 @@ import {
   SEO,
 } from "../../components";
 import { getTopSchools } from "../../store/career";
-import pune_college from "../../assets/images/Career/pune_college.png";
 import "../HomePage/index.scss";
 import "./index.scss";
+
+import { noImage } from "../../store/courses/action";
+
 
 const CareerPage1 = () => {
   const dispatch = useDispatch();
@@ -130,6 +132,15 @@ const CareerPage1 = () => {
     dispatch(getTopSchools());
   }, [dispatch]);
 
+  const transformImg = (image) => {
+    return image
+      ? image?.includes("http://3.109.195.234")
+        ? image
+        : `http://3.109.195.234${image}`
+      : noImage;
+  };
+
+
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
@@ -151,150 +162,44 @@ const CareerPage1 = () => {
             </Col>
 
             <Col md={8} xs={12}>
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>Delhi Public School, Indore</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
-                  </Col>
+              {topSchools.length > 0 ? (
+                topSchools.map((c) => (
+                  <div className='career_box'>
+                    <Row>
+                      <Col md={7} xs={12}>
+                        <h3>{c?.name || "N/A"}</h3>
+                        <p style={{textTransform : "capitalize"}}>
+                          {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
+                          <span>{c?.school_type || "N/A"}</span>
+                        </p>
+                        <ul>
+                          <li>
+                            <span>Board</span> : {c?.board_type || "N/A"}{" "}
+                          </li>
+                        </ul>
+                        <button className='btn_viewCour'>
+                          View More Details
+                        </button>
+                      </Col>
 
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>St. Mary's School, Pune</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>Carmel High School, Patna</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>Modern High School, Kolkata</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>Bharatiya Vidya Bhavan, Chennai</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
+                      <Col md={5} xs={12}>
+                        <div className='career_img'>
+                          <ImageListItem>
+                            <img
+                              srcSet={transformImg(c?.image)}
+                              alt='...'
+                              loading='lazy'
+                            />
+                            <ImageListItemBar title='+9' subtitle=' Photos' />
+                          </ImageListItem>
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+                ))
+              ) : (
+                <div className='text-center'>No data found!</div>
+              )}
             </Col>
           </Row>
         </Container>

@@ -22,7 +22,7 @@ export const getGovernmentExams = () => async (dispatch) => {
 export const getTopSchools = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.TOP_SCHOOL_REQUEST });
-    const res = await httpServices.get("career/government_exam/");
+    const res = await httpServices.get("career/top-school-list/");
     dispatch({ type: coursesTypes.TOP_SCHOOL_FINISH, payload: res?.data });
   } catch (error) {
     dispatch({ type: coursesTypes.TOP_SCHOOL_FAIL });

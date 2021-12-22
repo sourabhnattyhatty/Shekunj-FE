@@ -13,10 +13,36 @@ import "./index.scss";
 import "../LoginPage/LoginForm/LoginTabs/index.scss";
 import { TextareaAutosize } from "@mui/material";
 
+
+function range(start, end) {
+  return Array(end - start + 1).fill().map((_, idx) => start + idx)
+}
+
+const days = range(1, 31);
+const years = range(1970, 2021);
+const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
+const courseLookingFor = ['Java','Python','JavaScript','.Net'];
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+
 const GuidancePage = () => {
   return (
     <div>
-      <Header loginPage={true} page='guidance' subPage="bookCounsller"/>
+      <Header loginPage={true} page='guidance' subPage='bookCounsller' />
       <div className='guidance_book'>
         <Container>
           <Row>
@@ -34,10 +60,6 @@ const GuidancePage = () => {
             <Col md={7} xs={12}>
               <div className='guidance_book_form'>
                 <form action=''>
-                  {/* <div className='form-group mzero'>
-                    <GuidanceSelect title='User' icon={true} />
-                  </div> */}
-
                   <div className='form-group'>
                     <TextField
                       name='name'
@@ -116,45 +138,43 @@ const GuidancePage = () => {
                   <Row>
                     <Col md={4} xs={12}>
                       <div className='form-group mzero'>
-                        <GuidanceSelect title='Day' icon={false} />
+                        <GuidanceSelect title='Day' icon={false} array={days} />
                       </div>
                     </Col>
                     <Col md={4} xs={12}>
                       <div className='form-group mzero'>
-                        <GuidanceSelect title='Month' icon={false} />
+                        <GuidanceSelect title='Month' icon={false} array={months}/>
                       </div>
                     </Col>
                     <Col md={4} xs={12}>
                       <div className='form-group mzero'>
-                        <GuidanceSelect title='Year' icon={false} />
+                        <GuidanceSelect title='Year' icon={false} array={years}/>
                       </div>
                     </Col>
                   </Row>
                   <div className='form-group mzero'>
-                    <GuidanceSelect title='Gender' icon={true} />
+                    <GuidanceSelect title='Gender' icon={true} array={['Female','Male']}/>
                   </div>
                   <div className='form-group mzero'>
-                    <GuidanceSelect title='Qualifications' icon={true} />
+                    <GuidanceSelect title='Qualifications' icon={true} array={highEducation}/>
                   </div>
                   <div className='form-group mzero'>
-                    <GuidanceSelect title='Course Looking For' icon={true} />
+                    <GuidanceSelect title='Course Looking For' icon={true} array={courseLookingFor}/>
                   </div>
                   <div className='form-group mzero'>
                     <TextareaAutosize
-                    className="textarea_set"
+                      className='textarea_set'
                       aria-label='minimum height'
                       minRows={7}
                       placeholder='Enter Your Message'
                     />
                   </div>
 
-                  <button className="book_sess_btn">Book a Session</button>
+                  <button className='book_sess_btn'>Book a Session</button>
                 </form>
               </div>
             </Col>
           </Row>
-
-          
         </Container>
       </div>
       <Footer loginPage={false} />

@@ -11,77 +11,38 @@ import {
   SEO,
 } from "../../components";
 import { getGovernmentExams } from "../../store/career";
-import pune_college from "../../assets/images/Career/pune_college.png";
 import "../HomePage/index.scss";
 import "./index.scss";
+
+import { noImage } from "../../store/courses/action";
 
 const CareerPage2 = () => {
   const dispatch = useDispatch();
   const { governmentExams } = useSelector((state) => state.careerReducer);
-  const CATEGORIES = {
-    name: "CATEGORIES",
-    rows: [
-      {
-        id: 1,
-        name: "Railways",
-        isChecked: false,
-      },
-      {
-        id: 2,
-        name: "Banking & Insurance",
-        isChecked: false,
-      },
-      {
-        id: 3,
-        name: "Teaching",
-        isChecked: false,
-      },
-      {
-        id: 4,
-        name: "Defence",
-        isChecked: false,
-      },
-      {
-        id: 5,
-        name: "SSC (Staff Selection Commision)",
-        isChecked: false,
-      },
-      {
-        id: 6,
-        name: "CMAT",
-        isChecked: false,
-      },
-      {
-        id: 7,
-        name: "CET",
-        isChecked: false,
-      },
-      {
-        id: 8,
-        name: "PSC",
-        isChecked: false,
-      },
-      {
-        id: 9,
-        name: "NIT",
-        isChecked: false,
-      },
-      {
-        id: 10,
-        name: "AIMS",
-        isChecked: false,
-      },
-      {
-        id: 11,
-        name: "PAT",
-        isChecked: false,
-      },
-    ],
-  };
 
   useEffect(() => {
     dispatch(getGovernmentExams());
   }, [dispatch]);
+
+  const transformPrice = (price) => {
+    let nf = new Intl.NumberFormat("en-US");
+    return nf.format(
+      Number.isNaN(parseInt(price, 10)) ? 0 : parseInt(price, 10) || 0,
+    );
+  };
+
+  const transformImg = (image) => {
+    return image
+      ? image?.includes("http://3.109.195.234")
+        ? image
+        : `http://3.109.195.234${image}`
+      : noImage;
+  };
+
+  const CATEGORIES = {
+    name: "CATEGORIES",
+    rows: governmentExams?.govt_category || [],
+  };
 
   return (
     <div>
@@ -102,150 +63,47 @@ const CareerPage2 = () => {
             </Col>
 
             <Col md={8} xs={12}>
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>RRB NTPC 2021</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
-                  </Col>
+              {governmentExams?.govt_list?.length > 0 ? (
+                governmentExams?.govt_list?.map((c) => (
+                  <div className='career_box'>
+                    <Row>
+                      <Col md={7} xs={12}>
+                        <h3>{c?.name || "N/A"}</h3>
+                        <p style={{textTransform : "capitalize"}}>
+                          {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
+                          <span>{c?.exam_type || "N/A"}</span>
+                        </p>
+                        <ul>
+                          <li>
+                            <span>Fees</span> : ₹ {transformPrice(c?.fees)}{" "}
+                          </li>
+                          <li>
+                            <span>Exam</span> : {c?.exam}
+                          </li>
+                        </ul>
+                        <button className='btn_viewCour'>
+                          View More Details
+                        </button>
+                      </Col>
 
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>RRB ALP 2021</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>RPSF 2021</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>Railway Tier-I </h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className='career_box'>
-                <Row>
-                  <Col md={7} xs={12}>
-                    <h3>Railway Group D</h3>
-                    <p>
-                      Vellore, Tamil Nadu • <span>Private</span>
-                    </p>
-                    <ul>
-                      <li>
-                        <span>Fees</span> : ₹ 1,53,200{" "}
-                      </li>
-                      <li>
-                        <span>Exam</span> : NEET
-                      </li>
-                    </ul>
-                    <button className='btn_viewCour'>View all Courses</button>
-                  </Col>
-
-                  <Col md={5} xs={12}>
-                    <div className='career_img'>
-                      <ImageListItem>
-                        <img srcSet={pune_college} alt='...' loading='lazy' />
-                        <ImageListItemBar title='+9' subtitle=' Photos' />
-                      </ImageListItem>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
+                      <Col md={5} xs={12}>
+                        <div className='career_img'>
+                          <ImageListItem>
+                            <img
+                              srcSet={transformImg(c?.image)}
+                              alt='...'
+                              loading='lazy'
+                            />
+                            <ImageListItemBar title='+9' subtitle=' Photos' />
+                          </ImageListItem>
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+                ))
+              ) : (
+                <div className='text-center'>No data found!</div>
+              )}
             </Col>
           </Row>
         </Container>

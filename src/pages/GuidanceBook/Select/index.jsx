@@ -10,20 +10,9 @@ import Qualifications from "../../../assets/icons/Qualifications.png";
 import Course from "../../../assets/icons/Course.png";
 import Education from "../../../assets/images/MyProfile/education.png";
 
-const names = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
-];
 
-const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
+
+
 
 function GuidanceSelect(props) {
   const [personName, setPersonName] = React.useState([]);
@@ -36,13 +25,13 @@ function GuidanceSelect(props) {
       // On autofill we get a the stringified value.
       typeof value === "string" ? value.split(",") : value,
     );
+    debugger;
   };
 
   return (
     <div>
       <FormControl sx={{ m: 1 }}>
         <Select
-          multiple
           displayEmpty
           value={personName}
           onChange={handleChange}
@@ -51,7 +40,9 @@ function GuidanceSelect(props) {
             if (selected.length === 0) {
               return (
                 <>
-                  {props.icon && <img src={Education} alt='...' />}
+                  {props.icon && props.select === "education" && (
+                    <img src={Education} alt='...' />
+                  )}
                   {props.icon && props.title === "User" && (
                     <img src={User2} alt='...' />
                   )}
@@ -69,21 +60,19 @@ function GuidanceSelect(props) {
               );
             }
 
-            return selected.join(", ");
+            return selected;
           }}
           inputProps={{ "aria-label": "Without label" }}
         >
-          {props.select === "education"
-            ? highEducation.map((name) => (
-                <MenuItem key={name} value={name}>
-                  {name}
-                </MenuItem>
-              ))
-            : names.map((name) => (
-                <MenuItem key={name} value={name}>
-                  {name}
-                </MenuItem>
-              ))}
+          {props.array ? (
+            props.array.map((obj) => (
+              <MenuItem key={obj} value={obj}>
+                {obj}
+              </MenuItem>
+            ))
+          ) : (
+            <MenuItem>No Data Found!</MenuItem>
+          )}
         </Select>
       </FormControl>
     </div>

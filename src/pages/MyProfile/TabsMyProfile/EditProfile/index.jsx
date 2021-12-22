@@ -9,6 +9,8 @@ import DateBirth from "../../Date_Birth";
 import { useSelector } from "react-redux";
 import { noImage } from "../../../../store/courses/action";
 
+const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
+
 function EditProfile(props) {
   const { user } = useSelector((state) => state.authReducer);
   return (
@@ -64,7 +66,7 @@ function EditProfile(props) {
             <div className='form-group mzero'>
               <label htmlFor=''>Highest Education</label>
 
-              <GuidanceSelect icon={true} select='education' />
+              <GuidanceSelect icon={true} select='education' array={highEducation}/>
             </div>
 
             <div className='form-group'>
