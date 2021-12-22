@@ -99,18 +99,22 @@ export const requestRestEmail = (values, history) => async (dispatch) => {
   }
 };
 
-export const resetPassword = (values, history) => async (dispatch) => {
+export const changePassword = (values, history) => async (dispatch) => {
   try {
-    dispatch({ type: authTypes.EMAIL_VERIFY_REQUEST });
-    const res = await httpServices.patch(
-      "authentication/password-reset-complete/",
+    dispatch({ type: authTypes.RESET_PASSWORD_REQUEST });
+    const res = await httpServices.post(
+      "/authentication/change_password/",
       values,
     );
-    dispatch({ type: authTypes.EMAIL_VERIFY_FINISH });
+    dispatch({ type: authTypes.RESET_PASSWORD_FINISH });
+    Cookies.remove("sheToken");
     history.push("/login");
-    toast.success(res.data.message, toasterConfig);
+    toast.success(res.message, toasterConfig);
   } catch (error) {
-    toast.error("Internal Server Error", toasterConfig);
+    dispatch({ type: authTypes.RESET_PASSWORD_FAIL });
+    if (error.status === 400) {
+      toast.error(error.data.errors.old_password.old_password, toasterConfig);
+    }
   }
 };
 

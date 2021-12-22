@@ -180,11 +180,22 @@ const Header = ({ page, subPage }) => {
                           "aria-labelledby": "basic-button",
                         }}
                       >
-                        <MenuItem onClick={handleProfile}>My Profile</MenuItem>
-                        <MenuItem onClick={handleProgress}>
+                        <MenuItem
+                          onClick={handleProfile}
+                          className={subPage === "myProfile" && "active"}
+                        >
+                          My Profile
+                        </MenuItem>
+                        <MenuItem
+                          onClick={handleProgress}
+                          className={subPage === "myProgress" && "active"}
+                        >
                           My Progress
                         </MenuItem>
-                        <MenuItem onClick={handleCertificate}>
+                        <MenuItem
+                          onClick={handleCertificate}
+                          className={subPage === "allCertificatePage" && "active"}
+                        >
                           My Certificates
                         </MenuItem>
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>

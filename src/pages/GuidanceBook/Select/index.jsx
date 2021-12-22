@@ -8,7 +8,7 @@ import User2 from "../../../assets/icons/user2.png";
 import Gender from "../../../assets/icons/gender.png";
 import Qualifications from "../../../assets/icons/Qualifications.png";
 import Course from "../../../assets/icons/Course.png";
-
+import Education from "../../../assets/images/MyProfile/education.png";
 
 const names = [
   "Oliver Hansen",
@@ -22,6 +22,8 @@ const names = [
   "Virginia Andrews",
   "Kelly Snyder",
 ];
+
+const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
 
 function GuidanceSelect(props) {
   const [personName, setPersonName] = React.useState([]);
@@ -49,10 +51,19 @@ function GuidanceSelect(props) {
             if (selected.length === 0) {
               return (
                 <>
-                  {props.icon && props.title==="User" && <img src={User2} alt='...' />}
-                  {props.icon && props.title==="Gender" && <img src={Gender} alt='...' />}
-                  {props.icon && props.title==="Qualifications" && <img src={Qualifications} alt='...' />}
-                  {props.icon && props.title==="Course Looking For" && <img src={Course} alt='...' />}
+                  {props.icon && <img src={Education} alt='...' />}
+                  {props.icon && props.title === "User" && (
+                    <img src={User2} alt='...' />
+                  )}
+                  {props.icon && props.title === "Gender" && (
+                    <img src={Gender} alt='...' />
+                  )}
+                  {props.icon && props.title === "Qualifications" && (
+                    <img src={Qualifications} alt='...' />
+                  )}
+                  {props.icon && props.title === "Course Looking For" && (
+                    <img src={Course} alt='...' />
+                  )}
                   <em>{props.title}</em>
                 </>
               );
@@ -62,15 +73,17 @@ function GuidanceSelect(props) {
           }}
           inputProps={{ "aria-label": "Without label" }}
         >
-
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-            >
-              {name}
-            </MenuItem>
-          ))}
+          {props.select === "education"
+            ? highEducation.map((name) => (
+                <MenuItem key={name} value={name}>
+                  {name}
+                </MenuItem>
+              ))
+            : names.map((name) => (
+                <MenuItem key={name} value={name}>
+                  {name}
+                </MenuItem>
+              ))}
         </Select>
       </FormControl>
     </div>
