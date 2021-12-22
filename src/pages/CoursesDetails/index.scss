@@ -285,6 +285,7 @@ section.CouDtl_ban .row {
 }
 .features_box {
   display: flex;
+  align-items: center;
   grid-gap: 0.9rem;
   gap: 0.9rem;
   background: #ffffff;
@@ -312,6 +313,7 @@ section.CouDtl_ban .row {
   line-height: 19px;
   text-transform: capitalize;
   color: #828282;
+  margin: 0;
 }
 .sec2_right .owl-nav button.owl-prev::before {
   content: "";
@@ -412,4 +414,10 @@ section.CouDtl_ban .row {
     font-size: 17px;
     line-height: 24px;
   }
+}
+.sec1_con2.con_setSec1 .features_box {
+  background-color: transparent;
+  box-shadow: none;
+  height: auto;
+  padding: 0;
 }

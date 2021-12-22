@@ -13,6 +13,7 @@ import Community from "../../assets/images/community.png";
 import Nikita from "../../assets/images/testimonial/1.png";
 import Priya from "../../assets/images/testimonial/2.png";
 import star from "../../assets/images/Star 2.png";
+import certif from "../../assets/images/certif.jpg";
 
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
@@ -76,12 +77,12 @@ function HomePage() {
           <Slider {...settings}>
             <div className='carousel-item carousel_item1'>
               <div className='container'>
-                <div className='row h_set'>
+                <div className='row h_set' data-aos='slide-up'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='zoom-in'>
+                    <h4 className='mt-5 pt-md-5 mb-3'>
                       {t("homePage.mainSlider.heading.1")}
                     </h4>
-                    <p className='mb-4' data-aos='zoom-in'>
+                    <p className='mb-4'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
@@ -90,7 +91,6 @@ function HomePage() {
                     <Link
                       to='/courses'
                       className='banner_btn'
-                      data-aos='zoom-in'
                     >
                       {t("homePage.mainSlider.button")}
                     </Link>
@@ -227,7 +227,7 @@ function HomePage() {
             <div className='col-lg-12 col-md-11'>
               <div className='job-opprtunity-bg'>
                 <div className='row'>
-                  <div className='col-lg-8' data-aos='fade-right'>
+                  <div className='col-lg-8' data-aos='slide-up'>
                     <h3>{t("homePage.jobopportunity.heading")}</h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -301,7 +301,9 @@ function HomePage() {
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>
-              
+              <div className='cer_img'>
+                <img src={certif} alt='' />
+              </div>
             </div>
             <div className='col-md-6'>
               <div className='certif_con'>
@@ -328,7 +330,7 @@ function HomePage() {
           <div className='row'>
             <div className='col-md-6'>
               <div className='row'>
-                <div className='col-md-6'>
+                <div className='col-md-6 col-6'>
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
                       <img src={Nikita} alt='' />
@@ -366,7 +368,7 @@ function HomePage() {
                   </div>
                 </div>
 
-                <div className='col-md-6'>
+                <div className='col-md-6 col-6'>
                   <div data-aos='slide-down'>
                     <div className='tes_box3'>
                       <h2>4.9/5</h2>

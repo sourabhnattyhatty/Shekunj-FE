@@ -274,3 +274,69 @@ button.explore_button.btn {
   border-radius: 10px;
   padding: 21px 14px 11px 14px;
 }
+
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+
+.dashboard_main .course_explore {
+  height: auto;
+}
+
+.course_inprogress {
+  height: auto;
+}
+.course_inprogress ul {
+  margin: 0;
+}
+.course_completedright {
+  height: auto;
+  padding: 33px 27px;
+}
+.your-testcontent {
+  border: none;
+}
+.progress-coursebardiv {
+  padding: 20px 0px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.course_inprogress .button_paddingarea {
+  padding: 20px 0px;
+}
+.dashboard_main h1 {
+  font-size: 20px;
+}
+.dashboard_main .dashboard_back {
+  font-size: 12px;
+}
+.dashboard_main h3 {
+  font-weight: 600;
+  font-size: 16px;
+}
+.course_explore span.MuiCircularProgress-root {
+  margin: 0 auto !important;
+}
+.course_explore .MuiBox-root {
+  width: 100% !important;
+}
+.course_explore .button_paddingarea {
+  text-align: center;
+}
+.dashboard_main .course_explore {
+  padding: 18px;
+}
+.dashboard_main .course_explore {
+  margin-bottom: 20px;
+}
+.dashboard_main.pt-5.pb-5 {
+  padding: 15px 0 15px 0 !important;
+}
+.dashboard_main .course_explore {
+  border-radius: 2px;
+}
+.course_inprogress ul li {
+  font-size: 12px;
+}
+}

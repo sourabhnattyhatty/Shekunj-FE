@@ -11,36 +11,76 @@ import { Header, Footer, ScrollToTop } from "../../components";
 
 import "./index.scss";
 import "../CoursesModule/index.scss";
+import GuidanceSelect from "../GuidanceBook/Select/index";
 
 import time from "../../assets/images/Courses/time.png";
+import { styled } from "@mui/material/styles";
+import Slider from "@mui/material/Slider";
+
+
+
+const IOSSlider = styled(Slider)(({ theme }) => ({
+  color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
+  marginTop: 20,
+  height: 10,
+  padding: "15px 0",
+
+  "& .MuiSlider-valueLabel": {
+    fontSize: 12,
+    fontWeight: "normal",
+    top: -6,
+    backgroundColor: "unset",
+    color: theme.palette.text.primary,
+    "&:before": {
+      display: "none",
+    },
+  },
+}));
 
 function CourseTest() {
-
   const history = useHistory();
 
   React.useEffect(() => {
-    if(isMobile){
-      toast.error("This page is not availble in mobile view.")
-      history.push("/")
+    if (isMobile) {
+      toast.error("This page is not availble in mobile view.");
+      history.push("/");
     }
   }, [history]);
 
   return (
     <div>
-      <Header loginPage={true} page='guidance' subPage="careerTest"/>
+      <Header loginPage={true} page='guidance' subPage='careerTest' />
       <Container>
         <div className='maindiv_prog setmain'>
+          <div className='select_test'>
+            <h2>Select test Categories</h2>
+            <Row>
+              <Col md={9} xs={12}>
+                <GuidanceSelect title='Test Categories' />
+              </Col>
+
+              <Col md={3} xs={12}>
+                <button>Start Course</button>
+              </Col>
+            </Row>
+          </div>
+
           <Row className='pt-md-5 pb-md-5'>
             <Col md={12} xs={12} className='text-left'>
               <div className='circular_progress_module'>
-                <Stack spacing={2} direction='row'>
-                  {" "}
+                <Stack className="d-flex justify-content-between" spacing={2} direction='row'>
                   <h3>Banking Exam</h3>
                   <button>Finish</button>
                 </Stack>
-                <LinearProgress variant='determinate' value={20} />
-                <div className='label-progressbar'> 20%</div>
-              </div>
+                </div>
+                <IOSSlider
+                  aria-label='ios slider'
+                  value={20}
+                  valueLabelFormat={(value) => <div>{value}%</div>}
+                  valueLabelDisplay='on'
+                  disabled
+                />
+              
             </Col>
           </Row>
         </div>

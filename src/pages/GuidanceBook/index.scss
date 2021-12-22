@@ -173,6 +173,10 @@ button.book_sess_btn:hover {
   color: #ec498a;
   background-color: transparent;
 }
+.g_book_img {
+  display: flex;
+  justify-content: space-between;
+}
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
   .guidance_book_form {
     padding: 30px;

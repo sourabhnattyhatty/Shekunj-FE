@@ -125,7 +125,7 @@ const Header = ({ page, subPage }) => {
               </div>
 
               <div className='col-md-9 pl-md-0 pl-lg-2 text-right'>
-                <div
+                {/* <div
                   id='custom-search-input'
                   className='mt-lg-3 mt-md-1 d-inline-block'
                 >
@@ -143,7 +143,7 @@ const Header = ({ page, subPage }) => {
                       </button>
                     </span>
                   </div>
-                </div>
+                </div> */}
 
                 <div className='top_bar_btn d-inline-block'>
                   {isAuth ? (

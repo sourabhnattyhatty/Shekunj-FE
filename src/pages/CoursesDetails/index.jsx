@@ -15,6 +15,7 @@ import certificate from "../../assets/images/CoursesDetails/certificate.png";
 import clipboard from "../../assets/images/CoursesDetails/clipboard.png";
 import Support from "../../assets/images/CoursesDetails/Support.png";
 import forum from "../../assets/images/CoursesDetails/forum.png";
+import Check from "../../assets/icons/check.png";
 
 import "./index.scss";
 
@@ -76,6 +77,65 @@ const CourseDetails = () => {
                 </p>
               </div>
               
+              <div className='sec1_con2 con_setSec1'>
+                <h2>What you’ll learn</h2>
+
+                <Row>
+                  <Col md={6} xs={12}>
+                    <div className='features_box'>
+                      <div>
+                        <img src={Check} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <p>
+                        Lorem ipsum dolor sit amet.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className='features_box'>
+                      <div>
+                        <img src={Check} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <p>
+                        Lorem ipsum dolor sit amet.
+                        </p>
+                      </div>
+                    </div>
+                  </Col>
+
+                  <Col md={6} xs={12}>
+                    <div className='features_box'>
+                      <div>
+                        <img src={Check} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <p>
+                        Lorem ipsum dolor sit amet.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className='features_box'>
+                      <div>
+                        <img src={Check} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <p>
+                        Lorem ipsum dolor sit amet.
+                        </p>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+
+
+
+
+
+
               <div className='sec1_con2'>
                 <h2>Features:</h2>
 

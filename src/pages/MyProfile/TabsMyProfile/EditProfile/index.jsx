@@ -16,7 +16,7 @@ function EditProfile(props) {
   return (
     <>
       <Row>
-        <Col md={3} xs={12}>
+        <Col md={4} xs={12}>
           <div className='myProfile_img'>
             <img
               src={user?.profile_pic || noImage}
@@ -25,7 +25,7 @@ function EditProfile(props) {
             />
           </div>
         </Col>
-        <Col md={6} xs={12}>
+        <Col md={4} xs={12}>
           <div className='edit_profile'>
             <div className='form-group'>
               <label htmlFor=''>First Name</label>
@@ -84,7 +84,7 @@ function EditProfile(props) {
           </div>
         </Col>
 
-        <Col md={6} xs={12}>
+        <Col md={4} xs={12}>
           <div className='edit_profile'>
             <div className='form-group'>
               <label htmlFor=''>Last Name</label>

@@ -14,7 +14,12 @@ section.about_ban {
   color: #323232;
   margin-top: 198px;
 }
-
+.mob_abo_banner img {
+  max-width: 100%;
+}
+.mob_abo_banner {
+  display: none;
+}
 .about_Con p {
   font-family: "SegoeUI_medium";
   font-style: normal;
@@ -80,18 +85,19 @@ section.about_testim {
   }
   .other_head .middle_nav_login .navbar-nav .nav-item {
     margin: 10px 0px 0px 10px;
-}
+  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1280px) {
-.about_Con h2, .our_his h2{
-  font-size: 30px;
-}
+  .about_Con h2,
+  .our_his h2 {
+    font-size: 30px;
+  }
 }
 
-@media only screen and (max-width: 1200px){
-  .navbar-expand-md .navbar-nav{
-    width:100%;
+@media only screen and (max-width: 1200px) {
+  .navbar-expand-md .navbar-nav {
+    width: 100%;
   }
 }
 
@@ -126,10 +132,9 @@ section.about_testim {
     padding: 49px 30px;
     margin: 0px;
   }
-  .tes_box{
+  .tes_box {
     padding: 11px 10px 0px;
   }
-
 }
 
 @media screen and (max-width: 767px) {
@@ -137,13 +142,13 @@ section.about_testim {
     margin-top: 0px;
   }
   .our_his {
-    margin: 20px 0px;
+    margin: 0;
     height: auto;
-    padding: 20px;
+    padding: 20px 0;
   }
   .our_his h2 {
-    font-size: 35px;
-    line-height: 45px;
+    font-size: 30px;
+    line-height: 35px;
   }
   .tes_box.heg_cha::before {
     width: 70px;
@@ -153,8 +158,8 @@ section.about_testim {
   }
   .about_Con h2 {
     margin-top: 30px;
-    font-size: 35px;
-    line-height: 125%;
+    font-size: 30px;
+    line-height: 120%;
   }
   section.about_ban {
     height: 600px;
@@ -163,5 +168,23 @@ section.about_testim {
   }
   section.ban_sec2 {
     margin-top: 0px;
+  }
+}
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  section.about_ban {
+    background-image: none;
+    height: auto;
+  }
+  .mob_abo_banner {
+    display: block;
+  }
+  section.about_testim {
+    overflow: hidden;
+    padding: 30px 0;
+    margin: 0;
+  }
+  .our_his {
+    background-color: transparent;
   }
 }
