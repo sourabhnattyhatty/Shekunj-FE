@@ -719,7 +719,7 @@ ul.star {
   }
 
   #myCarousel .carousel_item1 {
-    background-image: url("../../assets/images/banner/mob1.jpg");
+    // background-image: url("../../assets/images/banner/mob1.jpg");
     position: relative;
   }
   .row.h_set {
@@ -876,3 +876,13 @@ ul.star {
     font-size: 30px;
   }
 }
+// @media screen and (min-device-width: 1400px) and (max-device-width:1440px) { 
+//   #myCarousel .carousel-item{
+//     height: 62vh;
+//   }
+// }
+// @media screen and (min-device-width: 1200px) and (max-device-width:1300px) { 
+//   #myCarousel .carousel-item{
+//     height: 55vh;
+//   }
+// }

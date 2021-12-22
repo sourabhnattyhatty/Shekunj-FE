@@ -20,12 +20,12 @@ import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./index.scss";
 import "animate.css";
 import "aos/dist/aos.css";
-import { useDispatch } from "react-redux";
-import { allHomeCourses } from "../../store/courses/action";
+// import { useDispatch } from "react-redux";
+// import { allHomeCourses } from "../../store/courses/action";
 
 function HomePage() {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const settings = {
     dots: false,
@@ -77,12 +77,12 @@ function HomePage() {
           <Slider {...settings}>
             <div className='carousel-item carousel_item1'>
               <div className='container'>
-                <div className='row h_set'>
+                <div className='row h_set' data-aos='slide-up'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='zoom-in'>
+                    <h4 className='mt-5 pt-md-5 mb-3'>
                       {t("homePage.mainSlider.heading.1")}
                     </h4>
-                    <p className='mb-4' data-aos='zoom-in'>
+                    <p className='mb-4'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       In sed fermentum massa semper mauris volutpat dictum
@@ -91,7 +91,6 @@ function HomePage() {
                     <Link
                       to='/courses'
                       className='banner_btn'
-                      data-aos='zoom-in'
                     >
                       {t("homePage.mainSlider.button")}
                     </Link>
@@ -184,7 +183,9 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <button className='view_test_cate'>View All Courses</button>
+      <Link to='/courses' style={{ textDecoration: "none" }}>
+        <button className='view_test_cate'>View All Courses</button>
+      </Link>
 
       {/* resume */}
       <section className='resume same_padding mt-5'>
@@ -226,7 +227,7 @@ function HomePage() {
             <div className='col-lg-12 col-md-11'>
               <div className='job-opprtunity-bg'>
                 <div className='row'>
-                  <div className='col-lg-8' data-aos='fade-right'>
+                  <div className='col-lg-8' data-aos='slide-up'>
                     <h3>{t("homePage.jobopportunity.heading")}</h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -263,7 +264,9 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <button className='view_test_cate'>View All Courses</button>
+      <Link to='/courses' style={{ textDecoration: "none" }}>
+        <button className='view_test_cate'>View All Courses</button>
+      </Link>
 
       {/* career development */}
       <section className='career_community same_padding mt-5'>

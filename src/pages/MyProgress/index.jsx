@@ -1,31 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Aos from "aos";
-import { useTranslation } from "react-i18next";
-// import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { allCourses } from "../../store/courses/action";
-// import { constants } from "../../utils";
+
 import Calendar from "../../assets/icons/calendar.png";
 import Clock from "../../assets/icons/clock.png";
 import Calendarblack from "../../assets/icons/calendar-black.png";
 import Clockblack from "../../assets/icons/clock-black.png";
 import arrowright from "../../assets/images/MyProfile/arrowright.png";
 
-// import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import "./index.scss";
 import { Header, Footer, ScrollToTop, SEO } from "../../components";
+import { Link } from "react-router-dom";
 
 function index() {
   return (
     <div>
       <SEO title='Sheकुंज - Courses' />
-      <Header loginPage={true} />
+      <Header loginPage={true} subPage="myProgress" />
 
       <div className='dashboard_main pt-5 pb-5'>
         <Container>
@@ -399,17 +394,23 @@ function index() {
                   <Col md={5} xs={6}>
                     <div className="course_prog pink_col">
                       <h6>6</h6>
-                      <h3>Courses <br /> Inprogress</h3>
+                      <h3>
+                        Courses <br /> Inprogress
+                      </h3>
                     </div>
 
-                    <div className="course_prog yelloow_col">
+                    <div className='course_prog yelloow_col'>
                       <h6>4</h6>
-                      <h3>Courses <br /> Completed</h3>
+                      <h3>
+                        Courses <br /> Completed
+                      </h3>
                     </div>
 
-                    <div className="course_prog purple_col">
+                    <div className='course_prog purple_col'>
                       <h6>2</h6>
-                      <h3>Not <br /> Started</h3>
+                      <h3>
+                        Not <br /> Started
+                      </h3>
                     </div>
                   </Col>
                 </Row>
@@ -425,9 +426,11 @@ function index() {
                   </Col>
                 </Row>
                 <div>
-                  <button className='btn all_certificatebutton'>
-                    All Certificates
-                  </button>
+                  <Link to="/AllCertificatePage">
+                    <button className='btn all_certificatebutton'>
+                      All Certificates
+                    </button>
+                  </Link>
                 </div>
               </div>
               <div className='your-testdiv'>

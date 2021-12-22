@@ -38,7 +38,7 @@ function ResetPassword() {
           token,
           uidb64: uidb,
         };
-        dispatch(resetPassword(data, history));
+        // dispatch(resetPassword(data, history));
       },
     });
 

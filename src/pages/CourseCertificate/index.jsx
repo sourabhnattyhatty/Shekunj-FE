@@ -1,8 +1,6 @@
 import { Container } from "@mui/material";
 import React from "react";
-import Stack from "@mui/material/Stack";
 import { Row, Col } from "react-bootstrap";
-import { LinearProgress } from "@mui/material";
 import { Header, Footer, ScrollToTop } from "../../components";
 import "./index.scss";
 import "../CoursesModule/index.scss";
@@ -13,8 +11,12 @@ import Dawnload from "../../assets/images/Courses/Dawnload.png";
 import Share from "../../assets/images/Courses/Share.png";
 import fullscreen_icon from "../../assets/images/Courses/fullscreen_icon.png";
 import "./index.scss";
+import { useHistory } from "react-router-dom";
 
 function CourseTest() {
+
+  const history = useHistory();
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -57,9 +59,9 @@ function CourseTest() {
               <p className='cou_tit'>Course & Certificate</p>
               <div className='certi_img'>
                 <p>
-                  <div class='content'>
+                  <div class='content' onClick={() => history.push("/CertificateFullView")}>
                     <a
-                      href='#'
+                      href='#!'
                       target='_blank'
                     >
                       <div class='content-overlay'></div>

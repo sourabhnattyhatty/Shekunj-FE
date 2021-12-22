@@ -150,7 +150,53 @@ span.MuiLinearProgress-root {
 .prev_next_btn {
   margin-bottom: 35px;
 }
+.circular_progress_module .red1-progress .MuiSlider-track{
+  background: #FF3300;
+}
+.circular_progress_module .red1-progress span.MuiSlider-thumbColorPrimary{
+  height: 26px;
+  width: 26px;
+  background: #FF3300 !important;
+  box-shadow: 0px 0px 10px rgb(236 124 211) !important;
+}
+.circular_progress_module .red2-progress .MuiSlider-track{
+  background: #ff9900 ;
+}
+.circular_progress_module .red2-progress span.MuiSlider-thumbColorPrimary{
+  height: 26px;
+  width: 26px;
+  background: #ff9900 !important;
+  box-shadow: 0px 0px 10px rgb(236 124 211) !important;
+}
 
+.circular_progress_module .yellow1-progress .MuiSlider-track{
+  background: #FFFF00;
+}
+.circular_progress_module .yellow1-progress span.MuiSlider-thumbColorPrimary{
+  height: 26px;
+  width: 26px;
+  background: #FFFF00 !important;
+  box-shadow: 0px 0px 10px rgb(255 255 100) !important;
+}
+.circular_progress_module .yellow2-progress .MuiSlider-track{
+  background: #99ff00;
+}
+.circular_progress_module .yellow2-progress span.MuiSlider-thumbColorPrimary{
+  height: 26px;
+  width: 26px;
+  background: #99ff00 !important;
+  box-shadow: 0px 0px 10px rgb(255 255 100) !important;
+}
+
+.circular_progress_module .green1-progress .MuiSlider-track{
+  background: #72B51D;
+}
+.circular_progress_module .green1-progress span.MuiSlider-thumbColorPrimary{
+  height: 26px;
+  width: 26px;
+  background: #72B51D !important;
+  box-shadow: 0px 0px 10px rgb(236 124 211) !important;
+}
 
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) { 
     .que_box {

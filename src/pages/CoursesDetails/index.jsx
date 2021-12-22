@@ -8,15 +8,14 @@ import {
 import { Row, Col } from "react-bootstrap";
 import { Header, Footer, ScrollToTop, SEO, Carousel } from "../../components";
 
-import banimg from "../../assets/images/CoursesDetails/ban_img.png";
-import star from "../../assets/images/CoursesDetails/star.png";
-import check from "../../assets/images/CoursesDetails/check.png";
+
 import Device from "../../assets/images/CoursesDetails/Device.png";
 import clock from "../../assets/images/CoursesDetails/clock.png";
 import certificate from "../../assets/images/CoursesDetails/certificate.png";
 import clipboard from "../../assets/images/CoursesDetails/clipboard.png";
 import Support from "../../assets/images/CoursesDetails/Support.png";
 import forum from "../../assets/images/CoursesDetails/forum.png";
+import Check from "../../assets/icons/check.png";
 
 import "./index.scss";
 
@@ -51,12 +50,7 @@ const CourseDetails = () => {
               <div className='CouDtl_con'>
                 <h2>{course?.category_name}</h2>
                 <h5>{course?.name}</h5>
-                <div className='ban_rat'>
-                  {/* <p>
-                    4.5 <img src={star} alt='' srcSet='' /> (104,716)
-                  </p>
-                  <p>36,995 Students</p> */}
-                </div>
+                <div className='ban_rat'></div>
                 <h4>
                   Created by <span>SheKunj</span>
                 </h4>
@@ -65,7 +59,7 @@ const CourseDetails = () => {
 
             <div className='col-md-5'>
               <div className='CouDtl'>
-                <img src={banimg} alt='' srcSet='' />
+                <img src={`http://3.109.195.234${course?.image}`} alt='' srcSet='' />
               </div>
             </div>
           </div>
@@ -79,19 +73,69 @@ const CourseDetails = () => {
               <div className='sec1_des'>
                 <h2>Description</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Viverra mauris quam eros, neque lorem tellus. Adipiscing non
-                  molestie lacus cras potenti turpis tellus. At enim, malesuada
-                  vitae blandit enim congue nibh elit. Arcu cursus elit integer
-                  ornare nec enim. Nunc et duis porttitor lorem sit pretium
-                  malesuada ultrices. Nulla nibh adipiscing arcu id diam
-                  feugiat. Magna nullam amet, ut dui placerat. Non ultricies et,
-                  adipiscing est rhoncus, cras fusce. In suscipit netus metus
-                  nec convallis nulla laoreet. Mi consectetur leo massa gravida
-                  diam id hendrerit posuere sit.
+                {course?.description}
                 </p>
               </div>
               
+              <div className='sec1_con2 con_setSec1'>
+                <h2>What you’ll learn</h2>
+
+                <Row>
+                  <Col md={6} xs={12}>
+                    <div className='features_box'>
+                      <div>
+                        <img src={Check} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <p>
+                        Lorem ipsum dolor sit amet.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className='features_box'>
+                      <div>
+                        <img src={Check} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <p>
+                        Lorem ipsum dolor sit amet.
+                        </p>
+                      </div>
+                    </div>
+                  </Col>
+
+                  <Col md={6} xs={12}>
+                    <div className='features_box'>
+                      <div>
+                        <img src={Check} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <p>
+                        Lorem ipsum dolor sit amet.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className='features_box'>
+                      <div>
+                        <img src={Check} alt='' srcSet='' />
+                      </div>
+                      <div>
+                        <p>
+                        Lorem ipsum dolor sit amet.
+                        </p>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+
+
+
+
+
+
               <div className='sec1_con2'>
                 <h2>Features:</h2>
 
@@ -186,7 +230,7 @@ const CourseDetails = () => {
 
                 <h3 className='similar-coursestext'>Similar Courses</h3>
 
-                <Carousel page='courseDetail' />
+                <Carousel page='courseDetail'  />
 
                 <Link to="/courses" className='btn_view'>View More Courses</Link>
               </div>

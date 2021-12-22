@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 import Footer from "../../components/Footer";
@@ -6,18 +6,26 @@ import Header from "../../components/Header";
 import GuidanceSelect from "./Select";
 
 import Book_img from "../../assets/images/Guidance/Book_img.png";
+import Polygon1 from "../../assets/images/Guidance/Polygon1.png";
+import Polygon2 from "../../assets/images/Guidance/Polygon2.png";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import User2 from "../../assets/icons/user2.png";
-import User from "../../assets/icons/user.png";
 import "./index.scss";
 import "../LoginPage/LoginForm/LoginTabs/index.scss";
 import { TextareaAutosize } from "@mui/material";
+import "aos/dist/aos.css";
+import "animate.css";
+import Aos from "aos";
 
 const GuidancePage = () => {
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
   return (
+    
     <div>
-      <Header loginPage={true} page='guidance' />
+      <Header loginPage={true} page='guidance' subPage='bookCounsller' />
       <div className='guidance_book'>
         <Container>
           <Row>
@@ -29,15 +37,20 @@ const GuidancePage = () => {
                   elit.
                 </p>
                 <img src={Book_img} alt='' />
+
+                <div className='g_book_img'>
+                  <img src={Polygon1} alt='' data-aos="slide-right"/>
+                  <img src={Polygon2} alt='' data-aos="slide-left"/>
+                </div>
               </div>
             </Col>
 
             <Col md={7} xs={12}>
               <div className='guidance_book_form'>
                 <form action=''>
-                  <div className='form-group mzero'>
+                  {/* <div className='form-group mzero'>
                     <GuidanceSelect title='User' icon={true} />
-                  </div>
+                  </div> */}
 
                   <div className='form-group'>
                     <TextField
@@ -142,20 +155,18 @@ const GuidancePage = () => {
                   </div>
                   <div className='form-group mzero'>
                     <TextareaAutosize
-                    className="textarea_set"
+                      className='textarea_set'
                       aria-label='minimum height'
                       minRows={7}
                       placeholder='Enter Your Message'
                     />
                   </div>
 
-                  <button className="book_sess_btn">Book a Session</button>
+                  <button className='book_sess_btn'>Book a Session</button>
                 </form>
               </div>
             </Col>
           </Row>
-
-          
         </Container>
       </div>
       <Footer loginPage={false} />

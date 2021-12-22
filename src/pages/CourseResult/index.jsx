@@ -7,7 +7,7 @@ import Confetti from "react-confetti";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import win from "../../assets/images/Courses/win.png";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { testResult } from "../../store/courses/action";
 
@@ -60,7 +60,7 @@ function CourseTest() {
                       </span>
                       <div class='progress-value'>
                         <div>
-                          <p>{result?.total_score}</p>
+                          <p>{result?.no_of_correct_answer}</p>
                           <br />
                           <span>
                             Correct <br /> Answers
@@ -101,7 +101,9 @@ function CourseTest() {
                       <div class='progress-value'>
                         <div>
                           <p>
-                            {result?.test_time && (result?.test_time).toFixed(2)} <span>min</span>
+                            {result?.test_time &&
+                              (result?.test_time).toFixed(2)}{" "}
+                            <span>min</span>
                           </p>
                           <br />
                           <span>Total Time</span>
@@ -111,7 +113,9 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              <button className='get_certif'>Get Your Certificate</button>
+              <Link to='/CourseCertificate'>
+                <button className='get_certif'>Get Your Certificate</button>
+              </Link>
             </Col>
           </Row>
         </Container>

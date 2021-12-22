@@ -79,6 +79,46 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         isAuth: true,
       };
+
+    case authTypes.USER_PROFILE_REQUEST:
+      return {
+        ...state,
+        verifyLoading: true,
+        error: null,
+      };
+    case authTypes.USER_PROFILE_FINISH:
+      return {
+        ...state,
+        user: action.payload,
+        isLoading: false,
+        error: null,
+      };
+    case authTypes.USER_PROFILE_FAIL:
+      return {
+        ...state,
+        verifyLoading: false,
+        user: {},
+        isAuth: false,
+        error: action.payload,
+      };
+    case authTypes.RESET_PASSWORD_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case authTypes.RESET_PASSWORD_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+      };
+    case authTypes.RESET_PASSWORD_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
