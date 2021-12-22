@@ -65,12 +65,11 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-
 const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
   height: 10,
   padding: "15px 0",
-  
+
   "& .MuiSlider-valueLabel": {
     fontSize: 12,
     fontWeight: "normal",
@@ -80,9 +79,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
     "&:before": {
       display: "none",
     },
-    
   },
-  
 }));
 
 const CourseModule = () => {
@@ -96,8 +93,9 @@ const CourseModule = () => {
   const { id } = useParams();
   const history = useHistory();
 
-  const progress = Math.round(100 / (courseModulesList.length || 0) ) ||0;
+  console.log(">>>>>>>")
 
+  const progress = Math.round(100 / (courseModulesList.length || 0)) || 0;
 
   React.useEffect(() => {
     if (detect.isMobile) {
@@ -135,6 +133,11 @@ const CourseModule = () => {
     return (
       <IOSSlider
         aria-label='ios slider'
+        className={
+          (count <= 33 && "red1-progress") ||
+          (count <= 60 && "yellow1-progress") ||
+          (count <= 100 && "green1-progress")
+        }
         value={count}
         valueLabelFormat={(value) => <div>{value}%</div>}
         valueLabelDisplay='on'

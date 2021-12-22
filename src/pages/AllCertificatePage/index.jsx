@@ -10,7 +10,7 @@ import barchart from "../../assets/icons/bar-chart.png";
 function index() {
   return (
     <div>
-      <Header loginPage={true} page='career' subPage="allCertificatePage" />
+      <Header loginPage={true}  subPage="allCertificatePage" />
 
       <div className='all_certif_banner'>
         <Container>

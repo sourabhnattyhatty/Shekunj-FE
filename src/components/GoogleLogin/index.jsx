@@ -7,7 +7,7 @@ import Or from "../../assets/images/login/or.png";
 import { useDispatch } from "react-redux";
 import { registerWithGoogle } from "../../store/auth/action";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 function GoogleLoginComponent({ showOr }) {
   const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -15,13 +15,21 @@ function GoogleLoginComponent({ showOr }) {
   const { t } = useTranslation();
   const history = useHistory();
 
+  function useQuery() {
+    const { search } = useLocation();
+  
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+  let query = useQuery();
+
+  const redirect = query.get("redirect")
+
   const responseGoogle = (res) => {
     if (res && res.tokenId) {
-      dispatch(registerWithGoogle({ auth_token: res.tokenId }, history));
-    } else {
-      toast.error("Google login failed.");
+      dispatch(registerWithGoogle({ auth_token: res.tokenId }, history, redirect));
     }
   };
+
   return (
     <>
       <div className='text-center'>

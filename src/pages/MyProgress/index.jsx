@@ -2,6 +2,8 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 import Calendar from "../../assets/icons/calendar.png";
 import Clock from "../../assets/icons/clock.png";
@@ -16,11 +18,56 @@ import "./index.scss";
 import { Header, Footer, ScrollToTop, SEO } from "../../components";
 import { Link } from "react-router-dom";
 
-function index() {
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+function MyProgress() {
+  const options = {
+    labels: [],
+    datasets: [
+      {
+        data: [300, 50, 100],
+        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+      },
+    ],
+    options: {
+      elements: {
+        center: {
+          text: "50%",
+          color: "#FFCE56", // Default is #000000
+          fontStyle: "Arial", // Default is Arial
+          sidePadding: 20, // Default is 20 (as a percentage)
+          minFontSize: 25, // Default is 20 (in px), set to false and text will not wrap.
+          lineHeight: 25, // Default is 25 (in px), used for when text wraps
+        },
+      },
+    },
+  };
+
+  const plugins = [
+    {
+      beforeDraw(chart) {
+        const { width } = chart;
+        const { height } = chart;
+        const { ctx } = chart;
+        ctx.restore();
+        const fontSize = (height / 160).toFixed(2);
+        ctx.font = `${fontSize}em sans-serif`;
+        ctx.fillStyle = `#EC498A`
+        ctx.textBaseline = "top";
+        const text = "50%";
+        const textX = Math.round((width - ctx.measureText(text).width) / 2);
+        const textY = height / 2;
+        ctx.fillText(text, textX, textY);
+        ctx.save();
+      },
+    },
+  ];
+
   return (
     <div>
       <SEO title='Sheकुंज - Courses' />
-      <Header loginPage={true} subPage="myProgress" />
+      <Header loginPage={true} subPage='myProgress' />
 
       <div className='dashboard_main pt-5 pb-5'>
         <Container>
@@ -389,10 +436,12 @@ function index() {
             <Col md={5} xs={12}>
               <div className='course_completedright'>
                 <Row>
-                  <Col md={7} xs={6}></Col>
+                  <Col md={7} xs={6}>
+                    <Doughnut data={options} plugins={plugins} />
+                  </Col>
 
                   <Col md={5} xs={6}>
-                    <div className="course_prog pink_col">
+                    <div className='course_prog pink_col'>
                       <h6>6</h6>
                       <h3>
                         Courses <br /> Inprogress
@@ -426,7 +475,7 @@ function index() {
                   </Col>
                 </Row>
                 <div>
-                  <Link to="/AllCertificatePage">
+                  <Link to='/AllCertificatePage'>
                     <button className='btn all_certificatebutton'>
                       All Certificates
                     </button>
@@ -516,4 +565,4 @@ function index() {
   );
 }
 
-export default index;
+export default MyProgress;

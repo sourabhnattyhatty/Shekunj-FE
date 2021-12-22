@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import httpServices from "../../utils/ApiServices";
 import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
-import { noImage } from "../courses/action";
 import moment from "moment";
 
 export const onLogin = (values, history, redirect) => async (dispatch) => {
@@ -53,7 +52,7 @@ export const onSignup = (values, history) => async (dispatch) => {
   }
 };
 
-export const registerWithGoogle = (value, history) => async (dispatch) => {
+export const registerWithGoogle = (value, history, redirect) => async (dispatch) => {
   try {
     const res = await httpServices.post("social_auth/google/", value);
     dispatch({
@@ -61,7 +60,11 @@ export const registerWithGoogle = (value, history) => async (dispatch) => {
       payload: { name: res.data.username, email: res.data.email },
     });
     Cookies.set("sheToken", res.data.tokens.access);
-    history.push("/MyProgress");
+    if (redirect) {
+      history.push(redirect);
+    } else {
+      history.push("/MyProgress");
+    }
   } catch (err) {
     toast.error("Google Login failed.", toasterConfig);
   }

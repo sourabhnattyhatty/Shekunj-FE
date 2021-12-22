@@ -39,7 +39,15 @@ function CourseTest() {
                 <h2>Your Result</h2>
                 <img src={win} alt='' />
                 <h2>
-                  Congratulation <b>{result?.name}!</b>
+                  {Math.round(result?.result) >= 70 ? (
+                    <>
+                      Congratulation <b>{result?.name}!</b>
+                    </>
+                  ) : (
+                    <>
+                      Bad Performance <b>{result?.name}!</b>
+                    </>
+                  )}
                 </h2>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
@@ -80,7 +88,7 @@ function CourseTest() {
                       </span>
                       <div class='progress-value'>
                         <div>
-                          <p>{Math.round(result?.result)}</p>
+                          <p>{Math.round(result?.result)}%</p>
                           <br />
                           <span>
                             Candidate’s <br /> Score
@@ -113,8 +121,18 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              <Link to='/CourseCertificate'>
-                <button className='get_certif'>Get Your Certificate</button>
+              <Link
+                to={
+                  Math.round(result?.result) >= 70
+                    ? "/CourseCertificate"
+                    : `/CoursesDetails/${id}`
+                }
+              >
+                {Math.round(result?.result) >= 70 ? (
+                  <button className='get_certif'>Get Your Certificate</button>
+                ) : (
+                  <button className='get_certif'>Start Course Again</button>
+                )}
               </Link>
             </Col>
           </Row>

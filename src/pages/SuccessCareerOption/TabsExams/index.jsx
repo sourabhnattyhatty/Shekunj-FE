@@ -5,7 +5,6 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import Backbutton from "../../../assets/images/Guidance/back-arrow.png";
 import Share from "../../../assets/images/Guidance/share-button.png";
 import Bookmark from "../../../assets/images/Guidance/bookmark-button.png";
@@ -185,7 +184,7 @@ export default function VerticalTabs() {
               {!show ? (
                 <Row>
                   <Col md={6} xs={12}>
-                    <Link to='/success2'>
+                    {/* <Link to='/success2'> */}
                       <div
                         className='tabs_box'
                         onClick={() => setShow((prev) => !prev)}
@@ -198,11 +197,11 @@ export default function VerticalTabs() {
                         </p>
                         <button>Read More</button>
                       </div>
-                    </Link>
+                    {/* </Link> */}
                   </Col>
 
                   <Col md={6} xs={12}>
-                    <Link to='/success2'>
+                    {/* <Link to='/success2'> */}
                       <div
                         className='tabs_box'
                         onClick={() => setShow((prev) => !prev)}
@@ -215,7 +214,7 @@ export default function VerticalTabs() {
                         </p>
                         <button>Read More</button>
                       </div>
-                    </Link>
+                    {/* </Link> */}
                   </Col>
                 </Row>
               ) : (

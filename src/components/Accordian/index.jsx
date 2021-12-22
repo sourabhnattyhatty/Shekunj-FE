@@ -11,6 +11,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
 import "./index.scss";
+import { Radio, RadioGroup } from "@mui/material";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -125,16 +126,17 @@ export default function AccordionComponent({
             </AccordionSummary>
             <AccordionDetails>
               <ul className='pl-0'>
-                <FormGroup>
+                <RadioGroup name='radio-buttons-group'>
                   {states?.rows?.slice(0, 3)?.map((s) => (
                     <li key={s?.id}>
                       <FormControlLabel
-                        control={<Checkbox />}
+                      value={s?.name}
+                        control={<Radio />}
                         label={s?.name}
                       />
                     </li>
                   ))}
-                </FormGroup>
+                </RadioGroup>
               </ul>
               {hasMoreCount(states?.rows, 3) > 0 && (
                 <div className='has-more'>

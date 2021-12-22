@@ -83,7 +83,7 @@ export const authReducer = (state = initialState, action) => {
     case authTypes.USER_PROFILE_REQUEST:
       return {
         ...state,
-        verifyLoading: true,
+        isLoading: true,
         error: null,
       };
     case authTypes.USER_PROFILE_FINISH:
@@ -96,9 +96,7 @@ export const authReducer = (state = initialState, action) => {
     case authTypes.USER_PROFILE_FAIL:
       return {
         ...state,
-        verifyLoading: false,
-        user: {},
-        isAuth: false,
+        isLoading: false,
         error: action.payload,
       };
     case authTypes.RESET_PASSWORD_REQUEST:

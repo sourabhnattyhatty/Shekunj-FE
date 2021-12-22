@@ -22,10 +22,9 @@ function GuidanceSelect(props) {
       target: { value },
     } = event;
     setPersonName(
-      // On autofill we get a the stringified value.
       typeof value === "string" ? value.split(",") : value,
     );
-    debugger;
+    props.setValue(value);
   };
 
   return (

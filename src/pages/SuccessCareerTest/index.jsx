@@ -1,8 +1,7 @@
-import { Container } from "@mui/material";
+import { Container, FormControlLabel, Radio, RadioGroup, Skeleton } from "@mui/material";
 import React from "react";
 import Stack from "@mui/material/Stack";
 import { Row, Col } from "react-bootstrap";
-import { LinearProgress } from "@mui/material";
 import { isMobile } from "react-device-detect";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
@@ -16,8 +15,7 @@ import GuidanceSelect from "../GuidanceBook/Select/index";
 import time from "../../assets/images/Courses/time.png";
 import { styled } from "@mui/material/styles";
 import Slider from "@mui/material/Slider";
-
-
+import { useSelector } from "react-redux";
 
 const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
@@ -39,6 +37,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 
 function CourseTest() {
   const history = useHistory();
+  const { isLoading } = useSelector((state) => state.guidanceReducer);
 
   React.useEffect(() => {
     if (isMobile) {
@@ -68,19 +67,22 @@ function CourseTest() {
           <Row className='pt-md-5 pb-md-5'>
             <Col md={12} xs={12} className='text-left'>
               <div className='circular_progress_module'>
-                <Stack className="d-flex justify-content-between" spacing={2} direction='row'>
+                <Stack
+                  className='d-flex justify-content-between'
+                  spacing={2}
+                  direction='row'
+                >
                   <h3>Banking Exam</h3>
                   <button>Finish</button>
                 </Stack>
-                </div>
-                <IOSSlider
-                  aria-label='ios slider'
-                  value={20}
-                  valueLabelFormat={(value) => <div>{value}%</div>}
-                  valueLabelDisplay='on'
-                  disabled
-                />
-              
+              </div>
+              <IOSSlider
+                aria-label='ios slider'
+                value={20}
+                valueLabelFormat={(value) => <div>{value}%</div>}
+                valueLabelDisplay='on'
+                disabled
+              />
             </Col>
           </Row>
         </div>
@@ -95,16 +97,42 @@ function CourseTest() {
           <Col md={8} xs={12}>
             <div className='que_box'>
               <h2>Question</h2>
-              <p>
-                13. Which state has topped the highest employability rate, as
-                per latest India Skills Report 2019
-              </p>
-              <ul>
-                <li>Andhra Pradesh</li>
-                <li>Karnataka</li>
-                <li>Tamil Nadu</li>
-                <li>Rajasthan</li>
-              </ul>
+              {isLoading ? (
+                <Skeleton></Skeleton>
+              ) : (
+                <p>
+                  1. Which state has topped the highest employability rate, as
+                  per latest India Skills Report 2019
+                </p>
+              )}
+                <RadioGroup aria-label='gender' name='radio-buttons-group'>
+                  
+                    <FormControlLabel
+                      value="Andhra Pradesh"
+                      control={<Radio />}
+                      label="Andhra Pradesh"
+                      // onChange={(e) => setAnswer(e.target.value)}
+                    />
+                  
+                    <FormControlLabel
+                      value="Karnataka"
+                      control={<Radio />}
+                      label="Karnataka"
+                      // onChange={(e) => setAnswer(e.target.value)}
+                    />
+                    <FormControlLabel
+                      value="Rajasthan"
+                      control={<Radio />}
+                      label="Rajasthan"
+                      // onChange={(e) => setAnswer(e.target.value)}
+                    />
+                    <FormControlLabel
+                      value="Tamil Nadu"
+                      control={<Radio />}
+                      label="Tamil Nadu"
+                      // onChange={(e) => setAnswer(e.target.value)}
+                    />
+                </RadioGroup>
             </div>{" "}
             <br />
             <div className='prev_next_btn'>
