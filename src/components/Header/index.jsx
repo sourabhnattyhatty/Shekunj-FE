@@ -11,6 +11,7 @@ import Search from "../../assets/icons/search.png";
 import close from "../../assets/icons/x.png";
 
 import "./index.scss";
+import { isAuthenticated } from "../../utils/utils";
 
 const Header = ({ page, subPage }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -53,7 +54,9 @@ const Header = ({ page, subPage }) => {
 
   useEffect(() => {
     dispatch(refreshPage());
-    dispatch(getUserProfile());
+    if (isAuthenticated()) {
+      dispatch(getUserProfile());
+    }
   }, [dispatch]);
 
   const handleLogout = () => {
@@ -194,7 +197,9 @@ const Header = ({ page, subPage }) => {
                         </MenuItem>
                         <MenuItem
                           onClick={handleCertificate}
-                          className={subPage === "allCertificatePage" && "active"}
+                          className={
+                            subPage === "allCertificatePage" && "active"
+                          }
                         >
                           My Certificates
                         </MenuItem>

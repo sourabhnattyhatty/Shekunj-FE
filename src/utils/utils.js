@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 export const toasterConfig = {
   position: "top-right",
   autoClose: 2000,
@@ -28,4 +30,13 @@ export const transformError = (error) => {
     }
   }
   return err;
+};
+
+export const isAuthenticated = () => {
+  const token = Cookies.get("sheToken");
+  // Check time
+  if (token) {
+    return true;
+  }
+  return false;
 };

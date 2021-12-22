@@ -58,7 +58,6 @@ export default function AccordionComponent({
   educationBoard,
   stream,
   courseLength,
-  courseDifficulty,
   categories,
 }) {
   const hasMoreCount = (rows = [], count = 0) => {
@@ -116,34 +115,6 @@ export default function AccordionComponent({
               </ul>
             </AccordionDetails>
           </Accordion>
-
-          {/* <Accordion>
-            <AccordionSummary
-              aria-controls='panel1d-content'
-              id={courseDifficulty?.name}
-            >
-              <Typography>{courseDifficulty?.name}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <ul className='pl-0'>
-                <FormGroup>
-                  {courseDifficulty?.rows?.slice(0, 6)?.map((s) => (
-                    <li key={s?.id}>
-                      <FormControlLabel
-                        control={<Checkbox />}
-                        label={s?.name}
-                      />
-                    </li>
-                  ))}
-                </FormGroup>
-              </ul>
-              {hasMoreCount(courseDifficulty?.rows, 6) > 0 && (
-                <div className='has-more'>
-                  {hasMoreCount(courseDifficulty?.rows, 6)} More
-                </div>
-              )}
-            </AccordionDetails>
-          </Accordion> */}
         </>
       )}
       {type === "schools" && (
