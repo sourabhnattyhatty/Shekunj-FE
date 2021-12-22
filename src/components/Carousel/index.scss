@@ -388,16 +388,14 @@ button.btn.btn_Courses {
     line-height: 20px;
   }
 }
-@media screen and (min-device-width: 1919px) and (max-device-width: 1920px) { 
+@media screen and (min-device-width: 1919px) and (max-device-width: 1920px) {
   .owl-theme {
     max-width: 1480px;
   }
 }
 
-// @media screen and (max-width: 1280px) {
-
-// #myCarousel .carousel-item {
-//   height: 54vh !important;
-// }
-
-// }
+@media screen and (max-width: 1280px) {
+  #myCarousel .carousel-item {
+    height: 54vh !important;
+  }
+}

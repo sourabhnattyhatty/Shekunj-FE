@@ -14,7 +14,26 @@ import Nikita from "../../assets/images/testimonial/1.png";
 import Priya from "../../assets/images/testimonial/2.png";
 import star from "../../assets/images/Star 2.png";
 import certif from "../../assets/images/certif.jpg";
-
+import g1 from "../../assets/images/1.png";
+import g2 from "../../assets/images/2.png";
+import g3 from "../../assets/images/3.png";
+import g4 from "../../assets/images/4.png";
+import g5 from "../../assets/images/5.png";
+import g6 from "../../assets/images/6.png";
+import g7 from "../../assets/images/7.png";
+import g8 from "../../assets/images/8.png";
+import g9 from "../../assets/images/9.png";
+import g10 from "../../assets/images/10.png";
+import g11 from "../../assets/images/11.png";
+import g12 from "../../assets/images/12.png";
+import g13 from "../../assets/images/13.png";
+import g14 from "../../assets/images/14.png";
+import g15 from "../../assets/images/15.png";
+import g16 from "../../assets/images/16.png";
+import g17 from "../../assets/images/17.png";
+import g18 from "../../assets/images/18.png";
+import g19 from "../../assets/images/19.png";
+import g20 from "../../assets/images/20.png";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./index.scss";
@@ -88,10 +107,7 @@ function HomePage() {
                       In sed fermentum massa semper mauris volutpat dictum
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
-                    <Link
-                      to='/courses'
-                      className='banner_btn'
-                    >
+                    <Link to='/courses' className='banner_btn'>
                       {t("homePage.mainSlider.button")}
                     </Link>
                   </div>
@@ -272,7 +288,7 @@ function HomePage() {
       <section className='career_community same_padding mt-5'>
         <div className='container'>
           <div className='row justify-content-center'>
-            <div className='col-md-11'>
+            <div className='col-md-12'>
               <h3 data-aos='slide-up'>{t("homePage.community.heading")}</h3>
               <p data-aos='slide-up'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
@@ -280,8 +296,92 @@ function HomePage() {
                 ut nunc lorem mi ut lacus. Felis vitae vel.
               </p>
 
+              <div className='mob_comunity_img'>
+                  <img data-aos='slide-up' src={Community} alt='...' />
+                </div>
+
               <div className='community-img mt-5'>
-                <img data-aos='slide-up' src={Community} alt='...' />
+                
+
+                <div class='community1 communityring'>
+                  <img src={g1} alt='Image' />
+                </div>
+
+                <div class='community2 communityring'>
+                  <img src={g2} alt='Image' />
+                </div>
+
+                <div class='community3 communityring'>
+                  <img src={g3} alt='Image' />
+                </div>
+
+                <div class='community4 communityring' >
+                  <img src={g4} alt='Image' />
+                </div>
+
+                <div class='community5 communityring'>
+                  <img src={g5} alt='Image' />
+                </div>
+
+                <div class='community6 communityring'>
+                  <img src={g6} alt='Image' />
+                </div>
+
+                <div class='community7 communityring'>
+                  <img src={g7} alt='Image' />
+                </div>
+
+                <div class='community8 communityring'>
+                  <img src={g8} alt='Image' />
+                </div>
+
+                <div class='community9 communityring'>
+                  <img src={g9} alt='Image' />
+                </div>
+
+                <div class='community10 communityring'>
+                  <img src={g10} alt='Image' />
+                </div>
+
+                <div class='community11 communityring'>
+                  <img src={g11} alt='Image' />
+                </div>
+
+                <div class='community12 communityring' >
+                  <img src={g12} alt='Image' />
+                </div>
+
+                <div class='community13 communityring'>
+                  <img src={g13} alt='Image' />
+                </div>
+
+                <div class='community14 communityring'>
+                  <img src={g14} alt='Image' />
+                </div>
+
+                <div class='community15 communityring'>
+                  <img src={g15} alt='Image' />
+                </div>
+
+                <div class='community16 communityring'>
+                  <img src={g16} alt='Image' />
+                </div>
+
+                <div class='community17 communityring'>
+                  <img src={g17} alt='Image' />
+                </div>
+
+                <div class='community18 communityring'>
+                  <img src={g18} alt='Image' />
+                </div>
+
+                <div class='community19 communityring'>
+                  <img src={g19} alt='Image' />
+                </div>
+
+                <div class='community20 communityring'>
+                  <img src={g20} alt='Image' />
+                </div>
               </div>
             </div>
           </div>
@@ -296,6 +396,93 @@ function HomePage() {
         </div>
       </section>
 
+      <div class='career_community'>
+        <div class='container'>
+          <div class='community_block d-md-block d-none'>
+            <div class='career_community'>
+              <div class='community1'>
+                <img src={g1} alt='Image' />
+              </div>
+
+              <div class='community2'>
+                <img src={g2} alt='Image' />
+              </div>
+
+              <div class='community3'>
+                <img src={g3} alt='Image' />
+              </div>
+
+              <div class='community4'>
+                <img src={g4} alt='Image' />
+              </div>
+
+              <div class='community5'>
+                <img src={g5} alt='Image' />
+              </div>
+
+              <div class='community6'>
+                <img src={g6} alt='Image' />
+              </div>
+
+              <div class='community7'>
+                <img src={g7} alt='Image' />
+              </div>
+
+              <div class='community8'>
+                <img src={g8} alt='Image' />
+              </div>
+
+              <div class='community9'>
+                <img src={g9} alt='Image' />
+              </div>
+
+              <div class='community10'>
+                <img src={g10} alt='Image' />
+              </div>
+
+              <div class='community11'>
+                <img src={g11} alt='Image' />
+              </div>
+
+              <div class='community12'>
+                <img src={g12} alt='Image' />
+              </div>
+
+              <div class='community13'>
+                <img src={g13} alt='Image' />
+              </div>
+
+              <div class='community14'>
+                <img src={g14} alt='Image' />
+              </div>
+
+              <div class='community15'>
+                <img src={g15} alt='Image' />
+              </div>
+
+              <div class='community16'>
+                <img src={g16} alt='Image' />
+              </div>
+
+              <div class='community17'>
+                <img src={g17} alt='Image' />
+              </div>
+
+              <div class='community18'>
+                <img src={g18} alt='Image' />
+              </div>
+
+              <div class='community19'>
+                <img src={g19} alt='Image' />
+              </div>
+
+              <div class='community20'>
+                <img src={g20} alt='Image' />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* certificate */}
       <section className='certificate same_padding'>
         <div className='container'>
