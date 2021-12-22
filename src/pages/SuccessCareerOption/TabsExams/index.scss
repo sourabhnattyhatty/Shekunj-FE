@@ -84,6 +84,7 @@ div#vertical-tabpanel-0 {
 .CompExams .MuiTabs-root.MuiTabs-vertical {
     height: 875px;
     overflow-y: scroll;
+    display: block;
 }
 .CompExams span.MuiTabs-indicator {
     display: none;

@@ -80,6 +80,9 @@ function EditProfile(props) {
               </div>
             </div>
           </div>
+          <button className='Save_profile_btn' onClick={props.func}>
+        Save
+      </button>
         </Col>
 
         <Col md={4} xs={12}>
@@ -147,9 +150,7 @@ function EditProfile(props) {
           </div>
         </Col>
       </Row>
-      <button className='Save_profile_btn' onClick={props.func}>
-        Save
-      </button>
+      
     </>
   );
 }

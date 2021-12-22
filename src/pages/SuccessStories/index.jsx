@@ -11,7 +11,7 @@ import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
 import double_quote from "../../assets/icons/double_quote.png";
 import "./index.scss";
-
+import global from "../../assets/images/Success/global.png"
 function SuccessStory() {
   const dispatch = useDispatch();
   const { successStories } = useSelector((state) => {
