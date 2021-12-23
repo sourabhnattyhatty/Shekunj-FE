@@ -25,6 +25,7 @@
 }
 .guidance_con img {
   max-width: 100%;
+  margin-top: 100px;
 }
 
 .guidance_book_form span.MuiTabs-indicator {
@@ -180,5 +181,9 @@ button.book_sess_btn:hover {
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
   .guidance_book_form {
     padding: 30px;
+  }
+
+  .guidance_book {
+    padding: 50px 0;
   }
 }

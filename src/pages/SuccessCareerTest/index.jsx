@@ -134,7 +134,7 @@ function CourseTest() {
                     />
                 </RadioGroup>
             </div>{" "}
-            <br />
+           
             <div className='prev_next_btn'>
               <Row>
                 <Col md={6} xs={6}>

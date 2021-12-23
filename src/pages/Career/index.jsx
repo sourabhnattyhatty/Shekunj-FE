@@ -85,6 +85,7 @@ const CareerPage = () => {
                   <div className='career_box' key={c?.id}>
                     <Row>
                       <Col md={7} xs={12}>
+                      <div className="top_col_content">
                         <h3>{c?.name || "N/A"}</h3>
                         <p>
                           {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
@@ -101,6 +102,7 @@ const CareerPage = () => {
                         <button className='btn_viewCour'>
                           View more details
                         </button>
+                        </div>
                       </Col>
 
                       <Col md={5} xs={12}>

@@ -26,6 +26,7 @@ import { bookCounseller } from "../../store/guidance/action";
 import moment from "moment";
 
 function range(start, end) {
+  
   return Array(end - start + 1)
     .fill()
     .map((_, idx) => start + idx);
@@ -35,6 +36,7 @@ const days = range(1, 31);
 const years = range(1970, 2021);
 const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
 const courseLookingFor = ["Java", "Python", "JavaScript", ".Net"];
+
 
 const months = [
   "January",
@@ -130,6 +132,8 @@ const GuidancePage = () => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+
+  
   return (
     <div>
       <Header loginPage={true} page='guidance' subPage='bookCounsller' />
@@ -138,16 +142,21 @@ const GuidancePage = () => {
           <Row>
             <Col md={5} xs={12}>
               <div className='guidance_con'>
-                <h2>Book a Session</h2>
-                <p>
+              <div className="book_sec_content">
+                <h2 data-aos='slide-up'>Book a Session</h2>
+                <p data-aos='slide-up'>
                   Lorem ipsum dolor sit amet, consectetur <br /> adipiscing
                   elit.
                 </p>
+                </div>
+
+                <div className="book_sec_imgs">
                 <img src={Book_img} alt='' />
 
                 <div className='g_book_img'>
-                  <img src={Polygon1} alt='' data-aos='slide-right' />
-                  <img src={Polygon2} alt='' data-aos='slide-left' />
+                  <img src={Polygon1} alt='' className="vert-move" />
+                  <img src={Polygon2} alt='' className="vert-move" />
+                </div>
                 </div>
               </div>
             </Col>
