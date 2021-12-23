@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import "./index.scss";
 
-function index() {
+function index(props) {
   return (
     <div>
     <div className="date_of_birth">
@@ -16,6 +16,7 @@ function index() {
         InputLabelProps={{
           shrink: true,
         }}
+        onChange={(e)=>props.updatedDate(e.target.value)}
       />
   
     </Stack>

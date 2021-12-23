@@ -30,7 +30,7 @@ function UserInfo(props) {
             </ul>
 
             <ul>
-              <li>{user?.contact || "Contant - N/A"}</li>
+              <li>{user?.contact || "Contact - N/A"}</li>
               <li>{user?.stream || "Stream - N/A"}</li>
               <li>{user?.state || "State - N/A"}</li>
             </ul>

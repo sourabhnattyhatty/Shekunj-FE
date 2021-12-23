@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -8,23 +8,30 @@ import User2 from "../../../assets/icons/user2.png";
 import Gender from "../../../assets/icons/gender.png";
 import Qualifications from "../../../assets/icons/Qualifications.png";
 import Course from "../../../assets/icons/Course.png";
-import Education from "../../../assets/images/MyProfile/education.png";
 
-
-
-
+const names = [
+  "Engineering",
+  "Medical",
+  "Arts",
+  "Science",
+  "Pharmacy",
+];
 
 function GuidanceSelect(props) {
-  const [personName, setPersonName] = React.useState([]);
+  const [defaultValue, setDefaultValue] = React.useState(props.defaultValue);
+
+  useEffect(() => {
+    setDefaultValue(props.defaultValue)
+  }, [props.defaultValue])
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
-      typeof value === "string" ? value.split(",") : value,
+    props.updateValues(value);
+    setDefaultValue(
+      typeof value === "string" ? value.split(",") : value
     );
-    props.setValue(String(value));
   };
 
   return (
@@ -32,29 +39,26 @@ function GuidanceSelect(props) {
       <FormControl sx={{ m: 1 }}>
         <Select
           displayEmpty
-          value={personName}
+          value={defaultValue}
           onChange={handleChange}
           input={<OutlinedInput />}
           renderValue={(selected) => {
-            if (selected.length === 0) {
+            if (selected?.length === 0) {
               return (
                 <>
-                  {props.icon && props.select === "education" && (
-                    <img src={Education} alt='...' />
-                  )}
                   {props.icon && props.title === "User" && (
-                    <img src={User2} alt='...' />
+                    <img src={User2} alt="..." />
                   )}
                   {props.icon && props.title === "Gender" && (
-                    <img src={Gender} alt='...' />
+                    <img src={Gender} alt="..." />
                   )}
                   {props.icon && props.title === "Qualifications" && (
-                    <img src={Qualifications} alt='...' />
+                    <img src={Qualifications} alt="..." />
                   )}
                   {props.icon && props.title === "Course Looking For" && (
-                    <img src={Course} alt='...' />
+                    <img src={Course} alt="..." />
                   )}
-                  <em>{props.title}</em>
+                  <em>{props?.title}</em>
                 </>
               );
             }
@@ -63,15 +67,21 @@ function GuidanceSelect(props) {
           }}
           inputProps={{ "aria-label": "Without label" }}
         >
-          {props.array ? (
-            props.array.map((obj) => (
-              <MenuItem key={obj} value={obj}>
-                {obj}
+          {props.listItem?.map((item) => {
+            return (
+              <MenuItem
+                key={item.name ? item.name : item}
+                value={item.name ? item.name : item}
+              >
+                {item.name ? item.name : item}
               </MenuItem>
-            ))
-          ) : (
-            <MenuItem>No Data Found!</MenuItem>
-          )}
+            );
+          }) ||
+            names.map((name) => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
         </Select>
       </FormControl>
     </div>

@@ -52,23 +52,24 @@ export const onSignup = (values, history) => async (dispatch) => {
   }
 };
 
-export const registerWithGoogle = (value, history, redirect) => async (dispatch) => {
-  try {
-    const res = await httpServices.post("social_auth/google/", value);
-    dispatch({
-      type: authTypes.LOGIN_FINISH,
-      payload: { name: res.data.username, email: res.data.email },
-    });
-    Cookies.set("sheToken", res.data.tokens.access);
-    if (redirect) {
-      history.push(redirect);
-    } else {
-      history.push("/MyProgress");
+export const registerWithGoogle =
+  (value, history, redirect) => async (dispatch) => {
+    try {
+      const res = await httpServices.post("social_auth/google/", value);
+      dispatch({
+        type: authTypes.LOGIN_FINISH,
+        payload: { name: res.data.username, email: res.data.email },
+      });
+      Cookies.set("sheToken", res.data.tokens.access);
+      if (redirect) {
+        history.push(redirect);
+      } else {
+        history.push("/MyProgress");
+      }
+    } catch (err) {
+      toast.error("Google Login failed.", toasterConfig);
     }
-  } catch (err) {
-    toast.error("Google Login failed.", toasterConfig);
-  }
-};
+  };
 
 export const contactVerify = (value) => async (dispatch) => {
   try {
@@ -158,5 +159,19 @@ export const getUserProfile = () => async (dispatch) => {
     } else if (error?.status === 500) {
       toast.error("Internal Server Error", toasterConfig);
     }
+  }
+};
+export const updateProfile = (id, values) => async (dispatch) => {
+  try {
+    dispatch({ type: authTypes.USER_PROFILE_UPDATE });
+  const formData = httpServices.createFormData(values);
+    const res = await httpServices.putForm(
+      `/authentication/user-profile-update/${id}/`,
+      formData,
+    );
+    dispatch(getUserProfile());
+    toast.success(res.message, toasterConfig);
+  } catch (error) {
+    toast.error("Internal Server Error", toasterConfig);
   }
 };
