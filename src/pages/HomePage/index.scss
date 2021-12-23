@@ -519,7 +519,7 @@ body {
   background: #edc988;
   border-radius: 50%;
   position: absolute;
-  right: -50px;
+  right: -20px;
   bottom: -20px;
   z-index: -1;
 }
@@ -603,8 +603,14 @@ ul.star {
   // background: linear-gradient(96.72deg, #FAD0C4 6.25%, #E4A8E4 103.39%);
   // height: auto;
 }
+.career_community img:hover {
+  transform: scale(1.09);
+  transition: 1s;
+}
+
 .career_community img {
   max-width: 100%;
+  transition-duration: 1s;
 }
 .career_community .community1 {
   position: absolute;
@@ -1063,7 +1069,7 @@ ul.star {
     left: 5px;
   }
   #myCarousel .slick-next {
-    right: 10px;
+    right: 5px;
   }
 
   .resume h4 {

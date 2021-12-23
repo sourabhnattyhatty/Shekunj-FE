@@ -25,6 +25,7 @@ function SuccessStory() {
   const handleSetCollapse = (id, is_collapse) => {
     dispatch(setCollapseSuccessStory(id, is_collapse ? false : true));
   };
+  
 
   return (
     <div>
@@ -34,11 +35,11 @@ function SuccessStory() {
           <Row>
             <Col md={1}>
               <div className='global_img'>
-                <img src={global} alt='' />
+                <img src={global} alt='' className="vert-move" />
               </div>
             </Col>
             <Col md={6}>
-              <h2>Over 5,000 students have learned with us</h2>
+              <h2 data-aos='slide-up'>Over 5,000 students have learned with us</h2>
               <p>
                 All over Indian Girl students are taking their web design
                 careers to the next-level with Shekunj Academy. Here are some of

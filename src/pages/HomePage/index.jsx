@@ -67,6 +67,7 @@ function HomePage() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: true,
         },
       },
       {
@@ -297,12 +298,10 @@ function HomePage() {
               </p>
 
               <div className='mob_comunity_img'>
-                  <img data-aos='slide-up' src={Community} alt='...' />
-                </div>
+                <img data-aos='slide-up' src={Community} alt='...' />
+              </div>
 
               <div className='community-img mt-5'>
-                
-
                 <div class='community1 communityring'>
                   <img src={g1} alt='Image' />
                 </div>
@@ -315,7 +314,7 @@ function HomePage() {
                   <img src={g3} alt='Image' />
                 </div>
 
-                <div class='community4 communityring' >
+                <div class='community4 communityring'>
                   <img src={g4} alt='Image' />
                 </div>
 
@@ -347,7 +346,7 @@ function HomePage() {
                   <img src={g11} alt='Image' />
                 </div>
 
-                <div class='community12 communityring' >
+                <div class='community12 communityring'>
                   <img src={g12} alt='Image' />
                 </div>
 

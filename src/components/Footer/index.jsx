@@ -17,24 +17,21 @@ const Footer = ({ loginPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link to='/'>{t("footer.links.col1.1")}</Link>
-                </li>
-
-                <li>
-                  <Link to='/'>{t("footer.links.col1.2")}</Link>
-                </li>
-
-                <li>
                   <Link to='/about'>{t("footer.links.col1.3")}</Link>
                 </li>
-
+                <li>
+                  <Link to='/about'>{t("header.heading.8")}</Link>
+                </li>
+                <li>
+                  <Link to='/about'>{t("header.heading.7")}</Link>
+                </li>
                 <li>
                   <Link to='/'>{t("footer.links.col1.4")}</Link>
                 </li>
               </ul>
             </div>
 
-            <div className='col-md-3 col-4'>
+            {/* <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
                   <Link to='/career'>{t("footer.links.col2.1")}</Link>
@@ -52,7 +49,7 @@ const Footer = ({ loginPage }) => {
                   <Link to='/'>{t("footer.links.col2.4")}</Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
@@ -60,12 +57,16 @@ const Footer = ({ loginPage }) => {
                   <Link to='/'>{t("footer.links.col3.1")}</Link>
                 </li>
 
-                <li>
+                {/* <li>
                   <Link to='/'>{t("footer.links.col3.2")}</Link>
                 </li>
 
                 <li>
                   <Link to='/'>{t("footer.links.col3.3")}</Link>
+                </li> */}
+
+                <li>
+                  <Link to='/'>{t("footer.links.col2.3")}</Link>
                 </li>
               </ul>
             </div>

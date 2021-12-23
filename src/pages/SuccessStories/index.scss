@@ -118,7 +118,7 @@
 }
 button.want_btn {
   background: #ec498a;
-  border-radius: 20px;
+  border-radius: 2px;
   padding: 12px 20px;
   border: none;
   font-family: Sora;
@@ -159,7 +159,7 @@ button.want_btn {
 
   .suc_btn {
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
   }
 
   .suc_box h2 {
@@ -184,7 +184,17 @@ button.want_btn {
 
   .want {
     height: 260px;
+    margin-top: 30px;
   }
+
+
+  .suc_box .col-md-8.col-12 {
+    order: 2;
+}
+
+.suc_box .col-md-4.col-12 {
+  order: 1;
+}
 }
 
 // @media screen and (max-width: 1280px) {
@@ -192,3 +202,5 @@ button.want_btn {
 //     height: 534px;
 // }
 // }
+
+

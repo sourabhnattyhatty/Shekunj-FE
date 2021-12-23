@@ -20,7 +20,8 @@ import Pro1 from "../../assets/images/P-1.png";
 
 import Cross from "../../assets/icons/cross.png";
 import Reset from "../../assets/icons/reset.png";
-
+import "aos/dist/aos.css";
+import "animate.css";
 import "./index.scss";
 import "../../pages/HomePage/index.scss";
 import SimpleAccordion from "./Accordian";
@@ -54,11 +55,11 @@ const Courses = (props) => {
           <div className='row'>
             <div className='col-md-7'>
               <div className='cors_con'>
-                <h2>{t("coursesPage.banner.heading")}</h2>
+                <h2 data-aos='slide-up'>{t("coursesPage.banner.heading")}</h2>
                 <div className='cour_box'>
                   <ul>
                     <li>
-                      <img src={one} alt='' srcSet='' />
+                      <img src={one} alt='' srcSet='' className="vert-move" />
                     </li>
                     <li>
                       <img src={two} alt='' srcSet='' />
