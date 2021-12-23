@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { styled } from "@mui/material/styles";
 
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
@@ -9,9 +9,9 @@ import Typography from "@mui/material/Typography";
 import FormGroup from "@mui/material/FormGroup";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { Radio, RadioGroup } from "@mui/material";
 
 import "./index.scss";
-import { Radio, RadioGroup } from "@mui/material";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -64,8 +64,6 @@ export default function AccordionComponent({
   const hasMoreCount = (rows = [], count = 0) => {
     return (rows.length || 0) - rows.slice(0, count)?.length || 0;
   };
-
-  
 
   return (
     <div className='accordion_box_all'>

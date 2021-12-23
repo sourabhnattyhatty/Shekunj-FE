@@ -1,19 +1,28 @@
 import React, { useEffect } from "react";
 import { Header, Footer, ScrollToTop } from "../../components";
 import { Container } from "react-bootstrap";
-import TabsExams from "./TabsExams/index.jsx"
-import "./index.scss";
+import { useDispatch } from "react-redux";
+import Aos from "aos";
+
 import "aos/dist/aos.css";
 import "animate.css";
-import Aos from "aos";
+
+import TabsExams from "./TabsExams/index";
+import { getGuidanceCategory } from "../../store/guidance";
+import "./index.scss";
+
 function SuccessCareerOption() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    // dispatch(allHomeCourses());
+    dispatch(getGuidanceCategory(null));
+    dispatch(getGuidanceCategory());
     Aos.init({ duration: 2000 });
-  }, []);
+  }, [dispatch]);
+
   return (
     <div>
-      <Header loginPage={true} page='guidance' subPage="careerOption"/>
+      <Header loginPage={true} page='guidance' subPage='careerOption' />
 
       <div className='SucOption'>
         <Container>
@@ -21,19 +30,11 @@ function SuccessCareerOption() {
         </Container>
       </div>
 
-      
-
-    
-    <div className="CompExams">
+      <div className='CompExams'>
         <Container>
-        
-        <TabsExams />
+          <TabsExams />
         </Container>
-    </div>
-
-
-
-
+      </div>
 
       <ScrollToTop />
       <Footer loginPage={false} />

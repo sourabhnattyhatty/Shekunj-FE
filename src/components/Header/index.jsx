@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Menu, MenuItem } from "@mui/material";
 
 import { getUserProfile, logOut, refreshPage } from "../../store/auth/action";
+import { isAuthenticated } from "../../utils/utils";
 import ChangeLanguageButton from "../LanguageButton";
 import Logo from "../../assets/images/logo.svg";
-import Search from "../../assets/icons/search.png";
 import close from "../../assets/icons/x.png";
 
 import "./index.scss";
-import { isAuthenticated } from "../../utils/utils";
 
 const Header = ({ page, subPage }) => {
-  const [searchValue, setSearchValue] = useState("");
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
@@ -125,26 +123,6 @@ const Header = ({ page, subPage }) => {
               </div>
 
               <div className='col-md-9 pl-md-0 pl-lg-2 text-right'>
-                {/* <div
-                  id='custom-search-input'
-                  className='mt-lg-3 mt-md-1 d-inline-block'
-                >
-                  <div className='input-group'>
-                    <input
-                      type='text'
-                      className='search-query form-control'
-                      placeholder={t("header.searchPlaceholder")}
-                      value={searchValue}
-                      onChange={(e) => setSearchValue(e.target.value)}
-                    />
-                    <span className='input-group-btn'>
-                      <button type='button' disabled>
-                        <img src={Search} alt='...' />
-                      </button>
-                    </span>
-                  </div>
-                </div> */}
-
                 <div className='top_bar_btn d-inline-block'>
                   {isAuth ? (
                     <>
