@@ -51,9 +51,9 @@ div#vertical-tabpanel-0 {
   transition-duration: 1s;
 }
 .tabs_box:hover {
-    border-color: #EC498A;
-    cursor: pointer;
-    transition: 1s;
+  border-color: #ec498a;
+  cursor: pointer;
+  transition: 1s;
 }
 .tabs_box h2 {
   font-family: Source Sans Pro;
@@ -72,50 +72,51 @@ div#vertical-tabpanel-0 {
   color: #4f4f4f;
 }
 .tabs_box button {
-    font-family: Source Sans Pro;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
-    color: #EC498A;
-    border: none;
-    background: transparent;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ec498a;
+  border: none;
+  background: transparent;
 }
 .CompExams .MuiTabs-root.MuiTabs-vertical {
-    height: 875px;
-    overflow-y: scroll;
-    display: block;
+  height: 875px;
+  overflow-y: scroll;
+  display: block;
 }
 .CompExams span.MuiTabs-indicator {
-    display: none;
+  display: none;
 }
 .CompExams .MuiBox-root {
-    padding: 0;
+  padding: 0;
 }
-.CompExams .css-1ehaqqx-MuiButtonBase-root-MuiTabScrollButton-root.Mui-disabled {
-    display: none;
+.CompExams
+  .css-1ehaqqx-MuiButtonBase-root-MuiTabScrollButton-root.Mui-disabled {
+  display: none;
 }
-.banking-exampage{
-  background: #FFFFFF;
-  border: 1px solid #E3E4EB;
+.banking-exampage {
+  background: #ffffff;
+  border: 1px solid #e3e4eb;
   box-sizing: border-box;
   border-radius: 10px;
   height: 100%;
-  padding:30px;
+  padding: 30px;
 }
-.banking-exampage .back_button{
+.banking-exampage .back_button {
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
-  color: #EC498A;
+  color: #ec498a;
   text-transform: capitalize;
   cursor: pointer;
 }
-.banking-exampage .back_button img{
-  margin:-1px 14px 0px 0px;
+.banking-exampage .back_button img {
+  margin: -1px 14px 0px 0px;
 }
-.banking-exampage .bacnking-examheader h2{
+.banking-exampage .banking-examheader h2 {
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -124,17 +125,17 @@ div#vertical-tabpanel-0 {
   display: inline-block;
   font-family: Source Sans Pro;
 }
-.banking-exampage .bacnking-examheader{
+.banking-exampage .banking-examheader {
   padding: 28px 0 0px;
   width: 100%;
   display: inline-block;
 }
-.banking-exampage .bacnking-examheader ul{
+.banking-exampage .banking-examheader ul {
   display: inline-block;
   float: right;
   margin: 0;
 }
-.banking-exampage .bacnking-examheader ul li{
+.banking-exampage .banking-examheader ul li {
   font-style: normal;
   // font-weight: 600;
   font-size: 14px;
@@ -144,10 +145,10 @@ div#vertical-tabpanel-0 {
   margin-right: 23px;
   // font-family: Source Sans Pro;
 }
-.banking-exampage .locationdiv{
+.banking-exampage .locationdiv {
   padding-top: 38px;
 }
-.banking-exampage .locationdiv p{
+.banking-exampage .locationdiv p {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -155,13 +156,13 @@ div#vertical-tabpanel-0 {
   color: #000000;
   font-family: Source Sans Pro;
 }
-.border-colorbottom{
-  border-color:#E3E4EB;
+.border-colorbottom {
+  border-color: #e3e4eb;
 }
-.border-colorbottommargin{
+.border-colorbottommargin {
   margin: 50px 0px 35px 0px;
 }
-.banking-exampage .inner-content h3{
+.banking-exampage .inner-content h3 {
   font-family: Source Sans Pro;
   font-style: normal;
   font-weight: 600;
@@ -170,10 +171,10 @@ div#vertical-tabpanel-0 {
   color: #323232;
   width: 100px;
 }
-.banking-exampage .inner-content ul{
+.banking-exampage .inner-content ul {
   padding: 0px 0px 22px 28px;
 }
-.banking-exampage .inner-content li{
+.banking-exampage .inner-content li {
   font-family: Source Sans Pro;
   font-style: normal;
   font-weight: normal;

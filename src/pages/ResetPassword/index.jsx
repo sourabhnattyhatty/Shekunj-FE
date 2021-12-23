@@ -1,15 +1,13 @@
 import React from "react";
-import { useFormik } from "formik";
 import * as Yup from "yup";
-import TitleIcon from "../../assets/icons/logo.svg";
+import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { CircularProgress } from "@mui/material";
 
+import TitleIcon from "../../assets/icons/logo.svg";
 import Error from "../../components/Error";
 import "./index.scss";
-import { resetPassword } from "../../store/auth/action";
 
 const validationSchema = Yup.object({
   password: Yup.string()
@@ -20,11 +18,7 @@ const validationSchema = Yup.object({
 function ResetPassword() {
   const { isLoading } = useSelector((state) => state.authReducer);
 
-  const dispatch = useDispatch();
-  const history = useHistory();
   const { t } = useTranslation();
-  const { uidb } = useParams();
-  const { token } = useParams();
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -32,14 +26,7 @@ function ResetPassword() {
         password: "",
       },
       validationSchema,
-      onSubmit(values) {
-        const data = {
-          ...values,
-          token,
-          uidb64: uidb,
-        };
-        // dispatch(resetPassword(data, history));
-      },
+      onSubmit() {},
     });
 
   return (
