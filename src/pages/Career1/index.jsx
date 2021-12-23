@@ -22,33 +22,13 @@ const CareerPage1 = () => {
   const { topSchools } = useSelector((state) => state.careerReducer);
   const STATES = {
     name: "STATES",
-    rows: [
-      {
-        id: 1,
-        name: "Madhya Pardesh",
-        isChecked: false,
-      },
-      {
-        id: 2,
-        name: "Maharashtra",
-        isChecked: false,
-      },
-      {
-        id: 3,
-        name: "Bihar",
-        isChecked: false,
-      },
-      {
-        id: 4,
-        name: "Goa",
-        isChecked: false,
-      },
-      {
-        id: 5,
-        name: "Punjab",
-        isChecked: false,
-      },
-    ],
+    rows: topSchools?.state_list?.map((obj,idx) => {
+      return {
+        id : idx,
+        name : obj,
+        isChecked : false
+      }
+    }) || []
   };
 
   const OWNERSHIP = {
@@ -69,63 +49,13 @@ const CareerPage1 = () => {
 
   const EDUCATION_BOARD = {
     name: "EDUCATION_BOARD",
-    rows: [
-      {
-        id: 1,
-        name: "Madhya Pradesh Board Of\n Secondary Education (MPBSE)",
-        isChecked: false,
-      },
-      {
-        id: 2,
-        name: "Central Board Of Secondary\n Education (CBSE)",
-        isChecked: false,
-      },
-      {
-        id: 3,
-        name: "National Institute Of Open\n Schooling (NIOS)",
-        isChecked: false,
-      },
-      {
-        id: 4,
-        name: "Indian School Certificate (ISC)",
-        isChecked: false,
-      },
-      {
-        id: 5,
-        name: "Board Of High School And\n Intermediate Education\n Uttar Pradesh (UP Board)",
-        isChecked: false,
-      },
-      {
-        id: 6,
-        name: "Bihar School Examination Board (BSEB)",
-        isChecked: false,
-      },
-      {
-        id: 7,
-        name: "Madhya Pradesh Board Of\n Secondary Education (MPBSE)",
-        isChecked: false,
-      },
-      {
-        id: 8,
-        name: "Central Board Of Secondary\n Education (CBSE)",
-        isChecked: false,
-      },
-      {
-        id: 9,
-        name: "National Institute Of Open\n Schooling (NIOS)",
-        isChecked: false,
-      },
-      {
-        id: 10,
-        name: "Indian School Certificate (ISC)",
-        isChecked: false,
-      },
-      {
-        id: 11,
-        name: "Board Of High School And\n Intermediate Education\n Uttar Pradesh (UP Board)",
-        isChecked: false,
-      },
-    ],
+    rows: topSchools?.board_list?.map((obj,idx) => {
+      return {
+        id : idx,
+        name : obj,
+        isChecked : false
+      }
+    }) || []
   };
 
   useEffect(() => {
@@ -162,8 +92,8 @@ const CareerPage1 = () => {
             </Col>
 
             <Col md={8} xs={12}>
-              {topSchools.length > 0 ? (
-                topSchools.map((c) => (
+              {topSchools?.result?.length > 0 ? (
+                topSchools?.result?.map((c) => (
                   <div className='career_box'>
                     <Row>
                       <Col md={7} xs={12}>

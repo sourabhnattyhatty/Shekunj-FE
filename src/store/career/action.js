@@ -7,7 +7,7 @@ import toasterConfig from "../../utils/toasterCongig";
 export const getGovernmentExams = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.GOVERNMENT_EXAM_REQUEST });
-    const res = await httpServices.get("career/government_exam/");
+    const res = await httpServices.get("career/government-exam/");
     dispatch({ type: coursesTypes.GOVERNMENT_EXAM_FINISH, payload: res?.data });
   } catch (error) {
     dispatch({ type: coursesTypes.GOVERNMENT_EXAM_FAIL });

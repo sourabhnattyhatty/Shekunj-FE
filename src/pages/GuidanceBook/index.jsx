@@ -13,10 +13,17 @@ import InputAdornment from "@mui/material/InputAdornment";
 import User2 from "../../assets/icons/user2.png";
 import "./index.scss";
 import "../LoginPage/LoginForm/LoginTabs/index.scss";
-import { TextareaAutosize } from "@mui/material";
+import { CircularProgress, TextareaAutosize } from "@mui/material";
 import "aos/dist/aos.css";
 import "animate.css";
 import Aos from "aos";
+import * as Yup from "yup";
+
+import { useFormik } from "formik";
+import { Error } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
+import { bookCounseller } from "../../store/guidance/action";
+import moment from "moment";
 
 function range(start, end) {
   return Array(end - start + 1)
@@ -44,6 +51,16 @@ const months = [
   "December",
 ];
 
+const validationSchema = Yup.object({
+  first_name: Yup.string().required("Name is required"),
+  last_name: Yup.string().required("Surname is required"),
+  email_address: Yup.string()
+    .required("Email is required")
+    .email("Invalid email"),
+  mobile_number: Yup.number().positive(),
+  alternate_number: Yup.number().positive(),
+  message: Yup.string().required("Message is required"),
+});
 
 const GuidancePage = () => {
   const [day, setDay] = useState();
@@ -51,9 +68,15 @@ const GuidancePage = () => {
   const [year, setYear] = useState();
   const [gender, setGender] = useState();
   const [qualification, setQualification] = useState();
+  const [courseLooking, setCourseLooking] = useState();
+
+  const { isLoading } = useSelector((state) => state.guidanceReducer);
+
+  const dispatch = useDispatch();
 
   const handleSetDay = (val) => {
     setDay(val);
+    handleChange(val);
   };
   const handleSetMonth = (val) => {
     setMonth(val);
@@ -63,11 +86,46 @@ const GuidancePage = () => {
   };
   const handleSetGender = (val) => {
     setGender(val);
-  }
+  };
   const handleSetQualification = (val) => {
     setQualification(val);
-  }
+  };
+  const handleCourseLookingFor = (val) => {
+    setCourseLooking(val);
+  };
 
+  
+
+  const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
+    useFormik({
+      initialValues: {
+        first_name: "",
+        last_name: "",
+        email_address: "",
+        mobile_number: "",
+        alternate_number: "",
+        date_of_birth: "",
+        gender: "female",
+        qualifications: "",
+        course_looking_for: "",
+        message: "",
+      },
+      validationSchema,
+      onSubmit(values) {
+        const dateOfBirth = moment(`${year}-${month}-${day}`).format(
+          "YYYY-MM-DD",
+        );
+        values = {
+          ...values,
+          date_of_birth: dateOfBirth,
+          gender,
+          qualifications: qualification,
+          course_looking_for: courseLooking,
+        };
+        dispatch(bookCounseller(values));
+        values = {}
+      },
+    });
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -96,13 +154,16 @@ const GuidancePage = () => {
 
             <Col md={7} xs={12}>
               <div className='guidance_book_form'>
-                <form action=''>
+                <form onSubmit={handleSubmit}>
                   <div className='form-group'>
                     <TextField
-                      name='name'
+                      name='first_name'
                       type='text'
                       placeholder='Enter First Name'
                       autoComplete='off'
+                      onChange={handleChange}
+                      value={values.first_name}
+                      onBlur={handleBlur}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
@@ -110,15 +171,22 @@ const GuidancePage = () => {
                           </InputAdornment>
                         ),
                       }}
-                      />
+                    />
+                    <Error
+                      error={errors.first_name}
+                      touched={touched.first_name}
+                    />
                   </div>
 
                   <div className='form-group'>
                     <TextField
-                      name='name'
+                      name='last_name'
                       type='text'
                       placeholder='Enter Last Name'
                       autoComplete='off'
+                      onChange={handleChange}
+                      value={values.last_name}
+                      onBlur={handleBlur}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
@@ -126,15 +194,22 @@ const GuidancePage = () => {
                           </InputAdornment>
                         ),
                       }}
-                      />
+                    />
+                    <Error
+                      error={errors.last_name}
+                      touched={touched.last_name}
+                    />
                   </div>
 
                   <div className='form-group'>
                     <TextField
-                      name='name'
+                      name='email_address'
                       type='text'
                       placeholder='Enter Your Email'
                       autoComplete='off'
+                      onChange={handleChange}
+                      value={values.email_address}
+                      onBlur={handleBlur}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
@@ -142,15 +217,22 @@ const GuidancePage = () => {
                           </InputAdornment>
                         ),
                       }}
-                      />
+                    />
+                    <Error
+                      error={errors.email_address}
+                      touched={touched.email_address}
+                    />
                   </div>
 
                   <div className='form-group'>
                     <TextField
-                      name='name'
+                      name='mobile_number'
                       type='text'
                       placeholder='Enter Mobile Number'
                       autoComplete='off'
+                      value={values.mobile_number}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
@@ -158,15 +240,22 @@ const GuidancePage = () => {
                           </InputAdornment>
                         ),
                       }}
-                      />
+                    />
+                    <Error
+                      error={errors.mobile_number}
+                      touched={touched.mobile_number}
+                    />
                   </div>
 
                   <div className='form-group'>
                     <TextField
-                      name='name'
+                      name='alternate_number'
                       type='text'
                       placeholder='Enter Alternate Number'
                       autoComplete='off'
+                      value={values.alternate_number}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
@@ -174,6 +263,10 @@ const GuidancePage = () => {
                           </InputAdornment>
                         ),
                       }}
+                    />
+                    <Error
+                      error={errors.alternate_number}
+                      touched={touched.alternate_number}
                     />
                   </div>
 
@@ -213,7 +306,7 @@ const GuidancePage = () => {
                     <GuidanceSelect
                       title='Gender'
                       icon={true}
-                      array={["Female", "Male"]}
+                      array={["female", "male"]}
                       setValue={handleSetGender}
                     />
                   </div>
@@ -230,18 +323,30 @@ const GuidancePage = () => {
                       title='Course Looking For'
                       icon={true}
                       array={courseLookingFor}
+                      setValue={handleCourseLookingFor}
                     />
                   </div>
                   <div className='form-group mzero'>
                     <TextareaAutosize
+                      name='message'
                       className='textarea_set'
                       aria-label='minimum height'
                       minRows={7}
                       placeholder='Enter Your Message'
+                      value={values.message}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                     />
+                    <Error error={errors.message} touched={touched.message} />
                   </div>
 
-                  <button className='book_sess_btn'>Book a Session</button>
+                  <button type='submit' className='book_sess_btn'>
+                    {isLoading ? (
+                      <CircularProgress color='secondary' size={20} />
+                    ) : (
+                      "Book a Session"
+                    )}
+                  </button>
                 </form>
               </div>
             </Col>

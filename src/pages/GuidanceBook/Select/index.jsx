@@ -24,7 +24,7 @@ function GuidanceSelect(props) {
     setPersonName(
       typeof value === "string" ? value.split(",") : value,
     );
-    props.setValue(value);
+    props.setValue(String(value));
   };
 
   return (

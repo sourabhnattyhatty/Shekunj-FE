@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
@@ -65,6 +65,8 @@ export default function AccordionComponent({
     return (rows.length || 0) - rows.slice(0, count)?.length || 0;
   };
 
+  
+
   return (
     <div className='accordion_box_all'>
       {type === "colleges" && (
@@ -130,7 +132,7 @@ export default function AccordionComponent({
                   {states?.rows?.slice(0, 3)?.map((s) => (
                     <li key={s?.id}>
                       <FormControlLabel
-                      value={s?.name}
+                        value={s?.name}
                         control={<Radio />}
                         label={s?.name}
                       />
