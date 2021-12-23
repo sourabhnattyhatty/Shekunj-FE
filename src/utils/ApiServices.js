@@ -51,7 +51,7 @@ const requests = {
         headers: { "Content-type": "multipart/form-data" },
       })
       .then(responseBody),
-      createFormData,
+  createFormData,
 };
 
 export function createFormData(item) {

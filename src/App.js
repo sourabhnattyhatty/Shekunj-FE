@@ -24,13 +24,21 @@ const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
 const CourseTest = React.lazy(() => import("./pages/CourseTest"));
 const CourseResult = React.lazy(() => import("./pages/CourseResult"));
 const CourseCertificate = React.lazy(() => import("./pages/CourseCertificate"));
-const CertificateFullView = React.lazy(() => import("./pages/CertificateFullView"));
+const CertificateFullView = React.lazy(() =>
+  import("./pages/CertificateFullView"),
+);
 const SuccessStories = React.lazy(() => import("./pages/SuccessStories"));
 const SuccessCareerTest = React.lazy(() => import("./pages/SuccessCareerTest"));
-const SuccessCareerOption = React.lazy(() => import("./pages/SuccessCareerOption"));
+const SuccessCareerOption = React.lazy(() =>
+  import("./pages/SuccessCareerOption"),
+);
 const MyProgress = React.lazy(() => import("./pages/MyProgress"));
-const AllCertificatePage = React.lazy(() => import("./pages/AllCertificatePage"));
-const SuccessCareerOption2 = React.lazy(() => import("./pages/SuccessCareerOption/SuccessCareerOption2"));
+const AllCertificatePage = React.lazy(() =>
+  import("./pages/AllCertificatePage"),
+);
+const SuccessCareerOption2 = React.lazy(() =>
+  import("./pages/SuccessCareerOption/SuccessCareerOption2"),
+);
 
 function App() {
   return (
@@ -58,9 +66,17 @@ function App() {
         <Route exact path='/CertificatePage' component={CertificatePage} />
         <Route exact path='/SuccessStories' component={SuccessStories} />
         <Route exact path='/SuccessCareerTest' component={SuccessCareerTest} />
-        <Route exact path='/SuccessCareerOption' component={SuccessCareerOption} />
-        <Route exact path="/success2" component={SuccessCareerOption2}/>
-        <Route exact path="/AllCertificatePage" component={AllCertificatePage}/>
+        <Route
+          exact
+          path='/SuccessCareerOption'
+          component={SuccessCareerOption}
+        />
+        <Route exact path='/success2' component={SuccessCareerOption2} />
+        <Route
+          exact
+          path='/AllCertificatePage'
+          component={AllCertificatePage}
+        />
 
         <PrivateRoute
           exact
@@ -76,8 +92,16 @@ function App() {
         <PrivateRoute exact path='/CoursesTest/:id' component={CourseTest} />
 
         <PrivateRoute exact path='/CourseResult/:id' component={CourseResult} />
-        <PrivateRoute exact path='/CourseCertificate' component={CourseCertificate} />
-        <PrivateRoute exact path='/CertificateFullView' component={CertificateFullView} />
+        <PrivateRoute
+          exact
+          path='/CourseCertificate'
+          component={CourseCertificate}
+        />
+        <PrivateRoute
+          exact
+          path='/CertificateFullView'
+          component={CertificateFullView}
+        />
         <PrivateRoute exact path='/MyProgress' component={MyProgress} />
       </Switch>
     </>

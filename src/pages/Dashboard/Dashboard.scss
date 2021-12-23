@@ -1,202 +1,202 @@
-.dashboard_main h1{
-    font-weight: bold;
-    font-size: 35px;
-    line-height: 140%;
-    color: #EC498A;
+.dashboard_main h1 {
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 140%;
+  color: #ec498a;
 }
 .dashboard_main .dashboard_back {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 140%;
-    color: #4F4F4F;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 140%;
+  color: #4f4f4f;
 }
-.dashboard_main .current_course{
-    padding: 10px;
+.dashboard_main .current_course {
+  padding: 10px;
 }
-.dashboard_main h3{
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 140%;
-    color: #000000;
+.dashboard_main h3 {
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 140%;
+  color: #000000;
 }
-.dashboard_main .course_explore{
-    background: #EC498A;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 23px;
-    height: 103px;
+.dashboard_main .course_explore {
+  background: #ec498a;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 23px;
+  height: 103px;
 }
-.dashboard_main .current_course .course_explore h6{
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    color: #FFFFFF;
+.dashboard_main .current_course .course_explore h6 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
 }
-.course_explore ul li{
-    list-style-type: none;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    color: #FFFFFF;
-    margin-bottom: 10px;
+.course_explore ul li {
+  list-style-type: none;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  margin-bottom: 10px;
 }
-button.explore_button.btn{
-    background: #FFFFFF;
-    border-radius: 10px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 30px;
-    text-align: center;
-    color: #D62C79;
-    padding: 4px 40px;
+button.explore_button.btn {
+  background: #ffffff;
+  border-radius: 10px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  color: #d62c79;
+  padding: 4px 40px;
 }
-.course_explore .MuiTypography-caption{
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    color: #FFFFFF;
+.course_explore .MuiTypography-caption {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
 }
-.course_explore .button_paddingarea{
-    padding: 11px 0px;
+.course_explore .button_paddingarea {
+  padding: 11px 0px;
 }
-.course_explore .MuiCircularProgress-determinate{
-    width: 60px !important;
-    height: 60px!important;
-    transform: rotate(0deg)!important;
-    color: #fff;
+.course_explore .MuiCircularProgress-determinate {
+  width: 60px !important;
+  height: 60px !important;
+  transform: rotate(0deg) !important;
+  color: #fff;
 }
-.course_inprogress{
-    background: #FFFFFF;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 12px 15px;
-    height: 120px;
+.course_inprogress {
+  background: #ffffff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 12px 15px;
+  height: 120px;
 }
-.course_inprogress h6{
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    color: #000000;
+.course_inprogress h6 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
 }
-.course_inprogress p{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    color: #828282;
-    margin: 0px 0px 5px 0px;
+.course_inprogress p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #828282;
+  margin: 0px 0px 5px 0px;
 }
-.course_inprogress ul li{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    color: #000000;
+.course_inprogress ul li {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
 }
-.course_inprogress .certificate_button{
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 30px;
-    text-align: center;
-    color: #FFFFFF;
-    background: #EC498A;
-    border-radius: 10px;
-    /* width: 100px; */
-    /* height: 40px; */
-    padding: 4px 30px;
+.course_inprogress .certificate_button {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+  background: #ec498a;
+  border-radius: 10px;
+  /* width: 100px; */
+  /* height: 40px; */
+  padding: 4px 30px;
 }
-.course_inprogress .MuiTypography-caption{
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    color: #000;
+.course_inprogress .MuiTypography-caption {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000;
 }
-.course_inprogress .MuiCircularProgress-determinate{
-    width: 60px !important;
-    height: 60px!important;
-    transform: rotate(0deg)!important;
-    color: #EC498A;
+.course_inprogress .MuiCircularProgress-determinate {
+  width: 60px !important;
+  height: 60px !important;
+  transform: rotate(0deg) !important;
+  color: #ec498a;
 }
-.progress-coursebardiv{
-    padding: 20px 0px;
+.progress-coursebardiv {
+  padding: 20px 0px;
 }
-.course_inprogress .button_paddingarea{
-    padding: 29px 0px;
+.course_inprogress .button_paddingarea {
+  padding: 29px 0px;
 }
-.course_completedright{
-    background: #FFFFFF;
-    border: 1px solid #E0E0E0;
-    box-sizing: border-box;
-    border-radius: 10px;
-    width: 100%;
-    height: 309px;
+.course_completedright {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  height: 309px;
 }
-.certificate-section{
-    background: #FFFFFF;
-    border: 1px solid #E0E0E0;
-    box-sizing: border-box;
-    border-radius: 5px;
-    padding: 30px;
-    height: 221px;
-    margin-top: 21px;
+.certificate-section {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 30px;
+  height: 221px;
+  margin-top: 21px;
 }
-.certificate-section h6{
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 140%;
-    color: #000000;
+.certificate-section h6 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+  color: #000000;
 }
-.certificate-section p{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 140%;
-    color: #000000;
+.certificate-section p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 140%;
+  color: #000000;
 }
-.all_certificatebutton:focus{
-    box-shadow: none;
+.all_certificatebutton:focus {
+  box-shadow: none;
 }
-.all_certificatebutton{
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 30px;
-    align-items: center;
-    text-align: center;
-    color: #D62C79;
-    background: #FFFFFF;
-    border: 1px solid #D62C79;
-    box-sizing: border-box;
-    border-radius: 5px;
-    width: 100%;
-    margin-top: 15px;
+.all_certificatebutton {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 30px;
+  align-items: center;
+  text-align: center;
+  color: #d62c79;
+  background: #ffffff;
+  border: 1px solid #d62c79;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 15px;
 }
-.your-testdiv h6{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 140%;
-    color: #000000;
-    margin-top: 21px;
+.your-testdiv h6 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 140%;
+  color: #000000;
+  margin-top: 21px;
 }
-.your-testdiv .first-test{
-    background: #FFFFFF;
-    border: 1px solid #E0E0E0;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    height: 76px;
+.your-testdiv .first-test {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  height: 76px;
 }
-.your-testcontent{
-    background: #FFFFFF;
-    border: 1px solid #E0E0E0;
-    box-sizing: border-box;
-    border-radius: 10px;
-    padding: 21px 14px;
+.your-testcontent {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 21px 14px;
 }

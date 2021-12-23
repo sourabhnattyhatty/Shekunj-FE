@@ -9,29 +9,21 @@ import Gender from "../../../assets/icons/gender.png";
 import Qualifications from "../../../assets/icons/Qualifications.png";
 import Course from "../../../assets/icons/Course.png";
 
-const names = [
-  "Engineering",
-  "Medical",
-  "Arts",
-  "Science",
-  "Pharmacy",
-];
+const names = ["Engineering", "Medical", "Arts", "Science", "Pharmacy"];
 
 function GuidanceSelect(props) {
   const [defaultValue, setDefaultValue] = React.useState(props.defaultValue);
 
   useEffect(() => {
-    setDefaultValue(props.defaultValue)
-  }, [props.defaultValue])
+    setDefaultValue(props.defaultValue);
+  }, [props.defaultValue]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
     props.updateValues(value);
-    setDefaultValue(
-      typeof value === "string" ? value.split(",") : value
-    );
+    setDefaultValue(typeof value === "string" ? value.split(",") : value);
   };
 
   return (
@@ -47,16 +39,16 @@ function GuidanceSelect(props) {
               return (
                 <>
                   {props.icon && props.title === "User" && (
-                    <img src={User2} alt="..." />
+                    <img src={User2} alt='...' />
                   )}
                   {props.icon && props.title === "Gender" && (
-                    <img src={Gender} alt="..." />
+                    <img src={Gender} alt='...' />
                   )}
                   {props.icon && props.title === "Qualifications" && (
-                    <img src={Qualifications} alt="..." />
+                    <img src={Qualifications} alt='...' />
                   )}
                   {props.icon && props.title === "Course Looking For" && (
-                    <img src={Course} alt="..." />
+                    <img src={Course} alt='...' />
                   )}
                   <em>{props?.title}</em>
                 </>

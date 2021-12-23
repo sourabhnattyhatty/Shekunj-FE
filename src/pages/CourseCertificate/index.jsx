@@ -14,7 +14,6 @@ import "./index.scss";
 import { useHistory } from "react-router-dom";
 
 function CourseTest() {
-
   const history = useHistory();
 
   return (
@@ -59,15 +58,17 @@ function CourseTest() {
               <p className='cou_tit'>Course & Certificate</p>
               <div className='certi_img'>
                 <p>
-                  <div class='content' onClick={() => history.push("/CertificateFullView")}>
-                    <a
-                      href='#!'
-                      target='_blank'
-                    >
+                  <div
+                    class='content'
+                    onClick={() => history.push("/CertificateFullView")}
+                  >
+                    <a href='#!' target='_blank'>
                       <div class='content-overlay'></div>
                       <img src={Certificate} alt='' />
                       <div class='content-details fadeIn-bottom'>
-                        <h3 class='content-title'><img src={fullscreen_icon} alt="" /></h3>
+                        <h3 class='content-title'>
+                          <img src={fullscreen_icon} alt='' />
+                        </h3>
                         <p class='content-text'>View Full Certificate</p>
                       </div>
                     </a>

@@ -24,7 +24,7 @@ const AuthContent = ({ loginPage }) => {
         <div className='container logincontentbg'>
           <div className='row'>
             <div className='col-md-4'>
-            <img className="girl_img" src={login} alt="" />
+              <img className='girl_img' src={login} alt='' />
             </div>
             <div className='col-md-4'>
               <div className='login_content'>

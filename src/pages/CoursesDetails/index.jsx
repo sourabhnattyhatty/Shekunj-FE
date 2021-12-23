@@ -8,7 +8,6 @@ import {
 import { Row, Col } from "react-bootstrap";
 import { Header, Footer, ScrollToTop, SEO, Carousel } from "../../components";
 
-
 import Device from "../../assets/images/CoursesDetails/Device.png";
 import clock from "../../assets/images/CoursesDetails/clock.png";
 import certificate from "../../assets/images/CoursesDetails/certificate.png";
@@ -59,7 +58,11 @@ const CourseDetails = () => {
 
             <div className='col-md-5'>
               <div className='CouDtl'>
-                <img src={`http://3.109.195.234${course?.image}`} alt='' srcSet='' />
+                <img
+                  src={`http://3.109.195.234${course?.image}`}
+                  alt=''
+                  srcSet=''
+                />
               </div>
             </div>
           </div>
@@ -72,11 +75,9 @@ const CourseDetails = () => {
             <div className='col-md-7'>
               <div className='sec1_des'>
                 <h2>Description</h2>
-                <p>
-                {course?.description}
-                </p>
+                <p>{course?.description}</p>
               </div>
-              
+
               <div className='sec1_con2 con_setSec1'>
                 <h2>What you’ll learn</h2>
 
@@ -87,9 +88,7 @@ const CourseDetails = () => {
                         <img src={Check} alt='' srcSet='' />
                       </div>
                       <div>
-                        <p>
-                        Lorem ipsum dolor sit amet.
-                        </p>
+                        <p>Lorem ipsum dolor sit amet.</p>
                       </div>
                     </div>
 
@@ -98,9 +97,7 @@ const CourseDetails = () => {
                         <img src={Check} alt='' srcSet='' />
                       </div>
                       <div>
-                        <p>
-                        Lorem ipsum dolor sit amet.
-                        </p>
+                        <p>Lorem ipsum dolor sit amet.</p>
                       </div>
                     </div>
                   </Col>
@@ -111,9 +108,7 @@ const CourseDetails = () => {
                         <img src={Check} alt='' srcSet='' />
                       </div>
                       <div>
-                        <p>
-                        Lorem ipsum dolor sit amet.
-                        </p>
+                        <p>Lorem ipsum dolor sit amet.</p>
                       </div>
                     </div>
 
@@ -122,19 +117,12 @@ const CourseDetails = () => {
                         <img src={Check} alt='' srcSet='' />
                       </div>
                       <div>
-                        <p>
-                        Lorem ipsum dolor sit amet.
-                        </p>
+                        <p>Lorem ipsum dolor sit amet.</p>
                       </div>
                     </div>
                   </Col>
                 </Row>
               </div>
-
-
-
-
-
 
               <div className='sec1_con2'>
                 <h2>Features:</h2>
@@ -202,7 +190,7 @@ const CourseDetails = () => {
                       <div>
                         <h6>Flexible Deadline</h6>
                         <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Vel ipsum netus semper.
                         </p>
                       </div>
@@ -230,9 +218,11 @@ const CourseDetails = () => {
 
                 <h3 className='similar-coursestext'>Similar Courses</h3>
 
-                <Carousel page='courseDetail'  />
+                <Carousel page='courseDetail' />
 
-                <Link to="/courses" className='btn_view'>View More Courses</Link>
+                <Link to='/courses' className='btn_view'>
+                  View More Courses
+                </Link>
               </div>
             </div>
           </div>

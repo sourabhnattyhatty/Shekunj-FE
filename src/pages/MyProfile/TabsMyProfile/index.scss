@@ -128,7 +128,7 @@ p.eye2 {
   right: 2%;
 }
 .change_pass svg {
-  color: #B0B2B5;
+  color: #b0b2b5;
 }
 .change_pass .form-group {
   position: relative;
@@ -247,11 +247,13 @@ button.Save_profile_btn:hover {
   background-repeat: no-repeat;
   color: #fff !important;
 }
-.form-group.mzero svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-1636szt {
+.form-group.mzero
+  svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-1636szt {
   right: 5px !important;
   top: calc(50% - 0.15em) !important;
 }
-.form-group.mzero svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.MuiSelect-iconOpen.css-1yhq19e {
+.form-group.mzero
+  svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.MuiSelect-iconOpen.css-1yhq19e {
   right: 15px !important;
   top: calc(50% - 1em) !important;
 }
@@ -262,5 +264,5 @@ button.Save_profile_btn:hover {
 .form-group.mzero .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
   color: #fff;
   right: 18px;
-    top: calc(50% - 0.9em);
+  top: calc(50% - 0.9em);
 }

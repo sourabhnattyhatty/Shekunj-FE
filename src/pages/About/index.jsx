@@ -14,7 +14,6 @@ import "./index.scss";
 import "aos/dist/aos.css";
 import "animate.css";
 
-
 const AboutusPage = () => {
   const { t } = useTranslation();
 
@@ -22,18 +21,16 @@ const AboutusPage = () => {
     Aos.init({ duration: 2000 });
   }, []);
 
-  
   return (
     <div>
-      
       <SEO title='Sheकुंज - About us' />
       <Header loginPage={false} page='about' />
       <section className='about_ban'>
         <div className='container'>
           <div className='row'>
             <div className='col-lg-0 col-md-0'>
-              <div className="mob_abo_banner">
-                <img src={mob_banner} alt="" />
+              <div className='mob_abo_banner'>
+                <img src={mob_banner} alt='' />
               </div>
             </div>
             <div className='col-lg-5 col-md-7'>

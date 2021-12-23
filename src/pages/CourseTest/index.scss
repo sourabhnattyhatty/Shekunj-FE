@@ -80,110 +80,110 @@ p#col_grey {
   color: #4f4f4f;
 }
 .que_status {
-    border: 1px solid #E3E4EB;
+  border: 1px solid #e3e4eb;
 }
 .que_status .que_num {
-    padding: 0px 15px;
+  padding: 0px 15px;
 }
 .time_set p img {
-    margin-right: 10.31px;
-    max-width: 100%;
+  margin-right: 10.31px;
+  max-width: 100%;
 }
 .time_set p {
-    text-align: right;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #000000;
+  text-align: right;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
 }
 .ans_not ul li {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 21px;
-    color: #000000;
-    list-style: none;
-    position: relative;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  color: #000000;
+  list-style: none;
+  position: relative;
 }
 .ans_not ul li span.dotte1 {
-    width: 14px;
-    height: 14px;
-    background-color: #7FDF05;
-    border-radius: 50%;
-    position: absolute;
-    left: -20px;
-    top: 3px;
+  width: 14px;
+  height: 14px;
+  background-color: #7fdf05;
+  border-radius: 50%;
+  position: absolute;
+  left: -20px;
+  top: 3px;
 }
 .ans_not ul li span.dotte2 {
-    width: 14px;
-    height: 14px;
-    background-color: #E3E4EB;
-    border-radius: 50%;
-    position: absolute;
-    left: -20px;
-    top: 3px;
+  width: 14px;
+  height: 14px;
+  background-color: #e3e4eb;
+  border-radius: 50%;
+  position: absolute;
+  left: -20px;
+  top: 3px;
 }
 .ans_not ul {
-    display: flex;
-    justify-content: space-evenly;
-    float: right;
-    gap: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  float: right;
+  gap: 3rem;
 }
 .ans_not {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 .circular_progress_module h3 {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 45px;
-    color: #323232;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 45px;
+  color: #323232;
 }
 
 span.MuiLinearProgress-root {
-    border-radius: 15px;
+  border-radius: 15px;
 }
 .prev_next_btn {
   margin-bottom: 35px;
 }
-.circular_progress_module .red1-progress .MuiSlider-track{
-  background: #FF3300;
+.circular_progress_module .red1-progress .MuiSlider-track {
+  background: #ff3300;
 }
-.circular_progress_module .red1-progress span.MuiSlider-thumbColorPrimary{
+.circular_progress_module .red1-progress span.MuiSlider-thumbColorPrimary {
   height: 26px;
   width: 26px;
-  background: #FF3300 !important;
+  background: #ff3300 !important;
   box-shadow: 0px 0px 10px rgb(236 124 211) !important;
 }
-.circular_progress_module .yellow1-progress .MuiSlider-track{
-  background: #ff9900 ;
+.circular_progress_module .yellow1-progress .MuiSlider-track {
+  background: #ff9900;
 }
-.circular_progress_module .yellow1-progress span.MuiSlider-thumbColorPrimary{
+.circular_progress_module .yellow1-progress span.MuiSlider-thumbColorPrimary {
   height: 26px;
   width: 26px;
   background: #ff9900 !important;
   box-shadow: 0px 0px 10px rgb(236 124 211) !important;
 }
 
-.circular_progress_module .green1-progress .MuiSlider-track{
-  background: #72B51D;
+.circular_progress_module .green1-progress .MuiSlider-track {
+  background: #72b51d;
 }
-.circular_progress_module .green1-progress span.MuiSlider-thumbColorPrimary{
+.circular_progress_module .green1-progress span.MuiSlider-thumbColorPrimary {
   height: 26px;
   width: 26px;
-  background: #72B51D !important;
+  background: #72b51d !important;
   box-shadow: 0px 0px 10px rgb(236 124 211) !important;
 }
 
-@media screen and (min-device-width: 50px) and (max-device-width: 767px) { 
-    .que_box {
-        padding: 30px 16px;
-    }
-    .maindiv_prog {
-        margin: 45px 0;
-    }
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  .que_box {
+    padding: 30px 16px;
+  }
+  .maindiv_prog {
+    margin: 45px 0;
+  }
 }

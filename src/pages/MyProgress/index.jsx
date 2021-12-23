@@ -53,7 +53,7 @@ function MyProgress() {
         ctx.restore();
         const fontSize = (height / 160).toFixed(2);
         ctx.font = `${fontSize}em sans-serif`;
-        ctx.fillStyle = `#EC498A`
+        ctx.fillStyle = `#EC498A`;
         ctx.textBaseline = "top";
         const text = "50%";
         const textX = Math.round((width - ctx.measureText(text).width) / 2);

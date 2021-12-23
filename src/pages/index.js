@@ -25,5 +25,5 @@ export {
   HomePage,
   LoginPage,
   SignupPage,
-  Dashboard
+  Dashboard,
 };

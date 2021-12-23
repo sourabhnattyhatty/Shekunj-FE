@@ -10,7 +10,7 @@ import barchart from "../../assets/icons/bar-chart.png";
 function index() {
   return (
     <div>
-      <Header loginPage={true}  subPage="allCertificatePage" />
+      <Header loginPage={true} subPage='allCertificatePage' />
 
       <div className='all_certif_banner'>
         <Container>
@@ -33,7 +33,7 @@ function index() {
           <div className='all_certif_box'>
             <Row>
               <Col md={5} xs={12}>
-                <img className="certif_img" src={Certificate01} alt='' />
+                <img className='certif_img' src={Certificate01} alt='' />
               </Col>
 
               <Col md={7} xs={12}>
@@ -72,11 +72,10 @@ function index() {
             </Row>
           </div>
 
-
           <div className='all_certif_box'>
             <Row>
               <Col md={5} xs={12}>
-                <img className="certif_img" src={Certificate01} alt='' />
+                <img className='certif_img' src={Certificate01} alt='' />
               </Col>
 
               <Col md={7} xs={12}>
@@ -115,11 +114,10 @@ function index() {
             </Row>
           </div>
 
-
           <div className='all_certif_box'>
             <Row>
               <Col md={5} xs={12}>
-                <img className="certif_img" src={Certificate01} alt='' />
+                <img className='certif_img' src={Certificate01} alt='' />
               </Col>
 
               <Col md={7} xs={12}>
@@ -158,11 +156,10 @@ function index() {
             </Row>
           </div>
 
-
           <div className='all_certif_box'>
             <Row>
               <Col md={5} xs={12}>
-                <img className="certif_img" src={Certificate01} alt='' />
+                <img className='certif_img' src={Certificate01} alt='' />
               </Col>
 
               <Col md={7} xs={12}>
@@ -201,11 +198,10 @@ function index() {
             </Row>
           </div>
 
-
           <div className='all_certif_box'>
             <Row>
               <Col md={5} xs={12}>
-                <img className="certif_img" src={Certificate01} alt='' />
+                <img className='certif_img' src={Certificate01} alt='' />
               </Col>
 
               <Col md={7} xs={12}>

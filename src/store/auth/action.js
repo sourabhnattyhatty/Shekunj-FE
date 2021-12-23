@@ -164,7 +164,7 @@ export const getUserProfile = () => async (dispatch) => {
 export const updateProfile = (id, values) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.USER_PROFILE_UPDATE });
-  const formData = httpServices.createFormData(values);
+    const formData = httpServices.createFormData(values);
     const res = await httpServices.putForm(
       `/authentication/user-profile-update/${id}/`,
       formData,

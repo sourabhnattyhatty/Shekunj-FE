@@ -35,7 +35,9 @@ function UserInfo(props) {
               <li>{user?.state || "State - N/A"}</li>
             </ul>
           </div>
-          <button className='edit_profile_btn' onClick={props.func}>Edit Profile</button>
+          <button className='edit_profile_btn' onClick={props.func}>
+            Edit Profile
+          </button>
         </Col>
       </Row>
     </div>

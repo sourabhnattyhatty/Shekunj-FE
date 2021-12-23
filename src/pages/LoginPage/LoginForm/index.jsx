@@ -23,7 +23,6 @@ const LoginForm = () => {
 
         <LoginTabs />
 
-
         <div className='text-center'>
           <p className='policy_para'>
             {t("login.T&C.content1")} <a href='#!'> {t("login.T&C.link1")} </a>{" "}
@@ -33,7 +32,9 @@ const LoginForm = () => {
           </p>
         </div>
 
-        <div class="or"><img src={or} class="orimg" alt="..." /></div>
+        <div class='or'>
+          <img src={or} class='orimg' alt='...' />
+        </div>
 
         {/* <div class="or"><img src={} class="orimg" alt="..." /></div> */}
 

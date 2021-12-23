@@ -106,15 +106,15 @@
   margin-top: 70px;
 }
 .want h2 {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 60px;
-    line-height: 110%;
-    text-align: center;
-    color: #FFFFFF;
-    max-width: 1057px;
-    margin: 0 auto;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 110%;
+  text-align: center;
+  color: #ffffff;
+  max-width: 1057px;
+  margin: 0 auto;
 }
 button.want_btn {
   background: #ec498a;
@@ -187,14 +187,13 @@ button.want_btn {
     margin-top: 30px;
   }
 
-
   .suc_box .col-md-8.col-12 {
     order: 2;
-}
+  }
 
-.suc_box .col-md-4.col-12 {
-  order: 1;
-}
+  .suc_box .col-md-4.col-12 {
+    order: 1;
+  }
 }
 
 // @media screen and (max-width: 1280px) {
@@ -202,5 +201,3 @@ button.want_btn {
 //     height: 534px;
 // }
 // }
-
-

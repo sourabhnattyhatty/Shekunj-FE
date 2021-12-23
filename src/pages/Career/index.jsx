@@ -85,23 +85,23 @@ const CareerPage = () => {
                   <div className='career_box' key={c?.id}>
                     <Row>
                       <Col md={7} xs={12}>
-                      <div className="top_col_content">
-                        <h3>{c?.name || "N/A"}</h3>
-                        <p>
-                          {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
-                          <span>{c?.collage_type || "N/A"}</span>
-                        </p>
-                        <ul>
-                          <li>
-                            <span>Fees</span> : ₹ {transformPrice(c?.fees)}{" "}
-                          </li>
-                          <li>
-                            <span>Exam</span> : {c?.exam || "N/A"}
-                          </li>
-                        </ul>
-                        <button className='btn_viewCour'>
-                          View more details
-                        </button>
+                        <div className='top_col_content'>
+                          <h3>{c?.name || "N/A"}</h3>
+                          <p>
+                            {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
+                            <span>{c?.collage_type || "N/A"}</span>
+                          </p>
+                          <ul>
+                            <li>
+                              <span>Fees</span> : ₹ {transformPrice(c?.fees)}{" "}
+                            </li>
+                            <li>
+                              <span>Exam</span> : {c?.exam || "N/A"}
+                            </li>
+                          </ul>
+                          <button className='btn_viewCour'>
+                            View more details
+                          </button>
                         </div>
                       </Col>
 

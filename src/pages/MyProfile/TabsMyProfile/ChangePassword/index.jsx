@@ -41,7 +41,7 @@ function ChangePassword() {
       },
       validationSchema,
       onSubmit(values) {
-        dispatch(changePassword(values,history))
+        dispatch(changePassword(values, history));
       },
     });
 
@@ -75,7 +75,10 @@ function ChangePassword() {
               <p className='eye' onClick={(e) => setVisible(!visible)}>
                 {visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
               </p>
-              <Error error={errors.old_password} touched={touched.old_password}/>
+              <Error
+                error={errors.old_password}
+                touched={touched.old_password}
+              />
             </div>
 
             <div className='form-group'>
@@ -93,7 +96,10 @@ function ChangePassword() {
               <p className='eye1' onClick={(e) => setVisible1(!visible1)}>
                 {visible1 ? <VisibilityIcon /> : <VisibilityOffIcon />}
               </p>
-              <Error error={errors.new_password} touched={touched.new_password}/>
+              <Error
+                error={errors.new_password}
+                touched={touched.new_password}
+              />
             </div>
 
             <div className='form-group'>
@@ -111,16 +117,22 @@ function ChangePassword() {
               <p className='eye2' onClick={(e) => setVisible2(!visible2)}>
                 {visible2 ? <VisibilityIcon /> : <VisibilityOffIcon />}
               </p>
-              <Error error={errors.confirm_password} touched={touched.confirm_password}/>
+              <Error
+                error={errors.confirm_password}
+                touched={touched.confirm_password}
+              />
             </div>
 
             <button type='submit' className='edit_profile_btn '>
-            {isLoading ? (
-              <CircularProgress color='secondary' size={20} style={{margin:"0 45px"}}/>
-            ) : (
-              "update password"
-            )}
-              
+              {isLoading ? (
+                <CircularProgress
+                  color='secondary'
+                  size={20}
+                  style={{ margin: "0 45px" }}
+                />
+              ) : (
+                "update password"
+              )}
             </button>
           </form>
         </div>

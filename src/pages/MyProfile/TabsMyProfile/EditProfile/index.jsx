@@ -187,10 +187,7 @@ function EditProfile(props) {
                 </div>
               </div>
             </div>
-            <button
-              type='submit'
-              className='Save_profile_btn'
-            >
+            <button type='submit' className='Save_profile_btn'>
               Save
             </button>
           </Col>

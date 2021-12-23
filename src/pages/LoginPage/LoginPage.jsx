@@ -8,7 +8,7 @@ function LoginPage() {
   return (
     <>
       <div>
-        <SEO title="Sheकुंज - Login"/>
+        <SEO title='Sheकुंज - Login' />
         <Header loginPage={true} />
 
         <AuthContent loginPage={true} />

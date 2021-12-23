@@ -15,7 +15,7 @@ const initialState = {
   allCourses: [],
   selectedFilter: null,
   categoryList: [],
-  result : {}
+  result: {},
 };
 
 export const coursesReducer = (state = initialState, action) => {
@@ -205,7 +205,7 @@ export const coursesReducer = (state = initialState, action) => {
         error: null,
       };
     case coursesTypes.SUCCESS_STORY_FINISH:
-    return {
+      return {
         ...state,
         isLoading: false,
         successStories: action.payload,
@@ -243,7 +243,7 @@ export const coursesReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload,
       };
-      case coursesTypes.RESULT_REQUEST:
+    case coursesTypes.RESULT_REQUEST:
       return {
         ...state,
         isLoading: true,

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import or from "../../../../assets/images/login/or.png"
+import or from "../../../../assets/images/login/or.png";
 import User from "../../../../assets/icons/user.png";
 import Lock from "../../../../assets/icons/lock.png";
 
@@ -33,13 +33,12 @@ function LoginForm1() {
 
   function useQuery() {
     const { search } = useLocation();
-  
+
     return React.useMemo(() => new URLSearchParams(search), [search]);
   }
   let query = useQuery();
 
-  const redirect = query.get("redirect")
-  
+  const redirect = query.get("redirect");
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -98,9 +97,6 @@ function LoginForm1() {
           />
           <Error error={errors.password} touched={touched.password} />
         </div>
-
-
-        
 
         <button type='submit' className='btn btn_login w-100'>
           {isLoading ? (

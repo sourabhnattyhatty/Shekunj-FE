@@ -11,7 +11,6 @@ import "./index.scss";
 // import LoginForm1 from "./LoginForm1";
 import LoginForm2 from "./LoginForm2";
 
-
 export default function LoginTabs() {
   // const [value, setValue] = React.useState("1");
   // const { t } = useTranslation();
@@ -20,13 +19,9 @@ export default function LoginTabs() {
   //   setValue(newValue);
   // };
 
-
-
   return (
     <>
       <LoginForm2 />
-
-
     </>
 
     // <Box sx={{ width: "100%", typography: "body1" }}>

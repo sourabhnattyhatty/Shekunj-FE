@@ -29,12 +29,12 @@ function LoginForm2() {
 
   function useQuery() {
     const { search } = useLocation();
-  
+
     return React.useMemo(() => new URLSearchParams(search), [search]);
   }
   let query = useQuery();
 
-  const redirect = query.get("redirect")
+  const redirect = query.get("redirect");
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -52,7 +52,7 @@ function LoginForm2() {
     <>
       <form onSubmit={handleSubmit}>
         <div className='form-group mb-4'>
-        <label>Mobile Number</label>
+          <label>Mobile Number</label>
           <TextField
             name='contact'
             type='number'
@@ -74,7 +74,9 @@ function LoginForm2() {
         </div>
 
         <div className='form-group'>
-        <label>Password <span>*</span></label>
+          <label>
+            Password <span>*</span>
+          </label>
           <TextField
             name='password'
             type='password'
@@ -95,8 +97,6 @@ function LoginForm2() {
           <Error error={errors.password} touched={touched.password} />
         </div>
 
-        
-
         <button type='submit' className='btn btn_login w-100'>
           {isLoading ? (
             <CircularProgress color='secondary' size={20} />
@@ -104,8 +104,6 @@ function LoginForm2() {
             t("login.button")
           )}
         </button>
-
-        
       </form>
     </>
   );

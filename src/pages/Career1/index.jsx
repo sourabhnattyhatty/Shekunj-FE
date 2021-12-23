@@ -16,19 +16,19 @@ import "./index.scss";
 
 import { noImage } from "../../store/courses/action";
 
-
 const CareerPage1 = () => {
   const dispatch = useDispatch();
   const { topSchools } = useSelector((state) => state.careerReducer);
   const STATES = {
     name: "STATES",
-    rows: topSchools?.state_list?.map((obj,idx) => {
-      return {
-        id : idx,
-        name : obj,
-        isChecked : false
-      }
-    }) || []
+    rows:
+      topSchools?.state_list?.map((obj, idx) => {
+        return {
+          id: idx,
+          name: obj,
+          isChecked: false,
+        };
+      }) || [],
   };
 
   const OWNERSHIP = {
@@ -49,13 +49,14 @@ const CareerPage1 = () => {
 
   const EDUCATION_BOARD = {
     name: "EDUCATION_BOARD",
-    rows: topSchools?.board_list?.map((obj,idx) => {
-      return {
-        id : idx,
-        name : obj,
-        isChecked : false
-      }
-    }) || []
+    rows:
+      topSchools?.board_list?.map((obj, idx) => {
+        return {
+          id: idx,
+          name: obj,
+          isChecked: false,
+        };
+      }) || [],
   };
 
   useEffect(() => {
@@ -69,7 +70,6 @@ const CareerPage1 = () => {
         : `http://3.109.195.234${image}`
       : noImage;
   };
-
 
   return (
     <div>
@@ -98,7 +98,7 @@ const CareerPage1 = () => {
                     <Row>
                       <Col md={7} xs={12}>
                         <h3>{c?.name || "N/A"}</h3>
-                        <p style={{textTransform : "capitalize"}}>
+                        <p style={{ textTransform: "capitalize" }}>
                           {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
                           <span>{c?.school_type || "N/A"}</span>
                         </p>

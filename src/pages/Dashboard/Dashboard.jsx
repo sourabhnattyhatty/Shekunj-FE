@@ -108,7 +108,9 @@ const Dashboard = () => {
                     </Col>
                     <Col md={3} xs={3} className='p-0'>
                       <div className='button_paddingarea'>
-                        <button className='explore_button btn'>{t('dashboardPage.explore')}</button>
+                        <button className='explore_button btn'>
+                          {t("dashboardPage.explore")}
+                        </button>
                       </div>
                     </Col>
                   </Row>
@@ -168,7 +170,7 @@ const Dashboard = () => {
                     <Col md={3} xs={3}>
                       <div className='button_paddingarea'>
                         <button className='btn certificate_button'>
-                          {t('dashboardPage.certificate')}
+                          {t("dashboardPage.certificate")}
                         </button>
                       </div>
                     </Col>
@@ -227,7 +229,7 @@ const Dashboard = () => {
                     <Col md={3} xs={3}>
                       <div className='button_paddingarea'>
                         <button className='btn certificate_button'>
-                        {t('dashboardPage.certificate')}
+                          {t("dashboardPage.certificate")}
                         </button>
                       </div>
                     </Col>
@@ -241,7 +243,7 @@ const Dashboard = () => {
               <div className='certificate-section'>
                 <Row>
                   <Col md={7}>
-                    <h6>{t('dashboardPage.certificate')}</h6>
+                    <h6>{t("dashboardPage.certificate")}</h6>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Ut commodo .

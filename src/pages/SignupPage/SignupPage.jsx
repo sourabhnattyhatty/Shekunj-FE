@@ -10,7 +10,7 @@ function SignupPage() {
   return (
     <>
       <div>
-      <SEO title="Sheकुंज - Signup"/>
+        <SEO title='Sheकुंज - Signup' />
         <Header loginPage={true} />
 
         <AuthContent />

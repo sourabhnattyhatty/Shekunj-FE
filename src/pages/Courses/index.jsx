@@ -59,7 +59,7 @@ const Courses = (props) => {
                 <div className='cour_box'>
                   <ul>
                     <li>
-                      <img src={one} alt='' srcSet='' className="vert-move" />
+                      <img src={one} alt='' srcSet='' className='vert-move' />
                     </li>
                     <li>
                       <img src={two} alt='' srcSet='' />
@@ -185,7 +185,7 @@ const Courses = (props) => {
                             {obj?.category_name}
                           </button>
                           <h6>{obj?.name}</h6>
-                        </div>                        
+                        </div>
                       </div>
                     </Link>
                   ))}

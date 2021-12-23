@@ -5,7 +5,7 @@ import { Redirect } from "react-router";
 
 function PublicRoute({ component: Component, ...rest }) {
   const token = Cookies.get("sheToken");
-  
+
   return (
     <Route
       {...rest}

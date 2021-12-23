@@ -93,7 +93,6 @@ const CourseModule = () => {
   const { id } = useParams();
   const history = useHistory();
 
-
   const progress = Math.round(100 / (courseModulesList.length || 0)) || 0;
 
   React.useEffect(() => {

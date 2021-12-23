@@ -1,4 +1,10 @@
-import { Container, FormControlLabel, Radio, RadioGroup, Skeleton } from "@mui/material";
+import {
+  Container,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  Skeleton,
+} from "@mui/material";
 import React from "react";
 import Stack from "@mui/material/Stack";
 import { Row, Col } from "react-bootstrap";
@@ -105,36 +111,34 @@ function CourseTest() {
                   per latest India Skills Report 2019
                 </p>
               )}
-                <RadioGroup aria-label='gender' name='radio-buttons-group'>
-                  
-                    <FormControlLabel
-                      value="Andhra Pradesh"
-                      control={<Radio />}
-                      label="Andhra Pradesh"
-                      // onChange={(e) => setAnswer(e.target.value)}
-                    />
-                  
-                    <FormControlLabel
-                      value="Karnataka"
-                      control={<Radio />}
-                      label="Karnataka"
-                      // onChange={(e) => setAnswer(e.target.value)}
-                    />
-                    <FormControlLabel
-                      value="Rajasthan"
-                      control={<Radio />}
-                      label="Rajasthan"
-                      // onChange={(e) => setAnswer(e.target.value)}
-                    />
-                    <FormControlLabel
-                      value="Tamil Nadu"
-                      control={<Radio />}
-                      label="Tamil Nadu"
-                      // onChange={(e) => setAnswer(e.target.value)}
-                    />
-                </RadioGroup>
+              <RadioGroup aria-label='gender' name='radio-buttons-group'>
+                <FormControlLabel
+                  value='Andhra Pradesh'
+                  control={<Radio />}
+                  label='Andhra Pradesh'
+                  // onChange={(e) => setAnswer(e.target.value)}
+                />
+
+                <FormControlLabel
+                  value='Karnataka'
+                  control={<Radio />}
+                  label='Karnataka'
+                  // onChange={(e) => setAnswer(e.target.value)}
+                />
+                <FormControlLabel
+                  value='Rajasthan'
+                  control={<Radio />}
+                  label='Rajasthan'
+                  // onChange={(e) => setAnswer(e.target.value)}
+                />
+                <FormControlLabel
+                  value='Tamil Nadu'
+                  control={<Radio />}
+                  label='Tamil Nadu'
+                  // onChange={(e) => setAnswer(e.target.value)}
+                />
+              </RadioGroup>
             </div>{" "}
-           
             <div className='prev_next_btn'>
               <Row>
                 <Col md={6} xs={6}>

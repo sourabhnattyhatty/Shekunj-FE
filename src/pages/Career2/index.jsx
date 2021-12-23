@@ -69,7 +69,7 @@ const CareerPage2 = () => {
                     <Row>
                       <Col md={7} xs={12}>
                         <h3>{c?.name || "N/A"}</h3>
-                        <p style={{textTransform : "capitalize"}}>
+                        <p style={{ textTransform: "capitalize" }}>
                           {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
                           <span>{c?.exam_type || "N/A"}</span>
                         </p>

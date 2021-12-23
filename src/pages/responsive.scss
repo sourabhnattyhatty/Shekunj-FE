@@ -79,7 +79,7 @@
   }
   .sign_in p {
     display: block !important;
-}
+  }
 }
 
 // Login media quary Close
@@ -96,27 +96,27 @@
     line-height: 32px !important;
   }
   .user_detail {
-      display: block !important;
+    display: block !important;
   }
   .user_detail ul {
-      margin: 0;
+    margin: 0;
   }
   .myProfile_box button.edit_profile_btn {
-      margin-top: 30px;
-      width: 100% !important;
+    margin-top: 30px;
+    width: 100% !important;
   }
   .myProfile_box h2 {
-      margin-bottom: 30px;
+    margin-bottom: 30px;
   }
   .my_pro_tabs {
-      margin-bottom: 50px !important;
+    margin-bottom: 50px !important;
   }
   .change_pass button {
-      width: 100%;
+    width: 100%;
   }
   .change_pass button {
-      margin-top: 30px;
-      margin-bottom: 100px;
+    margin-top: 30px;
+    margin-bottom: 100px;
   }
   .profile_con p {
     font-size: 16px !important;
@@ -127,40 +127,39 @@
   }
   .my_pro_tabs {
     padding: 25px 0px !important;
-}
-.myProfile_img {
+  }
+  .myProfile_img {
     width: 115px;
     height: 115px !important;
     margin-top: 30px;
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
-}
-.myProfile_img img {
+  }
+  .myProfile_img img {
     width: 78px;
-}
-.myProfile_box h2 {
+  }
+  .myProfile_box h2 {
     text-align: center;
     display: block !important;
-}
-.edit_profile {
+  }
+  .edit_profile {
     padding: 0 24px;
-}
-.my_pro_tabs .MuiTabs-flexContainer {
+  }
+  .my_pro_tabs .MuiTabs-flexContainer {
     justify-content: space-between;
-}
+  }
 }
 // MyProfile media quary Close
 
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  .set .owl-carousel.owl-theme.owl-loaded.owl-drag {
+    margin-top: 0;
+  }
+  .abc_box {
+    display: none;
+  }
 
-    .set .owl-carousel.owl-theme.owl-loaded.owl-drag {
-        margin-top: 0;
-    }
-    .abc_box {
-        display: none;
-    }
-    
   header {
     position: relative;
     box-shadow: none;

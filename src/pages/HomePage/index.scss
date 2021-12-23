@@ -713,8 +713,6 @@ ul.star {
   left: 14.5%;
 }
 
-
-
 .career_community .community1:hover,
 .career_community .community2:hover,
 .career_community .community3:hover,
@@ -747,7 +745,7 @@ ul.star {
   transition: 250ms color;
   animation-name: wave;
   animation-duration: 1s;
-  animation-timing-function:linear;
+  animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
@@ -799,7 +797,6 @@ ul.star {
 //     @include rings(3s, 0.5s);
 //   }
 // }
-
 
 // @keyframes wave {
 // from {

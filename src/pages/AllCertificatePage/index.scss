@@ -1,104 +1,104 @@
 .all_certif_banner {
-    background-image: url("../../assets/images/AllCertificate/banner.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 485px;
-    display: flex;
-    align-items: center;
+  background-image: url("../../assets/images/AllCertificate/banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 485px;
+  display: flex;
+  align-items: center;
 }
 .all_certif_banner h2 {
-    font-family: SegoeUI_bold;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 53px;
-    text-transform: capitalize;
-    color: #F9F8FE;
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 53px;
+  text-transform: capitalize;
+  color: #f9f8fe;
 }
 .all_certif_banner p {
-    font-family: SegoeUI_medium;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 120%;
-    color: #F9F8FE;
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 120%;
+  color: #f9f8fe;
 }
 .all_certif_box {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 .all_certif_box img {
-    max-width: 100%;
-    transition-duration: 1s;
+  max-width: 100%;
+  transition-duration: 1s;
 }
 .all_certif_box img.certif_img:hover {
-    transform: scale(1.09);
-    transition: 1s;
-    cursor: pointer;
+  transform: scale(1.09);
+  transition: 1s;
+  cursor: pointer;
 }
 .all_list {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    max-width: 335px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 335px;
 }
 .all_list ul {
-    display: inline-flex;
-    gap: 0.3rem;
-    list-style: none;
-    align-items: flex-end;
-    padding: 0;
+  display: inline-flex;
+  gap: 0.3rem;
+  list-style: none;
+  align-items: flex-end;
+  padding: 0;
 }
 .all_certif_con {
-    padding: 21px 0px;
+  padding: 21px 0px;
 }
 .all_certif_sec h2.my_achiev {
-    font-family: SegoeUI_medium;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 140%;
-    text-transform: capitalize;
-    color: #000000;
-    margin-top: 67px;
-    margin-bottom: 30px;
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 140%;
+  text-transform: capitalize;
+  color: #000000;
+  margin-top: 67px;
+  margin-bottom: 30px;
 }
 .all_certif_con h2 {
-    font-family: SegoeUI_medium;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 40px;
-    color: #333333;
-    max-width: 430px;
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 40px;
+  color: #333333;
+  max-width: 430px;
 }
 .all_certif_con p {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 140%;
-    color: #828282;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  color: #828282;
 }
 .all_certif_con button {
-    background: #FFFFFF;
-    border: 1px solid #EC498A;
-    box-sizing: border-box;
-    border-radius: 2px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    text-align: center;
-    text-transform: capitalize;
-    color: #EC498A;
-    margin-right: 20px;
-    padding: 14px;
-    width: 190px;
-    transition-duration: 1s;
+  background: #ffffff;
+  border: 1px solid #ec498a;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #ec498a;
+  margin-right: 20px;
+  padding: 14px;
+  width: 190px;
+  transition-duration: 1s;
 }
 .all_certif_con button:hover {
-    background-color: #EC498A;
-    color: #fff;
+  background-color: #ec498a;
+  color: #fff;
 }

@@ -108,7 +108,7 @@ export default function SimpleAccordion() {
         <AccordionDetails>
           {categoryList?.map((obj) => {
             return (
-              obj?.course_set?.length>0 && (
+              obj?.course_set?.length > 0 && (
                 <ul className='pl-0'>
                   <FormControl component='fieldset'>
                     {obj?.course_set?.map((r) => (

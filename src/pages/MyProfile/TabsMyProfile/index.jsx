@@ -10,7 +10,6 @@ import EditProfile from "./EditProfile";
 import UserInfo from "./UserInfo";
 import ChangePassword from "./ChangePassword";
 
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -48,14 +47,13 @@ export default function BasicTabs() {
   const [show, setShow] = React.useState(false);
   const [value, setValue] = React.useState(0);
 
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const handleShow = () => {
-    setShow(prev => !prev);
-  }
+    setShow((prev) => !prev);
+  };
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -69,17 +67,18 @@ export default function BasicTabs() {
           <Tab label='Change Password' {...a11yProps(1)} />
         </Tabs>
       </Box>
-      
+
       <TabPanel value={value} index={0}>
-        {!show ? <UserInfo func={handleShow}/> : <EditProfile func={handleShow}/> }
-        
+        {!show ? (
+          <UserInfo func={handleShow} />
+        ) : (
+          <EditProfile func={handleShow} />
+        )}
       </TabPanel>
 
       <TabPanel value={value} index={1}>
         <ChangePassword />
       </TabPanel>
-
-      
     </Box>
   );
 }
