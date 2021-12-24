@@ -10,17 +10,18 @@ import {
   ScrollToTop,
   SEO,
 } from "../../components";
-import { getGovernmentExams } from "../../store/career";
+import { getGovernmentExams, reSetFilterValue } from "../../store/career";
+import { noImage } from "../../store/courses/action";
+import { baseURL } from "../../utils/ApiServices";
 import "../HomePage/index.scss";
 import "./index.scss";
-
-import { noImage } from "../../store/courses/action";
 
 const CareerPage2 = () => {
   const dispatch = useDispatch();
   const { governmentExams } = useSelector((state) => state.careerReducer);
 
   useEffect(() => {
+    dispatch(reSetFilterValue());
     dispatch(getGovernmentExams());
   }, [dispatch]);
 
@@ -33,15 +34,10 @@ const CareerPage2 = () => {
 
   const transformImg = (image) => {
     return image
-      ? image?.includes("http://3.109.195.234")
+      ? image?.includes(baseURL)
         ? image
-        : `http://3.109.195.234${image}`
+        : `${baseURL}${image}`
       : noImage;
-  };
-
-  const CATEGORIES = {
-    name: "CATEGORIES",
-    rows: governmentExams?.govt_category || [],
   };
 
   return (
@@ -58,7 +54,10 @@ const CareerPage2 = () => {
             <Col md={4} xs={12}>
               <AccordionComponent
                 type='governmentExams'
-                categories={CATEGORIES}
+                categories={{
+                  name: "CATEGORIES",
+                  rows: governmentExams?.govt_category || [],
+                }}
               />
             </Col>
 

@@ -1,24 +1,25 @@
-import { InputAdornment, TextField } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import { InputAdornment, TextField } from "@mui/material";
 import { Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import moment from "moment";
+
+import { updateProfile } from "../../../../store/auth/action";
+import statesCities from "../../../../utils/statesCities.json";
 import GuidanceSelect from "../../../GuidanceBook/Select";
+import { Error } from "../../../../components";
+
 import User from "../../../../assets/images/MyProfile/user.png";
 import phone from "../../../../assets/images/MyProfile/phone.png";
 import education from "../../../../assets/images/MyProfile/education.png";
-import * as Yup from "yup";
 import DateBirth from "../../Date_Birth";
-import { useDispatch, useSelector } from "react-redux";
 import { noImage } from "../../../../store/courses/action";
+
 import "./index.scss";
 import "../index.scss";
-import { useTranslation } from "react-i18next";
-import { useFormik } from "formik";
-import moment from "moment";
-import { updateProfile } from "../../../../store/auth/action";
-import statesCities from "../../../../utils/statesCities.json";
-import { Error } from "../../../../components";
-
-const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
 
 function EditProfile(props) {
   const dispatch = useDispatch();
@@ -69,7 +70,7 @@ function EditProfile(props) {
       const cities = filterCities(values.state);
       if (cities) setCities(cities);
     }
-  }, [user,values.state]);
+  }, [user, values.state]);
 
   const filterCities = (state) =>
     statesCities?.find((c) => c?.name === state)?.districts || [];

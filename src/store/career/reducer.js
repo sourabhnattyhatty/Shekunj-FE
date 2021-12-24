@@ -1,7 +1,7 @@
 import { coursesTypes } from ".";
 
 const initialCourseSector = {
-  name: "COURSE SECTOR",
+  name: "OWNERSHIP",
   rows: [
     {
       id: 1,
@@ -11,7 +11,7 @@ const initialCourseSector = {
     },
     {
       id: 2,
-      name: "Public", // Government
+      name: "Public",
       isChecked: false,
       value: "public",
     },
@@ -99,6 +99,49 @@ export const careerReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         governmentExams: data,
+      };
+    case coursesTypes.GOVERNMENT_EXAM_FILTER_RESET:
+      return {
+        ...state,
+        isLoading: false,
+        topCollages: {
+          ...state.topCollages?.collage_stream_list,
+          collage_stream_list: state.topCollages?.collage_stream_list?.map(
+            (r) =>
+              ({
+                ...r,
+                isChecked: false,
+              } || []),
+          ),
+        },
+        governmentExams: {
+          ...state.governmentExams,
+          govt_category:
+            state.governmentExams?.govt_category?.map((r) => ({
+              ...r,
+              isChecked: false,
+            })) || [],
+        },
+        topSchools: {
+          ...state.governmentExams,
+          board_list:
+            state.topSchools?.govt_list?.map((r) => ({
+              ...r,
+              isChecked: false,
+            })) || [],
+          state_list:
+            state.topSchools?.state_list?.map((r) => ({
+              ...r,
+              isChecked: false,
+            })) || [],
+        },
+        courseSector: {
+          ...initialCourseSector,
+          rows: initialCourseSector.rows.map((r) => ({
+            ...r,
+            isChecked: false,
+          })),
+        },
       };
     default:
       return state;

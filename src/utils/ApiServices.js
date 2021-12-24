@@ -4,6 +4,8 @@ import Cookies from "js-cookie";
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true;
 
+export const baseURL = process.env.REACT_APP_API_URL?.slice(0, 20);
+
 const responseBody = (response) => response.data;
 
 axios.interceptors.request.use((config) => {

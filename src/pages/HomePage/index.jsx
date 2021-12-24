@@ -1,12 +1,22 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect } from "react";
 import Slider from "react-slick";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
-import { constants } from "../../utils";
 import { Link } from "react-router-dom";
-import "../../pages/responsive.scss";
+
+import { constants } from "../../utils";
 import { Header, Footer, Carousel, ScrollToTop, SEO } from "../../components";
+
+import "animate.css";
+import "aos/dist/aos.css";
+import "../../../node_modules/slick-carousel/slick/slick.css";
+import "../../../node_modules/slick-carousel/slick/slick-theme.css";
+
 import "../../pages/responsive.scss";
+import "../../pages/responsive.scss";
+import "./index.scss";
+
 import Resume from "../../assets/images/resume.png";
 import Girl from "../../assets/images/job1.png";
 import Community from "../../assets/images/community.png";
@@ -34,17 +44,9 @@ import g17 from "../../assets/images/17.png";
 import g18 from "../../assets/images/18.png";
 import g19 from "../../assets/images/19.png";
 import g20 from "../../assets/images/20.png";
-import "../../../node_modules/slick-carousel/slick/slick.css";
-import "../../../node_modules/slick-carousel/slick/slick-theme.css";
-import "./index.scss";
-import "animate.css";
-import "aos/dist/aos.css";
-// import { useDispatch } from "react-redux";
-// import { allHomeCourses } from "../../store/courses/action";
 
 function HomePage() {
   const { t } = useTranslation();
-  // const dispatch = useDispatch();
 
   const settings = {
     dots: false,
@@ -81,7 +83,6 @@ function HomePage() {
   };
 
   useEffect(() => {
-    // dispatch(allHomeCourses());
     Aos.init({ duration: 2000 });
   }, []);
 

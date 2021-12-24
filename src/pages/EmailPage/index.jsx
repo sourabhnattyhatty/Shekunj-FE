@@ -1,7 +1,8 @@
 import React from "react";
-import "./index.scss";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+
 import logo from "../../assets/icons/logo.png";
+import "./index.scss";
 
 function index() {
   return (
@@ -9,7 +10,7 @@ function index() {
       <div className='email_bg'></div>
       <Container>
         <div className='main_box_email'>
-          <img src={logo} alt="" />
+          <img src={logo} alt='' />
           <hr />
           <h2>Hello Swati Jain,</h2>
           <p>

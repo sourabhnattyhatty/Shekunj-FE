@@ -135,7 +135,7 @@ export const reStartUserCareerTestEnd = (id) => async (dispatch) => {
 export const startUserCareerTest = (id) => async (dispatch) => {
   try {
     dispatch({ type: guidanceTypes.GUIDANCE_START_USER_CAREER_TEST_REQUEST });
-    const res = await httpServices.post(`career/start-user-career-test/${id}`, {
+    await httpServices.post(`career/start-user-career-test/${id}`, {
       answer: "",
       career_test: "",
     });

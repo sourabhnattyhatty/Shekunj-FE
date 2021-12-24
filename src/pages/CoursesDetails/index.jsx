@@ -17,7 +17,6 @@ import forum from "../../assets/images/CoursesDetails/forum.png";
 import Check from "../../assets/icons/check.png";
 
 import "./index.scss";
-import { coursesTypes } from "../../store/courses/types";
 
 const CourseDetails = () => {
   const dispatch = useDispatch();

@@ -9,8 +9,9 @@ import {
   ScrollToTop,
   SEO,
 } from "../../components";
-import { getTopCollages } from "../../store/career";
+import { getTopCollages, reSetFilterValue } from "../../store/career";
 import { noImage } from "../../store/courses/action";
+import { baseURL } from "../../utils/ApiServices";
 
 import "../HomePage/index.scss";
 import "./index.scss";
@@ -22,6 +23,7 @@ const CareerPage = () => {
   );
 
   useEffect(() => {
+    dispatch(reSetFilterValue());
     dispatch(getTopCollages());
   }, [dispatch]);
 
@@ -34,9 +36,9 @@ const CareerPage = () => {
 
   const transformImg = (image) => {
     return image
-      ? image?.includes("http://3.109.195.234")
+      ? image?.includes(baseURL)
         ? image
-        : `http://3.109.195.234${image}`
+        : `${baseURL}${image}`
       : noImage;
   };
 
@@ -44,8 +46,6 @@ const CareerPage = () => {
     name: "STREAM",
     rows: topCollages?.collage_stream_list || [],
   };
-
-  console.log({ topCollages });
 
   return (
     <div>
@@ -63,7 +63,7 @@ const CareerPage = () => {
               <AccordionComponent
                 type='colleges'
                 stream={STREAM}
-                courseLength={courseSector}
+                ownership={courseSector}
               />
             </Col>
 
