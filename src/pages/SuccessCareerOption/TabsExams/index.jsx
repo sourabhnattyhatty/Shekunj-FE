@@ -54,7 +54,7 @@ function a11yProps(index) {
 export default function VerticalTabs() {
   const dispatch = useDispatch();
   const [value, setValue] = useState(0);
-  const [tabValue,setTabValue] = useState(0)
+  const [tabValue, setTabValue] = useState(0);
   const [categoryDetail, setCategoryDetail] = useState(false);
   const [showGovtExams, setShowGovtExams] = useState(true);
   const { guidanceCategory, guidanceCategoryDetail } = useSelector(
@@ -72,13 +72,13 @@ export default function VerticalTabs() {
     dispatch(getGuidanceCategory());
   };
 
-  const handleExamChange = (obj) => {
+  const handleExamChange = (obj, id) => {
     setShowGovtExams(false);
     setCategoryDetail(true);
     setValue(0);
     setTabValue(obj);
     dispatch(resetCategoryDetail());
-    dispatch(getGuidanceCategoryDetail(obj.id));
+    dispatch(getGuidanceCategoryDetail(id));
   };
 
   const onBackChange = () => {
@@ -104,11 +104,11 @@ export default function VerticalTabs() {
           sx={{ borderRight: 1, borderColor: "divider" }}
         >
           {console.log(guidanceCategory?.public)}
-          {guidanceCategory?.public?.map((g,i) => (
+          {guidanceCategory?.public?.map((g, i) => (
             <Tab
               key={g?.id}
               label={g?.name}
-              onClick={() => handleExamChange(i)}
+              onClick={() => handleExamChange(i, g?.id)}
               iconPosition='start'
               {...a11yProps(1)}
             />
@@ -144,7 +144,7 @@ export default function VerticalTabs() {
                       <Col md={6} xs={12}>
                         <div className='tabs_box'>
                           <h2>{obj.name}</h2>
-                          <p style={{wordWrap: "break-word"}}>
+                          <p style={{ wordWrap: "break-word" }}>
                             {obj.short_description}
                           </p>
                           <button onClick={() => handleExamChange(obj)}>
