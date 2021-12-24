@@ -68,6 +68,7 @@ const CareerPage2 = () => {
                   <div className='career_box'>
                     <Row>
                       <Col md={7} xs={12}>
+                      <div className="top_col_content">
                         <h3>{c?.name || "N/A"}</h3>
                         <p style={{ textTransform: "capitalize" }}>
                           {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
@@ -84,6 +85,7 @@ const CareerPage2 = () => {
                         <button className='btn_viewCour'>
                           View More Details
                         </button>
+                        </div>
                       </Col>
 
                       <Col md={5} xs={12}>

@@ -40,6 +40,7 @@
 }
 .career_img {
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 100%;
 }
@@ -109,6 +110,7 @@
   width: 100%;
   height: 163px;
   text-align: center;
+  display: none;
 }
 .MuiImageListItemBar-title.css-dasnyc-MuiImageListItemBar-title,
 .MuiImageListItemBar-subtitle.css-hk6gwf-MuiImageListItemBar-subtitle {
@@ -173,4 +175,56 @@
   .career_box .col-md-7.col-12 {
     order: 2;
   }
+
+  .filter_side .accordion_box_all {
+    display: block;
+  }
+  .filter_side {
+    display: block !important;
+  }
+  .accordion_box_all ul li .MuiFormControlLabel-label {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #323232;
+  }
+}
+
+.filter_side {
+  display: none;
+}
+
+.filter_side {
+  background: #ffffff;
+  border: 1px solid #e3e4eb;
+  padding: 67px 30px;
+  border-radius: 0px;
+  height: 100%;
+  width: 90%;
+  margin-left: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9999999999;
+}
+.filter_side img {
+  position: absolute;
+  right: 5%;
+  top: 4%;
+}
+
+.filter_side p.more {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: #323232;
+  margin: 0;
+}
+
+.filter_side ul {
+  margin: 0;
 }

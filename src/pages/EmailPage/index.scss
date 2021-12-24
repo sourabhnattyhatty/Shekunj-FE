@@ -70,3 +70,20 @@
 , #FAD0C4 6.25%, #E4A8E4 103.39%);
     border-radius: 0px 0px 10px 10px;
 }
+
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) { 
+
+.main_box_email {
+    padding: 32px 15px;
+    height: 100%;
+}
+
+.main_box_email h5 {
+    bottom: 0;
+}
+
+.main_box_email:after {
+    display: none;
+}
+}
