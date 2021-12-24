@@ -1,11 +1,30 @@
 import { coursesTypes } from ".";
 
+const initialCourseSector = {
+  name: "COURSE SECTOR",
+  rows: [
+    {
+      id: 1,
+      name: "Private",
+      isChecked: false,
+      value: "private",
+    },
+    {
+      id: 2,
+      name: "Public", // Government
+      isChecked: false,
+      value: "public",
+    },
+  ],
+};
+
 const initialState = {
   isLoading: false,
   governmentExams: [],
   topCollages: [],
   topSchools: [],
   error: null,
+  courseSector: initialCourseSector,
 };
 
 export const careerReducer = (state = initialState, action) => {
@@ -66,6 +85,20 @@ export const careerReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: action.payload,
+      };
+    case coursesTypes.GOVERNMENT_EXAM_FILTER_SET:
+      const { data, type } = action.payload;
+      if (type === "courseSector") {
+        return {
+          ...state,
+          isLoading: false,
+          courseSector: data,
+        };
+      }
+      return {
+        ...state,
+        isLoading: false,
+        governmentExams: data,
       };
     default:
       return state;

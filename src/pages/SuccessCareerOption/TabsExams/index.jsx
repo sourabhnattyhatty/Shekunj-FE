@@ -171,7 +171,7 @@ export default function VerticalTabs() {
                     </span>
                   </div>
                   <div className='banking-examheader'>
-                    <h2>{guidanceCategoryDetail?.category_name || "N/A"}</h2>
+                    <h2>{guidanceCategoryDetail?.category_name}</h2>
                     <ul className='list-inline'>
                       <li className='list-inline-item'>
                         <img src={Share} alt='' className='mr-3' />

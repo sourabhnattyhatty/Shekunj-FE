@@ -12,6 +12,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { Radio, RadioGroup } from "@mui/material";
 
 import "./index.scss";
+import { useDispatch } from "react-redux";
+import { setFilterValue } from "../../store/career";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -61,9 +63,17 @@ export default function AccordionComponent({
   courseLength,
   categories,
 }) {
+  const dispatch = useDispatch();
+
   const hasMoreCount = (rows = [], count = 0) => {
     return (rows.length || 0) - rows.slice(0, count)?.length || 0;
   };
+
+  const onChangeCollegesFilter = (id, { target: { checked } }, type) => {
+    dispatch(setFilterValue(id, checked, type));
+  };
+
+  console.log({ courseLength });
 
   return (
     <div className='accordion_box_all'>
@@ -79,7 +89,14 @@ export default function AccordionComponent({
                   {stream?.rows?.slice(0, 3)?.map((s) => (
                     <li key={s?.id}>
                       <FormControlLabel
-                        control={<Checkbox />}
+                        control={
+                          <Checkbox
+                            checked={s?.isChecked}
+                            onChange={(e) =>
+                              onChangeCollegesFilter(s?.id, e, "stream")
+                            }
+                          />
+                        }
                         label={s?.name}
                       />
                     </li>
@@ -107,7 +124,14 @@ export default function AccordionComponent({
                   {courseLength?.rows?.map((s) => (
                     <li key={s?.id}>
                       <FormControlLabel
-                        control={<Checkbox />}
+                        control={
+                          <Checkbox
+                            checked={s?.isChecked}
+                            onChange={(e) =>
+                              onChangeCollegesFilter(s?.id, e, "courseSector")
+                            }
+                          />
+                        }
                         label={s?.name}
                       />
                     </li>

@@ -17,23 +17,9 @@ import "./index.scss";
 
 const CareerPage = () => {
   const dispatch = useDispatch();
-  const { topCollages } = useSelector((state) => state.careerReducer);
-
-  const COURSE_LENGTH = {
-    name: "COURSE SECTOR",
-    rows: [
-      {
-        id: 1,
-        name: "Private",
-        isChecked: false,
-      },
-      {
-        id: 2,
-        name: "Public", // Government
-        isChecked: false,
-      },
-    ],
-  };
+  const { topCollages, courseSector } = useSelector(
+    (state) => state.careerReducer,
+  );
 
   useEffect(() => {
     dispatch(getTopCollages());
@@ -59,6 +45,8 @@ const CareerPage = () => {
     rows: topCollages?.collage_stream_list || [],
   };
 
+  console.log({ topCollages });
+
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
@@ -75,7 +63,7 @@ const CareerPage = () => {
               <AccordionComponent
                 type='colleges'
                 stream={STREAM}
-                courseLength={COURSE_LENGTH}
+                courseLength={courseSector}
               />
             </Col>
 
