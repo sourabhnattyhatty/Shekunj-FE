@@ -48,3 +48,12 @@ footer .set_language .MuiButton-text.MuiButton-textPrimary {
   border: 1px solid #ffffff !important;
   text-align: left !important;
 }
+
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+
+.set_language .makeStyles-language-1 {
+  width: 100%;
+}
+
+}

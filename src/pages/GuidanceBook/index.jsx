@@ -137,7 +137,7 @@ const GuidancePage = () => {
           <Row>
             <Col md={5} xs={12}>
               <div className='guidance_con'>
-                <div className='book_sec_content'>
+                <div className='book_sec_content mob_hide'>
                   <h2 data-aos='slide-up'>Book a Session</h2>
                   <p data-aos='slide-up'>
                     Lorem ipsum dolor sit amet, consectetur <br /> adipiscing
@@ -157,6 +157,13 @@ const GuidancePage = () => {
             </Col>
 
             <Col md={7} xs={12}>
+            <div className='book_sec_content mob_show'>
+                  <h2>Book a Session</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur <br /> adipiscing
+                    elit.
+                  </p>
+                </div>
               <div className='guidance_book_form'>
                 <form onSubmit={handleSubmit}>
                   <div className='form-group'>

@@ -33,12 +33,10 @@ const SuccessCareerOption = React.lazy(() =>
   import("./pages/SuccessCareerOption"),
 );
 const MyProgress = React.lazy(() => import("./pages/MyProgress"));
-const AllCertificatePage = React.lazy(() =>
-  import("./pages/AllCertificatePage"),
-);
-const SuccessCareerOption2 = React.lazy(() =>
-  import("./pages/SuccessCareerOption/SuccessCareerOption2"),
-);
+const ContactUs = React.lazy(() => import("./pages/ContactUs"));
+const AllCertificatePage = React.lazy(() => import("./pages/AllCertificatePage"));
+const EmailPage = React.lazy(() => import("./pages/EmailPage"));
+const SuccessCareerOption2 = React.lazy(() => import("./pages/SuccessCareerOption/SuccessCareerOption2"));
 
 function App() {
   return (
@@ -66,17 +64,11 @@ function App() {
         <Route exact path='/CertificatePage' component={CertificatePage} />
         <Route exact path='/SuccessStories' component={SuccessStories} />
         <Route exact path='/SuccessCareerTest' component={SuccessCareerTest} />
-        <Route
-          exact
-          path='/SuccessCareerOption'
-          component={SuccessCareerOption}
-        />
-        <Route exact path='/success2' component={SuccessCareerOption2} />
-        <Route
-          exact
-          path='/AllCertificatePage'
-          component={AllCertificatePage}
-        />
+        <Route exact path='/SuccessCareerOption' component={SuccessCareerOption} />
+        <Route exact path="/success2" component={SuccessCareerOption2}/>
+        <Route exact path="/AllCertificatePage" component={AllCertificatePage}/>
+        <Route exact path="/ContactUs" component={ContactUs}/>
+        <Route exact path="/EmailPage" component={EmailPage}/>
 
         <PrivateRoute
           exact

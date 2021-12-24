@@ -9,12 +9,15 @@ import * as Yup from "yup";
 import DateBirth from "../../Date_Birth";
 import { useDispatch, useSelector } from "react-redux";
 import { noImage } from "../../../../store/courses/action";
-import { Error } from "../../../../components";
+import "./index.scss";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import moment from "moment";
 import { updateProfile } from "../../../../store/auth/action";
 import statesCities from "../../../../utils/statesCities.json";
+import { Error } from "../../../../components";
+
+const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
 
 function EditProfile(props) {
   const dispatch = useDispatch();
@@ -187,12 +190,27 @@ function EditProfile(props) {
                 </div>
               </div>
             </div>
-            <button type='submit' className='Save_profile_btn'>
-              Save
-            </button>
           </Col>
-
           <Col md={4} xs={12}>
+            <div className='edit_profile'>
+              <div className='form-group'>
+                <label htmlFor=''>Last Name</label>
+                <TextField
+                  name='last_name'
+                  type='text'
+                  className='form-control'
+                  autoComplete='off'
+                  placeholder=''
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position='start'>
+                        <img src={User} alt='...' />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+            </div>
             <div className='edit_profile'>
               <div className='form-group'>
                 <label htmlFor=''>Last Name</label>
@@ -236,7 +254,7 @@ function EditProfile(props) {
                 />
               </div>
 
-              <div className='form-group mb-4'>
+              <div className='form-group'>
                 <label htmlFor=''>Stream</label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
@@ -247,7 +265,7 @@ function EditProfile(props) {
                 </div>
               </div>
 
-              <div className='form-group'>
+              <div className='form-group mb-4'>
                 <label htmlFor=''>State</label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
@@ -259,6 +277,12 @@ function EditProfile(props) {
                 </div>
               </div>
             </div>
+          </Col>
+
+          <Col md={8} className='offset-md-3'>
+            <button type='submit' className='Save_profile_btn'>
+              Save
+            </button>
           </Col>
         </Row>
       </form>
