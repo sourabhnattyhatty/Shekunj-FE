@@ -17,6 +17,7 @@ import forum from "../../assets/images/CoursesDetails/forum.png";
 import Check from "../../assets/icons/check.png";
 
 import "./index.scss";
+import { coursesTypes } from "../../store/courses/types";
 
 const CourseDetails = () => {
   const dispatch = useDispatch();
@@ -80,47 +81,21 @@ const CourseDetails = () => {
 
               <div className='sec1_con2 con_setSec1'>
                 <h2>What you’ll learn</h2>
-
                 <Row>
-                  <Col md={6} xs={12}>
-                    <div className='features_box'>
-                      <div>
-                        <img src={Check} alt='' srcSet='' />
-                      </div>
-                      <div>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                      </div>
-                    </div>
-
-                    <div className='features_box'>
-                      <div>
-                        <img src={Check} alt='' srcSet='' />
-                      </div>
-                      <div>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                      </div>
-                    </div>
-                  </Col>
-
-                  <Col md={6} xs={12}>
-                    <div className='features_box'>
-                      <div>
-                        <img src={Check} alt='' srcSet='' />
-                      </div>
-                      <div>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                      </div>
-                    </div>
-
-                    <div className='features_box'>
-                      <div>
-                        <img src={Check} alt='' srcSet='' />
-                      </div>
-                      <div>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                      </div>
-                    </div>
-                  </Col>
+                  {course?.What_you_will_learn?.map((item) => {
+                    return (
+                      <Col md={6} xs={12}>
+                        <div className='features_box'>
+                          <div>
+                            <img src={Check} alt='' srcSet='' />
+                          </div>
+                          <div>
+                            <p>{item.name}</p>
+                          </div>
+                        </div>
+                      </Col>
+                    );
+                  })}
                 </Row>
               </div>
 

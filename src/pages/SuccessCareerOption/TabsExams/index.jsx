@@ -54,6 +54,7 @@ function a11yProps(index) {
 export default function VerticalTabs() {
   const dispatch = useDispatch();
   const [value, setValue] = useState(0);
+  const [tabValue,setTabValue] = useState(0)
   const [categoryDetail, setCategoryDetail] = useState(false);
   const [showGovtExams, setShowGovtExams] = useState(true);
   const { guidanceCategory, guidanceCategoryDetail } = useSelector(
@@ -75,6 +76,7 @@ export default function VerticalTabs() {
     setShowGovtExams(false);
     setCategoryDetail(true);
     setValue(0);
+    setTabValue(obj);
     dispatch(resetCategoryDetail());
     dispatch(getGuidanceCategoryDetail(obj.id));
   };
@@ -96,16 +98,17 @@ export default function VerticalTabs() {
         <Tabs
           orientation='vertical'
           variant='scrollable'
-          value={categoryDetail}
+          value={categoryDetail && tabValue}
           onChange={handleChange}
-          aria-label='Vertical tabs example'
+          aria-label='categories'
           sx={{ borderRight: 1, borderColor: "divider" }}
         >
-          {guidanceCategory?.public?.map((g) => (
+          {console.log(guidanceCategory?.public)}
+          {guidanceCategory?.public?.map((g,i) => (
             <Tab
               key={g?.id}
               label={g?.name}
-              onClick={() => handleExamChange(g)}
+              onClick={() => handleExamChange(i)}
               iconPosition='start'
               {...a11yProps(1)}
             />
@@ -141,10 +144,8 @@ export default function VerticalTabs() {
                       <Col md={6} xs={12}>
                         <div className='tabs_box'>
                           <h2>{obj.name}</h2>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Odio justo et amet varius velit. Eu, ac amet
-                            elit orci ullamcorper proin pellentesque.{" "}
+                          <p style={{wordWrap: "break-word"}}>
+                            {obj.short_description}
                           </p>
                           <button onClick={() => handleExamChange(obj)}>
                             Read More
