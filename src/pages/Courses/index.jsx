@@ -20,8 +20,7 @@ import Pro1 from "../../assets/images/P-1.png";
 
 import Cross from "../../assets/icons/cross.png";
 import Reset from "../../assets/icons/reset.png";
-import "aos/dist/aos.css";
-import "animate.css";
+
 import "./index.scss";
 import "../../pages/HomePage/index.scss";
 import SimpleAccordion from "./Accordian";
@@ -30,7 +29,7 @@ const Courses = (props) => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
-
+  console.log("statde", state);
   useEffect(() => {
     dispatch(allCourses());
   }, [dispatch]);
@@ -45,40 +44,65 @@ const Courses = (props) => {
     }
     dispatch(setFilter(null));
   };
+  const checkFunction = () => {
+    return state?.allCourses?.results?.map((obj) => (
+      <Link to={`/CoursesDetails/${obj.id}`} className="col-md-6" key={obj?.id}>
+        <div className="box box_hov">
+          <div className="slide-img">
+            <img
+              alt=""
+              src={
+                obj.image
+                  ? obj?.image?.includes("http://3.109.195.234")
+                    ? obj?.image
+                    : `http://3.109.195.234${obj?.image}`
+                  : noImage
+              }
+            />
+            <div className="overlay"></div>
+          </div>
 
+          <div className="tag_btn">
+            <button className="btn btn-info">{obj?.category_name}</button>
+            <h6>{obj?.name}</h6>
+          </div>
+        </div>
+      </Link>
+    ));
+  };
   return (
     <div>
-      <SEO title='Sheकुंज - Courses' />
-      <Header loginPage={true} page='courses' />
-      <section className='Cors_sec'>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-md-7'>
-              <div className='cors_con'>
-                <h2 data-aos='slide-up'>{t("coursesPage.banner.heading")}</h2>
-                <div className='cour_box'>
+      <SEO title="Sheकुंज - Courses" />
+      <Header loginPage={true} page="courses" />
+      <section className="Cors_sec">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-7">
+              <div className="cors_con">
+                <h2>{t("coursesPage.banner.heading")}</h2>
+                <div className="cour_box">
                   <ul>
                     <li>
-                      <img src={one} alt='' srcSet='' className='vert-move' />
+                      <img src={one} alt="" srcSet="" />
                     </li>
                     <li>
-                      <img src={two} alt='' srcSet='' />
+                      <img src={two} alt="" srcSet="" />
                     </li>
                     <li>
-                      <img src={three} alt='' srcSet='' />
+                      <img src={three} alt="" srcSet="" />
                     </li>
                   </ul>
-                  <div className='rig_ul'>
-                    <ul className='ulcont'>
+                  <div className="rig_ul">
+                    <ul className="ulcont">
                       <li>
-                        <img src={img1} alt='' />
+                        <img src={img1} alt="" />
                       </li>
                       <li> {t("coursesPage.banner.1")}</li>
                     </ul>
 
-                    <ul className='ulcont'>
+                    <ul className="ulcont">
                       <li>
-                        <img src={img2} alt='' />
+                        <img src={img2} alt="" />
                       </li>
                       <li>
                         {" "}
@@ -87,9 +111,9 @@ const Courses = (props) => {
                       </li>
                     </ul>
 
-                    <ul className='ulcont'>
+                    <ul className="ulcont">
                       <li>
-                        <img src={img3} alt='' />
+                        <img src={img3} alt="" />
                       </li>
                       <li> {t("coursesPage.banner.3")}</li>
                     </ul>
@@ -101,12 +125,12 @@ const Courses = (props) => {
         </div>
       </section>
 
-      <section className='Srch_sec mb-5'>
-        <div className='container'>
+      <section className="Srch_sec mb-5">
+        <div className="container">
           <Row>
             <Col md={10} xs={12}>
               <h1>{t("coursesPage.heading.1")}</h1>
-              <p className='courses_para mb-5'>
+              <p className="courses_para mb-5">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Pellentesque eget pretium nisl vitae porttitor aliquet id
                 posuere tortor. Id turpis neque urna elit pellentesque est
@@ -116,29 +140,33 @@ const Courses = (props) => {
             </Col>
           </Row>
 
-          <div className='row'>
-            <div className='col-md-4 col-sm-4'>
+          <div className="row">
+            <div className="col-md-4 col-sm-4">
               <SimpleAccordion />
             </div>
-            <div className='col-md-8 col-sm-8'>
-              <div className='content_right'>
-                <h3 className='result_head'>
-                  Results: {state?.allCourses?.results?.length || 0} Courses
+            <div className="col-md-8 col-sm-8">
+              <div className="content_right">
+                <h3 className="result_head">
+                  Results:{" "}
+                  {state?.selectedFilter?.length > 0
+                    ? state?.similarCourses?.length
+                    : state?.allCourses?.results?.length || 0}{" "}
+                  Courses
                 </h3>
 
                 <Row>
                   <Col md={9} xs={12}>
-                    <div className='filter_added mb-5'>
+                    <div className="filter_added mb-5">
                       {state?.selectedFilter &&
                         state?.selectedFilter?.length > 0 &&
                         state?.selectedFilter.map((s) => (
-                          <div key={s.id} className='filter_content'>
+                          <div key={s.id} className="filter_content">
                             {s.name}{" "}
                             <img
                               src={Cross}
                               onClick={() => handleResetFilter()}
-                              className='ml-3'
-                              alt='...'
+                              className="ml-3"
+                              alt="..."
                             />
                           </div>
                         ))}
@@ -146,10 +174,10 @@ const Courses = (props) => {
                   </Col>
 
                   <Col md={3} xs={12}>
-                    <div className='reset_content pt-2'>
+                    <div className="reset_content pt-2">
                       {state?.allCourses && (
                         <p onClick={() => handleResetFilter()}>
-                          <img src={Reset} className='mr-2' alt='...' /> Reset
+                          <img src={Reset} className="mr-2" alt="..." /> Reset
                           filters
                         </p>
                       )}
@@ -157,38 +185,11 @@ const Courses = (props) => {
                   </Col>
                 </Row>
               </div>
-              <div className='filter_right_content'>
-                <div className='row'>
-                  {state?.allCourses?.results?.map((obj) => (
-                    <Link
-                      to={`/CoursesDetails/${obj.id}`}
-                      className='col-md-6'
-                      key={obj?.id}
-                    >
-                      <div className='box box_hov'>
-                        <div className='slide-img'>
-                          <img
-                            alt=''
-                            src={
-                              obj.image
-                                ? obj?.image?.includes("http://3.109.195.234")
-                                  ? obj?.image
-                                  : `http://3.109.195.234${obj?.image}`
-                                : noImage
-                            }
-                          />
-                          <div className='overlay'></div>
-                        </div>
-
-                        <div className='tag_btn'>
-                          <button className='btn btn-info'>
-                            {obj?.category_name}
-                          </button>
-                          <h6>{obj?.name}</h6>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+              <div className="filter_right_content">
+                <div className="row">
+                  {state?.selectedFilter?.length > 0
+                    ? state?.similarCourses?.length > 0 && checkFunction()
+                    : checkFunction()}
                 </div>
               </div>
             </div>

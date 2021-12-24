@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { styled } from "@mui/material/styles";
 
@@ -15,7 +15,9 @@ import FormControl from "@mui/material/FormControl";
 import {
   allCourses as fetchAllCourses,
   getCategoryList,
+  getSimilarCourses,
   setFilter,
+  singleCourseDetails,
 } from "../../../store/courses/action";
 
 import "./index.scss";
@@ -61,10 +63,13 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function SimpleAccordion() {
   const [expanded, setExpanded] = React.useState(1);
-  const [selectedFilter, setSelectedFilter] = React.useState(null);
-  const { selectedFilter: currentFilter, categoryList } = useSelector(
-    (state) => state.coursesReducer,
-  );
+  const [selectedFilter, setSelectedFilter] = useState(null);
+  const [selectedSubFilter, setSelectedSubFilter] = useState(null);
+  const {
+    selectedFilter: currentFilter,
+    categoryList,
+    similarCourses,
+  } = useSelector((state) => state.coursesReducer);
 
   const dispatch = useDispatch();
 
@@ -83,54 +88,83 @@ export default function SimpleAccordion() {
     }
     setSelectedFilter(null);
   };
-
-  const handleCheckboxChange = (_, obj) => {
-    dispatch(fetchAllCourses(`?id=${obj.id}`));
+  const handleCategoryChange = (_, obj) => {
+    dispatch(getSimilarCourses(obj?.id));
     dispatch(setFilter([obj]));
     setSelectedFilter(obj.id);
+    if (selectedSubFilter) {
+      setSelectedSubFilter(null);
+    }
   };
-
+  const handleSubCategoryChange = (_, obj) => {
+    dispatch(fetchAllCourses(`?id=${obj.id}&category_id=${selectedFilter}`));
+    setSelectedSubFilter(obj.id);
+  };
   useEffect(() => {
     if (currentFilter === null) {
       setSelectedFilter(null);
     }
   }, [currentFilter]);
-
   return (
     <div className='accordion_box_all'>
-      <Accordion
-      // expanded={expanded === obj?.id}
-      // onChange={handleChange(obj?.id)}
-      >
+      <Accordion>
         <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
           <Typography>Category</Typography>
         </AccordionSummary>
         <AccordionDetails>
           {categoryList?.map((obj) => {
             return (
-              obj?.course_set?.length > 0 && (
-                <ul className='pl-0'>
-                  <FormControl component='fieldset'>
-                    {obj?.course_set?.map((r) => (
-                      <RadioGroup
-                        value={selectedFilter}
-                        onChange={(e) => handleCheckboxChange(e, r)}
-                      >
-                        <FormControlLabel
-                          id={r.id}
-                          value={r.id}
-                          control={<Radio />}
-                          label={r?.name}
-                        />
-                      </RadioGroup>
-                    ))}
-                  </FormControl>
-                </ul>
-              )
+              <ul className='pl-0'>
+                <FormControl component='fieldset'>
+                  <RadioGroup
+                    value={selectedFilter}
+                    onChange={(e) => handleCategoryChange(e, obj)}
+                  >
+                    <FormControlLabel
+                      id={obj.id}
+                      value={obj.id}
+                      control={<Radio />}
+                      label={obj?.name}
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </ul>
             );
           })}
         </AccordionDetails>
       </Accordion>
+      {currentFilter && similarCourses?.length > 0 ? (
+        <Accordion>
+          <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
+            <Typography>Sub Category</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            {currentFilter?.map((obj) => {
+              return (
+                <ul className='pl-0'>
+                  <FormControl component='fieldset'>
+                    {obj?.course_set.map((item) => {
+                      return (
+                        <RadioGroup
+                          value={selectedSubFilter}
+                          onChange={(e) => handleSubCategoryChange(e, item)}
+                        >
+                          <FormControlLabel
+                            id={item.id}
+                            value={item.id}
+                            control={<Radio />}
+                            label={item.name}
+                          />
+                        </RadioGroup>
+                      );
+                    })}
+                  </FormControl>
+                </ul>
+              );
+            })}
+          </AccordionDetails>
+        </Accordion>
+      ) : null}
     </div>
   );
 }
