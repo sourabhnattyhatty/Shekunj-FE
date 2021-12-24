@@ -10,6 +10,7 @@ import DateBirth from "../../Date_Birth";
 import { useDispatch, useSelector } from "react-redux";
 import { noImage } from "../../../../store/courses/action";
 import "./index.scss";
+import "../index.scss";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import moment from "moment";
@@ -64,11 +65,11 @@ function EditProfile(props) {
   });
 
   useEffect(() => {
-    if (user?.city) {
+    if (user?.state) {
       const cities = filterCities(values.state);
       if (cities) setCities(cities);
     }
-  }, [user]);
+  }, [user,values.state]);
 
   const filterCities = (state) =>
     statesCities?.find((c) => c?.name === state)?.districts || [];
@@ -94,7 +95,7 @@ function EditProfile(props) {
           </Col>
           <Col md={4} xs={12}>
             <div className='edit_profile'>
-              <div className='form-group'>
+              <div className='form-group mb-4'>
                 <label htmlFor=''>First Name</label>
                 <TextField
                   name='name'
@@ -116,7 +117,7 @@ function EditProfile(props) {
                 <Error error={errors.name} touched={touched.name} />
               </div>
 
-              <div className='form-group'>
+              <div className='form-group mb-4'>
                 <label htmlFor=''>Email</label>
                 <TextField
                   name='email'
@@ -138,7 +139,7 @@ function EditProfile(props) {
                 <Error error={errors.email} touched={touched.email} />
               </div>
 
-              <div className='form-group mzero'>
+              <div className='form-group mb-4'>
                 <label htmlFor=''>Highest Education</label>
                 <TextField
                   name='highest_education'
@@ -165,21 +166,22 @@ function EditProfile(props) {
 
               <div className='form-group'>
                 <label htmlFor=''>Date of birth</label>
-                <DateBirth
-                  defaultValue={values.dob}
-                  updatedDate={(value) =>
-                    setFieldValue(
-                      "dob",
-                      moment(value, "DD-MM-YYYY").format("YYYY-MM-DD"),
-                    )
-                  }
-                />
-                <Error error={errors.dob} touched={touched.dob} />
+                <div className='form-group mzero'>
+                  <DateBirth
+                    defaultValue={values.dob}
+                    updatedDate={(value) =>
+                      setFieldValue(
+                        "dob",
+                        moment(value, "DD-MM-YYYY").format("YYYY-MM-DD"),
+                      )
+                    }
+                  />
+                  <Error error={errors.dob} touched={touched.dob} />
+                </div>
               </div>
 
-              <div className='form-group'>
+              <div className='form-group mb-4'>
                 <label htmlFor=''>City</label>
-
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     listItem={cities}
@@ -193,26 +195,7 @@ function EditProfile(props) {
           </Col>
           <Col md={4} xs={12}>
             <div className='edit_profile'>
-              <div className='form-group'>
-                <label htmlFor=''>Last Name</label>
-                <TextField
-                  name='last_name'
-                  type='text'
-                  className='form-control'
-                  autoComplete='off'
-                  placeholder=''
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position='start'>
-                        <img src={User} alt='...' />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </div>
-            </div>
-            <div className='edit_profile'>
-              <div className='form-group'>
+              <div className='form-group mb-4'>
                 <label htmlFor=''>Last Name</label>
                 <TextField
                   name='last_name'
@@ -234,7 +217,7 @@ function EditProfile(props) {
                 <Error error={errors.last_name} touched={touched.last_name} />
               </div>
 
-              <div className='form-group'>
+              <div className='form-group mb-4'>
                 <label htmlFor=''>Mobile Number</label>
                 <TextField
                   name='contact'
@@ -254,7 +237,7 @@ function EditProfile(props) {
                 />
               </div>
 
-              <div className='form-group'>
+              <div className='form-group mb-3'>
                 <label htmlFor=''>Stream</label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
@@ -266,7 +249,7 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-4'>
-                <label htmlFor=''>State</label>
+                <label htmlFor=''>State</label>{" "}
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     listItem={statesCities}

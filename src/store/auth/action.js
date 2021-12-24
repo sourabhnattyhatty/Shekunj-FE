@@ -162,6 +162,7 @@ export const getUserProfile = () => async (dispatch) => {
   }
 };
 export const updateProfile = (id, values) => async (dispatch) => {
+  debugger
   try {
     dispatch({ type: authTypes.USER_PROFILE_UPDATE });
     const formData = httpServices.createFormData(values);

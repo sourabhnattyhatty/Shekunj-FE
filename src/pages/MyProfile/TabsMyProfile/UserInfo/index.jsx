@@ -5,7 +5,7 @@ import { noImage } from "../../../../store/courses/action";
 
 function UserInfo(props) {
   const { user } = useSelector((state) => state.authReducer);
-
+  console.log(user);
   return (
     <div className='myProfile_box'>
       <Row>

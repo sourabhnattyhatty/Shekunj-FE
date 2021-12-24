@@ -30,6 +30,12 @@
       "passError": {
         "min": "कम से कम 6 वर्ण",
         "required": "पासवर्ड जरुरी है"
+      },
+      "firstNameError":{
+        "required":"पहला नाम जरुरी है"
+      },
+      "lastNameError":{
+        "required":"उपनाम जरुरी है"
       }
     },
     "form2": {

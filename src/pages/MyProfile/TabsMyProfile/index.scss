@@ -187,7 +187,7 @@ p.eye2 {
   border-radius: 5px;
   height: 48px;
   padding: 5px 0;
-  margin-bottom: 34px;
+  // margin-bottom: 34px;
   margin-top: 8px;
 }
 .edit_profile fieldset.MuiOutlinedInput-notchedOutline {
@@ -238,15 +238,15 @@ button.Save_profile_btn:hover {
 }
 .form-group.mzero .MuiFormControl-root {
   width: 100%;
-  // background-color: #FCFCFD;
   border: 1px solid #e6e5eb;
   box-sizing: border-box;
   border-radius: 5px;
   height: 48px;
-  margin-bottom: 34px;
-  margin-top: 8px;
+  // margin-bottom: 34px;
+  // margin-top: 8px;
   margin-left: 0;
 }
+
 .form-group.mzero svg.MuiSvgIcon-root {
   background-image: url("../../../assets/icons/down.png") !important;
   background-repeat: no-repeat;
