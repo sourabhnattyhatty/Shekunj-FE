@@ -8,7 +8,7 @@ export const getGovernmentExams =
   (filter = null) =>
   async (dispatch, getState) => {
     try {
-      let url = '"career/government-exam/"';
+      let url = "career/government-exam/";
       const { courseSector } = getState().careerReducer;
       if (filter) {
       }
