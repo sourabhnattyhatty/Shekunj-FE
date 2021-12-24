@@ -15,8 +15,6 @@ import three from "../../assets/images/Courses/03.png";
 import img1 from "../../assets/images/Courses/img1.png";
 import img2 from "../../assets/images/Courses/img2.png";
 import img3 from "../../assets/images/Courses/img3.png";
-import Profile from "../../assets/images/testimonial/1.png";
-import Pro1 from "../../assets/images/P-1.png";
 
 import Cross from "../../assets/icons/cross.png";
 import Reset from "../../assets/icons/reset.png";
@@ -29,7 +27,6 @@ const Courses = (props) => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
-  console.log("statde", state);
   useEffect(() => {
     dispatch(allCourses());
   }, [dispatch]);

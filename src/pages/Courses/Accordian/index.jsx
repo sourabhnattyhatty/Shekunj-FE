@@ -17,7 +17,6 @@ import {
   getCategoryList,
   getSimilarCourses,
   setFilter,
-  singleCourseDetails,
 } from "../../../store/courses/action";
 
 import "./index.scss";
@@ -62,7 +61,6 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function SimpleAccordion() {
-  const [expanded, setExpanded] = React.useState(1);
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [selectedSubFilter, setSelectedSubFilter] = useState(null);
   const {
@@ -78,16 +76,6 @@ export default function SimpleAccordion() {
     dispatch(getCategoryList());
   }, [dispatch]);
 
-  const handleChange = (panel) => (_, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-    if (!newExpanded) {
-      dispatch(fetchAllCourses(null));
-      dispatch(setFilter(null));
-
-      dispatch({ type: "SELECTED_FILTER", payload: null });
-    }
-    setSelectedFilter(null);
-  };
   const handleCategoryChange = (_, obj) => {
     dispatch(getSimilarCourses(obj?.id));
     dispatch(setFilter([obj]));
