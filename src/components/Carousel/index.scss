@@ -368,10 +368,10 @@ button.btn.btn_Courses {
   display: block;
 }
 
-.owl-carousel .owl-nav.disabled,
-.owl-carousel .owl-dots.disabled {
-  display: block !important;
-}
+// .owl-carousel .owl-nav.disabled,
+// .owl-carousel .owl-dots.disabled {
+//   display: block !important;
+// }
 
 .collage_name {
   height: 37px;
@@ -399,4 +399,16 @@ button.btn.btn_Courses {
   #myCarousel .carousel-item {
     height: 72vh !important;
   }
+}
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+
+.sec2_right {
+  padding: 15px !important;
+}
+
+.sec2_right a.btn_view {
+  padding: 23px 80px !important;
+  width: 100%;
+}
 }

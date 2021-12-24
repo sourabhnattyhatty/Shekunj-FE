@@ -52,7 +52,7 @@ function LoginForm2() {
     <>
       <form onSubmit={handleSubmit}>
         <div className='form-group mb-4'>
-          <label>Mobile Number</label>
+          <label>Mobile Number <span>*</span></label>
           <TextField
             name='contact'
             type='number'

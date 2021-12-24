@@ -55,7 +55,7 @@ const Courses = (props) => {
           <div className='row'>
             <div className='col-md-7'>
               <div className='cors_con'>
-                <h2 data-aos='slide-up'>{t("coursesPage.banner.heading")}</h2>
+                <h2>{t("coursesPage.banner.heading")}</h2>
                 <div className='cour_box'>
                   <ul>
                     <li>

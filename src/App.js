@@ -36,6 +36,7 @@ const MyProgress = React.lazy(() => import("./pages/MyProgress"));
 const ContactUs = React.lazy(() => import("./pages/ContactUs"));
 const AllCertificatePage = React.lazy(() => import("./pages/AllCertificatePage"));
 const EmailPage = React.lazy(() => import("./pages/EmailPage"));
+const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const SuccessCareerOption2 = React.lazy(() => import("./pages/SuccessCareerOption/SuccessCareerOption2"));
 
 function App() {
@@ -95,6 +96,7 @@ function App() {
           component={CertificateFullView}
         />
         <PrivateRoute exact path='/MyProgress' component={MyProgress} />
+        <PrivateRoute exact path='/PrivacyPolicy' component={PrivacyPolicy} />
       </Switch>
     </>
   );
