@@ -71,7 +71,7 @@ const Footer = ({ loginPage }) => {
               </ul>
             </div>
 
-            <div className='col-md-3'>
+            <div className='col-md-3 col-4'>
               <div className='set_language'>
                 <ChangeLanguageButton />
               </div>

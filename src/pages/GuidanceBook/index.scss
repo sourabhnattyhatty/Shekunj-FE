@@ -25,7 +25,7 @@
 }
 .guidance_con img {
   max-width: 100%;
-  margin-top: 100px;
+  margin-top: 30px;
 }
 
 .guidance_book_form span.MuiTabs-indicator {
@@ -117,7 +117,8 @@
   box-sizing: border-box;
   border-radius: 5px;
   padding: 15px 12px;
-}.guidance_book_form textarea.textarea_set:focus {
+}
+.guidance_book_form textarea.textarea_set:focus {
   outline: none;
 }
 .guidance_book_form .MuiSelect-select.MuiSelect-outlined {
@@ -178,12 +179,53 @@ button.book_sess_btn:hover {
   display: flex;
   justify-content: space-between;
 }
+.book_sec_content.mob_show {
+  display: none;
+}
+.book_sec_content.mob_show h2 {
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 52px;
+  color: #323232;
+  margin: 0;
+}
+
+.book_sec_content.mob_show p {
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+  color: #828282;
+}
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
   .guidance_book_form {
     padding: 30px;
   }
 
   .guidance_book {
-    padding: 50px 0;
+    padding: 30px 0;
   }
+
+  .guidance_book .col-md-5.col-12 {
+    order: 2;
+  }
+
+  .book_sec_content.mob_show {
+    display: block;
+}
+
+  .guidance_book .col-md-7.col-12 {
+    order: 1;
+  }
+
+  .book_sec_content.mob_hide {
+    display: none;
+}
+
+.other_head .MuiButton-text.MuiButton-root {
+  display: none;
+}
 }

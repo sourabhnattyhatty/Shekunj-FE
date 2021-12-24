@@ -8,6 +8,7 @@ import Stream from "../../../../assets/images/MyProfile/Stream.png";
 import DateBirth from "../../Date_Birth";
 import { useSelector } from "react-redux";
 import { noImage } from "../../../../store/courses/action";
+import "./index.scss"
 
 const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
 
@@ -16,7 +17,7 @@ function EditProfile(props) {
   return (
     <>
       <Row>
-        <Col md={4} xs={12}>
+        <Col md={3} xs={12}>
           <div className='myProfile_img'>
             <img
               src={user?.profile_pic || noImage}
@@ -82,9 +83,7 @@ function EditProfile(props) {
               </div>
             </div>
           </div>
-          <button className='Save_profile_btn' onClick={props.func}>
-        Save
-      </button>
+          
         </Col>
 
         <Col md={4} xs={12}>
@@ -150,8 +149,16 @@ function EditProfile(props) {
               </div>
             </div>
           </div>
+        </Col> 
+
+        <Col md={8} className="offset-md-3">
+        <button className='Save_profile_btn' onClick={props.func}>
+        Save
+      </button>
         </Col>
       </Row>
+
+      
       
     </>
   );

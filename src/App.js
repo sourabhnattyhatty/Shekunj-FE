@@ -29,7 +29,9 @@ const SuccessStories = React.lazy(() => import("./pages/SuccessStories"));
 const SuccessCareerTest = React.lazy(() => import("./pages/SuccessCareerTest"));
 const SuccessCareerOption = React.lazy(() => import("./pages/SuccessCareerOption"));
 const MyProgress = React.lazy(() => import("./pages/MyProgress"));
+const ContactUs = React.lazy(() => import("./pages/ContactUs"));
 const AllCertificatePage = React.lazy(() => import("./pages/AllCertificatePage"));
+const EmailPage = React.lazy(() => import("./pages/EmailPage"));
 const SuccessCareerOption2 = React.lazy(() => import("./pages/SuccessCareerOption/SuccessCareerOption2"));
 
 function App() {
@@ -61,6 +63,8 @@ function App() {
         <Route exact path='/SuccessCareerOption' component={SuccessCareerOption} />
         <Route exact path="/success2" component={SuccessCareerOption2}/>
         <Route exact path="/AllCertificatePage" component={AllCertificatePage}/>
+        <Route exact path="/ContactUs" component={ContactUs}/>
+        <Route exact path="/EmailPage" component={EmailPage}/>
 
         <PrivateRoute
           exact

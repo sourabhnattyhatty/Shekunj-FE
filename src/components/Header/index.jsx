@@ -114,7 +114,7 @@ const Header = ({ page, subPage }) => {
         <div className='container'>
           <div className='topbar'>
             <div className='row'>
-              <div className='col-md-3'>
+              <div className='col-md-3 col-12'>
                 <div className='sign_in'>
                   <Link className='navbar-brand' to='/'>
                     <img src={Logo} alt='...' />
@@ -124,7 +124,7 @@ const Header = ({ page, subPage }) => {
                 </div>
               </div>
 
-              <div className='col-md-9 pl-md-0 pl-lg-2 text-right'>
+              <div className='col-md-9 col-5 pl-md-0 pl-lg-2 text-right'>
                 {/* <div
                   id='custom-search-input'
                   className='mt-lg-3 mt-md-1 d-inline-block'
