@@ -77,9 +77,13 @@ section.CouDtl_ban .row {
   color: #333333;
   font-family: "SegoeUI_bold";
 }
+.CouDtl {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
 .CouDtl img {
-  position: absolute;
-  bottom: 0;
   max-width: 100%;
 }
 .sec1_con {
@@ -379,7 +383,7 @@ section.CouDtl_ban .row {
 
 @media screen and (max-width: 767px) {
   section.CouDtl_ban {
-    height: 600px;
+    height: 170px;
   }
   .CouDtl_con h2 {
     font-size: 30px;

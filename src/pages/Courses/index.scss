@@ -310,6 +310,44 @@ hr.line {
   }
 }
 
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+
+.cors_con h2 {
+  font-size: 32px;
+  padding-top: 30px;
+font-size: 32px;
+line-height: 120%;
+/* or 38px */
+color: #EE5F98;
+}
+.cour_box {
+  flex-wrap: inherit;
+}
+ul.ulcont {
+  margin-left: 15px;
+  margin-bottom: 0;
+}
+
+.cors_con {
+  padding: 0;
+}
+ul.ulcont li {
+  font-size: 15px;
+}
+
+.Cors_sec {
+  background-image: url("../../assets/images/Courses/mob_ban.png");
+  height: 695px;
+}
+.cour_box ul li img {
+  width: 38px;
+}
+.rig_ul ul li img {
+  margin-bottom: 27px;
+}
+}
+
 /*new*/
 .Srch_sec h1 {
   font-weight: normal;
