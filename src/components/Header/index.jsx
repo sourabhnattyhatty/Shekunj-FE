@@ -67,12 +67,12 @@ const Header = ({ page, subPage }) => {
     setAnchorEl(null);
   };
   const handleProgress = () => {
-    history.push("/MyProgress");
+    history.push("/my-progress");
     setAnchorEl(null);
   };
 
   const handleCertificate = () => {
-    history.push("/AllCertificatePage");
+    history.push("/all-certificate-page");
     setAnchorEl(null);
   };
 

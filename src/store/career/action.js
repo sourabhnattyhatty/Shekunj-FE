@@ -192,6 +192,7 @@ const handleTopCollagesFilter = (topCollages, courseSector) => {
   if (streamIdString && collageIdString) {
     return `${url}?${streamIdString}&${collageIdString}`;
   }
+  return url;
 };
 
 export const getTopCollages =
@@ -322,7 +323,7 @@ export const setFilterValue =
     }
   };
 
-export const reSetFilterValue = () => async (dispatch, getState) => {
+export const reSetFilterValue = () => async (dispatch) => {
   dispatch({
     type: coursesTypes.GOVERNMENT_EXAM_FILTER_RESET,
   });

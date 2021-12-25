@@ -1,5 +1,5 @@
 import React from "react";
-import { Footer, Header, ScrollToTop } from "../../components";
+import { Footer, Header, ScrollToTop, SEO } from "../../components";
 import { Container, Row, Col } from "react-bootstrap";
 import "./index.scss";
 import Certificate01 from "../../assets/images/AllCertificate/Certificate01.png";
@@ -7,9 +7,10 @@ import clock1 from "../../assets/icons/clock1.png";
 import list from "../../assets/icons/list.png";
 import barchart from "../../assets/icons/bar-chart.png";
 
-function index() {
+function AllCertificatePage() {
   return (
     <div>
+      <SEO title='Sheकुंज - All Certificates' />
       <Header loginPage={true} subPage='allCertificatePage' />
 
       <div className='all_certif_banner'>
@@ -249,4 +250,4 @@ function index() {
   );
 }
 
-export default index;
+export default AllCertificatePage;

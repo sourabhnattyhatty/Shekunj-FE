@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import moment from "moment";
+import { CircularProgress } from "@mui/material";
 
 import { updateProfile } from "../../../../store/auth/action";
 import statesCities from "../../../../utils/statesCities.json";
@@ -16,7 +17,7 @@ import User from "../../../../assets/images/MyProfile/user.png";
 import phone from "../../../../assets/images/MyProfile/phone.png";
 import education from "../../../../assets/images/MyProfile/education.png";
 import DateBirth from "../../Date_Birth";
-import { noImage } from "../../../../store/courses/action";
+import ProfileImage from "../ProfileImage";
 
 import "./index.scss";
 import "../index.scss";
@@ -24,18 +25,18 @@ import "../index.scss";
 function EditProfile(props) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { user } = useSelector((state) => state.authReducer);
+  const { user, isLoading } = useSelector((state) => state.authReducer);
   const [cities, setCities] = useState([]);
 
   const validationSchema = Yup.object({
     name: Yup.string().required(t("login.form1.firstNameError.required")),
     last_name: Yup.string().required(t("login.form1.lastNameError.required")),
-    email: Yup.string().email(t("login.form1.emailError.invalid")),
-    highest_education: Yup.string(),
-    dob: Yup.string(),
-    state: Yup.string(),
-    city: Yup.string(),
-    stream: Yup.string(),
+    email: Yup.string().email(t("login.form1.emailError.invalid")).nullable(),
+    highest_education: Yup.string().nullable(),
+    dob: Yup.string().nullable(),
+    state: Yup.string().nullable(),
+    city: Yup.string().nullable(),
+    stream: Yup.string().nullable(),
   });
 
   const {
@@ -46,6 +47,7 @@ function EditProfile(props) {
     errors,
     touched,
     setFieldValue,
+    isSubmitting,
   } = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -81,18 +83,13 @@ function EditProfile(props) {
     setFieldValue("city", "");
     setFieldValue("state", value);
   };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         <Row>
           <Col md={4} xs={12}>
-            <div className='myProfile_img'>
-              <img
-                src={user?.profile_pic || noImage}
-                style={{ width: "-webkit-fill-available" }}
-                alt={user?.name || "N/A"}
-              />
-            </div>
+            <ProfileImage isEditable={true} />
           </Col>
           <Col md={4} xs={12}>
             <div className='edit_profile'>
@@ -263,9 +260,17 @@ function EditProfile(props) {
             </div>
           </Col>
 
-          <Col md={8} className='offset-md-3'>
-            <button type='submit' className='Save_profile_btn'>
-              Save
+          <Col md={8} className='offset-md-4'>
+            <button
+              type='submit'
+              disabled={isSubmitting || isLoading}
+              className='Save_profile_btn'
+            >
+              {isSubmitting || isLoading ? (
+                <CircularProgress color='secondary' size={20} />
+              ) : (
+                "Save"
+              )}
             </button>
           </Col>
         </Row>

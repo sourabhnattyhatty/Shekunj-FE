@@ -1,4 +1,7 @@
 import Cookies from "js-cookie";
+import JwtDecode from "jwt-decode";
+import moment from "moment";
+import { toast } from "react-toastify";
 
 export const toasterConfig = {
   position: "top-right",
@@ -34,9 +37,117 @@ export const transformError = (error) => {
 
 export const isAuthenticated = () => {
   const token = Cookies.get("sheToken");
-  // Check time
   if (token) {
     return true;
   }
   return false;
 };
+
+export const checkIsValidImage = (file) => {
+  const filetypes = /\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/;
+  if (!file.name.match(filetypes)) {
+    toast.error("select valid image.");
+    return false;
+  }
+  return true;
+};
+
+export const decodeToken = (token) => JwtDecode(token);
+
+export const checkIsSessionExpired = (tokenExpiry = 0) => {
+  const currentTime = new Date().getTime();
+  const tokenExpireTime = new Date((tokenExpiry - 10) * 1000).getTime();
+  if (currentTime > tokenExpireTime) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export function toFixedDown(number, digits = 0) {
+  const numberString = (number || 0).toFixed(10);
+  const re = new RegExp("(\\d+\\.\\d{" + digits + "})(\\d)"),
+    m = numberString.match(re);
+  const result = m ? parseFloat(m[1]) : parseFloat(numberString).valueOf();
+  return number >= 0 ? result : -1 * result;
+}
+
+export function onKeyPressAllowNumbers(e, val) {
+  if (
+    [46, 8, 9, 27, 13, 110].indexOf(e.keyCode) !== -1 ||
+    // Allow: Ctrl+A
+    (e.keyCode === 65 && (e.ctrlKey || e.metaKey)) ||
+    // Allow: Ctrl+C
+    (e.keyCode === 67 && (e.ctrlKey || e.metaKey)) ||
+    // Allow: Ctrl+X
+    (e.keyCode === 88 && (e.ctrlKey || e.metaKey)) ||
+    // Allow: home, end, left, right
+    (e.keyCode >= 35 && e.keyCode <= 39)
+  ) {
+    // let it happen, don't do anything
+    if (e.keyCode === 46 && val.indexOf(".") === -1) return;
+  }
+  // Ensure that it is a number and stop the keypress & do not allow multiple points
+  if (e.keyCode < 48 || e.keyCode > 57) {
+    e.preventDefault();
+  }
+}
+
+export function handleErrorMessage(err) {
+  let errorMessage = "Something went wrong";
+
+  if (err.status === 401) {
+    errorMessage = "Session Expired";
+    return errorMessage;
+  }
+
+  if (err.error) {
+    delete err.error.status;
+    if (err.error.message) {
+      errorMessage = err.error.message;
+    } else if (Array.isArray(err.error[Object.keys(err.error)[0]])) {
+      errorMessage = err.error[Object.keys(err.error)[0]][0];
+    } else {
+      errorMessage = err.error[Object.keys(err.error)[0]];
+    }
+  } else if (err.message) {
+    errorMessage = err.message;
+  } else if (Array.isArray(err[Object.keys(err)[0]])) {
+    errorMessage = err[Object.keys(err)[0]][0];
+  } else if (err.data && typeof err.data === "string") {
+    errorMessage = err.statusText;
+  } else if (err[Object.keys(err)[0]]) {
+    errorMessage = err[Object.keys(err)[0]];
+  }
+
+  if (errorMessage === "true" || typeof errorMessage !== "string") {
+    if (err.status && err.status >= 200 && err.status < 300) {
+      errorMessage = "success";
+    } else {
+      errorMessage = "Something Went Wrong";
+    }
+  }
+
+  return errorMessage;
+}
+
+export function formatLocalTime(date) {
+  return moment.utc(date).local();
+}
+
+export function calendarDate(date) {
+  const newDate = this.formatLocalTime(date);
+  return moment(newDate).calendar(null, {
+    sameDay: "HH:mm",
+    nextDay: `[tomorrow]`,
+    lastDay: `[yesterday]`,
+    lastWeek: "MM/DD",
+    nextWeek: "MM/DD",
+    sameElse: "MM/DD",
+  });
+}
+
+export function timeFromNow(time) {
+  const newDate = this.formatLocalTime(time);
+  return moment(newDate).fromNow();
+}

@@ -1,5 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+
+import { checkIsSessionExpired, decodeToken } from ".";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true;
@@ -10,7 +13,15 @@ const responseBody = (response) => response.data;
 
 axios.interceptors.request.use((config) => {
   const token = Cookies.get("sheToken");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
+  if (token) {
+    const userInfo = decodeToken(token);
+    if (userInfo?.exp && checkIsSessionExpired(userInfo?.exp)) {
+      Cookies.remove("userInfo");
+      toast.error("Session expired!");
+      window.location.href = "/login";
+    }
+    config.headers.Authorization = `Bearer ${token}`;
+  }
   return config;
 });
 
@@ -19,10 +30,12 @@ axios.interceptors.response.use(
     return response;
   },
   (error) => {
-    // eslint-disable-next-line
-    const { data, status } = !error.response;
+    const { status } = !error.response;
     switch (status) {
       case 401:
+        Cookies.remove("userInfo");
+        toast.error("Unauthorized access!");
+        window.location.href = "/login";
         console.log("Logout user!");
         break;
       case 403:
@@ -56,7 +69,7 @@ const requests = {
   createFormData,
 };
 
-export function createFormData(item) {
+function createFormData(item) {
   let formData = new FormData();
   for (const key in item) {
     formData.append(key, item[key]);

@@ -27,7 +27,7 @@ import {
   fetchStartUserCareerTest,
   fetchUserCareerTestCount,
 } from "../../store/guidance/action";
-import time from "../../assets/images/Courses/time.png";
+import timeIcon from "../../assets/images/Courses/time.png";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 
@@ -86,8 +86,8 @@ function CourseTest() {
         fetchUserCareerTestCount(selectedCourseCategoryValue?.id),
       );
       if (counts.status_code === 200 && counts.data.career_time) {
-        setTestTime((parseInt(counts?.data.career_time, 10) || 0) * 60000);
         setIsTestStarted(true);
+        setTestTime((parseInt(counts?.data.career_time, 10) || 0) * 60000);
       }
     }
   };
@@ -95,14 +95,6 @@ function CourseTest() {
   const handleTestFinished = () => {
     toast.error("Test finises!");
   };
-
-  console.log({
-    selectedCourseCategoryValue,
-    testData,
-    countData,
-    testTime,
-    isTestStarted,
-  });
 
   return (
     <div>
@@ -185,7 +177,7 @@ function CourseTest() {
           <>
             <div className='time_set'>
               <p>
-                <img src={time} alt='' /> Time left:{" "}
+                <img src={timeIcon} alt='timeIcon' /> Time left:{" "}
                 <Timer
                   initialTime={testTime}
                   checkpoints={[
@@ -225,7 +217,7 @@ function CourseTest() {
                       control={<Radio />}
                       label='Andhra Pradesh'
                     />
-
+                    {/* 
                     <FormControlLabel
                       value='Karnataka'
                       control={<Radio />}
@@ -240,7 +232,7 @@ function CourseTest() {
                       value='Tamil Nadu'
                       control={<Radio />}
                       label='Tamil Nadu'
-                    />
+                    /> */}
                   </RadioGroup>
                 </div>{" "}
                 <div className='prev_next_btn'>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+
 import PublicRoute from "./routers/PublicRouter";
 import PrivateRoute from "./routers/PrivateRouter";
 
@@ -8,7 +9,6 @@ import "./App.css";
 const ForgotPage = React.lazy(() => import("./pages/ForgotPage/ForgotPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage/SignupPage"));
 const LoginPage = React.lazy(() => import("./pages/LoginPage/LoginPage"));
-// const Dashboard = React.lazy(() => import("./pages/Dashboard/Dashboard"));
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const About = React.lazy(() => import("./pages/About"));
 const Career = React.lazy(() => import("./pages/Career"));
@@ -34,10 +34,14 @@ const SuccessCareerOption = React.lazy(() =>
 );
 const MyProgress = React.lazy(() => import("./pages/MyProgress"));
 const ContactUs = React.lazy(() => import("./pages/ContactUs"));
-const AllCertificatePage = React.lazy(() => import("./pages/AllCertificatePage"));
+const AllCertificatePage = React.lazy(() =>
+  import("./pages/AllCertificatePage"),
+);
 const EmailPage = React.lazy(() => import("./pages/EmailPage"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
-const SuccessCareerOption2 = React.lazy(() => import("./pages/SuccessCareerOption/SuccessCareerOption2"));
+const SuccessCareerOption2 = React.lazy(() =>
+  import("./pages/SuccessCareerOption/SuccessCareerOption2"),
+);
 
 function App() {
   return (
@@ -51,8 +55,6 @@ function App() {
           path='/authentication/password-reset/:uidb/:token/'
           component={ResetPassword}
         />
-
-        {/* <Route exact path='/dashboard' component={Dashboard} /> */}
         <Route exact path='/' component={HomePage} />
         <Route exact path='/about' component={About} />
         <Route exact path='/top-collages' component={Career} />
@@ -65,12 +67,19 @@ function App() {
         <Route exact path='/CertificatePage' component={CertificatePage} />
         <Route exact path='/SuccessStories' component={SuccessStories} />
         <Route exact path='/SuccessCareerTest' component={SuccessCareerTest} />
-        <Route exact path='/SuccessCareerOption' component={SuccessCareerOption} />
-        <Route exact path="/success2" component={SuccessCareerOption2}/>
-        <Route exact path="/AllCertificatePage" component={AllCertificatePage}/>
-        <Route exact path="/ContactUs" component={ContactUs}/>
-        <Route exact path="/EmailPage" component={EmailPage}/>
-
+        <Route
+          exact
+          path='/SuccessCareerOption'
+          component={SuccessCareerOption}
+        />
+        <Route exact path='/success2' component={SuccessCareerOption2} />
+        <Route
+          exact
+          path='/all-certificate-page'
+          component={AllCertificatePage}
+        />
+        <Route exact path='/ContactUs' component={ContactUs} />
+        <Route exact path='/EmailPage' component={EmailPage} />
         <PrivateRoute
           exact
           path='/CoursesDetails/:id'
@@ -81,9 +90,7 @@ function App() {
           path='/CoursesModule/:id'
           component={CoursesModule}
         />
-
         <PrivateRoute exact path='/CoursesTest/:id' component={CourseTest} />
-
         <PrivateRoute exact path='/CourseResult/:id' component={CourseResult} />
         <PrivateRoute
           exact
@@ -95,7 +102,7 @@ function App() {
           path='/CertificateFullView'
           component={CertificateFullView}
         />
-        <PrivateRoute exact path='/MyProgress' component={MyProgress} />
+        <PrivateRoute exact path='/my-progress' component={MyProgress} />
         <PrivateRoute exact path='/PrivacyPolicy' component={PrivacyPolicy} />
       </Switch>
     </>
