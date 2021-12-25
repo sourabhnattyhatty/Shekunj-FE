@@ -185,7 +185,6 @@ export const updateProfile = (id, values) => async (dispatch) => {
     if (!values.stream) {
       delete values.stream;
     }
-    debugger;
     dispatch({ type: authTypes.USER_PROFILE_UPDATE });
     const formData = httpServices.createFormData(values);
     const res = await httpServices.putForm(

@@ -11,7 +11,6 @@ export const getUserCourseProgress =
       const url = "course/user-progress/";
       dispatch({ type: myProgressTypes.FETCH_MY_PROGRESS_REQUEST });
       const res = await ApiService.get(url);
-      debugger;
       dispatch({
         type: myProgressTypes.FETCH_MY_PROGRESS_FINISH,
         payload: res?.data || null,
