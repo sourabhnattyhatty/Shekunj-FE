@@ -91,7 +91,7 @@ img.vert-move {
 .react-datepicker__year-text--keyboard-selected {
   border-radius: 0.3 rem;
   background-color: #ff008d !important;
-  color: #fff;
+  color: #fff !important;
 }
 
 .react-datepicker__day--selected:hover,

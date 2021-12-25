@@ -54,7 +54,9 @@ function EditProfile(props) {
       email: user?.email || "",
       highest_education: user?.highest_education || "",
       last_name: user?.last_name || "",
-      dob: moment(user?.dob, "DD-MM-YYYY").format("YYYY-MM-DD") || "",
+      dob: user.dob
+        ? moment(user?.dob, "DD-MM-YYYY").format("YYYY-MM-DD")
+        : null,
       state: user?.state,
       city: user?.city,
       stream: user?.stream,
