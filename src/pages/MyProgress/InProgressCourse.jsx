@@ -39,7 +39,10 @@ const InProgressCourse = ({ courses }) => {
               <Col md={2} xs={3} className='p-0'>
                 <div className='progress-coursebardiv'>
                   <Box sx={{ position: "relative", display: "inline-flex" }}>
-                    <CircularProgress variant='determinate' value={80} />
+                    <CircularProgress
+                      variant='determinate'
+                      value={c?.progress || 0}
+                    />
                     <Box
                       sx={{
                         top: 0,
@@ -57,7 +60,7 @@ const InProgressCourse = ({ courses }) => {
                         component='div'
                         color='text.secondary'
                       >
-                        100%
+                        {c?.progress || 0}%
                       </Typography>
                     </Box>
                   </Box>
@@ -67,7 +70,7 @@ const InProgressCourse = ({ courses }) => {
                 <Col md={3} xs={12}>
                   <div
                     className='button_paddingarea'
-                    onClick={() => history.push(`/certificate-detail/1`)}
+                    onClick={() => history.push(`/certificate-detail/${c?.id}`)}
                   >
                     <button className='btn certificate_button'>
                       Certificate
