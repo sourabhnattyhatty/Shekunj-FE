@@ -4,19 +4,20 @@ import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
+import { CircularProgress } from "@mui/material";
 import * as Yup from "yup";
 import moment from "moment";
-import { CircularProgress } from "@mui/material";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import { updateProfile } from "../../../../store/auth/action";
 import statesCities from "../../../../utils/statesCities.json";
 import GuidanceSelect from "../../../GuidanceBook/Select";
 import { Error } from "../../../../components";
+import ProfileImage from "../ProfileImage";
 
 import User from "../../../../assets/images/MyProfile/user.png";
 import phone from "../../../../assets/images/MyProfile/phone.png";
-import DateBirth from "../../Date_Birth";
-import ProfileImage from "../ProfileImage";
 
 import "./index.scss";
 
@@ -135,7 +136,7 @@ function EditProfile(props) {
                 <Error error={errors.email} touched={touched.email} />
               </div>
 
-              <div className='form-group'>
+              <div className='form-group mb-3'>
                 <label htmlFor=''>Highest Education</label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
@@ -155,12 +156,19 @@ function EditProfile(props) {
               <div className='form-group'>
                 <label htmlFor=''>Date of birth</label>
                 <div className='form-group mzero'>
-                  <DateBirth
-                    defaultValue={values.dob}
-                    updatedDate={(value) =>
+                  <DatePicker
+                    selected={
+                      values?.dob && typeof values?.dob !== "undefined"
+                        ? new Date(values.dob)
+                        : null
+                    }
+                    className='form-control'
+                    maxDate={new Date()}
+                    dateFormat='dd-MM-yyyy'
+                    onChange={(date) =>
                       setFieldValue(
                         "dob",
-                        moment(value, "DD-MM-YYYY").format("YYYY-MM-DD"),
+                        moment(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
                       )
                     }
                   />
@@ -168,7 +176,7 @@ function EditProfile(props) {
                 </div>
               </div>
 
-              <div className='form-group mb-4'>
+              <div className='form-group mb-4 mt-4'>
                 <label htmlFor=''>City</label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
