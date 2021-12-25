@@ -15,12 +15,10 @@ import { Error } from "../../../../components";
 
 import User from "../../../../assets/images/MyProfile/user.png";
 import phone from "../../../../assets/images/MyProfile/phone.png";
-import education from "../../../../assets/images/MyProfile/education.png";
 import DateBirth from "../../Date_Birth";
 import ProfileImage from "../ProfileImage";
 
 import "./index.scss";
-import "../index.scss";
 
 function EditProfile(props) {
   const dispatch = useDispatch();
@@ -137,29 +135,21 @@ function EditProfile(props) {
                 <Error error={errors.email} touched={touched.email} />
               </div>
 
-              <div className='form-group mb-4'>
+              <div className='form-group'>
                 <label htmlFor=''>Highest Education</label>
-                <TextField
-                  name='highest_education'
-                  type='text'
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.highest_education}
-                  className='form-control'
-                  autoComplete='off'
-                  placeholder=''
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position='start'>
-                        <img src={education} alt='...' />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                <Error
-                  error={errors.highest_education}
-                  touched={touched.highest_education}
-                />
+                <div className='form-group mzero'>
+                  <GuidanceSelect
+                    listItem={["10th", "12th", "Diploma", "PG", "UG"]}
+                    defaultValue={values.highest_education}
+                    updateValues={(value) =>
+                      setFieldValue("highest_education", value)
+                    }
+                  />
+                  <Error
+                    error={errors.highest_education}
+                    touched={touched.highest_education}
+                  />
+                </div>
               </div>
 
               <div className='form-group'>

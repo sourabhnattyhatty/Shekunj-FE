@@ -9,7 +9,11 @@ import {
   ScrollToTop,
   SEO,
 } from "../../components";
-import { getTopCollages, reSetFilterValue } from "../../store/career";
+import {
+  getTopCollages,
+  reSetFilterValue,
+  toggleCollapseValue,
+} from "../../store/career";
 import { noImage } from "../../store/courses/action";
 import { baseURL } from "../../utils/ApiServices";
 
@@ -47,6 +51,10 @@ const CareerPage = () => {
     rows: topCollages?.collage_stream_list || [],
   };
 
+  const handleCollapse = (id, checked) => {
+    dispatch(toggleCollapseValue(id, checked ? false : true, "topCollages"));
+  };
+
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
@@ -70,7 +78,11 @@ const CareerPage = () => {
             <Col md={8} xs={12}>
               {topCollages?.collage_list?.length > 0 ? (
                 topCollages.collage_list.map((c) => (
-                  <div className='career_box' key={c?.id}>
+                  <div
+                    className='career_box'
+                    style={{ height: "auto" }}
+                    key={c?.id}
+                  >
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>
@@ -87,8 +99,18 @@ const CareerPage = () => {
                               <span>Exam</span> : {c?.exam || "N/A"}
                             </li>
                           </ul>
-                          <button className='btn_viewCour'>
-                            View more details
+                          {c?.is_collapse && (
+                            <div>{c?.about_college || "N/A"}</div>
+                          )}
+                          <button
+                            className='btn_viewCour'
+                            onClick={() =>
+                              handleCollapse(c?.id, c?.is_collapse)
+                            }
+                          >
+                            {!c?.is_collapse
+                              ? "View more details"
+                              : "View less details"}
                           </button>
                         </div>
                       </Col>

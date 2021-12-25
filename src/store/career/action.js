@@ -227,6 +227,11 @@ export const getTopCollages =
         payload: {
           ...res?.data,
           collage_stream_list: updatedResponse,
+          collage_list:
+            res?.data?.collage_list?.map((r) => ({
+              ...r,
+              is_collapse: false,
+            })) || [],
         },
       });
     } catch (error) {
@@ -328,3 +333,34 @@ export const reSetFilterValue = () => async (dispatch) => {
     type: coursesTypes.GOVERNMENT_EXAM_FILTER_RESET,
   });
 };
+
+export const toggleCollapseValue =
+  (id, action, type) => (dispatch, getState) => {
+    const { topCollages, topSchools, governmentExams } =
+      getState().careerReducer;
+    if (type === "topCollages") {
+      const updatedPayload = topCollages;
+      const idx = updatedPayload?.collage_list?.findIndex((u) => u.id === id);
+      if (idx !== -1) updatedPayload.collage_list[idx].is_collapse = action;
+      dispatch({
+        type: coursesTypes.TOP_COLLAGE_FINISH,
+        payload: updatedPayload,
+      });
+    } else if (type === "topSchools") {
+      const updatedPayload = topSchools;
+      const idx = updatedPayload?.result?.findIndex((u) => u.id === id);
+      if (idx !== -1) updatedPayload.result[idx].is_collapse = action;
+      dispatch({
+        type: coursesTypes.TOP_SCHOOL_FINISH,
+        payload: updatedPayload,
+      });
+    } else if (type === "governmentExams") {
+      const updatedPayload = governmentExams;
+      const idx = updatedPayload?.govt_list?.findIndex((u) => u.id === id);
+      if (idx !== -1) updatedPayload.govt_list[idx].is_collapse = action;
+      dispatch({
+        type: coursesTypes.GOVERNMENT_EXAM_FINISH,
+        payload: updatedPayload,
+      });
+    }
+  };

@@ -24,7 +24,7 @@ export const bookCounseller = (value) => async (dispatch) => {
 };
 
 export const getGuidanceCategory =
-  (exam_type = "public") =>
+  (exam_type = "government") =>
   async (dispatch) => {
     try {
       const url = exam_type

@@ -11,9 +11,9 @@ const initialCourseSector = {
     },
     {
       id: 2,
-      name: "Public",
+      name: "Government",
       isChecked: false,
-      value: "public",
+      value: "government",
     },
   ],
 };

@@ -102,6 +102,11 @@ function App() {
           path='/CertificateFullView'
           component={CertificateFullView}
         />
+        <PrivateRoute
+          exact
+          path='/certificate-detail/:id'
+          component={CertificateFullView}
+        />
         <PrivateRoute exact path='/my-progress' component={MyProgress} />
         <PrivateRoute exact path='/PrivacyPolicy' component={PrivacyPolicy} />
       </Switch>

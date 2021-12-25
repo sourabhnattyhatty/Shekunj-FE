@@ -10,7 +10,11 @@ import {
   ScrollToTop,
   SEO,
 } from "../../components";
-import { getGovernmentExams, reSetFilterValue } from "../../store/career";
+import {
+  getGovernmentExams,
+  reSetFilterValue,
+  toggleCollapseValue,
+} from "../../store/career";
 import { noImage } from "../../store/courses/action";
 import { baseURL } from "../../utils/ApiServices";
 import "../HomePage/index.scss";
@@ -40,6 +44,12 @@ const CareerPage2 = () => {
       : noImage;
   };
 
+  const handleCollapse = (id, checked) => {
+    dispatch(
+      toggleCollapseValue(id, checked ? false : true, "governmentExams"),
+    );
+  };
+
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
@@ -64,7 +74,7 @@ const CareerPage2 = () => {
             <Col md={8} xs={12}>
               {governmentExams?.govt_list?.length > 0 ? (
                 governmentExams?.govt_list?.map((c) => (
-                  <div className='career_box'>
+                  <div className='career_box' style={{ height: "auto" }}>
                     <Row>
                       <Col md={7} xs={12}>
                         <h3>{c?.name || "N/A"}</h3>
@@ -80,8 +90,14 @@ const CareerPage2 = () => {
                             <span>Exam</span> : {c?.exam}
                           </li>
                         </ul>
-                        <button className='btn_viewCour'>
-                          View More Details
+                        {c?.is_collapse && <div>{c?.about_exam || "N/A"}</div>}
+                        <button
+                          className='btn_viewCour'
+                          onClick={() => handleCollapse(c?.id, c?.is_collapse)}
+                        >
+                          {!c?.is_collapse
+                            ? "View more details"
+                            : "View less details"}
                         </button>
                       </Col>
 

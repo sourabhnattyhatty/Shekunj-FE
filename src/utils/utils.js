@@ -151,3 +151,32 @@ export function timeFromNow(time) {
   const newDate = this.formatLocalTime(time);
   return moment(newDate).fromNow();
 }
+
+export function formatDate(date = null, format = "DD-MM-YYYY") {
+  return date ? moment(date).format(format) : "N/A";
+}
+
+export function formatTime(date = null) {
+  return date
+    ? {
+        hour: moment(date).format("HH") + "h",
+        minute: moment(date).format("mm") + "min",
+      }
+    : { hour: null, minute: null };
+}
+
+export function truncate(source, size) {
+  return source?.length > size ? source?.slice(0, size - 1) + "…" : source;
+}
+
+export function addNewlines(str, isElippse = false, length = 15) {
+  let result = "";
+  if (isElippse && str?.length > length) {
+    return str.slice(0, length - 1) + "…";
+  }
+  while (str?.length > 0) {
+    result += str?.substring(0, length) + "\n";
+    str = str?.substring(length);
+  }
+  return result;
+}

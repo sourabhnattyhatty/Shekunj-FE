@@ -103,15 +103,16 @@ export default function VerticalTabs() {
           aria-label='categories'
           sx={{ borderRight: 1, borderColor: "divider" }}
         >
-          {console.log(guidanceCategory?.public)}
           {guidanceCategory?.public?.map((g, i) => (
-            <Tab
-              key={g?.id}
-              label={g?.name}
-              onClick={() => handleExamChange(i, g?.id)}
-              iconPosition='start'
-              {...a11yProps(1)}
-            />
+            <>
+              <Tab
+                key={g?.id}
+                label={g?.name}
+                onClick={() => handleExamChange(i, g?.id)}
+                iconPosition='start'
+                {...a11yProps(1)}
+              />
+            </>
           ))}
         </Tabs>
       </Col>
@@ -151,6 +152,7 @@ export default function VerticalTabs() {
                             Read More
                           </button>
                         </div>
+                        <br />
                       </Col>
                     ))
                   ) : (

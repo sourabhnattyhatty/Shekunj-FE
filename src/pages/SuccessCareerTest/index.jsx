@@ -52,6 +52,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 function CourseTest() {
   const history = useHistory();
   const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
     (state) => state.guidanceReducer,
   );

@@ -13,7 +13,7 @@ export const getUserCourseProgress =
       const res = await ApiService.get(url);
       dispatch({
         type: myProgressTypes.FETCH_MY_PROGRESS_FINISH,
-        payload: res?.data || null,
+        payload: res?.data,
       });
     } catch (error) {
       dispatch({
