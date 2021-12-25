@@ -8,6 +8,7 @@ import {
   checkIsValidImage,
   decodeToken,
   checkIsSessionExpired,
+  handleErrorMessage,
 } from "./utils";
 
 export {
@@ -20,4 +21,5 @@ export {
   checkIsValidImage,
   decodeToken,
   checkIsSessionExpired,
+  handleErrorMessage,
 };

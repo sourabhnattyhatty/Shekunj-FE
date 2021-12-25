@@ -180,3 +180,14 @@ export function addNewlines(str, isElippse = false, length = 15) {
   }
   return result;
 }
+
+export function timeDifferenceFromDates(sDate, eDate) {
+  const startDate = moment(sDate);
+  const endDate = moment(eDate);
+  return sDate && eDate
+    ? {
+        hour: endDate.diff(startDate, "hour") + "h",
+        minute: endDate.diff(startDate, "minute") + "min",
+      }
+    : { hour: null, minute: null };
+}

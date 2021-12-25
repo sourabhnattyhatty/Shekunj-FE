@@ -5,6 +5,7 @@ import { coursesReducer } from "./courses";
 import { careerReducer } from "./career";
 import { guidanceReducer } from "./guidance";
 import { myProgressReducer } from "./my-progress";
+import { certificateReducer } from "./certificate";
 
 export default combineReducers({
   authReducer,
@@ -12,4 +13,5 @@ export default combineReducers({
   careerReducer,
   guidanceReducer,
   myProgressReducer,
+  certificateReducer,
 });
