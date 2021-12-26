@@ -84,15 +84,18 @@ export default function SimpleAccordion() {
       setSelectedSubFilter(null);
     }
   };
+
   const handleSubCategoryChange = (_, obj) => {
     dispatch(fetchAllCourses(`?id=${obj.id}&category_id=${selectedFilter}`));
     setSelectedSubFilter(obj.id);
   };
+
   useEffect(() => {
     if (currentFilter === null) {
       setSelectedFilter(null);
     }
   }, [currentFilter]);
+
   return (
     <div className='accordion_box_all'>
       <Accordion>
@@ -100,11 +103,12 @@ export default function SimpleAccordion() {
           <Typography>Category</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          {categoryList?.map((obj) => {
+          {categoryList?.map((obj, idx) => {
             return (
-              <ul className='pl-0'>
+              <ul className='pl-0' key={obj?.id}>
                 <FormControl component='fieldset'>
                   <RadioGroup
+                    key={obj?.id + idx}
                     value={selectedFilter}
                     onChange={(e) => handleCategoryChange(e, obj)}
                   >
@@ -129,11 +133,12 @@ export default function SimpleAccordion() {
           <AccordionDetails>
             {currentFilter?.map((obj) => {
               return (
-                <ul className='pl-0'>
+                <ul className='pl-0' key={obj?.id}>
                   <FormControl component='fieldset'>
-                    {obj?.course_set.map((item) => {
+                    {obj?.course_set.map((item, idx) => {
                       return (
                         <RadioGroup
+                          key={obj?.id + idx}
                           value={selectedSubFilter}
                           onChange={(e) => handleSubCategoryChange(e, item)}
                         >

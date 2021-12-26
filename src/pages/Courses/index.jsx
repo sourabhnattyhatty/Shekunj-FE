@@ -5,7 +5,7 @@ import Aos from "aos";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { allCourses, setFilter, noImage } from "../../store/courses/action";
+import { allCourses, setFilter } from "../../store/courses/action";
 
 import { Header, Footer, ScrollToTop, SEO } from "../../components";
 
@@ -41,21 +41,13 @@ const Courses = (props) => {
     }
     dispatch(setFilter(null));
   };
+
   const checkFunction = () => {
     return state?.allCourses?.results?.map((obj) => (
       <Link to={`/CoursesDetails/${obj.id}`} className='col-md-6' key={obj?.id}>
         <div className='box box_hov'>
           <div className='slide-img'>
-            <img
-              alt=''
-              src={
-                obj.image
-                  ? obj?.image?.includes("http://3.109.195.234")
-                    ? obj?.image
-                    : `http://3.109.195.234${obj?.image}`
-                  : noImage
-              }
-            />
+            <img alt='' src={obj?.image} />
             <div className='overlay'></div>
           </div>
 

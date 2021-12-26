@@ -21,16 +21,12 @@ import "./index.scss";
 const CourseDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-
   const { course } = useSelector((state) => state.coursesReducer);
 
   useEffect(() => {
     dispatch(singleCourseDetails(id));
-    if (course?.category_id) {
-      dispatch(getSimilarCourses(course?.category_id));
-    }
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [dispatch, id, course?.category_id]);
+  }, [dispatch, id]);
 
   useEffect(() => {
     if (course?.category_id) {
@@ -58,11 +54,7 @@ const CourseDetails = () => {
 
             <div className='col-md-5'>
               <div className='CouDtl'>
-                <img
-                  src={`http://3.109.195.234${course?.image}`}
-                  alt=''
-                  srcSet=''
-                />
+                <img src={course?.image} alt='' srcSet='' />
               </div>
             </div>
           </div>
@@ -83,13 +75,13 @@ const CourseDetails = () => {
                 <Row>
                   {course?.What_you_will_learn?.map((item) => {
                     return (
-                      <Col md={6} xs={12}>
+                      <Col md={6} xs={12} key={item.id}>
                         <div className='features_box'>
                           <div>
                             <img src={Check} alt='' srcSet='' />
                           </div>
                           <div>
-                            <p>{item.name}</p>
+                            <p>{item?.name}</p>
                           </div>
                         </div>
                       </Col>
@@ -115,7 +107,6 @@ const CourseDetails = () => {
                         </p>
                       </div>
                     </div>
-
                     <div className='features_box'>
                       <div>
                         <img src={clock} alt='' srcSet='' />
@@ -128,7 +119,6 @@ const CourseDetails = () => {
                         </p>
                       </div>
                     </div>
-
                     <div className='features_box'>
                       <div>
                         <img src={certificate} alt='' srcSet='' />
@@ -189,11 +179,8 @@ const CourseDetails = () => {
                 <Link to={`/CoursesModule/${id}`} className='btn btn_str_Cor'>
                   Start Course
                 </Link>
-
                 <h3 className='similar-coursestext'>Similar Courses</h3>
-
                 <Carousel page='courseDetail' />
-
                 <Link to='/courses' className='btn_view'>
                   View More Courses
                 </Link>

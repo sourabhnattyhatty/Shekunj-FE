@@ -48,7 +48,12 @@ axios.interceptors.response.use(
   },
 );
 
+export const noImage =
+  "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
+
 const requests = {
+  baseURL,
+  noImage,
   get: (url, params) => axios.get(url, { params }).then(responseBody),
   post: (url, body) => axios.post(url, body).then(responseBody),
   put: (url, body) => axios.put(url, body).then(responseBody),

@@ -14,8 +14,8 @@ import {
   resetCategoryDetail,
 } from "../../../store/guidance";
 import backButtonImg from "../../../assets/images/Guidance/back-arrow.png";
-import Share from "../../../assets/images/Guidance/share-button.png";
-import Bookmark from "../../../assets/images/Guidance/bookmark-button.png";
+// import Share from "../../../assets/images/Guidance/share-button.png";
+// import Bookmark from "../../../assets/images/Guidance/bookmark-button.png";
 import "./index.scss";
 
 function TabPanel(props) {
@@ -57,7 +57,7 @@ export default function VerticalTabs() {
   const [tabValue, setTabValue] = useState(0);
   const [categoryDetail, setCategoryDetail] = useState(false);
   const [showGovtExams, setShowGovtExams] = useState(true);
-  const { guidanceCategory, guidanceCategoryDetail } = useSelector(
+  const { guidanceCategory, guidanceCategoryDetail, isLoading } = useSelector(
     (state) => state.guidanceReducer,
   );
 
@@ -175,7 +175,7 @@ export default function VerticalTabs() {
                   </div>
                   <div className='banking-examheader'>
                     <h2>{guidanceCategoryDetail?.category_name}</h2>
-                    <ul className='list-inline'>
+                    {/* <ul className='list-inline'>
                       <li className='list-inline-item'>
                         <img src={Share} alt='' className='mr-3' />
                         Share
@@ -184,7 +184,7 @@ export default function VerticalTabs() {
                         <img src={Bookmark} alt='' className='mr-3' />
                         Save
                       </li>
-                    </ul>
+                    </ul> */}
                   </div>
                   {guidanceCategoryDetail?.description ? (
                     <div
@@ -194,7 +194,9 @@ export default function VerticalTabs() {
                       }}
                     ></div>
                   ) : (
-                    <div className='text-center'>No data found!</div>
+                    <div className='text-center'>
+                      {isLoading ? "Loading..." : "No data found!"}
+                    </div>
                   )}
                   <hr className='border-colorbottom'></hr>
                 </div>

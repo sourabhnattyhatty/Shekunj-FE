@@ -11,6 +11,7 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./store";
 import Loader from "./components/Loader";
 import theme from "./utils/Theme";
+import { ScrollToTop } from "./components";
 
 import "./index.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -25,6 +26,7 @@ ReactDOM.render(
           <Router>
             <HelmetProvider>
               <App />
+              <ScrollToTop />
             </HelmetProvider>
             <ToastContainer
               position='top-right'

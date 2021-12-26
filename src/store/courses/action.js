@@ -14,8 +14,26 @@ export const allHomeCourses = () => async (dispatch) => {
     const res = await httpServices.get("/course/home/");
     dispatch({
       type: coursesTypes.HOME_COURSE_FINISH,
-      payload: res.data.popular_course,
-      payload2: res.data.popular_career_test,
+      payload: res?.data?.popular_course
+        ? res?.data?.popular_course?.map((c) => ({
+            ...c,
+            image: c.image
+              ? c?.image?.includes(httpServices.baseURL)
+                ? c?.image
+                : `${httpServices.baseURL}${c?.image}`
+              : httpServices.noImage,
+          }))
+        : [],
+      payload2: res?.data?.popular_career_test
+        ? res?.data?.popular_career_test?.map((c) => ({
+            ...c,
+            image: c.image
+              ? c?.image?.includes(httpServices.baseURL)
+                ? c?.image
+                : `${httpServices.baseURL}${c?.image}`
+              : httpServices.noImage,
+          }))
+        : [],
     });
   } catch (error) {
     dispatch({ type: coursesTypes.HOME_COURSE_FAIL });
@@ -32,7 +50,19 @@ export const allCourses =
       );
       dispatch({
         type: coursesTypes.COURSES_FINISH,
-        payload: res,
+        payload: {
+          ...res,
+          results: res?.results
+            ? res?.results?.map((c) => ({
+                ...c,
+                image: c.image
+                  ? c?.image?.includes(httpServices.baseURL)
+                    ? c?.image
+                    : `${httpServices.baseURL}${c?.image}`
+                  : httpServices.noImage,
+              }))
+            : [],
+        },
       });
     } catch (error) {
       dispatch({ type: coursesTypes.COURSES_FAIL });
@@ -53,7 +83,17 @@ export const singleCourseDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.COURSE_REQUEST });
     const res = await httpServices.get(`/course/detail/${id}/`);
-    dispatch({ type: coursesTypes.COURSE_FINISH, payload: res.data });
+    dispatch({
+      type: coursesTypes.COURSE_FINISH,
+      payload: {
+        ...res?.data,
+        image: res?.data.image
+          ? res?.data?.image?.includes(httpServices.baseURL)
+            ? res?.data?.image
+            : `${httpServices.baseURL}${res?.data?.image}`
+          : httpServices.noImage,
+      },
+    });
   } catch (error) {
     dispatch({ type: coursesTypes.COURSE_FAIL });
   }
@@ -104,7 +144,16 @@ export const getSimilarCourses = (categoryId) => async (dispatch) => {
     );
     dispatch({
       type: coursesTypes.SIMILAR_COURSES_FINISH,
-      payload: res.data.course_set,
+      payload: res?.data?.course_set
+        ? res?.data?.course_set?.map((c) => ({
+            ...c,
+            image: c.image
+              ? c?.image?.includes(httpServices.baseURL)
+                ? c?.image
+                : `${httpServices.baseURL}${c?.image}`
+              : httpServices.noImage,
+          }))
+        : [],
     });
   } catch (error) {
     dispatch({ type: coursesTypes.SIMILAR_COURSES_FAIL });
