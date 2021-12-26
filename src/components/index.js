@@ -9,6 +9,7 @@ import Loader from "./Loader";
 import ScrollToTop from "./ScrollToTop";
 import SEO from "./SEO";
 import AccordionComponent from "./Accordian";
+import SocialShare from "./Share";
 
 export {
   AuthContent,
@@ -22,4 +23,5 @@ export {
   ScrollToTop,
   SEO,
   AccordionComponent,
+  SocialShare,
 };

@@ -1,12 +1,21 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   getSimilarCourses,
   singleCourseDetails,
 } from "../../store/courses/action";
 import { Row, Col } from "react-bootstrap";
-import { Header, Footer, ScrollToTop, SEO, Carousel } from "../../components";
+
+import {
+  Header,
+  Footer,
+  ScrollToTop,
+  SEO,
+  Carousel,
+  SocialShare,
+} from "../../components";
 
 import Device from "../../assets/images/CoursesDetails/Device.png";
 import clock from "../../assets/images/CoursesDetails/clock.png";
@@ -69,7 +78,9 @@ const CourseDetails = () => {
                 <h2>Description</h2>
                 <p>{course?.description}</p>
               </div>
-
+              <div className='mt-2 mb-2'>
+                <SocialShare />
+              </div>
               <div className='sec1_con2 con_setSec1'>
                 <h2>What you’ll learn</h2>
                 <Row>
