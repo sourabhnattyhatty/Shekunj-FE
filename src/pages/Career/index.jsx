@@ -67,7 +67,7 @@ const CareerPage = () => {
       <AccordionComponent
                 type='colleges'
                 stream={STREAM}
-                courseLength={COURSE_LENGTH}
+                courseLength={courseSector}
               />
 
               <p className="more">7 More</p> <br />
@@ -76,7 +76,7 @@ const CareerPage = () => {
               <AccordionComponent
                 type='colleges'
                 stream={STREAM}
-                courseLength={COURSE_LENGTH}
+                courseLength={courseSector}
               />
       </div>
 
