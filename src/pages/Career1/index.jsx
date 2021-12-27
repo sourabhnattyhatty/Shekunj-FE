@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { ImageListItem, ImageListItemBar } from "@mui/material";
-
 import {
   AccordionComponent,
   Footer,
@@ -49,6 +48,8 @@ const CareerPage1 = () => {
       <SEO title='Sheकुंज - Career' />
       <Header loginPage={true} page='career' subPage='schools' />
 
+
+
       <div className='mainDiv_career'>
         <Container>
           <div className='career_tit'>
@@ -76,6 +77,7 @@ const CareerPage1 = () => {
                   <div className='career_box' style={{ height: "auto" }}>
                     <Row>
                       <Col md={7} xs={12}>
+                      <div className="top_col_content">
                         <h3>{c?.name || "N/A"}</h3>
                         <p style={{ textTransform: "capitalize" }}>
                           {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
@@ -97,6 +99,7 @@ const CareerPage1 = () => {
                             ? "View more details"
                             : "View less details"}
                         </button>
+                        </div>
                       </Col>
 
                       <Col md={5} xs={12}>

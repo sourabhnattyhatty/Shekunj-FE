@@ -7,14 +7,14 @@ import {
 } from "../../store/courses/action";
 import { Row, Col } from "react-bootstrap";
 import { Header, Footer, ScrollToTop, SEO, Carousel } from "../../components";
-
-import Device from "../../assets/images/CoursesDetails/Device.png";
-import clock from "../../assets/images/CoursesDetails/clock.png";
-import certificate from "../../assets/images/CoursesDetails/certificate.png";
-import clipboard from "../../assets/images/CoursesDetails/clipboard.png";
-import Support from "../../assets/images/CoursesDetails/Support.png";
-import forum from "../../assets/images/CoursesDetails/forum.png";
-import Check from "../../assets/icons/check.png";
+// import clipboard from "../../assets/images/CoursesDetails/clipboard.png";
+import Check from "../../assets/icons/check1.png";
+import monitor from "../../assets/icons/monitor.png";
+import lifetime1 from "../../assets/icons/lifetime1.png";
+import certificate1 from "../../assets/icons/certificate1.png";
+import clipboard from "../../assets/icons/clipboard.png";
+import flexible1 from "../../assets/icons/flexible1.png";
+import Language1 from "../../assets/icons/Language1.png";
 
 import "./index.scss";
 
@@ -97,7 +97,7 @@ const CourseDetails = () => {
                   <Col md={6} xs={12}>
                     <div className='features_box'>
                       <div>
-                        <img src={Device} alt='' srcSet='' />
+                        <img src={monitor} alt='' srcSet='' />
                       </div>
                       <div>
                         <h6>100% Online</h6>
@@ -109,7 +109,7 @@ const CourseDetails = () => {
                     </div>
                     <div className='features_box'>
                       <div>
-                        <img src={clock} alt='' srcSet='' />
+                        <img src={lifetime1} alt='' srcSet='' />
                       </div>
                       <div>
                         <h6>Lifetime Access</h6>
@@ -121,7 +121,7 @@ const CourseDetails = () => {
                     </div>
                     <div className='features_box'>
                       <div>
-                        <img src={certificate} alt='' srcSet='' />
+                        <img src={certificate1} alt='' srcSet='' />
                       </div>
                       <div>
                         <h6>Shareable Certificate</h6>
@@ -149,7 +149,7 @@ const CourseDetails = () => {
 
                     <div className='features_box'>
                       <div>
-                        <img src={Support} alt='' srcSet='' />
+                        <img src={flexible1} alt='' srcSet='' />
                       </div>
                       <div>
                         <h6>Flexible Deadline</h6>
@@ -162,7 +162,7 @@ const CourseDetails = () => {
 
                     <div className='features_box'>
                       <div>
-                        <img src={forum} alt='' srcSet='' />
+                        <img src={Language1} alt='' srcSet='' />
                       </div>
                       <div>
                         <h6>Language</h6>
@@ -180,7 +180,9 @@ const CourseDetails = () => {
                   Start Course
                 </Link>
                 <h3 className='similar-coursestext'>Similar Courses</h3>
-                <Carousel page='courseDetail' />
+                <div className='cou_set_similer'>
+                  <Carousel page='courseDetail' />
+                </div>
                 <Link to='/courses' className='btn_view'>
                   View More Courses
                 </Link>

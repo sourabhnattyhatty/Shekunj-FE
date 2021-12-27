@@ -1,9 +1,12 @@
 .owl-theme {
   max-width: 1180px;
   margin-left: -150px;
-  margin-top: 105px;
+  margin-top: 85px;
 }
 a.item {
+  text-decoration: none;
+}
+.set a {
   text-decoration: none;
 }
 .item {
@@ -56,7 +59,14 @@ a.item {
   border-bottom: 2px solid #fff;
   opacity: 0.5;
   display: block;
-  width: 200px;
+  width: 120px;
+}
+.owl-carousel.owl-theme.owl-loaded.owl-drag a {
+  list-style: none;
+  text-decoration: none;
+}
+.owl-carousel .owl-stage-outer {
+  overflow: inherit;
 }
 .owl-nav button.owl-prev::before {
   content: "";
@@ -350,6 +360,8 @@ button.view_test_cate:hover {
   font-size: 16px;
   line-height: 20px;
   color: #000000;
+  padding-top: 5px;
+  margin: 0;
 }
 button.btn.btn_Courses {
   width: 190px;
@@ -397,7 +409,7 @@ button.btn.btn_Courses {
 @media screen and (min-device-width: 1270px) and (max-device-width: 1280px) {
   // @media screen and (max-width: 1280px) {
   #myCarousel .carousel-item {
-    height: 72vh !important;
+    height: 73vh !important;
   }
 }
 

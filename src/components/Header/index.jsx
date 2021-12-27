@@ -143,7 +143,7 @@ const Header = ({ page, subPage }) => {
                   </div>
                 </div> */}
 
-                <div className='top_bar_btn d-inline-block'>
+                <div className='top_bar_btn d-inline-flex'>
                   {isAuth ? (
                     <>
                       {user && user?.profile_pic ? (

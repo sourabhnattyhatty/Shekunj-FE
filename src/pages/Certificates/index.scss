@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .all_certif_banner {
   background-image: url("../../assets/images/AllCertificate/banner.png");
   background-repeat: no-repeat;
@@ -101,4 +103,79 @@
 .all_certif_con button:hover {
   background-color: #ec498a;
   color: #fff;
+}
+.box_certificate {
+  background-image: url('../../assets/images/AllCertificate/certificate_bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  box-shadow: 0px 0px 3px #ccc;
+  padding: 15px;
+  height: 650px;
+  position: relative;
+  display: grid;
+  align-items: center;
+}
+.box_certificate::after {
+  content: "";
+  background-image: url("../../assets/images/AllCertificate/logo2.png");
+  width: 200px;
+  background-size: contain;
+  height: 58px;
+  position: absolute;
+  right: 42px;
+  top: 42px;
+}
+.date_set {
+  position: absolute;
+  bottom: 42px;
+  left: 42px;
+  text-align: center;
+}
+.signature_set {
+  position: absolute;
+  bottom: 42px;
+  right: 42px;
+  text-align: center;
+}
+.cercifi_con p {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: capitalize;
+  color: #000000;
+}
+hr.hr_line {
+  border: 1px solid #828282;
+  max-width: 401px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 55px;
+}
+.cercifi_con h2 {
+  font-family: Pacifico;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  color: #000000;
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+.cercifi_con img.cer_text {
+  margin-bottom: 35px;
+}
+.cercifi_con h3 {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 33px;
+  line-height: 38px;
+  text-transform: capitalize;
+  color: #000000;
+}
+hr.hr_line2 {
+  border: 1px solid #828282;
+  margin: 13px auto;
 }

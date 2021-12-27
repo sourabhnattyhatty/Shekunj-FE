@@ -11,6 +11,9 @@ import Polygon2 from "../../assets/images/Guidance/Polygon2.png";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import User2 from "../../assets/icons/user2.png";
+import User3 from "../../assets/icons/user3.png";
+import mail2 from "../../assets/icons/mail2.png";
+import phone from "../../assets/icons/phone2.png";
 import "./index.scss";
 import "../LoginPage/LoginForm/LoginTabs/index.scss";
 import { CircularProgress, TextareaAutosize } from "@mui/material";
@@ -201,7 +204,7 @@ const GuidancePage = () => {
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
-                            <img src={User2} alt='...' />
+                            <img src={User3} alt='...' />
                           </InputAdornment>
                         ),
                       }}
@@ -224,7 +227,7 @@ const GuidancePage = () => {
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
-                            <img src={User2} alt='...' />
+                            <img src={User3} alt='...' />
                           </InputAdornment>
                         ),
                       }}
@@ -247,7 +250,7 @@ const GuidancePage = () => {
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
-                            <img src={User2} alt='...' />
+                            <img src={mail2} alt='...' />
                           </InputAdornment>
                         ),
                       }}
@@ -270,7 +273,7 @@ const GuidancePage = () => {
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
-                            <img src={User2} alt='...' />
+                            <img src={phone} alt='...' />
                           </InputAdornment>
                         ),
                       }}

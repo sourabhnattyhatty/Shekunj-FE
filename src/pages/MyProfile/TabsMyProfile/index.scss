@@ -100,6 +100,7 @@ span.MuiTabs-indicator {
   box-sizing: border-box;
   border-radius: 10px;
   padding: 35px;
+  position: relative;
 }
 .myProfile_img img {
   border-radius: 50%;
@@ -117,19 +118,19 @@ span.MuiTabs-indicator {
 p.eye {
   cursor: pointer;
   position: absolute;
-  top: 53%;
+  top: 45%;
   right: 2%;
 }
 p.eye1 {
   cursor: pointer;
   position: absolute;
-  top: 53%;
+  top: 45%;
   right: 2%;
 }
 p.eye2 {
   cursor: pointer;
   position: absolute;
-  top: 53%;
+  top: 45%;
   right: 2%;
 }
 .change_pass svg {
@@ -137,6 +138,7 @@ p.eye2 {
 }
 .change_pass .form-group {
   position: relative;
+  height: 80px;
 }
 .change_pass button:hover {
   background-color: #ec498a;

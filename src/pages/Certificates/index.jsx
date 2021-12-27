@@ -52,6 +52,34 @@ function AllCertificatePage() {
                   <Row>
                     <Col md={5} xs={12}>
                       <img className='certif_img' src={Certificate01} alt='' />
+                      
+                      
+
+                      {/* <div className="result_box">
+                        <Row>
+                          <Col md={3} xs={12}>
+                            <img src={certificate} alt="" />
+                          </Col>
+
+
+
+                          <Col md={9} xs={12}>
+                            <div className="result_con">
+                              <h3>Certificate of Completion</h3>
+                              <h6>THIS CERTIFICATE PROUDLY PRESENTED TO</h6>
+
+
+                              <h5>Swati Jain</h5>
+
+                              <p>with membership number 1234 has been successfully completed the course</p>
+                              <h5>“Mobile User Experience (UX) Design”</h5>
+
+                              <p>conducted from Jan 1st 2021 to Apr 2nd 2021</p>
+                              <p>Distinction: Best In class</p>
+                            </div>
+                          </Col>
+                        </Row>
+                      </div> */}
                     </Col>
                     <Col md={7} xs={12}>
                       <div className='all_certif_con'>
