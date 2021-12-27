@@ -15,7 +15,6 @@ import FormControl from "@mui/material/FormControl";
 import {
   allCourses as fetchAllCourses,
   getCategoryList,
-  getSimilarCourses,
   setFilter,
 } from "../../../store/courses/action";
 
@@ -60,35 +59,34 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function SimpleAccordion() {
+export default function SimpleAccordion(props) {
+  console.log({props})
   const [selectedFilter, setSelectedFilter] = useState(null);
-  const [selectedSubFilter, setSelectedSubFilter] = useState(null);
   const {
     selectedFilter: currentFilter,
-    categoryList,
-    similarCourses,
+    categoryList,allCourses
   } = useSelector((state) => state.coursesReducer);
-
   const dispatch = useDispatch();
-
+  const [subSelected,setSubSelected] = useState(null);
   useEffect(() => {
     dispatch(setFilter(null));
     dispatch(getCategoryList());
   }, [dispatch]);
-
   const handleCategoryChange = (_, obj) => {
-    dispatch(getSimilarCourses(obj?.id));
+    dispatch(fetchAllCourses(`?id=${obj.id}`));
     dispatch(setFilter([obj]));
     setSelectedFilter(obj.id);
-    if (selectedSubFilter) {
-      setSelectedSubFilter(null);
-    }
   };
 
-  const handleSubCategoryChange = (_, obj) => {
-    dispatch(fetchAllCourses(`?id=${obj.id}&category_id=${selectedFilter}`));
-    setSelectedSubFilter(obj.id);
-  };
+  const handleSubCategoryChange = (e, obj) => {
+      dispatch(fetchAllCourses(`?id=${obj.id}&category_id=${selectedFilter}`));
+      setSubSelected(obj?.id);
+      if(subSelected>0){
+        props.isSubSelected(true);
+      } else {
+        props.isSubSelected(false);
+      }
+    };
 
   useEffect(() => {
     if (currentFilter === null) {
@@ -125,7 +123,7 @@ export default function SimpleAccordion() {
           })}
         </AccordionDetails>
       </Accordion>
-      {currentFilter && similarCourses?.length > 0 ? (
+      {currentFilter && allCourses?.results?.length > 0 ? (
         <Accordion>
           <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
             <Typography>Sub Category</Typography>
@@ -139,8 +137,8 @@ export default function SimpleAccordion() {
                       return (
                         <RadioGroup
                           key={obj?.id + idx}
-                          value={selectedSubFilter}
                           onChange={(e) => handleSubCategoryChange(e, item)}
+                          value={subSelected}
                         >
                           <FormControlLabel
                             id={item.id}

@@ -20,13 +20,19 @@ const Footer = ({ loginPage }) => {
                   <Link to='/about'>{t("footer.links.col1.3")}</Link>
                 </li>
                 <li>
-                  <Link to='/about'>{t("header.heading.8")}</Link>
+                  <Link to='/SuccessStories'>{t("header.heading.8")}</Link>
                 </li>
                 <li>
-                  <Link to='/about'>{t("header.heading.7")}</Link>
+                  <a
+                    href='http://www.thehrnotes.com/'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    {t("header.heading.7")}
+                  </a>
                 </li>
                 <li>
-                  <Link to='/'>{t("footer.links.col1.4")}</Link>
+                  <Link to='/ContactUs'>{t("footer.links.col1.4")}</Link>
                 </li>
               </ul>
             </div>
@@ -54,7 +60,7 @@ const Footer = ({ loginPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link to='/'>{t("footer.links.col3.1")}</Link>
+                  <Link to='/PrivacyPolicy'>{t("footer.links.col3.1")}</Link>
                 </li>
 
                 {/* <li>
@@ -66,7 +72,7 @@ const Footer = ({ loginPage }) => {
                 </li> */}
 
                 <li>
-                  <Link to='/'>{t("footer.links.col2.3")}</Link>
+                  <Link to='/PageNotFound'>{t("footer.links.col2.3")}</Link>
                 </li>
               </ul>
             </div>
