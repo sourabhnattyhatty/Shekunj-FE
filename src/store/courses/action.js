@@ -167,9 +167,13 @@ export const getUserTestQuestion =
       let res;
       if (module) {
         res = await httpServices.get(
+          `/course/user-test-course/${id}?test_id=${module}`,
+        );
+      } else if (module && progress>0) {
+        res = await httpServices.get(
           `/course/user-test-course/${id}?test_id=${module}&progress=${progress}`,
         );
-      } else if (progress) {
+      } else if (progress && progress>0) {
         res = await httpServices.get(
           `/course/user-test-course/${id}?progress=${progress}`,
         );

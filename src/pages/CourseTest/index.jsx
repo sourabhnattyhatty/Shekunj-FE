@@ -5,7 +5,7 @@ import {
   RadioGroup,
   Skeleton,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Stack from "@mui/material/Stack";
 import { Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
@@ -67,8 +67,6 @@ function CourseTest() {
     (state) => state.coursesReducer,
   );
 
-  console.log(">>>>>>>>>>", question);
-
   const progress =
     Math.round(100 / (questionCount?.total_course_que || 0)) || 0;
 
@@ -81,6 +79,36 @@ function CourseTest() {
     }
   }, [history, detect.isMobile, id, dispatch]);
 
+  useEffect(() => {
+    if (question) {
+      if (question?.answer === question?.optionA) {
+        setCheck1(true);
+        setAnswer(question?.answer);
+      } else if (question?.answer === question?.optionB) {
+        setCheck2(true);
+        setAnswer(question?.answer);
+      } else if (question?.answer === question?.optionC) {
+        setCheck3(true);
+        setAnswer(question?.answer);
+      } else if (question?.answer === question?.optionD) {
+        setCheck4(true);
+        setAnswer(question?.answer);
+      } else {
+        setCheck1(false);
+        setCheck2(false);
+        setCheck3(false);
+        setCheck4(false);
+      }
+    }
+  }, [
+    question,
+    question?.answer,
+    question?.optionA,
+    question?.optionB,
+    question?.optionC,
+    question?.optionD,
+  ]);
+
   React.useEffect(() => {
     dispatch(testCountSummery(id, history));
   }, [dispatch, toggle, history, id]);
@@ -90,6 +118,10 @@ function CourseTest() {
       setTimer(parseInt(questionCount?.counse_time, 10) * 60000);
       setShowTimer(true);
     }
+    setCheck1(false);
+    setCheck2(false);
+    setCheck3(false);
+    setCheck4(false);
   }, [questionCount, questionCount?.counse_time]);
 
   const handleNextQuestion = () => {
@@ -102,9 +134,13 @@ function CourseTest() {
     if (answer) {
       dispatch(postAnswer(data, id));
       setAnswer("");
-      dispatch(
-        getUserTestQuestion(id, history, question?.next_module, newProgress),
-      );
+      if (question?.answer) {
+        dispatch(getUserTestQuestion(id, history, question?.next_module));
+      } else {
+        dispatch(
+          getUserTestQuestion(id, history, question?.next_module, newProgress),
+        );
+      }
       setToggle((prev) => !prev);
     } else {
       toast.error("Select option for next question", {
@@ -135,7 +171,7 @@ function CourseTest() {
   };
 
   const handlePrevQuestion = () => {
-    dispatch(getUserTestQuestion(id, history, question?.prev_module, progress));
+    dispatch(getUserTestQuestion(id, history, question?.prev_module,0));
   };
 
   const renderProgress = (count = 0) => {
@@ -184,7 +220,6 @@ function CourseTest() {
   };
 
   const handleAnswerCheck = (e) => {
-    debugger;
     setAnswer(e.target.labels[0].children[1].innerText);
     if (e.target.value === "1") {
       setCheck1(true);
@@ -242,8 +277,8 @@ function CourseTest() {
                 <Skeleton></Skeleton>
               ) : (
                 <p>
-                  {questionCount?.user_course_test_count + 1}.{" "}
-                  {question?.question}
+                  {/* {questionCount?.user_course_test_count + 1}.{" "} */}
+                  {question?.id}. {question?.question}
                 </p>
               )}
               {question && (
@@ -286,8 +321,8 @@ function CourseTest() {
                         value='3'
                         control={
                           <Radio
-                          checked={check3}
-                          onChange={handleAnswerCheck}
+                            checked={check3}
+                            onChange={handleAnswerCheck}
                           />
                         }
                         label={question?.optionC}
@@ -301,8 +336,8 @@ function CourseTest() {
                         value='4'
                         control={
                           <Radio
-                          checked={check4}
-                          onChange={handleAnswerCheck}
+                            checked={check4}
+                            onChange={handleAnswerCheck}
                           />
                         }
                         label={question?.optionD}
