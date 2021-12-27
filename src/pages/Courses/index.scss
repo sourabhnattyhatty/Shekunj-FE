@@ -398,3 +398,11 @@ ul.ulcont li {
   list-style: none;
   text-decoration: none;
 }
+
+.MuiCheckbox-root.MuiCheckbox-colorPrimary.Mui-checked {
+  color: #ec498a;
+  border-radius: 4.45605px;
+}
+.MuiRadio-root.Mui-checked{
+  color: #ec498a;
+}

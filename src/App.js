@@ -43,6 +43,7 @@ const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const SuccessCareerOption2 = React.lazy(() =>
   import("./pages/SuccessCareerOption/SuccessCareerOption2"),
 );
+const PageNotFound = React.lazy(() => import("./pages/PageNotFound"));
 
 function App() {
   return (
@@ -110,6 +111,7 @@ function App() {
         />
         <PrivateRoute exact path='/my-progress' component={MyProgress} />
         <PrivateRoute exact path='/PrivacyPolicy' component={PrivacyPolicy} />
+        <Route path='*' component={PageNotFound} />
       </Switch>
     </>
   );

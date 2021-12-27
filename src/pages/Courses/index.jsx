@@ -26,6 +26,7 @@ import SimpleAccordion from "./Accordian";
 const Courses = (props) => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.coursesReducer);
+  const [isSubSelected , setIsSubSelected] = React.useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(allCourses());
@@ -34,7 +35,6 @@ const Courses = (props) => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
-
   const handleResetFilter = () => {
     if (state?.selectedFilter) {
       dispatch(allCourses(null));
@@ -131,22 +131,34 @@ const Courses = (props) => {
 
           <div className='row'>
             <div className='col-md-4 col-sm-4'>
-              <SimpleAccordion />
+              <SimpleAccordion isSubSelected={val=>{
+                setIsSubSelected(val)
+              }}/>
             </div>
             <div className='col-md-8 col-sm-8'>
               <div className='content_right'>
                 <h3 className='result_head'>
-                  Results:{" "}
-                  {state?.selectedFilter?.length > 0
-                    ? state?.similarCourses?.length
-                    : state?.allCourses?.results?.length || 0}{" "}
-                  Courses
+                  Results: {state?.allCourses?.results?.length || 0} Courses
+
                 </h3>
 
                 <Row>
                   <Col md={9} xs={12}>
                     <div className='filter_added mb-5'>
-                      {state?.selectedFilter &&
+                      {state?.selectedFilter?.length > 0 && isSubSelected &&
+                        state?.allCourses?.results?.map((s) => {
+                          return(
+                          <div key={s.id} className='filter_content'>
+                            {s.name}{" "}
+                            <img
+                              src={Cross}
+                              onClick={() => handleResetFilter()}
+                              className='ml-3'
+                              alt='...'
+                            />
+                          </div>);
+                        })}
+                      {/* {state?.selectedFilter &&
                         state?.selectedFilter?.length > 0 &&
                         state?.selectedFilter.map((s) => (
                           <div key={s.id} className='filter_content'>
@@ -158,7 +170,7 @@ const Courses = (props) => {
                               alt='...'
                             />
                           </div>
-                        ))}
+                        ))} */}
                     </div>
                   </Col>
 
@@ -176,9 +188,31 @@ const Courses = (props) => {
               </div>
               <div className='filter_right_content'>
                 <div className='row'>
-                  {state?.selectedFilter?.length > 0
-                    ? state?.similarCourses?.length > 0 && checkFunction()
-                    : checkFunction()}
+                  {state?.allCourses?.results?.length > 0 ? (
+                    state?.allCourses?.results?.map((obj) => (
+                      <Link
+                        to={`/CoursesDetails/${obj.id}`}
+                        className='col-md-6'
+                        key={obj?.id}
+                      >
+                        <div className='box box_hov'>
+                          <div className='slide-img'>
+                            <img alt='' src={obj?.image} />
+                            <div className='overlay'></div>
+                          </div>
+
+                          <div className='tag_btn'>
+                            <button className='btn btn-info'>
+                              {obj?.category_name}
+                            </button>
+                            <h6>{obj?.name}</h6>
+                          </div>
+                        </div>
+                      </Link>
+                    ))
+                  ) : (
+                    <div className='text-center mt-2'>No data found!</div>
+                  )}
                 </div>
               </div>
             </div>
