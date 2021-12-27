@@ -7,7 +7,7 @@ import { Footer, Header, ScrollToTop, SEO } from "../../components";
 import { timeDifferenceFromDates } from "../../utils/utils";
 import { getUserCourseCertificate } from "../../store/certificate";
 
-import certificate from "../../assets/images/AllCertificate/certificate.png";
+import Certificate01 from "../../assets/images/AllCertificate/Certificate01.png";
 import clock1 from "../../assets/icons/clock1.png";
 import barChart from "../../assets/icons/bar-chart.png";
 import lecturesIcon from "../../assets/icons/list.png";
@@ -51,9 +51,11 @@ function AllCertificatePage() {
                 <div className='all_certif_box' key={c?.id}>
                   <Row>
                     <Col md={5} xs={12}>
-                      {/* <img className='certif_img' src={Certificate01} alt='' /> */}
+                      <img className='certif_img' src={Certificate01} alt='' />
+                      
+                      
 
-                      <div className="result_box">
+                      {/* <div className="result_box">
                         <Row>
                           <Col md={3} xs={12}>
                             <img src={certificate} alt="" />
@@ -77,7 +79,7 @@ function AllCertificatePage() {
                             </div>
                           </Col>
                         </Row>
-                      </div>
+                      </div> */}
                     </Col>
                     <Col md={7} xs={12}>
                       <div className='all_certif_con'>
