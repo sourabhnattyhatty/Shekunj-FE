@@ -48,6 +48,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 }));
 
 function CourseTest() {
+  const[questionNumber, setQuestionNumber] = React.useState(1);
   const [answer, setAnswer] = React.useState();
   const [toggle, setToggle] = React.useState(true);
   const [showTimer, setShowTimer] = React.useState(false);
@@ -125,6 +126,7 @@ function CourseTest() {
   }, [questionCount, questionCount?.counse_time]);
 
   const handleNextQuestion = () => {
+    setQuestionNumber(prev => prev+1);
     const data = {
       answer,
       course_test: question?.id,
@@ -171,6 +173,7 @@ function CourseTest() {
   };
 
   const handlePrevQuestion = () => {
+    setQuestionNumber(prev => prev-1);
     dispatch(getUserTestQuestion(id, history, question?.prev_module,0));
   };
 
@@ -278,7 +281,7 @@ function CourseTest() {
               ) : (
                 <p>
                   {/* {questionCount?.user_course_test_count + 1}.{" "} */}
-                  {question?.id}. {question?.question}
+                  {questionNumber}. {question?.question}
                 </p>
               )}
               {question && (
@@ -361,7 +364,7 @@ function CourseTest() {
 
                 <Col md={6} xs={6} className='text-right'>
                   {questionCount?.total_course_que ===
-                  questionCount?.user_course_test_count + 1 ? (
+                  questionNumber ? (
                     <button
                       className='next_button'
                       onClick={() => handleFinishQuestion()}
