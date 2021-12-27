@@ -100,7 +100,7 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set' data-aos='slide-up'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3'>
+                    <h4 className='mt-5 pt-md-5 mb-1'>
                       {t("homePage.mainSlider.heading.1")}
                     </h4>
                     <p className='mb-4'>
@@ -121,7 +121,7 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='zoom-in'>
+                    <h4 className='mt-5 pt-md-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
                     <p className='mb-4' data-aos='zoom-in'>
@@ -146,7 +146,7 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='zoom-in'>
+                    <h4 className='mt-5 pt-md-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.3.3.1")}
                       <span>{t("homePage.mainSlider.heading.3.3.2")}</span>
                     </h4>
@@ -167,7 +167,7 @@ function HomePage() {
               <div className='container'>
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 mt-5 offset-lg-6'>
-                    <h4 className='mt-5 pt-md-5 mb-3' data-aos='zoom-in'>
+                    <h4 className='mt-5 pt-md-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
 

@@ -89,7 +89,7 @@ function EditProfile(props) {
     <>
       <form onSubmit={handleSubmit}>
         <Row>
-          <Col md={4} xs={12}>
+          <Col md={3} xs={12}>
             <ProfileImage isEditable={true} />
           </Col>
           <Col md={4} xs={12}>
