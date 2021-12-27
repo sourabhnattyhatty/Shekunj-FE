@@ -261,7 +261,6 @@ function CourseTest() {
                           />
                         }
                         label={question?.optionA}
-                        onChange={(e) => setAnswer(e.target.value)}
                       />
                     ))}
                   {question?.optionB &&
@@ -277,7 +276,6 @@ function CourseTest() {
                           />
                         }
                         label={question?.optionB}
-                        onChange={(e) => setAnswer(e.target.value)}
                       />
                     ))}
                   {question?.optionC &&
@@ -288,12 +286,11 @@ function CourseTest() {
                         value='3'
                         control={
                           <Radio
-                          // checked={check3}
-                          // onChange={handleAnswerCheck}
+                          checked={check3}
+                          onChange={handleAnswerCheck}
                           />
                         }
                         label={question?.optionC}
-                        onChange={(e) => setAnswer(e.target.value)}
                       />
                     ))}
                   {question?.optionD &&
@@ -304,12 +301,11 @@ function CourseTest() {
                         value='4'
                         control={
                           <Radio
-                          // checked={check4}
-                          // onChange={handleAnswerCheck}
+                          checked={check4}
+                          onChange={handleAnswerCheck}
                           />
                         }
                         label={question?.optionD}
-                        onChange={(e) => setAnswer(e.target.value)}
                       />
                     ))}
                 </RadioGroup>
