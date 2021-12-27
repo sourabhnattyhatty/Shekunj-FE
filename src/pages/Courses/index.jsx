@@ -26,7 +26,7 @@ import SimpleAccordion from "./Accordian";
 const Courses = (props) => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.coursesReducer);
-  const [isSubSelected , setIsSubSelected] = React.useState(false);
+  const [isSubSelected, setIsSubSelected] = React.useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(allCourses());
@@ -43,21 +43,28 @@ const Courses = (props) => {
   };
 
   const checkFunction = () => {
-    return state?.allCourses?.results?.slice(0).reverse().map((obj) => (
-      <Link to={`/CoursesDetails/${obj.id}`} className='col-md-6' key={obj?.id}>
-        <div className='box box_hov'>
-          <div className='slide-img'>
-            <img alt='' src={obj?.image} />
-            <div className='overlay'></div>
-          </div>
+    return state?.allCourses?.results
+      ?.slice(0)
+      .reverse()
+      .map((obj) => (
+        <Link
+          to={`/CoursesDetails/${obj.id}`}
+          className='col-md-6'
+          key={obj?.id}
+        >
+          <div className='box box_hov'>
+            <div className='slide-img'>
+              <img alt='' src={obj?.image} />
+              <div className='overlay'></div>
+            </div>
 
-          <div className='tag_btn'>
-            <button className='btn btn-info'>{obj?.category_name}</button>
-            <h6>{obj?.name}</h6>
+            <div className='tag_btn'>
+              <button className='btn btn-info'>{obj?.category_name}</button>
+              <h6>{obj?.name}</h6>
+            </div>
           </div>
-        </div>
-      </Link>
-    ));
+        </Link>
+      ));
   };
   return (
     <div>
@@ -131,32 +138,35 @@ const Courses = (props) => {
 
           <div className='row'>
             <div className='col-md-4 col-sm-4'>
-              <SimpleAccordion isSubSelected={val=>{
-                setIsSubSelected(val)
-              }}/>
+              <SimpleAccordion
+                isSubSelected={(val) => {
+                  setIsSubSelected(val);
+                }}
+              />
             </div>
             <div className='col-md-8 col-sm-8'>
               <div className='content_right'>
                 <h3 className='result_head'>
                   Results: {state?.allCourses?.results?.length || 0} Courses
-
                 </h3>
 
                 <Row>
                   <Col md={9} xs={12}>
                     <div className='filter_added mb-5'>
-                      {state?.selectedFilter?.length > 0 && isSubSelected &&
+                      {state?.selectedFilter?.length > 0 &&
+                        isSubSelected &&
                         state?.allCourses?.results?.map((s) => {
-                          return(
-                          <div key={s.id} className='filter_content'>
-                            {s.name}{" "}
-                            <img
-                              src={Cross}
-                              onClick={() => handleResetFilter()}
-                              className='ml-3'
-                              alt='...'
-                            />
-                          </div>);
+                          return (
+                            <div key={s.id} className='filter_content'>
+                              {s.name}{" "}
+                              <img
+                                src={Cross}
+                                onClick={() => handleResetFilter()}
+                                className='ml-3'
+                                alt='...'
+                              />
+                            </div>
+                          );
                         })}
                       {/* {state?.selectedFilter &&
                         state?.selectedFilter?.length > 0 &&
@@ -189,27 +199,7 @@ const Courses = (props) => {
               <div className='filter_right_content'>
                 <div className='row'>
                   {state?.allCourses?.results?.length > 0 ? (
-                    state?.allCourses?.results?.map((obj) => (
-                      <Link
-                        to={`/CoursesDetails/${obj.id}`}
-                        className='col-md-6'
-                        key={obj?.id}
-                      >
-                        <div className='box box_hov'>
-                          <div className='slide-img'>
-                            <img alt='' src={obj?.image} />
-                            <div className='overlay'></div>
-                          </div>
-
-                          <div className='tag_btn'>
-                            <button className='btn btn-info'>
-                              {obj?.category_name}
-                            </button>
-                            <h6>{obj?.name}</h6>
-                          </div>
-                        </div>
-                      </Link>
-                    ))
+                    checkFunction()
                   ) : (
                     <div className='text-center mt-2'>No data found!</div>
                   )}
