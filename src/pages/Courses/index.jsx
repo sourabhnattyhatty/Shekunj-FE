@@ -5,7 +5,7 @@ import Aos from "aos";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { allCourses, setFilter, noImage } from "../../store/courses/action";
+import { allCourses, setFilter } from "../../store/courses/action";
 
 import { Header, Footer, ScrollToTop, SEO } from "../../components";
 
@@ -15,13 +15,10 @@ import three from "../../assets/images/Courses/03.png";
 import img1 from "../../assets/images/Courses/img1.png";
 import img2 from "../../assets/images/Courses/img2.png";
 import img3 from "../../assets/images/Courses/img3.png";
-import Profile from "../../assets/images/testimonial/1.png";
-import Pro1 from "../../assets/images/P-1.png";
 
 import Cross from "../../assets/icons/cross.png";
 import Reset from "../../assets/icons/reset.png";
-import "aos/dist/aos.css";
-import "animate.css";
+
 import "./index.scss";
 import "../../pages/HomePage/index.scss";
 import SimpleAccordion from "./Accordian";
@@ -30,7 +27,6 @@ const Courses = (props) => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(allCourses());
   }, [dispatch]);
@@ -46,6 +42,23 @@ const Courses = (props) => {
     dispatch(setFilter(null));
   };
 
+  const checkFunction = () => {
+    return state?.allCourses?.results?.map((obj) => (
+      <Link to={`/CoursesDetails/${obj.id}`} className='col-md-6' key={obj?.id}>
+        <div className='box box_hov'>
+          <div className='slide-img'>
+            <img alt='' src={obj?.image} />
+            <div className='overlay'></div>
+          </div>
+
+          <div className='tag_btn'>
+            <button className='btn btn-info'>{obj?.category_name}</button>
+            <h6>{obj?.name}</h6>
+          </div>
+        </div>
+      </Link>
+    ));
+  };
   return (
     <div>
       <SEO title='Sheकुंज - Courses' />
@@ -59,7 +72,7 @@ const Courses = (props) => {
                 <div className='cour_box'>
                   <ul>
                     <li>
-                      <img src={one} alt='' srcSet='' className='vert-move' />
+                      <img src={one} alt='' srcSet='' />
                     </li>
                     <li>
                       <img src={two} alt='' srcSet='' />
@@ -123,7 +136,11 @@ const Courses = (props) => {
             <div className='col-md-8 col-sm-8'>
               <div className='content_right'>
                 <h3 className='result_head'>
-                  Results: {state?.allCourses?.results?.length || 0} Courses
+                  Results:{" "}
+                  {state?.selectedFilter?.length > 0
+                    ? state?.similarCourses?.length
+                    : state?.allCourses?.results?.length || 0}{" "}
+                  Courses
                 </h3>
 
                 <Row>
@@ -159,36 +176,9 @@ const Courses = (props) => {
               </div>
               <div className='filter_right_content'>
                 <div className='row'>
-                  {state?.allCourses?.results?.map((obj) => (
-                    <Link
-                      to={`/CoursesDetails/${obj.id}`}
-                      className='col-md-6'
-                      key={obj?.id}
-                    >
-                      <div className='box box_hov'>
-                        <div className='slide-img'>
-                          <img
-                            alt=''
-                            src={
-                              obj.image
-                                ? obj?.image?.includes("http://3.109.195.234")
-                                  ? obj?.image
-                                  : `http://3.109.195.234${obj?.image}`
-                                : noImage
-                            }
-                          />
-                          <div className='overlay'></div>
-                        </div>
-
-                        <div className='tag_btn'>
-                          <button className='btn btn-info'>
-                            {obj?.category_name}
-                          </button>
-                          <h6>{obj?.name}</h6>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+                  {state?.selectedFilter?.length > 0
+                    ? state?.similarCourses?.length > 0 && checkFunction()
+                    : checkFunction()}
                 </div>
               </div>
             </div>

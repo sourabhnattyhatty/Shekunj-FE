@@ -30,6 +30,12 @@
       "passError": {
         "min": "At least 6 characters",
         "required": "Password is required"
+      },
+      "firstNameError":{
+        "required":"First Name is required"
+      },
+      "lastNameError":{
+        "required":"Last Name is required"
       }
     },
     "form2": {

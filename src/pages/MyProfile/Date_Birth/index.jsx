@@ -11,7 +11,7 @@ function index(props) {
           <TextField
             id='date'
             type='date'
-            defaultValue='2017-05-24'
+            defaultValue={props.defaultValue}
             sx={{ width: 220 }}
             InputLabelProps={{
               shrink: true,

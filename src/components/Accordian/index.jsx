@@ -1,6 +1,7 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
+import { useDispatch } from "react-redux";
 
+import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
@@ -11,6 +12,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Radio, RadioGroup } from "@mui/material";
 
+import { setFilterValue } from "../../store/career";
 import "./index.scss";
 
 const Accordion = styled((props) => (
@@ -61,8 +63,14 @@ export default function AccordionComponent({
   courseLength,
   categories,
 }) {
+  const dispatch = useDispatch();
+
   const hasMoreCount = (rows = [], count = 0) => {
     return (rows.length || 0) - rows.slice(0, count)?.length || 0;
+  };
+
+  const onChangeFilter = (id, { target: { checked } }, type, subType) => {
+    dispatch(setFilterValue(id, checked, type, subType));
   };
 
   return (
@@ -79,7 +87,12 @@ export default function AccordionComponent({
                   {stream?.rows?.slice(0, 3)?.map((s) => (
                     <li key={s?.id}>
                       <FormControlLabel
-                        control={<Checkbox />}
+                        control={
+                          <Checkbox
+                            checked={s?.isChecked}
+                            onChange={(e) => onChangeFilter(s?.id, e, "stream")}
+                          />
+                        }
                         label={s?.name}
                       />
                     </li>
@@ -97,17 +110,24 @@ export default function AccordionComponent({
           <Accordion>
             <AccordionSummary
               aria-controls='panel1d-content'
-              id={courseLength?.name}
+              id={ownership?.name}
             >
-              <Typography>{courseLength?.name}</Typography>
+              <Typography>{ownership?.name}</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <ul className='pl-0'>
                 <FormGroup>
-                  {courseLength?.rows?.map((s) => (
+                  {ownership?.rows?.map((s) => (
                     <li key={s?.id}>
                       <FormControlLabel
-                        control={<Checkbox />}
+                        control={
+                          <Checkbox
+                            checked={s?.isChecked}
+                            onChange={(e) =>
+                              onChangeFilter(s?.id, e, "courseSector")
+                            }
+                          />
+                        }
                         label={s?.name}
                       />
                     </li>
@@ -131,7 +151,14 @@ export default function AccordionComponent({
                     <li key={s?.id}>
                       <FormControlLabel
                         value={s?.name}
-                        control={<Radio />}
+                        control={
+                          <Radio
+                            checked={s?.isChecked}
+                            onChange={(e) =>
+                              onChangeFilter(s?.id, e, "topSchools", "states")
+                            }
+                          />
+                        }
                         label={s?.name}
                       />
                     </li>
@@ -159,7 +186,19 @@ export default function AccordionComponent({
                   {ownership?.rows?.map((s) => (
                     <li key={s?.id}>
                       <FormControlLabel
-                        control={<Checkbox />}
+                        control={
+                          <Checkbox
+                            checked={s?.isChecked}
+                            onChange={(e) =>
+                              onChangeFilter(
+                                s?.id,
+                                e,
+                                "topSchools",
+                                "ownership",
+                              )
+                            }
+                          />
+                        }
                         label={s?.name}
                       />
                     </li>
@@ -182,7 +221,19 @@ export default function AccordionComponent({
                   {educationBoard?.rows?.slice(0, 6)?.map((s) => (
                     <li key={s?.id}>
                       <FormControlLabel
-                        control={<Checkbox />}
+                        control={
+                          <Checkbox
+                            checked={s?.isChecked}
+                            onChange={(e) =>
+                              onChangeFilter(
+                                s?.id,
+                                e,
+                                "topSchools",
+                                "educationBoard",
+                              )
+                            }
+                          />
+                        }
                         label={s?.name}
                       />
                     </li>
@@ -213,7 +264,14 @@ export default function AccordionComponent({
                   {categories?.rows?.slice(0, 6)?.map((s) => (
                     <li key={s?.id}>
                       <FormControlLabel
-                        control={<Checkbox />}
+                        control={
+                          <Checkbox
+                            checked={s?.isChecked}
+                            onChange={(e) =>
+                              onChangeFilter(s?.id, e, "governmentExam")
+                            }
+                          />
+                        }
                         label={s?.name}
                       />
                     </li>

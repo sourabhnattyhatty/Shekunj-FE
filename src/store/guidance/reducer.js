@@ -1,5 +1,21 @@
 import { guidanceTypes } from ".";
 
+const initialCourseSector = {
+  name: "COURSE SECTOR",
+  rows: [
+    {
+      id: 1,
+      name: "Private",
+      isChecked: false,
+    },
+    {
+      id: 2,
+      name: "Government", // Government
+      isChecked: false,
+    },
+  ],
+};
+
 const initialState = {
   isLoading: false,
   error: null,
@@ -9,6 +25,9 @@ const initialState = {
   },
   guidanceCategoryDetail: null,
   selectedFilter: [],
+  testData: [],
+  countData: [],
+  courseSector: initialCourseSector,
 };
 
 export const guidanceReducer = (state = initialState, action) => {
@@ -105,6 +124,44 @@ export const guidanceReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         guidanceCategoryDetail: null,
+      };
+    case guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        testData: action.payload,
+        error: null,
+      };
+    case guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        countData: action.payload,
+        error: null,
+      };
+    case guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
       };
     default:
       return state;

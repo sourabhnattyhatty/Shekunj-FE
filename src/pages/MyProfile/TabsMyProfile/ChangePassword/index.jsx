@@ -1,15 +1,16 @@
-import { CircularProgress, TextField } from "@mui/material";
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { noImage } from "../../../../store/courses/action";
+import { CircularProgress, TextField } from "@mui/material";
+import { Col, Row } from "react-bootstrap";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
 import { Error } from "../../../../components";
 import { changePassword } from "../../../../store/auth/action";
-import { useHistory } from "react-router-dom";
+import ProfileImage from "../ProfileImage";
 
 const validationSchema = Yup.object({
   old_password: Yup.string()
@@ -20,11 +21,12 @@ const validationSchema = Yup.object({
     .required("Password is required"),
   confirm_password: Yup.string()
     .min(6, "At least 6 characters")
+    .required("Confirm password is required")
     .oneOf([Yup.ref("new_password"), null], "Passwords must match"),
 });
 
 function ChangePassword() {
-  const { user, isLoading } = useSelector((state) => state.authReducer);
+  const { isLoading } = useSelector((state) => state.authReducer);
   const [visible, setVisible] = React.useState(false);
   const [visible1, setVisible1] = React.useState(false);
   const [visible2, setVisible2] = React.useState(false);
@@ -32,29 +34,30 @@ function ChangePassword() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
-    useFormik({
-      initialValues: {
-        old_password: "",
-        new_password: "",
-        confirm_password: "",
-      },
-      validationSchema,
-      onSubmit(values) {
-        dispatch(changePassword(values, history));
-      },
-    });
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    isSubmitting,
+    values,
+    errors,
+    touched,
+  } = useFormik({
+    initialValues: {
+      old_password: "",
+      new_password: "",
+      confirm_password: "",
+    },
+    validationSchema,
+    onSubmit(values) {
+      dispatch(changePassword(values, history));
+    },
+  });
 
   return (
     <Row>
       <Col md={3} xs={12}>
-        <div className='myProfile_img'>
-          <img
-            src={user?.profile_pic || noImage}
-            alt={user?.name || "N/A"}
-            style={{ width: "-webkit-fill-available" }}
-          />
-        </div>
+        <ProfileImage isEditable={true} />
       </Col>
 
       <Col md={5} xs={12}>
@@ -123,8 +126,12 @@ function ChangePassword() {
               />
             </div>
 
-            <button type='submit' className='edit_profile_btn '>
-              {isLoading ? (
+            <button
+              type='submit'
+              disabled={isSubmitting || isLoading}
+              className='edit_profile_btn '
+            >
+              {isSubmitting || isLoading ? (
                 <CircularProgress
                   color='secondary'
                   size={20}

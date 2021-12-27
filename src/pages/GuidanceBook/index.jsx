@@ -287,7 +287,7 @@ const GuidancePage = () => {
                         <GuidanceSelect
                           title='Day'
                           icon={false}
-                          array={days}
+                          listItem={days}
                           setValue={handleSetDay}
                         />
                       </div>
@@ -297,7 +297,7 @@ const GuidancePage = () => {
                         <GuidanceSelect
                           title='Month'
                           icon={false}
-                          array={months}
+                          listItem={months}
                           setValue={handleSetMonth}
                         />
                       </div>
@@ -307,7 +307,7 @@ const GuidancePage = () => {
                         <GuidanceSelect
                           title='Year'
                           icon={false}
-                          array={years}
+                          listItem={years}
                           setValue={handleSetYear}
                         />
                       </div>
@@ -317,7 +317,7 @@ const GuidancePage = () => {
                     <GuidanceSelect
                       title='Gender'
                       icon={true}
-                      array={["female", "male"]}
+                      listItem={["female", "male"]}
                       setValue={handleSetGender}
                     />
                   </div>
@@ -325,7 +325,7 @@ const GuidancePage = () => {
                     <GuidanceSelect
                       title='Qualifications'
                       icon={true}
-                      array={highEducation}
+                      listItem={highEducation}
                       setValue={handleSetQualification}
                     />
                   </div>
@@ -333,7 +333,7 @@ const GuidancePage = () => {
                     <GuidanceSelect
                       title='Course Looking For'
                       icon={true}
-                      array={courseLookingFor}
+                      listItem={courseLookingFor}
                       setValue={handleCourseLookingFor}
                     />
                   </div>

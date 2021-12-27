@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Container } from "@mui/material";
 
-import { Header, Footer, ScrollToTop } from "../../components";
+import { Header, Footer, ScrollToTop, SEO } from "../../components";
 import BasicTabs from "./../MyProfile/TabsMyProfile/index";
 import "../../pages/responsive.scss";
 import "./index.scss";
@@ -12,8 +12,8 @@ function MyProfile() {
 
   return (
     <div>
+      <SEO title='Sheकुंज - My Profile' />
       <Header loginPage={true} subPage='myProfile' />
-
       <div className='my_profile_div'>
         <Container>
           <div className='profile_con'>

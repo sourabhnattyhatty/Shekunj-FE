@@ -3,7 +3,7 @@ import { authTypes } from "./types";
 const initialState = {
   isLoading: false,
   verifyLoading: false,
-  user: {},
+  user: null,
   isAuth: false,
   error: null,
 };

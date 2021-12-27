@@ -24,7 +24,7 @@ export const bookCounseller = (value) => async (dispatch) => {
 };
 
 export const getGuidanceCategory =
-  (exam_type = "public") =>
+  (exam_type = "government") =>
   async (dispatch) => {
     try {
       const url = exam_type
@@ -44,8 +44,11 @@ export const getGuidanceCategory =
         });
       }
     } catch (error) {
-      dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_FAIL, payload: error });
-      toast.error(error?.data?.errors?.error[0], toasterConfig);
+      dispatch({
+        type: guidanceTypes.GUIDANCE_CATEGORY_FAIL,
+        payload: error?.data,
+      });
+      toast.error(error?.data?.message, toasterConfig);
     }
   };
 
@@ -62,10 +65,89 @@ export const getGuidanceCategoryDetail = (id) => async (dispatch) => {
       type: guidanceTypes.GUIDANCE_CATEGORY_DETAIL_FAIL,
       payload: error,
     });
-    toast.error(error?.data?.errors?.error[0], toasterConfig);
+    toast.error(error?.data?.message, toasterConfig);
   }
 };
 
 export const resetCategoryDetail = () => (dispatch) => {
   dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_DETAIL_RESET });
+};
+
+export const fetchStartUserCareerTest = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_REQUEST,
+    });
+    const res = await httpServices.get(`career/start-user-career-test/${id}`);
+    dispatch({
+      type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_SUCCESS,
+      payload: res?.data,
+    });
+    return res;
+  } catch (error) {
+    dispatch({
+      type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_FAIL,
+      payload: error?.data,
+    });
+    toast.error(error?.data?.message, toasterConfig);
+  }
+};
+
+export const fetchUserCareerTestCount = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_REQUEST,
+    });
+    const res = await httpServices.get(`career/user-career-count/${id}`);
+    dispatch({
+      type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_SUCCESS,
+      payload: res?.data,
+    });
+    return res;
+  } catch (error) {
+    dispatch({
+      type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_FAIL,
+      payload: error?.data,
+    });
+    toast.error(error?.data?.message, toasterConfig);
+  }
+};
+
+export const reStartUserCareerTestEnd = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_REQUEST,
+    });
+    const res = await httpServices.post(`career/start-user-career-test/${id}`);
+    dispatch({
+      type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_SUCCESS,
+      payload: res?.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_FAIL,
+      payload: error?.data,
+    });
+    toast.error(error?.data?.message, toasterConfig);
+  }
+};
+
+export const startUserCareerTest = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: guidanceTypes.GUIDANCE_START_USER_CAREER_TEST_REQUEST });
+    await httpServices.post(`career/start-user-career-test/${id}`, {
+      answer: "",
+      career_test: "",
+    });
+    dispatch({
+      type: guidanceTypes.GUIDANCE_START_USER_CAREER_TEST_SUCCESS,
+      payload: null,
+    });
+  } catch (error) {
+    dispatch({
+      type: guidanceTypes.GUIDANCE_START_USER_CAREER_TEST_FAIL,
+      payload: error?.data,
+    });
+    toast.error(error?.data?.message, toasterConfig);
+  }
 };

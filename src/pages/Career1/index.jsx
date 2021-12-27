@@ -9,65 +9,38 @@ import {
   ScrollToTop,
   SEO,
 } from "../../components";
-import { getTopSchools } from "../../store/career";
+import {
+  getTopSchools,
+  reSetFilterValue,
+  toggleCollapseValue,
+} from "../../store/career";
 import "../HomePage/index.scss";
 import "./index.scss";
 
 import { noImage } from "../../store/courses/action";
+import { baseURL } from "../../utils/ApiServices";
 
 const CareerPage1 = () => {
   const dispatch = useDispatch();
-  const { topSchools } = useSelector((state) => state.careerReducer);
-  const STATES = {
-    name: "STATES",
-    rows:
-      topSchools?.state_list?.map((obj, idx) => {
-        return {
-          id: idx,
-          name: obj,
-          isChecked: false,
-        };
-      }) || [],
-  };
-
-  const OWNERSHIP = {
-    name: "OWNERSHIP",
-    rows: [
-      {
-        id: 1,
-        name: "Private",
-        isChecked: false,
-      },
-      {
-        id: 2,
-        name: "Public",
-        isChecked: false,
-      },
-    ],
-  };
-
-  const EDUCATION_BOARD = {
-    name: "EDUCATION_BOARD",
-    rows:
-      topSchools?.board_list?.map((obj, idx) => {
-        return {
-          id: idx,
-          name: obj,
-          isChecked: false,
-        };
-      }) || [],
-  };
+  const { topSchools, courseSector } = useSelector(
+    (state) => state.careerReducer,
+  );
 
   useEffect(() => {
+    dispatch(reSetFilterValue());
     dispatch(getTopSchools());
   }, [dispatch]);
 
   const transformImg = (image) => {
     return image
-      ? image?.includes("http://3.109.195.234")
+      ? image?.includes(baseURL)
         ? image
-        : `http://3.109.195.234${image}`
+        : `${baseURL}${image}`
       : noImage;
+  };
+
+  const handleCollapse = (id, checked) => {
+    dispatch(toggleCollapseValue(id, checked ? false : true, "topSchools"));
   };
 
   return (
@@ -86,16 +59,22 @@ const CareerPage1 = () => {
             <Col md={4} xs={12}>
               <AccordionComponent
                 type='schools'
-                states={STATES}
-                ownership={OWNERSHIP}
-                educationBoard={EDUCATION_BOARD}
+                states={{
+                  name: "STATES",
+                  rows: topSchools?.state_list,
+                }}
+                ownership={courseSector}
+                educationBoard={{
+                  name: "EDUCATION_BOARD",
+                  rows: topSchools?.board_list || [],
+                }}
               />
             </Col>
 
             <Col md={8} xs={12}>
               {topSchools?.result?.length > 0 ? (
                 topSchools?.result?.map((c) => (
-                  <div className='career_box'>
+                  <div className='career_box' style={{ height: "auto" }}>
                     <Row>
                       <Col md={7} xs={12}>
                       <div className="top_col_content">
@@ -109,8 +88,16 @@ const CareerPage1 = () => {
                             <span>Board</span> : {c?.board_type || "N/A"}{" "}
                           </li>
                         </ul>
-                        <button className='btn_viewCour'>
-                          View More Details
+                        {c?.is_collapse && (
+                          <div>{c?.about_school || "N/A"}</div>
+                        )}
+                        <button
+                          className='btn_viewCour'
+                          onClick={() => handleCollapse(c?.id, c?.is_collapse)}
+                        >
+                          {!c?.is_collapse
+                            ? "View more details"
+                            : "View less details"}
                         </button>
                         </div>
                       </Col>

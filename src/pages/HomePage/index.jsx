@@ -1,12 +1,22 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect } from "react";
 import Slider from "react-slick";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
-import { constants } from "../../utils";
 import { Link } from "react-router-dom";
-import "../../pages/responsive.scss";
+
+import { constants } from "../../utils";
 import { Header, Footer, Carousel, ScrollToTop, SEO } from "../../components";
+
+import "animate.css";
+import "aos/dist/aos.css";
+import "../../../node_modules/slick-carousel/slick/slick.css";
+import "../../../node_modules/slick-carousel/slick/slick-theme.css";
+
 import "../../pages/responsive.scss";
+import "../../pages/responsive.scss";
+import "./index.scss";
+
 import Resume from "../../assets/images/resume.png";
 import Girl from "../../assets/images/job1.png";
 import Community from "../../assets/images/community.png";
@@ -34,17 +44,9 @@ import g17 from "../../assets/images/17.png";
 import g18 from "../../assets/images/18.png";
 import g19 from "../../assets/images/19.png";
 import g20 from "../../assets/images/20.png";
-import "../../../node_modules/slick-carousel/slick/slick.css";
-import "../../../node_modules/slick-carousel/slick/slick-theme.css";
-import "./index.scss";
-import "animate.css";
-import "aos/dist/aos.css";
-// import { useDispatch } from "react-redux";
-// import { allHomeCourses } from "../../store/courses/action";
 
 function HomePage() {
   const { t } = useTranslation();
-  // const dispatch = useDispatch();
 
   const settings = {
     dots: false,
@@ -81,7 +83,6 @@ function HomePage() {
   };
 
   useEffect(() => {
-    // dispatch(allHomeCourses());
     Aos.init({ duration: 2000 });
   }, []);
 
@@ -302,83 +303,83 @@ function HomePage() {
               </div>
 
               <div className='community-img mt-5'>
-                <div class='community1 communityring'>
+                <div className='community1 communityring'>
                   <img src={g1} alt='Image' />
                 </div>
 
-                <div class='community2 communityring'>
+                <div className='community2 communityring'>
                   <img src={g2} alt='Image' />
                 </div>
 
-                <div class='community3 communityring'>
+                <div className='community3 communityring'>
                   <img src={g3} alt='Image' />
                 </div>
 
-                <div class='community4 communityring'>
+                <div className='community4 communityring'>
                   <img src={g4} alt='Image' />
                 </div>
 
-                <div class='community5 communityring'>
+                <div className='community5 communityring'>
                   <img src={g5} alt='Image' />
                 </div>
 
-                <div class='community6 communityring'>
+                <div className='community6 communityring'>
                   <img src={g6} alt='Image' />
                 </div>
 
-                <div class='community7 communityring'>
+                <div className='community7 communityring'>
                   <img src={g7} alt='Image' />
                 </div>
 
-                <div class='community8 communityring'>
+                <div className='community8 communityring'>
                   <img src={g8} alt='Image' />
                 </div>
 
-                <div class='community9 communityring'>
+                <div className='community9 communityring'>
                   <img src={g9} alt='Image' />
                 </div>
 
-                <div class='community10 communityring'>
+                <div className='community10 communityring'>
                   <img src={g10} alt='Image' />
                 </div>
 
-                <div class='community11 communityring'>
+                <div className='community11 communityring'>
                   <img src={g11} alt='Image' />
                 </div>
 
-                <div class='community12 communityring'>
+                <div className='community12 communityring'>
                   <img src={g12} alt='Image' />
                 </div>
 
-                <div class='community13 communityring'>
+                <div className='community13 communityring'>
                   <img src={g13} alt='Image' />
                 </div>
 
-                <div class='community14 communityring'>
+                <div className='community14 communityring'>
                   <img src={g14} alt='Image' />
                 </div>
 
-                <div class='community15 communityring'>
+                <div className='community15 communityring'>
                   <img src={g15} alt='Image' />
                 </div>
 
-                <div class='community16 communityring'>
+                <div className='community16 communityring'>
                   <img src={g16} alt='Image' />
                 </div>
 
-                <div class='community17 communityring'>
+                <div className='community17 communityring'>
                   <img src={g17} alt='Image' />
                 </div>
 
-                <div class='community18 communityring'>
+                <div className='community18 communityring'>
                   <img src={g18} alt='Image' />
                 </div>
 
-                <div class='community19 communityring'>
+                <div className='community19 communityring'>
                   <img src={g19} alt='Image' />
                 </div>
 
-                <div class='community20 communityring'>
+                <div className='community20 communityring'>
                   <img src={g20} alt='Image' />
                 </div>
               </div>
@@ -395,87 +396,87 @@ function HomePage() {
         </div>
       </section>
 
-      <div class='career_community'>
-        <div class='container'>
-          <div class='community_block d-md-block d-none'>
-            <div class='career_community'>
-              <div class='community1'>
+      <div className='career_community'>
+        <div className='container'>
+          <div className='community_block d-md-block d-none'>
+            <div className='career_community'>
+              <div className='community1'>
                 <img src={g1} alt='Image' />
               </div>
 
-              <div class='community2'>
+              <div className='community2'>
                 <img src={g2} alt='Image' />
               </div>
 
-              <div class='community3'>
+              <div className='community3'>
                 <img src={g3} alt='Image' />
               </div>
 
-              <div class='community4'>
+              <div className='community4'>
                 <img src={g4} alt='Image' />
               </div>
 
-              <div class='community5'>
+              <div className='community5'>
                 <img src={g5} alt='Image' />
               </div>
 
-              <div class='community6'>
+              <div className='community6'>
                 <img src={g6} alt='Image' />
               </div>
 
-              <div class='community7'>
+              <div className='community7'>
                 <img src={g7} alt='Image' />
               </div>
 
-              <div class='community8'>
+              <div className='community8'>
                 <img src={g8} alt='Image' />
               </div>
 
-              <div class='community9'>
+              <div className='community9'>
                 <img src={g9} alt='Image' />
               </div>
 
-              <div class='community10'>
+              <div className='community10'>
                 <img src={g10} alt='Image' />
               </div>
 
-              <div class='community11'>
+              <div className='community11'>
                 <img src={g11} alt='Image' />
               </div>
 
-              <div class='community12'>
+              <div className='community12'>
                 <img src={g12} alt='Image' />
               </div>
 
-              <div class='community13'>
+              <div className='community13'>
                 <img src={g13} alt='Image' />
               </div>
 
-              <div class='community14'>
+              <div className='community14'>
                 <img src={g14} alt='Image' />
               </div>
 
-              <div class='community15'>
+              <div className='community15'>
                 <img src={g15} alt='Image' />
               </div>
 
-              <div class='community16'>
+              <div className='community16'>
                 <img src={g16} alt='Image' />
               </div>
 
-              <div class='community17'>
+              <div className='community17'>
                 <img src={g17} alt='Image' />
               </div>
 
-              <div class='community18'>
+              <div className='community18'>
                 <img src={g18} alt='Image' />
               </div>
 
-              <div class='community19'>
+              <div className='community19'>
                 <img src={g19} alt='Image' />
               </div>
 
-              <div class='community20'>
+              <div className='community20'>
                 <img src={g20} alt='Image' />
               </div>
             </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { noImage } from "../../../../store/courses/action";
+
+import ProfileImage from "../ProfileImage";
 
 function UserInfo(props) {
   const { user } = useSelector((state) => state.authReducer);
@@ -10,13 +11,7 @@ function UserInfo(props) {
     <div className='myProfile_box'>
       <Row>
         <Col md={3} xs={12}>
-          <div className='myProfile_img'>
-            <img
-              src={user?.profile_pic || noImage}
-              style={{ width: "-webkit-fill-available" }}
-              alt={user?.name || "N/A"}
-            />
-          </div>
+          <ProfileImage isEditable={true} />
         </Col>
 
         <Col md={5} xs={12}>

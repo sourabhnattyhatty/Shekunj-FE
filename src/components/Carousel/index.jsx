@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
-import { constants } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
-import { allHomeCourses, noImage } from "../../store/courses/action";
 import { Link, useParams } from "react-router-dom";
+
+import { allHomeCourses } from "../../store/courses/action";
+import { constants } from "../../utils";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "./index.scss";
 
 function Carousel(props) {
-  const divRef = React.useRef();
+  const divRef = React.useRef(null);
   const { courses, course, tests, similarCourses } = useSelector(
     (state) => state.coursesReducer,
   );
@@ -41,7 +42,7 @@ function Carousel(props) {
         <h2>{props.title2}</h2>
       </div>
       <div className='set'>
-        {props.page === "homePage" && (
+        {props.page === constants.carouselConstant.HOMEPAGE && (
           <div className='abc_box'>
             <div className='abc' ref={divRef}></div>
           </div>
@@ -49,14 +50,22 @@ function Carousel(props) {
 
         <OwlCarousel
           className={
-            props.page === "courseDetail"
+            props.page === constants.carouselConstant.COURSE_DETAIL
               ? "similar-coursesslider"
               : "owl-theme"
           }
           loop={courses?.length > 5}
-          margin={props.page === "courseDetail" ? 10 : 210}
-          nav={props.page === "courseDetail" ? false : true}
-          items={props.page === "courseDetail" ? 1.4 : 4}
+          margin={
+            props.page === constants.carouselConstant.COURSE_DETAIL ? 10 : 210
+          }
+          nav={
+            props.page === constants.carouselConstant.COURSE_DETAIL
+              ? false
+              : true
+          }
+          items={
+            props.page === constants.carouselConstant.COURSE_DETAIL ? 1.4 : 4
+          }
           dots={false}
           autoPlay={true}
           smartSpeed='800'
@@ -76,14 +85,18 @@ function Carousel(props) {
               margin: 50,
             },
             1000: {
-              items: props.page === "courseDetail" ? 1.4 : 3,
+              items:
+                props.page === constants.carouselConstant.COURSE_DETAIL
+                  ? 1.4
+                  : 3,
               nav: true,
-              // loop: props.page === "courseDetail" ? false : true,
             },
             1200: {
-              items: props.page === "courseDetail" ? 1.4 : 4,
+              items:
+                props.page === constants.carouselConstant.COURSE_DETAIL
+                  ? 1.4
+                  : 4,
               nav: true,
-              // loop: props.page === "courseDetail" ? false : true,
             },
             1920: {
               items: 5,
@@ -91,7 +104,7 @@ function Carousel(props) {
             },
           }}
         >
-          {props.page === "courseDetail" && (
+          {props.page === constants.carouselConstant.COURSE_DETAIL && (
             <>
               {similarCourses?.map((course, ind) => {
                 if (course?.id === Number(id)) {
@@ -105,16 +118,7 @@ function Carousel(props) {
                   >
                     <div key={course?.id} className='boxnew'>
                       <div className='slide-img1'>
-                        <img
-                          alt='...'
-                          src={
-                            course.image
-                              ? course?.image?.includes("http://3.109.195.234")
-                                ? course?.image
-                                : `http://3.109.195.234${course?.image}`
-                              : noImage
-                          }
-                        />
+                        <img alt='...' src={course?.image} />
                         <div className='overlay'></div>
                       </div>
                       <div className='tag_btn'>
@@ -136,71 +140,32 @@ function Carousel(props) {
                 >
                   <div className='box'>
                     <div className='slide-img'>
-                      <img
-                        alt=''
-                        src={
-                          course.image
-                            ? course?.image?.includes("http://3.109.195.234")
-                              ? course?.image
-                              : `http://3.109.195.234${course?.image}`
-                            : noImage
-                        }
-                      />
+                      <img alt='' src={obj?.image} />
                       <div className='overlay'></div>
                     </div>
-
                     <div className='tag_btn'>
                       <button className='btn btn-info'>
                         {obj?.category_name}
                       </button>
                       <h2>{obj?.name}</h2>
                     </div>
-
-                    {/* <hr className='line' />
-                    <div className='names'>
-                      <p>
-                        <img src={Profile} alt='...' /> Ramadhir Krishna
-                      </p>
-                      <span>Free</span>
-                    </div> */}
                   </div>
                 </Link>
               ))}
             </>
           )}
-
           {props.type === constants.carouselConstant.TEST && (
             <>
               {tests?.map((obj, ind) => (
                 <div className='item' key={ind}>
                   <div className='box'>
                     <div className='slide-img'>
-                      <img
-                        alt=''
-                        src={
-                          course.image
-                            ? course?.image?.includes("http://3.109.195.234")
-                              ? course?.image
-                              : `http://3.109.195.234${course?.image}`
-                            : null
-                        }
-                      />
+                      <img alt='' src={obj?.image} />
                       <div className='overlay'></div>
                     </div>
-
-                    <>
-                      <div className='tag_btn'>
-                        <h2>{obj?.name}</h2>
-                      </div>
-                    </>
-
-                    {/* <hr className='line' />
-                    <div className='names'>
-                      <p>
-                        <img src={Profile} alt='...' /> Ramadhir Krishna
-                      </p>
-                      <span>Free</span>
-                    </div> */}
+                    <div className='tag_btn'>
+                      <h2>{obj?.name}</h2>
+                    </div>
                   </div>
                 </div>
               ))}

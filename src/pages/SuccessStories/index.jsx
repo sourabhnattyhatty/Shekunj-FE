@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import {
   setCollapseSuccessStory,
@@ -10,9 +11,11 @@ import { Header, Footer, ScrollToTop } from "../../components";
 import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
 import double_quote from "../../assets/icons/double_quote.png";
-import "./index.scss";
 import global from "../../assets/images/Success/global.png";
+import "./index.scss";
+
 function SuccessStory() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { successStories } = useSelector((state) => {
     return state.coursesReducer;
@@ -55,7 +58,7 @@ function SuccessStory() {
         {successStories?.length > 0 &&
           successStories?.map((s, idx) => (
             <>
-              <div className='suc_box'>
+              <div className='suc_box' key={s?.id}>
                 <Row>
                   {idx % 2 === 0 ? (
                     <>
@@ -159,7 +162,9 @@ function SuccessStory() {
       <div className='want'>
         <Container>
           <h2>Want to become our next success story?</h2>
-          <button className='want_btn'>Start Learning</button>
+          <button onClick={() => history.push("/courses")} className='want_btn'>
+            Start Learning
+          </button>
         </Container>
       </div>
 

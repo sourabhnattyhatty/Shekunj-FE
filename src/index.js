@@ -1,18 +1,22 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer } from "react-toastify";
+import { ThemeProvider } from "@mui/styles";
+import { HelmetProvider } from "react-helmet-async";
+
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import store from "./store";
+import Loader from "./components/Loader";
+import theme from "./utils/Theme";
+import { ScrollToTop } from "./components";
+
+import "./index.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./assets/i18n/i18n";
-import Loader from "./components/Loader";
-import { ThemeProvider } from "@mui/styles";
-import theme from "./utils/Theme";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,7 +24,10 @@ ReactDOM.render(
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <Router>
-            <App />
+            <HelmetProvider>
+              <App />
+              <ScrollToTop />
+            </HelmetProvider>
             <ToastContainer
               position='top-right'
               autoClose={2000}

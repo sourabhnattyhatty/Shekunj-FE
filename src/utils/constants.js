@@ -3,4 +3,6 @@ export const carouselConstant = {
   TEST: "TEST",
   COLLEGES: "COLLEGES",
   SCHOOLS: "SCHOOLS",
+  COURSE_DETAIL: "courseDetail",
+  HOMEPAGE: "homePage",
 };

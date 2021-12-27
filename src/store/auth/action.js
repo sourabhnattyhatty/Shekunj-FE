@@ -1,6 +1,6 @@
 import { authTypes } from "./types";
 import { toast } from "react-toastify";
-import httpServices from "../../utils/ApiServices";
+import httpServices, { baseURL } from "../../utils/ApiServices";
 import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
 import moment from "moment";
@@ -17,7 +17,7 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
     if (redirect) {
       history.push(redirect);
     } else {
-      history.push("/MyProgress");
+      history.push("/my-progress");
     }
   } catch (error) {
     dispatch({ type: authTypes.LOGIN_FAIL });
@@ -41,7 +41,7 @@ export const onSignup = (values, history) => async (dispatch) => {
     const res = await httpServices.post("authentication/register/", values);
     dispatch({ type: authTypes.SIGNUP_FINISH, payload: values });
     Cookies.set("sheToken", res.data.token);
-    history.push("/MyProgress");
+    history.push("/my-progress");
   } catch (error) {
     dispatch({ type: authTypes.SIGNUP_FAIL });
     if (error?.status === 400) {
@@ -64,7 +64,7 @@ export const registerWithGoogle =
       if (redirect) {
         history.push(redirect);
       } else {
-        history.push("/MyProgress");
+        history.push("/my-progress");
       }
     } catch (err) {
       toast.error("Google Login failed.", toasterConfig);
@@ -143,9 +143,9 @@ export const getUserProfile = () => async (dispatch) => {
             : res?.data?.contact
           : null,
         profile_pic: res?.data?.profile_pic
-          ? res?.data?.profile_pic?.includes("http://3.109.195.234")
+          ? res?.data?.profile_pic?.includes(baseURL)
             ? res?.data?.profile_pic
-            : `http://3.109.195.234${res?.data?.profile_pic}`
+            : `${baseURL}${res?.data?.profile_pic}`
           : null,
         dob: res?.data?.dob
           ? moment(res?.data?.dob).format("DD-MM-YYYY")
@@ -161,8 +161,30 @@ export const getUserProfile = () => async (dispatch) => {
     }
   }
 };
+
 export const updateProfile = (id, values) => async (dispatch) => {
   try {
+    if (values.id) {
+      delete values.id;
+    }
+    if (!values.dob || values.dob === "Invalid date") {
+      delete values.dob;
+    }
+    if (!values.city) {
+      delete values.city;
+    }
+    if (!values.email) {
+      delete values.email;
+    }
+    if (!values.highest_education) {
+      delete values.highest_education;
+    }
+    if (!values.state) {
+      delete values.state;
+    }
+    if (!values.stream) {
+      delete values.stream;
+    }
     dispatch({ type: authTypes.USER_PROFILE_UPDATE });
     const formData = httpServices.createFormData(values);
     const res = await httpServices.putForm(
@@ -172,6 +194,6 @@ export const updateProfile = (id, values) => async (dispatch) => {
     dispatch(getUserProfile());
     toast.success(res.message, toasterConfig);
   } catch (error) {
-    toast.error("Internal Server Error", toasterConfig);
+    toast.error(error?.data?.message || "Internal Server Error", toasterConfig);
   }
 };

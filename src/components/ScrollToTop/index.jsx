@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import Tooltip from "@mui/material/Tooltip";
@@ -21,11 +21,15 @@ function ScrollToTop() {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-      /* you can also use 'auto' behaviour in place of 'smooth' */
     });
   };
 
-  window.addEventListener("scroll", toggleVisible);
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisible);
+    return () => {
+      window.removeEventListener("scroll", toggleVisible);
+    };
+  }, []);
 
   return (
     <>

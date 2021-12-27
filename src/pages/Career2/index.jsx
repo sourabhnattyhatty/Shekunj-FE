@@ -10,17 +10,22 @@ import {
   ScrollToTop,
   SEO,
 } from "../../components";
-import { getGovernmentExams } from "../../store/career";
+import {
+  getGovernmentExams,
+  reSetFilterValue,
+  toggleCollapseValue,
+} from "../../store/career";
+import { noImage } from "../../store/courses/action";
+import { baseURL } from "../../utils/ApiServices";
 import "../HomePage/index.scss";
 import "./index.scss";
-
-import { noImage } from "../../store/courses/action";
 
 const CareerPage2 = () => {
   const dispatch = useDispatch();
   const { governmentExams } = useSelector((state) => state.careerReducer);
 
   useEffect(() => {
+    dispatch(reSetFilterValue());
     dispatch(getGovernmentExams());
   }, [dispatch]);
 
@@ -33,15 +38,16 @@ const CareerPage2 = () => {
 
   const transformImg = (image) => {
     return image
-      ? image?.includes("http://3.109.195.234")
+      ? image?.includes(baseURL)
         ? image
-        : `http://3.109.195.234${image}`
+        : `${baseURL}${image}`
       : noImage;
   };
 
-  const CATEGORIES = {
-    name: "CATEGORIES",
-    rows: governmentExams?.govt_category || [],
+  const handleCollapse = (id, checked) => {
+    dispatch(
+      toggleCollapseValue(id, checked ? false : true, "governmentExams"),
+    );
   };
 
   return (
@@ -58,14 +64,17 @@ const CareerPage2 = () => {
             <Col md={4} xs={12}>
               <AccordionComponent
                 type='governmentExams'
-                categories={CATEGORIES}
+                categories={{
+                  name: "CATEGORIES",
+                  rows: governmentExams?.govt_category || [],
+                }}
               />
             </Col>
 
             <Col md={8} xs={12}>
               {governmentExams?.govt_list?.length > 0 ? (
                 governmentExams?.govt_list?.map((c) => (
-                  <div className='career_box'>
+                  <div className='career_box' style={{ height: "auto" }}>
                     <Row>
                       <Col md={7} xs={12}>
                       <div className="top_col_content">
@@ -82,8 +91,14 @@ const CareerPage2 = () => {
                             <span>Exam</span> : {c?.exam}
                           </li>
                         </ul>
-                        <button className='btn_viewCour'>
-                          View More Details
+                        {c?.is_collapse && <div>{c?.about_exam || "N/A"}</div>}
+                        <button
+                          className='btn_viewCour'
+                          onClick={() => handleCollapse(c?.id, c?.is_collapse)}
+                        >
+                          {!c?.is_collapse
+                            ? "View more details"
+                            : "View less details"}
                         </button>
                         </div>
                       </Col>

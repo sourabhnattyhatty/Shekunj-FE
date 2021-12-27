@@ -1,10 +1,11 @@
 import React from "react";
-import "./index.scss";
-import { Header, Footer, Carousel, ScrollToTop, SEO } from "../../components";
 import { Container, Row, Col } from "react-bootstrap";
-import TextField from "@mui/material/TextField";
 import { TextareaAutosize } from "@mui/material";
+import TextField from "@mui/material/TextField";
+
+import { Header, Footer, ScrollToTop } from "../../components";
 import mail2 from "../../assets/icons/mail2.png";
+import "./index.scss";
 
 function ContactUs() {
   return (

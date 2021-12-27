@@ -14,8 +14,8 @@ import {
   resetCategoryDetail,
 } from "../../../store/guidance";
 import backButtonImg from "../../../assets/images/Guidance/back-arrow.png";
-import Share from "../../../assets/images/Guidance/share-button.png";
-import Bookmark from "../../../assets/images/Guidance/bookmark-button.png";
+// import Share from "../../../assets/images/Guidance/share-button.png";
+// import Bookmark from "../../../assets/images/Guidance/bookmark-button.png";
 import "./index.scss";
 
 function TabPanel(props) {
@@ -54,9 +54,10 @@ function a11yProps(index) {
 export default function VerticalTabs() {
   const dispatch = useDispatch();
   const [value, setValue] = useState(0);
+  const [tabValue, setTabValue] = useState(0);
   const [categoryDetail, setCategoryDetail] = useState(false);
   const [showGovtExams, setShowGovtExams] = useState(true);
-  const { guidanceCategory, guidanceCategoryDetail } = useSelector(
+  const { guidanceCategory, guidanceCategoryDetail, isLoading } = useSelector(
     (state) => state.guidanceReducer,
   );
 
@@ -71,12 +72,13 @@ export default function VerticalTabs() {
     dispatch(getGuidanceCategory());
   };
 
-  const handleExamChange = (obj) => {
+  const handleExamChange = (obj, id) => {
     setShowGovtExams(false);
     setCategoryDetail(true);
     setValue(0);
+    setTabValue(obj);
     dispatch(resetCategoryDetail());
-    dispatch(getGuidanceCategoryDetail(obj.id));
+    dispatch(getGuidanceCategoryDetail(id));
   };
 
   const onBackChange = () => {
@@ -96,19 +98,21 @@ export default function VerticalTabs() {
         <Tabs
           orientation='vertical'
           variant='scrollable'
-          value={categoryDetail}
+          value={categoryDetail && tabValue}
           onChange={handleChange}
-          aria-label='Vertical tabs example'
+          aria-label='categories'
           sx={{ borderRight: 1, borderColor: "divider" }}
         >
-          {guidanceCategory?.public?.map((g) => (
-            <Tab
-              key={g?.id}
-              label={g?.name}
-              onClick={() => handleExamChange(g)}
-              iconPosition='start'
-              {...a11yProps(1)}
-            />
+          {guidanceCategory?.public?.map((g, i) => (
+            <>
+              <Tab
+                key={g?.id}
+                label={g?.name}
+                onClick={() => handleExamChange(i, g?.id)}
+                iconPosition='start'
+                {...a11yProps(1)}
+              />
+            </>
           ))}
         </Tabs>
       </Col>
@@ -141,15 +145,14 @@ export default function VerticalTabs() {
                       <Col md={6} xs={12}>
                         <div className='tabs_box'>
                           <h2>{obj.name}</h2>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Odio justo et amet varius velit. Eu, ac amet
-                            elit orci ullamcorper proin pellentesque.{" "}
+                          <p style={{ wordWrap: "break-word" }}>
+                            {obj.short_description}
                           </p>
                           <button onClick={() => handleExamChange(obj)}>
                             Read More
                           </button>
                         </div>
+                        <br />
                       </Col>
                     ))
                   ) : (
@@ -171,8 +174,8 @@ export default function VerticalTabs() {
                     </span>
                   </div>
                   <div className='banking-examheader'>
-                    <h2>{guidanceCategoryDetail?.category_name || "N/A"}</h2>
-                    <ul className='list-inline'>
+                    <h2>{guidanceCategoryDetail?.category_name}</h2>
+                    {/* <ul className='list-inline'>
                       <li className='list-inline-item'>
                         <img src={Share} alt='' className='mr-3' />
                         Share
@@ -181,7 +184,7 @@ export default function VerticalTabs() {
                         <img src={Bookmark} alt='' className='mr-3' />
                         Save
                       </li>
-                    </ul>
+                    </ul> */}
                   </div>
                   {guidanceCategoryDetail?.description ? (
                     <div
@@ -191,7 +194,9 @@ export default function VerticalTabs() {
                       }}
                     ></div>
                   ) : (
-                    <div className='text-center'>No data found!</div>
+                    <div className='text-center'>
+                      {isLoading ? "Loading..." : "No data found!"}
+                    </div>
                   )}
                   <hr className='border-colorbottom'></hr>
                 </div>

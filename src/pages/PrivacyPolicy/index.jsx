@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { Header, Footer, Carousel, ScrollToTop, SEO } from "../../components";
+import { Header, Footer } from "../../components";
 import "./index.scss";
 
 function index() {

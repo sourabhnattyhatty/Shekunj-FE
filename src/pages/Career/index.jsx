@@ -10,33 +10,25 @@ import {
   ScrollToTop,
   SEO,
 } from "../../components";
-import { getTopCollages } from "../../store/career";
+import {
+  getTopCollages,
+  reSetFilterValue,
+  toggleCollapseValue,
+} from "../../store/career";
 import { noImage } from "../../store/courses/action";
+import { baseURL } from "../../utils/ApiServices";
 
 import "../HomePage/index.scss";
 import "./index.scss";
 
 const CareerPage = () => {
   const dispatch = useDispatch();
-  const { topCollages } = useSelector((state) => state.careerReducer);
-
-  const COURSE_LENGTH = {
-    name: "COURSE SECTOR",
-    rows: [
-      {
-        id: 1,
-        name: "Private",
-        isChecked: false,
-      },
-      {
-        id: 2,
-        name: "Public", // Government
-        isChecked: false,
-      },
-    ],
-  };
+  const { topCollages, courseSector } = useSelector(
+    (state) => state.careerReducer,
+  );
 
   useEffect(() => {
+    dispatch(reSetFilterValue());
     dispatch(getTopCollages());
   }, [dispatch]);
 
@@ -49,15 +41,19 @@ const CareerPage = () => {
 
   const transformImg = (image) => {
     return image
-      ? image?.includes("http://3.109.195.234")
+      ? image?.includes(baseURL)
         ? image
-        : `http://3.109.195.234${image}`
+        : `${baseURL}${image}`
       : noImage;
   };
 
   const STREAM = {
     name: "STREAM",
     rows: topCollages?.collage_stream_list || [],
+  };
+
+  const handleCollapse = (id, checked) => {
+    dispatch(toggleCollapseValue(id, checked ? false : true, "topCollages"));
   };
 
   return (
@@ -95,14 +91,18 @@ const CareerPage = () => {
               <AccordionComponent
                 type='colleges'
                 stream={STREAM}
-                courseLength={COURSE_LENGTH}
+                ownership={courseSector}
               />
             </Col>
 
             <Col md={8} xs={12}>
               {topCollages?.collage_list?.length > 0 ? (
                 topCollages.collage_list.map((c) => (
-                  <div className='career_box' key={c?.id}>
+                  <div
+                    className='career_box'
+                    style={{ height: "auto" }}
+                    key={c?.id}
+                  >
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>
@@ -119,8 +119,18 @@ const CareerPage = () => {
                               <span>Exam</span> : {c?.exam || "N/A"}
                             </li>
                           </ul>
-                          <button className='btn_viewCour'>
-                            View more details
+                          {c?.is_collapse && (
+                            <div>{c?.about_college || "N/A"}</div>
+                          )}
+                          <button
+                            className='btn_viewCour'
+                            onClick={() =>
+                              handleCollapse(c?.id, c?.is_collapse)
+                            }
+                          >
+                            {!c?.is_collapse
+                              ? "View more details"
+                              : "View less details"}
                           </button>
                         </div>
                       </Col>

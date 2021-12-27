@@ -1,6 +1,25 @@
-import * as ApiService from "./ApiServices";
+import ApiService from "./ApiServices";
 import * as constants from "./constants";
 import theme from "./Theme";
-import { toasterConfig, transformError } from "./utils";
+import {
+  toasterConfig,
+  transformError,
+  isAuthenticated,
+  checkIsValidImage,
+  decodeToken,
+  checkIsSessionExpired,
+  handleErrorMessage,
+} from "./utils";
 
-export { ApiService, constants, theme, toasterConfig, transformError };
+export {
+  ApiService,
+  constants,
+  theme,
+  toasterConfig,
+  transformError,
+  isAuthenticated,
+  checkIsValidImage,
+  decodeToken,
+  checkIsSessionExpired,
+  handleErrorMessage,
+};
