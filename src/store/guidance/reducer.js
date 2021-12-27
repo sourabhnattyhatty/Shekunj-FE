@@ -19,10 +19,11 @@ const initialCourseSector = {
 const initialState = {
   isLoading: false,
   error: null,
-  guidanceCategory: {
-    public: [],
-    private: [],
-  },
+  guidanceCategory : [],
+  // guidanceCategory: {
+  //   public: [],
+  //   private: [],
+  // },
   guidanceCategoryDetail: null,
   selectedFilter: [],
   testData: [],
@@ -78,22 +79,19 @@ export const guidanceReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        guidanceCategory: {
-          ...state.guidanceCategory,
-          public: action.payload,
-        },
+        guidanceCategory: action.payload,
         error: null,
       };
-    case guidanceTypes.GUIDANCE_CATEGORY_FINISH_PRIVATE:
-      return {
-        ...state,
-        isLoading: false,
-        guidanceCategory: {
-          ...state.guidanceCategory,
-          private: action.payload,
-        },
-        error: null,
-      };
+    // case guidanceTypes.GUIDANCE_CATEGORY_FINISH_PRIVATE:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     guidanceCategory: {
+    //       ...state.guidanceCategory,
+    //       private: action.payload,
+    //     },
+    //     error: null,
+    //   };
     case guidanceTypes.GUIDANCE_CATEGORY_FAIL:
       return {
         ...state,

@@ -173,6 +173,10 @@ function EditProfile(props) {
                         moment(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
                       )
                     }
+                    peekNextMonth
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode='select'
                   />
                   <Error error={errors.dob} touched={touched.dob} />
                 </div>

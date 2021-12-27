@@ -23,34 +23,27 @@ export const bookCounseller = (value) => async (dispatch) => {
   }
 };
 
-export const getGuidanceCategory =
-  (exam_type = "government") =>
-  async (dispatch) => {
-    try {
-      const url = exam_type
-        ? `career/guidance-category/?exam_type=${exam_type}`
-        : "career/guidance-category/";
-      dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
-      const res = await httpServices.get(url);
-      if (exam_type) {
-        dispatch({
-          type: guidanceTypes.GUIDANCE_CATEGORY_FINISH_PRIVATE,
-          payload: res?.data || [],
-        });
-      } else {
-        dispatch({
-          type: guidanceTypes.GUIDANCE_CATEGORY_FINISH,
-          payload: res?.data || [],
-        });
-      }
-    } catch (error) {
-      dispatch({
-        type: guidanceTypes.GUIDANCE_CATEGORY_FAIL,
-        payload: error?.data,
-      });
-      toast.error(error?.data?.message, toasterConfig);
-    }
-  };
+export const getGuidanceCategory = () => async (dispatch) => {
+  try {
+    const url = "/course/online-test-category-list/";
+    dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
+    const res = await httpServices.get(url);
+    dispatch({
+      type: guidanceTypes.GUIDANCE_CATEGORY_FINISH_PRIVATE,
+      payload: res?.data || [],
+    });
+    dispatch({
+      type: guidanceTypes.GUIDANCE_CATEGORY_FINISH,
+      payload: res?.data || [],
+    });
+  } catch (error) {
+    dispatch({
+      type: guidanceTypes.GUIDANCE_CATEGORY_FAIL,
+      payload: error?.data,
+    });
+    toast.error(error?.data?.message, toasterConfig);
+  }
+};
 
 export const getGuidanceCategoryDetail = (id) => async (dispatch) => {
   try {

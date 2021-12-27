@@ -228,7 +228,7 @@ const CourseModule = () => {
                                 alt='...'
                               />
                             )}
-                            1.{obj.id} {obj?.title}
+                            1.{ind+1} {obj?.title}
                           </li>
                         ))}
                       </ul>

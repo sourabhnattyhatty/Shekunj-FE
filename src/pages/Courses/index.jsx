@@ -43,7 +43,7 @@ const Courses = (props) => {
   };
 
   const checkFunction = () => {
-    return state?.allCourses?.results?.map((obj) => (
+    return state?.allCourses?.results?.slice(0).reverse().map((obj) => (
       <Link to={`/CoursesDetails/${obj.id}`} className='col-md-6' key={obj?.id}>
         <div className='box box_hov'>
           <div className='slide-img'>

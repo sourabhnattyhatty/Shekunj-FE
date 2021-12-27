@@ -50,13 +50,24 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 function CourseTest() {
   const [answer, setAnswer] = React.useState();
   const [toggle, setToggle] = React.useState(true);
+  const [showTimer, setShowTimer] = React.useState(false);
+  const [timer, setTimer] = React.useState();
+
+  const [check1, setCheck1] = React.useState(false);
+  const [check2, setCheck2] = React.useState(false);
+  const [check3, setCheck3] = React.useState(false);
+  const [check4, setCheck4] = React.useState(false);
+
   const history = useHistory();
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
   const { id } = useParams();
+
   const { question, questionCount, isLoading } = useSelector(
     (state) => state.coursesReducer,
   );
+
+  console.log(">>>>>>>>>>", question);
 
   const progress =
     Math.round(100 / (questionCount?.total_course_que || 0)) || 0;
@@ -73,6 +84,13 @@ function CourseTest() {
   React.useEffect(() => {
     dispatch(testCountSummery(id, history));
   }, [dispatch, toggle, history, id]);
+
+  React.useEffect(() => {
+    if (questionCount && questionCount?.counse_time > 0) {
+      setTimer(parseInt(questionCount?.counse_time, 10) * 60000);
+      setShowTimer(true);
+    }
+  }, [questionCount, questionCount?.counse_time]);
 
   const handleNextQuestion = () => {
     const data = {
@@ -93,6 +111,10 @@ function CourseTest() {
         position: "bottom-center",
       });
     }
+    setCheck1(false);
+    setCheck2(false);
+    setCheck3(false);
+    setCheck4(false);
   };
 
   const handleFinishQuestion = () => {
@@ -133,6 +155,60 @@ function CourseTest() {
     );
   };
 
+  const handleTestFinished = () => {
+    toast.error("Test finishes!");
+    history.push(`/CourseResult/${id}`);
+  };
+
+  const renderTimmer = (value) => {
+    return (
+      <Timer
+        initialTime={value}
+        checkpoints={[
+          {
+            time: 0,
+            callback: () => handleTestFinished(),
+          },
+        ]}
+        direction='backward'
+      >
+        {() => (
+          <>
+            <Timer.Hours /> :
+            <Timer.Minutes />:
+            <Timer.Seconds />
+          </>
+        )}
+      </Timer>
+    );
+  };
+
+  const handleAnswerCheck = (e) => {
+    debugger;
+    setAnswer(e.target.labels[0].children[1].innerText);
+    if (e.target.value === "1") {
+      setCheck1(true);
+      setCheck2(false);
+      setCheck3(false);
+      setCheck4(false);
+    } else if (e.target.value === "2") {
+      setCheck1(false);
+      setCheck2(true);
+      setCheck3(false);
+      setCheck4(false);
+    } else if (e.target.value === "3") {
+      setCheck1(false);
+      setCheck2(false);
+      setCheck3(true);
+      setCheck4(false);
+    } else if (e.target.value === "4") {
+      setCheck1(false);
+      setCheck2(false);
+      setCheck3(false);
+      setCheck4(true);
+    }
+  };
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -154,15 +230,7 @@ function CourseTest() {
         <div className='time_set'>
           <p>
             <img src={time} alt='' /> Time left:{" "}
-            <Timer initialTime={1200000} direction='backward'>
-              {() => (
-                <>
-                  <Timer.Hours /> :
-                  <Timer.Minutes />:
-                  <Timer.Seconds />
-                </>
-              )}
-            </Timer>
+            {showTimer && renderTimmer(timer)}
           </p>
         </div>
 
@@ -179,39 +247,71 @@ function CourseTest() {
                 </p>
               )}
               {question && (
-                <RadioGroup aria-label='gender' name='radio-buttons-group'>
-                  {question?.optionA && (
-                    <FormControlLabel
-                      value={question?.optionA}
-                      control={<Radio />}
-                      label={question?.optionA}
-                      onChange={(e) => setAnswer(e.target.value)}
-                    />
-                  )}
-                  {question?.optionB && (
-                    <FormControlLabel
-                      value={question?.optionB}
-                      control={<Radio />}
-                      label={question?.optionB}
-                      onChange={(e) => setAnswer(e.target.value)}
-                    />
-                  )}
-                  {question?.optionC && (
-                    <FormControlLabel
-                      value={question?.optionC}
-                      control={<Radio />}
-                      label={question?.optionC}
-                      onChange={(e) => setAnswer(e.target.value)}
-                    />
-                  )}
-                  {question?.optionD && (
-                    <FormControlLabel
-                      value={question?.optionD}
-                      control={<Radio />}
-                      label={question?.optionD}
-                      onChange={(e) => setAnswer(e.target.value)}
-                    />
-                  )}
+                <RadioGroup name='radio-buttons-group' value={answer}>
+                  {question?.optionA &&
+                    (isLoading ? (
+                      <Skeleton />
+                    ) : (
+                      <FormControlLabel
+                        value='1'
+                        control={
+                          <Radio
+                            checked={check1}
+                            onChange={handleAnswerCheck}
+                          />
+                        }
+                        label={question?.optionA}
+                        onChange={(e) => setAnswer(e.target.value)}
+                      />
+                    ))}
+                  {question?.optionB &&
+                    (isLoading ? (
+                      <Skeleton />
+                    ) : (
+                      <FormControlLabel
+                        value='2'
+                        control={
+                          <Radio
+                            checked={check2}
+                            onChange={handleAnswerCheck}
+                          />
+                        }
+                        label={question?.optionB}
+                        onChange={(e) => setAnswer(e.target.value)}
+                      />
+                    ))}
+                  {question?.optionC &&
+                    (isLoading ? (
+                      <Skeleton />
+                    ) : (
+                      <FormControlLabel
+                        value='3'
+                        control={
+                          <Radio
+                          // checked={check3}
+                          // onChange={handleAnswerCheck}
+                          />
+                        }
+                        label={question?.optionC}
+                        onChange={(e) => setAnswer(e.target.value)}
+                      />
+                    ))}
+                  {question?.optionD &&
+                    (isLoading ? (
+                      <Skeleton />
+                    ) : (
+                      <FormControlLabel
+                        value='4'
+                        control={
+                          <Radio
+                          // checked={check4}
+                          // onChange={handleAnswerCheck}
+                          />
+                        }
+                        label={question?.optionD}
+                        onChange={(e) => setAnswer(e.target.value)}
+                      />
+                    ))}
                 </RadioGroup>
               )}
             </div>{" "}

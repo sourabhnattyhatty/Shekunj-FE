@@ -56,6 +56,7 @@ function CourseTest() {
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
     (state) => state.guidanceReducer,
   );
+  console.log(">>>>>>>>>>>>>>>>>>>>>", guidanceCategory);
   const [isTestStarted, setIsTestStarted] = useState(false);
   const [testTime, setTestTime] = useState(null);
   const [selectedCourseCategory, setSelectedCourseCategory] = useState(null);
@@ -70,7 +71,7 @@ function CourseTest() {
   }, [history]);
 
   useEffect(() => {
-    dispatch(getGuidanceCategory(null));
+    dispatch(getGuidanceCategory());
   }, [dispatch]);
 
   const handleCategoryChange = ({ target: { value } }) => {
@@ -94,7 +95,47 @@ function CourseTest() {
   };
 
   const handleTestFinished = () => {
-    toast.error("Test finises!");
+    toast.error("Test finishes!");
+  };
+
+  const renderTimmer = (value) => {
+    return (
+      <Timer
+        initialTime={value}
+        checkpoints={[
+          {
+            time: 0,
+            callback: () => handleTestFinished(),
+          },
+        ]}
+        direction='backward'
+      >
+        {() => (
+          <>
+            <Timer.Hours /> :
+            <Timer.Minutes />:
+            <Timer.Seconds />
+          </>
+        )}
+      </Timer>
+    );
+  };
+
+  const renderProgress = (count = 0) => {
+    return (
+      <IOSSlider
+        aria-label='ios slider'
+        className={
+          (testData?.progress <= 33 && "red1-progress") ||
+          (testData?.progress <= 60 && "yellow1-progress") ||
+          (testData?.progress <= 100 && "green1-progress")
+        }
+        value={count}
+        valueLabelFormat={(value) => <div>{value}%</div>}
+        valueLabelDisplay='on'
+        disabled
+      />
+    );
   };
 
   return (
@@ -124,10 +165,7 @@ function CourseTest() {
                     }}
                     inputProps={{ "aria-label": "Without label" }}
                   >
-                    {[
-                      ...guidanceCategory?.public,
-                      ...guidanceCategory?.private,
-                    ]?.map((item) => {
+                    {guidanceCategory?.map((item) => {
                       return (
                         <MenuItem key={item?.id} value={item}>
                           {item?.name}
@@ -158,17 +196,11 @@ function CourseTest() {
                     spacing={2}
                     direction='row'
                   >
-                    <h3>Banking Exam</h3>
+                    <h3>{testData?.career_category}</h3>
                     <button>Finish</button>
                   </Stack>
                 </div>
-                <IOSSlider
-                  aria-label='ios slider'
-                  value={20}
-                  valueLabelFormat={(value) => <div>{value}%</div>}
-                  valueLabelDisplay='on'
-                  disabled
-                />
+                {renderProgress(testData?.progress)}
               </Col>
             </Row>
           )}
@@ -179,24 +211,7 @@ function CourseTest() {
             <div className='time_set'>
               <p>
                 <img src={timeIcon} alt='timeIcon' /> Time left:{" "}
-                <Timer
-                  initialTime={testTime}
-                  checkpoints={[
-                    {
-                      time: 0,
-                      callback: () => handleTestFinished(),
-                    },
-                  ]}
-                  direction='backward'
-                >
-                  {() => (
-                    <>
-                      <Timer.Hours /> :
-                      <Timer.Minutes />:
-                      <Timer.Seconds />
-                    </>
-                  )}
-                </Timer>
+                {renderTimmer(testTime)}
               </p>
             </div>
 
@@ -207,34 +222,44 @@ function CourseTest() {
                   {isLoading ? (
                     <Skeleton></Skeleton>
                   ) : (
-                    <p>
-                      1. Which state has topped the highest employability rate,
-                      as per latest India Skills Report 2019
-                    </p>
+                    <p>1. {testData?.question}</p>
                   )}
-                  <RadioGroup aria-label='gender' name='radio-buttons-group'>
-                    <FormControlLabel
-                      value='Andhra Pradesh'
-                      control={<Radio />}
-                      label='Andhra Pradesh'
-                    />
-                    {/* 
-                    <FormControlLabel
-                      value='Karnataka'
-                      control={<Radio />}
-                      label='Karnataka'
-                    />
-                    <FormControlLabel
-                      value='Rajasthan'
-                      control={<Radio />}
-                      label='Rajasthan'
-                    />
-                    <FormControlLabel
-                      value='Tamil Nadu'
-                      control={<Radio />}
-                      label='Tamil Nadu'
-                    /> */}
-                  </RadioGroup>
+                  {testData && (
+                    <RadioGroup aria-label='gender' name='radio-buttons-group'>
+                      {testData?.optionA && (
+                        <FormControlLabel
+                          value='1'
+                          control={<Radio />}
+                          label={testData?.optionA}
+                          // onChange={(e) => setAnswer(e.target.value)}
+                        />
+                      )}
+                      {testData?.optionB && (
+                        <FormControlLabel
+                          value='2'
+                          control={<Radio />}
+                          label={testData?.optionB}
+                          // onChange={(e) => setAnswer(e.target.value)}
+                        />
+                      )}
+                      {testData?.optionC && (
+                        <FormControlLabel
+                          value='3'
+                          control={<Radio />}
+                          label={testData?.optionC}
+                          // onChange={(e) => setAnswer(e.target.value)}
+                        />
+                      )}
+                      {testData?.optionD && (
+                        <FormControlLabel
+                          value='4'
+                          control={<Radio />}
+                          label={testData?.optionD}
+                          // onChange={(e) => setAnswer(e.target.value)}
+                        />
+                      )}
+                    </RadioGroup>
+                  )}
                 </div>{" "}
                 <div className='prev_next_btn'>
                   <Row>
