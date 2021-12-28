@@ -19,7 +19,7 @@ const initialCourseSector = {
 const initialState = {
   isLoading: false,
   error: null,
-  guidanceCategory : [],
+  guidanceCategory: [],
   // guidanceCategory: {
   //   public: [],
   //   private: [],
@@ -29,6 +29,7 @@ const initialState = {
   testData: [],
   countData: [],
   courseSector: initialCourseSector,
+  guidanceResult: {},
 };
 
 export const guidanceReducer = (state = initialState, action) => {
@@ -164,21 +165,40 @@ export const guidanceReducer = (state = initialState, action) => {
     case guidanceTypes.POST_ANSWER_REQUEST:
       return {
         ...state,
-        isLoading : true,
-        error : null
-      }
-      case guidanceTypes.POST_ANSWER_FINISH:
-        return{
-          ...state,
-          isLoading : false,
-          error : null,
-        }
-      case guidanceTypes.POST_ANSWER_FAIL:
-        return{
-          ...state,
-          isLoading : false,
-          error : action.payload
-        }
+        isLoading: true,
+        error: null,
+      };
+    case guidanceTypes.POST_ANSWER_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+      };
+    case guidanceTypes.POST_ANSWER_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case guidanceTypes.CAREER_RESULT_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case guidanceTypes.CAREER_RESULT_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        guidanceResult: action.payload,
+        error: null,
+      };
+    case guidanceTypes.CAREER_RESULT_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
 
     default:
       return state;

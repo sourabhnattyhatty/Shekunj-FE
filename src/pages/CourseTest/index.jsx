@@ -84,15 +84,27 @@ function CourseTest() {
     if (question) {
       if (question?.answer === question?.optionA) {
         setCheck1(true);
+        setCheck2(false);
+        setCheck3(false);
+        setCheck4(false);
         setAnswer(question?.answer);
       } else if (question?.answer === question?.optionB) {
         setCheck2(true);
+        setCheck1(false);
+        setCheck3(false);
+        setCheck4(false);
         setAnswer(question?.answer);
       } else if (question?.answer === question?.optionC) {
         setCheck3(true);
+        setCheck1(false);
+        setCheck2(false);
+        setCheck4(false);
         setAnswer(question?.answer);
       } else if (question?.answer === question?.optionD) {
         setCheck4(true);
+        setCheck1(false);
+        setCheck2(false);
+        setCheck3(false);
         setAnswer(question?.answer);
       } else {
         setCheck1(false);

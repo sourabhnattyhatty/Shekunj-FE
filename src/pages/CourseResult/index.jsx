@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Header, Footer, ScrollToTop } from "../../components";
 import Confetti from "react-confetti";
@@ -10,23 +10,46 @@ import win from "../../assets/images/Courses/win.png";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { testResult } from "../../store/courses/action";
+import { careerTestResult } from "../../store/guidance/action";
 
 function CourseTest() {
+  const [result, setResult] = useState({});
+  const [passingMarks, setPassingMarks] = useState();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { result } = useSelector((state) => state.coursesReducer);
+  const { result: courseResult } = useSelector((state) => state.coursesReducer);
+  const { guidanceResult } = useSelector((state) => state.guidanceReducer);
 
   React.useEffect(() => {
-    dispatch(testResult(id));
-  }, [dispatch, id]);
+    if (window.location.pathname.includes("CareerTestResult")) {
+      dispatch(careerTestResult(id));
+    } else {
+      if (!courseResult?.result) {
+        dispatch(testResult(id));
+      }
+    }
+  }, [dispatch, id, courseResult?.result]);
+
+  React.useEffect(() => {
+    if (courseResult) {
+      setResult({ ...courseResult, page: "course" });
+    }
+    if (guidanceResult) {
+      setResult({ ...guidanceResult, page: "guidance" });
+    }
+    setPassingMarks(result?.total_score * 0.7);
+  }, [courseResult, guidanceResult, result?.total_score]);
 
   return (
     <div>
-      <Header loginPage={true} page='courses' />
+      <Header
+        loginPage={true}
+        page={result?.page === "course" ? "courses" : "guidance"}
+      />
 
       <div className='cou_resultBg'>
         <Container>
-          {Math.round(result?.result) >= 75 && (
+          {Math.round(result?.result) >= passingMarks && (
             <Confetti
               style={{ marginTop: "154px" }}
               height={850}
@@ -39,7 +62,7 @@ function CourseTest() {
                 <h2>Your Result</h2>
                 <img src={win} alt='' />
                 <h2>
-                  {Math.round(result?.result) >= 70 ? (
+                  {Math.round(result?.result) >= passingMarks ? (
                     <>
                       Congratulation <b>{result?.name}!</b>
                     </>
@@ -68,7 +91,7 @@ function CourseTest() {
                       </span>
                       <div class='progress-value'>
                         <div>
-                          <p>{result?.no_of_correct_answer}</p>
+                          <p>{result?.no_of_correct_answer || 0}</p>
                           <br />
                           <span>
                             Correct <br /> Answers
@@ -88,7 +111,7 @@ function CourseTest() {
                       </span>
                       <div class='progress-value'>
                         <div>
-                          <p>{Math.round(result?.result)}%</p>
+                          <p>{Math.round(result?.result) || 0}%</p>
                           <br />
                           <span>
                             Candidate’s <br /> Score
@@ -109,8 +132,9 @@ function CourseTest() {
                       <div class='progress-value'>
                         <div>
                           <p>
-                            {result?.test_time &&
-                              (result?.test_time).toFixed(2)}{" "}
+                            {result?.test_time
+                              ? (result?.test_time).toFixed(2)
+                              : 0}{" "}
                             <span>min</span>
                           </p>
                           <br />
@@ -121,19 +145,21 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              <Link
-                to={
-                  Math.round(result?.result) >= 70
-                    ? "/CourseCertificate"
-                    : `/CoursesDetails/${id}`
-                }
-              >
-                {Math.round(result?.result) >= 70 ? (
-                  <button className='get_certif'>Get Your Certificate</button>
-                ) : (
-                  <button className='get_certif'>Start Course Again</button>
-                )}
-              </Link>
+              {result?.page === "course" && (
+                <Link
+                  to={
+                    Math.round(result?.result) >= passingMarks
+                      ? "/CourseCertificate"
+                      : `/CoursesDetails/${id}`
+                  }
+                >
+                  <button className='get_certif'>
+                    {Math.round(result?.result) >= passingMarks
+                      ? "Get Your Certificate"
+                      : "Start Course Again"}
+                  </button>
+                </Link>
+              )}
             </Col>
           </Row>
         </Container>

@@ -99,6 +99,7 @@ function App() {
         />
         <PrivateRoute exact path='/CoursesTest/:id' component={CourseTest} />
         <PrivateRoute exact path='/CourseResult/:id' component={CourseResult} />
+        <PrivateRoute exact path='/CareerTestResult/:id' component={CourseResult} />
         <PrivateRoute
           exact
           path='/CourseCertificate'
