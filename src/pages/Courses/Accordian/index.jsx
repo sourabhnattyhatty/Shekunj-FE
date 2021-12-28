@@ -73,7 +73,7 @@ export default function SimpleAccordion(props) {
     dispatch(getCategoryList());
   }, [dispatch]);
   const handleCategoryChange = (_, obj) => {
-    dispatch(fetchAllCourses(`?id=${obj.id}`));
+    dispatch(fetchAllCourses(`?category_id=${obj.id}`));
     dispatch(setFilter([obj]));
     setSelectedFilter(obj.id);
   };
