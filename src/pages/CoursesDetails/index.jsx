@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   getSimilarCourses,
   singleCourseDetails,
 } from "../../store/courses/action";
 import { Row, Col } from "react-bootstrap";
-import { Header, Footer, ScrollToTop, SEO, Carousel } from "../../components";
-// import clipboard from "../../assets/images/CoursesDetails/clipboard.png";
 import Check from "../../assets/icons/check1.png";
 import monitor from "../../assets/icons/monitor.png";
 import lifetime1 from "../../assets/icons/lifetime1.png";
@@ -15,6 +14,21 @@ import certificate1 from "../../assets/icons/certificate1.png";
 import clipboard from "../../assets/icons/clipboard.png";
 import flexible1 from "../../assets/icons/flexible1.png";
 import Language1 from "../../assets/icons/Language1.png";
+
+import {
+  Header,
+  Footer,
+  ScrollToTop,
+  SEO,
+  Carousel,
+  SocialShare,
+} from "../../components";
+
+// import Device from "../../assets/images/CoursesDetails/Device.png";
+// import clock from "../../assets/images/CoursesDetails/clock.png";
+// import certificate from "../../assets/images/CoursesDetails/certificate.png";
+// import Support from "../../assets/images/CoursesDetails/Support.png";
+// import forum from "../../assets/images/CoursesDetails/forum.png";
 
 import "./index.scss";
 
@@ -69,7 +83,9 @@ const CourseDetails = () => {
                 <h2>Description</h2>
                 <p>{course?.description}</p>
               </div>
-
+              <div className='mt-2 mb-2'>
+                <SocialShare />
+              </div>
               <div className='sec1_con2 con_setSec1'>
                 <h2>What you’ll learn</h2>
                 <Row>

@@ -125,6 +125,7 @@ const CourseModule = () => {
     Cookies.set("module", page);
     const p = (page - 1) * progress;
     dispatch(startCourse(id, page, p, true));
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const renderProgress = (count = 0) => {
@@ -148,7 +149,7 @@ const CourseModule = () => {
     Cookies.remove("module");
     history.push(`/CoursesTest/${id}`);
   };
-
+  console.log(">>>>>>>>>>>>>>>>>>>>",course?.current_module)
   return (
     <div>
       <Header loginPage={true} page='courses' />

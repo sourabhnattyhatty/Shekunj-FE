@@ -77,42 +77,39 @@ const CareerPage2 = () => {
                   <div className='career_box' style={{ height: "auto" }}>
                     <Row>
                       <Col md={7} xs={12}>
-                      <div className="top_col_content">
-                        <h3>{c?.name || "N/A"}</h3>
-                        <p style={{ textTransform: "capitalize" }}>
-                          {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
-                          <span>{c?.exam_type || "N/A"}</span>
-                        </p>
-                        <ul>
-                          <li>
-                            <span>Fees</span> : ₹ {transformPrice(c?.fees)}{" "}
-                          </li>
-                          <li>
-                            <span>Exam</span> : {c?.exam}
-                          </li>
-                        </ul>
-                        {c?.is_collapse && <div>{c?.about_exam || "N/A"}</div>}
-                        <button
-                          className='btn_viewCour'
-                          onClick={() => handleCollapse(c?.id, c?.is_collapse)}
-                        >
-                          {!c?.is_collapse
-                            ? "View more details"
-                            : "View less details"}
-                        </button>
+                        <div className='top_col_content'>
+                          <h3>{c?.name || "N/A"}</h3>
+                          <p style={{ textTransform: "capitalize" }}>
+                            {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
+                            <span>{c?.exam_type || "N/A"}</span>
+                          </p>
+                          <ul>
+                            <li>
+                              <span>Fees</span> : ₹ {transformPrice(c?.fees)}{" "}
+                            </li>
+                            <li>
+                              <span>Exam</span> : {c?.exam}
+                            </li>
+                          </ul>
+                          {c?.is_collapse && (
+                            <div>{c?.about_exam || "N/A"}</div>
+                          )}
+                          <button
+                            className='btn_viewCour'
+                            onClick={() =>
+                              handleCollapse(c?.id, c?.is_collapse)
+                            }
+                          >
+                            {!c?.is_collapse
+                              ? "View more details"
+                              : "View less details"}
+                          </button>
                         </div>
                       </Col>
 
                       <Col md={5} xs={12}>
                         <div className='career_img'>
-                          <ImageListItem>
-                            <img
-                              srcSet={transformImg(c?.image)}
-                              alt='...'
-                              loading='lazy'
-                            />
-                            <ImageListItemBar title='+9' subtitle=' Photos' />
-                          </ImageListItem>
+                          <img srcSet={transformImg(c?.image)} alt='...' />
                         </div>
                       </Col>
                     </Row>

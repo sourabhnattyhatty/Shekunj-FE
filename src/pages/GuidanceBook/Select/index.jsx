@@ -22,7 +22,9 @@ function GuidanceSelect(props) {
     const {
       target: { value },
     } = event;
-    props.updateValues(value);
+    if (props?.flag) {
+      props?.updateValues(value);
+    }
     setDefaultValue(typeof value === "string" ? value.split(",") : value);
   };
 
@@ -35,7 +37,7 @@ function GuidanceSelect(props) {
           onChange={handleChange}
           input={<OutlinedInput />}
           renderValue={(selected) => {
-            if (selected?.length === 0) {
+            if (!selected) {
               return (
                 <>
                   {props.icon && props.title === "User" && (
