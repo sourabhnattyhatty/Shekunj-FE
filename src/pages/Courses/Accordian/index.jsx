@@ -60,7 +60,6 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function SimpleAccordion(props) {
-  console.log({props})
   const [selectedFilter, setSelectedFilter] = useState(null);
   const {
     selectedFilter: currentFilter,
@@ -76,23 +75,29 @@ export default function SimpleAccordion(props) {
     dispatch(fetchAllCourses(`?category_id=${obj.id}`));
     dispatch(setFilter([obj]));
     setSelectedFilter(obj.id);
+    setSubSelected(0);
   };
 
   const handleSubCategoryChange = (e, obj) => {
       dispatch(fetchAllCourses(`?id=${obj.id}&category_id=${selectedFilter}`));
       setSubSelected(obj?.id);
-      if(subSelected>0){
-        props.isSubSelected(true);
-      } else {
-        props.isSubSelected(false);
-      }
     };
 
   useEffect(() => {
     if (currentFilter === null) {
       setSelectedFilter(null);
     }
-  }, [currentFilter]);
+    if(props.isResetPressed){
+      setSubSelected(0);
+      props.changeResetAgain(false);
+    }
+    if(subSelected>0){
+      props.isSubSelected(true);
+    } else {
+      props.isSubSelected(false);
+    }
+  }, [currentFilter,subSelected,props]);
+
 
   return (
     <div className='accordion_box_all'>
