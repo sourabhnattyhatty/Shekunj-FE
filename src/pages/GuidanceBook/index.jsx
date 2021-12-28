@@ -227,7 +227,7 @@ const GuidancePage = () => {
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
-                            <img src={User3} alt='...' />
+                            <img src={mail2} alt='...' />
                           </InputAdornment>
                         ),
                       }}
@@ -250,7 +250,7 @@ const GuidancePage = () => {
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position='start'>
-                            <img src={mail2} alt='...' />
+                            <img src={phone} alt='...' />
                           </InputAdornment>
                         ),
                       }}

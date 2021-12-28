@@ -11,7 +11,8 @@ import Certificate01 from "../../assets/images/AllCertificate/Certificate01.png"
 import clock1 from "../../assets/icons/clock1.png";
 import barChart from "../../assets/icons/bar-chart.png";
 import lecturesIcon from "../../assets/icons/list.png";
-
+import { getGuidanceCategory } from "../../store/guidance";
+import Aos from "aos";
 import "./index.scss";
 
 function AllCertificatePage() {
@@ -23,6 +24,12 @@ function AllCertificatePage() {
     dispatch(getUserCourseCertificate());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(getGuidanceCategory(null));
+    dispatch(getGuidanceCategory());
+    Aos.init({ duration: 2000 });
+  }, [dispatch]);
+
   return (
     <div>
       <SEO title='Sheकुंज - All Certificates' />
@@ -31,7 +38,7 @@ function AllCertificatePage() {
       <div className='all_certif_banner'>
         <Container>
           <Row>
-            <Col md={5} xs={12}>
+            <Col md={5} xs={12} data-aos="slide-up">
               <h2>achieve your goals</h2>
               <p>
                 All over Indian Girl students are taking their web design

@@ -20,3 +20,20 @@
   width: 100%;
   display: block;
 }
+
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) { 
+  .SucOption {
+    background-image: url('../../assets/images/Career/mob_bg.png');
+    align-items: flex-start;
+  }
+
+  .CompExams .MuiTabs-root.MuiTabs-vertical {
+    height: auto;
+  }
+  .SucOption h2 {
+    font-size: 34px;
+    line-height: 40px;
+    padding-top: 47px;
+}
+}

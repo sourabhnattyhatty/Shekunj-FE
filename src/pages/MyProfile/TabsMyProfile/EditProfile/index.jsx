@@ -17,6 +17,7 @@ import { Error } from "../../../../components";
 import ProfileImage from "../ProfileImage";
 
 import User from "../../../../assets/images/MyProfile/user.png";
+import Calendar from "../../../../assets/images/MyProfile/calendar.png";
 import phone from "../../../../assets/images/MyProfile/phone.png";
 
 import "./index.scss";
@@ -143,6 +144,8 @@ function EditProfile(props) {
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
+                    icon={true}
+                    heading='highestEducation'
                     listItem={["10th", "12th", "Diploma", "PG", "UG"]}
                     defaultValue={values.highest_education}
                     updateValues={(value) =>
@@ -159,12 +162,14 @@ function EditProfile(props) {
               <div className='form-group'>
                 <label htmlFor=''>Date of birth</label>
                 <div className='form-group mzero'>
+                <img className="calendar_icon" src={Calendar} alt="..."/>
                   <DatePicker
                     selected={
                       values?.dob && typeof values?.dob !== "undefined"
                         ? new Date(values.dob)
                         : null
                     }
+                    placeholderText="Select DOB"
                     className='form-control'
                     maxDate={new Date()}
                     dateFormat='dd-MM-yyyy'
@@ -188,6 +193,7 @@ function EditProfile(props) {
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
+                  title="City"
                     listItem={cities}
                     defaultValue={values.city}
                     updateValues={(value) => setFieldValue("city", value)}
@@ -246,6 +252,8 @@ function EditProfile(props) {
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
+                  icon={true}
+                    heading='stream'
                     defaultValue={values.stream}
                     updateValues={(value) => setFieldValue("stream", value)}
                   />
@@ -258,6 +266,7 @@ function EditProfile(props) {
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
+                  title="State"
                     listItem={statesCities}
                     defaultValue={values?.state}
                     updateValues={handleStateChange}
@@ -268,7 +277,7 @@ function EditProfile(props) {
             </div>
           </Col>
 
-          <Col md={8} className='offset-md-4'>
+          <Col md={8} className='offset-md-3'>
             <button
               type='submit'
               disabled={isSubmitting || isLoading}

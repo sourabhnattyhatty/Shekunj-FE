@@ -100,7 +100,7 @@
   color: #ffffff;
   padding: 13px 31px;
 }
-.css-1lizpae-MuiImageListItemBar-titleWrap {
+.career_img .css-1lizpae-MuiImageListItemBar-titleWrap {
   padding: 65px 16px;
   color: #fff;
   overflow: hidden;
@@ -110,6 +110,9 @@
   width: 100%;
   height: 163px;
   text-align: center;
+  display: none;
+}
+.career_img .MuiImageListItemBar-root {
   display: none;
 }
 .MuiImageListItemBar-title.css-dasnyc-MuiImageListItemBar-title,

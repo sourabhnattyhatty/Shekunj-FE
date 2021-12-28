@@ -1,3 +1,15 @@
 .myProfile_img {
   padding: 19px;
 }
+.form-group.mzero {
+  position: relative;
+}
+img.calendar_icon {
+  position: absolute;
+  right: 13px;
+  top: 18px;
+  z-index: 9;
+}
+.react-datepicker__input-container input {
+  padding: 9.5px 14px !important;
+}
