@@ -26,6 +26,7 @@ import {
   fetchStartUserCareerTest,
   fetchUserCareerTestCount,
   postAnswer,
+  endTest,
 } from "../../store/guidance/action";
 import timeIcon from "../../assets/images/Courses/time.png";
 import "./index.scss";
@@ -87,15 +88,27 @@ function CourseTest() {
     if (testData) {
       if (testData?.answer === testData?.optionA) {
         setCheck1(true);
+        setCheck2(false);
+        setCheck3(false);
+        setCheck4(false);
         setAnswer(testData?.answer);
       } else if (testData?.answer === testData?.optionB) {
         setCheck2(true);
+        setCheck1(false);
+        setCheck3(false);
+        setCheck4(false);
         setAnswer(testData?.answer);
       } else if (testData?.answer === testData?.optionC) {
         setCheck3(true);
+        setCheck1(false);
+        setCheck2(false);
+        setCheck4(false);
         setAnswer(testData?.answer);
       } else if (testData?.answer === testData?.optionD) {
         setCheck4(true);
+        setCheck1(false);
+        setCheck2(false);
+        setCheck3(false);
         setAnswer(testData?.answer);
       } else {
         setCheck1(false);
@@ -111,7 +124,25 @@ function CourseTest() {
     testData?.optionB,
     testData?.optionC,
     testData?.optionD,
+    questionNumber,
   ]);
+
+  const handleFinishQuestion = () => {
+    const data = {
+      answer,
+      career_test: testData?.id,
+    };
+    if (answer) {
+      dispatch(postAnswer(data, selectedCourseCategoryValue?.id));
+      dispatch(endTest(selectedCourseCategoryValue?.id));
+      setAnswer("");
+      history.push(`/CareerTestResult/${selectedCourseCategoryValue?.id}`);
+    } else {
+      toast.error("Select option for next question", {
+        position: "bottom-center",
+      });
+    }
+  };
 
   React.useEffect(() => {
     dispatch(
@@ -174,14 +205,14 @@ function CourseTest() {
     setQuestionNumber((prev) => prev + 1);
     const data = {
       answer,
-      career_test: testData?.career_category,
+      career_test: testData?.id,
     };
     const newProgress = (countData?.user_career_test_count + 1) * progress;
 
-    debugger
+    debugger;
 
     if (answer) {
-      dispatch(postAnswer(data, testData?.id));
+      dispatch(postAnswer(data, selectedCourseCategoryValue?.id));
       setAnswer("");
       if (testData?.answer) {
         dispatch(
@@ -293,6 +324,7 @@ function CourseTest() {
                     value={selectedCourseCategory}
                     onChange={handleCategoryChange}
                     input={<OutlinedInput />}
+                    disabled={isTestStarted}
                     renderValue={(selected) => {
                       if (selected?.length === 0) {
                         return (
@@ -337,10 +369,12 @@ function CourseTest() {
                     direction='row'
                   >
                     <h3>{selectedCourseCategory}</h3>
-                    <button>Finish</button>
+                    <button onClick={() => handleFinishQuestion()}>
+                      Finish
+                    </button>
                   </Stack>
+                  {renderProgress(testData?.progress)}
                 </div>
-                {renderProgress(testData?.progress)}
               </Col>
             </Row>
           )}
@@ -351,7 +385,7 @@ function CourseTest() {
             <div className='time_set'>
               <p>
                 <img src={timeIcon} alt='timeIcon' /> Time left:{" "}
-                {renderTimmer(testTime)}
+                {showTimer && renderTimmer(testTime)}
               </p>
             </div>
 
@@ -444,12 +478,21 @@ function CourseTest() {
                     </Col>
 
                     <Col md={6} xs={6} className='text-right'>
-                      <button
-                        className='next_button'
-                        onClick={() => handleNextQuestion()}
-                      >
-                        next
-                      </button>
+                      {countData?.total_career_que === questionNumber ? (
+                        <button
+                          className='next_button'
+                          onClick={() => handleFinishQuestion()}
+                        >
+                          finish
+                        </button>
+                      ) : (
+                        <button
+                          className='next_button'
+                          onClick={() => handleNextQuestion()}
+                        >
+                          next
+                        </button>
+                      )}
                     </Col>
                   </Row>
                 </div>

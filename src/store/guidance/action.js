@@ -132,6 +132,20 @@ export const postAnswer = (values, id) => async (dispatch) => {
   }
 };
 
+export const endTest = (id) => async (dispatch) => {
+  await httpServices.post(`/career/user-career-test-end/${id}`);
+};
+
+export const careerTestResult = (id) => async (dispatch) => {
+  try{
+    dispatch({type:guidanceTypes.CAREER_RESULT_REQUEST})
+    const res = await httpServices.get(`/career/user-career-test-result/${id}`);
+    dispatch({type:guidanceTypes.CAREER_RESULT_FINISH, payload: res.data})
+  }catch(error){
+    dispatch({type:guidanceTypes.CAREER_RESULT_FAIL})
+  }
+}
+
 export const reStartUserCareerTestEnd = (id) => async (dispatch) => {
   try {
     dispatch({

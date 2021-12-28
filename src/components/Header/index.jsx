@@ -123,26 +123,7 @@ const Header = ({ page, subPage }) => {
               </div>
 
               <div className='col-md-9 col-5 pl-md-0 pl-lg-2 text-right'>
-                {/* <div
-                  id='custom-search-input'
-                  className='mt-lg-3 mt-md-1 d-inline-block'
-                >
-                  <div className='input-group'>
-                    <input
-                      type='text'
-                      className='search-query form-control'
-                      placeholder={t("header.searchPlaceholder")}
-                      value={searchValue}
-                      onChange={(e) => setSearchValue(e.target.value)}
-                    />
-                    <span className='input-group-btn'>
-                      <button type='button' disabled>
-                        <img src={Search} alt='...' />
-                      </button>
-                    </span>
-                  </div>
-                </div> */}
-
+                
                 <div className='top_bar_btn d-inline-flex'>
                   {isAuth ? (
                     <>
