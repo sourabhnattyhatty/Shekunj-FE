@@ -161,6 +161,25 @@ export const guidanceReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload,
       };
+    case guidanceTypes.POST_ANSWER_REQUEST:
+      return {
+        ...state,
+        isLoading : true,
+        error : null
+      }
+      case guidanceTypes.POST_ANSWER_FINISH:
+        return{
+          ...state,
+          isLoading : false,
+          error : null,
+        }
+      case guidanceTypes.POST_ANSWER_FAIL:
+        return{
+          ...state,
+          isLoading : false,
+          error : action.payload
+        }
+
     default:
       return state;
   }

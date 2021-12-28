@@ -66,25 +66,41 @@ export const resetCategoryDetail = () => (dispatch) => {
   dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_DETAIL_RESET });
 };
 
-export const fetchStartUserCareerTest = (id) => async (dispatch) => {
-  try {
-    dispatch({
-      type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_REQUEST,
-    });
-    const res = await httpServices.get(`career/start-user-career-test/${id}`);
-    dispatch({
-      type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_SUCCESS,
-      payload: res?.data,
-    });
-    return res;
-  } catch (error) {
-    dispatch({
-      type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_FAIL,
-      payload: error?.data,
-    });
-    toast.error(error?.data?.message, toasterConfig);
-  }
-};
+export const fetchStartUserCareerTest =
+  (id, history, module, progress) => async (dispatch) => {
+    try {
+      dispatch({
+        type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_REQUEST,
+      });
+      let res;
+      if (module) {
+        res = await httpServices.get(
+          `career/start-user-career-test/${id}?test_id=${module}`,
+        );
+      } else if (module && progress > 0) {
+        res = await httpServices.get(
+          `career/start-user-career-test/${id}?test_id=${module}&progress=${progress}`,
+        );
+      } else if (progress && progress > 0) {
+        res = await httpServices.get(
+          `career/start-user-career-test/${id}?progress=${progress}`,
+        );
+      } else {
+        res = await httpServices.get(`career/start-user-career-test/${id}`);
+      }
+      dispatch({
+        type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_SUCCESS,
+        payload: res?.data,
+      });
+      return res;
+    } catch (error) {
+      dispatch({
+        type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_FAIL,
+        payload: error?.data,
+      });
+      toast.error(error?.data?.message, toasterConfig);
+    }
+  };
 
 export const fetchUserCareerTestCount = (id) => async (dispatch) => {
   try {
@@ -103,6 +119,16 @@ export const fetchUserCareerTestCount = (id) => async (dispatch) => {
       payload: error?.data,
     });
     toast.error(error?.data?.message, toasterConfig);
+  }
+};
+
+export const postAnswer = (values, id) => async (dispatch) => {
+  try {
+    dispatch({ type: guidanceTypes.POST_ANSWER_REQUEST });
+    await httpServices.post(`/career/start-user-career-test/${id}`, values);
+    dispatch({ type: guidanceTypes.POST_ANSWER_FINISH });
+  } catch (err) {
+    dispatch({ type: guidanceTypes.POST_ANSWER_FAIL });
   }
 };
 

@@ -78,7 +78,9 @@ const CareerPage1 = () => {
                           <h3>{c?.name || "N/A"}</h3>
                           <p style={{ textTransform: "capitalize" }}>
                             {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
-                            <span>{c?.school_type || "N/A"}</span>
+                            <span style={{ textTransform: "capitalize" }}>
+                              {c?.school_type || "N/A"}
+                            </span>
                           </p>
                           <ul>
                             <li>

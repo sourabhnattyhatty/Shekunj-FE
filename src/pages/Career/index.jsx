@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import x from "../../assets/images/Career/x.png"
+import x from "../../assets/images/Career/x.png";
 
 import {
   AccordionComponent,
@@ -61,23 +61,19 @@ const CareerPage = () => {
       <SEO title='Sheकुंज - Career' />
       <Header loginPage={true} page='career' subPage='colleges' />
 
-
-      <div className="filter_side">
-      <img src={x} alt="" />
-      <AccordionComponent
-                type='colleges'
-                stream={STREAM}
-                courseLength={courseSector}
-              />
-
-              <p className="more">7 More</p> <br />
-
-
-              <AccordionComponent
-                type='colleges'
-                stream={STREAM}
-                courseLength={courseSector}
-              />
+      <div className='filter_side'>
+        <img src={x} alt='' />
+        <AccordionComponent
+          type='colleges'
+          stream={STREAM}
+          courseLength={courseSector}
+        />
+        <p className='more'>7 More</p> <br />
+        <AccordionComponent
+          type='colleges'
+          stream={STREAM}
+          courseLength={courseSector}
+        />
       </div>
 
       <div className='mainDiv_career'>
@@ -109,7 +105,9 @@ const CareerPage = () => {
                           <h3>{c?.name || "N/A"}</h3>
                           <p>
                             {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
-                            <span>{c?.collage_type || "N/A"}</span>
+                            <span style={{ textTransform: "capitalize" }}>
+                              {c?.collage_type || "N/A"}
+                            </span>
                           </p>
                           <ul>
                             <li>

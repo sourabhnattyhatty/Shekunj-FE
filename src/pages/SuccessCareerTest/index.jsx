@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
-import { isMobile } from "react-device-detect";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import Timer from "react-compound-timer";
@@ -26,6 +25,7 @@ import {
   getGuidanceCategory,
   fetchStartUserCareerTest,
   fetchUserCareerTestCount,
+  postAnswer,
 } from "../../store/guidance/action";
 import timeIcon from "../../assets/images/Courses/time.png";
 import "./index.scss";
@@ -74,12 +74,15 @@ function CourseTest() {
     (state) => state.guidanceReducer,
   );
 
+  const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
+
   useEffect(() => {
     if (detect.isMobile) {
       toast.error("This page is not available in mobile view.");
       history.push("/");
     }
   }, [history, detect.isMobile]);
+
   useEffect(() => {
     if (testData) {
       if (testData?.answer === testData?.optionA) {
@@ -110,6 +113,23 @@ function CourseTest() {
     testData?.optionD,
   ]);
 
+  React.useEffect(() => {
+    dispatch(
+      fetchUserCareerTestCount(selectedCourseCategoryValue?.id, history),
+    );
+  }, [dispatch, toggle, history, selectedCourseCategoryValue?.id]);
+
+  React.useEffect(() => {
+    if (countData && countData?.career_time > 0) {
+      setTestTime(parseInt(countData?.career_time, 10) * 60000);
+      setShowTimer(true);
+    }
+    setCheck1(false);
+    setCheck2(false);
+    setCheck3(false);
+    setCheck4(false);
+  }, [countData, countData?.career_time]);
+
   useEffect(() => {
     dispatch(getGuidanceCategory());
   }, [dispatch]);
@@ -139,8 +159,58 @@ function CourseTest() {
   };
 
   const handlePrevQuestion = () => {
-    setQuestionNumber(prev => prev-1);
-    dispatch(fetchStartUserCareerTest(testData?.id, history, testData?.prev_module,0));
+    setQuestionNumber((prev) => prev - 1);
+    dispatch(
+      fetchStartUserCareerTest(
+        selectedCourseCategoryValue?.id,
+        history,
+        testData?.prev_module,
+        0,
+      ),
+    );
+  };
+
+  const handleNextQuestion = () => {
+    setQuestionNumber((prev) => prev + 1);
+    const data = {
+      answer,
+      career_test: testData?.career_category,
+    };
+    const newProgress = (countData?.user_career_test_count + 1) * progress;
+
+    debugger
+
+    if (answer) {
+      dispatch(postAnswer(data, testData?.id));
+      setAnswer("");
+      if (testData?.answer) {
+        dispatch(
+          fetchStartUserCareerTest(
+            selectedCourseCategoryValue?.id,
+            history,
+            testData?.next_module,
+          ),
+        );
+      } else {
+        dispatch(
+          fetchStartUserCareerTest(
+            selectedCourseCategoryValue?.id,
+            history,
+            testData?.next_module,
+            newProgress,
+          ),
+        );
+      }
+      setToggle((prev) => !prev);
+    } else {
+      toast.error("Select option for next question", {
+        position: "bottom-center",
+      });
+    }
+    setCheck1(false);
+    setCheck2(false);
+    setCheck3(false);
+    setCheck4(false);
   };
 
   const renderTimmer = (value) => {
@@ -374,7 +444,12 @@ function CourseTest() {
                     </Col>
 
                     <Col md={6} xs={6} className='text-right'>
-                      <button className='next_button'>next</button>
+                      <button
+                        className='next_button'
+                        onClick={() => handleNextQuestion()}
+                      >
+                        next
+                      </button>
                     </Col>
                   </Row>
                 </div>
@@ -387,7 +462,7 @@ function CourseTest() {
                     {[...Array(countData?.total_career_que).keys()].map((i) => (
                       <p
                         id={
-                          i + 1 <= countData?.user_course_test_count
+                          i + 1 <= countData?.user_career_test_count
                             ? "col_gre"
                             : "col_grey"
                         }
