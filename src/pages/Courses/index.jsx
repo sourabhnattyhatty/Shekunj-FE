@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Aos from "aos";
@@ -26,7 +26,8 @@ import SimpleAccordion from "./Accordian";
 const Courses = (props) => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.coursesReducer);
-  const [isSubSelected, setIsSubSelected] = React.useState(false);
+  const [isSubSelected, setIsSubSelected] = useState(false);
+  const [resetState,setResetState] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(allCourses());
@@ -40,6 +41,12 @@ const Courses = (props) => {
       dispatch(allCourses(null));
     }
     dispatch(setFilter(null));
+  };
+  const handleResetFilterDemo = (s, obj) => {
+    dispatch(allCourses(`?category_id=${s.category_id}`));
+    dispatch(setFilter([obj]));
+    setIsSubSelected(false);
+    setResetState(true);
   };
 
   const checkFunction = () => {
@@ -66,7 +73,6 @@ const Courses = (props) => {
         </Link>
       ));
   };
-
   return (
     <div>
       <SEO title='Sheकुंज - Courses' />
@@ -143,6 +149,10 @@ const Courses = (props) => {
                 isSubSelected={(val) => {
                   setIsSubSelected(val);
                 }}
+                isResetPressed={resetState}
+                changeResetAgain={(val) => {
+                  setResetState(val);
+                }}
               />
             </div>
             <div className='col-md-8 col-sm-8'>
@@ -156,32 +166,21 @@ const Courses = (props) => {
                     <div className='filter_added mb-5'>
                       {state?.selectedFilter?.length > 0 &&
                         isSubSelected &&
-                        state?.allCourses?.results?.map((s) => {
+                        state?.allCourses?.results?.map((s,i) => {
                           return (
                             <div key={s.id} className='filter_content'>
                               {s.name}{" "}
                               <img
                                 src={Cross}
-                                onClick={() => handleResetFilter()}
+                                onClick={() =>
+                                  handleResetFilterDemo(s, state?.categoryList[i])
+                                }
                                 className='ml-3'
                                 alt='...'
                               />
                             </div>
                           );
                         })}
-                      {/* {state?.selectedFilter &&
-                        state?.selectedFilter?.length > 0 &&
-                        state?.selectedFilter.map((s) => (
-                          <div key={s.id} className='filter_content'>
-                            {s.name}{" "}
-                            <img
-                              src={Cross}
-                              onClick={() => handleResetFilter()}
-                              className='ml-3'
-                              alt='...'
-                            />
-                          </div>
-                        ))} */}
                     </div>
                   </Col>
 
