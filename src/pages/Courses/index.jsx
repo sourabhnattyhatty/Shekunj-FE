@@ -66,6 +66,7 @@ const Courses = (props) => {
         </Link>
       ));
   };
+
   return (
     <div>
       <SEO title='Sheकुंज - Courses' />
