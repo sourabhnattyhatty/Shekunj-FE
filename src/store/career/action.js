@@ -2,13 +2,16 @@ import { toast } from "react-toastify";
 
 import { coursesTypes } from ".";
 import httpServices from "../../utils/ApiServices";
+import { apiConstants } from "../../utils/constants";
 import toasterConfig from "../../utils/toasterCongig";
+
+const constants = apiConstants.CAREER;
 
 export const getGovernmentExams =
   (filter = null) =>
   async (dispatch, getState) => {
     try {
-      let url = "career/government-exam/";
+      let url = constants.GOVERNMENT_EXAMS;
       const { governmentExams } = getState().careerReducer;
       if (filter) {
         const foundExams = governmentExams?.govt_category?.filter(
@@ -52,7 +55,7 @@ export const getGovernmentExams =
   };
 
 const handleTopSchoolsFilter = (topSchools, courseSector) => {
-  const url = "career/top-school-list/";
+  const url = constants.TOP_SCHOOL_LIST;
   const stateList = topSchools?.state_list?.filter((r) => r?.isChecked);
   let stateIdString = undefined;
   if (stateList?.length > 0) {
@@ -98,7 +101,7 @@ export const getTopSchools =
   (filter = null) =>
   async (dispatch, getState) => {
     try {
-      const url = "career/top-school-list/";
+      const url = constants.TOP_SCHOOL_LIST;
       const { topSchools, courseSector } = getState().careerReducer;
       dispatch({ type: coursesTypes.TOP_SCHOOL_REQUEST });
       const res = await httpServices.get(
@@ -165,7 +168,7 @@ export const getTopSchools =
   };
 
 const handleTopCollagesFilter = (topCollages, courseSector) => {
-  const url = "career/top-collage-list/";
+  const url = constants.TOP_COLLEGE_LIST;
   const streamList = topCollages.collage_stream_list?.filter(
     (r) => r?.isChecked,
   );
@@ -199,7 +202,7 @@ export const getTopCollages =
   (filter = null) =>
   async (dispatch, getState) => {
     try {
-      const url = "career/top-collage-list/";
+      const url = constants.TOP_COLLEGE_LIST;
       const { courseSector, topCollages } = getState().careerReducer;
       dispatch({ type: coursesTypes.TOP_COLLAGE_REQUEST });
       const res = await httpServices.get(

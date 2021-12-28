@@ -22,6 +22,7 @@ import inactive from "../../../assets/images/login/inactive.png";
 
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
+import { routingConstants } from "../../../utils/constants";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -84,7 +85,7 @@ const LoginForm = () => {
         <h2>{t("signup.heading")}</h2>
         <p>
           {t("signup.content")}{" "}
-          <Link to='/login' className='register'>
+          <Link to={routingConstants.LOGIN} className='register'>
             {" "}
             &nbsp; {t("signup.loginLink")}{" "}
           </Link>

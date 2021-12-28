@@ -11,7 +11,7 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 
-import { Header, Footer, ScrollToTop } from "../../components";
+import { Header, Footer } from "../../components";
 
 import Rightcheck from "../../assets/images/Courses/right.png";
 import Stack from "@mui/material/Stack";
@@ -25,6 +25,7 @@ import { getSingleCourseModule, startCourse } from "../../store/courses/action";
 import { toast } from "react-toastify";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import Cookies from "js-cookie";
+import { routingConstants } from "../../utils/constants";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -147,9 +148,8 @@ const CourseModule = () => {
 
   const handleFinish = () => {
     Cookies.remove("module");
-    history.push(`/CoursesTest/${id}`);
+    history.push(routingConstants.COURSES_TEST + id);
   };
-  console.log(">>>>>>>>>>>>>>>>>>>>",course?.current_module)
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -321,7 +321,6 @@ const CourseModule = () => {
           </Row>
         </Container>
       </div>
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

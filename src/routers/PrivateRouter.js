@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import React from "react";
 import { Route } from "react-router-dom";
 import { Redirect } from "react-router";
+import { routingConstants } from "../utils/constants";
 
 function PrivateRoute({ component: Component, ...rest }) {
   const token = Cookies.get("sheToken");
@@ -13,7 +14,7 @@ function PrivateRoute({ component: Component, ...rest }) {
         token ? (
           <Component {...props} />
         ) : (
-          <Redirect to={`/login?redirect=${window.location.pathname}`} />
+          <Redirect to={`${routingConstants.LOGIN}?redirect=${window.location.pathname}`} />
         )
       }
     />

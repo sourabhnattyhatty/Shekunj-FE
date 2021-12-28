@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Container } from "@mui/material";
 
-import { Header, Footer, ScrollToTop, SEO } from "../../components";
+import { Header, Footer, SEO } from "../../components";
 import BasicTabs from "./../MyProfile/TabsMyProfile/index";
 import "../../pages/responsive.scss";
 import "./index.scss";
@@ -28,8 +28,6 @@ function MyProfile() {
           <BasicTabs />
         </div>
       </Container>
-
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

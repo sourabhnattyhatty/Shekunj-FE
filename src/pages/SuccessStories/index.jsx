@@ -7,7 +7,7 @@ import {
   setCollapseSuccessStory,
   successStories as fetchSuccessStories,
 } from "../../store/courses/action";
-import { Header, Footer, ScrollToTop } from "../../components";
+import { Header, Footer} from "../../components";
 import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
 import double_quote from "../../assets/icons/double_quote.png";
@@ -167,8 +167,6 @@ function SuccessStory() {
           </button>
         </Container>
       </div>
-
-      <ScrollToTop />
 
       <Footer loginPage={false} />
     </div>

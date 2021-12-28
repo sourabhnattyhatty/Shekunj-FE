@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Footer, ScrollToTop } from "../../../components";
+import { Header, Footer } from "../../../components";
 import { Container } from "react-bootstrap";
 import TabsExams from "../TabsExams/index";
 import "./index.scss";
@@ -21,8 +21,6 @@ function SuccessCareerOption2() {
           <TabsExams />
         </Container>
       </div>
-
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

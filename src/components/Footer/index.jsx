@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import Logo from "../../assets/images/whitelogo.svg";
 import LogoBlack from "../../assets/images/whitelogo.svg";
 import ChangeLanguageButton from "../LanguageButton";
+import { routingConstants } from "../../utils/constants";
 
 const Footer = ({ loginPage }) => {
   const { t } = useTranslation();
@@ -17,14 +18,14 @@ const Footer = ({ loginPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link to='/about'>{t("footer.links.col1.3")}</Link>
+                  <Link to={routingConstants.ABOUT}>{t("footer.links.col1.3")}</Link>
                 </li>
                 <li>
-                  <Link to='/SuccessStories'>{t("header.heading.8")}</Link>
+                  <Link to={routingConstants.SUCCESS_STORIES}>{t("header.heading.8")}</Link>
                 </li>
                 <li>
                   <a
-                    href='http://www.thehrnotes.com/'
+                    href={routingConstants.BLOGS}
                     target='_blank'
                     rel='noreferrer'
                   >
@@ -32,7 +33,7 @@ const Footer = ({ loginPage }) => {
                   </a>
                 </li>
                 <li>
-                  <Link to='/ContactUs'>{t("footer.links.col1.4")}</Link>
+                  <Link to={routingConstants.CONTACT_US}>{t("footer.links.col1.4")}</Link>
                 </li>
               </ul>
             </div>
@@ -60,7 +61,7 @@ const Footer = ({ loginPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link to='/PrivacyPolicy'>{t("footer.links.col3.1")}</Link>
+                  <Link to={routingConstants.PRIVACY_POLICY}>{t("footer.links.col3.1")}</Link>
                 </li>
 
                 {/* <li>

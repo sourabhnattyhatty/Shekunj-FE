@@ -18,7 +18,6 @@ import Language1 from "../../assets/icons/Language1.png";
 import {
   Header,
   Footer,
-  ScrollToTop,
   SEO,
   Carousel,
   SocialShare,
@@ -31,6 +30,7 @@ import {
 // import forum from "../../assets/images/CoursesDetails/forum.png";
 
 import "./index.scss";
+import { routingConstants } from "../../utils/constants";
 
 const CourseDetails = () => {
   const dispatch = useDispatch();
@@ -192,7 +192,7 @@ const CourseDetails = () => {
 
             <div className='col-md-5'>
               <div className='sec2_right'>
-                <Link to={`/CoursesModule/${id}`} className='btn btn_str_Cor'>
+                <Link to={routingConstants.COURSES_MODULE + id} className='btn btn_str_Cor'>
                   Start Course
                 </Link>
                 <h3 className='similar-coursestext'>Similar Courses</h3>
@@ -207,8 +207,6 @@ const CourseDetails = () => {
           </div>
         </div>
       </section>
-
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

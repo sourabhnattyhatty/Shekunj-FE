@@ -2,13 +2,16 @@ import { toast } from "react-toastify";
 
 import { myProgressTypes } from ".";
 import { toasterConfig, ApiService } from "../../utils";
+import { apiConstants } from "../../utils/constants";
 import { handleErrorMessage } from "../../utils/utils";
+
+const constants = apiConstants.MY_PROGRESS;
 
 export const getUserCourseProgress =
   (limit = null, offset = null) =>
   async (dispatch) => {
     try {
-      const url = "course/user-progress/";
+      const url = constants.USER_PROGRESS;
       dispatch({ type: myProgressTypes.FETCH_MY_PROGRESS_REQUEST });
       const res = await ApiService.get(url);
       dispatch({

@@ -19,7 +19,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import { Header, Footer, ScrollToTop, SEO } from "../../components";
+import { Header, Footer, SEO } from "../../components";
 
 import "./Dashboard.scss";
 
@@ -278,8 +278,6 @@ const Dashboard = () => {
           </Row>
         </Container>
       </div>
-
-      <ScrollToTop />
 
       <Footer loginPage={false} />
     </div>

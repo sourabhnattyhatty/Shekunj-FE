@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-import { Footer, Header, ScrollToTop, SEO } from "../../components";
+import { Footer, Header, SEO } from "../../components";
 import { timeDifferenceFromDates } from "../../utils/utils";
 import { getUserCourseCertificate } from "../../store/certificate";
 
@@ -14,6 +14,7 @@ import lecturesIcon from "../../assets/icons/list.png";
 import { getGuidanceCategory } from "../../store/guidance";
 import Aos from "aos";
 import "./index.scss";
+import { routingConstants } from "../../utils/constants";
 
 function AllCertificatePage() {
   const history = useHistory();
@@ -128,7 +129,7 @@ function AllCertificatePage() {
                         </div>
                         <button
                           onClick={() =>
-                            history.push(`/certificate-detail/${c?.id}`)
+                            history.push(routingConstants.ALL_CERTIFICATE_DETAIL + c?.id)
                           }
                         >
                           View Certificate
@@ -145,7 +146,6 @@ function AllCertificatePage() {
           )}
         </Container>
       </div>
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

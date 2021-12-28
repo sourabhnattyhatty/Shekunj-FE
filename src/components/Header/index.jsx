@@ -11,6 +11,7 @@ import Logo from "../../assets/images/logo.svg";
 import close from "../../assets/icons/x.png";
 
 import "./index.scss";
+import { routingConstants } from "../../utils/constants";
 
 const Header = ({ page, subPage }) => {
   const { t } = useTranslation();
@@ -63,46 +64,46 @@ const Header = ({ page, subPage }) => {
   };
 
   const handleProfile = () => {
-    history.push("/myprofile");
+    history.push(routingConstants.MY_PROFILE);
     setAnchorEl(null);
   };
   const handleProgress = () => {
-    history.push("/my-progress");
+    history.push(routingConstants.MY_PROGESS);
     setAnchorEl(null);
   };
 
   const handleCertificate = () => {
-    history.push("/all-certificate-page");
+    history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     setAnchorEl(null);
   };
 
   const handleColleges = () => {
-    history.push("/top-collages");
+    history.push(routingConstants.TOP_COLLEGES);
     setAnchorEl1(null);
   };
 
   const handleSchools = () => {
-    history.push("/top-schools");
+    history.push(routingConstants.TOP_SCHOOLS);
     setAnchorEl1(null);
   };
 
   const handleExams = () => {
-    history.push("/government-exams");
+    history.push(routingConstants.GOVERNMENT_EXAMS);
     setAnchorEl1(null);
   };
 
   const handleGuidance1 = () => {
-    history.push("/SuccessCareerOption");
+    history.push(routingConstants.SUCCESS_CAREER_OPTION);
     setAnchorEl2(null);
   };
 
   const handleGuidance2 = () => {
-    history.push("/SuccessCareerTest");
+    history.push(routingConstants.SUCCESS_CAREER_TEST);
     setAnchorEl2(null);
   };
 
   const handleGuidance3 = () => {
-    history.push("/GuidanceBook");
+    history.push(routingConstants.GUIDANCE_BOOK);
     setAnchorEl2(null);
   };
 
@@ -188,7 +189,7 @@ const Header = ({ page, subPage }) => {
                   ) : (
                     <Link
                       className='btn btn-bg-pink ml-xl-3 ml-md-2'
-                      to='/login'
+                      to={routingConstants.LOGIN}
                     >
                       {t("header.authButton")}
                     </Link>
@@ -365,7 +366,7 @@ const Header = ({ page, subPage }) => {
                       className='nav-link'
                       rel='noreferrer'
                       target='_blank'
-                      href='http://www.thehrnotes.com/'
+                      href={routingConstants.BLOGS}
                     >
                       {t("header.heading.7")}
                     </a>
@@ -376,7 +377,7 @@ const Header = ({ page, subPage }) => {
                       page === "story" ? "nav-item active" : "nav-item"
                     }
                   >
-                    <Link className='nav-link' to='/SuccessStories'>
+                    <Link className='nav-link' to={routingConstants.SUCCESS_STORIES}>
                       {t("header.heading.8")}
                     </Link>
                   </li>

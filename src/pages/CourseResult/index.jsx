@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import { Header, Footer, ScrollToTop } from "../../components";
+import { Header, Footer } from "../../components";
 import Confetti from "react-confetti";
 
 import "./index.scss";
@@ -11,6 +11,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { testResult } from "../../store/courses/action";
 import { careerTestResult } from "../../store/guidance/action";
+import { routingConstants } from "../../utils/constants";
 
 function CourseTest() {
   const [result, setResult] = useState({});
@@ -21,7 +22,8 @@ function CourseTest() {
   const { guidanceResult } = useSelector((state) => state.guidanceReducer);
 
   React.useEffect(() => {
-    if (window.location.pathname.includes("CareerTestResult")) {
+    if (window.location.pathname.includes("course-result")) {
+      debugger;
       dispatch(careerTestResult(id));
     } else {
       if (!courseResult?.result) {
@@ -78,7 +80,6 @@ function CourseTest() {
                   nulla odio. Iaculis lacus eget facilisis eu massa.
                 </p>
               </div>
-
               <div className='pro_div'>
                 <Row>
                   <Col md={3} xs={12}>
@@ -145,27 +146,24 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              {result?.page === "course" && (
-                <Link
-                  to={
-                    Math.round(result?.result) >= passingMarks
-                      ? "/CourseCertificate"
-                      : `/CoursesDetails/${id}`
-                  }
-                >
-                  <button className='get_certif'>
-                    {Math.round(result?.result) >= passingMarks
-                      ? "Get Your Certificate"
-                      : "Start Course Again"}
-                  </button>
-                </Link>
-              )}
+              <Link
+                to={
+                  Math.round(result?.result) >= passingMarks
+                    ? `${routingConstants.COURSE_CERTIFICATE}`
+                    : `${routingConstants.COURSE_DETAILS + id}`
+                }
+              >
+                <button className='get_certif'>
+                  {Math.round(result?.result) >= passingMarks
+                    ? "Get Your Certificate"
+                    : "Start Course Again"}
+                </button>
+              </Link>
+              
             </Col>
           </Row>
         </Container>
       </div>
-
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

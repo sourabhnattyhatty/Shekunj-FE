@@ -1,13 +1,17 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import noImageIcon from '../assets/images/no-image.jpeg';
 
 import { checkIsSessionExpired, decodeToken } from ".";
+import { routingConstants } from "./constants";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true;
 
 export const baseURL = process.env.REACT_APP_API_URL?.slice(0, 20);
+
+export const noImage = noImageIcon;
 
 const responseBody = (response) => response.data;
 
@@ -18,7 +22,7 @@ axios.interceptors.request.use((config) => {
     if (userInfo?.exp && checkIsSessionExpired(userInfo?.exp)) {
       Cookies.remove("userInfo");
       toast.error("Session expired!");
-      window.location.href = "/login";
+      window.location.href = routingConstants.LOGIN;
     }
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -35,7 +39,7 @@ axios.interceptors.response.use(
       case 401:
         Cookies.remove("userInfo");
         toast.error("Unauthorized access!");
-        window.location.href = "/login";
+        window.location.href = routingConstants.LOGIN;
         console.log("Logout user!");
         break;
       case 403:
@@ -47,9 +51,6 @@ axios.interceptors.response.use(
     return Promise.reject(error.response);
   },
 );
-
-export const noImage =
-  "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
 
 const requests = {
   baseURL,

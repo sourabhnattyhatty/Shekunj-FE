@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { TextareaAutosize } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
-import { Header, Footer, ScrollToTop } from "../../components";
+import { Header, Footer } from "../../components";
 import mail2 from "../../assets/icons/mail2.png";
 import "./index.scss";
 
@@ -90,8 +90,6 @@ function ContactUs() {
           </Container>
         </div>
       </div>
-
-      <ScrollToTop />
 
       <Footer loginPage={false} />
     </div>

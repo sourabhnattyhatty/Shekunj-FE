@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { allCourses, setFilter } from "../../store/courses/action";
 
-import { Header, Footer, ScrollToTop, SEO } from "../../components";
+import { Header, Footer, SEO } from "../../components";
 
 import one from "../../assets/images/Courses/01.png";
 import two from "../../assets/images/Courses/02.png";
@@ -22,6 +22,7 @@ import Reset from "../../assets/icons/reset.png";
 import "./index.scss";
 import "../../pages/HomePage/index.scss";
 import SimpleAccordion from "./Accordian";
+import { routingConstants } from "../../utils/constants";
 
 const Courses = (props) => {
   const { t } = useTranslation();
@@ -55,7 +56,7 @@ const Courses = (props) => {
       .reverse()
       .map((obj) => (
         <Link
-          to={`/CoursesDetails/${obj.id}`}
+          to={routingConstants.COURSE_DETAILS+obj.id}
           className='col-md-6'
           key={obj?.id}
         >
@@ -209,8 +210,6 @@ const Courses = (props) => {
           </div>
         </div>
       </section>
-
-      <ScrollToTop />
 
       <Footer loginPage={false} />
     </div>

@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { Header, Footer, ScrollToTop } from "../../components";
+import { Header, Footer } from "../../components";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import swati_jain from "../../assets/images/Courses/swati_jain.png";
@@ -12,6 +12,7 @@ import Share from "../../assets/images/Courses/Share.png";
 import fullscreen_icon from "../../assets/images/Courses/fullscreen_icon.png";
 import "./index.scss";
 import { useHistory } from "react-router-dom";
+import { routingConstants } from "../../utils/constants";
 
 function CourseTest() {
   const history = useHistory();
@@ -60,7 +61,7 @@ function CourseTest() {
                 <p>
                   <div
                     class='content'
-                    onClick={() => history.push("/CertificateFullView")}
+                    onClick={() => history.push(routingConstants.CERTIFICATE_FULL_VIEW)}
                   >
                     <a href='#!' target='_blank'>
                       <div class='content-overlay'></div>
@@ -85,7 +86,6 @@ function CourseTest() {
         </Container>
       </div>
 
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );
