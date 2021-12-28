@@ -8,6 +8,8 @@ import User2 from "../../../assets/icons/user2.png";
 import Gender from "../../../assets/icons/gender.png";
 import Qualifications from "../../../assets/icons/Qualifications.png";
 import Course from "../../../assets/icons/Course.png";
+import Education from "../../../assets/images/MyProfile/education.png"
+import Stream from "../../../assets/images/MyProfile/Stream.png"
 
 const names = ["Engineering", "Medical", "Arts", "Science", "Pharmacy"];
 
@@ -35,7 +37,7 @@ function GuidanceSelect(props) {
           onChange={handleChange}
           input={<OutlinedInput />}
           renderValue={(selected) => {
-            if (selected?.length === 0) {
+            if (!selected) {
               return (
                 <>
                   {props.icon && props.title === "User" && (
@@ -49,6 +51,12 @@ function GuidanceSelect(props) {
                   )}
                   {props.icon && props.title === "Course Looking For" && (
                     <img src={Course} alt='...' />
+                  )}
+                  {props.icon && props.heading === "highestEducation" && (
+                    <img src={Education} alt='...' />
+                  )}
+                  {props.icon && props.heading === "stream" && (
+                    <img src={Stream} alt='...' />
                   )}
                   <em>{props?.title}</em>
                 </>

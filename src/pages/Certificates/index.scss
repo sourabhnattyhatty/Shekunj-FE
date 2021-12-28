@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 .all_certif_banner {
   background-image: url("../../assets/images/AllCertificate/banner.png");
@@ -105,7 +105,7 @@
   color: #fff;
 }
 .box_certificate {
-  background-image: url('../../assets/images/AllCertificate/certificate_bg.png');
+  background-image: url("../../assets/images/AllCertificate/certificate_bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -178,4 +178,10 @@ hr.hr_line {
 hr.hr_line2 {
   border: 1px solid #828282;
   margin: 13px auto;
+}
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  .all_certif_con button {
+    width: 150px;
+  }
 }

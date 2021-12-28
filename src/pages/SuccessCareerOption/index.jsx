@@ -26,7 +26,7 @@ function SuccessCareerOption() {
 
       <div className='SucOption'>
         <Container>
-          <h2 data-aos='slide-up'>Choose Your Career</h2>
+          <h2 data-aos='slide-up'>Choose Your <br/> Career</h2>
         </Container>
       </div>
 
