@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
 
-import { Header, Footer, ScrollToTop, SEO } from "../../components";
+import { Header, Footer, SEO } from "../../components";
 
 import img1 from "../../assets/images/About/img1.png";
 import Nikita from "../../assets/images/Nikita-Sharma.png";
@@ -179,9 +179,6 @@ const AboutusPage = () => {
           </div>
         </div>
       </section>
-
-      <ScrollToTop />
-
       <Footer loginPage={false} />
     </div>
   );

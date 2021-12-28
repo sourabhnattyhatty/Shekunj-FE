@@ -5,6 +5,7 @@ import PublicRoute from "./routers/PublicRouter";
 import PrivateRoute from "./routers/PrivateRouter";
 
 import "./App.css";
+import { routingConstants } from "./utils/constants";
 
 const ForgotPage = React.lazy(() => import("./pages/ForgotPage/ForgotPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage/SignupPage"));
@@ -49,68 +50,67 @@ function App() {
   return (
     <>
       <Switch>
-        <PublicRoute exact path='/login' component={LoginPage} />
-        <PublicRoute exact path='/signup' component={SignupPage} />
-        <PublicRoute exact path='/forgot' component={ForgotPage} />
+        <PublicRoute exact path={routingConstants.LOGIN} component={LoginPage} />
+        <PublicRoute exact path={routingConstants.SIGN_UP} component={SignupPage} />
+        <PublicRoute exact path={routingConstants.FORGOT} component={ForgotPage} />
         <PublicRoute
           exact
-          path='/authentication/password-reset/:uidb/:token/'
+          path={routingConstants.RESET_PASSWORD}
           component={ResetPassword}
         />
-        <Route exact path='/' component={HomePage} />
-        <Route exact path='/about' component={About} />
-        <Route exact path='/top-collages' component={Career} />
-        <Route exact path='/top-schools' component={Career1} />
-        <Route exact path='/government-exams' component={Career2} />
-        <Route exact path='/Courses' component={Courses} />
-        <Route exact path='/CoursesDetails' component={CoursesDetails} />
-        <Route exact path='/myprofile' component={MyProfile} />
-        <Route exact path='/GuidanceBook' component={GuidanceBook} />
-        <Route exact path='/CertificatePage' component={CertificatePage} />
-        <Route exact path='/SuccessStories' component={SuccessStories} />
-        <Route exact path='/SuccessCareerTest' component={SuccessCareerTest} />
+        <Route exact path={routingConstants.HOME_PAGE} component={HomePage} />
+        <Route exact path={routingConstants.ABOUT} component={About} />
+        <Route exact path={routingConstants.TOP_COLLEGES} component={Career} />
+        <Route exact path={routingConstants.TOP_SCHOOLS} component={Career1} />
+        <Route exact path={routingConstants.GOVERNMENT_EXAMS} component={Career2} />
+        <Route exact path={routingConstants.COURSES} component={Courses} />
+        <Route exact path={routingConstants.MY_PROFILE} component={MyProfile} />
+        <Route exact path={routingConstants.GUIDANCE_BOOK} component={GuidanceBook} />
+        <Route exact path={routingConstants.CERTIFICATE_PAGE} component={CertificatePage} />
+        <Route exact path={routingConstants.SUCCESS_STORIES} component={SuccessStories} />
+        <Route exact path={routingConstants.SUCCESS_CAREER_TEST} component={SuccessCareerTest} />
         <Route
           exact
-          path='/SuccessCareerOption'
+          path={routingConstants.SUCCESS_CAREER_OPTION}
           component={SuccessCareerOption}
         />
-        <Route exact path='/success2' component={SuccessCareerOption2} />
+        <Route exact path={routingConstants.SUCCESS_2} component={SuccessCareerOption2} />
         <Route
           exact
-          path='/all-certificate-page'
+          path={routingConstants.ALL_CERTIFICATE_PAGE}
           component={AllCertificatePage}
         />
         <PrivateRoute
           exact
-          path='/certificate-detail/:id'
+          path={`${routingConstants.ALL_CERTIFICATE_DETAIL}:id`}
           component={CertificateDetail}
         />
-        <Route exact path='/ContactUs' component={ContactUs} />
-        <Route exact path='/EmailPage' component={EmailPage} />
+        <Route exact path={routingConstants.CONTACT_US} component={ContactUs} />
+        <Route exact path={routingConstants.EMAIL_PAGE} component={EmailPage} />
         <PrivateRoute
           exact
-          path='/CoursesDetails/:id'
+          path={`${routingConstants.COURSE_DETAILS}:id`}
           component={CoursesDetails}
         />
         <PrivateRoute
           exact
-          path='/CoursesModule/:id'
+          path={`${routingConstants.COURSES_MODULE}:id`}
           component={CoursesModule}
         />
-        <PrivateRoute exact path='/CoursesTest/:id' component={CourseTest} />
-        <PrivateRoute exact path='/CourseResult/:id' component={CourseResult} />
+        <PrivateRoute exact path={`${routingConstants.COURSES_TEST}:id`} component={CourseTest} />
+        <PrivateRoute exact path={`${routingConstants.COURSES_RESULT}:id`} component={CourseResult} />
         <PrivateRoute
           exact
-          path='/CourseCertificate'
+          path={routingConstants.COURSE_CERTIFICATE}
           component={CourseCertificate}
         />
         <PrivateRoute
           exact
-          path='/CertificateFullView'
+          path={routingConstants.CERTIFICATE_FULL_VIEW}
           component={CertificateFullView}
         />
-        <PrivateRoute exact path='/my-progress' component={MyProgress} />
-        <PrivateRoute exact path='/PrivacyPolicy' component={PrivacyPolicy} />
+        <PrivateRoute exact path={routingConstants.MY_PROGESS} component={MyProgress} />
+        <PrivateRoute exact path={routingConstants.PRIVACY_POLICY} component={PrivacyPolicy} />
         <Route path='*' component={PageNotFound} />
       </Switch>
     </>

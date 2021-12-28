@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { Header, Footer, ScrollToTop } from "../../components";
+import { Header, Footer } from "../../components";
 import Confetti from "react-confetti";
 
 import "./index.scss";
@@ -10,6 +10,7 @@ import win from "../../assets/images/Courses/win.png";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { testResult } from "../../store/courses/action";
+import { routingConstants } from "../../utils/constants";
 
 function CourseTest() {
   const { id } = useParams();
@@ -124,8 +125,8 @@ function CourseTest() {
               <Link
                 to={
                   Math.round(result?.result) >= 70
-                    ? "/CourseCertificate"
-                    : `/CoursesDetails/${id}`
+                    ? `${routingConstants.COURSE_CERTIFICATE}`
+                    : `${routingConstants.COURSE_DETAILS +  id}`
                 }
               >
                 {Math.round(result?.result) >= 70 ? (
@@ -138,8 +139,6 @@ function CourseTest() {
           </Row>
         </Container>
       </div>
-
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

@@ -9,6 +9,7 @@ import Certificate_text from "../../assets/images/AllCertificate/Certificate_tex
 import para from "../../assets/images/AllCertificate/para.png";
 import signature from "../../assets/images/AllCertificate/signature.png";
 import "./index.scss";
+import { routingConstants } from "../../utils/constants";
 
 const CertificatesDetail = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const CertificatesDetail = () => {
     if (id) {
       dispatch(getUserCourseCertificateDetail(id, history));
     } else {
-      history.push("/all-certificate-page");
+      history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
   }, [id, history, dispatch]);
 

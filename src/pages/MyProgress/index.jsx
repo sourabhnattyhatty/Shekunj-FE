@@ -9,10 +9,11 @@ import ProgressChart from "./ProgressChart";
 import CurrentCourse from "./CurrentCourse";
 import InProgressCourse from "./InProgressCourse";
 import YourTest from "./YourText";
-import { Header, Footer, ScrollToTop, SEO } from "../../components";
+import { Header, Footer, SEO } from "../../components";
 import { getUserCourseProgress } from "../../store/my-progress";
 
 import "./index.scss";
+import { routingConstants } from "../../utils/constants";
 
 function MyProgress() {
   const { user } = useSelector((state) => state.authReducer);
@@ -84,7 +85,7 @@ function MyProgress() {
                   </Col>
                 </Row>
                 <div>
-                  <Link to='/all-certificate-page'>
+                  <Link to={routingConstants.ALL_CERTIFICATE_PAGE}>
                     <button className='btn all_certificatebutton'>
                       All Certificates
                     </button>
@@ -97,7 +98,6 @@ function MyProgress() {
           </Row>
         </Container>
       </div>
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

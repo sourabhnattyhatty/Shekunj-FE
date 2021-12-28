@@ -4,14 +4,17 @@ import { coursesTypes } from "./types";
 import httpServices from "../../utils/ApiServices";
 import { toast } from "react-toastify";
 import { toasterConfig } from "../../utils";
+import { apiConstants, routingConstants } from "../../utils/constants";
 
-export const noImage =
-  "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
+const constants = apiConstants.COURSES;
+
+// export const noImage =
+//   "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
 
 export const allHomeCourses = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.HOME_COURSE_REQUEST });
-    const res = await httpServices.get("/course/home/");
+    const res = await httpServices.get(constants.HOME);
     dispatch({
       type: coursesTypes.HOME_COURSE_FINISH,
       payload: res?.data?.popular_course
@@ -46,7 +49,7 @@ export const allCourses =
     try {
       dispatch({ type: coursesTypes.COURSES_REQUEST });
       const res = await httpServices.get(
-        filter ? `/course/list/${filter}` : `/course/list/`,
+        filter ? constants.COURSE_LIST + filter : constants.COURSE_LIST,
       );
       dispatch({
         type: coursesTypes.COURSES_FINISH,
@@ -72,7 +75,7 @@ export const allCourses =
 export const allTests = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.TESTS_REQUEST });
-    const res = await httpServices.get("/course/online-test-category-list/");
+    const res = await httpServices.get(constants.ONLINE_TEST_CATEGORY_LIST);
     dispatch({ type: coursesTypes.TESTS_FINISH, payload: res.data });
   } catch (error) {
     dispatch({ type: coursesTypes.TESTS_FAIL });
@@ -82,7 +85,7 @@ export const allTests = () => async (dispatch) => {
 export const singleCourseDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.COURSE_REQUEST });
-    const res = await httpServices.get(`/course/detail/${id}/`);
+    const res = await httpServices.get(constants.COURSE_DETAIL + id + "/");
     dispatch({
       type: coursesTypes.COURSE_FINISH,
       payload: {
@@ -112,7 +115,7 @@ export const startCourse =
         }
       }
       const res = await httpServices.get(
-        `/course/start-user-course/${id}?page=${page}&progress=${progress}`,
+        `${constants.START_USER_COURSE + id}?page=${page}&progress=${progress}`,
       );
       dispatch({
         type: coursesTypes.COURSE_FINISH,
@@ -127,7 +130,7 @@ export const startCourse =
 export const getSingleCourseModule = (id) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.ACCORDIAN_LIST_REQUEST });
-    const res = await httpServices.get(`/course/course-module-list/${id}/`);
+    const res = await httpServices.get(constants.COURSE_MODULE_LIST + id + "/");
     dispatch({ type: coursesTypes.ACCORDIAN_LIST_FINISH, payload: res.data });
     return res?.data;
   } catch (error) {
@@ -139,9 +142,7 @@ export const getSingleCourseModule = (id) => async (dispatch) => {
 export const getSimilarCourses = (categoryId) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.SIMILAR_COURSES_REQUEST });
-    const res = await httpServices.get(
-      `/course/category-detail/${categoryId}/`,
-    );
+    const res = await httpServices.get(constants.CATEGORY_DETAIL + categoryId + "/");
     dispatch({
       type: coursesTypes.SIMILAR_COURSES_FINISH,
       payload: res?.data?.course_set
@@ -167,30 +168,30 @@ export const getUserTestQuestion =
       let res;
       if (module) {
         res = await httpServices.get(
-          `/course/user-test-course/${id}?test_id=${module}`,
+          `${constants.USER_TEST_COURSE + id}?test_id=${module}`,
         );
-      } else if (module && progress>0) {
+      } else if (module && progress > 0) {
         res = await httpServices.get(
-          `/course/user-test-course/${id}?test_id=${module}&progress=${progress}`,
+          `${constants.USER_TEST_COURSE + id}?test_id=${module}&progress=${progress}`,
         );
-      } else if (progress && progress>0) {
+      } else if (progress && progress > 0) {
         res = await httpServices.get(
-          `/course/user-test-course/${id}?progress=${progress}`,
+          `${constants.USER_TEST_COURSE + id}?progress=${progress}`,
         );
       } else {
-        res = await httpServices.get(`/course/user-test-course/${id}`);
+        res = await httpServices.get(`${constants.USER_TEST_COURSE + id}`);
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
       if (err?.status === 400) {
         if (err.data.message === "Already course test is completed") {
-          history?.push(`/CourseCertificate`);
+          history?.push(routingConstants.COURSE_CERTIFICATE);
           toast.success(err.data.message, toasterConfig);
         } else {
-          history?.push(`/CourseResult/${id}`);
+          history?.push(routingConstants.COURSES_RESULT + id);
         }
       } else if (err.data.status_code === 500) {
-        history?.push(`/CourseResult/${id}`);
+        history?.push(routingConstants.COURSES_RESULT + id);
         toast.error(err.data.message, toasterConfig);
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FAIL });
@@ -200,7 +201,7 @@ export const getUserTestQuestion =
 export const postAnswer = (values, id) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.POST_ANSWER_REQUEST });
-    await httpServices.post(`/course/user-test-course/${id}`, values);
+    await httpServices.post(constants.USER_TEST_COURSE + id, values);
     dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
   } catch (err) {
     dispatch({ type: coursesTypes.POST_ANSWER_FAIL });
@@ -210,7 +211,7 @@ export const postAnswer = (values, id) => async (dispatch) => {
 export const testCountSummery = (id, history) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.QUESTION_COUNT_REQUEST });
-    const res = await httpServices.get(`/course/user-test-count/${id}`);
+    const res = await httpServices.get(constants.USER_TEST_COUNT + id);
     dispatch({ type: coursesTypes.QUESTION_COUNT_FINISH, payload: res.data });
   } catch (err) {
     dispatch({ type: coursesTypes.QUESTION_COUNT_FAIL });
@@ -220,17 +221,17 @@ export const testCountSummery = (id, history) => async (dispatch) => {
 export const successStories = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.SUCCESS_STORY_REQUEST });
-    const res = await httpServices.get("/course/success-story");
+    const res = await httpServices.get(constants.SUCCESS_STORY);
     dispatch({
       type: coursesTypes.SUCCESS_STORY_FINISH,
       payload:
         res?.data?.map((d) => ({
           ...d,
           image: d.image
-            ? d?.image?.includes("http://3.109.195.234")
+            ? d?.image?.includes(httpServices.baseURL)
               ? d?.image
-              : `http://3.109.195.234${d?.image}`
-            : noImage,
+              : httpServices.baseURL + d?.image
+            : httpServices.noImage,
           is_collapse: false,
         })) || [],
     });
@@ -242,7 +243,7 @@ export const successStories = () => async (dispatch) => {
 export const getCategoryList = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.CATEGORY_LIST_REQUEST });
-    const res = await httpServices.get("course/category-list/");
+    const res = await httpServices.get(constants.CATEGORY_LIST);
     dispatch({ type: coursesTypes.CATEGORY_LIST_FINISH, payload: res.results });
   } catch (error) {
     dispatch({ type: coursesTypes.CATEGORY_LIST_FAIL });
@@ -256,13 +257,13 @@ export const setFilter =
   };
 
 export const endTest = (id) => async (dispatch) => {
-  await httpServices.post(`/course/user-course-end-time/${id}`);
+  await httpServices.post(constants.USER_COURSE_END_TIME + id);
 };
 
 export const testResult = (id) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.RESULT_REQUEST });
-    const res = await httpServices.get(`/course/user-course-result/${id}`);
+    const res = await httpServices.get(constants.USER_COURSE_RESULT + id);
     dispatch({ type: coursesTypes.RESULT_FINISH, payload: res.data });
   } catch (err) {
     dispatch({ type: coursesTypes.RESULT_FINISH, payload: err.data });

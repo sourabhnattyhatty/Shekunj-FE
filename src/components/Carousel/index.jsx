@@ -9,6 +9,7 @@ import { constants } from "../../utils";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "./index.scss";
+import { routingConstants } from "../../utils/constants";
 
 function Carousel(props) {
   const divRef = React.useRef(null);
@@ -112,7 +113,7 @@ function Carousel(props) {
                 }
                 return (
                   <Link
-                    to={`/CoursesDetails/${course?.id}`}
+                  to = {routingConstants.COURSE_DETAILS + course?.id}
                     className='item'
                     key={ind}
                   >
@@ -134,7 +135,7 @@ function Carousel(props) {
             <>
               {courses?.map((obj, ind) => (
                 <Link
-                  to={`/CoursesDetails/${obj?.id}`}
+                  to={routingConstants.COURSE_DETAILS +  obj?.id}
                   className='item'
                   key={ind}
                 >

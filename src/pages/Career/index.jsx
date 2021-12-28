@@ -7,7 +7,6 @@ import {
   AccordionComponent,
   Footer,
   Header,
-  ScrollToTop,
   SEO,
 } from "../../components";
 import {
@@ -15,8 +14,7 @@ import {
   reSetFilterValue,
   toggleCollapseValue,
 } from "../../store/career";
-import { noImage } from "../../store/courses/action";
-import { baseURL } from "../../utils/ApiServices";
+import { baseURL, noImage } from "../../utils/ApiServices";
 
 import "../HomePage/index.scss";
 import "./index.scss";
@@ -150,7 +148,6 @@ const CareerPage = () => {
           </Row>
         </Container>
       </div>
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

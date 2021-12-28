@@ -5,7 +5,6 @@ import {
   AccordionComponent,
   Footer,
   Header,
-  ScrollToTop,
   SEO,
 } from "../../components";
 import {
@@ -16,8 +15,7 @@ import {
 import "../HomePage/index.scss";
 import "./index.scss";
 
-import { noImage } from "../../store/courses/action";
-import { baseURL } from "../../utils/ApiServices";
+import { baseURL, noImage } from "../../utils/ApiServices";
 
 const CareerPage1 = () => {
   const dispatch = useDispatch();
@@ -116,8 +114,6 @@ const CareerPage1 = () => {
           </Row>
         </Container>
       </div>
-
-      <ScrollToTop />
 
       <Footer loginPage={false} />
     </div>

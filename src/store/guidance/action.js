@@ -2,11 +2,14 @@ import { guidanceTypes } from "./types";
 import httpServices from "../../utils/ApiServices";
 import { toast } from "react-toastify";
 import { toasterConfig } from "../../utils";
+import { apiConstants } from "../../utils/constants";
+
+const constants = apiConstants.GUIDANCE;
 
 export const bookCounseller = (value) => async (dispatch) => {
   try {
     dispatch({ type: guidanceTypes.BOOK_SESSION_REQUEST });
-    const res = await httpServices.post("/course/book-session/", value);
+    const res = await httpServices.post(constants.BOOK_SESSION, value);
     dispatch({ type: guidanceTypes.BOOK_SESSION_FINISH });
     toast.success(res.message, toasterConfig);
   } catch (error) {
@@ -25,7 +28,7 @@ export const bookCounseller = (value) => async (dispatch) => {
 
 export const getGuidanceCategory = () => async (dispatch) => {
   try {
-    const url = "/course/online-test-category-list/";
+    const url = apiConstants.COURSES.ONLINE_TEST_CATEGORY_LIST;
     dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
     const res = await httpServices.get(url);
     dispatch({
@@ -48,7 +51,7 @@ export const getGuidanceCategory = () => async (dispatch) => {
 export const getGuidanceCategoryDetail = (id) => async (dispatch) => {
   try {
     dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_DETAIL_REQUEST });
-    const res = await httpServices.get(`career/guidance-category/${id}`);
+    const res = await httpServices.get(constants.GUIDANCE_CATEGORY + id);
     dispatch({
       type: guidanceTypes.GUIDANCE_CATEGORY_DETAIL_FINISH,
       payload: res.data || null,
@@ -71,7 +74,7 @@ export const fetchStartUserCareerTest = (id) => async (dispatch) => {
     dispatch({
       type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_REQUEST,
     });
-    const res = await httpServices.get(`career/start-user-career-test/${id}`);
+    const res = await httpServices.get(constants.START_USER_CAREER_TEST + id);
     dispatch({
       type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_SUCCESS,
       payload: res?.data,
@@ -91,7 +94,7 @@ export const fetchUserCareerTestCount = (id) => async (dispatch) => {
     dispatch({
       type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_REQUEST,
     });
-    const res = await httpServices.get(`career/user-career-count/${id}`);
+    const res = await httpServices.get(constants.USER_CAREER_COUNT + id);
     dispatch({
       type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_SUCCESS,
       payload: res?.data,
@@ -111,7 +114,7 @@ export const reStartUserCareerTestEnd = (id) => async (dispatch) => {
     dispatch({
       type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_REQUEST,
     });
-    const res = await httpServices.post(`career/start-user-career-test/${id}`);
+    const res = await httpServices.post(constants.START_USER_CAREER_TEST + id);
     dispatch({
       type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_SUCCESS,
       payload: res?.data,
@@ -128,7 +131,7 @@ export const reStartUserCareerTestEnd = (id) => async (dispatch) => {
 export const startUserCareerTest = (id) => async (dispatch) => {
   try {
     dispatch({ type: guidanceTypes.GUIDANCE_START_USER_CAREER_TEST_REQUEST });
-    await httpServices.post(`career/start-user-career-test/${id}`, {
+    await httpServices.post(constants.START_USER_CAREER_TEST + id, {
       answer: "",
       career_test: "",
     });

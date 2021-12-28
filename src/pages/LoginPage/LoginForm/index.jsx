@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import LoginTabs from "./LoginTabs";
 import GoogleLoginComponent from "../../../components/GoogleLogin";
 import or from "../../../assets/images/login/or.png";
+import { routingConstants } from "../../../utils/constants";
 
 const LoginForm = () => {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ const LoginForm = () => {
         <h2>{t("login.heading")}</h2>
         <p>
           {t("login.content")}{" "}
-          <Link to='/signup' className='register'>
+          <Link to={routingConstants.SIGN_UP} className='register'>
             {" "}
             {t("login.signupLink")}{" "}
           </Link>

@@ -21,7 +21,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-import { Header, Footer, ScrollToTop } from "../../components";
+import { Header, Footer } from "../../components";
 import {
   getGuidanceCategory,
   fetchStartUserCareerTest,
@@ -412,7 +412,6 @@ function CourseTest() {
           </>
         )}
       </Container>
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import { constants } from "../../utils";
-import { Header, Footer, Carousel, ScrollToTop, SEO } from "../../components";
+import { Header, Footer, Carousel, SEO } from "../../components";
 
 import "animate.css";
 import "aos/dist/aos.css";
@@ -631,8 +631,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      <ScrollToTop />
 
       <Footer loginPage={false} />
     </div>

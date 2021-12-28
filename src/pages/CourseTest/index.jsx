@@ -14,7 +14,7 @@ import useDeviceDetect from "../../hooks/useDeviceDetect";
 import Slider from "@mui/material/Slider";
 import Timer from "react-compound-timer";
 
-import { Header, Footer, ScrollToTop } from "../../components";
+import { Header, Footer } from "../../components";
 
 import "./index.scss";
 import "../CoursesModule/index.scss";
@@ -28,6 +28,7 @@ import {
   testCountSummery,
 } from "../../store/courses/action";
 import { styled } from "@mui/material/styles";
+import { routingConstants } from "../../utils/constants";
 
 const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
@@ -164,7 +165,7 @@ function CourseTest() {
       dispatch(postAnswer(data, id));
       dispatch(endTest(id));
       setAnswer("");
-      history.push(`/CourseResult/${id}`);
+      history.push(routingConstants.COURSES_RESULT + id);
     } else {
       toast.error("Select option for next question", {
         position: "bottom-center",
@@ -196,7 +197,7 @@ function CourseTest() {
 
   const handleTestFinished = () => {
     toast.error("Test finishes!");
-    history.push(`/CourseResult/${id}`);
+    history.push(routingConstants.COURSES_RESULT + id);
   };
 
   const renderTimmer = (value) => {
@@ -417,7 +418,6 @@ function CourseTest() {
           </Col>
         </Row>
       </Container>
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

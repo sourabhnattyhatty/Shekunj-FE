@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import EditIcon from "@mui/icons-material/Edit";
 
-import { noImage } from "../../../../store/courses/action";
+import { noImage } from "../../../../utils/ApiServices";
 import { checkIsValidImage } from "../../../../utils";
 import { toast } from "react-toastify";
 import { updateProfile } from "../../../../store/auth/action";

@@ -10,6 +10,7 @@ import { formatDate, formatTime, truncate } from "../../utils/utils";
 import calendarBlackImg from "../../assets/icons/calendar-black.png";
 import clockBlackImg from "../../assets/icons/clock-black.png";
 import "./index.scss";
+import { routingConstants } from "../../utils/constants";
 
 const InProgressCourse = ({ courses }) => {
   const history = useHistory();
@@ -70,7 +71,7 @@ const InProgressCourse = ({ courses }) => {
                 <Col md={3} xs={12}>
                   <div
                     className='button_paddingarea'
-                    onClick={() => history.push(`/certificate-detail/${c?.id}`)}
+                    onClick={() => history.push(routingConstants.ALL_CERTIFICATE_DETAIL + c?.id)}
                   >
                     <button className='btn certificate_button'>
                       Certificate

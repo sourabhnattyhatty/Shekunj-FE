@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Header, Footer, ScrollToTop } from "../../components";
+import { Header, Footer } from "../../components";
 import { Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import Aos from "aos";
@@ -35,8 +35,6 @@ function SuccessCareerOption() {
           <TabsExams />
         </Container>
       </div>
-
-      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

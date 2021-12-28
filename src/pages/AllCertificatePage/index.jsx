@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 
-import { Footer, Header, ScrollToTop, SEO } from "../../components";
+import { Footer, Header, SEO } from "../../components";
 import { formatTime } from "../../utils/utils";
 import { getUserCourseCertificate } from "../../store/certificate";
 
@@ -94,8 +94,6 @@ function AllCertificatePage() {
           )}
         </Container>
       </div>
-
-      <ScrollToTop />
 
       <Footer loginPage={false} />
     </div>

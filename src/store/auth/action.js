@@ -4,11 +4,14 @@ import httpServices, { baseURL } from "../../utils/ApiServices";
 import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
 import moment from "moment";
+import { apiConstants, routingConstants } from "../../utils/constants";
+
+const constants = apiConstants.AUTH;
 
 export const onLogin = (values, history, redirect) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.LOGIN_REQUEST });
-    const res = await httpServices.post("authentication/login/", values);
+    const res = await httpServices.post(constants.LOGIN, values);
     dispatch({
       type: authTypes.LOGIN_FINISH,
       payload: { name: res.data.name, email: res.data.email },
@@ -17,7 +20,7 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
     if (redirect) {
       history.push(redirect);
     } else {
-      history.push("/my-progress");
+      history.push(routingConstants.MY_PROGESS);
     }
   } catch (error) {
     dispatch({ type: authTypes.LOGIN_FAIL });
@@ -32,16 +35,16 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
 export const logOut = (history) => async (dispatch) => {
   Cookies.remove("sheToken");
   dispatch({ type: authTypes.LOGIN_FAIL });
-  history.push("/login");
+  history.push(routingConstants.LOGIN);
 };
 
 export const onSignup = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.SIGNUP_REQUEST });
-    const res = await httpServices.post("authentication/register/", values);
+    const res = await httpServices.post(constants.REGISTER, values);
     dispatch({ type: authTypes.SIGNUP_FINISH, payload: values });
     Cookies.set("sheToken", res.data.token);
-    history.push("/my-progress");
+    history.push(routingConstants.MY_PROGESS);
   } catch (error) {
     dispatch({ type: authTypes.SIGNUP_FAIL });
     if (error?.status === 400) {
@@ -55,7 +58,7 @@ export const onSignup = (values, history) => async (dispatch) => {
 export const registerWithGoogle =
   (value, history, redirect) => async (dispatch) => {
     try {
-      const res = await httpServices.post("social_auth/google/", value);
+      const res = await httpServices.post(constants.REGISTER_WITH_GOOGLE, value);
       dispatch({
         type: authTypes.LOGIN_FINISH,
         payload: { name: res.data.username, email: res.data.email },
@@ -64,7 +67,7 @@ export const registerWithGoogle =
       if (redirect) {
         history.push(redirect);
       } else {
-        history.push("/my-progress");
+        history.push(routingConstants.MY_PROGESS);
       }
     } catch (err) {
       toast.error("Google Login failed.", toasterConfig);
@@ -74,7 +77,7 @@ export const registerWithGoogle =
 export const contactVerify = (value) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.CONTACT_VERIFY_REQUEST });
-    const res = await httpServices.post(`authentication/user-send-otp/`, {
+    const res = await httpServices.post(constants.USER_SEND_OTP, {
       contact: value.contact.toString(),
     });
     dispatch({ type: authTypes.CONTACT_VERIFY_FINISH });
@@ -91,11 +94,11 @@ export const requestRestEmail = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.EMAIL_VERIFY_REQUEST });
     const res = await httpServices.post(
-      "authentication/request-reset-email/",
+      constants.REQUEST_RESET_EMAIL,
       values,
     );
     dispatch({ type: authTypes.EMAIL_VERIFY_FINISH });
-    history.push("/login");
+    history.push(routingConstants.LOGIN);
     toast.success(res.data.success, toasterConfig);
   } catch (error) {
     dispatch({ type: authTypes.EMAIL_VERIFY_FAIL });
@@ -107,12 +110,12 @@ export const changePassword = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.RESET_PASSWORD_REQUEST });
     const res = await httpServices.post(
-      "/authentication/change_password/",
+      constants.CHANGE_PASSWORD,
       values,
     );
     dispatch({ type: authTypes.RESET_PASSWORD_FINISH });
     Cookies.remove("sheToken");
-    history.push("/login");
+    history.push(routingConstants.LOGIN);
     toast.success(res.message, toasterConfig);
   } catch (error) {
     dispatch({ type: authTypes.RESET_PASSWORD_FAIL });
@@ -132,7 +135,7 @@ export const refreshPage = () => async (dispatch) => {
 export const getUserProfile = () => async (dispatch) => {
   try {
     dispatch({ type: authTypes.USER_PROFILE_REQUEST });
-    const res = await httpServices.get("/authentication/user-profile/");
+    const res = await httpServices.get(constants.USER_PROFILE);
     dispatch({
       type: authTypes.USER_PROFILE_FINISH,
       payload: {
@@ -188,7 +191,7 @@ export const updateProfile = (id, values) => async (dispatch) => {
     dispatch({ type: authTypes.USER_PROFILE_UPDATE });
     const formData = httpServices.createFormData(values);
     const res = await httpServices.putForm(
-      `/authentication/user-profile-update/${id}/`,
+      constants.USER_PROFILE_UPDATE + id + "/",
       formData,
     );
     dispatch(getUserProfile());
