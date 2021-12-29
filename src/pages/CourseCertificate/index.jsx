@@ -78,6 +78,7 @@ function CourseTest() {
                     onClick={() =>
                       history.push(`/certificate-detail/${certificate?.id}`)
                     }
+                    style={{cursor:'pointer'}}
                   >
                     <div class='content-overlay'></div>
                     <img src={Certificate} alt='' />
@@ -90,9 +91,9 @@ function CourseTest() {
                   </div>
                 </p>
                 <p>
-                  <img src={Dawnload} alt='' />
+                  <img src={Dawnload} alt='' style={{cursor:'pointer'}}/>
                   <br />
-                  <img src={Share} alt='' />
+                  <img src={Share} alt='' style={{cursor:'pointer'}}/>
                 </p>
               </div>
             </Col>
