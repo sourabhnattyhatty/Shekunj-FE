@@ -7,7 +7,7 @@ import Confetti from "react-confetti";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import win from "../../assets/images/Courses/win.png";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { careerTestResult } from "../../store/guidance/action";
 
@@ -124,19 +124,13 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              {/* <Link
-                  to={
-                    result?.is_result
-                      ? "/CourseCertificate"
-                      : `/CoursesDetails/${id}`
-                  }
+              <Link
+                  to='/SuccessCareerTest'
                 >
                   <button className='get_certif'>
-                    {result?.is_result
-                      ? "Get Your Certificate"
-                      : "Start Course Again"}
+                    Go to Career Test
                   </button>
-                </Link> */}
+                </Link>
             </Col>
           </Row>
         </Container>
