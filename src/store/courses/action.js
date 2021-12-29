@@ -169,11 +169,11 @@ export const getUserTestQuestion =
         res = await httpServices.get(
           `/course/user-test-course/${id}?test_id=${module}`,
         );
-      } else if (module && progress>0) {
+      } else if (module && progress > 0) {
         res = await httpServices.get(
           `/course/user-test-course/${id}?test_id=${module}&progress=${progress}`,
         );
-      } else if (progress && progress>0) {
+      } else if (progress && progress > 0) {
         res = await httpServices.get(
           `/course/user-test-course/${id}?progress=${progress}`,
         );
@@ -184,7 +184,10 @@ export const getUserTestQuestion =
     } catch (err) {
       if (err?.status === 400) {
         if (err.data.message === "Already course test is completed") {
-          history?.push(`/CourseCertificate`);
+          const res = await httpServices.get(
+            `/course/user-course-result/${id}`,
+          );
+          history?.push(`/CourseCertificate/${res.data.id}`);
           toast.success(err.data.message, toasterConfig);
         } else {
           history?.push(`/CourseResult/${id}`);
@@ -197,11 +200,15 @@ export const getUserTestQuestion =
     }
   };
 
-export const postAnswer = (values, id) => async (dispatch) => {
+export const postAnswer = (values,history, id,last=false) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.POST_ANSWER_REQUEST });
-    await httpServices.post(`/course/user-test-course/${id}`, values);
+    const res = await httpServices.post(`/course/user-test-course/${id}`, values);
     dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
+    if (res.status_code === 200 && last) {
+      await httpServices.post(`/course/user-course-end-time/${id}`);
+      history.push(`/CourseResult/${id}`);
+    }
   } catch (err) {
     dispatch({ type: coursesTypes.POST_ANSWER_FAIL });
   }

@@ -133,10 +133,10 @@ function CourseTest() {
       career_test: testData?.id,
     };
     if (answer) {
-      dispatch(postAnswer(data, selectedCourseCategoryValue?.id));
-      dispatch(endTest(selectedCourseCategoryValue?.id));
+      dispatch(postAnswer(data,history, selectedCourseCategoryValue?.id,true));
+      // dispatch(endTest(selectedCourseCategoryValue?.id, history));
       setAnswer("");
-      history.push(`/CareerTestResult/${selectedCourseCategoryValue?.id}`);
+      
     } else {
       toast.error("Select option for next question", {
         position: "bottom-center",
@@ -172,7 +172,7 @@ function CourseTest() {
 
   const handleStartCourse = async () => {
     const res = await dispatch(
-      fetchStartUserCareerTest(selectedCourseCategoryValue?.id,history),
+      fetchStartUserCareerTest(selectedCourseCategoryValue?.id, history),
     );
     if (res?.status_code === 200) {
       const counts = await dispatch(
@@ -192,7 +192,7 @@ function CourseTest() {
   };
 
   const handlePrevQuestion = () => {
-    setQuestionNumber((prev) => prev - 1);
+    if (questionNumber > 1) setQuestionNumber((prev) => prev - 1);
     dispatch(
       fetchStartUserCareerTest(
         selectedCourseCategoryValue?.id,
@@ -211,10 +211,9 @@ function CourseTest() {
     };
     const newProgress = (countData?.user_career_test_count + 1) * progress;
 
-    debugger;
 
     if (answer) {
-      dispatch(postAnswer(data, selectedCourseCategoryValue?.id));
+      dispatch(postAnswer(data,history, selectedCourseCategoryValue?.id,false));
       setAnswer("");
       if (testData?.answer) {
         dispatch(

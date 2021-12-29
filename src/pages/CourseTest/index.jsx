@@ -146,7 +146,7 @@ function CourseTest() {
     const newProgress = (questionCount?.user_course_test_count + 1) * progress;
 
     if (answer) {
-      dispatch(postAnswer(data, id));
+      dispatch(postAnswer(data,history, id,false));
       setAnswer("");
       if (question?.answer) {
         dispatch(getUserTestQuestion(id, history, question?.next_module));
@@ -173,10 +173,9 @@ function CourseTest() {
       course_test: question?.id,
     };
     if (answer) {
-      dispatch(postAnswer(data, id));
-      dispatch(endTest(id));
+      dispatch(postAnswer(data,history, id,true));
+      // dispatch(endTest(id));
       setAnswer("");
-      history.push(`/CourseResult/${id}`);
     } else {
       toast.error("Select option for next question", {
         position: "bottom-center",
@@ -185,7 +184,7 @@ function CourseTest() {
   };
 
   const handlePrevQuestion = () => {
-    setQuestionNumber((prev) => prev - 1);
+    if (questionNumber > 1) setQuestionNumber((prev) => prev - 1);
     dispatch(getUserTestQuestion(id, history, question?.prev_module, 0));
   };
 

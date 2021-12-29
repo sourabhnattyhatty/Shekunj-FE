@@ -17,7 +17,7 @@ function CourseTest() {
   const { result } = useSelector((state) => state.coursesReducer);
 
   React.useEffect(() => {
-    if (!result?.result) {
+    if (id) {
       dispatch(testResult(id));
     }
   }, [dispatch, id, result?.result]);

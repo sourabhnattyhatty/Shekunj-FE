@@ -162,14 +162,14 @@ function EditProfile(props) {
               <div className='form-group'>
                 <label htmlFor=''>Date of birth</label>
                 <div className='form-group mzero'>
-                <img className="calendar_icon" src={Calendar} alt="..."/>
+                  <img className='calendar_icon' src={Calendar} alt='...' />
                   <DatePicker
                     selected={
                       values?.dob && typeof values?.dob !== "undefined"
                         ? new Date(values.dob)
                         : null
                     }
-                    placeholderText="Select DOB"
+                    placeholderText='Select DOB'
                     className='form-control'
                     maxDate={new Date()}
                     dateFormat='dd-MM-yyyy'
@@ -193,7 +193,7 @@ function EditProfile(props) {
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
-                  title="City"
+                    title='City'
                     listItem={cities}
                     defaultValue={values.city}
                     updateValues={(value) => setFieldValue("city", value)}
@@ -252,7 +252,7 @@ function EditProfile(props) {
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
-                  icon={true}
+                    icon={true}
                     heading='stream'
                     defaultValue={values.stream}
                     updateValues={(value) => setFieldValue("stream", value)}
@@ -266,7 +266,7 @@ function EditProfile(props) {
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
-                  title="State"
+                    title='State'
                     listItem={statesCities}
                     defaultValue={values?.state}
                     updateValues={handleStateChange}

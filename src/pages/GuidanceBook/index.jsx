@@ -66,67 +66,49 @@ const validationSchema = Yup.object({
 });
 
 const GuidancePage = () => {
-  const [day, setDay] = useState();
-  const [month, setMonth] = useState();
-  const [year, setYear] = useState();
-  const [gender, setGender] = useState();
-  const [qualification, setQualification] = useState();
-  const [courseLooking, setCourseLooking] = useState();
-
   const { isLoading } = useSelector((state) => state.guidanceReducer);
 
   const dispatch = useDispatch();
 
-  const handleSetDay = (val) => {
-    setDay(val);
-    handleChange(val);
-  };
-  const handleSetMonth = (val) => {
-    setMonth(val);
-  };
-  const handleSetYear = (val) => {
-    setYear(val);
-  };
-  const handleSetGender = (val) => {
-    setGender(val);
-  };
-  const handleSetQualification = (val) => {
-    setQualification(val);
-  };
-  const handleCourseLookingFor = (val) => {
-    setCourseLooking(val);
-  };
-
-  const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
-    useFormik({
-      initialValues: {
-        first_name: "",
-        last_name: "",
-        email_address: "",
-        mobile_number: "",
-        alternate_number: "",
-        date_of_birth: "",
-        gender: "female",
-        qualifications: "",
-        course_looking_for: "",
-        message: "",
-      },
-      validationSchema,
-      onSubmit(values) {
-        const dateOfBirth = moment(`${year}-${month}-${day}`).format(
-          "YYYY-MM-DD",
-        );
-        values = {
-          ...values,
-          date_of_birth: dateOfBirth,
-          gender,
-          qualifications: qualification,
-          course_looking_for: courseLooking,
-        };
-        dispatch(bookCounseller(values));
-        values = {};
-      },
-    });
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    values,
+    errors,
+    touched,
+    setFieldValue,
+  } = useFormik({
+    initialValues: {
+      first_name: "",
+      last_name: "",
+      email_address: "",
+      mobile_number: "",
+      alternate_number: "",
+      day: "",
+      month: "",
+      year: "",
+      date_of_birth: "",
+      gender: "",
+      qualifications: "",
+      course_looking_for: "",
+      message: "",
+    },
+    validationSchema,
+    onSubmit(values) {
+      const dateOfBirth = moment(
+        `${values?.year}-${values.month}-${values?.day}`,
+      ).format("YYYY-MM-DD");
+      values = {
+        ...values,
+        date_of_birth: dateOfBirth,
+        gender: values?.gender,
+        qualifications: values?.qualifications,
+        course_looking_for: values?.course_looking_for,
+      };
+      dispatch(bookCounseller(values));
+    },
+  });
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -160,13 +142,13 @@ const GuidancePage = () => {
             </Col>
 
             <Col md={7} xs={12}>
-            <div className='book_sec_content mob_show'>
-                  <h2>Book a Session</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur <br /> adipiscing
-                    elit.
-                  </p>
-                </div>
+              <div className='book_sec_content mob_show'>
+                <h2>Book a Session</h2>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur <br /> adipiscing
+                  elit.
+                </p>
+              </div>
               <div className='guidance_book_form'>
                 <form onSubmit={handleSubmit}>
                   <div className='form-group'>
@@ -291,7 +273,8 @@ const GuidancePage = () => {
                           title='Day'
                           icon={false}
                           listItem={days}
-                          setValue={handleSetDay}
+                          defaultValue=''
+                          updateValues={(value) => setFieldValue("day", value)}
                         />
                       </div>
                     </Col>
@@ -301,7 +284,10 @@ const GuidancePage = () => {
                           title='Month'
                           icon={false}
                           listItem={months}
-                          setValue={handleSetMonth}
+                          defaultValue=''
+                          updateValues={(value) =>
+                            setFieldValue("month", value)
+                          }
                         />
                       </div>
                     </Col>
@@ -311,7 +297,8 @@ const GuidancePage = () => {
                           title='Year'
                           icon={false}
                           listItem={years}
-                          setValue={handleSetYear}
+                          defaultValue=''
+                          updateValues={(value) => setFieldValue("year", value)}
                         />
                       </div>
                     </Col>
@@ -321,7 +308,8 @@ const GuidancePage = () => {
                       title='Gender'
                       icon={true}
                       listItem={["female", "male"]}
-                      setValue={handleSetGender}
+                      defaultValue=''
+                      updateValues={(value) => setFieldValue("gender", value)}
                     />
                   </div>
                   <div className='form-group mzero'>
@@ -329,7 +317,10 @@ const GuidancePage = () => {
                       title='Qualifications'
                       icon={true}
                       listItem={highEducation}
-                      setValue={handleSetQualification}
+                      defaultValue=''
+                      updateValues={(value) =>
+                        setFieldValue("qualifications", value)
+                      }
                     />
                   </div>
                   <div className='form-group mzero'>
@@ -337,7 +328,10 @@ const GuidancePage = () => {
                       title='Course Looking For'
                       icon={true}
                       listItem={courseLookingFor}
-                      setValue={handleCourseLookingFor}
+                      defaultValue=''
+                      updateValues={(value) =>
+                        setFieldValue("course_looking_for", value)
+                      }
                     />
                   </div>
                   <div className='form-group mzero'>
