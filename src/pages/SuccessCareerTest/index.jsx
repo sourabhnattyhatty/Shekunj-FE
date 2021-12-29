@@ -172,7 +172,7 @@ function CourseTest() {
 
   const handleStartCourse = async () => {
     const res = await dispatch(
-      fetchStartUserCareerTest(selectedCourseCategoryValue?.id),
+      fetchStartUserCareerTest(selectedCourseCategoryValue?.id,history),
     );
     if (res?.status_code === 200) {
       const counts = await dispatch(
@@ -186,7 +186,9 @@ function CourseTest() {
   };
 
   const handleTestFinished = () => {
+    dispatch(endTest(selectedCourseCategoryValue?.id));
     toast.error("Test finishes!");
+    history.push(`/CareerTestResult/${selectedCourseCategoryValue?.id}`);
   };
 
   const handlePrevQuestion = () => {

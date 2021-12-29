@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Header, Footer } from "../../components";
 import "./index.scss";
 
-function index() {
+const PrivacyPolicy = () =>  {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   return (
     <div>
       <Header loginPage={false} page='home' />
@@ -243,4 +246,4 @@ function index() {
   );
 }
 
-export default index;
+export default PrivacyPolicy;

@@ -94,6 +94,10 @@ export const fetchStartUserCareerTest =
       });
       return res;
     } catch (error) {
+      debugger;
+      if (error.status === 401) {
+        history?.push(`/login?redirect=/SuccessCareerTest`);
+      }
       dispatch({
         type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_FAIL,
         payload: error?.data,
@@ -137,14 +141,14 @@ export const endTest = (id) => async (dispatch) => {
 };
 
 export const careerTestResult = (id) => async (dispatch) => {
-  try{
-    dispatch({type:guidanceTypes.CAREER_RESULT_REQUEST})
+  try {
+    dispatch({ type: guidanceTypes.CAREER_RESULT_REQUEST });
     const res = await httpServices.get(`/career/user-career-test-result/${id}`);
-    dispatch({type:guidanceTypes.CAREER_RESULT_FINISH, payload: res.data})
-  }catch(error){
-    dispatch({type:guidanceTypes.CAREER_RESULT_FAIL})
+    dispatch({ type: guidanceTypes.CAREER_RESULT_FINISH, payload: res.data });
+  } catch (error) {
+    dispatch({ type: guidanceTypes.CAREER_RESULT_FAIL });
   }
-}
+};
 
 export const reStartUserCareerTestEnd = (id) => async (dispatch) => {
   try {

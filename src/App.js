@@ -23,6 +23,7 @@ const CertificatePage = React.lazy(() => import("./pages/CertificatePage"));
 const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
 const CourseTest = React.lazy(() => import("./pages/CourseTest"));
 const CourseResult = React.lazy(() => import("./pages/CourseResult"));
+const CareerTestResult = React.lazy(() => import("./pages/CareerTestResult"));
 const CourseCertificate = React.lazy(() => import("./pages/CourseCertificate"));
 const CertificateFullView = React.lazy(() =>
   import("./pages/CertificateFullView"),
@@ -99,10 +100,10 @@ function App() {
         />
         <PrivateRoute exact path='/CoursesTest/:id' component={CourseTest} />
         <PrivateRoute exact path='/CourseResult/:id' component={CourseResult} />
-        <PrivateRoute exact path='/CareerTestResult/:id' component={CourseResult} />
+        <PrivateRoute exact path='/CareerTestResult/:id' component={CareerTestResult} />
         <PrivateRoute
           exact
-          path='/CourseCertificate'
+          path='/CourseCertificate/:id'
           component={CourseCertificate}
         />
         <PrivateRoute
@@ -111,7 +112,7 @@ function App() {
           component={CertificateFullView}
         />
         <PrivateRoute exact path='/my-progress' component={MyProgress} />
-        <PrivateRoute exact path='/PrivacyPolicy' component={PrivacyPolicy} />
+        <Route exact path='/PrivacyPolicy' component={PrivacyPolicy} />
         <Route path='*' component={PageNotFound} />
       </Switch>
     </>

@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Header, Footer, ScrollToTop } from "../../components";
 import "./index.scss";
@@ -11,10 +11,25 @@ import Dawnload from "../../assets/images/Courses/Dawnload.png";
 import Share from "../../assets/images/Courses/Share.png";
 import fullscreen_icon from "../../assets/images/Courses/fullscreen_icon.png";
 import "./index.scss";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserCourseCertificateDetail } from "../../store/certificate";
 
 function CourseTest() {
+  const dispatch = useDispatch();
   const history = useHistory();
+  const { id } = useParams();
+  const { certificateDetail: certificate } = useSelector(
+    (state) => state.certificateReducer,
+  );
+
+  useEffect(() => {
+    if (id) {
+      dispatch(getUserCourseCertificateDetail(id, history));
+    } else {
+      history.push("/all-certificate-page");
+    }
+  }, [id, history, dispatch]);
 
   return (
     <div>
@@ -27,7 +42,7 @@ function CourseTest() {
               <div className='user_certifi'>
                 <div className='user_pro'>
                   <img src={swati_jain} alt='' />
-                  <h3>Swati Jain</h3>
+                  <h3>{certificate?.name}</h3>
                 </div>
 
                 <div className='skills'>
@@ -60,18 +75,18 @@ function CourseTest() {
                 <p>
                   <div
                     class='content'
-                    onClick={() => history.push("/CertificateFullView")}
+                    onClick={() =>
+                      history.push(`/certificate-detail/${certificate?.id}`)
+                    }
                   >
-                    <a href='#!' target='_blank'>
-                      <div class='content-overlay'></div>
-                      <img src={Certificate} alt='' />
-                      <div class='content-details fadeIn-bottom'>
-                        <h3 class='content-title'>
-                          <img src={fullscreen_icon} alt='' />
-                        </h3>
-                        <p class='content-text'>View Full Certificate</p>
-                      </div>
-                    </a>
+                    <div class='content-overlay'></div>
+                    <img src={Certificate} alt='' />
+                    <div class='content-details fadeIn-bottom'>
+                      <h3 class='content-title'>
+                        <img src={fullscreen_icon} alt='' />
+                      </h3>
+                      <p class='content-text'>View Full Certificate</p>
+                    </div>
                   </div>
                 </p>
                 <p>

@@ -7,28 +7,28 @@ import Confetti from "react-confetti";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import win from "../../assets/images/Courses/win.png";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { testResult } from "../../store/courses/action";
+import { careerTestResult } from "../../store/guidance/action";
 
 function CourseTest() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { result } = useSelector((state) => state.coursesReducer);
+  const { guidanceResult: result } = useSelector(
+    (state) => state.guidanceReducer,
+  );
 
   React.useEffect(() => {
-    if (!result?.result) {
-      dispatch(testResult(id));
-    }
-  }, [dispatch, id, result?.result]);
+    dispatch(careerTestResult(id));
+  }, [dispatch, id]);
 
   return (
     <div>
-      <Header loginPage={true} page='courses' />
+      <Header loginPage={true} page='guidance' />
 
       <div className='cou_resultBg'>
         <Container>
-          {result?.is_pass && (
+          {result?.is_result && (
             <Confetti
               style={{ marginTop: "154px" }}
               height={850}
@@ -41,7 +41,7 @@ function CourseTest() {
                 <h2>Your Result</h2>
                 <img src={win} alt='' />
                 <h2>
-                  {result?.is_pass ? (
+                  {result?.is_result ? (
                     <>
                       Congratulation <b>{result?.name}!</b>
                     </>
@@ -124,19 +124,19 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              <Link
-                to={
-                  result?.is_pass
-                    ? `/CourseCertificate/${result?.id}`
-                    : `/CoursesDetails/${id}`
-                }
-              >
-                <button className='get_certif'>
-                  {result?.is_pass
-                    ? "Get Your Certificate"
-                    : "Start Course Again"}
-                </button>
-              </Link>
+              {/* <Link
+                  to={
+                    result?.is_result
+                      ? "/CourseCertificate"
+                      : `/CoursesDetails/${id}`
+                  }
+                >
+                  <button className='get_certif'>
+                    {result?.is_result
+                      ? "Get Your Certificate"
+                      : "Start Course Again"}
+                  </button>
+                </Link> */}
             </Col>
           </Row>
         </Container>

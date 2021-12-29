@@ -180,6 +180,22 @@ hr.hr_line2 {
   margin: 13px auto;
 }
 
+button.back_course {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  background: #ec498a;
+  border: 1px solid #ec498a;
+  padding: 15px 35px;
+  margin: 15px 0 15px 480px;
+  // margin-top: 15px;
+  // margin-bottom: 15px;
+  // margin-left: 400px;
+}
+
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
   .all_certif_con button {
     width: 150px;

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 import { getUserCourseCertificateDetail } from "../../store/certificate";
 import { formatDate } from "../../utils/utils";
@@ -28,11 +28,11 @@ const CertificatesDetail = () => {
 
   return (
     <div className='container mt-4'>
-      <div className='box_certificate'>
+      <div className='box_certificate mb-4'>
         <Row>
           <Col md={7} xs={12} className='offset-3'>
             <div className='cercifi_con'>
-              <img className="cer_text" src={Certificate_text} alt='' />
+              <img className='cer_text' src={Certificate_text} alt='' />
               <img src={para} alt='' />
               <h2>{certificate?.name || "N/A"}</h2>
               <hr className='hr_line' />
@@ -57,12 +57,15 @@ const CertificatesDetail = () => {
           <div>Date</div>
         </div>
         <div className='signature_set'>
-        <img src={signature} alt="" />
-        <hr className='hr_line2' />
+          <img src={signature} alt='' />
+          <hr className='hr_line2' />
           <div>PRESIDENT DIRECTOR</div>
           <div>NAME SURNAME</div>
         </div>
       </div>
+      <Link to='/courses'>
+        <button className='back_course'>Back To Course</button>
+      </Link>
     </div>
   );
 };
