@@ -537,7 +537,7 @@
     "greeting": "Hello {{name}}!",
     "wish": "Good to see you back!",
     "current": "Current Course",
-    "inProgress": "Course in prograss",
+    "inProgress": "Course in progress",
     "certificate": "Certificate",
     "explore": "Explore",
     "button": {
