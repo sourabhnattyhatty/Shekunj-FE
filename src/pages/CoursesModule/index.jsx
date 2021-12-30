@@ -149,7 +149,6 @@ const CourseModule = () => {
     Cookies.remove("module");
     history.push(`/CoursesTest/${id}`);
   };
-  console.log(">>>>>>>>>>>>>>>>>>>>",course?.current_module)
   return (
     <div>
       <Header loginPage={true} page='courses' />

@@ -1,5 +1,5 @@
 import { Avatar, Container } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Header, Footer, ScrollToTop } from "../../components";
 import "./index.scss";
@@ -14,10 +14,15 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCourseCertificateDetail } from "../../store/certificate";
 
+import jsPDF from "jspdf";
+
 function CourseTest() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
+
+  const certificateRef = useRef();
+
   const { certificateDetail: certificate } = useSelector(
     (state) => state.certificateReducer,
   );
@@ -30,6 +35,15 @@ function CourseTest() {
       history.push("/all-certificate-page");
     }
   }, [id, history, dispatch]);
+
+  const generatePDF = () => {
+    const img = new Image();
+    img.src = Certificate;
+
+    const doc = new jsPDF("p", "pt", "a3");
+    doc.addImage(img,'JPGE',0,0,840,500);
+    doc.save("mycertificate.pdf");
+  };
 
   return (
     <div>
@@ -78,6 +92,7 @@ function CourseTest() {
                 <p>
                   <div
                     class='content'
+                    ref={certificateRef}
                     onClick={() =>
                       history.push(`/certificate-detail/${certificate?.id}`)
                     }
@@ -94,7 +109,12 @@ function CourseTest() {
                   </div>
                 </p>
                 <p>
-                  <img src={Dawnload} alt='' style={{ cursor: "pointer" }} />
+                  <img
+                    src={Dawnload}
+                    alt=''
+                    style={{ cursor: "pointer" }}
+                    onClick={() => generatePDF()}
+                  />
                   <br />
                   <img src={Share} alt='' style={{ cursor: "pointer" }} />
                 </p>
