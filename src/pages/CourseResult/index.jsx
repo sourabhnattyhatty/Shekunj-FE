@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { Header, Footer } from "../../components";
+import { Header, Footer, ScrollToTop } from "../../components";
 import Confetti from "react-confetti";
 
 import "./index.scss";
@@ -10,50 +10,25 @@ import win from "../../assets/images/Courses/win.png";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { testResult } from "../../store/courses/action";
-import { careerTestResult } from "../../store/guidance/action";
-import { routingConstants } from "../../utils/constants";
-import { useTranslation } from "react-i18next";
 
 function CourseTest() {
-  const [result, setResult] = useState({});
-  const [passingMarks, setPassingMarks] = useState();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { result: courseResult } = useSelector((state) => state.coursesReducer);
-  const { guidanceResult } = useSelector((state) => state.guidanceReducer);
-  const { t } = useTranslation();
+  const { result } = useSelector((state) => state.coursesReducer);
 
   React.useEffect(() => {
-    if (window.location.pathname.includes("course-result")) {
-      debugger;
-      dispatch(careerTestResult(id));
-    } else {
-      if (!courseResult?.result) {
-        dispatch(testResult(id));
-      }
+    if (id) {
+      dispatch(testResult(id));
     }
-  }, [dispatch, id, courseResult?.result]);
-
-  React.useEffect(() => {
-    if (courseResult) {
-      setResult({ ...courseResult, page: "course" });
-    }
-    if (guidanceResult) {
-      setResult({ ...guidanceResult, page: "guidance" });
-    }
-    setPassingMarks(result?.total_score * 0.7);
-  }, [courseResult, guidanceResult, result?.total_score]);
+  }, [dispatch, id, result?.result]);
 
   return (
     <div>
-      <Header
-        loginPage={true}
-        page={result?.page === "course" ? "courses" : "guidance"}
-      />
+      <Header loginPage={true} page='courses' />
 
       <div className='cou_resultBg'>
         <Container>
-          {Math.round(result?.result) >= passingMarks && (
+          {result?.is_pass && (
             <Confetti
               style={{ marginTop: "154px" }}
               height={850}
@@ -63,18 +38,16 @@ function CourseTest() {
           <Row>
             <Col md={8} xs={12} className='offset-lg-2'>
               <div className='cou_result_cont'>
-                <h2>{t("coursesPage.coursesResultPage.heading.1")}</h2>
+                <h2>Your Result</h2>
                 <img src={win} alt='' />
                 <h2>
-                  {Math.round(result?.result) >= passingMarks ? (
+                  {result?.is_pass ? (
                     <>
-                      {t("coursesPage.coursesResultPage.other.1")}{" "}
-                      <b>{result?.name}!</b>
+                      Congratulation <b>{result?.name}!</b>
                     </>
                   ) : (
                     <>
-                      {t("coursesPage.coursesResultPage.other.2")}{" "}
-                      <b>{result?.name}!</b>
+                      Bad Performance <b>{result?.name}!</b>
                     </>
                   )}
                 </h2>
@@ -84,6 +57,7 @@ function CourseTest() {
                   nulla odio. Iaculis lacus eget facilisis eu massa.
                 </p>
               </div>
+
               <div className='pro_div'>
                 <Row>
                   <Col md={3} xs={12}>
@@ -99,9 +73,7 @@ function CourseTest() {
                           <p>{result?.no_of_correct_answer || 0}</p>
                           <br />
                           <span>
-                            {t("coursesPage.coursesResultPage.other.3.1")}{" "}
-                            <br />{" "}
-                            {t("coursesPage.coursesResultPage.other.3.2")}
+                            Correct <br /> Answers
                           </span>
                         </div>
                       </div>
@@ -121,9 +93,7 @@ function CourseTest() {
                           <p>{Math.round(result?.result) || 0}%</p>
                           <br />
                           <span>
-                            {t("coursesPage.coursesResultPage.other.4.1")}{" "}
-                            <br />{" "}
-                            {t("coursesPage.coursesResultPage.other.4.2")}
+                            Candidate's <br /> Score
                           </span>
                         </div>
                       </div>
@@ -144,10 +114,10 @@ function CourseTest() {
                             {result?.test_time
                               ? (result?.test_time).toFixed(2)
                               : 0}{" "}
-                            <span>{t("common.time.2")}</span>
+                            <span>min</span>
                           </p>
                           <br />
-                          <span>{t("coursesPage.coursesResultPage.other.5")}</span>
+                          <span>Total Time</span>
                         </div>
                       </div>
                     </div>
@@ -156,21 +126,23 @@ function CourseTest() {
               </div>
               <Link
                 to={
-                  Math.round(result?.result) >= passingMarks
-                    ? `${routingConstants.COURSE_CERTIFICATE}`
-                    : `${routingConstants.COURSE_DETAILS + id}`
+                  result?.is_pass
+                    ? `/CourseCertificate/${result?.id}`
+                    : `/CoursesDetails/${id}`
                 }
               >
                 <button className='get_certif'>
-                  {Math.round(result?.result) >= passingMarks
-                    ? t("coursesPage.coursesResultPage.button.1")
-                    : t("coursesPage.coursesResultPage.button.2")}
+                  {result?.is_pass
+                    ? "Get Your Certificate"
+                    : "Start Course Again"}
                 </button>
               </Link>
             </Col>
           </Row>
         </Container>
       </div>
+
+      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

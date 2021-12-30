@@ -50,7 +50,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 }));
 
 function CourseTest() {
-  const[questionNumber, setQuestionNumber] = React.useState(1);
+  const [questionNumber, setQuestionNumber] = React.useState(1);
   const [answer, setAnswer] = React.useState();
   const [toggle, setToggle] = React.useState(true);
   const [showTimer, setShowTimer] = React.useState(false);
@@ -142,7 +142,7 @@ function CourseTest() {
   }, [questionCount, questionCount?.counse_time]);
 
   const handleNextQuestion = () => {
-    setQuestionNumber(prev => prev+1);
+    setQuestionNumber((prev) => prev + 1);
     const data = {
       answer,
       course_test: question?.id,
@@ -150,7 +150,7 @@ function CourseTest() {
     const newProgress = (questionCount?.user_course_test_count + 1) * progress;
 
     if (answer) {
-      dispatch(postAnswer(data, id));
+      dispatch(postAnswer(data,history, id,false));
       setAnswer("");
       if (question?.answer) {
         dispatch(getUserTestQuestion(id, history, question?.next_module));
@@ -177,10 +177,9 @@ function CourseTest() {
       course_test: question?.id,
     };
     if (answer) {
-      dispatch(postAnswer(data, id));
-      dispatch(endTest(id));
+      dispatch(postAnswer(data,history, id,true));
+      // dispatch(endTest(id));
       setAnswer("");
-      history.push(routingConstants.COURSES_RESULT + id);
     } else {
       toast.error(t("error.other.1"), {
         position: "bottom-center",
@@ -189,8 +188,8 @@ function CourseTest() {
   };
 
   const handlePrevQuestion = () => {
-    setQuestionNumber(prev => prev-1);
-    dispatch(getUserTestQuestion(id, history, question?.prev_module,0));
+    if (questionNumber > 1) setQuestionNumber((prev) => prev - 1);
+    dispatch(getUserTestQuestion(id, history, question?.prev_module, 0));
   };
 
   const renderProgress = (count = 0) => {
@@ -211,8 +210,9 @@ function CourseTest() {
   };
 
   const handleTestFinished = () => {
-    toast.error(t("error.other.2"));
-    history.push(routingConstants.COURSES_RESULT + id);
+    dispatch(endTest(id));
+    toast.error("Test finishes!");
+    history.push(`/CourseResult/${id}`);
   };
 
   const renderTimmer = (value) => {
@@ -379,8 +379,7 @@ function CourseTest() {
                 </Col>
 
                 <Col md={6} xs={6} className='text-right'>
-                  {questionCount?.total_course_que ===
-                  questionNumber ? (
+                  {questionCount?.total_course_que === questionNumber ? (
                     <button
                       className='next_button'
                       onClick={() => handleFinishQuestion()}

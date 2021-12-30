@@ -1,0 +1,2 @@
+(this["webpackJsonpshekung-frontend"]=this["webpackJsonpshekung-frontend"]||[]).push([[29],{542:function(e,n,t){},585:function(e,n,t){},691:function(e,n,t){"use strict";t.r(n);t(1),t(542);var s=t(179),c=(t(585),t(0));n.default=function(){return Object(c.jsx)(c.Fragment,{children:Object(c.jsxs)("div",{children:[Object(c.jsx)(s.h,{title:"She\u0915\u0941\u0902\u091c - Signup"}),Object(c.jsx)(s.g,{loginPage:!0}),Object(c.jsx)(s.b,{}),Object(c.jsx)(s.e,{loginPage:!0})]})})}}}]);
+//# sourceMappingURL=29.d4bf5ca2.chunk.js.map

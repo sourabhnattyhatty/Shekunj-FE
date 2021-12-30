@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Header, Footer } from "../../components";
 import "./index.scss";
 
-function PrivacyPolicy() {
+const PrivacyPolicy = () =>  {
   const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   return (
     <div>
       <Header loginPage={false} page='home' />

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 import { getUserCourseCertificateDetail } from "../../store/certificate";
 import { formatDate } from "../../utils/utils";
@@ -31,7 +31,7 @@ const CertificatesDetail = () => {
 
   return (
     <div className='container mt-4'>
-      <div className='box_certificate'>
+      <div className='box_certificate mb-4'>
         <Row>
           <Col md={7} xs={12} className='offset-3'>
             <div className='cercifi_con'>
@@ -66,6 +66,9 @@ const CertificatesDetail = () => {
           <div>{t("certificateDetailPage.other.4")}</div>
         </div>
       </div>
+      <Link to='/courses'>
+        <button className='back_course'>Back To Course</button>
+      </Link>
     </div>
   );
 };

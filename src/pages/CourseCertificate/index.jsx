@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Header, Footer } from "../../components";
 import "./index.scss";
@@ -11,13 +11,29 @@ import Dawnload from "../../assets/images/Courses/Dawnload.png";
 import Share from "../../assets/images/Courses/Share.png";
 import fullscreen_icon from "../../assets/images/Courses/fullscreen_icon.png";
 import "./index.scss";
-import { useHistory } from "react-router-dom";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserCourseCertificateDetail } from "../../store/certificate";
 
 function CourseTest() {
+  const dispatch = useDispatch();
   const history = useHistory();
+  const { id } = useParams();
+  const { certificateDetail: certificate } = useSelector(
+    (state) => state.certificateReducer,
+  );
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (id) {
+      dispatch(getUserCourseCertificateDetail(id, history));
+    } else {
+      history.push("/all-certificate-page");
+    }
+  }, [id, history, dispatch]);
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -29,7 +45,7 @@ function CourseTest() {
               <div className='user_certifi'>
                 <div className='user_pro'>
                   <img src={swati_jain} alt='' />
-                  <h3>{t("allCertificatePage.name.1")}</h3>
+                  <h3>{certificate?.name}</h3>
                 </div>
 
                 <div className='skills'>
@@ -77,9 +93,9 @@ function CourseTest() {
                   </div>
                 </p>
                 <p>
-                  <img src={Dawnload} alt='' />
+                  <img src={Dawnload} alt='' style={{cursor:'pointer'}}/>
                   <br />
-                  <img src={Share} alt='' />
+                  <img src={Share} alt='' style={{cursor:'pointer'}}/>
                 </p>
               </div>
             </Col>

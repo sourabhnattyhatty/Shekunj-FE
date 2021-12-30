@@ -97,6 +97,9 @@ export const fetchStartUserCareerTest =
       });
       return res;
     } catch (error) {
+      if (error.status === 401) {
+        history?.push(`/login?redirect=/SuccessCareerTest`);
+      }
       dispatch({
         type: guidanceTypes.FETCH_GUIDANCE_START_USER_CAREER_TEST_FAIL,
         payload: error?.data,
@@ -125,29 +128,40 @@ export const fetchUserCareerTestCount = (id) => async (dispatch) => {
   }
 };
 
-export const postAnswer = (values, id) => async (dispatch) => {
-  try {
-    dispatch({ type: guidanceTypes.POST_ANSWER_REQUEST });
-    await httpServices.post(`/career/start-user-career-test/${id}`, values);
-    dispatch({ type: guidanceTypes.POST_ANSWER_FINISH });
-  } catch (err) {
-    dispatch({ type: guidanceTypes.POST_ANSWER_FAIL });
-  }
-};
+export const postAnswer =
+  (values, history, id, last = false) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: guidanceTypes.POST_ANSWER_REQUEST });
+      const res = await httpServices.post(
+        `/career/start-user-career-test/${id}`,
+        values,
+      );
+      dispatch({ type: guidanceTypes.POST_ANSWER_FINISH });
+      if (res.status_code === 200 && last) {
+        await httpServices.post(`/career/user-career-test-end/${id}`);
+        history.push(`/CareerTestResult/${id}`);
+      }
+    } catch (err) {
+      dispatch({ type: guidanceTypes.POST_ANSWER_FAIL });
+    }
+  };
 
-export const endTest = (id) => async (dispatch) => {
+export const endTest = (id, history) => async (dispatch) => {
   await httpServices.post(`/career/user-career-test-end/${id}`);
+  // history.push(`/CareerTestResult/${selectedCourseCategoryValue?.id}`);
+  history.push(`/CareerTestResult/${id}`);
 };
 
 export const careerTestResult = (id) => async (dispatch) => {
-  try{
-    dispatch({type:guidanceTypes.CAREER_RESULT_REQUEST})
+  try {
+    dispatch({ type: guidanceTypes.CAREER_RESULT_REQUEST });
     const res = await httpServices.get(`/career/user-career-test-result/${id}`);
-    dispatch({type:guidanceTypes.CAREER_RESULT_FINISH, payload: res.data})
-  }catch(error){
-    dispatch({type:guidanceTypes.CAREER_RESULT_FAIL})
+    dispatch({ type: guidanceTypes.CAREER_RESULT_FINISH, payload: res.data });
+  } catch (error) {
+    dispatch({ type: guidanceTypes.CAREER_RESULT_FAIL });
   }
-}
+};
 
 export const reStartUserCareerTestEnd = (id) => async (dispatch) => {
   try {

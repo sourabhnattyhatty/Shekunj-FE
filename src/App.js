@@ -24,6 +24,7 @@ const CertificatePage = React.lazy(() => import("./pages/CertificatePage"));
 const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
 const CourseTest = React.lazy(() => import("./pages/CourseTest"));
 const CourseResult = React.lazy(() => import("./pages/CourseResult"));
+const CareerTestResult = React.lazy(() => import("./pages/CareerTestResult"));
 const CourseCertificate = React.lazy(() => import("./pages/CourseCertificate"));
 const CertificateFullView = React.lazy(() =>
   import("./pages/CertificateFullView"),
@@ -97,13 +98,12 @@ function App() {
           path={`${routingConstants.COURSES_MODULE}:id`}
           component={CoursesModule}
         />
-         
-        <PrivateRoute exact path={`${routingConstants.CAREER_TEST_RESULT}:id'`} component={CourseResult} />
-        <PrivateRoute exact path={`${routingConstants.COURSES_TEST}:id`} component={CourseTest} />
-        <PrivateRoute exact path={`${routingConstants.COURSES_RESULT}:id`} component={CourseResult} />
+        <PrivateRoute exact path='/CoursesTest/:id' component={CourseTest} />
+        <PrivateRoute exact path='/CourseResult/:id' component={CourseResult} />
+        <PrivateRoute exact path='/CareerTestResult/:id' component={CareerTestResult} />
         <PrivateRoute
           exact
-          path={routingConstants.COURSE_CERTIFICATE}
+          path='/CourseCertificate/:id'
           component={CourseCertificate}
         />
         <PrivateRoute
@@ -111,8 +111,8 @@ function App() {
           path={routingConstants.CERTIFICATE_FULL_VIEW}
           component={CertificateFullView}
         />
-        <PrivateRoute exact path={routingConstants.MY_PROGESS} component={MyProgress} />
-        <PrivateRoute exact path={routingConstants.PRIVACY_POLICY} component={PrivacyPolicy} />
+        <PrivateRoute exact path='/my-progress' component={MyProgress} />
+        <Route exact path='/PrivacyPolicy' component={PrivacyPolicy} />
         <Route path='*' component={PageNotFound} />
       </Switch>
     </>

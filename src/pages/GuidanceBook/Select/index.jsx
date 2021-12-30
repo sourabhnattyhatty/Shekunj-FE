@@ -8,8 +8,8 @@ import User2 from "../../../assets/icons/user2.png";
 import Gender from "../../../assets/icons/gender.png";
 import Qualifications from "../../../assets/icons/Qualifications.png";
 import Course from "../../../assets/icons/Course.png";
-import Education from "../../../assets/images/MyProfile/education.png"
-import Stream from "../../../assets/images/MyProfile/Stream.png"
+import Education from "../../../assets/images/MyProfile/education.png";
+import Stream from "../../../assets/images/MyProfile/Stream.png";
 
 const names = ["Engineering", "Medical", "Arts", "Science", "Pharmacy"];
 
@@ -24,10 +24,11 @@ function GuidanceSelect(props) {
     const {
       target: { value },
     } = event;
-    if (props?.flag) {
-      props?.updateValues(value);
-    }
+    // if (props?.flag) {
+    props?.updateValues(value);
+    // }
     setDefaultValue(typeof value === "string" ? value.split(",") : value);
+    // props?.setValue(value);
   };
 
   return (
