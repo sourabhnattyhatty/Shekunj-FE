@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import noImageIcon from '../assets/images/no-image.jpeg';
+import i18njs from "../assets/i18n/i18n"
 
 import { checkIsSessionExpired, decodeToken } from ".";
 import { routingConstants } from "./constants";
@@ -21,7 +22,7 @@ axios.interceptors.request.use((config) => {
     const userInfo = decodeToken(token);
     if (userInfo?.exp && checkIsSessionExpired(userInfo?.exp)) {
       Cookies.remove("sheToken");
-      toast.error("Session expired!");
+      toast.error(i18njs.t("error.other.7"));
       window.location.href = routingConstants.LOGIN;
     }
     config.headers.Authorization = `Bearer ${token}`;
@@ -38,12 +39,10 @@ axios.interceptors.response.use(
     switch (status) {
       case 401:
         Cookies.remove("userInfo");
-        toast.error("Unauthorized access!");
+        toast.error(i18njs.t("error.other.8"));
         window.location.href = routingConstants.LOGIN;
-        console.log("Logout user!");
         break;
       case 403:
-        console.log("You are not allowed to do that!");
         break;
       default:
         break;

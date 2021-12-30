@@ -61,7 +61,7 @@ const CertificatePage = () => {
               <img src={Time} alt='...' />
               <div className='clock_section_first_content'>
                 <p>{t("allCertificatePage.other.7")}</p>
-                <span>45 Mins</span>
+                <span>45 {t("common.time.6")}</span>
               </div>
             </div>
 

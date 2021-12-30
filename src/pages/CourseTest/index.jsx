@@ -75,14 +75,14 @@ function CourseTest() {
   const progress =
     Math.round(100 / (questionCount?.total_course_que || 0)) || 0;
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
     dispatch(testCountSummery(id, history));
     if (detect.isMobile) {
       toast.error(t("error.mobile.1"));
       history.push(routingConstants.HOME_PAGE);
     }
-  }, [history, detect.isMobile, id, dispatch]);
+  }, [history, detect.isMobile, id, dispatch,t]);
 
   useEffect(() => {
     if (question) {
@@ -211,8 +211,8 @@ function CourseTest() {
 
   const handleTestFinished = () => {
     dispatch(endTest(id));
-    toast.error("Test finishes!");
-    history.push(`/CourseResult/${id}`);
+    toast.error(t("error.other.2"));
+    history.push(routingConstants.COURSES_RESULT + id);
   };
 
   const renderTimmer = (value) => {
@@ -283,7 +283,7 @@ function CourseTest() {
 
         <div className='time_set'>
           <p>
-            <img src={time} alt='' /> Time left:{" "}
+            <img src={time} alt='' /> {t("common.time.5")}{" "}
             {showTimer && renderTimmer(timer)}
           </p>
         </div>
@@ -291,7 +291,7 @@ function CourseTest() {
         <Row>
           <Col md={8} xs={12}>
             <div className='que_box'>
-              <h2>Question</h2>
+              <h2>{t("allCertificatePage.other.5")}</h2>
               {isLoading ? (
                 <Skeleton></Skeleton>
               ) : (
@@ -401,7 +401,7 @@ function CourseTest() {
 
           <Col md={4} xs={12}>
             <div className='que_status'>
-              <h2>Questions Status</h2>
+              <h2>{t("successCareerTestPage.heading.2")}</h2>
               <div className='que_num'>
                 {[...Array(questionCount?.total_course_que).keys()].map(
                   (obj) => (
@@ -422,10 +422,10 @@ function CourseTest() {
             <div className='ans_not'>
               <ul>
                 <li>
-                  <span className='dotte1'></span> Answered
+                  <span className='dotte1'></span> {t("successCareerTestPage.other.2")}
                 </li>
                 <li>
-                  <span className='dotte2'></span> Not visited
+                  <span className='dotte2'></span> {t("successCareerTestPage.other.3")}
                 </li>
               </ul>
             </div>

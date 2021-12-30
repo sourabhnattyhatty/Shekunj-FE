@@ -2,7 +2,8 @@ import { guidanceTypes } from "./types";
 import httpServices from "../../utils/ApiServices";
 import { toast } from "react-toastify";
 import { toasterConfig } from "../../utils";
-import { apiConstants } from "../../utils/constants";
+import i18njs from "../../assets/i18n/i18n"
+import { apiConstants, routingConstants } from "../../utils/constants";
 
 const constants = apiConstants.GUIDANCE;
 
@@ -15,13 +16,13 @@ export const bookCounseller = (value) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: guidanceTypes.BOOK_SESSION_FAIL });
     if (error.data.errors.date_of_birth) {
-      toast.error("Date of Birth is required.", toasterConfig);
+      toast.error(i18njs.t("login.form1.dob.required"), toasterConfig);
     } else if (error.data.errors.gender) {
-      toast.error("Gender is required.", toasterConfig);
+      toast.error(i18njs.t("login.form1.gender.required"), toasterConfig);
     } else if (error.data.errors.qualifications) {
-      toast.error("Qualification is required.", toasterConfig);
+      toast.error(i18njs.t("login.form1.qualification.required"), toasterConfig);
     } else if (error.data.errors.course_looking_for) {
-      toast.error("Course looking for is required.", toasterConfig);
+      toast.error(i18njs.t("login.form1.coursesLookingFor.required"), toasterConfig);
     }
   }
 };
@@ -140,7 +141,7 @@ export const postAnswer =
       dispatch({ type: guidanceTypes.POST_ANSWER_FINISH });
       if (res.status_code === 200 && last) {
         await httpServices.post(`/career/user-career-test-end/${id}`);
-        history.push(`/CareerTestResult/${id}`);
+        history.push(routingConstants.CAREER_TEST_RESULT + id);
       }
     } catch (err) {
       dispatch({ type: guidanceTypes.POST_ANSWER_FAIL });
@@ -149,8 +150,8 @@ export const postAnswer =
 
 export const endTest = (id, history) => async (dispatch) => {
   await httpServices.post(`/career/user-career-test-end/${id}`);
-  // history.push(`/CareerTestResult/${selectedCourseCategoryValue?.id}`);
-  history.push(`/CareerTestResult/${id}`);
+  // history.push(`routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id);
+  history.push(routingConstants.CAREER_TEST_RESULT + id);
 };
 
 export const careerTestResult = (id) => async (dispatch) => {

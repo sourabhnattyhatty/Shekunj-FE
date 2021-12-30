@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import JwtDecode from "jwt-decode";
 import moment from "moment";
 import { toast } from "react-toastify";
+import i18njs from "../assets/i18n/i18n"
 
 export const toasterConfig = {
   position: "top-right",
@@ -16,19 +17,19 @@ export const toasterConfig = {
 export const transformError = (error) => {
   const err = {
     statusCode: 500,
-    message: "Something went wrong",
+    message: i18njs.t("error.other.9"),
     data: {},
   };
   if (error && error.data && error.data.statusCode) {
     const data = error.data;
     err.statusCode = data.statusCode || 500;
-    err.message = data.message || "Something went wrong";
+    err.message = data.message || i18njs.t("error.other.9");
     err.data = data.data || {};
   } else {
     if (error && error.response) {
       const { data } = error.response;
       err.statusCode = data.statusCode || 500;
-      err.message = data.message || "Something went wrong";
+      err.message = data.message || i18njs.t("error.other.9");
       err.data = data.data || {};
     }
   }
@@ -46,7 +47,7 @@ export const isAuthenticated = () => {
 export const checkIsValidImage = (file) => {
   const filetypes = /\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/;
   if (!file.name.match(filetypes)) {
-    toast.error("select valid image.");
+    toast.error(i18njs.t("error.other.3"));
     return false;
   }
   return true;
@@ -94,10 +95,10 @@ export function onKeyPressAllowNumbers(e, val) {
 }
 
 export function handleErrorMessage(err) {
-  let errorMessage = "Something went wrong";
+  let errorMessage = i18njs.t("error.other.9");
 
   if (err.status === 401) {
-    errorMessage = "Session Expired";
+    errorMessage = i18njs.t("error.other.7");
     return errorMessage;
   }
 
@@ -124,7 +125,7 @@ export function handleErrorMessage(err) {
     if (err.status && err.status >= 200 && err.status < 300) {
       errorMessage = "success";
     } else {
-      errorMessage = "Something Went Wrong";
+      errorMessage = i18njs.t("error.other.9");
     }
   }
 
@@ -153,14 +154,14 @@ export function timeFromNow(time) {
 }
 
 export function formatDate(date = null, format = "DD-MM-YYYY") {
-  return date ? moment(date).format(format) : "N/A";
+  return date ? moment(date).format(format) : i18njs.t("common.n/a");
 }
 
 export function formatTime(date = null) {
   return date
     ? {
-        hour: moment(date).format("HH") + "h",
-        minute: moment(date).format("mm") + "min",
+        hour: moment(date).format("HH") + i18njs.t("common.time.8"),
+        minute: moment(date).format("mm") + i18njs.t("common.time.2"),
       }
     : { hour: null, minute: null };
 }
@@ -186,8 +187,8 @@ export function timeDifferenceFromDates(sDate, eDate) {
   const endDate = moment(eDate);
   return sDate && eDate
     ? {
-        hour: endDate.diff(startDate, "hour") + "h",
-        minute: endDate.diff(startDate, "minute") + "min",
+        hour: endDate.diff(startDate, "hour") + i18njs.t("common.time.8"),
+        minute: endDate.diff(startDate, "minute") + i18njs.t("common.time.2"),
       }
     : { hour: null, minute: null };
 }

@@ -5,7 +5,7 @@ import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
 import moment from "moment";
 import { apiConstants, routingConstants } from "../../utils/constants";
-
+import i18njs from "../../assets/i18n/i18n"
 const constants = apiConstants.AUTH;
 
 export const onLogin = (values, history, redirect) => async (dispatch) => {
@@ -50,7 +50,7 @@ export const onSignup = (values, history) => async (dispatch) => {
     if (error?.status === 400) {
       toast.error(error.data.errors.error[0], toasterConfig);
     } else if (error?.status === 500) {
-      toast.error("Not valid OTP", toasterConfig);
+      toast.error(i18njs.t("error.mobile.2"), toasterConfig);
     }
   }
 };
@@ -70,7 +70,7 @@ export const registerWithGoogle =
         history.push(routingConstants.MY_PROGESS);
       }
     } catch (err) {
-      toast.error("Google Login failed.", toasterConfig);
+      toast.error(i18njs.t("error.login.1"), toasterConfig);
     }
   };
 
@@ -102,7 +102,7 @@ export const requestRestEmail = (values, history) => async (dispatch) => {
     toast.success(res.data.success, toasterConfig);
   } catch (error) {
     dispatch({ type: authTypes.EMAIL_VERIFY_FAIL });
-    toast.error("E-mail not found", toasterConfig);
+    toast.error(i18njs.t("error.login.2"), toasterConfig);
   }
 };
 
@@ -158,7 +158,7 @@ export const getUserProfile = () => async (dispatch) => {
     if (error?.status === 400) {
       toast.error(error.data.errors.error[0], toasterConfig);
     } else if (error?.status === 500) {
-      toast.error("Internal Server Error", toasterConfig);
+      toast.error(i18njs.t("error.other.6"), toasterConfig);
     }
   }
 };

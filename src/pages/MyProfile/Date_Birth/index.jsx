@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import "./index.scss";
 
-function index(props) {
+function DateBirth(props) {
   return (
     <div>
       <div className='date_of_birth'>
@@ -24,4 +24,4 @@ function index(props) {
   );
 }
 
-export default index;
+export default DateBirth;

@@ -15,7 +15,7 @@ import {
   reSetFilterValue,
   toggleCollapseValue,
 } from "../../store/career";
-import { baseURL, noImage } from "../../utils/ApiServices";
+import { noImage } from "../../utils/ApiServices";
 
 import "../HomePage/index.scss";
 import "./index.scss";
@@ -98,11 +98,11 @@ const CareerPage = () => {
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>
-                          <h3>{c?.name || "N/A"}</h3>
+                          <h3>{c?.name || t("common.n/a")}</h3>
                           <p>
-                            {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
+                            {c?.city || t("common.n/a")}, {c?.state || t("common.n/a")} •{" "}
                             <span style={{ textTransform: "capitalize" }}>
-                              {c?.collage_type || "N/A"}
+                              {c?.collage_type || t("common.n/a")}
                             </span>
                           </p>
                           <ul>
@@ -110,11 +110,11 @@ const CareerPage = () => {
                               <span>{t("careerTopColleges.other.4")}</span> : ₹ {transformPrice(c?.fees)}{" "}
                             </li>
                             <li>
-                              <span>{t("careerTopColleges.other.5")}</span> : {c?.exam || "N/A"}
+                              <span>{t("careerTopColleges.other.5")}</span> : {c?.exam || t("common.n/a")}
                             </li>
                           </ul>
                           {c?.is_collapse && (
-                            <div>{c?.about_college || "N/A"}</div>
+                            <div>{c?.about_college || t("common.n/a")}</div>
                           )}
                           <button
                             className='btn_viewCour'

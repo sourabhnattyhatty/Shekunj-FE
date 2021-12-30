@@ -61,7 +61,7 @@ function LoginForm2() {
             value={values.contact}
             onBlur={handleBlur}
             autoComplete='off'
-            placeholder={t("common.placeHolders.number")}
+            placeholder={t("common.placeHolders.mobile")}
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>

@@ -6,11 +6,13 @@ import { useDispatch } from "react-redux";
 import Google from "../../assets/images/login/google.png";
 import Or from "../../assets/images/login/or.png";
 import { registerWithGoogle } from "../../store/auth/action";
+import { useTranslation } from "react-i18next";
 
 function GoogleLoginComponent({ showOr }) {
   const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   const dispatch = useDispatch();
   const history = useHistory();
+  const { t } = useTranslation();
 
   function useQuery() {
     const { search } = useLocation();
@@ -43,8 +45,7 @@ function GoogleLoginComponent({ showOr }) {
                 onClick={() => renderProps.onClick()}
                 disabled={renderProps.disabled}
               >
-                <img src={Google} alt='...' className='mr-2' /> Login with
-                Google
+                <img src={Google} alt='...' className='mr-2' /> {t("googleLoginComponent.button.1")}
               </button>
               {showOr && (
                 <div className='or'>

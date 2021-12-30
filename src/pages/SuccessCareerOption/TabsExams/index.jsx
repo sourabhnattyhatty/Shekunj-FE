@@ -93,7 +93,7 @@ export default function VerticalTabs() {
     return (
       <Col md={4} xs={12}>
         <Tab
-          label='Govt Exams'
+          label={t("successCareerOption.heading.3")}
           onClick={() => handleChangeGovtExam(true)}
           {...a11yProps(0)}
         />

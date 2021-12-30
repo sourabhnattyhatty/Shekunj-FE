@@ -168,7 +168,7 @@ export const getUserTestQuestion =
           const res = await httpServices.get(
             `/course/user-course-result/${id}`,
           );
-          history?.push(`/CourseCertificate/${res.data.id}`);
+          history?.push(routingConstants.COURSE_CERTIFICATE + res.data.id);
           toast.success(err.data.message, toasterConfig);
         } else {
           history?.push(routingConstants.COURSES_RESULT + id);
@@ -193,7 +193,7 @@ export const postAnswer =
       dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
       if (res.status_code === 200 && last) {
         await httpServices.post(`/course/user-course-end-time/${id}`);
-        history.push(`/CourseResult/${id}`);
+        history.push(routingConstants.COURSES_RESULT + id);
       }
     } catch (err) {
       dispatch({ type: coursesTypes.POST_ANSWER_FAIL });

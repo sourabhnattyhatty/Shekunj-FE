@@ -22,7 +22,9 @@
       "button": {
         "save": "Save"
       },
-      "gender": "Gender"
+      "gender": "Gender",
+      "qualification": "Qualifications",
+      "coursesLooking": "Course Looking For"
     },
     "placeHolders": {
       "fname": "Enter First Name",
@@ -43,7 +45,13 @@
     },
     "time": {
       "1": "Year",
-      "2": "min"
+      "2": "min",
+      "3": "Day",
+      "4": "Month",
+      "5": "Time left",
+      "6": "Mins",
+      "7": "Date",
+      "8": "h"
     },
     "month": {
       "1": "January",
@@ -62,12 +70,23 @@
   },
   "error": {
     "mobile": {
-      "1": "This page is not availble in mobile view."
+      "1": "This page is not availble in mobile view.",
+      "2": "Not valid OTP"
     },
     "other": {
       "1": "Select option for next question",
       "2": "Test finished!",
-      "3": "Please select valid file"
+      "3": "Please select valid file",
+      "4": "Please provide contact number.",
+      "5": "Please provide valid contact number.",
+      "6": "Internal Server Error",
+      "7": "Session expired!",
+      "8": "Unauthorized access!",
+      "9": "Something went wrong"
+    },
+    "login":{
+      "1": "Google Login failed.",
+      "2": "E-mail not found"
     }
   },
   "login": {
@@ -115,6 +134,15 @@
       },
       "gender": {
         "required": "Gender selection is required"
+      },
+      "dob":{
+        "required": "Date of Birth is required"
+      },
+      "qualification":{
+        "required": "Qualification is required."
+      },
+      "coursesLookingFor":{
+        "required": "Course looking for is required."
       }
     },
     "form2": {
@@ -383,7 +411,7 @@
       "1": "Top Schools in India"
     },
     "listItems": {
-      "1": "STREAM",
+      "1": "STATE",
       "2": "EDUCATION BOARD"
     },
     "other": {
@@ -484,9 +512,6 @@
         "1": "Your Progress",
         "2": "Course content"
       },
-      "accordian": {
-        "1": "active-accordiantext"
-      },
       "button": {
         "1": "Back",
         "2": "Finish",
@@ -515,7 +540,8 @@
       },
       "button": {
         "1": "Get Your Certificate",
-        "2": "Start Course Again"
+        "2": "Start Course Again",
+        "3": "Go to Career Test"
       }
     },
     "other": {
@@ -585,7 +611,8 @@
   "successCareerOption": {
     "heading": {
       "1": "Choose Your Career",
-      "2": "Career Option"
+      "2": "Career Option",
+      "3": "Govt Exams"
     },
     "other": {
       "1": "No Option selected!",
@@ -669,6 +696,28 @@
       "20": "We do not store any account related information or any credit / debit card details. We shall not be liable for any loss or damage sustained by Users as a result of any disclosure (inadvertent or otherwise) of any information concerning the User's account, credit cards or debit cards in the course of any online transactions or payments made for any products and/or services offered through the Platform.",
       "21": "In case any Personal Information is shared by you, which is not requested by us during registration, (whether mandatorily or optionally), We will not be liable for any information security breach or disclosure in relation to such information.",
       "22": "If you have any questions regarding this Privacy Policy or the protection of your Personal Information, please contact us on support@octahire.com. You can also write to us to suggest changes in Privacy Policy"
+    }
+  },
+  "googleLoginComponent":{
+    "button":{
+      "1": "Login with Google"
+    }
+  },
+  "headerComponent":{
+    "other":{
+      "1": "Sign In"
+    },
+    "menuItem":{
+      "1": "My Profile",
+      "2": "My Progress",
+      "3": "My Certificates",
+      "4": "Logout",
+      "5": "Career Option",
+      "6": "Career Test",
+      "7": "Book a Counsellor",
+      "8": "Top Colleges",
+      "9": "Top Schools",
+      "10": "Government Exams"
     }
   }
 }

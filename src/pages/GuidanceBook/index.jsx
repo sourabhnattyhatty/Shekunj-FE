@@ -61,14 +61,14 @@ const GuidancePage = () => {
   const { t } = useTranslation();
 
   const validationSchema = Yup.object({
-    first_name: Yup.string().required(t("form1.firstNameError.required")),
-    last_name: Yup.string().required(t("form1.lastNameError.required")),
+    first_name: Yup.string().required(t("login.form1.firstNameError.required")),
+    last_name: Yup.string().required(t("login.form1.lastNameError.required")),
     email_address: Yup.string()
-      .required(t("form1.emailError.required"))
-      .email(t("form1.emailError.invalid")),
+      .required(t("login.form1.emailError.required"))
+      .email(t("login.form1.emailError.invalid")),
     mobile_number: Yup.number().positive(),
     alternate_number: Yup.number().positive(),
-    message: Yup.string().required(t("form1.message.required")),
+    message: Yup.string().required(t("login.form1.message.required")),
   });
 
   const {
@@ -124,7 +124,7 @@ const GuidancePage = () => {
             <Col md={5} xs={12}>
               <div className='guidance_con'>
                 <div className='book_sec_content mob_hide'>
-                  <h2 data-aos='slide-up'>Book a Session</h2>
+                  <h2 data-aos='slide-up'>{t("guidanceBookPage.heading.1")}</h2>
                   <p data-aos='slide-up'>
                     Lorem ipsum dolor sit amet, consectetur <br /> adipiscing
                     elit.
@@ -271,7 +271,7 @@ const GuidancePage = () => {
                     <Col md={4} xs={12}>
                       <div className='form-group mzero'>
                         <GuidanceSelect
-                          title='Day'
+                          title={t("common.time.3")}
                           icon={false}
                           listItem={days}
                           defaultValue=''
@@ -282,7 +282,7 @@ const GuidancePage = () => {
                     <Col md={4} xs={12}>
                       <div className='form-group mzero'>
                         <GuidanceSelect
-                          title='Month'
+                          title={t("common.time.4")}
                           icon={false}
                           listItem={months}
                           defaultValue=''
@@ -295,7 +295,7 @@ const GuidancePage = () => {
                     <Col md={4} xs={12}>
                       <div className='form-group mzero'>
                         <GuidanceSelect
-                          title='Year'
+                          title={t("common.time.1")}
                           icon={false}
                           listItem={years}
                           defaultValue=''
@@ -306,7 +306,7 @@ const GuidancePage = () => {
                   </Row>
                   <div className='form-group mzero'>
                     <GuidanceSelect
-                      title='Gender'
+                      title={t("common.formHeadings.gender")}
                       icon={true}
                       listItem={["female", "male"]}
                       defaultValue=''
@@ -315,7 +315,7 @@ const GuidancePage = () => {
                   </div>
                   <div className='form-group mzero'>
                     <GuidanceSelect
-                      title='Qualifications'
+                      title={t("common.formHeadings.qualification")}
                       icon={true}
                       listItem={highEducation}
                       defaultValue=''
@@ -326,7 +326,7 @@ const GuidancePage = () => {
                   </div>
                   <div className='form-group mzero'>
                     <GuidanceSelect
-                      title='Course Looking For'
+                      title={t("common.formHeadings.coursesLooking")}
                       icon={true}
                       listItem={courseLookingFor}
                       defaultValue=''

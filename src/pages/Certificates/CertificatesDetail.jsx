@@ -37,7 +37,7 @@ const CertificatesDetail = () => {
             <div className='cercifi_con'>
               <img className='cer_text' src={Certificate_text} alt='' />
               <img src={para} alt='' />
-              <h2>{certificate?.name || "N/A"}</h2>
+              <h2>{certificate?.name || t("common.n/a")}</h2>
               <hr className='hr_line' />
               <p>
                 {t("certificateDetailPage.content.1.1")} {certificate?.id}{" "}
@@ -57,7 +57,7 @@ const CertificatesDetail = () => {
         <div className='date_set'>
           <div>{formatDate(certificate?.course_end_time, "DD/MM/YYYY")}</div>
           <hr className='hr_line2' />
-          <div>Date</div>
+          <div>{t("common.time.7")}</div>
         </div>
         <div className='signature_set'>
           <img src={signature} alt='' />
@@ -67,7 +67,7 @@ const CertificatesDetail = () => {
         </div>
       </div>
       <Link to='/courses'>
-        <button className='back_course'>Back To Course</button>
+        <button className='back_course'>{t("allCertificatePage.button.3")}</button>
       </Link>
     </div>
   );

@@ -10,11 +10,14 @@ import win from "../../assets/images/Courses/win.png";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { testResult } from "../../store/courses/action";
+import { routingConstants } from "../../utils/constants";
+import { useTranslation } from "react-i18next";
 
 function CourseTest() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { result } = useSelector((state) => state.coursesReducer);
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     if (id) {
@@ -38,16 +41,16 @@ function CourseTest() {
           <Row>
             <Col md={8} xs={12} className='offset-lg-2'>
               <div className='cou_result_cont'>
-                <h2>Your Result</h2>
+                <h2>{t("coursesPage.coursesResultPage.heading.1")}</h2>
                 <img src={win} alt='' />
                 <h2>
                   {result?.is_pass ? (
                     <>
-                      Congratulation <b>{result?.name}!</b>
+                      {t("coursesPage.coursesResultPage.other.1")} <b>{result?.name}!</b>
                     </>
                   ) : (
                     <>
-                      Bad Performance <b>{result?.name}!</b>
+                      {t("coursesPage.coursesResultPage.other.2")} <b>{result?.name}!</b>
                     </>
                   )}
                 </h2>
@@ -73,7 +76,8 @@ function CourseTest() {
                           <p>{result?.no_of_correct_answer || 0}</p>
                           <br />
                           <span>
-                            Correct <br /> Answers
+                            {t("coursesPage.coursesResultPage.other.3.1")} <br />{" "}
+                            {t("coursesPage.coursesResultPage.other.3.2")}
                           </span>
                         </div>
                       </div>
@@ -93,7 +97,8 @@ function CourseTest() {
                           <p>{Math.round(result?.result) || 0}%</p>
                           <br />
                           <span>
-                            Candidate's <br /> Score
+                            {t("coursesPage.coursesResultPage.other.4.1")} <br />{" "}
+                            {t("coursesPage.coursesResultPage.other.4.2")}
                           </span>
                         </div>
                       </div>
@@ -117,7 +122,7 @@ function CourseTest() {
                             <span>min</span>
                           </p>
                           <br />
-                          <span>Total Time</span>
+                          <span>{t("coursesPage.coursesResultPage.other.5")}</span>
                         </div>
                       </div>
                     </div>
@@ -127,14 +132,14 @@ function CourseTest() {
               <Link
                 to={
                   result?.is_pass
-                    ? `/CourseCertificate/${result?.id}`
-                    : `/CoursesDetails/${id}`
+                    ? routingConstants.COURSE_CERTIFICATE + result?.id
+                    : routingConstants.COURSE_DETAILS + id
                 }
               >
                 <button className='get_certif'>
                   {result?.is_pass
-                    ? "Get Your Certificate"
-                    : "Start Course Again"}
+                    ? t("coursesPage.coursesResultPage.button.1")
+                    : t("coursesPage.coursesResultPage.button.2")}
                 </button>
               </Link>
             </Col>

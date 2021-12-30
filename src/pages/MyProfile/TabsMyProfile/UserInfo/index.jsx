@@ -22,33 +22,38 @@ function UserInfo(props) {
             <ul>
               <li>
                 {user?.email ||
-                  t("common.formHeadings.email")} - {t("common.n/a")}
+                  `${t("common.formHeadings.email")} - ${t("common.n/a")}`}
               </li>
               <li>
                 {user?.highest_education ||
-                  t("common.formHeadings.highest_education")}{" "}
-                -{t("common.n/a")}
+                  `${t("common.formHeadings.highest_education")}
+                - ${t("common.n/a")}`}
               </li>
               <li>
-                {user?.dob || t("common.formHeadings.dob")} - {t("common.n/a")}
+                {user?.dob ||
+                  `${t("common.formHeadings.dob")} - ${t("common.n/a")}`}
               </li>
               <li>
-                {user?.city || t("common.formHeadings.city")} - {t("common.n/a")}
+                {user?.city ||
+                  `${t("common.formHeadings.city")} - ${t("common.n/a")}`}
               </li>
             </ul>
 
             <ul>
               <li>
                 {user?.contact ||
-                  t("common.formHeadings.mobile")} - {t("common.n/a")}
+                  `${t("common.formHeadings.mobile")} - 
+                ${t("common.n/a")}`}
               </li>
               <li>
                 {user?.stream ||
-                  t("common.formHeadings.stream")} - {t("common.n/a")}
+                  `${t("common.formHeadings.stream")} - 
+                ${t("common.n/a")}`}
               </li>
               <li>
                 {user?.state ||
-                  t("common.formHeadings.state")} - {t("common.n/a")}
+                  `${t("common.formHeadings.state")} - 
+                ${t("common.n/a")}`}
               </li>
             </ul>
           </div>

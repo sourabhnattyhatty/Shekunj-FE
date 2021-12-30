@@ -30,7 +30,7 @@ function CourseTest() {
     if (id) {
       dispatch(getUserCourseCertificateDetail(id, history));
     } else {
-      history.push("/all-certificate-page");
+      history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
   }, [id, history, dispatch]);
 
@@ -82,7 +82,7 @@ function CourseTest() {
                   <div
                     class='content'
                     onClick={() =>
-                      history.push(`/certificate-detail/${certificate?.id}`)
+                      history.push(routingConstants.ALL_CERTIFICATE_DETAIL + certificate?.id)
                     }
                     style={{ cursor: "pointer" }}
                   >

@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import Timer from "react-compound-timer";
+import { routingConstants } from "../../utils/constants";
 
 import {
   Container,
@@ -33,7 +34,6 @@ import timeIcon from "../../assets/images/Courses/time.png";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
-import { routingConstants } from "../../utils/constants";
 
 const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
@@ -83,10 +83,10 @@ function CourseTest() {
 
   useEffect(() => {
     if (detect.isMobile) {
-      toast.error("This page is not available in mobile view.");
-      history.push("/");
+      toast.error(t("error.mobile.1"));
+      history.push(routingConstants.HOME_PAGE);
     }
-  }, [history, detect.isMobile]);
+  }, [history, detect.isMobile,t]);
 
   useEffect(() => {
     if (testData) {
@@ -190,8 +190,8 @@ function CourseTest() {
 
   const handleTestFinished = () => {
     dispatch(endTest(selectedCourseCategoryValue?.id));
-    toast.error("Test finishes!");
-    history.push(`/CareerTestResult/${selectedCourseCategoryValue?.id}`);
+    toast.error(t("error.other.2"));
+    history.push(routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id);
   };
 
   const handlePrevQuestion = () => {
@@ -238,7 +238,7 @@ function CourseTest() {
       }
       setToggle((prev) => !prev);
     } else {
-      toast.error("Select option for next question", {
+      toast.error(t("error.other.1"), {
         position: "bottom-center",
       });
     }
@@ -376,7 +376,7 @@ function CourseTest() {
                   >
                     <h3>{selectedCourseCategory}</h3>
                     <button onClick={() => handleFinishQuestion()}>
-                      {t("coursesModulePage.button.2")}
+                      {t("coursesPage.coursesModulePage.button.2")}
                     </button>
                   </Stack>
                   {renderProgress(testData?.progress)}
@@ -390,7 +390,7 @@ function CourseTest() {
           <>
             <div className='time_set'>
               <p>
-                <img src={timeIcon} alt='timeIcon' /> Time left:{" "}
+                <img src={timeIcon} alt='timeIcon' /> {t("common.time.5") + " "}
                 {showTimer && renderTimmer(testTime)}
               </p>
             </div>
@@ -479,7 +479,7 @@ function CourseTest() {
                         onClick={() => handlePrevQuestion()}
                         disabled={!testData?.prev_module}
                       >
-                        {t("coursesModulePage.button.1")}
+                        {t("coursesPage.coursesModulePage.button.1")}
                       </button>
                     </Col>
 
@@ -489,14 +489,14 @@ function CourseTest() {
                           className='next_button'
                           onClick={() => handleFinishQuestion()}
                         >
-                          {t("coursesModulePage.button.2")}
+                          {t("coursesPage.coursesModulePage.button.2")}
                         </button>
                       ) : (
                         <button
                           className='next_button'
                           onClick={() => handleNextQuestion()}
                         >
-                          {t("coursesModulePage.button.3")}
+                          {t("coursesPage.coursesModulePage.button.3")}
                         </button>
                       )}
                     </Col>

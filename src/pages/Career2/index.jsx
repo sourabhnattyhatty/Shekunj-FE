@@ -8,7 +8,7 @@ import {
   reSetFilterValue,
   toggleCollapseValue,
 } from "../../store/career";
-import { baseURL, noImage } from "../../utils/ApiServices";
+import { noImage } from "../../utils/ApiServices";
 import "../HomePage/index.scss";
 import "./index.scss";
 import { useTranslation } from "react-i18next";

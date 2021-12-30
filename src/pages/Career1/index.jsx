@@ -10,7 +10,7 @@ import {
 import "../HomePage/index.scss";
 import "./index.scss";
 
-import { baseURL, noImage } from "../../utils/ApiServices";
+import { noImage } from "../../utils/ApiServices";
 import { useTranslation } from "react-i18next";
 
 const CareerPage1 = () => {

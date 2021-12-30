@@ -145,7 +145,7 @@ function EditProfile(props) {
                   <GuidanceSelect
                     flag={true}
                     icon={true}
-                    heading='highestEducation'
+                    heading={t("common.formHeadings.highest_education")}
                     listItem={["10th", "12th", "Diploma", "PG", "UG"]}
                     defaultValue={values.highest_education}
                     updateValues={(value) =>
@@ -193,7 +193,7 @@ function EditProfile(props) {
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
-                    title='City'
+                    title={t("common.formHeadings.city")}
                     listItem={cities}
                     defaultValue={values.city}
                     updateValues={(value) => setFieldValue("city", value)}
@@ -253,7 +253,7 @@ function EditProfile(props) {
                   <GuidanceSelect
                     flag={true}
                     icon={true}
-                    heading='stream'
+                    heading={t("common.formHeadings.stream")}
                     defaultValue={values.stream}
                     updateValues={(value) => setFieldValue("stream", value)}
                   />
@@ -266,7 +266,7 @@ function EditProfile(props) {
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
-                    title='State'
+                    title={t("common.formHeadings.state")}
                     listItem={statesCities}
                     defaultValue={values?.state}
                     updateValues={handleStateChange}

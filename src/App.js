@@ -98,12 +98,12 @@ function App() {
           path={`${routingConstants.COURSES_MODULE}:id`}
           component={CoursesModule}
         />
-        <PrivateRoute exact path='/CoursesTest/:id' component={CourseTest} />
-        <PrivateRoute exact path='/CourseResult/:id' component={CourseResult} />
-        <PrivateRoute exact path='/CareerTestResult/:id' component={CareerTestResult} />
+        <PrivateRoute exact path={`${routingConstants.COURSES_TEST}:id`} component={CourseTest} />
+        <PrivateRoute exact path={`${routingConstants.COURSES_RESULT}:id`} component={CourseResult} />
+        <PrivateRoute exact path={`${routingConstants.CAREER_TEST_RESULT}:id`} component={CareerTestResult} />
         <PrivateRoute
           exact
-          path='/CourseCertificate/:id'
+          path={`${routingConstants.COURSE_CERTIFICATE}:id`}
           component={CourseCertificate}
         />
         <PrivateRoute
@@ -111,8 +111,8 @@ function App() {
           path={routingConstants.CERTIFICATE_FULL_VIEW}
           component={CertificateFullView}
         />
-        <PrivateRoute exact path='/my-progress' component={MyProgress} />
-        <Route exact path='/PrivacyPolicy' component={PrivacyPolicy} />
+        <PrivateRoute exact path={routingConstants.MY_PROGESS} component={MyProgress} />
+        <Route exact path={routingConstants.PRIVACY_POLICY} component={PrivacyPolicy} />
         <Route path='*' component={PageNotFound} />
       </Switch>
     </>

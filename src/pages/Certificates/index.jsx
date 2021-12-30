@@ -63,8 +63,8 @@ function AllCertificatePage() {
                     </Col>
                     <Col md={7} xs={12}>
                       <div className='all_certif_con'>
-                        <h2>{c?.course_name || "N/A"}</h2>
-                        <p>{c?.description || "N/A"} </p>
+                        <h2>{c?.course_name || t("common.n/a")}</h2>
+                        <p>{c?.description || t("common.n/a")} </p>
                         <div className='all_list'>
                           <ul>
                             <li>

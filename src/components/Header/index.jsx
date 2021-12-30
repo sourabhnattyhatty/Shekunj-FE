@@ -119,7 +119,7 @@ const Header = ({ page, subPage }) => {
                     <img src={Logo} alt='...' />
                   </Link>
 
-                  <p>Sign In</p>
+                  <p>{t("headerComponent.other.1")}</p>
                 </div>
               </div>
 
@@ -132,7 +132,7 @@ const Header = ({ page, subPage }) => {
                         <img
                           src={user?.profile_pic}
                           className='profile-img'
-                          alt={user?.name || "N/A"}
+                          alt={user?.name || t("common.n/a")}
                         />
                       ) : (
                         <Avatar
@@ -152,7 +152,7 @@ const Header = ({ page, subPage }) => {
                         aria-expanded={open ? "true" : undefined}
                         onClick={handleClick}
                       >
-                        {user?.name || "N/A"}
+                        {user?.name || t("common.n/a")}
                       </span>
                       <Menu
                         id='basic-menu'
@@ -167,13 +167,13 @@ const Header = ({ page, subPage }) => {
                           onClick={handleProfile}
                           className={subPage === "myProfile" && "active"}
                         >
-                          My Profile
+                          {t("headerComponent.menuItem.1")}
                         </MenuItem>
                         <MenuItem
                           onClick={handleProgress}
                           className={subPage === "myProgress" && "active"}
                         >
-                          My Progress
+                          {t("headerComponent.menuItem.2")}
                         </MenuItem>
                         <MenuItem
                           onClick={handleCertificate}
@@ -181,9 +181,9 @@ const Header = ({ page, subPage }) => {
                             subPage === "allCertificatePage" && "active"
                           }
                         >
-                          My Certificates
+                          {t("headerComponent.menuItem.3")}
                         </MenuItem>
-                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                        <MenuItem onClick={handleLogout}>{t("headerComponent.menuItem.4")}</MenuItem>
                       </Menu>
                     </>
                   ) : (
@@ -269,19 +269,19 @@ const Header = ({ page, subPage }) => {
                         onClick={handleGuidance1}
                         className={subPage === "careerOption" && "active"}
                       >
-                        Career Option
+                        {t("headerComponent.menuItem.5")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleGuidance2}
                         className={subPage === "careerTest" && "active"}
                       >
-                        Career Test
+                        {t("headerComponent.menuItem.6")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleGuidance3}
                         className={subPage === "bookCounsller" && "active"}
                       >
-                        Book a Counsellor
+                        {t("headerComponent.menuItem.7")}
                       </MenuItem>
                     </Menu>
                   </li>
@@ -327,19 +327,19 @@ const Header = ({ page, subPage }) => {
                         onClick={handleColleges}
                         className={subPage === "colleges" && "active"}
                       >
-                        Top Colleges
+                        {t("headerComponent.menuItem.8")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleSchools}
                         className={subPage === "schools" && "active"}
                       >
-                        Top Schools
+                        {t("headerComponent.menuItem.9")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleExams}
                         className={subPage === "govExams" && "active"}
                       >
-                        Governmant Exams
+                        {t("headerComponent.menuItem.10")}
                       </MenuItem>
                     </Menu>
                   </li>

@@ -67,9 +67,9 @@ const LoginForm = () => {
   const handleVerify = (e) => {
     const contact = values.contact;
     if (contact === "") {
-      toast.error("Please provide contact number.");
+      toast.error(t("common.error.4"));
     } else if (contact.length > 10 || contact.length < 10) {
-      toast.error("Please provide valid contact number.");
+      toast.error(t("common.error.5"));
     } else {
       dispatch(contactVerify({ contact }));
     }
