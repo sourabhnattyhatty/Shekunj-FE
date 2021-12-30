@@ -6,6 +6,7 @@ import { noImage } from "../../../../utils/ApiServices";
 import { checkIsValidImage } from "../../../../utils";
 import { toast } from "react-toastify";
 import { updateProfile } from "../../../../store/auth/action";
+import { Avatar } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 const ProfileImage = ({ isEditable }) => {
@@ -39,10 +40,14 @@ const ProfileImage = ({ isEditable }) => {
   return (
     <>
       <div className='myProfile_img'>
-        <img
+        {/* <img
           src={user?.profile_pic || noImage}
           style={{ width: "-webkit-fill-available" }}
           alt={user?.name}
+        /> */}
+        <Avatar
+          src={user?.profile_pic || noImage}
+          sx={{ width: 200, height: 200 }}
         />
         <input
           type='file'

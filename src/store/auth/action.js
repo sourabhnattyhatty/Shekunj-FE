@@ -1,6 +1,6 @@
 import { authTypes } from "./types";
 import { toast } from "react-toastify";
-import httpServices, { baseURL } from "../../utils/ApiServices";
+import httpServices from "../../utils/ApiServices";
 import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
 import moment from "moment";
@@ -146,9 +146,7 @@ export const getUserProfile = () => async (dispatch) => {
             : res?.data?.contact
           : null,
         profile_pic: res?.data?.profile_pic
-          ? res?.data?.profile_pic?.includes(baseURL)
-            ? res?.data?.profile_pic
-            : `${baseURL}${res?.data?.profile_pic}`
+          ? res?.data?.profile_pic
           : null,
         dob: res?.data?.dob
           ? moment(res?.data?.dob).format("DD-MM-YYYY")

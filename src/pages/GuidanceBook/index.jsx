@@ -201,7 +201,7 @@ const GuidancePage = () => {
                   <div className='form-group'>
                     <TextField
                       name='email_address'
-                      type='text'
+                      type='email'
                       placeholder={t("common.placeHolders.email")}
                       autoComplete='off'
                       onChange={handleChange}
@@ -224,7 +224,7 @@ const GuidancePage = () => {
                   <div className='form-group'>
                     <TextField
                       name='mobile_number'
-                      type='text'
+                      type='number'
                       placeholder={t("common.placeHolders.mobile")}
                       autoComplete='off'
                       value={values.mobile_number}
@@ -247,7 +247,7 @@ const GuidancePage = () => {
                   <div className='form-group'>
                     <TextField
                       name='alternate_number'
-                      type='text'
+                      type='number'
                       placeholder={t("common.placeHolders.alternateMobile")}
                       autoComplete='off'
                       value={values.alternate_number}

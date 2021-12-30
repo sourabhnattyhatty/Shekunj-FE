@@ -11,7 +11,7 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 
-import { Header, Footer } from "../../components";
+import { Header, Footer, ScrollToTop } from "../../components";
 
 import Rightcheck from "../../assets/images/Courses/right.png";
 import Stack from "@mui/material/Stack";
@@ -25,8 +25,6 @@ import { getSingleCourseModule, startCourse } from "../../store/courses/action";
 import { toast } from "react-toastify";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import Cookies from "js-cookie";
-import { routingConstants } from "../../utils/constants";
-import { useTranslation } from "react-i18next";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -97,12 +95,10 @@ const CourseModule = () => {
 
   const progress = Math.round(100 / (courseModulesList.length || 0)) || 0;
 
-  const { t } = useTranslation();
-
   React.useEffect(() => {
     if (detect.isMobile) {
-      toast.error(t("error.mobile.1"));
-      history.push(routingConstants.HOME_PAGE);
+      toast.error("This page is not availble in mobile view.");
+      history.push("/");
     }
   }, [history, detect]);
 
@@ -151,7 +147,7 @@ const CourseModule = () => {
 
   const handleFinish = () => {
     Cookies.remove("module");
-    history.push(routingConstants.COURSES_TEST + id);
+    history.push(`/CoursesTest/${id}`);
   };
   return (
     <div>
@@ -162,7 +158,7 @@ const CourseModule = () => {
             <Col md={12} xs={12} className='text-left mb-5'>
               <div className='circular_progress_module'>
                 <Stack spacing={2} direction='row'>
-                  <h2>{t("coursesPage.coursesModulePage.heading.1")}</h2>
+                  <h2>Your Progress</h2>
                 </Stack>
 
                 {renderProgress(moduleprogress)}
@@ -179,7 +175,7 @@ const CourseModule = () => {
                       key={obj?.id}
                       className={
                         Number(course?.current_module) > obj?.id
-                          ? t("coursesPage.coursesModulePage.accordian.1")
+                          ? "active-accordiantext"
                           : ""
                       }
                     >
@@ -193,7 +189,7 @@ const CourseModule = () => {
               <Col md={4} xs={12}>
                 <div className='accordion_box'>
                   <div className='close_btn'>
-                    <h4>{t("coursesPage.coursesModulePage.heading.2")}</h4>
+                    <h4>Course content</h4>
                     <img
                       src={close}
                       alt='...'
@@ -211,7 +207,7 @@ const CourseModule = () => {
                     >
                       <Typography>
                         <div className='number-bgbox'>1</div>
-                        {t("coursesPage.coursesModulePage.other.1")}
+                        Introduction
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -221,7 +217,7 @@ const CourseModule = () => {
                             key={obj?.id}
                             className={
                               Number(course?.current_module) > obj?.id
-                                ? t("coursesPage.coursesModulePage.accordian.1")
+                                ? "active-accordiantext"
                                 : ""
                             }
                           >
@@ -293,7 +289,7 @@ const CourseModule = () => {
                           onClick={() => handlePrevModule(course?.prev_module)}
                           disabled={course?.current_module === "1"}
                         >
-                          {t("coursesPage.coursesModulePage.button.1")}
+                          back
                         </button>
                       </Col>
 
@@ -303,7 +299,7 @@ const CourseModule = () => {
                             className='next_button'
                             onClick={() => handleFinish()}
                           >
-                            {t("coursesPage.coursesModulePage.button.2")}
+                            finish
                           </button>
                         ) : (
                           <button
@@ -312,7 +308,7 @@ const CourseModule = () => {
                               handleNextModule(course?.next_module)
                             }
                           >
-                            {t("coursesPage.coursesModulePage.button.3")}
+                            next
                           </button>
                         )}
                       </Col>
@@ -324,6 +320,7 @@ const CourseModule = () => {
           </Row>
         </Container>
       </div>
+      <ScrollToTop />
       <Footer loginPage={false} />
     </div>
   );

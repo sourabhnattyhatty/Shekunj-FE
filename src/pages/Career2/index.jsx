@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { ImageListItem, ImageListItemBar } from "@mui/material";
 
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import {
@@ -32,11 +31,7 @@ const CareerPage2 = () => {
   };
 
   const transformImg = (image) => {
-    return image
-      ? image?.includes(baseURL)
-        ? image
-        : `${baseURL}${image}`
-      : noImage;
+    return image ? image : noImage;
   };
 
   const handleCollapse = (id, checked) => {
