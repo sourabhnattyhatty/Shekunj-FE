@@ -15,7 +15,7 @@ function UserInfo(props) {
         </Col>
 
         <Col md={5} xs={12}>
-          <h2>{user?.name || "N/A"}</h2>
+          <h2>{user?.name || "N/A"}{" "}{user?.last_name}</h2>
           <div className='user_detail'>
             <ul>
               <li>{user?.email || "Email - N/A"}</li>

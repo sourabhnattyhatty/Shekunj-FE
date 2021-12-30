@@ -31,11 +31,7 @@ const CareerPage1 = () => {
   }, [dispatch]);
 
   const transformImg = (image) => {
-    return image
-      ? image?.includes(baseURL)
-        ? image
-        : `${baseURL}${image}`
-      : noImage;
+    return image ? image : noImage;
   };
 
   const handleCollapse = (id, checked) => {

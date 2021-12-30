@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { ImageListItem, ImageListItemBar } from "@mui/material";
 
 import {
   AccordionComponent,
@@ -16,7 +15,6 @@ import {
   toggleCollapseValue,
 } from "../../store/career";
 import { noImage } from "../../store/courses/action";
-import { baseURL } from "../../utils/ApiServices";
 import "../HomePage/index.scss";
 import "./index.scss";
 
@@ -37,11 +35,7 @@ const CareerPage2 = () => {
   };
 
   const transformImg = (image) => {
-    return image
-      ? image?.includes(baseURL)
-        ? image
-        : `${baseURL}${image}`
-      : noImage;
+    return image ? image : noImage;
   };
 
   const handleCollapse = (id, checked) => {

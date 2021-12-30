@@ -40,11 +40,7 @@ const CareerPage = () => {
   };
 
   const transformImg = (image) => {
-    return image
-      ? image?.includes(baseURL)
-        ? image
-        : `${baseURL}${image}`
-      : noImage;
+    return image ? image : noImage;
   };
 
   const STREAM = {
@@ -135,7 +131,7 @@ const CareerPage = () => {
 
                       <Col md={5} xs={12}>
                         <div className='career_img'>
-                          <img src={transformImg(c?.image)} alt='' />
+                          <img src={transformImg(c?.image)} alt='...' />
                         </div>
                       </Col>
                     </Row>

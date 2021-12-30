@@ -16,7 +16,7 @@ axios.interceptors.request.use((config) => {
   if (token) {
     const userInfo = decodeToken(token);
     if (userInfo?.exp && checkIsSessionExpired(userInfo?.exp)) {
-      Cookies.remove("userInfo");
+      Cookies.remove("sheToken");
       toast.error("Session expired!");
       window.location.href = "/login";
     }

@@ -17,21 +17,13 @@ export const allHomeCourses = () => async (dispatch) => {
       payload: res?.data?.popular_course
         ? res?.data?.popular_course?.map((c) => ({
             ...c,
-            image: c.image
-              ? c?.image?.includes(httpServices.baseURL)
-                ? c?.image
-                : `${httpServices.baseURL}${c?.image}`
-              : httpServices.noImage,
+            image: c.image ? c?.image : httpServices.noImage,
           }))
         : [],
       payload2: res?.data?.popular_career_test
         ? res?.data?.popular_career_test?.map((c) => ({
             ...c,
-            image: c.image
-              ? c?.image?.includes(httpServices.baseURL)
-                ? c?.image
-                : `${httpServices.baseURL}${c?.image}`
-              : httpServices.noImage,
+            image: c.image ? c?.image : httpServices.noImage,
           }))
         : [],
     });
@@ -55,11 +47,7 @@ export const allCourses =
           results: res?.results
             ? res?.results?.map((c) => ({
                 ...c,
-                image: c.image
-                  ? c?.image?.includes(httpServices.baseURL)
-                    ? c?.image
-                    : `${httpServices.baseURL}${c?.image}`
-                  : httpServices.noImage,
+                image: c.image ? c?.image : httpServices.noImage,
               }))
             : [],
         },
@@ -87,11 +75,7 @@ export const singleCourseDetails = (id) => async (dispatch) => {
       type: coursesTypes.COURSE_FINISH,
       payload: {
         ...res?.data,
-        image: res?.data.image
-          ? res?.data?.image?.includes(httpServices.baseURL)
-            ? res?.data?.image
-            : `${httpServices.baseURL}${res?.data?.image}`
-          : httpServices.noImage,
+        image: res?.data.image ? res?.data?.image : httpServices.noImage,
       },
     });
   } catch (error) {
@@ -147,11 +131,7 @@ export const getSimilarCourses = (categoryId) => async (dispatch) => {
       payload: res?.data?.course_set
         ? res?.data?.course_set?.map((c) => ({
             ...c,
-            image: c.image
-              ? c?.image?.includes(httpServices.baseURL)
-                ? c?.image
-                : `${httpServices.baseURL}${c?.image}`
-              : httpServices.noImage,
+            image: c.image ? c?.image : httpServices.noImage,
           }))
         : [],
     });
@@ -200,19 +180,24 @@ export const getUserTestQuestion =
     }
   };
 
-export const postAnswer = (values,history, id,last=false) => async (dispatch) => {
-  try {
-    dispatch({ type: coursesTypes.POST_ANSWER_REQUEST });
-    const res = await httpServices.post(`/course/user-test-course/${id}`, values);
-    dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
-    if (res.status_code === 200 && last) {
-      await httpServices.post(`/course/user-course-end-time/${id}`);
-      history.push(`/CourseResult/${id}`);
+export const postAnswer =
+  (values, history, id, last = false) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: coursesTypes.POST_ANSWER_REQUEST });
+      const res = await httpServices.post(
+        `/course/user-test-course/${id}`,
+        values,
+      );
+      dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
+      if (res.status_code === 200 && last) {
+        await httpServices.post(`/course/user-course-end-time/${id}`);
+        history.push(`/CourseResult/${id}`);
+      }
+    } catch (err) {
+      dispatch({ type: coursesTypes.POST_ANSWER_FAIL });
     }
-  } catch (err) {
-    dispatch({ type: coursesTypes.POST_ANSWER_FAIL });
-  }
-};
+  };
 
 export const testCountSummery = (id, history) => async (dispatch) => {
   try {
@@ -233,11 +218,7 @@ export const successStories = () => async (dispatch) => {
       payload:
         res?.data?.map((d) => ({
           ...d,
-          image: d.image
-            ? d?.image?.includes("http://3.109.195.234")
-              ? d?.image
-              : `http://3.109.195.234${d?.image}`
-            : noImage,
+          image: d.image ? d?.image : noImage,
           is_collapse: false,
         })) || [],
     });

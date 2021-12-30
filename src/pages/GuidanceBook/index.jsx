@@ -200,7 +200,7 @@ const GuidancePage = () => {
                   <div className='form-group'>
                     <TextField
                       name='email_address'
-                      type='text'
+                      type='email'
                       placeholder='Enter Your Email'
                       autoComplete='off'
                       onChange={handleChange}
@@ -223,7 +223,7 @@ const GuidancePage = () => {
                   <div className='form-group'>
                     <TextField
                       name='mobile_number'
-                      type='text'
+                      type='number'
                       placeholder='Enter Mobile Number'
                       autoComplete='off'
                       value={values.mobile_number}
@@ -246,7 +246,7 @@ const GuidancePage = () => {
                   <div className='form-group'>
                     <TextField
                       name='alternate_number'
-                      type='text'
+                      type='number'
                       placeholder='Enter Alternate Number'
                       autoComplete='off'
                       value={values.alternate_number}
