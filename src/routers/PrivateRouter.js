@@ -5,13 +5,12 @@ import { Redirect } from "react-router";
 
 function PrivateRoute({ component: Component, ...rest }) {
   const token = Cookies.get("sheToken");
-
   return (
     <Route
       {...rest}
       render={(props) =>
         token ? (
-          <Component {...props} />
+          <Component {...props}  {...rest}/>
         ) : (
           <Redirect to={`/login?redirect=${window.location.pathname}`} />
         )

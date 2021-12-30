@@ -5,7 +5,7 @@ import { Header, Footer, ScrollToTop } from "../../components";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import check from "../../assets/images/Courses/check.png";
-import Certificate from "../../assets/images/Courses/Certificate.png";
+// import Certificate from "../../assets/images/Courses/Certificate.png";
 import Dawnload from "../../assets/images/Courses/Dawnload.png";
 import Share from "../../assets/images/Courses/Share.png";
 import fullscreen_icon from "../../assets/images/Courses/fullscreen_icon.png";
@@ -14,7 +14,9 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCourseCertificateDetail } from "../../store/certificate";
 
-import jsPDF from "jspdf";
+
+// import jsPDF from "jspdf";
+import CertificatesDetail from "../Certificates/CertificatesDetail";
 
 function CourseTest() {
   const dispatch = useDispatch();
@@ -36,14 +38,19 @@ function CourseTest() {
     }
   }, [id, history, dispatch]);
 
-  const generatePDF = () => {
-    const img = new Image();
-    img.src = Certificate;
+  // const generatePDF = () => {
+  //   // const img = new Image();
+  //   // img.src = Certificate;
 
-    const doc = new jsPDF("p", "pt", "a3");
-    doc.addImage(img,'JPGE',0,0,840,500);
-    doc.save("mycertificate.pdf");
-  };
+  //   const doc = new jsPDF("p", "pt", "a3");
+  //   // doc.addImage(img,'JPGE',0,150,840,500);
+  //   // doc.save("mycertificate.pdf");
+  //   doc.html(document.querySelector(".certiiii"), {
+  //     callback: function(pdf) {
+  //       pdf.save('test.pdf');
+  //     }
+  //   });
+  // };
 
   return (
     <div>
@@ -86,20 +93,21 @@ function CourseTest() {
               </div>
             </Col>
 
-            <Col md={6} xs={12} className='offset-lg-1'>
+            <Col md={7} xs={12} className=''>
               <p className='cou_tit'>Course & Certificate</p>
               <div className='certi_img'>
                 <p>
                   <div
                     class='content'
-                    ref={certificateRef}
                     onClick={() =>
                       history.push(`/certificate-detail/${certificate?.id}`)
                     }
                     style={{ cursor: "pointer" }}
                   >
                     <div class='content-overlay'></div>
-                    <img src={Certificate} alt='' />
+                    {/* <img src={Certificate} alt='' /> */}
+                    
+                    <CertificatesDetail ref={certificateRef} showButton={false}/>
                     <div class='content-details fadeIn-bottom'>
                       <h3 class='content-title'>
                         <img src={fullscreen_icon} alt='' />
@@ -108,12 +116,12 @@ function CourseTest() {
                     </div>
                   </div>
                 </p>
-                <p>
+                <p className="certificate-downloaddiv">
                   <img
                     src={Dawnload}
                     alt=''
                     style={{ cursor: "pointer" }}
-                    onClick={() => generatePDF()}
+                    onClick={() => certificateRef.current.generatePDF()}
                   />
                   <br />
                   <img src={Share} alt='' style={{ cursor: "pointer" }} />

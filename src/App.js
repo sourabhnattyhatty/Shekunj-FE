@@ -84,6 +84,7 @@ function App() {
         <PrivateRoute
           exact
           path='/certificate-detail/:id'
+          showButton={true}
           component={CertificateDetail}
         />
         <Route exact path='/ContactUs' component={ContactUs} />
