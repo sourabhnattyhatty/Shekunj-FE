@@ -17,6 +17,7 @@ import backButtonImg from "../../../assets/images/Guidance/back-arrow.png";
 // import Share from "../../../assets/images/Guidance/share-button.png";
 // import Bookmark from "../../../assets/images/Guidance/bookmark-button.png";
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,6 +61,7 @@ export default function VerticalTabs() {
   const { guidanceCategory, guidanceCategoryDetail, isLoading } = useSelector(
     (state) => state.guidanceReducer,
   );
+  const { t } = useTranslation();
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
@@ -122,7 +124,7 @@ export default function VerticalTabs() {
   return (
     <>
       <div className='Com_title'>
-        <h2>Career Option</h2>
+        <h2>{t("successCareerOption.heading.2")}</h2>
       </div>
 
       <Box
@@ -134,7 +136,7 @@ export default function VerticalTabs() {
         <Row>
           {renderExamTypes()}
           {!showGovtExams && !categoryDetail && (
-            <div className='col-8 text-center mt-5'>No Option selected!</div>
+            <div className='col-8 text-center mt-5'>{t("successCareerOption.other.1")}</div>
           )}
           <Col md={8} xs={12}>
             <TabPanel value={value} index={0}>
@@ -149,14 +151,14 @@ export default function VerticalTabs() {
                             {obj.short_description}
                           </p>
                           <button onClick={() => handleExamChange(obj)}>
-                            Read More
+                          {t("successCareerOption.button.1")}
                           </button>
                         </div>
                         <br />
                       </Col>
                     ))
                   ) : (
-                    <div className='text-center'>No data found!</div>
+                    <div className='text-center'>{t("common.noDataFound")}</div>
                   ))}
               </Row>
             </TabPanel>
@@ -170,7 +172,7 @@ export default function VerticalTabs() {
                       onClick={() => onBackChange()}
                     >
                       <img src={backButtonImg} alt='' />
-                      back
+                      {t("successCareerOption.other.2")}
                     </span>
                   </div>
                   <div className='banking-examheader'>
@@ -195,7 +197,7 @@ export default function VerticalTabs() {
                     ></div>
                   ) : (
                     <div className='text-center'>
-                      {isLoading ? "Loading..." : "No data found!"}
+                      {isLoading ? t("common.loading") : t("common.noDataFound")}
                     </div>
                   )}
                   <hr className='border-colorbottom'></hr>

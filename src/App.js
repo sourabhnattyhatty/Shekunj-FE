@@ -98,7 +98,7 @@ function App() {
           component={CoursesModule}
         />
          
-        <PrivateRoute exact path='/CareerTestResult/:id' component={CourseResult} />
+        <PrivateRoute exact path={`${routingConstants.CAREER_TEST_RESULT}:id'`} component={CourseResult} />
         <PrivateRoute exact path={`${routingConstants.COURSES_TEST}:id`} component={CourseTest} />
         <PrivateRoute exact path={`${routingConstants.COURSES_RESULT}:id`} component={CourseResult} />
         <PrivateRoute

@@ -6,9 +6,12 @@ import { Header, Footer, SEO } from "../../components";
 import BasicTabs from "./../MyProfile/TabsMyProfile/index";
 import "../../pages/responsive.scss";
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 function MyProfile() {
   const { user } = useSelector((state) => state.authReducer);
+
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -17,8 +20,8 @@ function MyProfile() {
       <div className='my_profile_div'>
         <Container>
           <div className='profile_con'>
-            <h2>Hello {user?.name || "N/A"}</h2>
-            <p>My Profile</p>
+            <h2>{t("common.greeting.hello")} {user?.name || t("common.n/a")}</h2>
+            <p>{t("myProfilePage.heading.1")}</p>
           </div>
         </Container>
       </div>

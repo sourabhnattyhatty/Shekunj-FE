@@ -6,11 +6,13 @@ import { noImage } from "../../../../utils/ApiServices";
 import { checkIsValidImage } from "../../../../utils";
 import { toast } from "react-toastify";
 import { updateProfile } from "../../../../store/auth/action";
+import { useTranslation } from "react-i18next";
 
 const ProfileImage = ({ isEditable }) => {
   const inputRef = useRef(null);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authReducer);
+  const { t } = useTranslation();
 
   const handleImageChange = ({ target }) => {
     const file = target?.files[0] || null;
@@ -27,7 +29,7 @@ const ProfileImage = ({ isEditable }) => {
         );
       }
     } else {
-      toast.error("Please select valid file");
+      toast.error(t("error.other.3"));
     }
   };
 

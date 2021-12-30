@@ -9,17 +9,17 @@ import TitleIcon from "../../assets/icons/logo.svg";
 import Error from "../../components/Error";
 import "./index.scss";
 
-const validationSchema = Yup.object({
-  password: Yup.string()
-    .min(6, "At least 6 characters")
-    .required("Password is required"),
-});
 
 function ResetPassword() {
   const { isLoading } = useSelector((state) => state.authReducer);
-
+  
   const { t } = useTranslation();
-
+  
+  const validationSchema = Yup.object({
+    password: Yup.string()
+      .min(6, t("login.form1.passError.min"))
+      .required(t("login.form1.passError.required")),
+  });
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
       initialValues: {

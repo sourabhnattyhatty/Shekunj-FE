@@ -10,9 +10,11 @@ import "animate.css";
 import TabsExams from "./TabsExams/index";
 import { getGuidanceCategory } from "../../store/guidance";
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 function SuccessCareerOption() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getGuidanceCategory(null));
@@ -26,7 +28,10 @@ function SuccessCareerOption() {
 
       <div className='SucOption'>
         <Container>
-          <h2 data-aos='slide-up'>Choose Your <br/> Career</h2>
+          <h2 data-aos='slide-up'>
+            {t("successCareerOption.other.3.1")} <br />{" "}
+            {t("successCareerOption.other.3.2")}
+          </h2>
         </Container>
       </div>
 

@@ -27,6 +27,7 @@ import { Error } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { bookCounseller } from "../../store/guidance/action";
 import moment from "moment";
+import { useTranslation } from "react-i18next";
 
 function range(start, end) {
   return Array(end - start + 1)
@@ -54,17 +55,6 @@ const months = [
   "December",
 ];
 
-const validationSchema = Yup.object({
-  first_name: Yup.string().required("Name is required"),
-  last_name: Yup.string().required("Surname is required"),
-  email_address: Yup.string()
-    .required("Email is required")
-    .email("Invalid email"),
-  mobile_number: Yup.number().positive(),
-  alternate_number: Yup.number().positive(),
-  message: Yup.string().required("Message is required"),
-});
-
 const GuidancePage = () => {
   const [day, setDay] = useState();
   const [month, setMonth] = useState();
@@ -73,10 +63,13 @@ const GuidancePage = () => {
   const [qualification, setQualification] = useState();
   const [courseLooking, setCourseLooking] = useState();
 
+  const { t } = useTranslation();
+
+  
   const { isLoading } = useSelector((state) => state.guidanceReducer);
-
+  
   const dispatch = useDispatch();
-
+  
   const handleSetDay = (val) => {
     setDay(val);
     handleChange(val);
@@ -96,10 +89,21 @@ const GuidancePage = () => {
   const handleCourseLookingFor = (val) => {
     setCourseLooking(val);
   };
-
+  
+  const validationSchema = Yup.object({
+    first_name: Yup.string().required(t("form1.firstNameError.required")),
+    last_name: Yup.string().required(t("form1.lastNameError.required")),
+    email_address: Yup.string()
+      .required(t("form1.emailError.required"))
+      .email(t("form1.emailError.invalid")),
+    mobile_number: Yup.number().positive(),
+    alternate_number: Yup.number().positive(),
+    message: Yup.string().required(t("form1.message.required")),
+  });
+  
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
-    useFormik({
-      initialValues: {
+  useFormik({
+    initialValues: {
         first_name: "",
         last_name: "",
         email_address: "",
@@ -160,20 +164,20 @@ const GuidancePage = () => {
             </Col>
 
             <Col md={7} xs={12}>
-            <div className='book_sec_content mob_show'>
-                  <h2>Book a Session</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur <br /> adipiscing
-                    elit.
-                  </p>
-                </div>
+              <div className='book_sec_content mob_show'>
+                <h2>{t("guidanceBookPage.heading.1")}</h2>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur <br /> adipiscing
+                  elit.
+                </p>
+              </div>
               <div className='guidance_book_form'>
                 <form onSubmit={handleSubmit}>
                   <div className='form-group'>
                     <TextField
                       name='first_name'
                       type='text'
-                      placeholder='Enter First Name'
+                      placeholder={t("common.placeHolders.fname")}
                       autoComplete='off'
                       onChange={handleChange}
                       value={values.first_name}
@@ -196,7 +200,7 @@ const GuidancePage = () => {
                     <TextField
                       name='last_name'
                       type='text'
-                      placeholder='Enter Last Name'
+                      placeholder={t("common.placeHolders.lname")}
                       autoComplete='off'
                       onChange={handleChange}
                       value={values.last_name}
@@ -219,7 +223,7 @@ const GuidancePage = () => {
                     <TextField
                       name='email_address'
                       type='text'
-                      placeholder='Enter Your Email'
+                      placeholder={t("common.placeHolders.email")}
                       autoComplete='off'
                       onChange={handleChange}
                       value={values.email_address}
@@ -242,7 +246,7 @@ const GuidancePage = () => {
                     <TextField
                       name='mobile_number'
                       type='text'
-                      placeholder='Enter Mobile Number'
+                      placeholder={t("common.placeHolders.mobile")}
                       autoComplete='off'
                       value={values.mobile_number}
                       onChange={handleChange}
@@ -265,7 +269,7 @@ const GuidancePage = () => {
                     <TextField
                       name='alternate_number'
                       type='text'
-                      placeholder='Enter Alternate Number'
+                      placeholder={t("common.placeHolders.alternateMobile")}
                       autoComplete='off'
                       value={values.alternate_number}
                       onChange={handleChange}
@@ -346,7 +350,7 @@ const GuidancePage = () => {
                       className='textarea_set'
                       aria-label='minimum height'
                       minRows={7}
-                      placeholder='Enter Your Message'
+                      placeholder={t("common.placeHolders.message")}
                       value={values.message}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -358,7 +362,7 @@ const GuidancePage = () => {
                     {isLoading ? (
                       <CircularProgress color='secondary' size={20} />
                     ) : (
-                      "Book a Session"
+                      t("guidanceBookPage.heading.1")
                     )}
                   </button>
                 </form>

@@ -9,6 +9,7 @@ import "./index.scss";
 import EditProfile from "./EditProfile";
 import UserInfo from "./UserInfo";
 import ChangePassword from "./ChangePassword";
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,6 +47,7 @@ function a11yProps(index) {
 export default function BasicTabs() {
   const [show, setShow] = React.useState(false);
   const [value, setValue] = React.useState(0);
+  const { t } = useTranslation();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -63,8 +65,8 @@ export default function BasicTabs() {
           onChange={handleChange}
           aria-label='basic tabs example'
         >
-          <Tab label='Basic Details' {...a11yProps(0)} />
-          <Tab label='Change Password' {...a11yProps(1)} />
+          <Tab label={t("myProfilePage.tabs.1")} {...a11yProps(0)} />
+          <Tab label={t("myProfilePage.tabs.2")} {...a11yProps(1)} />
         </Tabs>
       </Box>
 

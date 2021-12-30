@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { testResult } from "../../store/courses/action";
 import { careerTestResult } from "../../store/guidance/action";
 import { routingConstants } from "../../utils/constants";
+import { useTranslation } from "react-i18next";
 
 function CourseTest() {
   const [result, setResult] = useState({});
@@ -20,6 +21,7 @@ function CourseTest() {
   const dispatch = useDispatch();
   const { result: courseResult } = useSelector((state) => state.coursesReducer);
   const { guidanceResult } = useSelector((state) => state.guidanceReducer);
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     if (window.location.pathname.includes("course-result")) {
@@ -61,16 +63,18 @@ function CourseTest() {
           <Row>
             <Col md={8} xs={12} className='offset-lg-2'>
               <div className='cou_result_cont'>
-                <h2>Your Result</h2>
+                <h2>{t("coursesPage.coursesResultPage.heading.1")}</h2>
                 <img src={win} alt='' />
                 <h2>
                   {Math.round(result?.result) >= passingMarks ? (
                     <>
-                      Congratulation <b>{result?.name}!</b>
+                      {t("coursesPage.coursesResultPage.other.1")}{" "}
+                      <b>{result?.name}!</b>
                     </>
                   ) : (
                     <>
-                      Bad Performance <b>{result?.name}!</b>
+                      {t("coursesPage.coursesResultPage.other.2")}{" "}
+                      <b>{result?.name}!</b>
                     </>
                   )}
                 </h2>
@@ -95,7 +99,9 @@ function CourseTest() {
                           <p>{result?.no_of_correct_answer || 0}</p>
                           <br />
                           <span>
-                            Correct <br /> Answers
+                            {t("coursesPage.coursesResultPage.other.3.1")}{" "}
+                            <br />{" "}
+                            {t("coursesPage.coursesResultPage.other.3.2")}
                           </span>
                         </div>
                       </div>
@@ -115,7 +121,9 @@ function CourseTest() {
                           <p>{Math.round(result?.result) || 0}%</p>
                           <br />
                           <span>
-                            Candidate’s <br /> Score
+                            {t("coursesPage.coursesResultPage.other.4.1")}{" "}
+                            <br />{" "}
+                            {t("coursesPage.coursesResultPage.other.4.2")}
                           </span>
                         </div>
                       </div>
@@ -136,10 +144,10 @@ function CourseTest() {
                             {result?.test_time
                               ? (result?.test_time).toFixed(2)
                               : 0}{" "}
-                            <span>min</span>
+                            <span>{t("common.time.2")}</span>
                           </p>
                           <br />
-                          <span>Total Time</span>
+                          <span>{t("coursesPage.coursesResultPage.other.5")}</span>
                         </div>
                       </div>
                     </div>
@@ -155,11 +163,10 @@ function CourseTest() {
               >
                 <button className='get_certif'>
                   {Math.round(result?.result) >= passingMarks
-                    ? "Get Your Certificate"
-                    : "Start Course Again"}
+                    ? t("coursesPage.coursesResultPage.button.1")
+                    : t("coursesPage.coursesResultPage.button.2")}
                 </button>
               </Link>
-              
             </Col>
           </Row>
         </Container>

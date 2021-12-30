@@ -96,7 +96,7 @@ function EditProfile(props) {
           <Col md={4} xs={12}>
             <div className='edit_profile'>
               <div className='form-group mb-4'>
-                <label htmlFor=''>First Name</label>
+                <label htmlFor=''>{t("common.formHeadings.fname")}</label>
                 <TextField
                   name='name'
                   type='text'
@@ -105,7 +105,7 @@ function EditProfile(props) {
                   value={values.name}
                   className='form-control'
                   autoComplete='off'
-                  placeholder=''
+                  placeholder={t("common.placeHolders.fname")}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -118,7 +118,7 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-4'>
-                <label htmlFor=''>Email</label>
+                <label htmlFor=''>{t("common.formHeadings.email")}</label>
                 <TextField
                   name='email'
                   type='text'
@@ -127,7 +127,7 @@ function EditProfile(props) {
                   value={values.email}
                   className={"form-control"}
                   autoComplete='off'
-                  placeholder=''
+                  placeholder={t("common.placeHolders.email")}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -140,7 +140,7 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-3'>
-                <label htmlFor=''>Highest Education</label>
+                <label htmlFor=''>{t("common.formHeadings.highest_education")}</label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
@@ -160,7 +160,7 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group'>
-                <label htmlFor=''>Date of birth</label>
+                <label htmlFor=''>{t("common.formHeadings.dob")}</label>
                 <div className='form-group mzero'>
                 <img className="calendar_icon" src={Calendar} alt="..."/>
                   <DatePicker
@@ -169,7 +169,7 @@ function EditProfile(props) {
                         ? new Date(values.dob)
                         : null
                     }
-                    placeholderText="Select DOB"
+                    placeholderText={t("common.placeHolders.dob")}
                     className='form-control'
                     maxDate={new Date()}
                     dateFormat='dd-MM-yyyy'
@@ -189,7 +189,7 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-4 mt-4'>
-                <label htmlFor=''>City</label>
+                <label htmlFor=''>{t("common.formHeadings.city")}</label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
@@ -206,7 +206,7 @@ function EditProfile(props) {
           <Col md={4} xs={12}>
             <div className='edit_profile'>
               <div className='form-group mb-4'>
-                <label htmlFor=''>Last Name</label>
+                <label htmlFor=''>{t("common.formHeadings.lname")}</label>
                 <TextField
                   name='last_name'
                   type='text'
@@ -215,7 +215,7 @@ function EditProfile(props) {
                   value={values.last_name}
                   className='form-control'
                   autoComplete='off'
-                  placeholder=''
+                  placeholder={t("common.placeHolders.lname")}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -228,7 +228,7 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-4'>
-                <label htmlFor=''>Mobile Number</label>
+                <label htmlFor=''>{t("common.formHeadings.mobile")}</label>
                 <TextField
                   name='contact'
                   type='text'
@@ -236,7 +236,7 @@ function EditProfile(props) {
                   disabled
                   className='form-control'
                   autoComplete='off'
-                  placeholder=''
+                  placeholder={t("common.placeHolders.mobile")}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -248,7 +248,7 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-3'>
-                <label htmlFor=''>Stream</label>
+                <label htmlFor=''>{t("common.formHeadings.stream")}</label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
@@ -262,7 +262,7 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-4'>
-                <label htmlFor=''>State</label>{" "}
+                <label htmlFor=''>{t("common.formHeadings.state")}</label>{" "}
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
@@ -286,7 +286,7 @@ function EditProfile(props) {
               {isSubmitting || isLoading ? (
                 <CircularProgress color='secondary' size={20} />
               ) : (
-                "Save"
+                t("common.formHeadings.button.save")
               )}
             </button>
           </Col>

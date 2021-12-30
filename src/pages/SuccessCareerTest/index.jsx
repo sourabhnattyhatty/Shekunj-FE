@@ -19,6 +19,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { useTranslation } from "react-i18next";
 
 import { Header, Footer } from "../../components";
 import {
@@ -32,6 +33,7 @@ import timeIcon from "../../assets/images/Courses/time.png";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
+import { routingConstants } from "../../utils/constants";
 
 const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
@@ -76,6 +78,8 @@ function CourseTest() {
   );
 
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (detect.isMobile) {
@@ -136,7 +140,9 @@ function CourseTest() {
       dispatch(postAnswer(data, selectedCourseCategoryValue?.id));
       dispatch(endTest(selectedCourseCategoryValue?.id));
       setAnswer("");
-      history.push(`/CareerTestResult/${selectedCourseCategoryValue?.id}`);
+      history.push(
+        routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id,
+      );
     } else {
       toast.error("Select option for next question", {
         position: "bottom-center",
@@ -315,7 +321,7 @@ function CourseTest() {
       <Container>
         <div className='maindiv_prog setmain'>
           <div className='select_test'>
-            <h2>Select test Categories</h2>
+            <h2>{t("successCareerTestPage.heading.1")}</h2>
             <Row>
               <Col md={9} xs={12}>
                 <FormControl sx={{ m: 1 }}>
@@ -329,7 +335,7 @@ function CourseTest() {
                       if (selected?.length === 0) {
                         return (
                           <>
-                            <em>{"Test Categories"}</em>
+                            <em>{t("successCareerTestPage.other.1")}</em>
                           </>
                         );
                       }
@@ -353,7 +359,9 @@ function CourseTest() {
                   onClick={() => handleStartCourse()}
                   disabled={isTestStarted}
                 >
-                  {isTestStarted ? "Test Started" : "Start Test"}
+                  {isTestStarted
+                    ? t("successCareerTestPage.button.1")
+                    : t("successCareerTestPage.button.2")}
                 </button>
               </Col>
             </Row>
@@ -370,7 +378,7 @@ function CourseTest() {
                   >
                     <h3>{selectedCourseCategory}</h3>
                     <button onClick={() => handleFinishQuestion()}>
-                      Finish
+                      {t("coursesModulePage.button.2")}
                     </button>
                   </Stack>
                   {renderProgress(testData?.progress)}
@@ -392,7 +400,7 @@ function CourseTest() {
             <Row>
               <Col md={8} xs={12}>
                 <div className='que_box'>
-                  <h2>Question</h2>
+                  <h2>{t("allCertificatePage.other.5")}</h2>
                   {isLoading ? (
                     <Skeleton></Skeleton>
                   ) : (
@@ -473,7 +481,7 @@ function CourseTest() {
                         onClick={() => handlePrevQuestion()}
                         disabled={!testData?.prev_module}
                       >
-                        back
+                        {t("coursesModulePage.button.1")}
                       </button>
                     </Col>
 
@@ -483,14 +491,14 @@ function CourseTest() {
                           className='next_button'
                           onClick={() => handleFinishQuestion()}
                         >
-                          finish
+                          {t("coursesModulePage.button.2")}
                         </button>
                       ) : (
                         <button
                           className='next_button'
                           onClick={() => handleNextQuestion()}
                         >
-                          next
+                          {t("coursesModulePage.button.3")}
                         </button>
                       )}
                     </Col>
@@ -500,7 +508,7 @@ function CourseTest() {
 
               <Col md={4} xs={12}>
                 <div className='que_status'>
-                  <h2>Questions Status</h2>
+                  <h2>{t("successCareerTestPage.heading.2")}</h2>
                   <div className='que_num'>
                     {[...Array(countData?.total_career_que).keys()].map((i) => (
                       <p
@@ -518,10 +526,12 @@ function CourseTest() {
                 <div className='ans_not'>
                   <ul>
                     <li>
-                      <span className='dotte1'></span> Answered
+                      <span className='dotte1'></span>{" "}
+                      {t("successCareerTestPage.other.2")}
                     </li>
                     <li>
-                      <span className='dotte2'></span> Not visited
+                      <span className='dotte2'></span>{" "}
+                      {t("successCareerTestPage.other.3")}
                     </li>
                   </ul>
                 </div>

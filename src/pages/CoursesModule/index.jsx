@@ -26,6 +26,7 @@ import { toast } from "react-toastify";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import Cookies from "js-cookie";
 import { routingConstants } from "../../utils/constants";
+import { useTranslation } from "react-i18next";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -96,10 +97,12 @@ const CourseModule = () => {
 
   const progress = Math.round(100 / (courseModulesList.length || 0)) || 0;
 
+  const { t } = useTranslation();
+
   React.useEffect(() => {
     if (detect.isMobile) {
-      toast.error("This page is not availble in mobile view.");
-      history.push("/");
+      toast.error(t("error.mobile.1"));
+      history.push(routingConstants.HOME_PAGE);
     }
   }, [history, detect]);
 
@@ -159,7 +162,7 @@ const CourseModule = () => {
             <Col md={12} xs={12} className='text-left mb-5'>
               <div className='circular_progress_module'>
                 <Stack spacing={2} direction='row'>
-                  <h2>Your Progress</h2>
+                  <h2>{t("coursesPage.coursesModulePage.heading.1")}</h2>
                 </Stack>
 
                 {renderProgress(moduleprogress)}
@@ -176,7 +179,7 @@ const CourseModule = () => {
                       key={obj?.id}
                       className={
                         Number(course?.current_module) > obj?.id
-                          ? "active-accordiantext"
+                          ? t("coursesPage.coursesModulePage.accordian.1")
                           : ""
                       }
                     >
@@ -190,7 +193,7 @@ const CourseModule = () => {
               <Col md={4} xs={12}>
                 <div className='accordion_box'>
                   <div className='close_btn'>
-                    <h4>Course content</h4>
+                    <h4>{t("coursesPage.coursesModulePage.heading.2")}</h4>
                     <img
                       src={close}
                       alt='...'
@@ -208,7 +211,7 @@ const CourseModule = () => {
                     >
                       <Typography>
                         <div className='number-bgbox'>1</div>
-                        Introduction
+                        {t("coursesPage.coursesModulePage.other.1")}
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -218,7 +221,7 @@ const CourseModule = () => {
                             key={obj?.id}
                             className={
                               Number(course?.current_module) > obj?.id
-                                ? "active-accordiantext"
+                                ? t("coursesPage.coursesModulePage.accordian.1")
                                 : ""
                             }
                           >
@@ -290,7 +293,7 @@ const CourseModule = () => {
                           onClick={() => handlePrevModule(course?.prev_module)}
                           disabled={course?.current_module === "1"}
                         >
-                          back
+                          {t("coursesPage.coursesModulePage.button.1")}
                         </button>
                       </Col>
 
@@ -300,7 +303,7 @@ const CourseModule = () => {
                             className='next_button'
                             onClick={() => handleFinish()}
                           >
-                            finish
+                            {t("coursesPage.coursesModulePage.button.2")}
                           </button>
                         ) : (
                           <button
@@ -309,7 +312,7 @@ const CourseModule = () => {
                               handleNextModule(course?.next_module)
                             }
                           >
-                            next
+                            {t("coursesPage.coursesModulePage.button.3")}
                           </button>
                         )}
                       </Col>

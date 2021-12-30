@@ -19,6 +19,7 @@ import {
 } from "../../../store/courses/action";
 
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -67,6 +68,7 @@ export default function SimpleAccordion(props) {
   } = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
   const [subSelected,setSubSelected] = useState(null);
+  const { t } = useTranslation();
   useEffect(() => {
     dispatch(setFilter(null));
     dispatch(getCategoryList());
@@ -103,7 +105,7 @@ export default function SimpleAccordion(props) {
     <div className='accordion_box_all'>
       <Accordion>
         <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
-          <Typography>Category</Typography>
+          <Typography>{t("coursesPage.accordion.1.heading")}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           {categoryList?.map((obj, idx) => {
@@ -131,7 +133,7 @@ export default function SimpleAccordion(props) {
       {currentFilter && allCourses?.results?.length > 0 ? (
         <Accordion>
           <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
-            <Typography>Sub Category</Typography>
+            <Typography>{t("coursesPage.accordion.1.subHeading")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
             {currentFilter?.map((obj) => {

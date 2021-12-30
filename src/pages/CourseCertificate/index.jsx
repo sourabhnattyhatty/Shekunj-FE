@@ -13,10 +13,11 @@ import fullscreen_icon from "../../assets/images/Courses/fullscreen_icon.png";
 import "./index.scss";
 import { useHistory } from "react-router-dom";
 import { routingConstants } from "../../utils/constants";
+import { useTranslation } from "react-i18next";
 
 function CourseTest() {
   const history = useHistory();
-
+  const { t } = useTranslation();
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -28,26 +29,26 @@ function CourseTest() {
               <div className='user_certifi'>
                 <div className='user_pro'>
                   <img src={swati_jain} alt='' />
-                  <h3>Swati Jain</h3>
+                  <h3>{t("allCertificatePage.name.1")}</h3>
                 </div>
 
                 <div className='skills'>
-                  <h4>Skills Earned</h4>
+                  <h4>{t("allCertificatePage.heading.3")}</h4>
                   <div className='skill_flex'>
                     <ul>
                       <li>
-                        <img src={check} alt='' /> Adobe Photoshop
+                        <img src={check} alt='' /> {t("allCertificatePage.skills.1")}
                       </li>
                       <li>
-                        <img src={check} alt='' /> Corel Draw
+                        <img src={check} alt='' /> {t("allCertificatePage.skills.2")}
                       </li>
                     </ul>
                     <ul>
                       <li>
-                        <img src={check} alt='' /> Adobe Illustrator
+                        <img src={check} alt='' /> {t("allCertificatePage.skills.3")}
                       </li>
                       <li>
-                        <img src={check} alt='' /> Figma/Prototype
+                        <img src={check} alt='' /> {t("allCertificatePage.skills.4")}
                       </li>
                     </ul>
                   </div>
@@ -56,7 +57,7 @@ function CourseTest() {
             </Col>
 
             <Col md={6} xs={12} className='offset-lg-1'>
-              <p className='cou_tit'>Course & Certificate</p>
+              <p className='cou_tit'>{t("allCertificatePage.other.10")}</p>
               <div className='certi_img'>
                 <p>
                   <div
@@ -70,7 +71,7 @@ function CourseTest() {
                         <h3 class='content-title'>
                           <img src={fullscreen_icon} alt='' />
                         </h3>
-                        <p class='content-text'>View Full Certificate</p>
+                        <p class='content-text'>{t("allCertificatePage.other.11")}</p>
                       </div>
                     </a>
                   </div>

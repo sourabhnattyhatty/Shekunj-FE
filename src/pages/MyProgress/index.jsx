@@ -14,11 +14,14 @@ import { getUserCourseProgress } from "../../store/my-progress";
 
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
+import { useTranslation } from "react-i18next";
 
 function MyProgress() {
   const { user } = useSelector((state) => state.authReducer);
   const { myProgress } = useSelector((state) => state.myProgressReducer);
   const dispatch = useDispatch();
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getUserCourseProgress());
@@ -41,8 +44,8 @@ function MyProgress() {
         <Container>
           <Row>
             <Col md={12}>
-              <h1>Hello {user?.name || "N/A"}!</h1>
-              <p className='dashboard_back'>Good to see you back!</p>
+              <h1>{t("common.greeting.hello")} {user?.name || t("common.n/a")}!</h1>
+              <p className='dashboard_back'>{t("common.greeting.goodToSeeYou")}</p>
             </Col>
           </Row>
           <Row>
@@ -77,7 +80,7 @@ function MyProgress() {
               <div className='certificate-section'>
                 <Row>
                   <Col md={12}>
-                    <h6>Certificate</h6>
+                    <h6>{t("dashboardPage.certificate")}</h6>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Ut commodo .
@@ -87,7 +90,7 @@ function MyProgress() {
                 <div>
                   <Link to={routingConstants.ALL_CERTIFICATE_PAGE}>
                     <button className='btn all_certificatebutton'>
-                      All Certificates
+                    {t("dashboardPage.button.1")}
                     </button>
                   </Link>
                 </div>

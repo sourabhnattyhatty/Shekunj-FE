@@ -24,29 +24,29 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { routingConstants } from "../../../utils/constants";
 
-const validationSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
-  last_name: Yup.string().required("Surname is required"),
-  contact: Yup.number().required("Contact is required").positive(),
-  email: Yup.string().email("Invalid email"),
-  password: Yup.string()
-    .min(6, "At least 6 characters")
-    .required("Password is required"),
-  otp: Yup.number().required("OTP is required"),
-  gender: Yup.string().required("Gender is required"),
-});
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
   const [alertVisible, setAlertVisible] = useState(false);
-
+  
   const dispatch = useDispatch();
   const history = useHistory();
   const { isLoading, verifyLoading } = useSelector(
     (state) => state.authReducer,
-  );
-  const { t } = useTranslation();
-
+    );
+    const { t } = useTranslation();
+    
+    const validationSchema = Yup.object({
+      name: Yup.string().required(t("login.form1.firstNameError")),
+      last_name: Yup.string().required(t("login.form1.lastNameError")),
+      contact: Yup.number().required(t("login.form1.contact.required")).positive(),
+      email: Yup.string().email(t("login.form1.emailError.invalid")),
+      password: Yup.string()
+        .min(6, t("login.form1.passError.min"))
+        .required(t("login.form1.passError.required")),
+      otp: Yup.number().required(t("login.form1.otp.required")),
+      gender: Yup.string().required(t("login.form1.gender.required")),
+    });
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
       initialValues: {
@@ -103,7 +103,7 @@ const LoginForm = () => {
               value={values.name}
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder={t("signup.placeholder1")}
+              placeholder={t("common.placeHolders.fname")}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position='start'>
@@ -125,7 +125,7 @@ const LoginForm = () => {
               value={values.last_name}
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder={t("signup.placeholder6")}
+              placeholder={t("common.placeHolders.lname")}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position='start'>
@@ -147,7 +147,7 @@ const LoginForm = () => {
               value={values.email}
               onBlur={handleBlur}
               autoComplete='off'
-              placeholder={t("signup.placeholder2")}
+              placeholder={t("common.placeHolders.email")}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position='start'>
@@ -180,7 +180,7 @@ const LoginForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 autoComplete='off'
-                placeholder={t("signup.placeholder3")}
+                placeholder={t("common.placeHolders.mobile")}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
@@ -201,7 +201,7 @@ const LoginForm = () => {
               value={values.otp}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder={t("signup.placeholder4")}
+              placeholder={t("common.placeHolders.otp")}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position='start'>
@@ -220,7 +220,7 @@ const LoginForm = () => {
               className='form-control'
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder={t("signup.placeholder5")}
+              placeholder={t("common.placeHolders.password")}
               autoComplete='off'
               InputProps={{
                 startAdornment: (
@@ -240,7 +240,7 @@ const LoginForm = () => {
           <div className='rad_set'>
             <div className='radio-with-Icon'>
               <p className='gender'>
-                {t("signup.label6.placeholder")} <span>*</span>
+                {t("common.formHeadings.gender")} <span>*</span>
               </p>
               <p className='radioOption-Item'>
                 <input

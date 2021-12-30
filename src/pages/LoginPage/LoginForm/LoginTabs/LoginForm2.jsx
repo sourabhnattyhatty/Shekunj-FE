@@ -52,7 +52,7 @@ function LoginForm2() {
     <>
       <form onSubmit={handleSubmit}>
         <div className='form-group mb-4'>
-          <label>Mobile Number <span>*</span></label>
+          <label>{t("common.formHeadings.mobile")}<span>*</span></label>
           <TextField
             name='contact'
             type='number'
@@ -61,7 +61,7 @@ function LoginForm2() {
             value={values.contact}
             onBlur={handleBlur}
             autoComplete='off'
-            placeholder={t("login.form2.placeholder1")}
+            placeholder={t("common.placeHolders.number")}
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
@@ -75,7 +75,7 @@ function LoginForm2() {
 
         <div className='form-group'>
           <label>
-            Password <span>*</span>
+          {t("common.formHeadings.password")} <span>*</span>
           </label>
           <TextField
             name='password'
@@ -85,7 +85,7 @@ function LoginForm2() {
             value={values.password}
             onBlur={handleBlur}
             autoComplete='off'
-            placeholder={t("login.form2.placeholder2")}
+            placeholder={t("common.placeHolders.password")}
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>

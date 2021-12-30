@@ -11,12 +11,14 @@ import calendarBlackImg from "../../assets/icons/calendar-black.png";
 import clockBlackImg from "../../assets/icons/clock-black.png";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
+import { useTranslation } from "react-i18next";
 
 const InProgressCourse = ({ courses }) => {
   const history = useHistory();
+  const { t } = useTranslation();
   return (
     <div className='current_course'>
-      <h3>Course in progress</h3>
+      <h3>{t("dashboardPage.inProgress")}</h3>
       {courses?.length > 0 ? (
         courses.map((c) => (
           <div className='course_inprogress'>
@@ -74,7 +76,7 @@ const InProgressCourse = ({ courses }) => {
                     onClick={() => history.push(routingConstants.ALL_CERTIFICATE_DETAIL + c?.id)}
                   >
                     <button className='btn certificate_button'>
-                      Certificate
+                     {t("dashboardPage.certificate")}
                     </button>
                   </div>
                 </Col>
@@ -83,7 +85,7 @@ const InProgressCourse = ({ courses }) => {
           </div>
         ))
       ) : (
-        <div className=' mb-2'>No Current Course found!</div>
+        <div className=' mb-2'>{t("common.noCurrentCourse")}</div>
       )}
     </div>
   );

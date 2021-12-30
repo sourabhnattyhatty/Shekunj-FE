@@ -11,15 +11,18 @@ import Error from "../../components/Error";
 import "../Common.scss";
 import { requestRestEmail } from "../../store/auth/action";
 
-const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid emial").required("Email is required"),
-});
 
 function ForgotPage() {
   const { isLoading } = useSelector((state) => state.authReducer);
-
+  
+  const { t } = useTranslation();
+  
   const dispatch = useDispatch();
   const history = useHistory();
+  
+  const validationSchema = Yup.object({
+    email: Yup.string().email(t("form1.emailError.invalid")).required(t("form1,emailError.required")),
+  });
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -32,7 +35,6 @@ function ForgotPage() {
       },
     });
 
-  const { t } = useTranslation();
 
   return (
     <>

@@ -10,6 +10,7 @@ import para from "../../assets/images/AllCertificate/para.png";
 import signature from "../../assets/images/AllCertificate/signature.png";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
+import { useTranslation } from "react-i18next";
 
 const CertificatesDetail = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const CertificatesDetail = () => {
   const { certificateDetail: certificate } = useSelector(
     (state) => state.certificateReducer,
   );
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (id) {
@@ -33,21 +35,21 @@ const CertificatesDetail = () => {
         <Row>
           <Col md={7} xs={12} className='offset-3'>
             <div className='cercifi_con'>
-              <img className="cer_text" src={Certificate_text} alt='' />
+              <img className='cer_text' src={Certificate_text} alt='' />
               <img src={para} alt='' />
               <h2>{certificate?.name || "N/A"}</h2>
               <hr className='hr_line' />
               <p>
-                with membership number {certificate?.id} has been successfully
-                completed the course
+                {t("certificateDetailPage.content.1.1")} {certificate?.id}{" "}
+                {t("certificateDetailPage.content.1.2")}
               </p>
-              <h3>“Mobile user Experience (UX) Design”</h3>
+              <h3>“{t("certificateDetailPage.heading.1")}”</h3>
               <p>
-                conducted from{" "}
+                {t("certificateDetailPage.other.1")}{" "}
                 {formatDate(certificate?.course_start_time, "MMM Do YYYY")} to{" "}
                 {formatDate(certificate?.course_end_time, "MMM Do YYYY")}
               </p>
-              <p>Destination: Best in class</p>
+              <p>{t("certificateDetailPage.other.2")}</p>
             </div>
           </Col>
         </Row>
@@ -58,10 +60,10 @@ const CertificatesDetail = () => {
           <div>Date</div>
         </div>
         <div className='signature_set'>
-        <img src={signature} alt="" />
-        <hr className='hr_line2' />
-          <div>PRESIDENT DIRECTOR</div>
-          <div>NAME SURNAME</div>
+          <img src={signature} alt='' />
+          <hr className='hr_line2' />
+          <div>{t("certificateDetailPage.other.3")}</div>
+          <div>{t("certificateDetailPage.other.4")}</div>
         </div>
       </div>
     </div>

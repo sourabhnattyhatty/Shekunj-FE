@@ -5,10 +5,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const ProgressChart = ({ userProgress }) => {
+  const { t } = useTranslation();
   const options = {
     labels: [],
     datasets: [
@@ -76,14 +78,16 @@ const ProgressChart = ({ userProgress }) => {
           <div className='course_prog pink_col'>
             <h6>{userProgress?.in_progress_course || 0}</h6>
             <h3>
-              Courses <br /> Inprogress
+              {t("myProgressPage.heading.1.1")} <br />{" "}
+              {t("myProgressPage.heading.1.2")}
             </h3>
           </div>
 
           <div className='course_prog yelloow_col'>
             <h6>{userProgress?.complate_course || 0}</h6>
             <h3>
-              Courses <br /> Completed
+              {t("myProgressPage.heading.1.1")} <br />{" "}
+              {t("myProgressPage.heading.1.3")}
             </h3>
           </div>
 

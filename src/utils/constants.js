@@ -12,6 +12,7 @@ const routingConstants = {
   ALL_CERTIFICATE_DETAIL: "/certificate-detail/",
   ALL_CERTIFICATE_PAGE: "/all-certificate-page/",
   BLOGS: "http://www.thehrnotes.com/",
+  CAREER_TEST_RESULT: "/career-test-result/",
   CERTIFICATE_FULL_VIEW: "/certificate-full-view/",
   CERTIFICATE_PAGE: "certificate-page/",
   CONTACT_US: "/contact-us/",

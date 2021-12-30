@@ -6,8 +6,10 @@ import TextField from "@mui/material/TextField";
 import { Header, Footer } from "../../components";
 import mail2 from "../../assets/icons/mail2.png";
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 function ContactUs() {
+  const { t } = useTranslation();
   return (
     <div>
       <Header loginPage={false} page='home' />
@@ -16,8 +18,8 @@ function ContactUs() {
           <Row>
             <Col md={6} xs={12}>
               <div className='conUs_tit'>
-                <h3>Contact us</h3>
-                <h2>How can we help you?</h2>
+                <h3>{t("contactUs.heading.1")}</h3>
+                <h2>{t("contactUs.heading.2")}</h2>
               </div>
             </Col>
           </Row>
@@ -30,7 +32,7 @@ function ContactUs() {
             <Row>
               <Col md={6} xs={12}>
                 <div className='add_con'>
-                  <h3>For Information</h3>
+                  <h3>{t("contactUs.heading.3")}</h3>
                   <Row>
                     <Col md={6} xs={12}>
                       <p>
@@ -49,28 +51,28 @@ function ContactUs() {
 
               <Col md={6} xs={12}>
                 <div className='ConUs_form'>
-                  <p>Any query or Suggestion? Feel free to contact us </p>
+                  <p>{t("contactUs.content.1")} </p>
 
                   <form action=''>
                     <div className='form-group'>
                       <TextField
                         name='name'
                         type='text'
-                        placeholder='Enter First Name'
+                        placeholder={t("common.placeHolders.fname")}
                         autoComplete='off'
                       />
 
                       <TextField
                         name='name'
                         type='text'
-                        placeholder='Enter First Name'
+                        placeholder={t("common.placeHolders.lname")}
                         autoComplete='off'
                       />
 
                       <TextField
                         name='name'
                         type='text'
-                        placeholder='Enter First Name'
+                        placeholder={t("common.placeHolders.fname")}
                         autoComplete='off'
                       />
 
@@ -78,11 +80,11 @@ function ContactUs() {
                         className='textarea_set'
                         aria-label='minimum height'
                         minRows={3}
-                        placeholder='Enter Your Message'
+                        placeholder={t("common.placeHolders.message")}
                       />
                     </div>
 
-                    <button class='send_btn'>Send</button>
+                    <button class='send_btn'>{t("contactUs.button.1")}</button>
                   </form>
                 </div>
               </Col>

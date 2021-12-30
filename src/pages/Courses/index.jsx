@@ -28,7 +28,7 @@ const Courses = (props) => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.coursesReducer);
   const [isSubSelected, setIsSubSelected] = useState(false);
-  const [resetState,setResetState] = useState(false);
+  const [resetState, setResetState] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(allCourses());
@@ -56,7 +56,7 @@ const Courses = (props) => {
       .reverse()
       .map((obj) => (
         <Link
-          to={routingConstants.COURSE_DETAILS+obj.id}
+          to={routingConstants.COURSE_DETAILS + obj.id}
           className='col-md-6'
           key={obj?.id}
         >
@@ -159,7 +159,9 @@ const Courses = (props) => {
             <div className='col-md-8 col-sm-8'>
               <div className='content_right'>
                 <h3 className='result_head'>
-                  Results: {state?.allCourses?.results?.length || 0} Courses
+                  {t("coursesPage.other.1.1")}{" "}
+                  {state?.allCourses?.results?.length || 0}{" "}
+                  {t("coursesPage.other.1.2")}
                 </h3>
 
                 <Row>
@@ -167,14 +169,17 @@ const Courses = (props) => {
                     <div className='filter_added mb-5'>
                       {state?.selectedFilter?.length > 0 &&
                         isSubSelected &&
-                        state?.allCourses?.results?.map((s,i) => {
+                        state?.allCourses?.results?.map((s, i) => {
                           return (
                             <div key={s.id} className='filter_content'>
                               {s.name}{" "}
                               <img
                                 src={Cross}
                                 onClick={() =>
-                                  handleResetFilterDemo(s, state?.categoryList[i])
+                                  handleResetFilterDemo(
+                                    s,
+                                    state?.categoryList[i],
+                                  )
                                 }
                                 className='ml-3'
                                 alt='...'
@@ -189,8 +194,8 @@ const Courses = (props) => {
                     <div className='reset_content pt-2'>
                       {state?.allCourses && (
                         <p onClick={() => handleResetFilter()}>
-                          <img src={Reset} className='mr-2' alt='...' /> Reset
-                          filters
+                          <img src={Reset} className='mr-2' alt='...' />{" "}
+                          {t("coursesPage.other.2")}
                         </p>
                       )}
                     </div>
@@ -202,7 +207,7 @@ const Courses = (props) => {
                   {state?.allCourses?.results?.length > 0 ? (
                     checkFunction()
                   ) : (
-                    <div className='text-center mt-2'>No data found!</div>
+                    <div className='text-center mt-2'>{t("common.noDataFound")}</div>
                   )}
                 </div>
               </div>

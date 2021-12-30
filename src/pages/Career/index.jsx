@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import x from "../../assets/images/Career/x.png";
 
@@ -24,6 +25,7 @@ const CareerPage = () => {
   const { topCollages, courseSector } = useSelector(
     (state) => state.careerReducer,
   );
+  const {t} = useTranslation();
 
   useEffect(() => {
     dispatch(reSetFilterValue());
@@ -46,7 +48,7 @@ const CareerPage = () => {
   };
 
   const STREAM = {
-    name: "STREAM",
+    name: t("careerTopColleges.listItems.1"),
     rows: topCollages?.collage_stream_list || [],
   };
 
@@ -66,7 +68,7 @@ const CareerPage = () => {
           stream={STREAM}
           courseLength={courseSector}
         />
-        <p className='more'>7 More</p> <br />
+        <p className='more'>{t("careerTopColleges.other.1")}</p> <br />
         <AccordionComponent
           type='colleges'
           stream={STREAM}
@@ -77,8 +79,8 @@ const CareerPage = () => {
       <div className='mainDiv_career'>
         <Container>
           <div className='career_tit'>
-            <h2>Top Colleges in India</h2>
-            <p>Showing {STREAM?.rows?.length || 0} Colleges</p>
+            <h2>{t("careerTopColleges.heading.1")}</h2>
+            <p>{t("careerTopColleges.other.2")} {STREAM?.rows?.length || 0} {t("careerTopColleges.other.3")}</p>
           </div>
           <Row>
             <Col md={4} xs={12}>
@@ -109,10 +111,10 @@ const CareerPage = () => {
                           </p>
                           <ul>
                             <li>
-                              <span>Fees</span> : ₹ {transformPrice(c?.fees)}{" "}
+                              <span>{t("careerTopColleges.other.4")}</span> : ₹ {transformPrice(c?.fees)}{" "}
                             </li>
                             <li>
-                              <span>Exam</span> : {c?.exam || "N/A"}
+                              <span>{t("careerTopColleges.other.5")}</span> : {c?.exam || "N/A"}
                             </li>
                           </ul>
                           {c?.is_collapse && (
@@ -125,8 +127,8 @@ const CareerPage = () => {
                             }
                           >
                             {!c?.is_collapse
-                              ? "View more details"
-                              : "View less details"}
+                              ? t("common.more")
+                              : t("common.less")}
                           </button>
                         </div>
                       </Col>
@@ -140,7 +142,7 @@ const CareerPage = () => {
                   </div>
                 ))
               ) : (
-                <div className='text-center'>No data found!</div>
+                <div className='text-center'>{t("common.noDataFound")}</div>
               )}
             </Col>
           </Row>

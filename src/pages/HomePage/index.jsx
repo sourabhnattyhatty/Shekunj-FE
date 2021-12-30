@@ -110,7 +110,7 @@ function HomePage() {
                       fames. Amet hendrerit at duis porttitor ipsum.{" "}
                     </p>
                     <Link to='/courses' className='banner_btn'>
-                      {t("homePage.mainSlider.button")}
+                      {t("homePage.mainSlider.button.1")}
                     </Link>
                   </div>
                 </div>
@@ -135,7 +135,7 @@ function HomePage() {
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button")}
+                      {t("homePage.mainSlider.button.1")}
                     </Link>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ function HomePage() {
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button")}
+                      {t("homePage.mainSlider.button.1")}
                     </Link>
                   </div>
                 </div>
@@ -183,7 +183,7 @@ function HomePage() {
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button")}
+                      {t("homePage.mainSlider.button.1")}
                     </Link>
                   </div>
                 </div>
@@ -202,7 +202,7 @@ function HomePage() {
         type={constants.carouselConstant.COURSES}
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate'>View All Courses</button>
+        <button className='view_test_cate'>{t("homePage.mainSlider.button.2")}</button>
       </Link>
 
       {/* resume */}
@@ -236,7 +236,7 @@ function HomePage() {
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
       />
-      <button className='view_test_cate'>View All Test Categories</button>
+      <button className='view_test_cate'>{t("homePage.mainSlider.button.3")}</button>
 
       {/* Job opportunity */}
       <section className='job-opprtunity same_padding mt-5'>
@@ -283,7 +283,7 @@ function HomePage() {
         type={constants.carouselConstant.COURSES}
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate'>View All Courses</button>
+        <button className='view_test_cate'>{t("homePage.mainSlider.button.2")}</button>
       </Link>
 
       {/* career development */}
@@ -522,9 +522,7 @@ function HomePage() {
                     <div className='tes_box tes-before'>
                       <img src={Nikita} alt='' />
                       <p>
-                        “I love their flexibility, Even when my request is too
-                        complicated to handle, the could still suggest something
-                        useful for me.”
+                        {t("aboutPage.review.1")}
                       </p>
                       <ul className='star'>
                         <li>
@@ -543,14 +541,14 @@ function HomePage() {
                           <img src={star} alt='' />
                         </li>
                       </ul>
-                      <h2>Nikita Sharma</h2>
-                      <h6>Content Writer</h6>
+                      <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
+                      <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
                     </div>
                   </div>
 
                   <div className='tes_box2' data-aos='slide-up'>
                     <h2>
-                      “Best out of the best in the online learning field...”
+                    {t("aboutPage.review.2")}
                     </h2>
                   </div>
                 </div>
@@ -576,7 +574,7 @@ function HomePage() {
                           <img src={star} alt='' />
                         </li>
                       </ul>
-                      <h6>by 1000+ Students for 2500+ Sales</h6>
+                      <h6>{t("aboutPage.salesNumber")}</h6>
                     </div>
                   </div>
 
@@ -584,8 +582,7 @@ function HomePage() {
                     <div className='tes_box heg_cha'>
                       <img src={Priya} alt='' />
                       <p>
-                        “Excellent guiding instructions. They are all great
-                        mentors at life & career
+                      {t("aboutPage.review.3")}
                       </p>
                       <ul className='star'>
                         <li>
@@ -604,8 +601,8 @@ function HomePage() {
                           <img src={star} alt='' />
                         </li>
                       </ul>
-                      <h2>Nikita Sharma</h2>
-                      <h6>Content Writer</h6>
+                      <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
+                      <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
                     </div>
                   </div>
                 </div>

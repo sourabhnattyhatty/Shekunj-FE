@@ -3,12 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { ImageListItem, ImageListItemBar } from "@mui/material";
 
-import {
-  AccordionComponent,
-  Footer,
-  Header,
-  SEO,
-} from "../../components";
+import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import {
   getGovernmentExams,
   reSetFilterValue,
@@ -17,10 +12,12 @@ import {
 import { baseURL, noImage } from "../../utils/ApiServices";
 import "../HomePage/index.scss";
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 const CareerPage2 = () => {
   const dispatch = useDispatch();
   const { governmentExams } = useSelector((state) => state.careerReducer);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(reSetFilterValue());
@@ -56,14 +53,14 @@ const CareerPage2 = () => {
       <div className='mainDiv_career'>
         <Container>
           <div className='career_tit'>
-            <h2>Government Exams</h2>
+            <h2>{t("careerGovExams.heading.1")}</h2>
           </div>
           <Row>
             <Col md={4} xs={12}>
               <AccordionComponent
                 type='governmentExams'
                 categories={{
-                  name: "CATEGORIES",
+                  name: t("careerGovExams.listItems.1"),
                   rows: governmentExams?.govt_category || [],
                 }}
               />
@@ -76,23 +73,23 @@ const CareerPage2 = () => {
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>
-                          <h3>{c?.name || "N/A"}</h3>
+                          <h3>{c?.name || t("common.n/a")}</h3>
                           <p style={{ textTransform: "capitalize" }}>
-                            {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
+                            {c?.city || t("common.n/a")}, {c?.state || t("common.n/a")} •{" "}
                             <span style={{ textTransform: "capitalize" }}>
-                              {c?.exam_type || "N/A"}
+                              {c?.exam_type || t("common.n/a")}
                             </span>
                           </p>
                           <ul>
                             <li>
-                              <span>Fees</span> : ₹ {transformPrice(c?.fees)}{" "}
+                              <span>{t("careerGovExams.other.1")}</span> : ₹ {transformPrice(c?.fees)}{" "}
                             </li>
                             <li>
-                              <span>Exam</span> : {c?.exam}
+                              <span>{t("careerGovExams.other.2")}</span> : {c?.exam}
                             </li>
                           </ul>
                           {c?.is_collapse && (
-                            <div>{c?.about_exam || "N/A"}</div>
+                            <div>{c?.about_exam || t("common.n/a")}</div>
                           )}
                           <button
                             className='btn_viewCour'
@@ -101,8 +98,8 @@ const CareerPage2 = () => {
                             }
                           >
                             {!c?.is_collapse
-                              ? "View more details"
-                              : "View less details"}
+                              ? t("common.more")
+                              : t("common.less")}
                           </button>
                         </div>
                       </Col>
@@ -116,7 +113,7 @@ const CareerPage2 = () => {
                   </div>
                 ))
               ) : (
-                <div className='text-center'>No data found!</div>
+                <div className='text-center'>{t("common.noDataFound")}</div>
               )}
             </Col>
           </Row>

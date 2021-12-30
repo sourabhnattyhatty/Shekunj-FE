@@ -1,10 +1,12 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 import logo from "../../assets/icons/logo.png";
 import "./index.scss";
 
-function index() {
+function EmailPage() {
+  const { t } = useTranslation();
   return (
     <div>
       <div className='email_bg'></div>
@@ -12,7 +14,7 @@ function index() {
         <div className='main_box_email'>
           <img src={logo} alt='' />
           <hr />
-          <h2>Hello Swati Jain,</h2>
+          <h2>{t("common.greeting.hello")} {t("allCertificatePage.name.1")},</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
             ipsum, erat viverra rhoncus massa in enim fermentum vel. In mi ut
@@ -28,7 +30,7 @@ function index() {
             amet, vitae massa ipsum.
           </p>
 
-          <h5>Thank you again,</h5>
+          <h5>{t("common.greeting.thankyouagain")},</h5>
         </div>
       </Container>
 
@@ -37,4 +39,4 @@ function index() {
   );
 }
 
-export default index;
+export default EmailPage;

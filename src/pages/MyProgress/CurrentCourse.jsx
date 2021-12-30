@@ -10,11 +10,13 @@ import Clock from "../../assets/icons/clock.png";
 import { formatDate, formatTime, truncate } from "../../utils/utils";
 
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 const CurrentCourse = ({ courses }) => {
+  const { t } = useTranslation();
   return (
     <div className='current_course'>
-      <h3>Current Course</h3>
+      <h3>{t("dashboardPage.current")}</h3>
       {courses?.length > 0 ? (
         courses.map((c) => (
           <div className='course_explore'>
@@ -71,7 +73,7 @@ const CurrentCourse = ({ courses }) => {
               <Col md={3} xs={6} className='p-0'>
                 <div className='button_paddingarea'>
                   <button disabled className='explore_button btn'>
-                    Explore
+                    {t("myProgressPage.button.1")}
                   </button>
                 </div>
               </Col>
@@ -79,7 +81,7 @@ const CurrentCourse = ({ courses }) => {
           </div>
         ))
       ) : (
-        <div className=' mb-2'>No Current Course found!</div>
+        <div className=' mb-2'>{t("common.noCurrentCourse")}</div>
       )}
     </div>
   );

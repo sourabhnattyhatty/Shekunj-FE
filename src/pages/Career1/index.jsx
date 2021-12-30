@@ -1,12 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  AccordionComponent,
-  Footer,
-  Header,
-  SEO,
-} from "../../components";
+import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import {
   getTopSchools,
   reSetFilterValue,
@@ -16,12 +11,14 @@ import "../HomePage/index.scss";
 import "./index.scss";
 
 import { baseURL, noImage } from "../../utils/ApiServices";
+import { useTranslation } from "react-i18next";
 
 const CareerPage1 = () => {
   const dispatch = useDispatch();
   const { topSchools, courseSector } = useSelector(
     (state) => state.careerReducer,
   );
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(reSetFilterValue());
@@ -48,19 +45,19 @@ const CareerPage1 = () => {
       <div className='mainDiv_career'>
         <Container>
           <div className='career_tit'>
-            <h2>Top Schools in India</h2>
+            <h2>{t("careerTopSchools.heading.1")}</h2>
           </div>
           <Row>
             <Col md={4} xs={12}>
               <AccordionComponent
                 type='schools'
                 states={{
-                  name: "STATES",
+                  name: t("careerTopSchools.listItems.1"),
                   rows: topSchools?.state_list,
                 }}
                 ownership={courseSector}
                 educationBoard={{
-                  name: "EDUCATION_BOARD",
+                  name: t("careerTopSchools.listItems.2"),
                   rows: topSchools?.board_list || [],
                 }}
               />
@@ -73,20 +70,20 @@ const CareerPage1 = () => {
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>
-                          <h3>{c?.name || "N/A"}</h3>
+                          <h3>{c?.name || t("common.n/a")}</h3>
                           <p style={{ textTransform: "capitalize" }}>
-                            {c?.city || "N/A"}, {c?.state || "N/A"} •{" "}
+                            {c?.city || t("common.n/a")}, {c?.state || t("common.n/a")} •{" "}
                             <span style={{ textTransform: "capitalize" }}>
-                              {c?.school_type || "N/A"}
+                              {c?.school_type || t("common.n/a")}
                             </span>
                           </p>
                           <ul>
                             <li>
-                              <span>Board</span> : {c?.board_type || "N/A"}{" "}
+                              <span>{t("careerTopSchools.other.1")}</span> : {c?.board_type || t("common.n/a")}{" "}
                             </li>
                           </ul>
                           {c?.is_collapse && (
-                            <div>{c?.about_school || "N/A"}</div>
+                            <div>{c?.about_school || t("common.n/a")}</div>
                           )}
                           <button
                             className='btn_viewCour'
@@ -95,8 +92,8 @@ const CareerPage1 = () => {
                             }
                           >
                             {!c?.is_collapse
-                              ? "View more details"
-                              : "View less details"}
+                              ? t("common.more")
+                              : t("common.less")}
                           </button>
                         </div>
                       </Col>
@@ -110,7 +107,7 @@ const CareerPage1 = () => {
                   </div>
                 ))
               ) : (
-                <div className='text-center'>No data found!</div>
+                <div className='text-center'>{t("common.noDataFound")}</div>
               )}
             </Col>
           </Row>

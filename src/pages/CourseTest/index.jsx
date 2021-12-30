@@ -29,6 +29,7 @@ import {
 } from "../../store/courses/action";
 import { styled } from "@mui/material/styles";
 import { routingConstants } from "../../utils/constants";
+import { useTranslation } from "react-i18next";
 
 const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
@@ -65,6 +66,8 @@ function CourseTest() {
   const detect = useDeviceDetect();
   const { id } = useParams();
 
+  const { t } = useTranslation();
+
   const { question, questionCount, isLoading } = useSelector(
     (state) => state.coursesReducer,
   );
@@ -76,8 +79,8 @@ function CourseTest() {
     dispatch(getUserTestQuestion(id, history));
     dispatch(testCountSummery(id, history));
     if (detect.isMobile) {
-      toast.error("This page is not availble in mobile view.");
-      history.push("/");
+      toast.error(t("error.mobile.1"));
+      history.push(routingConstants.HOME_PAGE);
     }
   }, [history, detect.isMobile, id, dispatch]);
 
@@ -158,7 +161,7 @@ function CourseTest() {
       }
       setToggle((prev) => !prev);
     } else {
-      toast.error("Select option for next question", {
+      toast.error(t("error.other.1"), {
         position: "bottom-center",
       });
     }
@@ -179,7 +182,7 @@ function CourseTest() {
       setAnswer("");
       history.push(routingConstants.COURSES_RESULT + id);
     } else {
-      toast.error("Select option for next question", {
+      toast.error(t("error.other.1"), {
         position: "bottom-center",
       });
     }
@@ -208,7 +211,7 @@ function CourseTest() {
   };
 
   const handleTestFinished = () => {
-    toast.error("Test finishes!");
+    toast.error(t("error.other.2"));
     history.push(routingConstants.COURSES_RESULT + id);
   };
 
@@ -270,7 +273,7 @@ function CourseTest() {
               <div className='circular_progress_module'>
                 <Stack spacing={2} direction='row'>
                   {" "}
-                  <h3>Your Progress</h3>
+                  <h3>{t("coursesPage.coursesModulePage.heading.1")}</h3>
                 </Stack>
                 {renderProgress(question?.progress)}
               </div>
@@ -371,7 +374,7 @@ function CourseTest() {
                     onClick={() => handlePrevQuestion()}
                     disabled={!question?.prev_module}
                   >
-                    back
+                    {t("coursesPage.coursesModulePage.button.1")}
                   </button>
                 </Col>
 
@@ -382,14 +385,14 @@ function CourseTest() {
                       className='next_button'
                       onClick={() => handleFinishQuestion()}
                     >
-                      finish
+                      {t("coursesPage.coursesModulePage.button.2")}
                     </button>
                   ) : (
                     <button
                       className='next_button'
                       onClick={() => handleNextQuestion()}
                     >
-                      next
+                      {t("coursesPage.coursesModulePage.button.3")}
                     </button>
                   )}
                 </Col>

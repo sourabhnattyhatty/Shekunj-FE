@@ -9,6 +9,7 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useTranslation } from "react-i18next";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -62,7 +63,7 @@ export default function CustomizedMenus(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const { t } = useTranslation();
   return (
     <div>
       <Button
@@ -88,20 +89,20 @@ export default function CustomizedMenus(props) {
       >
         <MenuItem onClick={handleClose} disableRipple>
           <EditIcon />
-          Edit
+          {t("coursesPage.menuItem.1")}
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
           <FileCopyIcon />
-          Duplicate
+          {t("coursesPage.menuItem.2")}
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
         <MenuItem onClick={handleClose} disableRipple>
           <ArchiveIcon />
-          Archive
+          {t("coursesPage.menuItem.3")}
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
           <MoreHorizIcon />
-          More
+          {t("coursesPage.menuItem.4")}
         </MenuItem>
       </StyledMenu>
     </div>

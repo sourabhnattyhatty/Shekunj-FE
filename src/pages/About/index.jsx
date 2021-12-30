@@ -71,9 +71,7 @@ const AboutusPage = () => {
                     <div className='tes_box tes-before'>
                       <img src={Nikita} alt='' />
                       <p>
-                        “I love their flexibility, Even when my request is too
-                        complicated to handle, the could still suggest something
-                        useful for me.”
+                        "{t("aboutPage.review.1")}" SSMSMSMS
                       </p>
                       <ul className='star'>
                         <li>
@@ -92,14 +90,14 @@ const AboutusPage = () => {
                           <img src={star} alt='' />
                         </li>
                       </ul>
-                      <h2>Nikita Sharma</h2>
-                      <h6>Content Writer</h6>
+                      <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
+                      <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
                     </div>
                   </div>
 
                   <div className='tes_box2' data-aos='slide-up'>
                     <h2>
-                      “Best out of the best in the online learning field...”
+                      "{t("aboutPage.review.2")}"
                     </h2>
                   </div>
                 </div>
@@ -125,7 +123,7 @@ const AboutusPage = () => {
                           <img src={star} alt='' />
                         </li>
                       </ul>
-                      <h6>by 1000+ Students for 2500+ Sales</h6>
+                      <h6>{t("aboutPage.salesNumber")}</h6>
                     </div>
                   </div>
 
@@ -133,8 +131,7 @@ const AboutusPage = () => {
                     <div className='tes_box heg_cha'>
                       <img src={Nikita} alt='' />
                       <p>
-                        “Excellent guiding instructions. They are all great
-                        mentors at life & career
+                        “{t("aboutPage.review.3")}"
                       </p>
                       <ul className='star'>
                         <li>
@@ -153,8 +150,8 @@ const AboutusPage = () => {
                           <img src={star} alt='' />
                         </li>
                       </ul>
-                      <h2>Nikita Sharma</h2>
-                      <h6>Content Writer</h6>
+                      <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
+                      <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
                     </div>
                   </div>
                 </div>

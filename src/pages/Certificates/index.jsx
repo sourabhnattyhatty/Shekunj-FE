@@ -15,11 +15,13 @@ import { getGuidanceCategory } from "../../store/guidance";
 import Aos from "aos";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
+import { useTranslation } from "react-i18next";
 
 function AllCertificatePage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const { certificates } = useSelector((state) => state.certificateReducer);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getUserCourseCertificate());
@@ -40,11 +42,9 @@ function AllCertificatePage() {
         <Container>
           <Row>
             <Col md={5} xs={12} data-aos="slide-up">
-              <h2>achieve your goals</h2>
+              <h2>{t("allCertificatePage.heading.1")}</h2>
               <p>
-                All over Indian Girl students are taking their web design
-                careers to the next-level with Shekunj Academy. Here are some of
-                their stories.
+              {t("allCertificatePage.content.1")}
               </p>
             </Col>
           </Row>
@@ -52,7 +52,7 @@ function AllCertificatePage() {
       </div>
       <div className='all_certif_sec'>
         <Container>
-          <h2 className='my_achiev'>my achievements</h2>
+          <h2 className='my_achiev'>{t("allCertificatePage.heading.2")}</h2>
           {certificates.length > 0 ? (
             certificates.map((c) => (
               <>
@@ -118,13 +118,13 @@ function AllCertificatePage() {
                             <li>
                               <img src={lecturesIcon} alt='' />
                             </li>
-                            <li>{c?.no_of_lecture || 0} lectures</li>
+                            <li>{c?.no_of_lecture || 0} {t("allCertificatePage.other.1")}</li>
                           </ul>
                           <ul>
                             <li>
                               <img src={barChart} alt='' />
                             </li>
-                            <li>All level</li>
+                            <li>{t("allCertificatePage.other.2")}</li>
                           </ul>
                         </div>
                         <button
@@ -132,9 +132,9 @@ function AllCertificatePage() {
                             history.push(routingConstants.ALL_CERTIFICATE_DETAIL + c?.id)
                           }
                         >
-                          View Certificate
+                          {t("allCertificatePage.button.1")}
                         </button>
-                        <button>Download</button>
+                        <button>{t("allCertificatePage.button.2")}</button>
                       </div>
                     </Col>
                   </Row>
@@ -142,7 +142,7 @@ function AllCertificatePage() {
               </>
             ))
           ) : (
-            <div className='text-center'>No data found!</div>
+            <div className='text-center'>{t("common.noDataFound")}</div>
           )}
         </Container>
       </div>

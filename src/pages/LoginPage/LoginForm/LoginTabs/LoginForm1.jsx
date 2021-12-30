@@ -64,7 +64,7 @@ function LoginForm1() {
             value={values.email}
             onBlur={handleBlur}
             autoComplete='off'
-            placeholder={t("login.form1.placeholder1")}
+            placeholder={t("common.placeHolders.email")}
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
@@ -86,7 +86,7 @@ function LoginForm1() {
             value={values.password}
             onBlur={handleBlur}
             autoComplete='off'
-            placeholder={t("login.form1.placeholder2")}
+            placeholder={t("common.placeHolders.password")}
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>

@@ -9,8 +9,10 @@ import Marks from "../../assets/images/marks.png";
 import Question from "../../assets/images/question.png";
 import Time from "../../assets/images/time.png";
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 const CertificatePage = () => {
+  const { t } = useTranslation();
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -29,7 +31,7 @@ const CertificatePage = () => {
             </Col>
 
             <Col md={12} className='text-center'>
-              <h1>Your score</h1>
+              <h1>{t("allCertificatePage.other.3")}</h1>
               <p>78%</p>
 
               <div className='border_certificate mt-1 mb-4'></div>
@@ -40,7 +42,7 @@ const CertificatePage = () => {
             <div className='clock_section_first pt-5'>
               <img src={Marks} alt='...' />
               <div className='clock_section_first_content'>
-                <p>total Marks</p>
+                <p>{t("allCertificatePage.other.4")}</p>
                 <span>100</span>
               </div>
             </div>
@@ -49,7 +51,7 @@ const CertificatePage = () => {
               <img src={Question} alt='...' />
               <div className='clock_section_first_content'>
                 <p>
-                  Question <br /> Attempt
+                {t("allCertificatePage.other.5")} <br /> {t("allCertificatePage.other.6")}
                 </p>
                 <span>30</span>
               </div>
@@ -58,18 +60,18 @@ const CertificatePage = () => {
             <div className='clock_section_third pt-5'>
               <img src={Time} alt='...' />
               <div className='clock_section_first_content'>
-                <p>total Time</p>
+                <p>{t("allCertificatePage.other.7")}</p>
                 <span>45 Mins</span>
               </div>
             </div>
 
             <div className='d-block text-center certificate_para mb-md-5'>
               <button className='download_btn'>
-                Download Your Certificate
+                {t("allCertificatePage.button.4")}
               </button>
 
-              <p className='mt-md-3'> Congratulations! </p>
-              <span> You can download the certificate </span>
+              <p className='mt-md-3'> {t("allCertificatePage.other.8")} </p>
+              <span> {t("allCertificatePage.other.9")} </span>
             </div>
           </div>
         </Container>

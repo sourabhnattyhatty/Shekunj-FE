@@ -7,12 +7,13 @@ import {
   setCollapseSuccessStory,
   successStories as fetchSuccessStories,
 } from "../../store/courses/action";
-import { Header, Footer} from "../../components";
+import { Header, Footer } from "../../components";
 import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
 import double_quote from "../../assets/icons/double_quote.png";
 import global from "../../assets/images/Success/global.png";
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 function SuccessStory() {
   const history = useHistory();
@@ -20,6 +21,7 @@ function SuccessStory() {
   const { successStories } = useSelector((state) => {
     return state.coursesReducer;
   });
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     dispatch(fetchSuccessStories());
@@ -41,14 +43,8 @@ function SuccessStory() {
               </div>
             </Col>
             <Col md={6}>
-              <h2 data-aos='slide-up'>
-                Over 5,000 students have learned with us
-              </h2>
-              <p>
-                All over Indian Girl students are taking their web design
-                careers to the next-level with Shekunj Academy. Here are some of
-                their stories.
-              </p>
+              <h2 data-aos='slide-up'>{t("successStoriesPage.heading.1")}</h2>
+              <p>{t("successStoriesPage.content.1")}</p>
             </Col>
           </Row>
         </Container>
@@ -69,21 +65,27 @@ function SuccessStory() {
                             src={double_quote}
                             alt=''
                           />
-                          {s?.name || "N/A"} {s?.course_name || "N/A"}
+                          {s?.name || t("common.n/a")}{" "}
+                          {s?.course_name || t("common.n/a")}
                         </h2>
-                        <h3>{s?.title || "N/A"} </h3>
-                        <p>{s?.description || "N/A"}</p>
+                        <h3>{s?.title || t("common.n/a")} </h3>
+                        <p>{s?.description || t("common.n/a")}</p>
                         {s?.is_collapse && (
                           <ul>
                             <li>
-                              Company : <b>{s?.company_name || "N/A"}</b>
+                              {t("successStoriesPage.other.1")} :{" "}
+                              <b>{s?.company_name || t("common.n/a")}</b>
                             </li>
                             <li>
-                              Certification :
-                              <b> {s?.certificate_name || "N/A"}</b>
+                              {t("successStoriesPage.other.2")} :
+                              <b> {s?.certificate_name || t("common.n/a")}</b>
                             </li>
                             <li>
-                              Duration : <b> {s?.duration || 0} Year</b>
+                              {t("successStoriesPage.other.3")} :{" "}
+                              <b>
+                                {" "}
+                                {s?.duration || 0} {t("common.time.1")}
+                              </b>
                             </li>
                           </ul>
                         )}
@@ -94,7 +96,10 @@ function SuccessStory() {
                               handleSetCollapse(s?.id, s?.is_collapse)
                             }
                           >
-                            Show {s?.is_collapse ? "Less" : "More"}{" "}
+                            {t("successStoriesPage.button.1")}{" "}
+                            {s?.is_collapse
+                              ? t("common.less1")
+                              : t("common.more1")}{" "}
                             <img src={s?.is_collapse ? up : down1} alt='' />
                           </button>
                           <hr />
@@ -117,21 +122,27 @@ function SuccessStory() {
                             src={double_quote}
                             alt=''
                           />
-                          {s?.name || "N/A"} {s?.course_name || "N/A"}
+                          {s?.name || t("common.n/a")}{" "}
+                          {s?.course_name || t("common.n/a")}
                         </h2>
-                        <h3>{s?.title || "N/A"} </h3>
-                        <p>{s?.description || "N/A"}</p>
+                        <h3>{s?.title || t("common.n/a")} </h3>
+                        <p>{s?.description || t("common.n/a")}</p>
                         {s?.is_collapse && (
                           <ul>
                             <li>
-                              Company : <b>{s?.company_name || "N/A"}</b>
+                              {t("successStoriesPage.other.1")} :{" "}
+                              <b>{s?.company_name || t("common.n/a")}</b>
                             </li>
                             <li>
-                              Certification :
-                              <b> {s?.certificate_name || "N/A"}</b>
+                              {t("successStoriesPage.other.2")} :
+                              <b> {s?.certificate_name || t("common.n/a")}</b>
                             </li>
                             <li>
-                              Duration : <b> {s?.duration || 0} Year</b>
+                              {t("successStoriesPage.other.3")} :{" "}
+                              <b>
+                                {" "}
+                                {s?.duration || 0} {t("common.time.1")}
+                              </b>
                             </li>
                           </ul>
                         )}
@@ -142,7 +153,10 @@ function SuccessStory() {
                               handleSetCollapse(s?.id, s?.is_collapse)
                             }
                           >
-                            Show {s?.is_collapse ? "Less" : "More"}{" "}
+                            {t("successStoriesPage.button.1")}{" "}
+                            {s?.is_collapse
+                              ? t("common.less1")
+                              : t("common.more1")}{" "}
                             <img src={s?.is_collapse ? up : down1} alt='' />
                           </button>
                           <hr />
@@ -155,15 +169,15 @@ function SuccessStory() {
             </>
           ))}
         {successStories?.length === 0 && (
-          <div className='text-center mt-5'>No data found!</div>
+          <div className='text-center mt-5'>{t("common.noDataFound")}</div>
         )}
       </Container>
 
       <div className='want'>
         <Container>
-          <h2>Want to become our next success story?</h2>
+          <h2>{t("successStoriesPage.content.2")}</h2>
           <button onClick={() => history.push("/courses")} className='want_btn'>
-            Start Learning
+          {t("successStoriesPage.button.2")}
           </button>
         </Container>
       </div>

@@ -10,6 +10,7 @@ import Certificate01 from "../../assets/images/AllCertificate/Certificate01.png"
 import clock1 from "../../assets/icons/clock1.png";
 
 import "./index.scss";
+import { useTranslation } from "react-i18next";
 
 function AllCertificatePage() {
   const dispatch = useDispatch();
@@ -19,14 +20,13 @@ function AllCertificatePage() {
     dispatch(getUserCourseCertificate());
   }, [dispatch]);
 
-
   useEffect(() => {
     dispatch(getGuidanceCategory(null));
     dispatch(getGuidanceCategory());
     Aos.init({ duration: 2000 });
   }, [dispatch]);
 
-  console.log({ certificates });
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -36,12 +36,10 @@ function AllCertificatePage() {
       <div className='all_certif_banner'>
         <Container>
           <Row>
-            <Col md={5} xs={12} data-aos="slide-up">
-              <h2>achieve your goals</h2>
+            <Col md={5} xs={12} data-aos='slide-up'>
+              <h2>{t("allCertificatePage.heading.1")}</h2>
               <p>
-                All over Indian Girl students are taking their web design
-                careers to the next-level with Shekunj Academy. Here are some of
-                their stories.
+              {t("allCertificatePage.content.1")}
               </p>
             </Col>
           </Row>
@@ -50,7 +48,7 @@ function AllCertificatePage() {
 
       <div className='all_certif_sec'>
         <Container>
-          <h2 className='my_achiev'>my achievements</h2>
+          <h2 className='my_achiev'>{t("allCertificatePage.heading.2")}</h2>
           {certificates.length > 0 ? (
             certificates.map((c) => (
               <>
@@ -88,8 +86,8 @@ function AllCertificatePage() {
                             <li>All level</li>
                           </ul> */}
                         </div>
-                        <button>View Certificate</button>
-                        <button>Download</button>
+                        <button>{t("allCertificatePage.button.1")}</button>
+                        <button>{t("allCertificatePage.button.2")}</button>
                       </div>
                     </Col>
                   </Row>
@@ -97,7 +95,7 @@ function AllCertificatePage() {
               </>
             ))
           ) : (
-            <div className='text-center'>No data found!</div>
+            <div className='text-center'>{t("common.noDataFound")}</div>
           )}
         </Container>
       </div>

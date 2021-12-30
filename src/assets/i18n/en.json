@@ -1,4 +1,75 @@
 {
+  "common": {
+    "noDataFound": "No data found!",
+    "noCurrentCourse": "No Current Course found!",
+    "noTestFound": "No tests found!",
+    "loading": "Loading...",
+    "n/a": "N/A",
+    "more": "View more details",
+    "less": "View less details",
+    "more1": "More",
+    "less1": "Less",
+    "formHeadings": {
+      "fname": "First Name",
+      "lname": "Last Name",
+      "email": "Email",
+      "highest_education": "Highest Education",
+      "dob": "Date of birth",
+      "city": "City",
+      "mobile": "Mobile Number",
+      "stream": "Stream",
+      "state": "State",
+      "button": {
+        "save": "Save"
+      },
+      "gender": "Gender"
+    },
+    "placeHolders": {
+      "fname": "Enter First Name",
+      "lname": "Enter Last Name",
+      "email": "Enter Your Email",
+      "password": "Enter Password",
+      "dob": "Select DOB",
+      "mobile": "Enter Mobile Number",
+      "alternateMobile": "Enter Alternate Number",
+      "message": "Enter Your Message",
+      "otp": "Enter OTP"
+    },
+    "greeting": {
+      "hello": "Hello",
+      "goodToSeeYou": "Good to see you back!",
+      "thankyou": "Thank you",
+      "thankyouagain": "Thank you again"
+    },
+    "time": {
+      "1": "Year",
+      "2": "min"
+    },
+    "month": {
+      "1": "January",
+      "2": "February",
+      "3": "March",
+      "4": "April",
+      "5": "May",
+      "6": "June",
+      "7": "July",
+      "8": "August",
+      "9": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December"
+    }
+  },
+  "error": {
+    "mobile": {
+      "1": "This page is not availble in mobile view."
+    },
+    "other": {
+      "1": "Select option for next question",
+      "2": "Test finished!",
+      "3": "Please select valid file"
+    }
+  },
   "login": {
     "authContent": {
       "heading": "Register for Easy & Real Learning to make you Job Ready",
@@ -16,31 +87,37 @@
       }
     },
     "heading": "Login on Shekunj",
-    "tabLabel": {
-      "1": "E-MAIL",
-      "2": "MOBILE"
-    },
     "form1": {
-      "placeholder1": "E-mail",
-      "placeholder2": "Password",
       "emailError": {
         "invalid": "Invalid email",
         "required": "Email is required"
       },
       "passError": {
         "min": "At least 6 characters",
-        "required": "Password is required"
+        "required": "Password is required",
+        "confirmRequired": "Confirm password is required",
+        "match": "Passwords must match"
       },
-      "firstNameError":{
-        "required":"First Name is required"
+      "firstNameError": {
+        "required": "First Name is required"
       },
-      "lastNameError":{
-        "required":"Last Name is required"
+      "lastNameError": {
+        "required": "Last Name is required"
+      },
+      "message": {
+        "required": "Message is required"
+      },
+      "contact": {
+        "required": "Mobile Number is required"
+      },
+      "otp": {
+        "required": "OTP is required"
+      },
+      "gender": {
+        "required": "Gender selection is required"
       }
     },
     "form2": {
-      "placeholder1": "Mobile",
-      "placeholder2": "Password",
       "contactError": "Mobile number is required"
     },
     "button": "Login",
@@ -59,15 +136,8 @@
 
   "signup": {
     "heading": "Signup on Shekunj",
-    "placeholder1": "Name",
-    "placeholder2": "E-mail",
-    "placeholder3": "Mobile Number",
     "verify": "Verify",
-    "placeholder4": "OTP",
-    "placeholder5": "Password",
-    "placeholder6": "Surname",
     "label6": {
-      "placeholder": "Gender",
       "1": "Female",
       "2": "Male"
     },
@@ -85,7 +155,9 @@
 
   "resetPassword": {
     "heading": "Change Password",
-    "label": "New Password"
+    "old": "Old Password",
+    "label": "New Password",
+    "labelConfirm": "Confirm New Password"
   },
 
   "verify": {
@@ -148,7 +220,11 @@
           "3.2": "Learning Skills"
         }
       },
-      "button": "Start Course"
+      "button": {
+        "1": "Start Course",
+        "2": "View All Courses",
+        "3": "View All Test Categories"
+      }
     },
     "carousel1": {
       "heading": {
@@ -190,7 +266,21 @@
     "heading": "Empowering Women to Empower the Next Generation",
     "content1": "SheKunj’s cutting-edge learning and examination platform has been designed to equip modern-age females with in-demand tech and non-tech skills. By providing the right information to women, we help them get placed, develop their personalities, and explore career pathways.",
     "content2": "Armed with the best pedagogy experts, learning modules, and certificate courses, SheKunj is determined to impart practical training and educate women. With the right blend of tech and non-tech skills, our drive is to make a community of motivated, highly-skilled and knowledgeable women who build inspiring careers and lead with full gusto.",
-    "content3": "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality."
+    "content3": "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality.",
+    "review": {
+      "1": "I love their flexibility, Even when my request is too complicated to handle, the could still suggest something useful for me.",
+      "2": "Best out of the best in the online learning field...",
+      "3": "Excellent guiding instructions. They are all great mentors at life & career"
+    },
+    "reviewerDetails": {
+      "reviewerName": {
+        "1": "Nikita Sharma"
+      },
+      "reviewerPost": {
+        "1": "Content Writer"
+      }
+    },
+    "salesNumber": "by 1000+ Students for 2500+ Sales"
   },
 
   "careerPage": {
@@ -214,6 +304,120 @@
     "exam": "Exams"
   },
 
+  "allCertificatePage": {
+    "heading": {
+      "1": "Achieve your goals",
+      "2": "My achievements",
+      "3": "Skills Earned"
+    },
+    "content": {
+      "1": "All over Indian Girl students are taking their web design careers to the next-level with Shekunj Academy. Here are some of their stories."
+    },
+    "button": {
+      "1": "View Certificate",
+      "2": "Download",
+      "3": "Back To Course",
+      "4": "Download Your Certificate"
+    },
+    "other": {
+      "1": "lectures",
+      "2": "All level",
+      "3": "Your score",
+      "4": "Total score",
+      "5": "Question",
+      "6": "Attempt",
+      "7": "Total time",
+      "8": "Congratulations!",
+      "9": "You can download the certificate",
+      "10": "Course & Certificate",
+      "11": "View Full Certificate"
+    },
+    "name": {
+      "1": "Swati Jain"
+    },
+    "skills": {
+      "1": "Adobe Photoshop",
+      "2": "Corel Draw",
+      "3": "Adobe Illustrator",
+      "4": "Figma/Prototype"
+    }
+  },
+
+  "certificateDetailPage": {
+    "content": {
+      "1": {
+        "1": "With membership number",
+        "2": "has been successfully completed the course"
+      }
+    },
+    "heading": {
+      "1": "Mobile user Experience (UX) Design"
+    },
+    "other": {
+      "1": "Conducted from",
+      "2": "Destination: Best in class",
+      "3": "PRESIDENT DIRECTOR",
+      "4": "NAME SURNAME"
+    }
+  },
+
+  "careerTopColleges": {
+    "other": {
+      "1": "7 More",
+      "2": "Showing",
+      "3": "Colleges",
+      "4": "Fees",
+      "5": "Exam"
+    },
+    "heading": {
+      "1": "Top Colleges in India"
+    },
+    "listItems": {
+      "1": "STREAM"
+    },
+    "noDataFound": "No data found!"
+  },
+
+  "careerTopSchools": {
+    "heading": {
+      "1": "Top Schools in India"
+    },
+    "listItems": {
+      "1": "STREAM",
+      "2": "EDUCATION BOARD"
+    },
+    "other": {
+      "1": "Board"
+    }
+  },
+
+  "careerGovExams": {
+    "heading": {
+      "1": "Government Exams"
+    },
+    "listItems": {
+      "1": "CATEGORIES"
+    },
+    "other": {
+      "1": "Fees",
+      "2": "Board"
+    }
+  },
+
+  "contactUs": {
+    "heading": {
+      "1": "Contact us",
+      "2": "How can we help you?",
+      "3": "For Information"
+    },
+    "content": {
+      "1": "Any query or Suggestion? Feel free to contact us!"
+    },
+    "button": {
+      "1": "Send"
+    }
+  },
+
   "coursesPage": {
     "banner": {
       "heading": "Find your courses & make sure goal.",
@@ -229,6 +433,7 @@
     "accordion": {
       "1": {
         "heading": "Categories",
+        "subHeading": "Sub Category",
         "1": "Graphic Design",
         "2": "career development",
         "3": "Web Development"
@@ -249,6 +454,82 @@
       "4": {
         "heading": "course provider"
       }
+    },
+    "coursesDetailsPage": {
+      "heading": {
+        "1": {
+          "1": "Created by",
+          "2": "SheKunj"
+        },
+        "2": "Description",
+        "3": "What you’ll learn",
+        "4": "Features:",
+        "features": {
+          "1": "100% Online",
+          "2": "Lifetime Access",
+          "3": "Shareable Certificate",
+          "4": "Assignments",
+          "5": "Flexible Deadline",
+          "6": { "heading": "Language", "data": "Hindi, English" }
+        }
+      },
+      "other": {
+        "1": "Start Course",
+        "2": "Similar Courses",
+        "3": "View More Courses"
+      }
+    },
+    "coursesModulePage": {
+      "heading": {
+        "1": "Your Progress",
+        "2": "Course content"
+      },
+      "accordian": {
+        "1": "active-accordiantext"
+      },
+      "button": {
+        "1": "Back",
+        "2": "Finish",
+        "3": "Next"
+      },
+      "other": {
+        "1": "Introduction"
+      }
+    },
+    "coursesResultPage": {
+      "heading": {
+        "1": "Your Result"
+      },
+      "other": {
+        "1": "Congratulation",
+        "2": "Bad Performance",
+        "3": {
+          "1": "Correct",
+          "2": "Answers"
+        },
+        "4": {
+          "1": "Candidate’s",
+          "2": "Score"
+        },
+        "5": "Total Time"
+      },
+      "button": {
+        "1": "Get Your Certificate",
+        "2": "Start Course Again"
+      }
+    },
+    "other": {
+      "1": {
+        "1": "Results:",
+        "2": "Courses"
+      },
+      "2": "Reset filters"
+    },
+    "menuItem": {
+      "1": "Edit",
+      "2": "Duplicate",
+      "3": "Archive",
+      "4": "More"
     }
   },
 
@@ -258,6 +539,136 @@
     "current": "Current Course",
     "inProgress": "Course in prograss",
     "certificate": "Certificate",
-    "explore": "Explore"
+    "explore": "Explore",
+    "button": {
+      "1": "All Certificates"
+    },
+    "heading": {
+      "1": "Your test"
+    }
+  },
+  "guidanceBookPage": {
+    "heading": {
+      "1": "Book a Session"
+    }
+  },
+  "changePasswordPage": {
+    "button": { "1": "Update Password" }
+  },
+  "userInfoPage": {
+    "button": {
+      "1": "Edit Profile"
+    }
+  },
+  "myProfilePage": {
+    "heading": {
+      "1": "My Profile"
+    },
+    "tabs": {
+      "1": "Basic Details",
+      "2": "Change Password"
+    }
+  },
+  "myProgressPage": {
+    "heading": {
+      "1": {
+        "1": "Course",
+        "2": "in progress",
+        "3": "Completed"
+      },
+      "2": "Your test"
+    },
+    "button": {
+      "1": "Explore"
+    }
+  },
+  "successCareerOption": {
+    "heading": {
+      "1": "Choose Your Career",
+      "2": "Career Option"
+    },
+    "other": {
+      "1": "No Option selected!",
+      "2": "back",
+      "3": {
+        "1": "Choose Your",
+        "2": "Career"
+      }
+    },
+    "button": {
+      "1": "Read More"
+    }
+  },
+  "successCareerTestPage": {
+    "heading": {
+      "1": "Select test Categories",
+      "2": "Questions Status"
+    },
+    "other": {
+      "1": "Test Categories",
+      "2": "Answered",
+      "3": "Not Visited"
+    },
+    "button": {
+      "1": "Test Started",
+      "2": "Start Test"
+    }
+  },
+  "successStoriesPage": {
+    "heading": {
+      "1": "Over 5,000 students have learned with us"
+    },
+    "content": {
+      "1": "All over Indian Girl students are taking their web design careers to the next-level with Shekunj Academy. Here are some of their stories.",
+      "2": "Want to become our next success story?"
+    },
+    "other": {
+      "1": "Company",
+      "2": "Certification",
+      "3": "Duration"
+    },
+    "button": {
+      "1": "Show",
+      "2": "Start Learning"
+    }
+  },
+  "privacyPolicyPage": {
+    "heading": {
+      "1": "Privacy Policy",
+      "2": "Scope of this Privacy Policy",
+      "3": "Type of Personal Information we received or collect",
+      "4": "How We Use Information",
+      "5": "Cookies",
+      "6": "Changes to this Privacy Policy",
+      "7": "Third Party Content",
+      "8": "Disclaimer"
+    },
+    "content": {
+      "1": {
+        "1": "Personal information",
+        "2": "Means any information related to an identified or identifiable person including common identifiers like name, identification number, location details, online identifier or one or more factors specific to the physical,psychological, genetic,mental, economic, cultural or social identity of that person and any other information that is so categorized by applicable laws. We collect information about you and/or of your usage to provide better services and offerings. The Personal Information that we collect, and how we collect it, depends how you interact and connect with us. We collect the following categories of Personal Information in the following ways"
+      },
+      "2": "Name, email address, password, country, city, contact number and company/organization that you are associated with, when you sign up for alerts on the Platform;",
+      "3": "Information that one would usually include in a resume, including name, contact details including e-mail address and mobile number, work experience, educational qualifications, data relating to your current and past remuneration or salary, a copy of your resume, etc. when you register on the Platform;",
+      "4": "Information about the services that you use and how you use them, including log information and location information, when you are a user of the services through the Platform;",
+      "5": "We may collect your Personal Information such as name, age, contact details, preferences, etc. through surveys and forms, when you choose to participate in these surveys etc.",
+      "6": "We may also collect information relating to your caste and information about whether you are eligible for any affirmative action programmes or policies, if you opt to provide such information;",
+      "7": "When you communicate with us or use the Platform to communicate with other Users (such as partners, franchises), we collect information about your communication and any information you choose to provide;",
+      "8": "When you visit the Platform, we use cookies to automatically collect, store and use technical information about your system and interaction with our Platform",
+      "9": "When you use a device to access the Platform, we may collect technical or other related information from the device as well as the device location;",
+      "10": "To the extent permitted by law, We may record and monitor your communications with us to ensure compliance with our legal and regulatory obligations and our internal policies. This may include the recording of telephone conversations which you do with us;",
+      "11": "If you choose to sign in with your social media account to access the Platform, or otherwise connect your social media account with the services of the Platform, you consent to our collection, storage, and use, in accordance with this Privacy Policy of the information that you make available to us through the social media interface. Please seek to your social media provider's privacy policy and help centre for more information about how they share information when you choose to connect your account.",
+      "12": "We may use the mentioned information to deliver the products and services we offer, respond to you, and operate and improve our sites and applications. Our services include showing you personalized content and advertising on us or other related sites with which we have a business relationship. We may use your information to contact you about updates, conduct surveys, or to provide informational and service-related communications, including important security updates.",
+      "13": "Information you share in public areas or make visible in the resume and profile database may be accessed, used, and stored by others around the world like the recruiters or companies. We strive to provide a safe environment by attempting to limit access to our database to legitimate users, but we cannot guarantee that unauthorized parties will not gain access. We also cannot control how authorized users store or transfer information you give to us, so you should not post sensitive information on this portal.",
+      "14": "If you apply to a job, or register with us and provide your contact information to show interest in a job, or reply to a message from an employer then we share your information with employer/recruiters and who may use your data and contact you for employment related purposes only. If job seeker found another concern to contact then they can register a complaint against the employer/recruiter on support@shekunj.com",
+      "15": "Some of our web pages may utilize 'cookies' A 'cookie' is a small file that may be used, for example, to collect information about website activity. Some cookies and other technologies may serve to recall Personal Information previously indicated by a user. Most browsers allow you to control cookies, including whether or not to accept them and how to remove them.",
+      "16": "Cookies may record information such as Internet domain and host names; Internet protocol (IP) addresses; browser software and operating system types; clickstream patterns; and dates and times that our site is accessed. Our use of cookies and other tracking technologies allows us to improve our Platform and the overall website experience. We may also analyse information that does not contain Personal Information for trends and statistics.",
+      "17": "We reserves the right to update, change or modify this Privacy Policy at any time without notification.",
+      "18": "Please be aware that the Platform sometimes contains links to other sites that are not governed by this Privacy Policy. Users may be directed to third-party sites for more information, such as advertisers, blogs, content sponsorships, vendor services, social networks, etc.",
+      "19": "We makes no representations or warranties regarding how your information is stored or used on third-party servers. We recommend that you review the applicable privacy statements and policies of each third-party site linked from the Platform to determine their use of your personal information.",
+      "20": "We do not store any account related information or any credit / debit card details. We shall not be liable for any loss or damage sustained by Users as a result of any disclosure (inadvertent or otherwise) of any information concerning the User's account, credit cards or debit cards in the course of any online transactions or payments made for any products and/or services offered through the Platform.",
+      "21": "In case any Personal Information is shared by you, which is not requested by us during registration, (whether mandatorily or optionally), We will not be liable for any information security breach or disclosure in relation to such information.",
+      "22": "If you have any questions regarding this Privacy Policy or the protection of your Personal Information, please contact us on support@octahire.com. You can also write to us to suggest changes in Privacy Policy"
+    }
   }
 }

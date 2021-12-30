@@ -11,29 +11,31 @@ import * as Yup from "yup";
 import { Error } from "../../../../components";
 import { changePassword } from "../../../../store/auth/action";
 import ProfileImage from "../ProfileImage";
+import { useTranslation } from "react-i18next";
 
-const validationSchema = Yup.object({
-  old_password: Yup.string()
-    .min(6, "At least 6 characters")
-    .required("Password is required"),
-  new_password: Yup.string()
-    .min(6, "At least 6 characters")
-    .required("Password is required"),
-  confirm_password: Yup.string()
-    .min(6, "At least 6 characters")
-    .required("Confirm password is required")
-    .oneOf([Yup.ref("new_password"), null], "Passwords must match"),
-});
 
 function ChangePassword() {
   const { isLoading } = useSelector((state) => state.authReducer);
   const [visible, setVisible] = React.useState(false);
   const [visible1, setVisible1] = React.useState(false);
   const [visible2, setVisible2] = React.useState(false);
-
+  const { t } = useTranslation();
+  
   const dispatch = useDispatch();
   const history = useHistory();
-
+  
+  const validationSchema = Yup.object({
+    old_password: Yup.string()
+      .min(6, t("login.form1.passError.min"))
+      .required(t("login.form1.passError.required")),
+    new_password: Yup.string()
+      .min(6, t("login.form1.passError.min"))
+      .required(t("login.form1.passError.required")),
+    confirm_password: Yup.string()
+      .min(6, t("login.form1.passError.min"))
+      .required(t("login.form1.passError.confirmRequired"))
+      .oneOf([Yup.ref("new_password"), null], t("login.form1.passError.match")),
+  });
   const {
     handleSubmit,
     handleChange,
@@ -64,7 +66,7 @@ function ChangePassword() {
         <div className='change_pass'>
           <form onSubmit={handleSubmit}>
             <div className='form-group'>
-              <label>Old Password</label>
+              <label>{t("resetPassword.old")}</label>
 
               <TextField
                 name='old_password'
@@ -85,7 +87,7 @@ function ChangePassword() {
             </div>
 
             <div className='form-group'>
-              <label>New Password</label>
+              <label>{t("resetPassword.label")}</label>
 
               <TextField
                 name='new_password'
@@ -106,7 +108,7 @@ function ChangePassword() {
             </div>
 
             <div className='form-group'>
-              <label>Confirm New Password</label>
+              <label>{t("resetPassword.labelConfirm")}</label>
 
               <TextField
                 name='confirm_password'
@@ -138,7 +140,7 @@ function ChangePassword() {
                   style={{ margin: "0 45px" }}
                 />
               ) : (
-                "update password"
+                t("changePasswordPage.button.1")
               )}
             </button>
           </form>
