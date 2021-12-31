@@ -64,14 +64,14 @@ function CourseTest() {
               <div className='pro_div'>
                 <Row>
                   <Col md={3} xs={12}>
-                    <div class='progress' data-percentage='90'>
-                      <span class='progress-left'>
-                        <span class='progress-bar'></span>
+                    <div className='progress' data-percentage='90'>
+                      <span className='progress-left'>
+                        <span className='progress-bar'></span>
                       </span>
-                      <span class='progress-right'>
-                        <span class='progress-bar'></span>
+                      <span className='progress-right'>
+                        <span className='progress-bar'></span>
                       </span>
-                      <div class='progress-value'>
+                      <div className='progress-value'>
                         <div>
                           <p>{result?.no_of_correct_answer || 0}</p>
                           <br />
@@ -85,14 +85,14 @@ function CourseTest() {
                   </Col>
 
                   <Col md={6} xs={12}>
-                    <div class='progress pink_pro' data-percentage='78'>
-                      <span class='progress-left'>
-                        <span class='progress-bar col_chg'></span>
+                    <div className='progress pink_pro' data-percentage='78'>
+                      <span className='progress-left'>
+                        <span className='progress-bar col_chg'></span>
                       </span>
-                      <span class='progress-right'>
-                        <span class='progress-bar col_chg'></span>
+                      <span className='progress-right'>
+                        <span className='progress-bar col_chg'></span>
                       </span>
-                      <div class='progress-value'>
+                      <div className='progress-value'>
                         <div>
                           <p>{Math.round(result?.result) || 0}%</p>
                           <br />
@@ -106,14 +106,14 @@ function CourseTest() {
                   </Col>
 
                   <Col md={3} xs={12}>
-                    <div class='progress' data-percentage='45'>
-                      <span class='progress-left'>
-                        <span class='progress-bar'></span>
+                    <div className='progress' data-percentage='45'>
+                      <span className='progress-left'>
+                        <span className='progress-bar'></span>
                       </span>
-                      <span class='progress-right'>
-                        <span class='progress-bar'></span>
+                      <span className='progress-right'>
+                        <span className='progress-bar'></span>
                       </span>
-                      <div class='progress-value'>
+                      <div className='progress-value'>
                         <div>
                           <p>
                             {result?.test_time

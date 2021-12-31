@@ -84,7 +84,7 @@ function ContactUs() {
                       />
                     </div>
 
-                    <button class='send_btn'>{t("contactUs.button.1")}</button>
+                    <button className='send_btn'>{t("contactUs.button.1")}</button>
                   </form>
                 </div>
               </Col>

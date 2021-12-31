@@ -145,7 +145,7 @@ function EditProfile(props) {
                   <GuidanceSelect
                     flag={true}
                     icon={true}
-                    heading={t("common.formHeadings.highest_education")}
+                    title={t("common.formHeadings.highest_education")}
                     listItem={["10th", "12th", "Diploma", "PG", "UG"]}
                     defaultValue={values.highest_education}
                     updateValues={(value) =>
@@ -253,7 +253,7 @@ function EditProfile(props) {
                   <GuidanceSelect
                     flag={true}
                     icon={true}
-                    heading={t("common.formHeadings.stream")}
+                    title={t("common.formHeadings.stream")}
                     defaultValue={values.stream}
                     updateValues={(value) => setFieldValue("stream", value)}
                   />

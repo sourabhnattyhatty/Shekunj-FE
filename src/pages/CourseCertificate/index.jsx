@@ -101,21 +101,21 @@ function CourseTest() {
               <div className='certi_img'>
                 <p>
                   <div
-                    class='content'
+                    className='content'
                     onClick={() =>
                       history.push(routingConstants.ALL_CERTIFICATE_DETAIL + certificate?.id)
                     }
                     style={{ cursor: "pointer" }}
                   >
-                    <div class='content-overlay'></div>
+                    <div className='content-overlay'></div>
                     {/* <img src={Certificate} alt='' /> */}
                     
                     <CertificatesDetail ref={certificateRef} showButton={false}/>
-                    <div class='content-details fadeIn-bottom'>
-                      <h3 class='content-title'>
+                    <div className='content-details fadeIn-bottom'>
+                      <h3 className='content-title'>
                         <img src={fullscreen_icon} alt='' />
                       </h3>
-                      <p class='content-text'>{t("allCertificatePage.other.11")}</p>
+                      <p className='content-text'>{t("allCertificatePage.other.11")}</p>
                     </div>
                   </div>
                 </p>

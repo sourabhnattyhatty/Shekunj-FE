@@ -15,7 +15,7 @@ import clipboard from "../../assets/icons/clipboard.png";
 import flexible1 from "../../assets/icons/flexible1.png";
 import Language1 from "../../assets/icons/Language1.png";
 
-import { Header, Footer, SEO, Carousel, SocialShare } from "../../components";
+import { Header, Footer, SEO, Carousel } from "../../components";
 
 // import Device from "../../assets/images/CoursesDetails/Device.png";
 // import clock from "../../assets/images/CoursesDetails/clock.png";
