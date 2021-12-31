@@ -80,7 +80,7 @@ const CourseDetails = () => {
                 <p>{course?.description}</p>
               </div>
               <div className='mt-2 mb-2'>
-                <SocialShare />
+                {/* <SocialShare /> */}
               </div>
               <div className='sec1_con2 con_setSec1'>
                 <h2>{t("coursesPage.coursesDetailsPage.heading.3")}</h2>

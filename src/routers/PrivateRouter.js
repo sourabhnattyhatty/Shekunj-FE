@@ -6,13 +6,12 @@ import { routingConstants } from "../utils/constants";
 
 function PrivateRoute({ component: Component, ...rest }) {
   const token = Cookies.get("sheToken");
-
   return (
     <Route
       {...rest}
       render={(props) =>
         token ? (
-          <Component {...props} />
+          <Component {...props}  {...rest}/>
         ) : (
           <Redirect to={`${routingConstants.LOGIN}?redirect=${window.location.pathname}`} />
         )
