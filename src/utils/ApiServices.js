@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 
 import { checkIsSessionExpired, decodeToken } from ".";
+import { removeUnauthorizedUser } from "./utils";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true;
@@ -16,9 +17,7 @@ axios.interceptors.request.use((config) => {
   if (token) {
     const userInfo = decodeToken(token);
     if (userInfo?.exp && checkIsSessionExpired(userInfo?.exp)) {
-      Cookies.remove("userInfo");
-      toast.error("Session expired!");
-      window.location.href = "/login";
+      removeUnauthorizedUser();
     }
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -30,21 +29,18 @@ axios.interceptors.response.use(
     return response;
   },
   (error) => {
-    const { status } = !error.response;
+    const { status } = error?.response;
     switch (status) {
       case 401:
-        Cookies.remove("userInfo");
-        toast.error("Unauthorized access!");
-        window.location.href = "/login";
-        console.log("Logout user!");
+        removeUnauthorizedUser();
         break;
       case 403:
-        console.log("You are not allowed to do that!");
+        toast.error("You are not allowed to do that!");
         break;
       default:
         break;
     }
-    return Promise.reject(error.response);
+    return Promise.reject(error?.response);
   },
 );
 

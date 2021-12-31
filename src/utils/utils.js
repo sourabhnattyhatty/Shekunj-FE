@@ -191,3 +191,9 @@ export function timeDifferenceFromDates(sDate, eDate) {
       }
     : { hour: null, minute: null };
 }
+
+export const removeUnauthorizedUser = () => {
+  Cookies.remove("sheToken");
+  toast.error("Session expired!");
+  window.location.href = "/login";
+};
