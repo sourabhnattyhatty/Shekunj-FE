@@ -13,6 +13,8 @@ import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
 
 import jsPDF from "jspdf";
+import * as htmlToImage from "html-to-image";
+// import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
 
 const CertificatesDetail = forwardRef((props, ref) => {
   const dispatch = useDispatch();
@@ -35,12 +37,19 @@ const CertificatesDetail = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     generatePDF() {
       const doc = new jsPDF("p", "pt", "a3");
-      doc.html(document.querySelector(".box_certificate"), {
-        callback: function (pdf) {
-          debugger;
-          pdf.save("test.pdf");
-        },
+      const node = document.querySelector(".box_certificate");
+      htmlToImage.toJpeg(node).then(function (dataUrl) {
+        const img = new Image();
+        img.src = dataUrl;
+        doc.addImage(img, "JPGE", 0, 250, 840, 500);
+        doc.save("mycertificate.pdf");
       });
+      // doc.html(document.querySelector(".box_certificate"), {
+      //   callback: function (pdf) {
+      //     debugger;
+      //     pdf.save("test.pdf");
+      //   },
+      // });
     },
   }));
 
@@ -55,8 +64,8 @@ const CertificatesDetail = forwardRef((props, ref) => {
               <h2>{certificate?.name || t("common.n/a")}</h2>
               <hr className='hr_line' />
               <p className='first-number'>
-              {t("certificateDetailPage.content.1.1")} {certificate?.id}{" "}
-              {t("certificateDetailPage.content.1.2")}
+                {t("certificateDetailPage.content.1.1")} {certificate?.id}{" "}
+                {t("certificateDetailPage.content.1.2")}
               </p>
               <h3>“{t("certificateDetailPage.heading.1")}”</h3>
               <p className=''>
@@ -74,18 +83,22 @@ const CertificatesDetail = forwardRef((props, ref) => {
             {formatDate(certificate?.course_end_time, "DD/MM/YYYY")}
           </div>
           <hr className='hr_line2' />
-          <div className='date-text' >{t("common.time.7")}</div>
+          <div className='date-text'>{t("common.time.7")}</div>
         </div>
         <div className='signature_set'>
           <img src={signature} alt='' />
           <hr className='hr_line2' />
           <div className='president'>{t("certificateDetailPage.other.3")}</div>
-          <div className='name-surname'>{t("certificateDetailPage.other.4")}</div>
+          <div className='name-surname'>
+            {t("certificateDetailPage.other.4")}
+          </div>
         </div>
       </div>
       {props.showButton && (
         <Link to='/courses'>
-          <button className='back_course'>{t("allCertificatePage.button.3")}</button>
+          <button className='back_course'>
+            {t("allCertificatePage.button.3")}
+          </button>
         </Link>
       )}
     </div>

@@ -119,7 +119,7 @@ function CourseTest() {
                             {result?.test_time
                               ? (result?.test_time).toFixed(2)
                               : 0}{" "}
-                            <span>min</span>
+                            <span>{t("common.time.2")}</span>
                           </p>
                           <br />
                           <span>{t("coursesPage.coursesResultPage.other.5")}</span>

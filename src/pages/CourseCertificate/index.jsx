@@ -5,7 +5,6 @@ import { Header, Footer } from "../../components";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import check from "../../assets/images/Courses/check.png";
-// import Certificate from "../../assets/images/Courses/Certificate.png";
 import Dawnload from "../../assets/images/Courses/Dawnload.png";
 import Share from "../../assets/images/Courses/Share.png";
 import fullscreen_icon from "../../assets/images/Courses/fullscreen_icon.png";
@@ -17,7 +16,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserCourseCertificateDetail } from "../../store/certificate";
 
 
-// import jsPDF from "jspdf";
 import CertificatesDetail from "../Certificates/CertificatesDetail";
 
 function CourseTest() {
@@ -108,7 +106,6 @@ function CourseTest() {
                     style={{ cursor: "pointer" }}
                   >
                     <div className='content-overlay'></div>
-                    {/* <img src={Certificate} alt='' /> */}
                     
                     <CertificatesDetail ref={certificateRef} showButton={false}/>
                     <div className='content-details fadeIn-bottom'>

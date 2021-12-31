@@ -198,3 +198,14 @@ export const updateProfile = (id, values) => async (dispatch) => {
     toast.error(error?.data?.message || "Internal Server Error", toasterConfig);
   }
 };
+
+
+export const contactUs = (values) => async(dispatch) => {
+  try{
+    dispatch({type:authTypes.CONTACT_US_REQUEST})
+    await httpServices.post('/authentication/contact-us/',values);
+    toast.success("Sent Successfully", toasterConfig)
+  }catch(err) {
+    dispatch({type:authTypes.CONTACT_VERIFY_FAIL});
+  }
+}
