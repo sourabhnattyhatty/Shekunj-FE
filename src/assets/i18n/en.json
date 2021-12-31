@@ -82,7 +82,8 @@
       "6": "Internal Server Error",
       "7": "Session expired!",
       "8": "Unauthorized access!",
-      "9": "Something went wrong"
+      "9": "Something went wrong",
+      "10": "You are not allowed to do that!"
     },
     "login":{
       "1": "Google Login failed.",

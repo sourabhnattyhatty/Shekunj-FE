@@ -1,3 +1,4 @@
 import useDeviceDetect from "./useDeviceDetect";
+import useUnload from "./useUnload";
 
-export { useDeviceDetect };
+export { useDeviceDetect, useUnload };

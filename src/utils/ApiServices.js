@@ -6,6 +6,7 @@ import i18njs from "../assets/i18n/i18n"
 
 import { checkIsSessionExpired, decodeToken } from ".";
 import { routingConstants } from "./constants";
+import { removeUnauthorizedUser } from "./utils";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true;
@@ -21,9 +22,7 @@ axios.interceptors.request.use((config) => {
   if (token) {
     const userInfo = decodeToken(token);
     if (userInfo?.exp && checkIsSessionExpired(userInfo?.exp)) {
-      Cookies.remove("sheToken");
-      toast.error(i18njs.t("error.other.7"));
-      window.location.href = routingConstants.LOGIN;
+      removeUnauthorizedUser();
     }
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -35,19 +34,18 @@ axios.interceptors.response.use(
     return response;
   },
   (error) => {
-    const { status } = !error.response;
+    const { status } = error?.response;
     switch (status) {
       case 401:
-        Cookies.remove("userInfo");
-        toast.error(i18njs.t("error.other.8"));
-        window.location.href = routingConstants.LOGIN;
+        removeUnauthorizedUser();
         break;
       case 403:
+        toast.error(i18njs.t("error.other.10"));
         break;
       default:
         break;
     }
-    return Promise.reject(error.response);
+    return Promise.reject(error?.response);
   },
 );
 
