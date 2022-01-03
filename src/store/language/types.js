@@ -1,3 +1,3 @@
 export const languageTypes = {
-    LANGUAGE_CHANGE : 'languageChange'
+    LANGUAGE_CHANGE : 'LANGUAGE_CHANGE'
   };

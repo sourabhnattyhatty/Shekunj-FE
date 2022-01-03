@@ -55,8 +55,11 @@ const apiConstants = {
   },
   CAREER: {
     GOVERNMENT_EXAMS: "career/government-exam/",
+    START_USER_CAREER_TEST: "career/start-user-career-test/",
     TOP_COLLEGE_LIST: "career/top-collage-list/",
     TOP_SCHOOL_LIST: "career/top-school-list/",
+    USER_CAREER_TEST_RESULT: "/career/user-career-test-result/",
+    USER_CAREER_END_TEST: "/career/user-career-test-end/"
   },
   CERTIFICATE: {
     USER_ALL_CERTIFICATE: "course/user-all-certificate/",

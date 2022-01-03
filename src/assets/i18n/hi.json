@@ -12,6 +12,7 @@
     "formHeadings": {
       "fname": "पहला नाम",
       "lname": "उपनाम",
+      "password": "पासवर्ड",
       "email": "ईमेल",
       "highest_education": "उच्चतम शिक्षा",
       "dob": "जन्म की तारीख",

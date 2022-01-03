@@ -126,7 +126,9 @@ export const getSingleCourseModule = (id) => async (dispatch) => {
 export const getSimilarCourses = (categoryId) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.SIMILAR_COURSES_REQUEST });
-    const res = await httpServices.get(constants.CATEGORY_DETAIL + categoryId + "/");
+    const res = await httpServices.get(
+      constants.CATEGORY_DETAIL + categoryId + "/",
+    );
     dispatch({
       type: coursesTypes.SIMILAR_COURSES_FINISH,
       payload: res?.data?.course_set
@@ -152,7 +154,9 @@ export const getUserTestQuestion =
         );
       } else if (module && progress > 0) {
         res = await httpServices.get(
-          `${constants.USER_TEST_COURSE + id}?test_id=${module}&progress=${progress}`,
+          `${
+            constants.USER_TEST_COURSE + id
+          }?test_id=${module}&progress=${progress}`,
         );
       } else if (progress && progress > 0) {
         res = await httpServices.get(
@@ -165,9 +169,7 @@ export const getUserTestQuestion =
     } catch (err) {
       if (err?.status === 400) {
         if (err.data.message === "Already course test is completed") {
-          const res = await httpServices.get(
-            `/course/user-course-result/${id}`,
-          );
+          const res = await httpServices.get(constants.USER_COURSE_RESULT);
           history?.push(routingConstants.COURSE_CERTIFICATE + res.data.id);
           toast.success(err.data.message, toasterConfig);
         } else {
@@ -187,12 +189,12 @@ export const postAnswer =
     try {
       dispatch({ type: coursesTypes.POST_ANSWER_REQUEST });
       const res = await httpServices.post(
-        `/course/user-test-course/${id}`,
+        constants.USER_TEST_COURSE + id,
         values,
       );
       dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
       if (res.status_code === 200 && last) {
-        await httpServices.post(`/course/user-course-end-time/${id}`);
+        await httpServices.post(constants.USER_COURSE_END_TIME + id);
         history.push(routingConstants.COURSES_RESULT + id);
       }
     } catch (err) {

@@ -1,4 +1,4 @@
-import { languageTypes } from "./types";
+import { languageTypes } from ".";
 
 export const languageReducer = (state = false, action) => {
   switch (action.type) {

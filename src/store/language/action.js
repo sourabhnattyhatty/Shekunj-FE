@@ -1,4 +1,4 @@
-import { languageTypes } from "./types";
+import { languageTypes } from ".";
 
 const languageChange = state => {
     return {
