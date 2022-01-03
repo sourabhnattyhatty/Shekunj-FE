@@ -12,6 +12,7 @@
     "formHeadings": {
       "fname": "First Name",
       "lname": "Last Name",
+      "password": "Password",
       "email": "Email",
       "highest_education": "Highest Education",
       "dob": "Date of birth",

@@ -142,14 +142,14 @@ function CourseTest() {
   }, [questionCount, questionCount?.counse_time]);
 
   const handleNextQuestion = () => {
-    setQuestionNumber((prev) => prev + 1);
     const data = {
       answer,
       course_test: question?.id,
     };
     const newProgress = (questionCount?.user_course_test_count + 1) * progress;
-
+    
     if (answer) {
+      setQuestionNumber((prev) => prev + 1);
       dispatch(postAnswer(data,history, id,false));
       setAnswer("");
       if (question?.answer) {
