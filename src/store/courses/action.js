@@ -126,7 +126,9 @@ export const getSingleCourseModule = (id) => async (dispatch) => {
 export const getSimilarCourses = (categoryId) => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.SIMILAR_COURSES_REQUEST });
-    const res = await httpServices.get(constants.CATEGORY_DETAIL + categoryId + "/");
+    const res = await httpServices.get(
+      constants.CATEGORY_DETAIL + categoryId + "/",
+    );
     dispatch({
       type: coursesTypes.SIMILAR_COURSES_FINISH,
       payload: res?.data?.course_set
@@ -152,7 +154,9 @@ export const getUserTestQuestion =
         );
       } else if (module && progress > 0) {
         res = await httpServices.get(
-          `${constants.USER_TEST_COURSE + id}?test_id=${module}&progress=${progress}`,
+          `${
+            constants.USER_TEST_COURSE + id
+          }?test_id=${module}&progress=${progress}`,
         );
       } else if (progress && progress > 0) {
         res = await httpServices.get(
@@ -191,6 +195,15 @@ export const postAnswer =
         values,
       );
       dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
+      if (res.status_code === 200 && !last) {
+        dispatch({ type: coursesTypes.QUESTION_COUNT_REQUEST });
+        const res = await httpServices.get(constants.USER_TEST_COUNT + id);
+        dispatch({
+          type: coursesTypes.QUESTION_COUNT_FINISH,
+          payload: res.data,
+        });
+      }
+
       if (res.status_code === 200 && last) {
         await httpServices.post(`/course/user-course-end-time/${id}`);
         history.push(routingConstants.COURSES_RESULT + id);

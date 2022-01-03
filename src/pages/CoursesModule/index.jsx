@@ -90,7 +90,6 @@ const CourseModule = () => {
   const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
     (state) => state.coursesReducer,
   );
-  console.log(">>>>>>>>>>>>>>>>>", course);
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
   const { id } = useParams();
@@ -183,7 +182,7 @@ const CourseModule = () => {
                           : ""
                       }
                     >
-                      1.{obj.id}
+                      1.{ind + 1}
                     </li>
                   ))}
                 </ul>

@@ -52,7 +52,6 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 function CourseTest() {
   const [questionNumber, setQuestionNumber] = React.useState(1);
   const [answer, setAnswer] = React.useState();
-  const [toggle, setToggle] = React.useState(true);
   const [showTimer, setShowTimer] = React.useState(false);
   const [timer, setTimer] = React.useState();
 
@@ -82,7 +81,7 @@ function CourseTest() {
       toast.error(t("error.mobile.1"));
       history.push(routingConstants.HOME_PAGE);
     }
-  }, [history, detect.isMobile, id, dispatch,t]);
+  }, [history, detect.isMobile, id, dispatch, t]);
 
   useEffect(() => {
     if (question) {
@@ -128,17 +127,13 @@ function CourseTest() {
 
   React.useEffect(() => {
     dispatch(testCountSummery(id, history));
-  }, [dispatch, toggle, history, id]);
+  }, [dispatch, history, id]);
 
   React.useEffect(() => {
     if (questionCount && questionCount?.counse_time > 0) {
       setTimer(parseInt(questionCount?.counse_time, 10) * 60000);
       setShowTimer(true);
     }
-    setCheck1(false);
-    setCheck2(false);
-    setCheck3(false);
-    setCheck4(false);
   }, [questionCount, questionCount?.counse_time]);
 
   const handleNextQuestion = () => {
@@ -147,10 +142,10 @@ function CourseTest() {
       course_test: question?.id,
     };
     const newProgress = (questionCount?.user_course_test_count + 1) * progress;
-    
+
     if (answer) {
       setQuestionNumber((prev) => prev + 1);
-      dispatch(postAnswer(data,history, id,false));
+      dispatch(postAnswer(data, history, id, false));
       setAnswer("");
       if (question?.answer) {
         dispatch(getUserTestQuestion(id, history, question?.next_module));
@@ -159,16 +154,11 @@ function CourseTest() {
           getUserTestQuestion(id, history, question?.next_module, newProgress),
         );
       }
-      setToggle((prev) => !prev);
     } else {
       toast.error(t("error.other.1"), {
         position: "bottom-center",
       });
     }
-    setCheck1(false);
-    setCheck2(false);
-    setCheck3(false);
-    setCheck4(false);
   };
 
   const handleFinishQuestion = () => {
@@ -177,8 +167,7 @@ function CourseTest() {
       course_test: question?.id,
     };
     if (answer) {
-      dispatch(postAnswer(data,history, id,true));
-      // dispatch(endTest(id));
+      dispatch(postAnswer(data, history, id, true));
       setAnswer("");
     } else {
       toast.error(t("error.other.1"), {
@@ -296,7 +285,6 @@ function CourseTest() {
                 <Skeleton></Skeleton>
               ) : (
                 <p>
-                  {/* {questionCount?.user_course_test_count + 1}.{" "} */}
                   {questionNumber}. {question?.question}
                 </p>
               )}
@@ -422,10 +410,12 @@ function CourseTest() {
             <div className='ans_not'>
               <ul>
                 <li>
-                  <span className='dotte1'></span> {t("successCareerTestPage.other.2")}
+                  <span className='dotte1'></span>{" "}
+                  {t("successCareerTestPage.other.2")}
                 </li>
                 <li>
-                  <span className='dotte2'></span> {t("successCareerTestPage.other.3")}
+                  <span className='dotte2'></span>{" "}
+                  {t("successCareerTestPage.other.3")}
                 </li>
               </ul>
             </div>

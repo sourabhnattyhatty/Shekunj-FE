@@ -32,7 +32,6 @@ function ContactUs() {
       },
       validationSchema,
       onSubmit(values) {
-        console.log(values);
         dispatch(contactUs(values));
         clearFields();
       },
