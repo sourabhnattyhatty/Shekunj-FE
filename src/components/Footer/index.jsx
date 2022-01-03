@@ -73,7 +73,7 @@ const Footer = ({ loginPage }) => {
                 </li> */}
 
                 <li>
-                  <Link to='/PageNotFound'>{t("footer.links.col2.3")}</Link>
+                  <Link to={routingConstants.HELP_AND_SUPPORT}>{t("footer.links.col2.3")}</Link>
                 </li>
               </ul>
             </div>

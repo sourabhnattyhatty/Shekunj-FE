@@ -6,6 +6,9 @@ import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import LanguageIcon from "@mui/icons-material/Language";
 import { makeStyles } from "@mui/styles";
+import { useDispatch, useSelector } from "react-redux";
+import { languageChange } from "../../store/language/";
+import { useEffect } from "react";
 
 const useStyles = makeStyles({
   language: {
@@ -23,6 +26,8 @@ const useStyles = makeStyles({
 });
 
 function ChangeLanguageButton() {
+  const dispatch = useDispatch();
+  const languageState = useSelector((state) => state.languageReducer);
   const [language, setLanguage] = useState(
     localStorage.getItem("i18nextLng") || "en",
   );
@@ -37,10 +42,17 @@ function ChangeLanguageButton() {
     setAnchorEl(event.currentTarget);
   };
 
+  useEffect(() => {
+    localStorage.getItem("i18nextLng") === "en"
+      ? setLanguage("en")
+      : setLanguage("hi");
+  }, [languageState]);
+
   const changeLanguage = (e, lan) => {
     i18n.changeLanguage(lan);
     setLanguage(lan);
     setAnchorEl(null);
+    dispatch(languageChange(!languageState));
   };
 
   const handleClose = () => {

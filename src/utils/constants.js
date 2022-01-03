@@ -26,6 +26,7 @@ const routingConstants = {
   FORGOT: "/forgot",
   GOVERNMENT_EXAMS: "/government-exams/",
   GUIDANCE_BOOK: "/guidance-book/",
+  HELP_AND_SUPPORT: "/help-and-support",
   HOME_PAGE: "/",
   LOGIN: "/login",
   MY_PROFILE: "/my-profile/",
