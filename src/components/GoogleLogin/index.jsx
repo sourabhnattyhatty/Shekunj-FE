@@ -24,6 +24,7 @@ function GoogleLoginComponent({ showOr }) {
   const redirect = query.get("redirect");
 
   const responseGoogle = (res) => {
+    console.log(res.tokenId);
     if (res && res.tokenId) {
       dispatch(
         registerWithGoogle({ auth_token: res.tokenId }, history, redirect),

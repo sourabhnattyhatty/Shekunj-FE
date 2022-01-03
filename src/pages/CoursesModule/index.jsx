@@ -90,6 +90,7 @@ const CourseModule = () => {
   const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
     (state) => state.coursesReducer,
   );
+  console.log(">>>>>>>>>>>>>>>>>", course);
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
   const { id } = useParams();
@@ -290,7 +291,10 @@ const CourseModule = () => {
                         <button
                           className='back_button'
                           onClick={() => handlePrevModule(course?.prev_module)}
-                          disabled={course?.current_module === "1"}
+                          disabled={
+                            course?.current_module === "1" ||
+                            course?.current_module === null
+                          }
                         >
                           {t("coursesPage.coursesModulePage.button.1")}
                         </button>

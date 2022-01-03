@@ -51,28 +51,25 @@ const Courses = (props) => {
   };
 
   const checkFunction = () => {
-    return state?.allCourses?.results
-      ?.slice(0)
-      .reverse()
-      .map((obj) => (
-        <Link
-          to={routingConstants.COURSE_DETAILS + obj.id}
-          className='col-md-6'
-          key={obj?.id}
-        >
-          <div className='box box_hov'>
-            <div className='slide-img'>
-              <img alt='' src={obj?.image} />
-              <div className='overlay'></div>
-            </div>
-
-            <div className='tag_btn'>
-              <button className='btn btn-info'>{obj?.category_name}</button>
-              <h6>{obj?.name}</h6>
-            </div>
+    return state?.allCourses?.results?.map((obj) => (
+      <Link
+        to={routingConstants.COURSE_DETAILS + obj.id}
+        className='col-md-6'
+        key={obj?.id}
+      >
+        <div className='box box_hov'>
+          <div className='slide-img'>
+            <img alt='' src={obj?.image} />
+            <div className='overlay'></div>
           </div>
-        </Link>
-      ));
+
+          <div className='tag_btn'>
+            <button className='btn btn-info'>{obj?.category_name}</button>
+            <h6>{obj?.name}</h6>
+          </div>
+        </div>
+      </Link>
+    ));
   };
   return (
     <div>
@@ -207,7 +204,9 @@ const Courses = (props) => {
                   {state?.allCourses?.results?.length > 0 ? (
                     checkFunction()
                   ) : (
-                    <div className='text-center mt-2'>{t("common.noDataFound")}</div>
+                    <div className='text-center mt-2'>
+                      {t("common.noDataFound")}
+                    </div>
                   )}
                 </div>
               </div>

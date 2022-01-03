@@ -15,7 +15,6 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCourseCertificateDetail } from "../../store/certificate";
 
-
 import CertificatesDetail from "../Certificates/CertificatesDetail";
 
 function CourseTest() {
@@ -75,18 +74,22 @@ function CourseTest() {
                   <div className='skill_flex'>
                     <ul>
                       <li>
-                        <img src={check} alt='' /> {t("allCertificatePage.skills.1")}
+                        <img src={check} alt='' />{" "}
+                        {t("allCertificatePage.skills.1")}
                       </li>
                       <li>
-                        <img src={check} alt='' /> {t("allCertificatePage.skills.2")}
+                        <img src={check} alt='' />{" "}
+                        {t("allCertificatePage.skills.2")}
                       </li>
                     </ul>
                     <ul>
                       <li>
-                        <img src={check} alt='' /> {t("allCertificatePage.skills.3")}
+                        <img src={check} alt='' />{" "}
+                        {t("allCertificatePage.skills.3")}
                       </li>
                       <li>
-                        <img src={check} alt='' /> {t("allCertificatePage.skills.4")}
+                        <img src={check} alt='' />{" "}
+                        {t("allCertificatePage.skills.4")}
                       </li>
                     </ul>
                   </div>
@@ -95,28 +98,37 @@ function CourseTest() {
             </Col>
 
             <Col md={7} xs={12} className=''>
-            <p className='cou_tit'>{t("allCertificatePage.other.10")}</p>
+              <p className='cou_tit'>{t("allCertificatePage.other.10")}</p>
               <div className='certi_img'>
                 <p>
                   <div
                     className='content'
                     onClick={() =>
-                      history.push(routingConstants.ALL_CERTIFICATE_DETAIL + certificate?.id)
+                      history.push(
+                        routingConstants.ALL_CERTIFICATE_DETAIL +
+                          certificate?.id,
+                      )
                     }
                     style={{ cursor: "pointer" }}
                   >
                     <div className='content-overlay'></div>
-                    
-                    <CertificatesDetail ref={certificateRef} showButton={false}/>
+
+                    <CertificatesDetail
+                      ref={certificateRef}
+                      showButton={false}
+                      size='small'
+                    />
                     <div className='content-details fadeIn-bottom'>
                       <h3 className='content-title'>
                         <img src={fullscreen_icon} alt='' />
                       </h3>
-                      <p className='content-text'>{t("allCertificatePage.other.11")}</p>
+                      <p className='content-text'>
+                        {t("allCertificatePage.other.11")}
+                      </p>
                     </div>
                   </div>
                 </p>
-                <p className="certificate-downloaddiv">
+                <p className='certificate-downloaddiv'>
                   <img
                     src={Dawnload}
                     alt=''

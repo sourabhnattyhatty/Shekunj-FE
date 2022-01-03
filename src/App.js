@@ -86,6 +86,7 @@ function App() {
           path={`${routingConstants.ALL_CERTIFICATE_DETAIL}:id`}
           component={CertificateDetail}
           showButton
+          size="large"
         />
         <Route exact path={routingConstants.CONTACT_US} component={ContactUs} />
         <Route exact path={routingConstants.EMAIL_PAGE} component={EmailPage} />

@@ -37,7 +37,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     generatePDF() {
       const doc = new jsPDF("p", "pt", "a3");
-      const node = document.querySelector(".box_certificate");
+      const node = document.querySelector(".box_certificate_small");
       htmlToImage.toJpeg(node).then(function (dataUrl) {
         const img = new Image();
         img.src = dataUrl;
@@ -55,10 +55,22 @@ const CertificatesDetail = forwardRef((props, ref) => {
 
   return (
     <div className='container p-0'>
-      <div className='box_certificate mb-4'>
+      <div
+        className={
+          props.size === "large"
+            ? "box_certificate_large mt-4"
+            : "box_certificate_small mb-4"
+        }
+      >
         <Row>
           <Col md={7} xs={12} className='offset-3'>
-            <div className='cercifi_con'>
+            <div
+              className={
+                props.size === "large"
+                  ? "cercifi_con_large"
+                  : "cercifi_con_small"
+              }
+            >
               <img className='cer_text' src={Certificate_text} alt='' />
               <img className='last-img' src={para} alt='' />
               <h2>{certificate?.name || t("common.n/a")}</h2>
@@ -67,8 +79,9 @@ const CertificatesDetail = forwardRef((props, ref) => {
                 {t("certificateDetailPage.content.1.1")} {certificate?.id}{" "}
                 {t("certificateDetailPage.content.1.2")}
               </p>
-              <h3>“{t("certificateDetailPage.heading.1")}”</h3>
-              <p className=''>
+              {/* <h3>“{t("certificateDetailPage.heading.1")}”</h3> */}
+              <h3>“{certificate?.course_name}”</h3>
+              <p className='second-number'>
                 {t("certificateDetailPage.other.1")}{" "}
                 {formatDate(certificate?.course_start_time, "MMM Do YYYY")} to{" "}
                 {formatDate(certificate?.course_end_time, "MMM Do YYYY")}
@@ -78,7 +91,11 @@ const CertificatesDetail = forwardRef((props, ref) => {
           </Col>
         </Row>
 
-        <div className='date_set'>
+        <div
+          className={
+            props.size === "large" ? "date_set_large" : "date_set_small"
+          }
+        >
           <div className='date-certi'>
             {formatDate(certificate?.course_end_time, "DD/MM/YYYY")}
           </div>
