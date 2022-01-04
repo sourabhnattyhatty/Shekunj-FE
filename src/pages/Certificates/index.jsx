@@ -63,7 +63,6 @@ function AllCertificatePage() {
                 <div className='all_certif_box' key={c?.id}>
                   <Row>
                     <Col md={6} xs={12}>
-                      {/* <img className='certif_img' src={Certificate01} alt='' /> */}
                       <CertificatesDetail
                         ref={certificateRef}
                         showButton={false}
