@@ -64,42 +64,47 @@ export default function SimpleAccordion(props) {
   const [selectedFilter, setSelectedFilter] = useState(null);
   const {
     selectedFilter: currentFilter,
-    categoryList,allCourses
+    categoryList,
+    allCourses,
   } = useSelector((state) => state.coursesReducer);
   const dispatch = useDispatch();
-  const [subSelected,setSubSelected] = useState(null);
+
+  const [pageLimit] = useState(10);
+
+  const [subSelected, setSubSelected] = useState(null);
   const { t } = useTranslation();
   useEffect(() => {
     dispatch(setFilter(null));
     dispatch(getCategoryList());
   }, [dispatch]);
   const handleCategoryChange = (_, obj) => {
-    dispatch(fetchAllCourses(`?category_id=${obj.id}`));
+    dispatch(fetchAllCourses(`?category_id=${obj.id}&limit=${pageLimit}`));
     dispatch(setFilter([obj]));
     setSelectedFilter(obj.id);
     setSubSelected(0);
+    props.categoryId(obj.id);
   };
 
   const handleSubCategoryChange = (e, obj) => {
-      dispatch(fetchAllCourses(`?id=${obj.id}&category_id=${selectedFilter}`));
-      setSubSelected(obj?.id);
-    };
+    dispatch(fetchAllCourses(`?id=${obj.id}&category_id=${selectedFilter}`));
+    props.categoryId(selectedFilter);
+    setSubSelected(obj?.id);
+  };
 
   useEffect(() => {
     if (currentFilter === null) {
       setSelectedFilter(null);
     }
-    if(props.isResetPressed){
+    if (props.isResetPressed) {
       setSubSelected(0);
       props.changeResetAgain(false);
     }
-    if(subSelected>0){
+    if (subSelected > 0) {
       props.isSubSelected(true);
     } else {
       props.isSubSelected(false);
     }
-  }, [currentFilter,subSelected,props]);
-
+  }, [currentFilter, subSelected, props]);
 
   return (
     <div className='accordion_box_all'>
