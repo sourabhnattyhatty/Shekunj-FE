@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
@@ -16,12 +16,20 @@ import Aos from "aos";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
+import CertificatesDetail from "./CertificatesDetail";
 
 function AllCertificatePage() {
+
   const history = useHistory();
+
   const dispatch = useDispatch();
+
   const { certificates } = useSelector((state) => state.certificateReducer);
+
   const { t } = useTranslation();
+
+  const certificateRef = useRef();
+
 
   useEffect(() => {
     dispatch(getUserCourseCertificate());
@@ -58,10 +66,15 @@ function AllCertificatePage() {
               <>
                 <div className='all_certif_box' key={c?.id}>
                   <Row>
-                    <Col md={5} xs={12}>
-                      <img className='certif_img' src={Certificate01} alt='' />
+                    <Col md={6} xs={12}>
+                      {/* <img className='certif_img' src={Certificate01} alt='' /> */}
+                      <CertificatesDetail
+                        ref={certificateRef}
+                        showButton={false}
+                        size='small'
+                      />
                     </Col>
-                    <Col md={7} xs={12}>
+                    <Col md={6} xs={12}>
                       <div className='all_certif_con'>
                         <h2>{c?.course_name || t("common.n/a")}</h2>
                         <p>{c?.description || t("common.n/a")} </p>

@@ -11,6 +11,7 @@ import clock1 from "../../assets/icons/clock1.png";
 
 import "./index.scss";
 import { useTranslation } from "react-i18next";
+import CertificatesDetail from "../Certificates/CertificatesDetail";
 
 function AllCertificatePage() {
   const dispatch = useDispatch();
@@ -38,9 +39,7 @@ function AllCertificatePage() {
           <Row>
             <Col md={5} xs={12} data-aos='slide-up'>
               <h2>{t("allCertificatePage.heading.1")}</h2>
-              <p>
-              {t("allCertificatePage.content.1")}
-              </p>
+              <p>{t("allCertificatePage.content.1")}</p>
             </Col>
           </Row>
         </Container>
@@ -55,7 +54,12 @@ function AllCertificatePage() {
                 <div className='all_certif_box' key={c?.id}>
                   <Row>
                     <Col md={5} xs={12}>
-                      <img className='certif_img' src={Certificate01} alt='' />
+                      {/* <img className='certif_img' src={Certificate01} alt='' /> */}
+                      <CertificatesDetail
+                        ref={certificateRef}
+                        showButton={false}
+                        size='small'
+                      />
                     </Col>
 
                     <Col md={7} xs={12}>
