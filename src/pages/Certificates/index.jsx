@@ -19,7 +19,6 @@ import { useTranslation } from "react-i18next";
 import CertificatesDetail from "./CertificatesDetail";
 
 function AllCertificatePage() {
-
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -29,7 +28,6 @@ function AllCertificatePage() {
   const { t } = useTranslation();
 
   const certificateRef = useRef();
-
 
   useEffect(() => {
     dispatch(getUserCourseCertificate());
@@ -49,11 +47,9 @@ function AllCertificatePage() {
       <div className='all_certif_banner'>
         <Container>
           <Row>
-            <Col md={5} xs={12} data-aos="slide-up">
+            <Col md={5} xs={12} data-aos='slide-up'>
               <h2>{t("allCertificatePage.heading.1")}</h2>
-              <p>
-              {t("allCertificatePage.content.1")}
-              </p>
+              <p>{t("allCertificatePage.content.1")}</p>
             </Col>
           </Row>
         </Container>
@@ -72,6 +68,7 @@ function AllCertificatePage() {
                         ref={certificateRef}
                         showButton={false}
                         size='small'
+                        id={c?.id}
                       />
                     </Col>
                     <Col md={6} xs={12}>
@@ -103,7 +100,10 @@ function AllCertificatePage() {
                             <li>
                               <img src={lecturesIcon} alt='' />
                             </li>
-                            <li>{c?.no_of_lecture || 0} {t("allCertificatePage.other.1")}</li>
+                            <li>
+                              {c?.no_of_lecture || 0}{" "}
+                              {t("allCertificatePage.other.1")}
+                            </li>
                           </ul>
                           <ul>
                             <li>
@@ -114,7 +114,9 @@ function AllCertificatePage() {
                         </div>
                         <button
                           onClick={() =>
-                            history.push(routingConstants.ALL_CERTIFICATE_DETAIL + c?.id)
+                            history.push(
+                              routingConstants.ALL_CERTIFICATE_DETAIL + c?.id,
+                            )
                           }
                         >
                           {t("allCertificatePage.button.1")}
