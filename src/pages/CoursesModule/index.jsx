@@ -200,43 +200,46 @@ const CourseModule = () => {
                       onClick={handleAccordian}
                     />
                   </div>
-                  <Accordion
-                    expanded={expanded === "panel1"}
-                    onChange={handleChange("panel1")}
-                  >
-                    <AccordionSummary
-                      aria-controls='panel1d-content'
-                      id='panel1d-header'
+                  {courseModulesList?.map((obj, ind) => (
+                    <Accordion
+                      expanded={expanded === `panel${ind + 1}`}
+                      onChange={handleChange(`panel${ind + 1}`)}
                     >
-                      <Typography>
-                        <div className='number-bgbox'>1</div>
-                        {t("coursesPage.coursesModulePage.other.1")}
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <ul className='pl-5 position-relative'>
-                        {courseModulesList.map((obj, ind) => (
-                          <li
-                            key={obj?.id}
-                            className={
-                              Number(course?.current_module) > obj?.id
-                                ? "active-accordiantext"
-                                : ""
-                            }
-                          >
-                            {Number(course?.current_module) > obj?.id && (
-                              <img
-                                src={Rightcheck}
-                                className='ml-2'
-                                alt='...'
-                              />
-                            )}
-                            1.{ind + 1} {obj?.title}
-                          </li>
+                      <AccordionSummary
+                        aria-controls={`panel${ind + 1}d-content`}
+                        id={`panel${ind + 1}d-header`}
+                      >
+                        <Typography>
+                          <div className='number-bgbox'>{ind + 1}</div>
+                          {obj.title}
+                        </Typography>
+                      </AccordionSummary>
+                      {obj?.sub_task &&
+                        obj?.sub_task?.map((obj1, ind1) => (
+                          <AccordionDetails>
+                            <ul className='pl-5 position-relative'>
+                              <li
+                                key={obj?.id}
+                                className={
+                                  Number(course?.current_module) > obj?.id
+                                    ? "active-accordiantext"
+                                    : ""
+                                }
+                              >
+                                {Number(course?.current_module) > obj?.id && (
+                                  <img
+                                    src={Rightcheck}
+                                    className='ml-2'
+                                    alt='...'
+                                  />
+                                )}
+                                1.{ind + 1} {obj?.title}
+                              </li>
+                            </ul>
+                          </AccordionDetails>
                         ))}
-                      </ul>
-                    </AccordionDetails>
-                  </Accordion>
+                    </Accordion>
+                  ))}
                 </div>
               </Col>
             )}
