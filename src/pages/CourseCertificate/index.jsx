@@ -6,7 +6,6 @@ import "./index.scss";
 import "../CoursesModule/index.scss";
 import check from "../../assets/images/Courses/check.png";
 import Dawnload from "../../assets/images/Courses/Dawnload.png";
-import Share from "../../assets/images/Courses/Share.png";
 import fullscreen_icon from "../../assets/images/Courses/fullscreen_icon.png";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
