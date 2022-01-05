@@ -1081,7 +1081,7 @@ ul.star {
     line-height: 35px;
     display: flex;
     align-items: center;
-    text-align: center;
+    text-align: left;
     color: #333333;
   }
   // #myCarousel .carousel-item {
@@ -1098,9 +1098,7 @@ ul.star {
   // #myCarousel .carousel-item {
   //   height: 60vh;
   // }
-  #myCarousel .carousel-item h4 {
-    font-size: 30px;
-  }
+  
 }
 // @media screen and (min-device-width: 1400px) and (max-device-width:1440px) {
 //   #myCarousel .carousel-item{
@@ -1115,4 +1113,64 @@ ul.star {
 .community-img.mt-5 {
   height: 550px;
   position: relative;
+}
+
+
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) { 
+  #myCarousel .carousel-item {
+    height: 30vh;
+  }
+  #myCarousel .slick-prev {
+    display: none !important;
+  }
+  #myCarousel .slick-next {
+    display: none !important;
+  }
+  .resume .resumeimg {
+    right: 0;
+    width: 430px;
+}
+#myCarousel .carousel-item h4 {
+  font-size: 21px;
+}
+.certificate {
+  background-image: none;
+}
+.cer_img {
+  display: block;
+}
+.cer_img img {
+  max-width: 100%;
+}
+.mob_comunity_img {
+  display: block;
+}
+.community-img.mt-5 {
+  display: none;
+}
+.job-opprtunity-bg .jobimg {
+  top: -65px;
+}
+.tes_box {
+  height: auto !important;
+}
+.tes_box2 {
+  width: 100%;
+}
+}
+
+
+@media screen and (max-width: 768px) {
+  .job-opprtunity-bg .jobimg {
+    display: none;
+  }
+  .job-opprtunity-bg {
+    padding: 35px 79px;
+  }
+  .highlight_student h3 {
+    font-size: 28px;
+    line-height: 40px;
+}
+
 }

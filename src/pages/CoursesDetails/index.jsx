@@ -102,6 +102,32 @@ const CourseDetails = () => {
                 </Row>
               </div>
 
+              
+            </div>
+
+            <div className='col-md-5'>
+              <div className='sec2_right'>
+                <Link
+                  to={routingConstants.COURSES_MODULE + id}
+                  className='btn btn_str_Cor'
+                >
+                  {t("coursesPage.coursesDetailsPage.other.1")}
+                </Link>
+                <h3 className='similar-coursestext'>
+                  {t("coursesPage.coursesDetailsPage.other.2")}
+                </h3>
+                <div className='cou_set_similer'>
+                  <Carousel page='courseDetail' />
+                </div>
+                <Link to='/courses' className='btn_view'>
+                  {t("coursesPage.coursesDetailsPage.other.3")}
+                </Link>
+              </div>
+            </div>
+
+
+            <Row>
+              <Col lg={7} md={12}>
               <div className='sec1_con2'>
                 <h2>{t("coursesPage.coursesDetailsPage.heading.4")}</h2>
 
@@ -212,27 +238,8 @@ const CourseDetails = () => {
                   </Col>
                 </Row>
               </div>
-            </div>
-
-            <div className='col-md-5'>
-              <div className='sec2_right'>
-                <Link
-                  to={routingConstants.COURSES_MODULE + id}
-                  className='btn btn_str_Cor'
-                >
-                  {t("coursesPage.coursesDetailsPage.other.1")}
-                </Link>
-                <h3 className='similar-coursestext'>
-                  {t("coursesPage.coursesDetailsPage.other.2")}
-                </h3>
-                <div className='cou_set_similer'>
-                  <Carousel page='courseDetail' />
-                </div>
-                <Link to='/courses' className='btn_view'>
-                  {t("coursesPage.coursesDetailsPage.other.3")}
-                </Link>
-              </div>
-            </div>
+              </Col>
+            </Row>
           </div>
         </div>
       </section>

@@ -76,8 +76,8 @@ function Carousel(props) {
               items: 1,
               nav: true,
             },
-            600: {
-              items: 1,
+            768: {
+              items: 2,
               nav: true,
             },
             375: {
@@ -85,7 +85,7 @@ function Carousel(props) {
               nav: true,
               margin: 50,
             },
-            1000: {
+            1024: {
               items:
                 props.page === constants.carouselConstant.COURSE_DETAIL
                   ? 1.4
