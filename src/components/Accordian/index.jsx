@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { styled } from "@mui/material/styles";
@@ -64,6 +64,12 @@ export default function AccordionComponent({
   categories,
 }) {
   const dispatch = useDispatch();
+  const [remainingColleges, setRemainingColleges] = useState(false);
+  const [remainingSchoolsState, setRemainingSchoolsState] = useState(false);
+  const [remainingSchoolEducationBoard, setRemainingSchoolEducationBoard] =
+    useState(false);
+  const [remainingGovtExamsCategory, setRemainingGovtExamsCategory] =
+    useState(false);
 
   const hasMoreCount = (rows = [], count = 0) => {
     return (rows.length || 0) - rows.slice(0, count)?.length || 0;
@@ -71,6 +77,39 @@ export default function AccordionComponent({
 
   const onChangeFilter = (id, { target: { checked } }, type, subType) => {
     dispatch(setFilterValue(id, checked, type, subType));
+  };
+
+  const hasMoreCountShowFunction = (data, category, subCategory) => {
+    return data?.map((s) => (
+      <li key={s?.id}>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={s?.isChecked}
+              onChange={(e) => onChangeFilter(s?.id, e, category, subCategory)}
+            />
+          }
+          label={s?.name}
+        />
+      </li>
+    ));
+  };
+
+  const hasMoreSchoolStateFunction = (data) => {
+    return data?.map((s) => (
+      <li key={s?.id}>
+        <FormControlLabel
+          value={s?.name}
+          control={
+            <Radio
+              checked={s?.isChecked}
+              onChange={(e) => onChangeFilter(s?.id, e, "topSchools", "states")}
+            />
+          }
+          label={s?.name}
+        />
+      </li>
+    ));
   };
 
   return (
@@ -84,24 +123,21 @@ export default function AccordionComponent({
             <AccordionDetails>
               <ul className='pl-0'>
                 <FormGroup>
-                  {stream?.rows?.slice(0, 3)?.map((s) => (
-                    <li key={s?.id}>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={s?.isChecked}
-                            onChange={(e) => onChangeFilter(s?.id, e, "stream")}
-                          />
-                        }
-                        label={s?.name}
-                      />
-                    </li>
-                  ))}
+                  {remainingColleges
+                    ? hasMoreCountShowFunction(stream?.rows, "stream")
+                    : hasMoreCountShowFunction(
+                        stream?.rows?.slice(0, 3),
+                        "stream",
+                      )}
                 </FormGroup>
               </ul>
               {hasMoreCount(stream?.rows, 3) > 0 && (
-                <div className='has-more'>
-                  {hasMoreCount(stream?.rows, 3)} More
+                <div
+                  className='has-more'
+                  onClick={() => setRemainingColleges((prev) => !prev)}
+                >
+                  {hasMoreCount(stream?.rows, 3)}{" "}
+                  {remainingColleges ? "Less" : "More"}
                 </div>
               )}
             </AccordionDetails>
@@ -147,27 +183,18 @@ export default function AccordionComponent({
             <AccordionDetails>
               <ul className='pl-0'>
                 <RadioGroup name='radio-buttons-group'>
-                  {states?.rows?.slice(0, 3)?.map((s) => (
-                    <li key={s?.id}>
-                      <FormControlLabel
-                        value={s?.name}
-                        control={
-                          <Radio
-                            checked={s?.isChecked}
-                            onChange={(e) =>
-                              onChangeFilter(s?.id, e, "topSchools", "states")
-                            }
-                          />
-                        }
-                        label={s?.name}
-                      />
-                    </li>
-                  ))}
+                  {remainingSchoolsState
+                    ? hasMoreSchoolStateFunction(states?.rows)
+                    : hasMoreSchoolStateFunction(states?.rows?.slice(0, 3))}
                 </RadioGroup>
               </ul>
               {hasMoreCount(states?.rows, 3) > 0 && (
-                <div className='has-more'>
-                  {hasMoreCount(states?.rows, 3)} More
+                <div
+                  className='has-more'
+                  onClick={() => setRemainingSchoolsState((prev) => !prev)}
+                >
+                  {hasMoreCount(states?.rows, 3)}{" "}
+                  {remainingSchoolsState ? "Less" : "More"}
                 </div>
               )}
             </AccordionDetails>
@@ -218,31 +245,28 @@ export default function AccordionComponent({
             <AccordionDetails>
               <ul className='pl-0'>
                 <FormGroup>
-                  {educationBoard?.rows?.slice(0, 6)?.map((s) => (
-                    <li key={s?.id}>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={s?.isChecked}
-                            onChange={(e) =>
-                              onChangeFilter(
-                                s?.id,
-                                e,
-                                "topSchools",
-                                "educationBoard",
-                              )
-                            }
-                          />
-                        }
-                        label={s?.name}
-                      />
-                    </li>
-                  ))}
+                  {remainingSchoolEducationBoard
+                    ? hasMoreCountShowFunction(
+                        educationBoard?.rows,
+                        "topSchools",
+                        "educationBoard",
+                      )
+                    : hasMoreCountShowFunction(
+                        educationBoard?.rows?.slice(0, 6),
+                        "topSchools",
+                        "educationBoard",
+                      )}
                 </FormGroup>
               </ul>
               {hasMoreCount(educationBoard?.rows, 6) > 0 && (
-                <div className='has-more'>
-                  {hasMoreCount(educationBoard?.rows, 6)} More
+                <div
+                  className='has-more'
+                  onClick={() =>
+                    setRemainingSchoolEducationBoard((prev) => !prev)
+                  }
+                >
+                  {hasMoreCount(educationBoard?.rows, 6)}{" "}
+                  {remainingSchoolEducationBoard ? "Less" : "More"}
                 </div>
               )}
             </AccordionDetails>
@@ -261,26 +285,24 @@ export default function AccordionComponent({
             <AccordionDetails>
               <ul className='pl-0'>
                 <FormGroup>
-                  {categories?.rows?.slice(0, 6)?.map((s) => (
-                    <li key={s?.id}>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={s?.isChecked}
-                            onChange={(e) =>
-                              onChangeFilter(s?.id, e, "governmentExam")
-                            }
-                          />
-                        }
-                        label={s?.name}
-                      />
-                    </li>
-                  ))}
+                  {remainingGovtExamsCategory
+                    ? hasMoreCountShowFunction(
+                        categories?.rows,
+                        "governmentExam",
+                      )
+                    : hasMoreCountShowFunction(
+                        categories?.rows?.slice(0, 6),
+                        "governmentExam",
+                      )}
                 </FormGroup>
               </ul>
               {hasMoreCount(categories?.rows, 6) > 0 && (
-                <div className='has-more'>
-                  {hasMoreCount(categories?.rows, 6)} More
+                <div
+                  className='has-more'
+                  onClick={() => setRemainingGovtExamsCategory((prev) => !prev)}
+                >
+                  {hasMoreCount(categories?.rows, 6)}{" "}
+                  {remainingGovtExamsCategory ? "Less" : "More"}
                 </div>
               )}
             </AccordionDetails>

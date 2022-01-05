@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import x from "../../assets/images/Career/x.png";
 
 import {
   AccordionComponent,
@@ -56,21 +55,6 @@ const CareerPage = () => {
     <div>
       <SEO title='Sheकुंज - Career' />
       <Header loginPage={true} page='career' subPage='colleges' />
-
-      <div className='filter_side'>
-        <img src={x} alt='' />
-        <AccordionComponent
-          type='colleges'
-          stream={STREAM}
-          courseLength={courseSector}
-        />
-        <p className='more'>{t("careerTopColleges.other.1")}</p> <br />
-        <AccordionComponent
-          type='colleges'
-          stream={STREAM}
-          courseLength={courseSector}
-        />
-      </div>
 
       <div className='mainDiv_career'>
         <Container>
