@@ -53,7 +53,7 @@ function SuccessStory() {
 
       <Container>
         {successStories?.length > 0 &&
-          successStories?.map((s, idx) => (
+          successStories?.slice(0).reverse().map((s, idx) => (
             <>
               <div className='suc_box' key={s?.id}>
                 <Row>

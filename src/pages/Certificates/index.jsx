@@ -7,7 +7,6 @@ import { Footer, Header, SEO } from "../../components";
 import { timeDifferenceFromDates } from "../../utils/utils";
 import { getUserCourseCertificate } from "../../store/certificate";
 
-import Certificate01 from "../../assets/images/AllCertificate/Certificate01.png";
 import clock1 from "../../assets/icons/clock1.png";
 import barChart from "../../assets/icons/bar-chart.png";
 import lecturesIcon from "../../assets/icons/list.png";
@@ -120,7 +119,7 @@ function AllCertificatePage() {
                         >
                           {t("allCertificatePage.button.1")}
                         </button>
-                        <button>{t("allCertificatePage.button.2")}</button>
+                        <button onClick={() => certificateRef.current.generatePDF()}>{t("allCertificatePage.button.2")}</button>
                       </div>
                     </Col>
                   </Row>

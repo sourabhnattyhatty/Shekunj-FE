@@ -14,7 +14,6 @@ import { useTranslation } from "react-i18next";
 
 import jsPDF from "jspdf";
 import * as htmlToImage from "html-to-image";
-// import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
 
 const CertificatesDetail = forwardRef((props, ref) => {
   const dispatch = useDispatch();
@@ -46,12 +45,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
         doc.addImage(img, "JPGE", 0, 250, 840, 500);
         doc.save("mycertificate.pdf");
       });
-      // doc.html(document.querySelector(".box_certificate"), {
-      //   callback: function (pdf) {
-      //     debugger;
-      //     pdf.save("test.pdf");
-      //   },
-      // });
     },
   }));
 
@@ -81,7 +74,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
                 {t("certificateDetailPage.content.1.1")} {certificate?.id}{" "}
                 {t("certificateDetailPage.content.1.2")}
               </p>
-              {/* <h3>“{t("certificateDetailPage.heading.1")}”</h3> */}
               <h3>“{certificate?.course_name}”</h3>
               <p className='second-number'>
                 {t("certificateDetailPage.other.1")}{" "}

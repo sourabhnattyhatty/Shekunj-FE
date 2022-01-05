@@ -73,24 +73,26 @@ function CourseTest() {
                   <h4>{t("allCertificatePage.heading.3")}</h4>
                   <div className='skill_flex'>
                     <ul>
-                      <li>
-                        <img src={check} alt='' />{" "}
-                        {t("allCertificatePage.skills.1")}
-                      </li>
-                      <li>
-                        <img src={check} alt='' />{" "}
-                        {t("allCertificatePage.skills.2")}
-                      </li>
+                      {certificate?.skill &&
+                        certificate?.skill?.map(
+                          (o, i) =>
+                            i < 2 && (
+                              <li>
+                                <img src={check} alt='' /> {o.name}
+                              </li>
+                            ),
+                        )}
                     </ul>
                     <ul>
-                      <li>
-                        <img src={check} alt='' />{" "}
-                        {t("allCertificatePage.skills.3")}
-                      </li>
-                      <li>
-                        <img src={check} alt='' />{" "}
-                        {t("allCertificatePage.skills.4")}
-                      </li>
+                    {certificate?.skill &&
+                        certificate?.skill?.map(
+                          (o, i) =>
+                            i >= 2 && (
+                              <li>
+                                <img src={check} alt='' /> {o.name}
+                              </li>
+                            ),
+                        )}
                     </ul>
                   </div>
                 </div>
@@ -135,8 +137,8 @@ function CourseTest() {
                     style={{ cursor: "pointer" }}
                     onClick={() => certificateRef.current.generatePDF()}
                   />
+                  {/* <img src={Share} alt='' style={{ cursor: "pointer" }} /> */}
                   <br />
-                  <img src={Share} alt='' style={{ cursor: "pointer" }} />
                 </p>
               </div>
             </Col>

@@ -17,11 +17,6 @@ import Language1 from "../../assets/icons/Language1.png";
 
 import { Header, Footer, SEO, Carousel } from "../../components";
 
-// import Device from "../../assets/images/CoursesDetails/Device.png";
-// import clock from "../../assets/images/CoursesDetails/clock.png";
-// import certificate from "../../assets/images/CoursesDetails/certificate.png";
-// import Support from "../../assets/images/CoursesDetails/Support.png";
-// import forum from "../../assets/images/CoursesDetails/forum.png";
 
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
@@ -80,7 +75,6 @@ const CourseDetails = () => {
                 <p>{course?.description}</p>
               </div>
               <div className='mt-2 mb-2'>
-                {/* <SocialShare /> */}
               </div>
               <div className='sec1_con2 con_setSec1'>
                 <h2>{t("coursesPage.coursesDetailsPage.heading.3")}</h2>

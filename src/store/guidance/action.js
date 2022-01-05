@@ -29,7 +29,7 @@ export const bookCounseller = (value) => async (dispatch) => {
 
 export const getGuidanceCategory = () => async (dispatch) => {
   try {
-    const url = apiConstants.COURSES.ONLINE_TEST_CATEGORY_LIST;
+    const url = apiConstants.GUIDANCE.GUIDANCE_CATEGORY;
     dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
     const res = await httpServices.get(url);
     dispatch({

@@ -105,7 +105,7 @@ export default function VerticalTabs() {
           aria-label='categories'
           sx={{ borderRight: 1, borderColor: "divider" }}
         >
-          {guidanceCategory?.public?.map((g, i) => (
+          {guidanceCategory?.map((g, i) => (
             <>
               <Tab
                 key={g?.id}
@@ -158,7 +158,8 @@ export default function VerticalTabs() {
                       </Col>
                     ))
                   ) : (
-                    <div className='text-center'>{t("common.noDataFound")}</div>
+                    // <div className='text-center'>{t("common.noDataFound")}</div>
+                    "Click on any exam to see its description"
                   ))}
               </Row>
             </TabPanel>
