@@ -78,7 +78,7 @@ const Courses = (props) => {
       <section className='Cors_sec'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-7'>
+            <div className='col-lg-7 col-md-9'>
               <div className='cors_con'>
                 <h2>{t("coursesPage.banner.heading")}</h2>
                 <div className='cour_box'>
@@ -162,7 +162,7 @@ const Courses = (props) => {
                 </h3>
 
                 <Row>
-                  <Col md={9} xs={12}>
+                  <Col xl={9} lg={8} md={8} xs={12}>
                     <div className='filter_added mb-5'>
                       {state?.selectedFilter?.length > 0 &&
                         isSubSelected &&
@@ -187,7 +187,7 @@ const Courses = (props) => {
                     </div>
                   </Col>
 
-                  <Col md={3} xs={12}>
+                  <Col xl={3} lg={4} md={4} xs={12}>
                     <div className='reset_content pt-2'>
                       {state?.allCourses && (
                         <p onClick={() => handleResetFilter()}>
