@@ -139,7 +139,11 @@
     margin-right: auto;
   }
   .myProfile_img img {
-    width: 78px;
+    width: 85px;
+    height: 85px;
+  }
+  button.Save_profile_btn {
+    width: 100% !important;
   }
   .myProfile_box h2 {
     text-align: center;

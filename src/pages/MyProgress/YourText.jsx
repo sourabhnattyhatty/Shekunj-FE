@@ -15,7 +15,7 @@ const YourTest = ({ tests }) => {
         <Row>
           {tests?.length > 0 ? (
             tests?.map((t) => (
-              <Col md={6} xs={6}>
+              <Col lg={6} md={12} xs={6}>
                 <div className='first-test'>
                   <h5>{addNewlines(t?.course_name, true, 30) || "N/A"}</h5>
                   <p>

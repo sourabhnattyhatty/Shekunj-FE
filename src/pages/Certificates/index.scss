@@ -327,3 +327,45 @@ hr.hr_line2 {
   border: 10px solid #E3E4EB;
   border-radius: 15px;
 }
+
+
+@media screen and (max-width: 768px) {
+
+.all_certif_banner {
+  height: 236px;
+}
+.all_certif_banner h2 {
+  font-size: 28px;
+}
+.all_certif_banner p {
+  font-size: 18px;
+}
+.all_certif_con p {
+  word-break: break-all;
+}
+.all_certif_con button {
+  margin-right: 10px;
+  padding: 15px 5px;
+  width: 120px;
+}
+}
+
+
+@media screen and (min-device-width: 769px) and (max-device-width: 1024px) {
+
+  .all_certif_banner {
+    height: 315px;
+  }
+}
+
+// @media screen and (max-width: 1280px) {
+//   .all_certif_banner {
+//     height: 395px;
+//   }
+// }
+
+@media screen and (min-device-width: 1025px) and (max-device-width: 1280px) {
+  .all_certif_banner {
+    height: 395px;
+  }
+}

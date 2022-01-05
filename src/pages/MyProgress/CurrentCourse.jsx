@@ -21,7 +21,7 @@ const CurrentCourse = ({ courses }) => {
         courses.map((c) => (
           <div className='course_explore'>
             <Row>
-              <Col md={3} xs={6}>
+              <Col md={2} xs={6}>
                 <h6>{truncate(c?.course_name, 40) || "N/A"}</h6>
               </Col>
 
@@ -56,7 +56,7 @@ const CurrentCourse = ({ courses }) => {
                 </div>
               </Col>
 
-              <Col md={4} xs={6}>
+              <Col md={5} xs={6}>
                 <ul className='p-0'>
                   <li>
                     <img src={Calendar} alt='...' className='pr-2' />

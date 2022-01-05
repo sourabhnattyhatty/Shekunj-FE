@@ -389,6 +389,9 @@ section.CouDtl_ban .row {
   .sec2_right button.btn_view {
     width: 100%;
   }
+  .sec2_right a.btn_view {
+    padding: 23px 45px;
+  }
 }
 
 @media screen and (max-width: 767px) {
