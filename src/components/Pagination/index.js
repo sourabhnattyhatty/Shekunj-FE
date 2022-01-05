@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import backImage from "../../assets/icons/Pagination/back.svg";
 import nextImage from "../../assets/icons/Pagination/next.svg";
 import { IconButton } from "@mui/material";
 
@@ -33,7 +32,7 @@ const Pagination = (props) => {
         disabled={initialCount === 1}
         onClick={backButton}
       >
-        <img src={backImage} alt='Back Button' />
+        <img src={nextImage} alt='Back Button' className="backImage"/>
       </IconButton>
       <div
         className='numberDiv'
