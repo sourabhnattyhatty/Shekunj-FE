@@ -201,3 +201,26 @@ button.want_btn {
 //     height: 534px;
 // }
 // }
+
+
+@media screen and (min-width:1024px) and (max-width:1400px){
+  .SuccStory_banner {
+    height: 560px;
+    background-size: 100% 100%;
+    background-position: bottom;
+  }
+}
+
+@media screen and (min-width:768px) and (max-width:1023px){
+  .SuccStory_banner {
+    height: 500px;
+    background-size: 100% 100%;
+    background-position: bottom;
+  }
+  .SuccStory_banner h2{
+    font-size: 33px;
+  }
+  .SuccStory_banner p{
+    font-size: 19px;
+  }
+}

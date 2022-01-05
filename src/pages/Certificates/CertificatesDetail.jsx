@@ -27,12 +27,14 @@ const CertificatesDetail = forwardRef((props, ref) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (id) {
+    if (props?.id) {
+      dispatch(getUserCourseCertificateDetail(props?.id, history));
+    } else if (id) {
       dispatch(getUserCourseCertificateDetail(id, history));
     } else {
       history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
-  }, [id, history, dispatch]);
+  }, [id, history, dispatch, props?.id]);
 
   useImperativeHandle(ref, () => ({
     generatePDF() {

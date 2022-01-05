@@ -14,6 +14,7 @@ import double_quote from "../../assets/icons/double_quote.png";
 import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
+import { sliceString } from "../../utils/utils";
 
 function SuccessStory() {
   const history = useHistory();
@@ -66,11 +67,16 @@ function SuccessStory() {
                             alt=''
                           />
                           {s?.name || t("common.n/a")}{" "}
-                          {s?.course_name || t("common.n/a")}
+                          {/* {s?.course_name || t("common.n/a")} */}
                         </h2>
-                        <h3>{s?.title || t("common.n/a")} </h3>
-                        <p>{s?.description || t("common.n/a")}</p>
-                        {s?.is_collapse && (
+
+                        <p>
+                          {(s?.is_collapse
+                            ? s?.description
+                            : sliceString(s?.description)) || t("common.n/a")}
+                        </p>
+
+                        {/* {s?.is_collapse && (
                           <ul>
                             <li>
                               {t("successStoriesPage.other.1")} :{" "}
@@ -88,22 +94,24 @@ function SuccessStory() {
                               </b>
                             </li>
                           </ul>
+                        )} */}
+                        {s?.description?.length >= 300 && (
+                          <div className='suc_btn'>
+                            <hr />
+                            <button
+                              onClick={() =>
+                                handleSetCollapse(s?.id, s?.is_collapse)
+                              }
+                            >
+                              {t("successStoriesPage.button.1")}{" "}
+                              {s?.is_collapse
+                                ? t("common.less1")
+                                : t("common.more1")}{" "}
+                              <img src={s?.is_collapse ? up : down1} alt='' />
+                            </button>
+                            <hr />
+                          </div>
                         )}
-                        <div className='suc_btn'>
-                          <hr />
-                          <button
-                            onClick={() =>
-                              handleSetCollapse(s?.id, s?.is_collapse)
-                            }
-                          >
-                            {t("successStoriesPage.button.1")}{" "}
-                            {s?.is_collapse
-                              ? t("common.less1")
-                              : t("common.more1")}{" "}
-                            <img src={s?.is_collapse ? up : down1} alt='' />
-                          </button>
-                          <hr />
-                        </div>
                       </Col>
 
                       <Col md={4} xs={12}>
@@ -123,11 +131,17 @@ function SuccessStory() {
                             alt=''
                           />
                           {s?.name || t("common.n/a")}{" "}
-                          {s?.course_name || t("common.n/a")}
+                          {/* {s?.course_name || t("common.n/a")} */}
                         </h2>
-                        <h3>{s?.title || t("common.n/a")} </h3>
-                        <p>{s?.description || t("common.n/a")}</p>
-                        {s?.is_collapse && (
+                        {/* <h3>{s?.title || t("common.n/a")} </h3> */}
+
+                        <p>
+                          {(s?.is_collapse
+                            ? s?.description
+                            : sliceString(s?.description)) || t("common.n/a")}
+                        </p>
+
+                        {/* {s?.is_collapse && (
                           <ul>
                             <li>
                               {t("successStoriesPage.other.1")} :{" "}
@@ -145,22 +159,24 @@ function SuccessStory() {
                               </b>
                             </li>
                           </ul>
+                        )} */}
+                        {s?.description?.length >= 300 && (
+                          <div className='suc_btn'>
+                            <hr />
+                            <button
+                              onClick={() =>
+                                handleSetCollapse(s?.id, s?.is_collapse)
+                              }
+                            >
+                              {t("successStoriesPage.button.1")}{" "}
+                              {s?.is_collapse
+                                ? t("common.less1")
+                                : t("common.more1")}{" "}
+                              <img src={s?.is_collapse ? up : down1} alt='' />
+                            </button>
+                            <hr />
+                          </div>
                         )}
-                        <div className='suc_btn'>
-                          <hr />
-                          <button
-                            onClick={() =>
-                              handleSetCollapse(s?.id, s?.is_collapse)
-                            }
-                          >
-                            {t("successStoriesPage.button.1")}{" "}
-                            {s?.is_collapse
-                              ? t("common.less1")
-                              : t("common.more1")}{" "}
-                            <img src={s?.is_collapse ? up : down1} alt='' />
-                          </button>
-                          <hr />
-                        </div>
                       </Col>
                     </>
                   )}
@@ -177,7 +193,7 @@ function SuccessStory() {
         <Container>
           <h2>{t("successStoriesPage.content.2")}</h2>
           <button onClick={() => history.push("/courses")} className='want_btn'>
-          {t("successStoriesPage.button.2")}
+            {t("successStoriesPage.button.2")}
           </button>
         </Container>
       </div>

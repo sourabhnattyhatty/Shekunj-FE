@@ -199,3 +199,10 @@ export const removeUnauthorizedUser = () => {
   toast.error(i18njs.t("error.other.8"));
   window.location.href = routingConstants.LOGIN;
 };
+
+export const sliceString = (str) => {
+  if(str.length <= 300){
+    return str
+  }
+  return `${str?.slice(0, 300)}...`
+}
