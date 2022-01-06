@@ -207,6 +207,7 @@ export const postAnswer =
       if (res.status_code === 200 && last) {
         await httpServices.post(`/course/user-course-end-time/${id}`);
         history.push(routingConstants.COURSES_RESULT + id);
+        window.localStorage.removeItem("isTestStarted");
       }
     } catch (err) {
       dispatch({ type: coursesTypes.POST_ANSWER_FAIL });
@@ -259,6 +260,7 @@ export const setFilter =
 
 export const endTest = (id) => async (dispatch) => {
   await httpServices.post(constants.USER_COURSE_END_TIME + id);
+  window.localStorage.removeItem("isTestStarted");
 };
 
 export const testResult = (id) => async (dispatch) => {

@@ -6,7 +6,6 @@ import "./index.scss";
 import "../CoursesModule/index.scss";
 import check from "../../assets/images/Courses/check.png";
 import Dawnload from "../../assets/images/Courses/Dawnload.png";
-import Share from "../../assets/images/Courses/Share.png";
 import fullscreen_icon from "../../assets/images/Courses/fullscreen_icon.png";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
@@ -73,24 +72,26 @@ function CourseTest() {
                   <h4>{t("allCertificatePage.heading.3")}</h4>
                   <div className='skill_flex'>
                     <ul>
-                      <li>
-                        <img src={check} alt='' />{" "}
-                        {t("allCertificatePage.skills.1")}
-                      </li>
-                      <li>
-                        <img src={check} alt='' />{" "}
-                        {t("allCertificatePage.skills.2")}
-                      </li>
+                      {certificate?.skill &&
+                        certificate?.skill?.map(
+                          (o, i) =>
+                            i < 2 && (
+                              <li>
+                                <img src={check} alt='' /> {o.name}
+                              </li>
+                            ),
+                        )}
                     </ul>
                     <ul>
-                      <li>
-                        <img src={check} alt='' />{" "}
-                        {t("allCertificatePage.skills.3")}
-                      </li>
-                      <li>
-                        <img src={check} alt='' />{" "}
-                        {t("allCertificatePage.skills.4")}
-                      </li>
+                    {certificate?.skill &&
+                        certificate?.skill?.map(
+                          (o, i) =>
+                            i >= 2 && (
+                              <li>
+                                <img src={check} alt='' /> {o.name}
+                              </li>
+                            ),
+                        )}
                     </ul>
                   </div>
                 </div>
@@ -135,8 +136,8 @@ function CourseTest() {
                     style={{ cursor: "pointer" }}
                     onClick={() => certificateRef.current.generatePDF()}
                   />
+                  {/* <img src={Share} alt='' style={{ cursor: "pointer" }} /> */}
                   <br />
-                  <img src={Share} alt='' style={{ cursor: "pointer" }} />
                 </p>
               </div>
             </Col>
