@@ -12,7 +12,7 @@
 }
 .cour_box {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: inherit;
 }
 
 .cors_con h2 {
@@ -405,4 +405,42 @@ ul.ulcont li {
 }
 .MuiRadio-root.MuiRadio-colorPrimary.Mui-checked{
   color: #ec498a;
+}
+
+@media screen and (min-width:1024px) and (max-width:1300px){
+  .Cors_sec{
+    background-size: 100% 100%;
+    height: 600px;
+  }
+  .cors_con h2{
+    font-size: 50px;
+  }
+  .cors_con {
+    padding-left: 17%;
+  }
+  ul.ulcont{
+    margin-left: 50px;
+    margin-bottom: 0px;
+  }
+  ul.ulcont li{
+    font-size: 23px;
+  }
+}
+@media screen and (min-width:768px) and (max-width:1023px){
+  .Cors_sec{
+    background-size: 100% 100%;
+    height: 500px;
+  }
+  .cors_con {
+    padding-left: 14%;
+  }
+  .cors_con h2{
+    font-size: 41px;
+  }
+  ul.ulcont{
+    margin-left: 32px;
+  }
+  .Srch_sec .reset_content p{
+    font-size: 16px;
+  }
 }
