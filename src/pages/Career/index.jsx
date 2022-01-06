@@ -22,7 +22,7 @@ import "./index.scss";
 
 const CareerPage = () => {
   const dispatch = useDispatch();
-  const { topCollages, courseSector } = useSelector(
+  const { topCollages, courseSector,lan } = useSelector(
     (state) => state.careerReducer,
   );
   const {t} = useTranslation();
@@ -30,7 +30,7 @@ const CareerPage = () => {
   useEffect(() => {
     dispatch(reSetFilterValue());
     dispatch(getTopCollages());
-  }, [dispatch]);
+  }, [dispatch,lan]);
 
   const transformPrice = (price) => {
     let nf = new Intl.NumberFormat("en-US");

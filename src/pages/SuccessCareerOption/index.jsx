@@ -8,7 +8,7 @@ import "aos/dist/aos.css";
 import "animate.css";
 
 import TabsExams from "./TabsExams/index";
-import { getGuidanceCategory } from "../../store/guidance";
+import { getCareerOption } from "../../store/guidance";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
 
@@ -17,8 +17,7 @@ function SuccessCareerOption() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    dispatch(getGuidanceCategory(null));
-    dispatch(getGuidanceCategory());
+    dispatch(getCareerOption());
     Aos.init({ duration: 2000 });
   }, [dispatch]);
 

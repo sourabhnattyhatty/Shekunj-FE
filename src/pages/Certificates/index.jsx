@@ -23,6 +23,7 @@ function AllCertificatePage() {
   const dispatch = useDispatch();
 
   const { certificates } = useSelector((state) => state.certificateReducer);
+  const {lan} = useSelector(state => state.careerReducer);
 
   const { t } = useTranslation();
 
@@ -30,13 +31,13 @@ function AllCertificatePage() {
 
   useEffect(() => {
     dispatch(getUserCourseCertificate());
-  }, [dispatch]);
+  }, [dispatch,lan]);
 
   useEffect(() => {
     dispatch(getGuidanceCategory(null));
     dispatch(getGuidanceCategory());
     Aos.init({ duration: 2000 });
-  }, [dispatch]);
+  }, [dispatch,lan]);
 
   return (
     <div>

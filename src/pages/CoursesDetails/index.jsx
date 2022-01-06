@@ -26,17 +26,19 @@ const CourseDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { course } = useSelector((state) => state.coursesReducer);
+  const {lan} = useSelector(state => state.careerReducer);
+
   const { t } = useTranslation();
   useEffect(() => {
     dispatch(singleCourseDetails(id));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [dispatch, id]);
+  }, [dispatch, id,lan]);
 
   useEffect(() => {
     if (course?.category_id) {
       dispatch(getSimilarCourses(course?.category_id));
     }
-  }, [dispatch, course]);
+  }, [dispatch, course,lan]);
 
   return (
     <div>

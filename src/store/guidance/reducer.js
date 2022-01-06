@@ -24,6 +24,7 @@ const initialState = {
   //   public: [],
   //   private: [],
   // },
+  careerOptions : [],
   guidanceCategoryDetail: null,
   selectedFilter: [],
   testData: [],
@@ -194,6 +195,25 @@ export const guidanceReducer = (state = initialState, action) => {
         error: null,
       };
     case guidanceTypes.CAREER_RESULT_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+      case guidanceTypes.CAREER_OPTIONS_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case guidanceTypes.CAREER_OPTIONS_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        careerOptions: action.payload,
+        error: null,
+      };
+    case guidanceTypes.CAREER_OPTIONS_FAIL:
       return {
         ...state,
         isLoading: false,

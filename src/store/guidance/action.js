@@ -27,12 +27,30 @@ export const bookCounseller = (value) => async (dispatch) => {
   }
 };
 
+export const getCareerOption = () => async (dispatch) => {
+  try {
+    const url = apiConstants.GUIDANCE.GUIDANCE_CATEGORY;
+    dispatch({ type: guidanceTypes.CAREER_OPTIONS_REQUEST });
+    const res = await httpServices.get(url);
+    
+    dispatch({
+      type: guidanceTypes.CAREER_OPTIONS_FINISH,
+      payload: res?.data || [],
+    });
+  } catch (error) {
+    dispatch({
+      type: guidanceTypes.CAREER_OPTIONS_FAIL,
+      payload: error?.data,
+    });
+    toast.error(error?.data?.message, toasterConfig);
+  }
+}
+
 export const getGuidanceCategory = () => async (dispatch) => {
   try {
     const url = apiConstants.GUIDANCE.CAREER_TEST_CATEGORY;
     dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
     const res = await httpServices.get(url);
-    debugger
     dispatch({
       type: guidanceTypes.GUIDANCE_CATEGORY_FINISH_PRIVATE,
       payload: res?.data || [],

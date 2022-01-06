@@ -31,12 +31,11 @@ const Courses = (props) => {
   const [resetState, setResetState] = useState(false);
   const dispatch = useDispatch();
 
-  const {lan} = useSelector(state => state.careerReducer);
-  useEffect(() => {debugger},[lan]);
+  const { lan } = useSelector((state) => state.careerReducer);
 
   useEffect(() => {
     dispatch(allCourses());
-  }, [dispatch]);
+  }, [dispatch, lan]);
 
   useEffect(() => {
     Aos.init({ duration: 2000 });

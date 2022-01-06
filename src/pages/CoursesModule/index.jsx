@@ -90,6 +90,8 @@ const CourseModule = () => {
   const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
     (state) => state.coursesReducer,
   );
+  const {lan} = useSelector(state => state.careerReducer);
+
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
   const { id } = useParams();
@@ -108,7 +110,7 @@ const CourseModule = () => {
   React.useEffect(() => {
     dispatch(startCourse(id));
     dispatch(getSingleCourseModule(id));
-  }, [dispatch, id]);
+  }, [dispatch, id,lan]);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);

@@ -18,11 +18,12 @@ function CourseTest() {
   const { guidanceResult: result } = useSelector(
     (state) => state.guidanceReducer,
   );
+  const {lan} = useSelector(state => state.careerReducer);
   const { t } = useTranslation();
 
   React.useEffect(() => {
     dispatch(careerTestResult(id));
-  }, [dispatch, id]);
+  }, [dispatch, id,lan]);
 
   return (
     <div>

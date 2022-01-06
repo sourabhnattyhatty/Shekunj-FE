@@ -15,13 +15,13 @@ import { useTranslation } from "react-i18next";
 
 const CareerPage2 = () => {
   const dispatch = useDispatch();
-  const { governmentExams } = useSelector((state) => state.careerReducer);
+  const { governmentExams, lan } = useSelector((state) => state.careerReducer);
   const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(reSetFilterValue());
     dispatch(getGovernmentExams());
-  }, [dispatch]);
+  }, [dispatch, lan]);
 
   const transformPrice = (price) => {
     let nf = new Intl.NumberFormat("en-US");
@@ -70,17 +70,20 @@ const CareerPage2 = () => {
                         <div className='top_col_content'>
                           <h3>{c?.name || t("common.n/a")}</h3>
                           <p style={{ textTransform: "capitalize" }}>
-                            {c?.city || t("common.n/a")}, {c?.state || t("common.n/a")} •{" "}
+                            {c?.city || t("common.n/a")},{" "}
+                            {c?.state || t("common.n/a")} •{" "}
                             <span style={{ textTransform: "capitalize" }}>
                               {c?.exam_type || t("common.n/a")}
                             </span>
                           </p>
                           <ul>
                             <li>
-                              <span>{t("careerGovExams.other.1")}</span> : ₹ {transformPrice(c?.fees)}{" "}
+                              <span>{t("careerGovExams.other.1")}</span> : ₹{" "}
+                              {transformPrice(c?.fees)}{" "}
                             </li>
                             <li>
-                              <span>{t("careerGovExams.other.2")}</span> : {c?.exam}
+                              <span>{t("careerGovExams.other.2")}</span> :{" "}
+                              {c?.exam}
                             </li>
                           </ul>
                           {c?.is_collapse && (

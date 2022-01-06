@@ -70,6 +70,7 @@ function CourseTest() {
   const { question, questionCount, isLoading } = useSelector(
     (state) => state.coursesReducer,
   );
+  const {lan} = useSelector(state => state.careerReducer);
 
   const progress =
     Math.round(100 / (questionCount?.total_course_que || 0)) || 0;
@@ -91,7 +92,7 @@ function CourseTest() {
       toast.error(t("error.mobile.1"));
       history.push(routingConstants.HOME_PAGE);
     }
-  }, [history, detect.isMobile, id, dispatch, t]);
+  }, [history, detect.isMobile, id, dispatch, t,lan]);
 
   useEffect(() => {
     if (question) {
@@ -137,7 +138,7 @@ function CourseTest() {
 
   React.useEffect(() => {
     dispatch(testCountSummery(id, history));
-  }, [dispatch, history, id]);
+  }, [dispatch, history, id,lan]);
 
   React.useEffect(() => {
     if (questionCount && questionCount?.counse_time > 0) {

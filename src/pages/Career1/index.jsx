@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 
 const CareerPage1 = () => {
   const dispatch = useDispatch();
-  const { topSchools, courseSector } = useSelector(
+  const { topSchools, courseSector, lan } = useSelector(
     (state) => state.careerReducer,
   );
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ const CareerPage1 = () => {
   useEffect(() => {
     dispatch(reSetFilterValue());
     dispatch(getTopSchools());
-  }, [dispatch]);
+  }, [dispatch,lan]);
 
   const transformImg = (image) => {
     return image ? image : noImage;

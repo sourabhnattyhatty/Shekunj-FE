@@ -16,15 +16,18 @@ import CircleProgressBar from "./CircleProgressBar";
 
 function CourseTest() {
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const { result } = useSelector((state) => state.coursesReducer);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  
+  const { result } = useSelector((state) => state.coursesReducer);
+  const {lan} = useSelector(state => state.careerReducer);
+  
 
   React.useEffect(() => {
     if (id) {
       dispatch(testResult(id));
     }
-  }, [dispatch, id, result?.result]);
+  }, [dispatch, id, result?.result, lan]);
 
   return (
     <div>

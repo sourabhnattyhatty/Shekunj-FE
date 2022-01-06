@@ -26,8 +26,10 @@ function CourseTest() {
   const { certificateDetail: certificate } = useSelector(
     (state) => state.certificateReducer,
   );
-  const { t } = useTranslation();
+  const {lan} = useSelector(state => state.careerReducer);
+
   const { user } = useSelector((state) => state.authReducer);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (id) {
@@ -35,7 +37,7 @@ function CourseTest() {
     } else {
       history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
-  }, [id, history, dispatch]);
+  }, [id, history, dispatch,lan]);
 
   // const generatePDF = () => {
   //   // const img = new Image();

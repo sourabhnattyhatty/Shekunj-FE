@@ -5,14 +5,18 @@ import noImageIcon from "../assets/images/no-image.jpeg";
 import i18njs from "../assets/i18n/i18n";
 
 import { checkIsSessionExpired, decodeToken } from ".";
-import { routingConstants } from "./constants";
+// import { routingConstants } from "./constants";
 import { removeUnauthorizedUser } from "./utils";
 
-if (window.localStorage.getItem("i18nextLng") === "en") {
-  axios.defaults.baseURL = process.env.REACT_APP_API_URL_ENGLISH;
-} else {
-  axios.defaults.baseURL = process.env.REACT_APP_API_URL_HINDI;
-}
+// if (window.localStorage.getItem("i18nextLng") === "en") {
+//   axios.defaults.baseURL = process.env.REACT_APP_API_URL_ENGLISH;
+// } else {
+//   axios.defaults.baseURL = process.env.REACT_APP_API_URL_HINDI;
+// }
+axios.defaults.baseURL =
+  window.localStorage.getItem("i18nextLng") === "en"
+    ? process.env.REACT_APP_API_URL_ENGLISH
+    : process.env.REACT_APP_API_URL_HINDI;
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true;
 

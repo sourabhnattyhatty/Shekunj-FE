@@ -290,7 +290,6 @@ function CourseTest() {
 
   const handleAnswerCheck = (e,ans) => {
     setAnswer(ans);
-    debugger
     // setAnswer(e.target.labels[0].children[1].innerText);
     if (e.target.value === "1") {
       setCheck1(true);

@@ -27,11 +27,13 @@ const Dashboard = () => {
   const { t } = useTranslation();
   // const { courses } = useSelector((state) => state.coursesReducer);
   const { user } = useSelector((state) => state.authReducer);
+  const {lan} = useSelector(state => state.careerReducer);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(allCourses());
-  }, [dispatch]);
+  }, [dispatch,lan]);
 
   useEffect(() => {
     Aos.init({ duration: 2000 });

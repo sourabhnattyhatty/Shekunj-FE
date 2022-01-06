@@ -16,12 +16,13 @@ function Carousel(props) {
   const { courses, course, tests, similarCourses } = useSelector(
     (state) => state.coursesReducer,
   );
+  const {lan} = useSelector(state => state.careerReducer);
   const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(allHomeCourses());
-  }, [dispatch, course?.category_id]);
+  }, [dispatch, course?.category_id,lan]);
 
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;

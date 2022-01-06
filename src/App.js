@@ -49,8 +49,7 @@ const SuccessCareerOption2 = React.lazy(() =>
 const PageNotFound = React.lazy(() => import("./pages/PageNotFound"));
 
 function App() {
-  const {lan} = useSelector(state => state.careerReducer);
-  useEffect(() => {debugger},[lan]);
+  
   return (
     <>
       <Switch>

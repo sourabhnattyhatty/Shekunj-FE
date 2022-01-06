@@ -23,6 +23,8 @@ const CertificatesDetail = forwardRef((props, ref) => {
   const { certificateDetail: certificate } = useSelector(
     (state) => state.certificateReducer,
   );
+  const {lan} = useSelector(state => state.careerReducer);
+
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
     } else {
       history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
-  }, [id, history, dispatch, props?.id]);
+  }, [id, history, dispatch, props?.id,lan]);
 
   useImperativeHandle(ref, () => ({
     generatePDF() {
