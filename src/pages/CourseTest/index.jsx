@@ -74,6 +74,16 @@ function CourseTest() {
   const progress =
     Math.round(100 / (questionCount?.total_course_que || 0)) || 0;
 
+
+    // useEffect(() => {
+    //   if (performance.navigation.type === 1) {
+    //     alert("refreshe")
+    //     console.log("This page is reloaded");
+    //   } else {
+    //     console.log("This page is not reloaded");
+    //   }
+    // }, []);
+
   useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
     dispatch(testCountSummery(id, history));

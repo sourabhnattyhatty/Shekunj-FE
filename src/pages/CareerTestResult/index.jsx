@@ -132,7 +132,7 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              <Link to='/SuccessCareerTest'>
+              <Link to='/success-career-test'>
                 <button className='get_certif'>{t("coursesPage.coursesResultPage.button.3")}</button>
               </Link>
             </Col>

@@ -29,9 +29,10 @@ export const bookCounseller = (value) => async (dispatch) => {
 
 export const getGuidanceCategory = () => async (dispatch) => {
   try {
-    const url = apiConstants.GUIDANCE.GUIDANCE_CATEGORY;
+    const url = apiConstants.GUIDANCE.CAREER_TEST_CATEGORY;
     dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
     const res = await httpServices.get(url);
+    debugger
     dispatch({
       type: guidanceTypes.GUIDANCE_CATEGORY_FINISH_PRIVATE,
       payload: res?.data || [],

@@ -63,6 +63,8 @@ export default function VerticalTabs() {
   );
   const { t } = useTranslation();
 
+  console.log(">>>>>>>>>", guidanceCategory)
+
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };

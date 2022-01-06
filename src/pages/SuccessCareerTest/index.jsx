@@ -288,8 +288,10 @@ function CourseTest() {
     );
   };
 
-  const handleAnswerCheck = (e) => {
-    setAnswer(e.target.labels[0].children[1].innerText);
+  const handleAnswerCheck = (e,ans) => {
+    setAnswer(ans);
+    debugger
+    // setAnswer(e.target.labels[0].children[1].innerText);
     if (e.target.value === "1") {
       setCheck1(true);
       setCheck2(false);
@@ -417,7 +419,7 @@ function CourseTest() {
                             control={
                               <Radio
                                 checked={check1}
-                                onChange={handleAnswerCheck}
+                                onChange={(e) => handleAnswerCheck(e,"A")}
                               />
                             }
                             label={testData?.optionA}
@@ -432,7 +434,7 @@ function CourseTest() {
                             control={
                               <Radio
                                 checked={check2}
-                                onChange={handleAnswerCheck}
+                                onChange={(e) => handleAnswerCheck(e,"B")}
                               />
                             }
                             label={testData?.optionB}
@@ -447,7 +449,7 @@ function CourseTest() {
                             control={
                               <Radio
                                 checked={check3}
-                                onChange={handleAnswerCheck}
+                                onChange={(e) => handleAnswerCheck(e,"C")}
                               />
                             }
                             label={testData?.optionC}
@@ -462,7 +464,7 @@ function CourseTest() {
                             control={
                               <Radio
                                 checked={check4}
-                                onChange={handleAnswerCheck}
+                                onChange={(e) => handleAnswerCheck(e,"D")}
                               />
                             }
                             label={testData?.optionD}

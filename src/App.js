@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import PublicRoute from "./routers/PublicRouter";
@@ -6,6 +6,7 @@ import PrivateRoute from "./routers/PrivateRouter";
 
 import "./App.css";
 import { routingConstants } from "./utils/constants";
+import { useSelector } from "react-redux";
 
 const ForgotPage = React.lazy(() => import("./pages/ForgotPage/ForgotPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage/SignupPage"));
@@ -48,6 +49,8 @@ const SuccessCareerOption2 = React.lazy(() =>
 const PageNotFound = React.lazy(() => import("./pages/PageNotFound"));
 
 function App() {
+  const {lan} = useSelector(state => state.careerReducer);
+  useEffect(() => {debugger},[lan]);
   return (
     <>
       <Switch>

@@ -30,6 +30,10 @@ const Courses = (props) => {
   const [isSubSelected, setIsSubSelected] = useState(false);
   const [resetState, setResetState] = useState(false);
   const dispatch = useDispatch();
+
+  const {lan} = useSelector(state => state.careerReducer);
+  useEffect(() => {debugger},[lan]);
+
   useEffect(() => {
     dispatch(allCourses());
   }, [dispatch]);

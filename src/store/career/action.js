@@ -367,3 +367,7 @@ export const toggleCollapseValue =
       });
     }
   };
+
+export const translation = () => async(dispatch) => {
+  dispatch({type:coursesTypes.LANGUAGE});
+}

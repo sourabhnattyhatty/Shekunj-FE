@@ -1,14 +1,19 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
-import noImageIcon from '../assets/images/no-image.jpeg';
-import i18njs from "../assets/i18n/i18n"
+import noImageIcon from "../assets/images/no-image.jpeg";
+import i18njs from "../assets/i18n/i18n";
 
 import { checkIsSessionExpired, decodeToken } from ".";
 import { routingConstants } from "./constants";
 import { removeUnauthorizedUser } from "./utils";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+if (window.localStorage.getItem("i18nextLng") === "en") {
+  axios.defaults.baseURL = process.env.REACT_APP_API_URL_ENGLISH;
+} else {
+  axios.defaults.baseURL = process.env.REACT_APP_API_URL_HINDI;
+}
+// axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true;
 
 export const baseURL = process.env.REACT_APP_API_URL?.slice(0, 20);

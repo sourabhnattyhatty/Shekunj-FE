@@ -81,6 +81,7 @@ const apiConstants = {
     GUIDANCE_CATEGORY : "career/guidance-category/",
     START_USER_CAREER_TEST : "career/start-user-career-test/",
     USER_CAREER_COUNT : "career/user-career-count/",
+    CAREER_TEST_CATEGORY : "course/online-test-category-list/",
   },
   MY_PROGRESS : {
     USER_PROGRESS : "course/user-progress/",
