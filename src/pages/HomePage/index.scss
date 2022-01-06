@@ -1174,3 +1174,10 @@ ul.star {
 }
 
 }
+
+
+@media screen and (min-device-width: 1420px) and (max-device-width: 1440px) {
+  #myCarousel .carousel-item {
+    height: 85vh !important;
+  }
+}
