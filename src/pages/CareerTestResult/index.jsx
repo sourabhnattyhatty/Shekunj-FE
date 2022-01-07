@@ -18,11 +18,12 @@ function CourseTest() {
   const { guidanceResult: result } = useSelector(
     (state) => state.guidanceReducer,
   );
+  const {lan} = useSelector(state => state.languageReducer);
   const { t } = useTranslation();
 
   React.useEffect(() => {
     dispatch(careerTestResult(id));
-  }, [dispatch, id]);
+  }, [dispatch, id,lan]);
 
   return (
     <div>
@@ -132,7 +133,7 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              <Link to='/SuccessCareerTest'>
+              <Link to='/success-career-test'>
                 <button className='get_certif'>{t("coursesPage.coursesResultPage.button.3")}</button>
               </Link>
             </Col>

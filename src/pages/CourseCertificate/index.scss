@@ -22,6 +22,7 @@
   color: #323232;
   padding-top: 52px;
   padding-bottom: 25px;
+  text-align: left;
 }
 .skills ul {
   padding: 0;
@@ -148,6 +149,42 @@ p.cou_tit {
     padding-top: 35px;
     padding-bottom: 35px;
   }
+  .certi_img {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  p.certificate-downloaddiv {
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+  }
+  .box_certificate_small {
+    height: 290px !important;
+  }
+  .cercifi_con_small {
+    margin-top: 50px !important;
+}
+.certi_img p img {
+  max-width: 50% !important;
+}
+.cercifi_con_small img.last-img {
+  margin-top: 0 !important;
+  max-width: 60% !important;
+}
+.cercifi_con_small h2 {
+  margin: 0 !important;
+}
+hr.hr_line {
+  margin-bottom: 9px !important;
+  width: 60%;
+}
+.signature_set {
+  right: 9px !important;
+}
+.date_set_small {
+  left: 9px !important;
+}
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {

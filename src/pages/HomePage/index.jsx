@@ -99,8 +99,8 @@ function HomePage() {
             <div className='carousel-item carousel_item1'>
               <div className='container'>
                 <div className='row h_set' data-aos='slide-up'>
-                  <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-1'>
+                  <div className='col-md-7 col-12'>
+                    <h4 className='mt-5 pt-lg-5 mb-1'>
                       {t("homePage.mainSlider.heading.1")}
                     </h4>
                     <p className='mb-4'>
@@ -120,8 +120,8 @@ function HomePage() {
             <div className='carousel-item carousel_item2'>
               <div className='container'>
                 <div className='row h_set'>
-                  <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-1' data-aos='zoom-in'>
+                  <div className='col-md-7 col-12'>
+                    <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
                     <p className='mb-4' data-aos='zoom-in'>
@@ -145,8 +145,8 @@ function HomePage() {
             <div className='carousel-item carousel_item3'>
               <div className='container'>
                 <div className='row h_set'>
-                  <div className='col-md-7 col-12 mt-5'>
-                    <h4 className='mt-5 pt-md-5 mb-1' data-aos='zoom-in'>
+                  <div className='col-md-7 col-12'>
+                    <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.3.3.1")}
                       <span>{t("homePage.mainSlider.heading.3.3.2")}</span>
                     </h4>
@@ -166,8 +166,8 @@ function HomePage() {
             <div className='carousel-item carousel_item4'>
               <div className='container'>
                 <div className='row h_set'>
-                  <div className='col-md-7 col-12 mt-5 offset-lg-6'>
-                    <h4 className='mt-5 pt-md-5 mb-1' data-aos='zoom-in'>
+                  <div className='col-md-7 col-12 offset-lg-6 offset-md-5'>
+                    <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
 
@@ -202,7 +202,9 @@ function HomePage() {
         type={constants.carouselConstant.COURSES}
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate'>{t("homePage.mainSlider.button.2")}</button>
+        <button className='view_test_cate'>
+          {t("homePage.mainSlider.button.2")}
+        </button>
       </Link>
 
       {/* resume */}
@@ -236,7 +238,11 @@ function HomePage() {
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
       />
-      <button className='view_test_cate'>{t("homePage.mainSlider.button.3")}</button>
+      <Link to='/success-career-test' style={{ textDecoration: "none" }}>
+        <button className='view_test_cate'>
+          {t("homePage.mainSlider.button.3")}
+        </button>
+      </Link>
 
       {/* Job opportunity */}
       <section className='job-opprtunity same_padding mt-5'>
@@ -283,7 +289,9 @@ function HomePage() {
         type={constants.carouselConstant.COURSES}
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate'>{t("homePage.mainSlider.button.2")}</button>
+        <button className='view_test_cate'>
+          {t("homePage.mainSlider.button.2")}
+        </button>
       </Link>
 
       {/* career development */}
@@ -388,9 +396,11 @@ function HomePage() {
 
           <div className='row justify-content-center'>
             <div className='col-md-4 text-center mt-5'>
-              <button className='btn btn-start-course' data-aos='slide-up'>
-                {t("homePage.community.button")}
-              </button>
+              <Link to='/courses' style={{ textDecoration: "none" }}>
+                <button className='btn btn-start-course' data-aos='slide-up'>
+                  {t("homePage.community.button")}
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -521,9 +531,7 @@ function HomePage() {
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
                       <img src={Nikita} alt='' />
-                      <p>
-                        {t("aboutPage.review.1")}
-                      </p>
+                      <p>{t("aboutPage.review.1")}</p>
                       <ul className='star'>
                         <li>
                           <img src={star} alt='' />
@@ -547,9 +555,7 @@ function HomePage() {
                   </div>
 
                   <div className='tes_box2' data-aos='slide-up'>
-                    <h2>
-                    {t("aboutPage.review.2")}
-                    </h2>
+                    <h2>{t("aboutPage.review.2")}</h2>
                   </div>
                 </div>
 
@@ -581,9 +587,7 @@ function HomePage() {
                   <div data-aos='slide-left'>
                     <div className='tes_box heg_cha'>
                       <img src={Priya} alt='' />
-                      <p>
-                      {t("aboutPage.review.3")}
-                      </p>
+                      <p>{t("aboutPage.review.3")}</p>
                       <ul className='star'>
                         <li>
                           <img src={star} alt='' />
@@ -621,9 +625,9 @@ function HomePage() {
                 ornare ipsum. Tincidunt erat pulvinar viverra pharetra.
               </p>
 
-              <a data-aos='slide-up' href='#!' className='learn_more'>
-                {t("homePage.highlightStudents.button")}
-              </a>
+              <Link to="/success-stories" data-aos='slide-up' className='learn_more'>
+                Get More
+              </Link>
             </div>
           </div>
         </div>

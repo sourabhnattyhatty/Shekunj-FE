@@ -1,10 +1,16 @@
 import { languageTypes } from ".";
 
-export const languageReducer = (state = false, action) => {
+const initialState = {
+  lan : true
+}
+
+export const languageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case languageTypes.LANGUAGE_CHANGE: {
-      return !state;
-    }
+    case languageTypes.LANGUAGE:
+        return {
+          ...state,
+          lan : !state.lan
+        }
     default:
       return state;
   }

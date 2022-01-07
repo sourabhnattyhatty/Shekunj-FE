@@ -117,6 +117,25 @@ export const authReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload,
       };
+
+      case authTypes.CONTACT_US_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case authTypes.CONTACT_US_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+      };
+    case authTypes.CONTACT_US_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

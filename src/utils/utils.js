@@ -3,6 +3,7 @@ import JwtDecode from "jwt-decode";
 import moment from "moment";
 import { toast } from "react-toastify";
 import i18njs from "../assets/i18n/i18n"
+import { routingConstants } from "./constants";
 
 export const toasterConfig = {
   position: "top-right",
@@ -191,4 +192,17 @@ export function timeDifferenceFromDates(sDate, eDate) {
         minute: endDate.diff(startDate, "minute") + i18njs.t("common.time.2"),
       }
     : { hour: null, minute: null };
+}
+
+export const removeUnauthorizedUser = () => {
+  Cookies.remove("sheToken");
+  toast.error(i18njs.t("error.other.8"));
+  window.location.href = routingConstants.LOGIN;
+};
+
+export const sliceString = (str) => {
+  if(str.length <= 300){
+    return str
+  }
+  return `${str?.slice(0, 300)}...`
 }

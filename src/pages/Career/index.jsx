@@ -25,12 +25,14 @@ const CareerPage = () => {
   const { topCollages, courseSector } = useSelector(
     (state) => state.careerReducer,
   );
+
+  const {lan} = useSelector(state => state.languageReducer);
   const {t} = useTranslation();
 
   useEffect(() => {
     dispatch(reSetFilterValue());
     dispatch(getTopCollages());
-  }, [dispatch]);
+  }, [dispatch,lan]);
 
   const transformPrice = (price) => {
     let nf = new Intl.NumberFormat("en-US");

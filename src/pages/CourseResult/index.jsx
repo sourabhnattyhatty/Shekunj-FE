@@ -12,18 +12,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { testResult } from "../../store/courses/action";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
+import CircleProgressBar from "./CircleProgressBar";
 
 function CourseTest() {
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const { result } = useSelector((state) => state.coursesReducer);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  
+  const { result } = useSelector((state) => state.coursesReducer);
+  const {lan} = useSelector(state => state.languageReducer);
+  
 
   React.useEffect(() => {
     if (id) {
       dispatch(testResult(id));
     }
-  }, [dispatch, id, result?.result]);
+  }, [dispatch, id, result?.result, lan]);
 
   return (
     <div>
@@ -46,11 +50,13 @@ function CourseTest() {
                 <h2>
                   {result?.is_pass ? (
                     <>
-                      {t("coursesPage.coursesResultPage.other.1")} <b>{result?.name}!</b>
+                      {t("coursesPage.coursesResultPage.other.1")}{" "}
+                      <b>{result?.name}!</b>
                     </>
                   ) : (
                     <>
-                      {t("coursesPage.coursesResultPage.other.2")} <b>{result?.name}!</b>
+                      {t("coursesPage.coursesResultPage.other.2")}{" "}
+                      <b>{result?.name}!</b>
                     </>
                   )}
                 </h2>
@@ -64,7 +70,16 @@ function CourseTest() {
               <div className='pro_div'>
                 <Row>
                   <Col md={3} xs={12}>
-                    <div className='progress' data-percentage='90'>
+                    <CircleProgressBar
+                      size='small'
+                      title1='Correct'
+                      title2='Answers'
+                      result={result?.no_of_correct_answer || 0}
+                    />
+                    {/* <div
+                      className='progress'
+                      data-percentage={Math.round(result?.result)}
+                    >
                       <span className='progress-left'>
                         <span className='progress-bar'></span>
                       </span>
@@ -76,16 +91,27 @@ function CourseTest() {
                           <p>{result?.no_of_correct_answer || 0}</p>
                           <br />
                           <span>
-                            {t("coursesPage.coursesResultPage.other.3.1")} <br />{" "}
+                            {t("coursesPage.coursesResultPage.other.3.1")}{" "}
+                            <br />{" "}
                             {t("coursesPage.coursesResultPage.other.3.2")}
                           </span>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </Col>
 
                   <Col md={6} xs={12}>
-                    <div className='progress pink_pro' data-percentage='78'>
+                    <CircleProgressBar
+                      size='medium'
+                      title1='Candidate’s'
+                      title2='Score'
+                      result={Math.round(result?.result) || 0}
+                    />
+
+                    {/* <div
+                      className='progress pink_pro'
+                      data-percentage={Math.round(result?.result)}
+                    >
                       <span className='progress-left'>
                         <span className='progress-bar col_chg'></span>
                       </span>
@@ -97,16 +123,25 @@ function CourseTest() {
                           <p>{Math.round(result?.result) || 0}%</p>
                           <br />
                           <span>
-                            {t("coursesPage.coursesResultPage.other.4.1")} <br />{" "}
+                            {t("coursesPage.coursesResultPage.other.4.1")}{" "}
+                            <br />{" "}
                             {t("coursesPage.coursesResultPage.other.4.2")}
                           </span>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </Col>
 
                   <Col md={3} xs={12}>
-                    <div className='progress' data-percentage='45'>
+                    <CircleProgressBar
+                      size='small1'
+                      title1='Total Time'
+                      result={
+                        result?.test_time ? (result?.test_time).toFixed(2) : 0
+                      }
+                    />
+
+                    {/* <div className='progress' data-percentage='45'>
                       <span className='progress-left'>
                         <span className='progress-bar'></span>
                       </span>
@@ -119,13 +154,15 @@ function CourseTest() {
                             {result?.test_time
                               ? (result?.test_time).toFixed(2)
                               : 0}{" "}
-                            <span>min</span>
+                            <span>{t("common.time.2")}</span>
                           </p>
                           <br />
-                          <span>{t("coursesPage.coursesResultPage.other.5")}</span>
+                          <span>
+                            {t("coursesPage.coursesResultPage.other.5")}
+                          </span>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </Col>
                 </Row>
               </div>

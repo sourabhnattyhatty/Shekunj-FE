@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
@@ -7,7 +7,6 @@ import { Footer, Header, SEO } from "../../components";
 import { timeDifferenceFromDates } from "../../utils/utils";
 import { getUserCourseCertificate } from "../../store/certificate";
 
-import Certificate01 from "../../assets/images/AllCertificate/Certificate01.png";
 import clock1 from "../../assets/icons/clock1.png";
 import barChart from "../../assets/icons/bar-chart.png";
 import lecturesIcon from "../../assets/icons/list.png";
@@ -16,22 +15,29 @@ import Aos from "aos";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
+import CertificatesDetail from "./CertificatesDetail";
 
 function AllCertificatePage() {
   const history = useHistory();
+
   const dispatch = useDispatch();
+
   const { certificates } = useSelector((state) => state.certificateReducer);
+  const {lan} = useSelector(state => state.languageReducer);
+
   const { t } = useTranslation();
+
+  const certificateRef = useRef();
 
   useEffect(() => {
     dispatch(getUserCourseCertificate());
-  }, [dispatch]);
+  }, [dispatch,lan]);
 
   useEffect(() => {
     dispatch(getGuidanceCategory(null));
     dispatch(getGuidanceCategory());
     Aos.init({ duration: 2000 });
-  }, [dispatch]);
+  }, [dispatch,lan]);
 
   return (
     <div>
@@ -41,11 +47,9 @@ function AllCertificatePage() {
       <div className='all_certif_banner'>
         <Container>
           <Row>
-            <Col md={5} xs={12} data-aos="slide-up">
+            <Col md={5} xs={12} data-aos='slide-up'>
               <h2>{t("allCertificatePage.heading.1")}</h2>
-              <p>
-              {t("allCertificatePage.content.1")}
-              </p>
+              <p>{t("allCertificatePage.content.1")}</p>
             </Col>
           </Row>
         </Container>
@@ -58,10 +62,15 @@ function AllCertificatePage() {
               <>
                 <div className='all_certif_box' key={c?.id}>
                   <Row>
-                    <Col md={5} xs={12}>
-                      <img className='certif_img' src={Certificate01} alt='' />
+                    <Col md={6} xs={12}>
+                      <CertificatesDetail
+                        ref={certificateRef}
+                        showButton={false}
+                        size='small'
+                        id={c?.id}
+                      />
                     </Col>
-                    <Col md={7} xs={12}>
+                    <Col md={6} xs={12}>
                       <div className='all_certif_con'>
                         <h2>{c?.course_name || t("common.n/a")}</h2>
                         <p>{c?.description || t("common.n/a")} </p>
@@ -90,7 +99,10 @@ function AllCertificatePage() {
                             <li>
                               <img src={lecturesIcon} alt='' />
                             </li>
-                            <li>{c?.no_of_lecture || 0} {t("allCertificatePage.other.1")}</li>
+                            <li>
+                              {c?.no_of_lecture || 0}{" "}
+                              {t("allCertificatePage.other.1")}
+                            </li>
                           </ul>
                           <ul>
                             <li>
@@ -101,12 +113,14 @@ function AllCertificatePage() {
                         </div>
                         <button
                           onClick={() =>
-                            history.push(routingConstants.ALL_CERTIFICATE_DETAIL + c?.id)
+                            history.push(
+                              routingConstants.ALL_CERTIFICATE_DETAIL + c?.id,
+                            )
                           }
                         >
                           {t("allCertificatePage.button.1")}
                         </button>
-                        <button>{t("allCertificatePage.button.2")}</button>
+                        <button onClick={() => certificateRef.current.generatePDF()}>{t("allCertificatePage.button.2")}</button>
                       </div>
                     </Col>
                   </Row>
@@ -122,5 +136,6 @@ function AllCertificatePage() {
     </div>
   );
 }
+
 
 export default AllCertificatePage;

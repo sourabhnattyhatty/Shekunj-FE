@@ -18,10 +18,14 @@ const Footer = ({ loginPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link to={routingConstants.ABOUT}>{t("footer.links.col1.3")}</Link>
+                  <Link to={routingConstants.ABOUT}>
+                    {t("footer.links.col1.3")}
+                  </Link>
                 </li>
                 <li>
-                  <Link to={routingConstants.SUCCESS_STORIES}>{t("header.heading.8")}</Link>
+                  <Link to={routingConstants.SUCCESS_STORIES}>
+                    {t("header.heading.8")}
+                  </Link>
                 </li>
                 <li>
                   <a
@@ -33,47 +37,24 @@ const Footer = ({ loginPage }) => {
                   </a>
                 </li>
                 <li>
-                  <Link to={routingConstants.CONTACT_US}>{t("footer.links.col1.4")}</Link>
+                  <Link to={routingConstants.CONTACT_US}>
+                    {t("footer.links.col1.4")}
+                  </Link>
                 </li>
               </ul>
             </div>
 
-            {/* <div className='col-md-3 col-4'>
-              <ul className='p-0'>
-                <li>
-                  <Link to='/career'>{t("footer.links.col2.1")}</Link>
-                </li>
-
-                <li>
-                  <Link to='/'>{t("footer.links.col2.2")}</Link>
-                </li>
-
-                <li>
-                  <Link to='/'>{t("footer.links.col2.3")}</Link>
-                </li>
-
-                <li>
-                  <Link to='/'>{t("footer.links.col2.4")}</Link>
-                </li>
-              </ul>
-            </div> */}
-
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link to={routingConstants.PRIVACY_POLICY}>{t("footer.links.col3.1")}</Link>
-                </li>
-
-                {/* <li>
-                  <Link to='/'>{t("footer.links.col3.2")}</Link>
+                  <Link to={routingConstants.PRIVACY_POLICY}>
+                    {t("footer.links.col3.1")}
+                  </Link>
                 </li>
 
                 <li>
-                  <Link to='/'>{t("footer.links.col3.3")}</Link>
-                </li> */}
-
-                <li>
-                  <Link to={routingConstants.HELP_AND_SUPPORT}>{t("footer.links.col2.3")}</Link>
+                  {/* <Link to={routingConstants.HELP_AND_SUPPORT}>{t("footer.links.col2.3")}</Link> */}
+                  <Link to={routingConstants.CONTACT_US}>{t("footer.links.col2.3")}</Link>
                 </li>
               </ul>
             </div>

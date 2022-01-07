@@ -16,12 +16,13 @@ function Carousel(props) {
   const { courses, course, tests, similarCourses } = useSelector(
     (state) => state.coursesReducer,
   );
+  const {lan} = useSelector(state => state.languageReducer);
   const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(allHomeCourses());
-  }, [dispatch, course?.category_id]);
+  }, [dispatch, course?.category_id,lan]);
 
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;
@@ -76,8 +77,8 @@ function Carousel(props) {
               items: 1,
               nav: true,
             },
-            600: {
-              items: 1,
+            768: {
+              items: 2,
               nav: true,
             },
             375: {
@@ -85,7 +86,7 @@ function Carousel(props) {
               nav: true,
               margin: 50,
             },
-            1000: {
+            1024: {
               items:
                 props.page === constants.carouselConstant.COURSE_DETAIL
                   ? 1.4

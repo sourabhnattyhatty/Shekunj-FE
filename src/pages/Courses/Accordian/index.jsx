@@ -62,17 +62,21 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function SimpleAccordion(props) {
   const [selectedFilter, setSelectedFilter] = useState(null);
+
   const {
     selectedFilter: currentFilter,
-    categoryList,allCourses
+    categoryList,
+    allCourses,
   } = useSelector((state) => state.coursesReducer);
+  const {lan} = useSelector(state => state.languageReducer);
+
   const dispatch = useDispatch();
-  const [subSelected,setSubSelected] = useState(null);
+  const [subSelected, setSubSelected] = useState(null);
   const { t } = useTranslation();
   useEffect(() => {
     dispatch(setFilter(null));
     dispatch(getCategoryList());
-  }, [dispatch]);
+  }, [dispatch, lan]);
   const handleCategoryChange = (_, obj) => {
     dispatch(fetchAllCourses(`?category_id=${obj.id}`));
     dispatch(setFilter([obj]));
@@ -81,25 +85,24 @@ export default function SimpleAccordion(props) {
   };
 
   const handleSubCategoryChange = (e, obj) => {
-      dispatch(fetchAllCourses(`?id=${obj.id}&category_id=${selectedFilter}`));
-      setSubSelected(obj?.id);
-    };
+    dispatch(fetchAllCourses(`?id=${obj.id}&category_id=${selectedFilter}`));
+    setSubSelected(obj?.id);
+  };
 
   useEffect(() => {
     if (currentFilter === null) {
       setSelectedFilter(null);
     }
-    if(props.isResetPressed){
+    if (props.isResetPressed) {
       setSubSelected(0);
       props.changeResetAgain(false);
     }
-    if(subSelected>0){
+    if (subSelected > 0) {
       props.isSubSelected(true);
     } else {
       props.isSubSelected(false);
     }
-  }, [currentFilter,subSelected,props]);
-
+  }, [currentFilter, subSelected, props, lan]);
 
   return (
     <div className='accordion_box_all'>
@@ -110,22 +113,24 @@ export default function SimpleAccordion(props) {
         <AccordionDetails>
           {categoryList?.map((obj, idx) => {
             return (
-              <ul className='pl-0' key={obj?.id}>
-                <FormControl component='fieldset'>
-                  <RadioGroup
-                    key={obj?.id + idx}
-                    value={selectedFilter}
-                    onChange={(e) => handleCategoryChange(e, obj)}
-                  >
-                    <FormControlLabel
-                      id={obj.id}
-                      value={obj.id}
-                      control={<Radio />}
-                      label={obj?.name}
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </ul>
+              obj?.name && (
+                <ul className='pl-0' key={obj?.id}>
+                  <FormControl component='fieldset'>
+                    <RadioGroup
+                      key={obj?.id + idx}
+                      value={selectedFilter}
+                      onChange={(e) => handleCategoryChange(e, obj)}
+                    >
+                      <FormControlLabel
+                        id={obj?.id}
+                        value={obj?.id}
+                        control={<Radio />}
+                        label={obj?.name ? obj?.name : "N/A"}
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </ul>
+              )
             );
           })}
         </AccordionDetails>
@@ -140,20 +145,22 @@ export default function SimpleAccordion(props) {
               return (
                 <ul className='pl-0' key={obj?.id}>
                   <FormControl component='fieldset'>
-                    {obj?.course_set.map((item, idx) => {
+                    {obj?.course_set?.map((item, idx) => {
                       return (
-                        <RadioGroup
-                          key={obj?.id + idx}
-                          onChange={(e) => handleSubCategoryChange(e, item)}
-                          value={subSelected}
-                        >
-                          <FormControlLabel
-                            id={item.id}
-                            value={item.id}
-                            control={<Radio />}
-                            label={item.name}
-                          />
-                        </RadioGroup>
+                        item.name && (
+                          <RadioGroup
+                            key={obj?.id + idx}
+                            onChange={(e) => handleSubCategoryChange(e, item)}
+                            value={subSelected}
+                          >
+                            <FormControlLabel
+                              id={item.id}
+                              value={item.id}
+                              control={<Radio />}
+                              label={item.name ? item?.name : "N/A"}
+                            />
+                          </RadioGroup>
+                        )
                       );
                     })}
                   </FormControl>

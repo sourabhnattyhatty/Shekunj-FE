@@ -30,9 +30,12 @@ const Courses = (props) => {
   const [isSubSelected, setIsSubSelected] = useState(false);
   const [resetState, setResetState] = useState(false);
   const dispatch = useDispatch();
+
+  const {lan} = useSelector(state => state.languageReducer);
+
   useEffect(() => {
     dispatch(allCourses());
-  }, [dispatch]);
+  }, [dispatch, lan]);
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -51,28 +54,25 @@ const Courses = (props) => {
   };
 
   const checkFunction = () => {
-    return state?.allCourses?.results
-      ?.slice(0)
-      .reverse()
-      .map((obj) => (
-        <Link
-          to={routingConstants.COURSE_DETAILS + obj.id}
-          className='col-md-6'
-          key={obj?.id}
-        >
-          <div className='box box_hov'>
-            <div className='slide-img'>
-              <img alt='' src={obj?.image} />
-              <div className='overlay'></div>
-            </div>
-
-            <div className='tag_btn'>
-              <button className='btn btn-info'>{obj?.category_name}</button>
-              <h6>{obj?.name}</h6>
-            </div>
+    return state?.allCourses?.results?.map((obj) => (
+      <Link
+        to={routingConstants.COURSE_DETAILS + obj.id}
+        className='col-md-6'
+        key={obj?.id}
+      >
+        <div className='box box_hov'>
+          <div className='slide-img'>
+            <img alt='' src={obj?.image} />
+            <div className='overlay'></div>
           </div>
-        </Link>
-      ));
+
+          <div className='tag_btn'>
+            <button className='btn btn-info'>{obj?.category_name}</button>
+            <h6>{obj?.name}</h6>
+          </div>
+        </div>
+      </Link>
+    ));
   };
   return (
     <div>
@@ -81,7 +81,7 @@ const Courses = (props) => {
       <section className='Cors_sec'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-7'>
+            <div className='col-lg-7 col-md-9'>
               <div className='cors_con'>
                 <h2>{t("coursesPage.banner.heading")}</h2>
                 <div className='cour_box'>
@@ -165,7 +165,7 @@ const Courses = (props) => {
                 </h3>
 
                 <Row>
-                  <Col md={9} xs={12}>
+                  <Col xl={9} lg={8} md={8} xs={12}>
                     <div className='filter_added mb-5'>
                       {state?.selectedFilter?.length > 0 &&
                         isSubSelected &&
@@ -190,7 +190,7 @@ const Courses = (props) => {
                     </div>
                   </Col>
 
-                  <Col md={3} xs={12}>
+                  <Col xl={3} lg={4} md={4} xs={12}>
                     <div className='reset_content pt-2'>
                       {state?.allCourses && (
                         <p onClick={() => handleResetFilter()}>
@@ -207,7 +207,9 @@ const Courses = (props) => {
                   {state?.allCourses?.results?.length > 0 ? (
                     checkFunction()
                   ) : (
-                    <div className='text-center mt-2'>{t("common.noDataFound")}</div>
+                    <div className='text-center mt-2'>
+                      {t("common.noDataFound")}
+                    </div>
                   )}
                 </div>
               </div>

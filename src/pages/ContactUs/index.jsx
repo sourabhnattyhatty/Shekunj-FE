@@ -3,13 +3,47 @@ import { Container, Row, Col } from "react-bootstrap";
 import { TextareaAutosize } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
-import { Header, Footer } from "../../components";
+import { Header, Footer, Error } from "../../components";
 import mail2 from "../../assets/icons/mail2.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { contactUs } from "../../store/auth/action";
 
 function ContactUs() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const validationSchema = Yup.object({
+    name: Yup.string().required(t("Name is required")),
+    email: Yup.string().email(t("login.form1.emailError.invalid")),
+    subject: Yup.string().required(t("Subject is required")),
+    message: Yup.string().required(t("Message is required")),
+  });
+  const { handleSubmit, handleChange, handleBlur, values, errors, touched, setFieldValue, isSubmitting } =
+    useFormik({
+      initialValues: {
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      },
+      validationSchema,
+      onSubmit(values) {
+        dispatch(contactUs(values));
+        clearFields();
+      },
+    });
+
+    const clearFields = () => {
+      setFieldValue("name","")
+      setFieldValue("email","")
+      setFieldValue("subject","")
+      setFieldValue("message","")
+    }
+
   return (
     <div>
       <Header loginPage={false} page='home' />
@@ -53,38 +87,73 @@ function ContactUs() {
                 <div className='ConUs_form'>
                   <p>{t("contactUs.content.1")} </p>
 
-                  <form action=''>
+                  <form onSubmit={handleSubmit}>
                     <div className='form-group'>
-                      <TextField
-                        name='name'
-                        type='text'
-                        placeholder={t("common.placeHolders.fname")}
-                        autoComplete='off'
-                      />
+                      <div className='mb-3'>
+                        <TextField
+                          name='name'
+                          type='text'
+                          placeholder='Name'
+                          onChange={handleChange}
+                          value={values.name}
+                          onBlur={handleBlur}
+                          autoComplete='off'
+                        />
+                        <Error error={errors.name} touched={touched.name} isSubmitting={isSubmitting}/>
+                      </div>
 
-                      <TextField
-                        name='name'
-                        type='text'
-                        placeholder={t("common.placeHolders.lname")}
-                        autoComplete='off'
-                      />
+                      <div className='mb-3'>
+                        <TextField
+                          name='email'
+                          type='email'
+                          placeholder='Email'
+                          autoComplete='off'
+                          onChange={handleChange}
+                          value={values.email}
+                          onBlur={handleBlur}
+                        />
+                        <Error error={errors.email} touched={touched.email} />
+                      </div>
 
-                      <TextField
-                        name='name'
-                        type='text'
-                        placeholder={t("common.placeHolders.fname")}
-                        autoComplete='off'
-                      />
+                      <div className='mb-3'>
+                        <TextField
+                          name='subject'
+                          type='text'
+                          placeholder='Subject'
+                          autoComplete='off'
+                          onChange={handleChange}
+                          value={values.subject}
+                          onBlur={handleBlur}
+                        />
+                        <Error
+                          error={errors.subject}
+                          touched={touched.subject}
+                          isSubmitting={isSubmitting}
+                        />
+                      </div>
 
-                      <TextareaAutosize
-                        className='textarea_set'
-                        aria-label='minimum height'
-                        minRows={3}
-                        placeholder={t("common.placeHolders.message")}
-                      />
+                      <div className='mb-3'>
+                        <TextareaAutosize
+                          className='textarea_set'
+                          name='message'
+                          aria-label='minimum height'
+                          minRows={3}
+                          placeholder='Message'
+                          onChange={handleChange}
+                          value={values.message}
+                          onBlur={handleBlur}
+                        />
+                        <Error
+                          error={errors.message}
+                          touched={touched.message}
+                          isSubmitting={isSubmitting}
+                        />
+                      </div>
                     </div>
 
-                    <button className='send_btn'>{t("contactUs.button.1")}</button>
+                    <button type='submit' className='send_btn'>
+                      {t("contactUs.button.1")}
+                    </button>
                   </form>
                 </div>
               </Col>

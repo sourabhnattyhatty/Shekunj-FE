@@ -19,11 +19,12 @@ const CareerPage1 = () => {
     (state) => state.careerReducer,
   );
   const { t } = useTranslation();
+  const {lan} = useSelector(state => state.languageReducer);
 
   useEffect(() => {
     dispatch(reSetFilterValue());
     dispatch(getTopSchools());
-  }, [dispatch]);
+  }, [dispatch,lan]);
 
   const transformImg = (image) => {
     return image ? image : noImage;

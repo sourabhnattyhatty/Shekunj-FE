@@ -1,13 +1,20 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
-import noImageIcon from '../assets/images/no-image.jpeg';
-import i18njs from "../assets/i18n/i18n"
+import noImageIcon from "../assets/images/no-image.jpeg";
+import i18njs from "../assets/i18n/i18n";
 
 import { checkIsSessionExpired, decodeToken } from ".";
-import { routingConstants } from "./constants";
+// import { routingConstants } from "./constants";
+import { removeUnauthorizedUser } from "./utils";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
+
+const apiBaseUrl = process.env.REACT_APP_URL_API;
+const currentLang = localStorage.getItem("i18nextLng");
+const lang = currentLang ? currentLang?.split("-")[0] : "en";
+axios.defaults.baseURL = `${apiBaseUrl}${lang}/api/`;
+
 axios.defaults.withCredentials = true;
 
 export const baseURL = process.env.REACT_APP_API_URL?.slice(0, 20);
@@ -21,9 +28,7 @@ axios.interceptors.request.use((config) => {
   if (token) {
     const userInfo = decodeToken(token);
     if (userInfo?.exp && checkIsSessionExpired(userInfo?.exp)) {
-      Cookies.remove("sheToken");
-      toast.error(i18njs.t("error.other.7"));
-      window.location.href = routingConstants.LOGIN;
+      removeUnauthorizedUser();
     }
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -35,19 +40,18 @@ axios.interceptors.response.use(
     return response;
   },
   (error) => {
-    const { status } = !error.response;
+    const { status } = error?.response;
     switch (status) {
       case 401:
-        Cookies.remove("userInfo");
-        toast.error(i18njs.t("error.other.8"));
-        window.location.href = routingConstants.LOGIN;
+        removeUnauthorizedUser();
         break;
       case 403:
+        toast.error(i18njs.t("error.other.10"));
         break;
       default:
         break;
     }
-    return Promise.reject(error.response);
+    return Promise.reject(error?.response);
   },
 );
 

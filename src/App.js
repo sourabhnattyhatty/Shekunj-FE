@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import PublicRoute from "./routers/PublicRouter";
@@ -6,6 +6,7 @@ import PrivateRoute from "./routers/PrivateRouter";
 
 import "./App.css";
 import { routingConstants } from "./utils/constants";
+import { useSelector } from "react-redux";
 
 const ForgotPage = React.lazy(() => import("./pages/ForgotPage/ForgotPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage/SignupPage"));
@@ -48,6 +49,7 @@ const SuccessCareerOption2 = React.lazy(() =>
 const PageNotFound = React.lazy(() => import("./pages/PageNotFound"));
 
 function App() {
+  
   return (
     <>
       <Switch>
@@ -85,6 +87,8 @@ function App() {
           exact
           path={`${routingConstants.ALL_CERTIFICATE_DETAIL}:id`}
           component={CertificateDetail}
+          showButton
+          size="large"
         />
         <Route exact path={routingConstants.CONTACT_US} component={ContactUs} />
         <Route exact path={routingConstants.EMAIL_PAGE} component={EmailPage} />

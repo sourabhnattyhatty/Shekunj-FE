@@ -92,6 +92,9 @@ section.CouDtl_ban .row {
 }
 .CouDtl img {
   max-width: 100%;
+  max-width: 100%;
+  max-height: 300px;
+  width: 100%;
 }
 .sec1_con {
   background: #ffffff;
@@ -385,6 +388,9 @@ section.CouDtl_ban .row {
   .sec2_right .btn.btn_str_Cor,
   .sec2_right button.btn_view {
     width: 100%;
+  }
+  .sec2_right a.btn_view {
+    padding: 23px 45px;
   }
 }
 

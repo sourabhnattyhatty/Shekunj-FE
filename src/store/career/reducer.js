@@ -25,6 +25,7 @@ const initialState = {
   topSchools: [],
   error: null,
   courseSector: initialCourseSector,
+  lan : true
 };
 
 export const careerReducer = (state = initialState, action) => {

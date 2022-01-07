@@ -22,10 +22,11 @@ function MyProgress() {
   const dispatch = useDispatch();
 
   const { t } = useTranslation();
+  const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
     dispatch(getUserCourseProgress());
-  }, [dispatch]);
+  }, [dispatch, lan]);
 
   const filterCoursesData = (coursesData = [], type) => {
     if (type === "current") {
@@ -44,8 +45,12 @@ function MyProgress() {
         <Container>
           <Row>
             <Col md={12}>
-              <h1>{t("common.greeting.hello")} {user?.name || t("common.n/a")}!</h1>
-              <p className='dashboard_back'>{t("common.greeting.goodToSeeYou")}</p>
+              <h1>
+                {t("common.greeting.hello")} {user?.name || t("common.n/a")}!
+              </h1>
+              <p className='dashboard_back'>
+                {t("common.greeting.goodToSeeYou")}
+              </p>
             </Col>
           </Row>
           <Row>
@@ -72,11 +77,13 @@ function MyProgress() {
 
             {/* right side content */}
             <Col md={5} xs={12}>
-              {
+              {myProgress?.user_progress_data?.total_course === 0 ? (
+                ""
+              ) : (
                 <ProgressChart
                   userProgress={myProgress?.user_progress_data || null}
                 />
-              }
+              )}
               <div className='certificate-section'>
                 <Row>
                   <Col md={12}>
@@ -90,7 +97,7 @@ function MyProgress() {
                 <div>
                   <Link to={routingConstants.ALL_CERTIFICATE_PAGE}>
                     <button className='btn all_certificatebutton'>
-                    {t("dashboardPage.button.1")}
+                      {t("dashboardPage.button.1")}
                     </button>
                   </Link>
                 </div>

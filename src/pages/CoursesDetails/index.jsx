@@ -17,11 +17,6 @@ import Language1 from "../../assets/icons/Language1.png";
 
 import { Header, Footer, SEO, Carousel } from "../../components";
 
-// import Device from "../../assets/images/CoursesDetails/Device.png";
-// import clock from "../../assets/images/CoursesDetails/clock.png";
-// import certificate from "../../assets/images/CoursesDetails/certificate.png";
-// import Support from "../../assets/images/CoursesDetails/Support.png";
-// import forum from "../../assets/images/CoursesDetails/forum.png";
 
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
@@ -31,17 +26,19 @@ const CourseDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { course } = useSelector((state) => state.coursesReducer);
+  const {lan} = useSelector(state => state.languageReducer);
+
   const { t } = useTranslation();
   useEffect(() => {
     dispatch(singleCourseDetails(id));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [dispatch, id]);
+  }, [dispatch, id,lan]);
 
   useEffect(() => {
     if (course?.category_id) {
       dispatch(getSimilarCourses(course?.category_id));
     }
-  }, [dispatch, course]);
+  }, [dispatch, course,lan]);
 
   return (
     <div>
@@ -80,7 +77,6 @@ const CourseDetails = () => {
                 <p>{course?.description}</p>
               </div>
               <div className='mt-2 mb-2'>
-                {/* <SocialShare /> */}
               </div>
               <div className='sec1_con2 con_setSec1'>
                 <h2>{t("coursesPage.coursesDetailsPage.heading.3")}</h2>
@@ -102,6 +98,32 @@ const CourseDetails = () => {
                 </Row>
               </div>
 
+              
+            </div>
+
+            <div className='col-md-5'>
+              <div className='sec2_right'>
+                <Link
+                  to={routingConstants.COURSES_MODULE + id}
+                  className='btn btn_str_Cor'
+                >
+                  {t("coursesPage.coursesDetailsPage.other.1")}
+                </Link>
+                <h3 className='similar-coursestext'>
+                  {t("coursesPage.coursesDetailsPage.other.2")}
+                </h3>
+                <div className='cou_set_similer'>
+                  <Carousel page='courseDetail' />
+                </div>
+                <Link to='/courses' className='btn_view'>
+                  {t("coursesPage.coursesDetailsPage.other.3")}
+                </Link>
+              </div>
+            </div>
+
+
+            <Row>
+              <Col lg={7} md={12}>
               <div className='sec1_con2'>
                 <h2>{t("coursesPage.coursesDetailsPage.heading.4")}</h2>
 
@@ -212,27 +234,8 @@ const CourseDetails = () => {
                   </Col>
                 </Row>
               </div>
-            </div>
-
-            <div className='col-md-5'>
-              <div className='sec2_right'>
-                <Link
-                  to={routingConstants.COURSES_MODULE + id}
-                  className='btn btn_str_Cor'
-                >
-                  {t("coursesPage.coursesDetailsPage.other.1")}
-                </Link>
-                <h3 className='similar-coursestext'>
-                  {t("coursesPage.coursesDetailsPage.other.2")}
-                </h3>
-                <div className='cou_set_similer'>
-                  <Carousel page='courseDetail' />
-                </div>
-                <Link to='/courses' className='btn_view'>
-                  {t("coursesPage.coursesDetailsPage.other.3")}
-                </Link>
-              </div>
-            </div>
+              </Col>
+            </Row>
           </div>
         </div>
       </section>

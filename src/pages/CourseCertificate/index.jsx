@@ -5,9 +5,7 @@ import { Header, Footer } from "../../components";
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import check from "../../assets/images/Courses/check.png";
-// import Certificate from "../../assets/images/Courses/Certificate.png";
 import Dawnload from "../../assets/images/Courses/Dawnload.png";
-import Share from "../../assets/images/Courses/Share.png";
 import fullscreen_icon from "../../assets/images/Courses/fullscreen_icon.png";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
@@ -16,8 +14,6 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCourseCertificateDetail } from "../../store/certificate";
 
-
-// import jsPDF from "jspdf";
 import CertificatesDetail from "../Certificates/CertificatesDetail";
 
 function CourseTest() {
@@ -30,8 +26,10 @@ function CourseTest() {
   const { certificateDetail: certificate } = useSelector(
     (state) => state.certificateReducer,
   );
-  const { t } = useTranslation();
+  const {lan} = useSelector(state => state.languageReducer);
+
   const { user } = useSelector((state) => state.authReducer);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (id) {
@@ -39,7 +37,7 @@ function CourseTest() {
     } else {
       history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
-  }, [id, history, dispatch]);
+  }, [id, history, dispatch,lan]);
 
   // const generatePDF = () => {
   //   // const img = new Image();
@@ -76,20 +74,26 @@ function CourseTest() {
                   <h4>{t("allCertificatePage.heading.3")}</h4>
                   <div className='skill_flex'>
                     <ul>
-                      <li>
-                        <img src={check} alt='' /> {t("allCertificatePage.skills.1")}
-                      </li>
-                      <li>
-                        <img src={check} alt='' /> {t("allCertificatePage.skills.2")}
-                      </li>
+                      {certificate?.skill &&
+                        certificate?.skill?.map(
+                          (o, i) =>
+                            i < 2 && (
+                              <li>
+                                <img src={check} alt='' /> {o.name}
+                              </li>
+                            ),
+                        )}
                     </ul>
                     <ul>
-                      <li>
-                        <img src={check} alt='' /> {t("allCertificatePage.skills.3")}
-                      </li>
-                      <li>
-                        <img src={check} alt='' /> {t("allCertificatePage.skills.4")}
-                      </li>
+                    {certificate?.skill &&
+                        certificate?.skill?.map(
+                          (o, i) =>
+                            i >= 2 && (
+                              <li>
+                                <img src={check} alt='' /> {o.name}
+                              </li>
+                            ),
+                        )}
                     </ul>
                   </div>
                 </div>
@@ -97,37 +101,45 @@ function CourseTest() {
             </Col>
 
             <Col md={7} xs={12} className=''>
-            <p className='cou_tit'>{t("allCertificatePage.other.10")}</p>
+              <p className='cou_tit'>{t("allCertificatePage.other.10")}</p>
               <div className='certi_img'>
                 <p>
                   <div
                     className='content'
                     onClick={() =>
-                      history.push(routingConstants.ALL_CERTIFICATE_DETAIL + certificate?.id)
+                      history.push(
+                        routingConstants.ALL_CERTIFICATE_DETAIL +
+                          certificate?.id,
+                      )
                     }
                     style={{ cursor: "pointer" }}
                   >
                     <div className='content-overlay'></div>
-                    {/* <img src={Certificate} alt='' /> */}
-                    
-                    <CertificatesDetail ref={certificateRef} showButton={false}/>
+
+                    <CertificatesDetail
+                      ref={certificateRef}
+                      showButton={false}
+                      size='small'
+                    />
                     <div className='content-details fadeIn-bottom'>
                       <h3 className='content-title'>
                         <img src={fullscreen_icon} alt='' />
                       </h3>
-                      <p className='content-text'>{t("allCertificatePage.other.11")}</p>
+                      <p className='content-text'>
+                        {t("allCertificatePage.other.11")}
+                      </p>
                     </div>
                   </div>
                 </p>
-                <p className="certificate-downloaddiv">
+                <p className='certificate-downloaddiv'>
                   <img
                     src={Dawnload}
                     alt=''
                     style={{ cursor: "pointer" }}
                     onClick={() => certificateRef.current.generatePDF()}
                   />
+                  {/* <img src={Share} alt='' style={{ cursor: "pointer" }} /> */}
                   <br />
-                  <img src={Share} alt='' style={{ cursor: "pointer" }} />
                 </p>
               </div>
             </Col>

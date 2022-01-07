@@ -193,9 +193,19 @@ export const postAnswer =
         values,
       );
       dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
+      if (res.status_code === 200 && !last) {
+        dispatch({ type: coursesTypes.QUESTION_COUNT_REQUEST });
+        const res = await httpServices.get(constants.USER_TEST_COUNT + id);
+        dispatch({
+          type: coursesTypes.QUESTION_COUNT_FINISH,
+          payload: res.data,
+        });
+      }
+
       if (res.status_code === 200 && last) {
         await httpServices.post(constants.USER_COURSE_END_TIME + id);
         history.push(routingConstants.COURSES_RESULT + id);
+        window.localStorage.removeItem("isTestStarted");
       }
     } catch (err) {
       dispatch({ type: coursesTypes.POST_ANSWER_FAIL });
@@ -216,6 +226,7 @@ export const successStories = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.SUCCESS_STORY_REQUEST });
     const res = await httpServices.get(constants.SUCCESS_STORY);
+    debugger
     dispatch({
       type: coursesTypes.SUCCESS_STORY_FINISH,
       payload:
@@ -248,6 +259,7 @@ export const setFilter =
 
 export const endTest = (id) => async (dispatch) => {
   await httpServices.post(constants.USER_COURSE_END_TIME + id);
+  window.localStorage.removeItem("isTestStarted");
 };
 
 export const testResult = (id) => async (dispatch) => {
