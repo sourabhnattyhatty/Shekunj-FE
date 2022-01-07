@@ -39,7 +39,18 @@ body {
   background-image: url("../../assets/images/banner/4.png");
 }
 #myCarousel .carousel-item h4 {
-  font-weight: bold;
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 42px;
+  line-height: 120%;
+  max-width: 510px;
+  width: 100%;
+}
+#myCarousel .carousel-item h5 {
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: 600;
   font-size: 42px;
   line-height: 120%;
   max-width: 510px;
@@ -47,12 +58,10 @@ body {
 }
 #myCarousel .carousel-item h4 span {
   font-family: SegoeUI_medium;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 48px;
-  line-height: 72px;
-  text-transform: uppercase;
-  color: #000000;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  padding-right: 18%;
   display: block;
 }
 #myCarousel .carousel-item p {
@@ -234,11 +243,11 @@ body {
   background-size: 100% 100%;
   padding: 65px 79px;
   height: 348px;
-  text-align: center;
+  // text-align: center;
 }
 .job-opprtunity-bg h3 {
-  font-family: "SegoeUI_bold";
-  font-weight: bold;
+  font-family: "SegoeUI_medium";
+  font-weight: 600;
   font-style: normal;
   font-size: 40px;
   line-height: 60px;
@@ -362,7 +371,7 @@ body {
 .highlight_student h3 {
   font-family: "SegoeUI_bold";
   font-weight: bold;
-  font-size: 40px;
+  font-size: 35px;
   line-height: 50px;
   display: flex;
   align-items: center;
@@ -574,7 +583,7 @@ ul.star {
   color: #ffffff;
 }
 .container.Our_text p {
-  font-family: SegoeUI_bold;
+  font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -588,13 +597,13 @@ ul.star {
   margin: 30px 0px;
 }
 .container.Our_text h2 {
-  font-family: SegoeUI_bold;
+  font-family: "SegoeUI_medium";
   font-style: normal;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 40px;
   line-height: 52px;
   text-transform: capitalize;
-  color: #323232;
+  color: rgb(50 50 50);
   margin-bottom: 30px;
 }
 .career_community {
@@ -1098,7 +1107,6 @@ ul.star {
   // #myCarousel .carousel-item {
   //   height: 60vh;
   // }
-  
 }
 // @media screen and (min-device-width: 1400px) and (max-device-width:1440px) {
 //   #myCarousel .carousel-item{
@@ -1115,9 +1123,7 @@ ul.star {
   position: relative;
 }
 
-
-
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px) { 
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   #myCarousel .carousel-item {
     height: 30vh;
   }
@@ -1130,36 +1136,35 @@ ul.star {
   .resume .resumeimg {
     right: 0;
     width: 430px;
+  }
+  #myCarousel .carousel-item h4 {
+    font-size: 21px;
+  }
+  .certificate {
+    background-image: none;
+  }
+  .cer_img {
+    display: block;
+  }
+  .cer_img img {
+    max-width: 100%;
+  }
+  .mob_comunity_img {
+    display: block;
+  }
+  .community-img.mt-5 {
+    display: none;
+  }
+  .job-opprtunity-bg .jobimg {
+    top: -65px;
+  }
+  .tes_box {
+    height: auto !important;
+  }
+  .tes_box2 {
+    width: 100%;
+  }
 }
-#myCarousel .carousel-item h4 {
-  font-size: 21px;
-}
-.certificate {
-  background-image: none;
-}
-.cer_img {
-  display: block;
-}
-.cer_img img {
-  max-width: 100%;
-}
-.mob_comunity_img {
-  display: block;
-}
-.community-img.mt-5 {
-  display: none;
-}
-.job-opprtunity-bg .jobimg {
-  top: -65px;
-}
-.tes_box {
-  height: auto !important;
-}
-.tes_box2 {
-  width: 100%;
-}
-}
-
 
 @media screen and (max-width: 768px) {
   .job-opprtunity-bg .jobimg {
@@ -1171,10 +1176,8 @@ ul.star {
   .highlight_student h3 {
     font-size: 28px;
     line-height: 40px;
+  }
 }
-
-}
-
 
 @media screen and (min-device-width: 1420px) and (max-device-width: 1440px) {
   #myCarousel .carousel-item {

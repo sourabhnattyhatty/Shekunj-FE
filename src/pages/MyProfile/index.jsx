@@ -20,7 +20,7 @@ function MyProfile() {
       <div className='my_profile_div'>
         <Container>
           <div className='profile_con'>
-            <h2>{t("common.greeting.hello")} {user?.name || t("common.n/a")}</h2>
+            {/* <h2>{t("common.greeting.hello")} {user?.name || t("common.n/a")}</h2> */}
             <p>{t("myProfilePage.heading.1")}</p>
           </div>
         </Container>
