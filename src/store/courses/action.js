@@ -167,6 +167,7 @@ export const getUserTestQuestion =
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
+      debugger
       if (err?.status === 400) {
         if (err.data.message === "Already course test is completed") {
           const res = await httpServices.get(constants.USER_COURSE_RESULT);
@@ -174,6 +175,7 @@ export const getUserTestQuestion =
           toast.success(err.data.message, toasterConfig);
         } else {
           history?.push(routingConstants.COURSES_RESULT + id);
+          window.localStorage.removeItem("isTestStarted");
         }
       } else if (err.data.status_code === 500) {
         history?.push(routingConstants.COURSES_RESULT + id);
@@ -257,9 +259,12 @@ export const setFilter =
     dispatch({ type: coursesTypes.SELECTED_FILTER, payload });
   };
 
-export const endTest = (id) => async (dispatch) => {
-  await httpServices.post(constants.USER_COURSE_END_TIME + id);
+export const endTest = (id,history) => async (dispatch) => {
+  const res = await httpServices.post(constants.USER_COURSE_END_TIME + id);
   window.localStorage.removeItem("isTestStarted");
+  if(res.status_code === 200 && history){
+    history?.push(routingConstants.COURSES_RESULT + id);
+  }
 };
 
 export const testResult = (id) => async (dispatch) => {

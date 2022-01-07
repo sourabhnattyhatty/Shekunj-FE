@@ -70,11 +70,10 @@ function CourseTest() {
   const { question, questionCount, isLoading } = useSelector(
     (state) => state.coursesReducer,
   );
-  const {lan} = useSelector(state => state.languageReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
 
   const progress =
     Math.round(100 / (questionCount?.total_course_que || 0)) || 0;
-
 
   useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
@@ -83,7 +82,16 @@ function CourseTest() {
       toast.error(t("error.mobile.1"));
       history.push(routingConstants.HOME_PAGE);
     }
-  }, [history, detect.isMobile, id, dispatch, t,lan]);
+    if (localStorage.getItem("isTestStarted")) {
+      dispatch(endTest(id, history));
+    }
+    return () => {
+      // const confirmText = window.confirm("Are you sure?");
+      // if (confirmText) {
+      dispatch(endTest(id));
+      // }
+    };
+  }, [history, detect.isMobile, id, dispatch, t, lan]);
 
   useEffect(() => {
     if (question) {
@@ -129,12 +137,13 @@ function CourseTest() {
 
   React.useEffect(() => {
     dispatch(testCountSummery(id, history));
-  }, [dispatch, history, id,lan]);
+  }, [dispatch, history, id, lan]);
 
   React.useEffect(() => {
     if (questionCount && questionCount?.counse_time > 0) {
       setTimer(parseInt(questionCount?.counse_time, 10) * 60000);
       setShowTimer(true);
+      localStorage.setItem("isTestStarted", true);
     }
   }, [questionCount, questionCount?.counse_time]);
 

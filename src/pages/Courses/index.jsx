@@ -31,7 +31,7 @@ const Courses = (props) => {
   const [resetState, setResetState] = useState(false);
   const dispatch = useDispatch();
 
-  const {lan} = useSelector(state => state.languageReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
     dispatch(allCourses());
