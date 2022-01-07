@@ -243,23 +243,25 @@
   "homePage": {
     "mainSlider": {
       "heading": {
-        "1": "Anytime, anywhere, Learn on your schedule from any device",
-        "2": "Anytime, anywhere, Learn on your schedule from any device",
+        "1": "A Promise To",
+        "4": "Never Stop Learning.",
+        "2": "Anytime, anywhere, Learn ",
+        "5": "on your schedule from any device",
         "3": {
-          "3.1": "OWN YOUR FUTURE BY",
-          "3.2": "Learning Skills"
+          "3.1": "Discover",
+          "3.2": "Your Perfect Career"
         }
       },
       "button": {
-        "1": "Start Course",
-        "2": "View All Courses",
-        "3": "View All Test Categories"
+        "1": "Start Learning",
+        "2": "View All Schemes",
+        "3": "View All Test"
       }
     },
     "carousel1": {
       "heading": {
-        "1": "Our",
-        "2": "Most Popular Courses"
+        "1": "Helpful",
+        "2": "Government Schemes"
       }
     },
     "carousel2": {
@@ -269,26 +271,26 @@
       }
     },
     "resume": {
-      "heading": "Design your resume in real time and download a print-ready PDF.",
-      "button": "DESIGN MY RESUME"
+      "heading": "Land your dream job by designing a perfect resume in a print-ready format",
+      "button": "Create Your CV Now"
     },
     "jobopportunity": {
-      "heading": "Grab job Opportunities...",
-      "button": "view all job opportunities"
+      "heading": "Grab job Opportunities!",
+      "button": "Opportunities"
     },
     "community": {
-      "heading": "Shekunj Career Development Community",
-      "button": "Start Course"
+      "heading": "Trusted By All Women",
+      "button": "View Success Stories"
     },
     "certificate": {
       "heading": {
-        "1": "Gain Industry-Recognized",
+        "1": "30+ Free Courses With Industry Recognized Certifications",
         "2": "UX Certificates"
       }
     },
     "highlightStudents": {
-      "heading": "Our highlighted students revealing",
-      "button": "Learn more"
+      "heading": "Want to become a part of our next success story?",
+      "button": "Enroll Now"
     }
   },
 
@@ -565,14 +567,14 @@
     "greeting": "Hello {{name}}!",
     "wish": "Good to see you back!",
     "current": "Current Course",
-    "inProgress": "Course in progress",
+    "inProgress": "In Progress",
     "certificate": "Certificate",
     "explore": "Explore",
     "button": {
       "1": "All Certificates"
     },
     "heading": {
-      "1": "Your test"
+      "1": "Career test"
     }
   },
   "guidanceBookPage": {

@@ -101,13 +101,12 @@ function HomePage() {
                 <div className='row h_set' data-aos='slide-up'>
                   <div className='col-md-7 col-12'>
                     <h4 className='mt-5 pt-lg-5 mb-1'>
-                      {t("homePage.mainSlider.heading.1")}
-                    </h4>
+                      {t("homePage.mainSlider.heading.1")}</h4>
+                      <h5>{t("homePage.mainSlider.heading.4")}</h5>
+                    
                     <p className='mb-4'>
                       {" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      In sed fermentum massa semper mauris volutpat dictum
-                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
+                      We believe that there is no right age, time or place to learn. It really does not matter if you are 16 or 60, learning is an ongoing process so let’s keep it that way! Take classes on the go with the SheKunj.
                     </p>
                     <Link to='/courses' className='banner_btn'>
                       {t("homePage.mainSlider.button.1")}
@@ -124,6 +123,8 @@ function HomePage() {
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
+                    <h5>{t("homePage.mainSlider.heading.5")}
+                    </h5>
                     <p className='mb-4' data-aos='zoom-in'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -148,8 +149,15 @@ function HomePage() {
                   <div className='col-md-7 col-12'>
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.3.3.1")}
-                      <span>{t("homePage.mainSlider.heading.3.3.2")}</span>
+                      
+                     
                     </h4>
+
+                    <h5>{t("homePage.mainSlider.heading.3.3.2")}</h5>
+
+                    <p className='mb-4' data-aos='zoom-in'>
+                    Take the world’s most-advanced career advice from SheKunj's finest career counsellors online and find your best-fit career.
+                    </p>
 
                     <Link
                       to='/courses'
@@ -170,6 +178,9 @@ function HomePage() {
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
+
+                    <h5>{t("homePage.mainSlider.heading.5")}
+                    </h5>
 
                     <p className='mb-4' data-aos='zoom-in'>
                       {" "}
@@ -254,10 +265,7 @@ function HomePage() {
                   <div className='col-lg-8' data-aos='slide-up'>
                     <h3>{t("homePage.jobopportunity.heading")}</h3>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Rutrum sapien nunc sit egestas amet magnis enim.
-                      Suspendisse vulputate ut nunc lorem mi ut lacus. Felis
-                      vitae vel.
+                    Enroll. Learn. Explore. Grow. Work. SheKunj offers Indian women a whole new world waiting to be explored! We aim at bringing education to the women masses. The Best Certified Online Courses for a Sustainable Career are aimed at all professionals, entrepreneurs and graduates who want to excel in their profession.
                     </p>
                     <a
                       rel='noreferrer'
@@ -301,9 +309,7 @@ function HomePage() {
             <div className='col-md-12'>
               <h3 data-aos='slide-up'>{t("homePage.community.heading")}</h3>
               <p data-aos='slide-up'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
-                sapien nunc sit egestas amet magnis enim. Suspendisse vulputate
-                ut nunc lorem mi ut lacus. Felis vitae vel.
+              Take a glance at the happy, glittering faces who have enrolled with SheKunj. We understand the importance of education for the solutions of tomorrow. SheKunj is a first-of-its-kind, women-centered, global network dedicated to empowerment in every community where equality is in question.
               </p>
 
               <div className='mob_comunity_img'>
@@ -396,7 +402,7 @@ function HomePage() {
 
           <div className='row justify-content-center'>
             <div className='col-md-4 text-center mt-5'>
-              <Link to='/courses' style={{ textDecoration: "none" }}>
+              <Link to='/success-stories' style={{ textDecoration: "none" }}>
                 <button className='btn btn-start-course' data-aos='slide-up'>
                   {t("homePage.community.button")}
                 </button>
@@ -625,8 +631,8 @@ function HomePage() {
                 ornare ipsum. Tincidunt erat pulvinar viverra pharetra.
               </p>
 
-              <Link to="/success-stories" data-aos='slide-up' className='learn_more'>
-                Get More
+              <Link to="/courses" data-aos='slide-up' className='learn_more'>
+                {t('homePage.highlightStudents.button')}
               </Link>
             </div>
           </div>
