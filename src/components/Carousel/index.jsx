@@ -22,7 +22,7 @@ function Carousel(props) {
 
   useEffect(() => {
     dispatch(allHomeCourses());
-  }, [dispatch, course?.category_id,lan]);
+  }, [dispatch, course?.category_id, lan]);
 
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;

@@ -292,8 +292,8 @@ function HomePage() {
       <Carousel
         items={5}
         page='homePage'
-        title1={t("homePage.carousel1.heading.1")}
-        title2={t("homePage.carousel1.heading.2")}
+        title1={t("homePage.carousel3.heading.1")}
+        title2={t("homePage.carousel3.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>

@@ -260,14 +260,20 @@
     },
     "carousel1": {
       "heading": {
-        "1": "Helpful",
-        "2": "Government Schemes"
+        "1": "Our",
+        "2": "Most Popular courses"
       }
     },
     "carousel2": {
       "heading": {
         "1": "CHALLENGING",
         "2": "Online Tests"
+      }
+    },
+    "carousel3": {
+      "heading": {
+        "1": "Helpful",
+        "2": "Government Schemes"
       }
     },
     "resume": {
@@ -425,7 +431,7 @@
 
   "careerGovExams": {
     "heading": {
-      "1": "Government Exams"
+      "1": "Government Schemes"
     },
     "listItems": {
       "1": "CATEGORIES"
@@ -721,7 +727,7 @@
       "7": "Book a Counsellor",
       "8": "Top Colleges",
       "9": "Top Schools",
-      "10": "Government Exams"
+      "10": "Government Schemes"
     }
   }
 }

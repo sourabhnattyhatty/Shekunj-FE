@@ -47,7 +47,6 @@ export const isAuthenticated = () => {
 
 export const checkIsValidImage = (file) => {
   const filetypes = /\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/;
-  debugger
   if (!file.name.match(filetypes)) {
     toast.error(i18njs.t("error.other.3"));
     return false;

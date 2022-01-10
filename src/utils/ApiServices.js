@@ -5,10 +5,7 @@ import noImageIcon from "../assets/images/no-image.jpeg";
 import i18njs from "../assets/i18n/i18n";
 
 import { checkIsSessionExpired, decodeToken } from ".";
-// import { routingConstants } from "./constants";
 import { removeUnauthorizedUser } from "./utils";
-
-
 
 const apiBaseUrl = process.env.REACT_APP_URL_API;
 const currentLang = localStorage.getItem("i18nextLng");
@@ -40,7 +37,6 @@ axios.interceptors.response.use(
     return response;
   },
   async (error) => {
-    debugger
     const { status } = await error?.response;
     switch (status) {
       case 401:

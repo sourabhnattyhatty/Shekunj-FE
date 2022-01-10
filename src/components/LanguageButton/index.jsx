@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 
 function ChangeLanguageButton() {
   const dispatch = useDispatch();
-  const {lan} = useSelector((state) => state.languageReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
   const [language, setLanguage] = useState(
     localStorage.getItem("i18nextLng") || "en",
   );
@@ -48,11 +48,11 @@ function ChangeLanguageButton() {
       : setLanguage("hi");
   }, [lan]);
 
-  const changeLanguage = (e, lan) => {
-    i18n.changeLanguage(lan);
-    setLanguage(lan);
+  const changeLanguage = (e, lang) => {
+    i18n.changeLanguage(lang);
+    setLanguage(lang);
     setAnchorEl(null);
-    dispatch(translation());
+    dispatch(translation(lang));
   };
 
   const handleClose = () => {
