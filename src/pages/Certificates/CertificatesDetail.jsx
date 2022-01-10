@@ -55,6 +55,8 @@ const CertificatesDetail = forwardRef((props, ref) => {
 
   return (
     <div className='container p-0'>
+            <div className="mob_box_certificate_small"></div>
+
       <div
         className={
           props.size === "large"
@@ -64,6 +66,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
       >
         <Row>
           <Col md={7} xs={12} className='offset-3'>
+          
             <div
               className={
                 props.size === "large"
@@ -75,11 +78,12 @@ const CertificatesDetail = forwardRef((props, ref) => {
               <img className='last-img' src={para} alt='' />
               <h2>{certificate?.name || t("common.n/a")}</h2>
               <hr className='hr_line' />
+              <h5>for successfully completing the course</h5>
+              <h3>“{certificate?.course_name}”</h3>
               <p className='first-number'>
                 {t("certificateDetailPage.content.1.1")} {certificate?.id}{" "}
                 {t("certificateDetailPage.content.1.2")}
               </p>
-              <h3>“{certificate?.course_name}”</h3>
               <p className='second-number'>
                 {t("certificateDetailPage.other.1")}{" "}
                 {formatDate(certificate?.course_start_time, "MMM Do YYYY")} to{" "}
@@ -110,10 +114,10 @@ const CertificatesDetail = forwardRef((props, ref) => {
         <div className='signature_set'>
           <img src={signature} alt='' />
           <hr className='hr_line2' />
-          <div className='president'>{t("certificateDetailPage.other.3")}</div>
           <div className='name-surname'>
             {t("certificateDetailPage.other.4")}
           </div>
+          <div className='president'>{t("certificateDetailPage.other.3")}</div>
         </div>
       </div>
       {props.showButton && (
