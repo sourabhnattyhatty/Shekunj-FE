@@ -112,10 +112,10 @@
   // box-shadow: 0px 0px 3px #ccc;
   filter: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.1));
   padding: 15px;
-  height: 650px;
+  height: 810px;
   position: relative;
   display: grid;
-  align-items: center;
+  align-items: flex-end;
 }
 .box_certificate_large::after {
   content: "";
@@ -135,9 +135,15 @@
 }
 .signature_set {
   position: absolute;
-  bottom: 42px;
-  right: 42px;
+  bottom: 42px;  
+  right: 67px;
   text-align: center;
+}
+.box_certificate_small .signature_set img {
+  width: 75px;
+}
+.box_certificate_large .signature_set img {
+  width: 150px;
 }
 .cercifi_con_large p {
   font-family: Ubuntu;
@@ -147,6 +153,10 @@
   line-height: 23px;
   text-transform: capitalize;
   color: #000000;
+  margin: 0;
+}
+.cercifi_con_large p {
+  margin-bottom: 31px;
 }
 hr.hr_line {
   border: 1px solid #828282;
@@ -165,7 +175,7 @@ hr.hr_line {
   margin-bottom: 0;
 }
 .cercifi_con_large img.cer_text {
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 .cercifi_con_large h3 {
   font-family: Ubuntu;
@@ -175,12 +185,21 @@ hr.hr_line {
   line-height: 38px;
   text-transform: capitalize;
   color: #000000;
+  margin-top: 31px;
+  margin-bottom: 31px;
+}
+p.first-number {
+  font-family: 'SegoeUI_medium';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 21px;
+  line-height: 30px;
+  color: rgb(79 79 79);
 }
 hr.hr_line2 {
   border: 1px solid #828282;
   margin: 13px auto;
 }
-
 button.back_course {
   font-family: Roboto;
   font-style: normal;
@@ -198,6 +217,7 @@ button.back_course {
   .all_certif_con button {
     width: 150px;
   }
+  
 }
 
 // new css small certificate
@@ -230,6 +250,19 @@ button.back_course {
   font-size: 20px;
   margin-top: 35px;
   text-align: left;
+}
+.box_certificate_small .signature_set {
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+  text-align: center;
+}
+.box_certificate_small .cer_logo {
+  margin-left: 30px !important;
+  margin-bottom: 10px !important;
+}
+.box_certificate_small .cer_logo img {
+width: 65px;
 }
 .cercifi_con_small h3 {
   font-family: Ubuntu;
@@ -265,10 +298,10 @@ hr.hr_line {
   filter: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.1));
 }
 .signature_set .president {
-  font-size: 10px;
+  font-size: 14px;
 }
 .signature_set .name-surname {
-  font-size: 11px;
+  font-size: 18px;
   font-weight: 600;
   box-shadow: none;
 }
@@ -282,9 +315,9 @@ hr.hr_line2 {
   bottom: 15px;
   left: 35px;
 }
-.signature_set {
-  bottom: 15px;
-}
+// .signature_set {
+//   bottom: 15px;
+// }
 .cercifi_con_small {
   padding-top: 0%;
 }
@@ -371,4 +404,18 @@ hr.hr_line2 {
   .all_certif_banner {
     height: 395px;
   }
+}
+
+
+.box_certificate_large .cer_logo img {
+  width: 150px;
+}
+
+.cer_logo {
+  display: flex;
+  align-items: baseline;
+  grid-gap: 2rem;
+  gap: 2rem;
+  margin-left: 67px;
+  margin-bottom: 30px;
 }

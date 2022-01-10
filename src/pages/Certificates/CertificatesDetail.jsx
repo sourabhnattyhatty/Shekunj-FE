@@ -8,6 +8,9 @@ import { formatDate } from "../../utils/utils";
 import Certificate_text from "../../assets/images/AllCertificate/Certificate_text.png";
 import para from "../../assets/images/AllCertificate/para.png";
 import signature from "../../assets/images/AllCertificate/signature.png";
+import logo1 from "../../assets/images/AllCertificate/logo1.png";
+import logo22 from "../../assets/images/AllCertificate/logo22.png";
+import logo3 from "../../assets/images/AllCertificate/logo3.png";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
@@ -87,7 +90,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
           </Col>
         </Row>
 
-        <div
+        {/* <div
           className={
             props.size === "large" ? "date_set_large" : "date_set_small"
           }
@@ -97,6 +100,12 @@ const CertificatesDetail = forwardRef((props, ref) => {
           </div>
           <hr className='hr_line2' />
           <div className='date-text'>{t("common.time.7")}</div>
+        </div> */}
+
+        <div className="cer_logo">
+            <img src={logo1} alt="" srcset="" />
+            <img src={logo22} alt="" srcset="" />
+            <img src={logo3} alt="" srcset="" />
         </div>
         <div className='signature_set'>
           <img src={signature} alt='' />

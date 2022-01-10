@@ -212,7 +212,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <Link to='/courses' style={{ textDecoration: "none" }}>
+      <Link to='/government-exams' style={{ textDecoration: "none" }}>
         <button className='view_test_cate'>
           {t("homePage.mainSlider.button.2")}
         </button>
@@ -296,7 +296,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <Link to='/courses' style={{ textDecoration: "none" }}>
+      <Link to='/government-exams' style={{ textDecoration: "none" }}>
         <button className='view_test_cate'>
           {t("homePage.mainSlider.button.2")}
         </button>
