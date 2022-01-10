@@ -2,33 +2,32 @@ import React, { useEffect, forwardRef, useImperativeHandle } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import jsPDF from "jspdf";
+import * as htmlToImage from "html-to-image";
 
 import { getUserCourseCertificateDetail } from "../../store/certificate";
-import { formatDate } from "../../utils/utils";
+import { routingConstants } from "../../utils/constants";
+
 import Certificate_text from "../../assets/images/AllCertificate/Certificate_text.png";
 import para from "../../assets/images/AllCertificate/para.png";
 import signature from "../../assets/images/AllCertificate/signature.png";
 import logo1 from "../../assets/images/AllCertificate/logo1.png";
 import logo22 from "../../assets/images/AllCertificate/logo22.png";
 import logo3 from "../../assets/images/AllCertificate/logo3.png";
-import "./index.scss";
-import { routingConstants } from "../../utils/constants";
-import { useTranslation } from "react-i18next";
 
-import jsPDF from "jspdf";
-import * as htmlToImage from "html-to-image";
+import "./index.scss";
 
 const CertificatesDetail = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
+  const { t } = useTranslation();
 
   const { certificateDetail: certificate } = useSelector(
     (state) => state.certificateReducer,
   );
-  const {lan} = useSelector(state => state.languageReducer);
-
-  const { t } = useTranslation();
+  const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
     if (props?.id) {
@@ -38,7 +37,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
     } else {
       history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
-  }, [id, history, dispatch, props?.id,lan]);
+  }, [id, history, dispatch, props?.id, lan]);
 
   useImperativeHandle(ref, () => ({
     generatePDF() {
@@ -55,7 +54,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
 
   return (
     <div className='container p-0'>
-            <div className="mob_box_certificate_small"></div>
+      <div className='mob_box_certificate_small'></div>
 
       <div
         className={
@@ -66,7 +65,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
       >
         <Row>
           <Col md={7} xs={12} className='offset-3'>
-          
             <div
               className={
                 props.size === "large"
@@ -86,13 +84,13 @@ const CertificatesDetail = forwardRef((props, ref) => {
               </p>
               <p className='second-number'>
                 {/* {t("certificateDetailPage.other.1")}{" "} */}
-                Date of achievement: <span> 10/01/2022   </span> 
+                Date of achievement: <span> 10/01/2022 </span>
                 {/* {formatDate(certificate?.course_start_time, "MMM Do YYYY")} to{" "} */}
                 {/* {formatDate(certificate?.course_end_time, "MMM Do YYYY")} */}
               </p>
               <p>
-              {/* {t("certificateDetailPage.other.2")} */}
-              Certificate ID: <span> 000000000000</span>
+                {/* {t("certificateDetailPage.other.2")} */}
+                Certificate ID: <span> 000000000000</span>
               </p>
             </div>
           </Col>
@@ -110,10 +108,10 @@ const CertificatesDetail = forwardRef((props, ref) => {
           <div className='date-text'>{t("common.time.7")}</div>
         </div> */}
 
-        <div className="cer_logo">
-            <img src={logo1} alt="" srcset="" />
-            <img src={logo22} alt="" srcset="" />
-            <img src={logo3} alt="" srcset="" />
+        <div className='cer_logo'>
+          <img src={logo1} alt='' srcset='' />
+          <img src={logo22} alt='' srcset='' />
+          <img src={logo3} alt='' srcset='' />
         </div>
         <div className='signature_set'>
           <img src={signature} alt='' />

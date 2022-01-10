@@ -2,14 +2,8 @@ import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-// import x from "../../assets/images/Career/x.png";
 
-import {
-  AccordionComponent,
-  Footer,
-  Header,
-  SEO,
-} from "../../components";
+import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import {
   getTopCollages,
   reSetFilterValue,
@@ -25,14 +19,13 @@ const CareerPage = () => {
   const { topCollages, courseSector } = useSelector(
     (state) => state.careerReducer,
   );
-
-  const {lan} = useSelector(state => state.languageReducer);
-  const {t} = useTranslation();
+  const { lan } = useSelector((state) => state.languageReducer);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(reSetFilterValue());
     dispatch(getTopCollages());
-  }, [dispatch,lan]);
+  }, [dispatch, lan]);
 
   const transformPrice = (price) => {
     let nf = new Intl.NumberFormat("en-US");
@@ -58,7 +51,7 @@ const CareerPage = () => {
     <div>
       <SEO title='Sheकुंज - Career' />
       <Header loginPage={true} page='career' subPage='colleges' />
-{/* 
+      {/* 
       <div className='filter_side'>
         <img src={x} alt='' />
         <AccordionComponent
@@ -78,7 +71,10 @@ const CareerPage = () => {
         <Container>
           <div className='career_tit noselect'>
             <h2>{t("careerTopColleges.heading.1")}</h2>
-            <p>{t("careerTopColleges.other.2")} {STREAM?.rows?.length || 0} {t("careerTopColleges.other.3")}</p>
+            <p>
+              {t("careerTopColleges.other.2")} {STREAM?.rows?.length || 0}{" "}
+              {t("careerTopColleges.other.3")}
+            </p>
           </div>
           <Row>
             <Col md={4} xs={12}>
@@ -102,17 +98,20 @@ const CareerPage = () => {
                         <div className='top_col_content'>
                           <h3>{c?.name || t("common.n/a")}</h3>
                           <p>
-                            {c?.city || t("common.n/a")}, {c?.state || t("common.n/a")} •{" "}
+                            {c?.city || t("common.n/a")},{" "}
+                            {c?.state || t("common.n/a")} •{" "}
                             <span style={{ textTransform: "capitalize" }}>
                               {c?.collage_type || t("common.n/a")}
                             </span>
                           </p>
                           <ul>
                             <li>
-                              <span>{t("careerTopColleges.other.4")}</span> : ₹ {transformPrice(c?.fees)}{" "}
+                              <span>{t("careerTopColleges.other.4")}</span> : ₹{" "}
+                              {transformPrice(c?.fees)}{" "}
                             </li>
                             <li>
-                              <span>{t("careerTopColleges.other.5")}</span> : {c?.exam || t("common.n/a")}
+                              <span>{t("careerTopColleges.other.5")}</span> :{" "}
+                              {c?.exam || t("common.n/a")}
                             </li>
                           </ul>
                           {c?.is_collapse && (

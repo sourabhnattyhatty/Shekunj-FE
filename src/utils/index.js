@@ -3,12 +3,12 @@ import * as constants from "./constants";
 import theme from "./Theme";
 import {
   toasterConfig,
-  transformError,
   isAuthenticated,
   checkIsValidImage,
   decodeToken,
   checkIsSessionExpired,
   handleErrorMessage,
+  removeUnauthorizedUser,
 } from "./utils";
 
 export {
@@ -16,10 +16,10 @@ export {
   constants,
   theme,
   toasterConfig,
-  transformError,
   isAuthenticated,
   checkIsValidImage,
   decodeToken,
   checkIsSessionExpired,
   handleErrorMessage,
+  removeUnauthorizedUser,
 };
