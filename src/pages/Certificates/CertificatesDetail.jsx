@@ -8,6 +8,9 @@ import { formatDate } from "../../utils/utils";
 import Certificate_text from "../../assets/images/AllCertificate/Certificate_text.png";
 import para from "../../assets/images/AllCertificate/para.png";
 import signature from "../../assets/images/AllCertificate/signature.png";
+import logo1 from "../../assets/images/AllCertificate/logo1.png";
+import logo22 from "../../assets/images/AllCertificate/logo22.png";
+import logo3 from "../../assets/images/AllCertificate/logo3.png";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
@@ -51,7 +54,9 @@ const CertificatesDetail = forwardRef((props, ref) => {
   }));
 
   return (
-    <div className='container p-0 noselect'>
+    <div className='container p-0'>
+            <div className="mob_box_certificate_small"></div>
+
       <div
         className={
           props.size === "large"
@@ -61,6 +66,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
       >
         <Row>
           <Col md={7} xs={12} className='offset-3'>
+          
             <div
               className={
                 props.size === "large"
@@ -72,11 +78,12 @@ const CertificatesDetail = forwardRef((props, ref) => {
               <img className='last-img' src={para} alt='' />
               <h2>{certificate?.name || t("common.n/a")}</h2>
               <hr className='hr_line' />
+              <h5>for successfully completing the course</h5>
+              <h3>“{certificate?.course_name}”</h3>
               <p className='first-number'>
                 {t("certificateDetailPage.content.1.1")} {certificate?.id}{" "}
                 {t("certificateDetailPage.content.1.2")}
               </p>
-              <h3>“{certificate?.course_name}”</h3>
               <p className='second-number'>
                 {t("certificateDetailPage.other.1")}{" "}
                 {formatDate(certificate?.course_start_time, "MMM Do YYYY")} to{" "}
@@ -87,7 +94,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
           </Col>
         </Row>
 
-        <div
+        {/* <div
           className={
             props.size === "large" ? "date_set_large" : "date_set_small"
           }
@@ -97,14 +104,20 @@ const CertificatesDetail = forwardRef((props, ref) => {
           </div>
           <hr className='hr_line2' />
           <div className='date-text'>{t("common.time.7")}</div>
+        </div> */}
+
+        <div className="cer_logo">
+            <img src={logo1} alt="" srcset="" />
+            <img src={logo22} alt="" srcset="" />
+            <img src={logo3} alt="" srcset="" />
         </div>
         <div className='signature_set'>
           <img src={signature} alt='' />
           <hr className='hr_line2' />
-          <div className='president'>{t("certificateDetailPage.other.3")}</div>
           <div className='name-surname'>
             {t("certificateDetailPage.other.4")}
           </div>
+          <div className='president'>{t("certificateDetailPage.other.3")}</div>
         </div>
       </div>
       {props.showButton && (

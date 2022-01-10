@@ -19,6 +19,7 @@ const InProgressCourse = ({ courses }) => {
   return (
     <div className='current_course'>
       <h3>{t("dashboardPage.inProgress")}</h3>
+      <div className="Scrl_div">
       {courses?.length > 0 ? (
         courses.map((c) => (
           <div className='course_inprogress'>
@@ -87,6 +88,7 @@ const InProgressCourse = ({ courses }) => {
       ) : (
         <div className=' mb-2'>{t("common.noCurrentCourse")}</div>
       )}
+      </div>
     </div>
   );
 };
