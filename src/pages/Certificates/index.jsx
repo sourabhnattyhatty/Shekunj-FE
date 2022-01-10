@@ -44,7 +44,7 @@ function AllCertificatePage() {
       <SEO title='Sheकुंज - All Certificates' />
       <Header loginPage={true} subPage='allCertificatePage' />
 
-      <div className='all_certif_banner'>
+      <div className='all_certif_banner noselect'>
         <Container>
           <Row>
             <Col md={5} xs={12} data-aos='slide-up'>
@@ -54,7 +54,7 @@ function AllCertificatePage() {
           </Row>
         </Container>
       </div>
-      <div className='all_certif_sec'>
+      <div className='all_certif_sec noselect'>
         <Container>
           <h2 className='my_achiev'>{t("allCertificatePage.heading.2")}</h2>
           {certificates.length > 0 ? (

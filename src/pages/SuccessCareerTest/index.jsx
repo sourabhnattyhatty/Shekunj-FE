@@ -7,11 +7,13 @@ import Timer from "react-compound-timer";
 import { routingConstants } from "../../utils/constants";
 
 import {
+  Autocomplete,
   Container,
   FormControlLabel,
   Radio,
   RadioGroup,
   Skeleton,
+  TextField,
 } from "@mui/material";
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
@@ -170,7 +172,7 @@ function CourseTest() {
     dispatch(getGuidanceCategory());
   }, [dispatch,lan]);
 
-  const handleCategoryChange = ({ target: { value } }) => {
+  const handleCategoryChange = ({target : {value}}) => {
     setSelectedCourseCategory(value?.name);
     setSelectedCourseCategoryValue(value);
   };
@@ -315,12 +317,15 @@ function CourseTest() {
       setCheck4(true);
     }
   };
+  const top100Films = guidanceCategory?.map((obj) => {
+    return {label : obj?.name}
+  })
 
   return (
     <div>
       <Header loginPage={true} page='guidance' subPage='careerTest' />
       <Container>
-        <div className='maindiv_prog setmain'>
+        <div className='maindiv_prog setmain noselect'>
           <div className='select_test'>
             <h2>{t("successCareerTestPage.heading.1")}</h2>
             <Row>
@@ -352,6 +357,15 @@ function CourseTest() {
                       );
                     })}
                   </Select>
+                  {/* <Autocomplete
+                    disablePortal
+                    value={selectedCourseCategory}
+                    id="combo-box-demo"
+                    options={top100Films}
+                    onChange={handleCategoryChange}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Movie" />}
+                  /> */}
                 </FormControl>
               </Col>
 
@@ -391,7 +405,7 @@ function CourseTest() {
 
         {isTestStarted && (
           <>
-            <div className='time_set'>
+            <div className='time_set noselect'>
               <p>
                 <img src={timeIcon} alt='timeIcon' /> {t("common.time.5") + " "}
                 {showTimer && renderTimmer(testTime)}
@@ -400,13 +414,13 @@ function CourseTest() {
 
             <Row>
               <Col md={8} xs={12}>
-                <div className='que_box'>
+                <div className='que_box noselect'>
                   <h2>{t("allCertificatePage.other.5")}</h2>
                   {isLoading ? (
                     <Skeleton></Skeleton>
                   ) : (
                     <p>
-                      {questionNumber}. {testData?.question}
+                      {countData?.user_career_test_count + 1}. {testData?.question}
                     </p>
                   )}
                   {testData && (
@@ -474,7 +488,7 @@ function CourseTest() {
                     </RadioGroup>
                   )}
                 </div>{" "}
-                <div className='prev_next_btn'>
+                <div className='prev_next_btn noselect'>
                   <Row>
                     <Col md={6} xs={6}>
                       <button
@@ -508,7 +522,7 @@ function CourseTest() {
               </Col>
 
               <Col md={4} xs={12}>
-                <div className='que_status'>
+                <div className='que_status noselect'>
                   <h2>{t("successCareerTestPage.heading.2")}</h2>
                   <div className='que_num'>
                     {[...Array(countData?.total_career_que).keys()].map((i) => (
@@ -524,7 +538,7 @@ function CourseTest() {
                     ))}
                   </div>
                 </div>
-                <div className='ans_not'>
+                <div className='ans_not noselect'>
                   <ul>
                     <li>
                       <span className='dotte1'></span>{" "}

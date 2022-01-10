@@ -51,7 +51,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
   }));
 
   return (
-    <div className='container p-0'>
+    <div className='container p-0 noselect'>
       <div
         className={
           props.size === "large"

@@ -78,7 +78,7 @@ const Courses = (props) => {
     <div>
       <SEO title='Sheकुंज - Courses' />
       <Header loginPage={true} page='courses' />
-      <section className='Cors_sec'>
+      <section className='Cors_sec noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-lg-7 col-md-9'>
@@ -129,7 +129,7 @@ const Courses = (props) => {
         </div>
       </section>
 
-      <section className='Srch_sec mb-5'>
+      <section className='Srch_sec mb-5 noselect'>
         <div className='container'>
           <Row>
             <Col md={10} xs={12}>

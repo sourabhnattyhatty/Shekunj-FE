@@ -15,7 +15,7 @@ const AuthContent = ({ loginPage }) => {
   const { t } = useTranslation();
 
   return (
-    <div className=''>
+    <div className='noselect'>
       <div
         className={
           loginPage ? "login_bg_main login_main mt-3" : "login_main mt-3"

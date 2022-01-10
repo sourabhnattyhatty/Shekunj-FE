@@ -26,7 +26,7 @@ function CourseTest() {
   const { certificateDetail: certificate } = useSelector(
     (state) => state.certificateReducer,
   );
-  const {lan} = useSelector(state => state.languageReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
 
   const { user } = useSelector((state) => state.authReducer);
   const { t } = useTranslation();
@@ -37,27 +37,13 @@ function CourseTest() {
     } else {
       history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
-  }, [id, history, dispatch,lan]);
-
-  // const generatePDF = () => {
-  //   // const img = new Image();
-  //   // img.src = Certificate;
-
-  //   const doc = new jsPDF("p", "pt", "a3");
-  //   // doc.addImage(img,'JPGE',0,150,840,500);
-  //   // doc.save("mycertificate.pdf");
-  //   doc.html(document.querySelector(".certiiii"), {
-  //     callback: function(pdf) {
-  //       pdf.save('test.pdf');
-  //     }
-  //   });
-  // };
+  }, [id, history, dispatch, lan]);
 
   return (
     <div>
       <Header loginPage={true} page='courses' />
 
-      <div className='cou_resultBg'>
+      <div className='cou_resultBg noselect'>
         <Container>
           <Row>
             <Col md={5} xs={12}>
@@ -85,7 +71,7 @@ function CourseTest() {
                         )}
                     </ul>
                     <ul>
-                    {certificate?.skill &&
+                      {certificate?.skill &&
                         certificate?.skill?.map(
                           (o, i) =>
                             i >= 2 && (
@@ -138,7 +124,6 @@ function CourseTest() {
                     style={{ cursor: "pointer" }}
                     onClick={() => certificateRef.current.generatePDF()}
                   />
-                  {/* <img src={Share} alt='' style={{ cursor: "pointer" }} /> */}
                   <br />
                 </p>
               </div>

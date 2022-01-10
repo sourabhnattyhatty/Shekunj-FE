@@ -9,7 +9,7 @@ import "./SignupPage.scss";
 function SignupPage() {
   return (
     <>
-      <div>
+      <div className="noselect">
         <SEO title='Sheकुंज - Signup' />
         <Header loginPage={true} />
 

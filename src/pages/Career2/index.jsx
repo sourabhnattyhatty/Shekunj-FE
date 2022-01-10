@@ -49,7 +49,7 @@ const CareerPage2 = () => {
 
       <div className='mainDiv_career'>
         <Container>
-          <div className='career_tit'>
+          <div className='career_tit noselect'>
             <h2>{t("careerGovExams.heading.1")}</h2>
           </div>
           <Row>
@@ -66,7 +66,7 @@ const CareerPage2 = () => {
             <Col md={8} xs={12}>
               {governmentExams?.govt_list?.length > 0 ? (
                 governmentExams?.govt_list?.map((c) => (
-                  <div className='career_box' style={{ height: "auto" }}>
+                  <div className='career_box noselect' style={{ height: "auto" }}>
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>

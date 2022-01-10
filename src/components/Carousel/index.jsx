@@ -38,7 +38,7 @@ function Carousel(props) {
   };
 
   return (
-    <>
+    <div className="noselect">
       <div className='container Our_text'>
         <p>{props.title1}</p>
         <h2>{props.title2}</h2>
@@ -175,7 +175,7 @@ function Carousel(props) {
           )}
         </OwlCarousel>
       </div>
-    </>
+    </div>
   );
 }
 

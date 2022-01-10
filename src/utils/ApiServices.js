@@ -39,8 +39,9 @@ axios.interceptors.response.use(
   async (response) => {
     return response;
   },
-  (error) => {
-    const { status } = error?.response;
+  async (error) => {
+    debugger
+    const { status } = await error?.response;
     switch (status) {
       case 401:
         removeUnauthorizedUser();

@@ -41,7 +41,7 @@ const CareerPage1 = () => {
 
       <div className='mainDiv_career'>
         <Container>
-          <div className='career_tit'>
+          <div className='career_tit noselect'>
             <h2>{t("careerTopSchools.heading.1")}</h2>
           </div>
           <Row>
@@ -63,7 +63,7 @@ const CareerPage1 = () => {
             <Col md={8} xs={12}>
               {topSchools?.result?.length > 0 ? (
                 topSchools?.result?.map((c) => (
-                  <div className='career_box' style={{ height: "auto" }}>
+                  <div className='career_box noselect' style={{ height: "auto" }}>
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>

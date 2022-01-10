@@ -108,7 +108,7 @@ const Header = ({ page, subPage }) => {
   };
 
   return (
-    <div>
+    <div className="noselect">
       <header className='other_head'>
         <div className='container'>
           <div className='topbar'>

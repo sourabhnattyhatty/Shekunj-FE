@@ -118,7 +118,7 @@ const GuidancePage = () => {
   return (
     <div>
       <Header loginPage={true} page='guidance' subPage='bookCounsller' />
-      <div className='guidance_book'>
+      <div className='guidance_book noselect'>
         <Container>
           <Row>
             <Col md={5} xs={12}>

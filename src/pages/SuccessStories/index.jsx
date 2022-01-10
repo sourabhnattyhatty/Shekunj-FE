@@ -14,7 +14,7 @@ import double_quote from "../../assets/icons/double_quote.png";
 import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
-import { sliceString } from "../../utils/utils";
+import { paragraph, sliceString } from "../../utils/utils";
 
 function SuccessStory() {
   const history = useHistory();
@@ -22,7 +22,7 @@ function SuccessStory() {
   const { successStories } = useSelector((state) => {
     return state.coursesReducer;
   });
-  const {lan} = useSelector(state => state.languageReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
 
   const { t } = useTranslation();
 
@@ -56,137 +56,99 @@ function SuccessStory() {
 
       <Container>
         {successStories?.length > 0 &&
-          successStories?.slice(0).reverse().map((s, idx) => (
-            <>
-              <div className='suc_box' key={s?.id}>
-                <Row>
-                  {idx % 2 === 0 ? (
-                    <>
-                      <Col md={8} xs={12}>
-                        <h2>
-                          <img
-                            className='quote_img'
-                            src={double_quote}
-                            alt=''
-                          />
-                          {s?.name || t("common.n/a")}{" "}
-                          {/* {s?.course_name || t("common.n/a")} */}
-                        </h2>
+          successStories
+            ?.slice(0)
+            .reverse()
+            .map((s, idx) => (
+              <>
+                <div className='suc_box' key={s?.id}>
+                  <Row>
+                    {idx % 2 === 0 ? (
+                      <>
+                        <Col md={8} xs={12}>
+                          <h2>
+                            <img
+                              className='quote_img'
+                              src={double_quote}
+                              alt=''
+                            />
+                            {s?.name || t("common.n/a")}{" "}
+                          </h2>
 
-                        <p>
-                          {(s?.is_collapse
-                            ? s?.description
-                            : sliceString(s?.description)) || t("common.n/a")}
-                        </p>
+                          <p className="noselect">
+                            {(s?.is_collapse
+                              ? paragraph(s?.description).map((o) => <p>{o}</p>)
+                              : sliceString(s?.description)) || t("common.n/a")}
+                          </p>
 
-                        {/* {s?.is_collapse && (
-                          <ul>
-                            <li>
-                              {t("successStoriesPage.other.1")} :{" "}
-                              <b>{s?.company_name || t("common.n/a")}</b>
-                            </li>
-                            <li>
-                              {t("successStoriesPage.other.2")} :
-                              <b> {s?.certificate_name || t("common.n/a")}</b>
-                            </li>
-                            <li>
-                              {t("successStoriesPage.other.3")} :{" "}
-                              <b>
-                                {" "}
-                                {s?.duration || 0} {t("common.time.1")}
-                              </b>
-                            </li>
-                          </ul>
-                        )} */}
-                        {s?.description?.length >= 300 && (
-                          <div className='suc_btn'>
-                            <hr />
-                            <button
-                              onClick={() =>
-                                handleSetCollapse(s?.id, s?.is_collapse)
-                              }
-                            >
-                              {t("successStoriesPage.button.1")}{" "}
-                              {s?.is_collapse
-                                ? t("common.less1")
-                                : t("common.more1")}{" "}
-                              <img src={s?.is_collapse ? up : down1} alt='' />
-                            </button>
-                            <hr />
-                          </div>
-                        )}
-                      </Col>
+                          {s?.description?.length >= 300 && (
+                            <div className='suc_btn'>
+                              <hr />
+                              <button
+                                onClick={() =>
+                                  handleSetCollapse(s?.id, s?.is_collapse)
+                                }
+                              >
+                                {t("successStoriesPage.button.1")}{" "}
+                                {s?.is_collapse
+                                  ? t("common.less1")
+                                  : t("common.more1")}{" "}
+                                <img src={s?.is_collapse ? up : down1} alt='' />
+                              </button>
+                              <hr />
+                            </div>
+                          )}
+                        </Col>
 
-                      <Col md={4} xs={12}>
-                        <img src={s?.image} alt='' />
-                      </Col>
-                    </>
-                  ) : (
-                    <>
-                      <Col md={4} xs={12}>
-                        <img src={s?.image} alt='' />
-                      </Col>
-                      <Col md={8} xs={12}>
-                        <h2>
-                          <img
-                            className='quote_img'
-                            src={double_quote}
-                            alt=''
-                          />
-                          {s?.name || t("common.n/a")}{" "}
-                          {/* {s?.course_name || t("common.n/a")} */}
-                        </h2>
-                        {/* <h3>{s?.title || t("common.n/a")} </h3> */}
+                        <Col md={4} xs={12}>
+                          <img src={s?.image} alt='' />
+                        </Col>
+                      </>
+                    ) : (
+                      <>
+                        <Col md={4} xs={12}>
+                          <img src={s?.image} alt='' />
+                        </Col>
+                        <Col md={8} xs={12}>
+                          <h2>
+                            <img
+                              className='quote_img'
+                              src={double_quote}
+                              alt=''
+                            />
+                            {s?.name || t("common.n/a")}{" "}
+                          </h2>
 
-                        <p>
-                          {(s?.is_collapse
-                            ? s?.description
-                            : sliceString(s?.description)) || t("common.n/a")}
-                        </p>
+                          <p className="noselect">
+                            {(s?.is_collapse
+                              ? paragraph(s?.description).map((o) => <p>{o}</p>)
+                              : sliceString(s?.description)) || t("common.n/a")}
+                          </p>
 
-                        {/* {s?.is_collapse && (
-                          <ul>
-                            <li>
-                              {t("successStoriesPage.other.1")} :{" "}
-                              <b>{s?.company_name || t("common.n/a")}</b>
-                            </li>
-                            <li>
-                              {t("successStoriesPage.other.2")} :
-                              <b> {s?.certificate_name || t("common.n/a")}</b>
-                            </li>
-                            <li>
-                              {t("successStoriesPage.other.3")} :{" "}
-                              <b>
-                                {" "}
-                                {s?.duration || 0} {t("common.time.1")}
-                              </b>
-                            </li>
-                          </ul>
-                        )} */}
-                        {s?.description?.length >= 300 && (
-                          <div className='suc_btn'>
-                            <hr />
-                            <button
-                              onClick={() =>
-                                handleSetCollapse(s?.id, s?.is_collapse)
-                              }
-                            >
-                              {t("successStoriesPage.button.1")}{" "}
-                              {s?.is_collapse
-                                ? t("common.less1")
-                                : t("common.more1")}{" "}
-                              <img src={s?.is_collapse ? up : down1} alt='' />
-                            </button>
-                            <hr />
-                          </div>
-                        )}
-                      </Col>
-                    </>
-                  )}
-                </Row>
-              </div>
-            </>
-          ))}
+                          {s?.description?.length >= 300 && (
+                            <div className='suc_btn'>
+                              <hr />
+                              <button
+                                onClick={() =>
+                                  handleSetCollapse(s?.id, s?.is_collapse)
+                                }
+                              >
+                                {t("successStoriesPage.button.1")}{" "}
+                                {s?.is_collapse
+                                  ? t("common.less1")
+                                  : t("common.more1")}{" "}
+                                <img src={s?.is_collapse ? up : down1} alt='' />
+                              </button>
+                              <hr />
+                            </div>
+                          )}
+                        </Col>
+                      </>
+                    )}
+                  </Row>
+                </div>
+              </>
+            ))}
         {successStories?.length === 0 && (
           <div className='text-center mt-5'>{t("common.noDataFound")}</div>
         )}

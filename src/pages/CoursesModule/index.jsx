@@ -157,7 +157,7 @@ const CourseModule = () => {
   return (
     <div>
       <Header loginPage={true} page='courses' />
-      <div className='course_module mt-md-0 mb-md-0 mt-4 mb-4'>
+      <div className='course_module mt-md-0 mb-md-0 mt-4 mb-4 noselect'>
         <Container>
           <Row className='pt-md-5 pb-md-5'>
             <Col md={12} xs={12} className='text-left mb-5'>

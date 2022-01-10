@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import JwtDecode from "jwt-decode";
 import moment from "moment";
 import { toast } from "react-toastify";
-import i18njs from "../assets/i18n/i18n"
+import i18njs from "../assets/i18n/i18n";
 import { routingConstants } from "./constants";
 
 export const toasterConfig = {
@@ -201,8 +201,13 @@ export const removeUnauthorizedUser = () => {
 };
 
 export const sliceString = (str) => {
-  if(str.length <= 300){
-    return str
+  if (str.length <= 300) {
+    return str;
   }
-  return `${str?.slice(0, 300)}...`
-}
+  return `${str?.slice(0, 300)}...`;
+};
+
+export const paragraph = (text) => {
+  let lines = text.split(/(\r\n|\n|\r)/gm);
+  return lines.length > 0 ? lines.filter((o) => o !== `\r\n` || o !== "") : [];
+};
