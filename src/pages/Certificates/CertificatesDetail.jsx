@@ -85,11 +85,15 @@ const CertificatesDetail = forwardRef((props, ref) => {
                 {t("certificateDetailPage.content.1.2")}
               </p>
               <p className='second-number'>
-                {t("certificateDetailPage.other.1")}{" "}
-                {formatDate(certificate?.course_start_time, "MMM Do YYYY")} to{" "}
-                {formatDate(certificate?.course_end_time, "MMM Do YYYY")}
+                {/* {t("certificateDetailPage.other.1")}{" "} */}
+                Date of achievement: <span> 10/01/2022   </span> 
+                {/* {formatDate(certificate?.course_start_time, "MMM Do YYYY")} to{" "} */}
+                {/* {formatDate(certificate?.course_end_time, "MMM Do YYYY")} */}
               </p>
-              <p>{t("certificateDetailPage.other.2")}</p>
+              <p>
+              {/* {t("certificateDetailPage.other.2")} */}
+              Certificate ID: <span> 000000000000</span>
+              </p>
             </div>
           </Col>
         </Row>

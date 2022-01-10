@@ -95,7 +95,7 @@ const ProfileImage = ({ isEditable }) => {
   };
   return (
     <>
-      {show && <button onClick={getCropData}>Crop Image</button>}
+      {show && <button onClick={getCropData} className="CropBtn">Crop Image</button>}
       <div className='myProfile_img'>
         <Avatar
           src={user?.profile_pic || noImage}
@@ -111,7 +111,7 @@ const ProfileImage = ({ isEditable }) => {
         />
         {show && (
           <Cropper
-            style={{ height: 400, width: "100%" }}
+            style={{ height: "auto", width: "100%" }}
             zoomTo={0.5}
             initialAspectRatio={1}
             preview='.img-preview'
