@@ -12,8 +12,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const ProgressChart = ({ userProgress }) => {
   const { t } = useTranslation();
 
-  
-
   const options = {
     labels: [],
     datasets: [
@@ -74,9 +72,7 @@ const ProgressChart = ({ userProgress }) => {
     <div className='course_completedright'>
       <Row>
         <Col md={7} xs={6}>
-          {userProgress?.complate_course && (
-            <Doughnut data={options} plugins={plugins} />
-          )}
+          <Doughnut data={options} plugins={plugins} />
         </Col>
 
         <Col md={5} xs={6}>

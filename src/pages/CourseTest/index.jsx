@@ -296,7 +296,7 @@ function CourseTest() {
                 <Skeleton></Skeleton>
               ) : (
                 <p>
-                  {questionNumber}. {question?.question}
+                  {questionCount?.user_course_test_count + 1}. {question?.question}
                 </p>
               )}
               {question && (

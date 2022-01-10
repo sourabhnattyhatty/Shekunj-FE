@@ -47,6 +47,7 @@ export const isAuthenticated = () => {
 
 export const checkIsValidImage = (file) => {
   const filetypes = /\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/;
+  debugger
   if (!file.name.match(filetypes)) {
     toast.error(i18njs.t("error.other.3"));
     return false;
@@ -211,3 +212,10 @@ export const paragraph = (text) => {
   let lines = text.split(/(\r\n|\n|\r)/gm);
   return lines.length > 0 ? lines.filter((o) => o !== `\r\n` || o !== "") : [];
 };
+
+export async function convertRelativeUriToFile(filePath, fileName, mimeType, cb) {
+  mimeType = mimeType || `image/${filePath.split('.')[filePath.split('.').length - 1]}`;
+  const imageUrl = await fetch(filePath, {method: 'GET', mode: 'cors', cache: 'no-cache'});
+  const buffer = await imageUrl.arrayBuffer();
+  cb(new File([buffer], fileName, {type: mimeType}));
+}
