@@ -1,3 +1,3 @@
 export const languageTypes = {
-  LANGUAGE : "LANGUAGE"
-  };
+  LANGUAGE: "CHANGE_LANGUAGE",
+};

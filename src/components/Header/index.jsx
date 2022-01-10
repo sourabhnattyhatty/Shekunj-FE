@@ -16,6 +16,7 @@ import { routingConstants } from "../../utils/constants";
 const Header = ({ page, subPage }) => {
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -56,7 +57,7 @@ const Header = ({ page, subPage }) => {
     if (isAuthenticated()) {
       dispatch(getUserProfile());
     }
-  }, [dispatch]);
+  }, [dispatch, lan]);
 
   const handleLogout = () => {
     dispatch(logOut(history));

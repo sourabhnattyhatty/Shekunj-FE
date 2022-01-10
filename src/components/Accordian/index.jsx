@@ -261,21 +261,24 @@ export default function AccordionComponent({
             <AccordionDetails>
               <ul className='pl-0'>
                 <FormGroup>
-                  {categories?.rows?.slice(0, 6)?.map((s) => (
-                    <li key={s?.id}>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={s?.isChecked}
-                            onChange={(e) =>
-                              onChangeFilter(s?.id, e, "governmentExam")
+                  {categories?.rows?.slice(0, 6)?.map(
+                    (s) =>
+                      s?.name && (
+                        <li key={s?.id}>
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                checked={s?.isChecked}
+                                onChange={(e) =>
+                                  onChangeFilter(s?.id, e, "governmentExam")
+                                }
+                              />
                             }
+                            label={s?.name ? s?.name : "N/A"}
                           />
-                        }
-                        label={s?.name}
-                      />
-                    </li>
-                  ))}
+                        </li>
+                      ),
+                  )}
                 </FormGroup>
               </ul>
               {hasMoreCount(categories?.rows, 6) > 0 && (

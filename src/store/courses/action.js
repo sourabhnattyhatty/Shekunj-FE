@@ -167,7 +167,6 @@ export const getUserTestQuestion =
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
-      debugger
       if (err?.status === 400) {
         if (err.data.message === "Already course test is completed") {
           const res = await httpServices.get(constants.USER_COURSE_RESULT);
@@ -228,7 +227,6 @@ export const successStories = () => async (dispatch) => {
   try {
     dispatch({ type: coursesTypes.SUCCESS_STORY_REQUEST });
     const res = await httpServices.get(constants.SUCCESS_STORY);
-    debugger
     dispatch({
       type: coursesTypes.SUCCESS_STORY_FINISH,
       payload:

@@ -58,7 +58,7 @@ const CareerPage2 = () => {
                 type='governmentExams'
                 categories={{
                   name: t("careerGovExams.listItems.1"),
-                  rows: governmentExams?.govt_category || [],
+                  rows: governmentExams?.govt_category || [], 
                 }}
               />
             </Col>
