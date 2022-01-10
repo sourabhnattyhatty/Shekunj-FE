@@ -44,7 +44,7 @@ const CourseDetails = () => {
     <div>
       <SEO title='Sheकुंज - Course Detail' />
       <Header loginPage={true} page='courses' />
-      <section className='CouDtl_ban'>
+      <section className='CouDtl_ban noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-7'>
@@ -68,7 +68,7 @@ const CourseDetails = () => {
         </div>
       </section>
 
-      <section className='Coutl_sec1 mb-5'>
+      <section className='Coutl_sec1 mb-5 noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-7'>

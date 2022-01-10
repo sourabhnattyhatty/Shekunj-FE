@@ -267,7 +267,7 @@ function CourseTest() {
     <div>
       <Header loginPage={true} page='courses' />
       <Container>
-        <div className='maindiv_prog'>
+        <div className='maindiv_prog noselect'>
           <Row className='pt-md-5 pb-md-5'>
             <Col md={12} xs={12} className='text-left'>
               <div className='circular_progress_module'>
@@ -281,7 +281,7 @@ function CourseTest() {
           </Row>
         </div>
 
-        <div className='time_set'>
+        <div className='time_set noselect'>
           <p>
             <img src={time} alt='' /> {t("common.time.5")}{" "}
             {showTimer && renderTimmer(timer)}
@@ -290,7 +290,7 @@ function CourseTest() {
 
         <Row>
           <Col md={8} xs={12}>
-            <div className='que_box'>
+            <div className='que_box noselect'>
               <h2>{t("allCertificatePage.other.5")}</h2>
               {isLoading ? (
                 <Skeleton></Skeleton>
@@ -365,7 +365,7 @@ function CourseTest() {
               )}
             </div>{" "}
             <br />
-            <div className='prev_next_btn'>
+            <div className='prev_next_btn noselect'>
               <Row>
                 <Col md={6} xs={6}>
                   <button
@@ -399,7 +399,7 @@ function CourseTest() {
           </Col>
 
           <Col md={4} xs={12}>
-            <div className='que_status'>
+            <div className='que_status noselect'>
               <h2>{t("successCareerTestPage.heading.2")}</h2>
               <div className='que_num'>
                 {[...Array(questionCount?.total_course_que).keys()].map(
@@ -418,7 +418,7 @@ function CourseTest() {
               </div>
             </div>
 
-            <div className='ans_not'>
+            <div className='ans_not noselect'>
               <ul>
                 <li>
                   <span className='dotte1'></span>{" "}

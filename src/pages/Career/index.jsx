@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import x from "../../assets/images/Career/x.png";
+// import x from "../../assets/images/Career/x.png";
 
 import {
   AccordionComponent,
@@ -58,7 +58,7 @@ const CareerPage = () => {
     <div>
       <SEO title='Sheकुंज - Career' />
       <Header loginPage={true} page='career' subPage='colleges' />
-
+{/* 
       <div className='filter_side'>
         <img src={x} alt='' />
         <AccordionComponent
@@ -72,11 +72,11 @@ const CareerPage = () => {
           stream={STREAM}
           courseLength={courseSector}
         />
-      </div>
+      </div> */}
 
       <div className='mainDiv_career'>
         <Container>
-          <div className='career_tit'>
+          <div className='career_tit noselect'>
             <h2>{t("careerTopColleges.heading.1")}</h2>
             <p>{t("careerTopColleges.other.2")} {STREAM?.rows?.length || 0} {t("careerTopColleges.other.3")}</p>
           </div>
@@ -93,7 +93,7 @@ const CareerPage = () => {
               {topCollages?.collage_list?.length > 0 ? (
                 topCollages.collage_list.map((c) => (
                   <div
-                    className='career_box'
+                    className='career_box noselect'
                     style={{ height: "auto" }}
                     key={c?.id}
                   >

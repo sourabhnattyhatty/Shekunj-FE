@@ -93,7 +93,7 @@ function HomePage() {
 
       {/* slider */}
 
-      <div id='myCarousel' className='banner_slider mb-5'>
+      <div id='myCarousel' className='banner_slider mb-5 noselect'>
         <div className='carousel-inner'>
           <Slider {...settings}>
             <div className='carousel-item carousel_item1'>
@@ -219,7 +219,7 @@ function HomePage() {
       </Link>
 
       {/* resume */}
-      <section className='resume same_padding mt-5'>
+      <section className='resume same_padding mt-5 noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-7' data-aos='slide-up'>
@@ -250,13 +250,13 @@ function HomePage() {
         type={constants.carouselConstant.TEST}
       />
       <Link to='/success-career-test' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate'>
+        <button className='view_test_cate noselect'>
           {t("homePage.mainSlider.button.3")}
         </button>
       </Link>
 
       {/* Job opportunity */}
-      <section className='job-opprtunity same_padding mt-5'>
+      <section className='job-opprtunity same_padding mt-5 noselect'>
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-lg-12 col-md-11'>
@@ -303,7 +303,7 @@ function HomePage() {
       </Link>
 
       {/* career development */}
-      <section className='career_community same_padding mt-5'>
+      <section className='career_community same_padding mt-5 noselect'>
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-md-12'>
@@ -412,7 +412,7 @@ function HomePage() {
         </div>
       </section>
 
-      <div className='career_community'>
+      <div className='career_community noselect'>
         <div className='container'>
           <div className='community_block d-md-block d-none'>
             <div className='career_community'>
@@ -500,7 +500,7 @@ function HomePage() {
         </div>
       </div>
       {/* certificate */}
-      <section className='certificate same_padding'>
+      <section className='certificate same_padding noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>
@@ -528,7 +528,7 @@ function HomePage() {
       </section>
 
       {/* highlight students */}
-      <section className='highlight_student same_padding'>
+      <section className='highlight_student same_padding noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>

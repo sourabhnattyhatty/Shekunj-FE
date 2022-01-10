@@ -45,7 +45,7 @@ function ContactUs() {
     }
 
   return (
-    <div>
+    <div className="noselect">
       <Header loginPage={false} page='home' />
       <div className='main_div_conUs'>
         <Container>

@@ -156,6 +156,12 @@
   text-transform: capitalize;
   color: rgb(0 0 0);
 }
+.cercifi_con_large p span {
+  font-weight: 600;
+}
+.cercifi_con_small p {
+  font-weight: 600;
+}
 .cercifi_con_large p {
   margin-bottom: 12px;
 }
@@ -281,7 +287,7 @@ button.back_course {
   top: 3%;
 }
 .cercifi_con_small {
-  margin-top: 65px;
+  margin-top: 50px;
 }
 // .cercifi_con_small h2 {
 //   font-family: Pacifico;
@@ -319,7 +325,7 @@ button.back_course {
   font-style: normal;
   font-weight: normal;
   font-size: 9px;
-  line-height: 0;
+  line-height: 12px;
   margin: 0px;
   text-transform: capitalize;
   color: #000000;

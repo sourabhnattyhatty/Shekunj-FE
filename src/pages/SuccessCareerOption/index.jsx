@@ -26,7 +26,7 @@ function SuccessCareerOption() {
     <div>
       <Header loginPage={true} page='guidance' subPage='careerOption' />
 
-      <div className='SucOption'>
+      <div className='SucOption noselect'>
         <Container>
           <h2 data-aos='slide-up'>
             {t("successCareerOption.other.3.1")} <br />{" "}
@@ -35,7 +35,7 @@ function SuccessCareerOption() {
         </Container>
       </div>
 
-      <div className='CompExams'>
+      <div className='CompExams noselect'>
         <Container>
           <TabsExams />
         </Container>

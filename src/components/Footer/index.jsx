@@ -11,7 +11,7 @@ const Footer = ({ loginPage }) => {
   const { t } = useTranslation();
 
   return (
-    <div>
+    <div className="noselect">
       <footer className={loginPage ? "footer_login" : "footer_other"}>
         <div className='container'>
           <div className='row'>

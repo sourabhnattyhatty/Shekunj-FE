@@ -41,7 +41,7 @@ function MyProgress() {
     <div>
       <SEO title='Sheकुंज - My Progress' />
       <Header loginPage={true} subPage='myProgress' />
-      <div className='dashboard_main pt-5 pb-5'>
+      <div className='dashboard_main pt-5 pb-5 noselect'>
         <Container>
           <Row>
             <Col md={12}>
