@@ -3,14 +3,16 @@ import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import noImageIcon from "../assets/images/no-image.jpeg";
 import i18njs from "../assets/i18n/i18n";
-
 import { checkIsSessionExpired, decodeToken } from ".";
 import { removeUnauthorizedUser } from "./utils";
 
+const getLanguage = () => {
+  const currentLang = localStorage.getItem("i18nextLng");
+  return currentLang ? currentLang?.split("-")[0] : "en";
+};
+
 const apiBaseUrl = process.env.REACT_APP_URL_API;
-const currentLang = localStorage.getItem("i18nextLng");
-const lang = currentLang ? currentLang?.split("-")[0] : "en";
-axios.defaults.baseURL = `${apiBaseUrl}${lang}/api/`;
+axios.defaults.baseURL = `${apiBaseUrl}${getLanguage()}/api/`;
 
 axios.defaults.withCredentials = true;
 
@@ -22,6 +24,7 @@ const responseBody = (response) => response.data;
 
 axios.interceptors.request.use((config) => {
   const token = Cookies.get("sheToken");
+  config.url = `${apiBaseUrl}${getLanguage()}/api${config.url}`;
   if (token) {
     const userInfo = decodeToken(token);
     if (userInfo?.exp && checkIsSessionExpired(userInfo?.exp)) {
