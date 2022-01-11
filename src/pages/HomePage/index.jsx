@@ -216,7 +216,7 @@ function HomePage() {
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
         <button className='view_test_cate'>
-          {t("homePage.mainSlider.button.2")}
+          {t("homePage.mainSlider.button.4")}
         </button>
       </Link>
 
