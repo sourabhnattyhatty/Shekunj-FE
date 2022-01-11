@@ -277,7 +277,7 @@ function HomePage() {
                     <a
                       rel='noreferrer'
                       target='_blank'
-                      href='https://octahire.com/Recruiters/job_recruiters?location='
+                      href='https://octahire.com/Home/candidate_register'
                       className='btn btn-job'
                     >
                       {t("homePage.jobopportunity.button")}
