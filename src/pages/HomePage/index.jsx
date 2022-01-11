@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import { constants } from "../../utils";
 import { Header, Footer, Carousel, SEO } from "../../components";
@@ -139,7 +139,7 @@ function HomePage() {
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button.1")}
+                      {t("homePage.mainSlider.button.5")}
                     </Link>
                   </div>
                 </div>
@@ -163,11 +163,11 @@ function HomePage() {
                     </p>
 
                     <Link
-                      to='/courses'
+                      to='/guidance-book'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button.1")}
+                      {t("homePage.mainSlider.button.4")}
                     </Link>
                   </div>
                 </div>
@@ -196,7 +196,7 @@ function HomePage() {
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button.1")}
+                      {t("homePage.mainSlider.button.6")}
                     </Link>
                   </div>
                 </div>
@@ -216,7 +216,7 @@ function HomePage() {
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
         <button className='view_test_cate'>
-          {t("homePage.mainSlider.button.2")}
+          {t("homePage.mainSlider.button.5")}
         </button>
       </Link>
 
@@ -304,8 +304,8 @@ function HomePage() {
         type={constants.carouselConstant.GOVERNMENT_EXAMS}
       />
       <Link to='/government-exams' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate'>
-          {t("homePage.mainSlider.button.2")}
+        <button className='view_test_cate' onClick={()=><Redirect to="/government-exams"/>} >
+        {t("homePage.mainSlider.button.2")}
         </button>
       </Link>
 
@@ -628,7 +628,7 @@ function HomePage() {
 
             <div className='col-md-5 offset-md-1'>
               <h3 className='mb-3 mt-4'>
-                {t("homePage.highlightStudents.heading")}
+                {t("homePage.highlightStudents.homeHeading")}
               </h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
@@ -639,7 +639,7 @@ function HomePage() {
               </p>
 
               <Link to='/courses' data-aos='slide-up' className='learn_more'>
-                {t("homePage.highlightStudents.button")}
+                {t("homePage.highlightStudents.homeButton")}
               </Link>
             </div>
           </div>
