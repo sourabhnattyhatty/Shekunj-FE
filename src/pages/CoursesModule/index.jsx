@@ -90,6 +90,7 @@ const CourseModule = () => {
   const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
     (state) => state.coursesReducer,
   );
+  console.log("🚀 ~ file: index.jsx ~ line 93 ~ CourseModule ~ course", course,courseModulesList)
   const {lan} = useSelector(state => state.languageReducer);
 
   const dispatch = useDispatch();
@@ -98,7 +99,19 @@ const CourseModule = () => {
   const history = useHistory();
   const { t } = useTranslation();
 
-  const progress = Math.round(100 / (courseModulesList.length || 0)) || 0;
+  const fun = () => {
+    const p = [];
+    courseModulesList?.forEach((obj) => {
+      obj?.sub_task?.forEach((item,ind) => {
+        p.push(ind);
+      })
+    })
+    return Math.round(100 / (p.length || 0)) || 0;
+  } 
+
+    const progress = courseModulesList && fun();
+
+  
 
   React.useEffect(() => {
     if (detect.isMobile) {
@@ -124,6 +137,7 @@ const CourseModule = () => {
     Cookies.set("module", page);
     const p = (page - 1) * progress;
     dispatch(startCourse(id, page, p, true));
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const handleNextModule = (page) => {
@@ -223,12 +237,12 @@ const CourseModule = () => {
                               <li
                                 key={obj?.id}
                                 className={
-                                  Number(course?.current_module) > obj?.id
+                                  Number(course?.id) === obj?.id
                                     ? "active-accordiantext"
                                     : ""
                                 }
                               >
-                                {Number(course?.current_module) > obj?.id && (
+                                {Number(course?.id) === obj?.id && (
                                   <img
                                     src={Rightcheck}
                                     className='ml-2'

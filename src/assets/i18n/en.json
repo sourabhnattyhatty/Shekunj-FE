@@ -256,7 +256,10 @@
         "1": "Start Learning",
         "2": "View All Schemes",
         "3": "View All Test",
-        "4" : "View All Courses"
+        "4": "Book conseller",
+        "5": "View all courses",
+        "6": "Start Courses"
+
       }
     },
     "carousel1": {
@@ -297,8 +300,11 @@
       }
     },
     "highlightStudents": {
-      "heading": "Want to become a part of our next success story?",
-      "button": "Enroll Now"
+      "homeHeading": "Want to become a part of our next success story?",
+      "aboutHeading": "No Woman Is Equal Until All Women Are",
+      "aboutDescription" : "Hundreds of millions of women and girls are denied their right to education, effectively preventing their empowerment. For the sake of justice, we have to right this wrong. SheKunj has taken a step ahead to make knowledge and information accessible to each and every woman, better today than tomorrow. Take a glance at all the women who have successfully enrolled at SheKunj.",
+      "aboutButton": "View Success Stories",
+      "homeButton":"Enroll now"
     }
   },
 
@@ -308,19 +314,19 @@
     "content2": "Armed with the best pedagogy experts, learning modules, and certificate courses, SheKunj is determined to impart practical training and educate women. With the right blend of tech and non-tech skills, our drive is to make a community of motivated, highly-skilled and knowledgeable women who build inspiring careers and lead with full gusto.",
     "content3": "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality.",
     "review": {
-      "1": "I love their flexibility, Even when my request is too complicated to handle, the could still suggest something useful for me.",
-      "2": "Best out of the best in the online learning field...",
-      "3": "Excellent guiding instructions. They are all great mentors at life & career"
+      "1": "Very helpful vocabulary courses. Really helped me out to learn and made capable to start my Freelancing career in content writing.",
+      "2": "Best e-learning platform for building skills along with the validation. SheKunj's certificate helped me out to stand different from the crowd.",
+      "3": "Excellent platform! I guided many women toward aspiring their wished career."
     },
     "reviewerDetails": {
       "reviewerName": {
-        "1": "Nikita Sharma"
+        "1": "Ankita Ahuja"
       },
       "reviewerPost": {
-        "1": "Content Writer"
+        "1": "Career Counsellor"
       }
     },
-    "salesNumber": "by 1000+ Students for 2500+ Sales"
+    "salesNumber": "by 100+ Women's for English Speaking Course"
   },
 
   "careerPage": {

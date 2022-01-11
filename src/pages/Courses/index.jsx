@@ -46,6 +46,10 @@ const Courses = () => {
   }, [dispatch, pageLimit, lan]);
 
   useEffect(() => {
+   window.scrollTo(0,0)
+  }, []);
+
+  useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
   const handleResetFilter = () => {
