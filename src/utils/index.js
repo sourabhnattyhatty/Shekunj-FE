@@ -3,7 +3,6 @@ import * as constants from "./constants";
 import theme from "./Theme";
 import {
   toasterConfig,
-  transformError,
   isAuthenticated,
   checkIsValidImage,
   decodeToken,
@@ -17,7 +16,6 @@ export {
   constants,
   theme,
   toasterConfig,
-  transformError,
   isAuthenticated,
   checkIsValidImage,
   decodeToken,

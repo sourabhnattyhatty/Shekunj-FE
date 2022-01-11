@@ -1,19 +1,20 @@
-import Cookies from "js-cookie";
 import React from "react";
 import { Route } from "react-router-dom";
 import { Redirect } from "react-router";
-import { routingConstants } from "../utils/constants";
+
+import { isAuthenticated, constants } from "../utils";
 
 function PrivateRoute({ component: Component, ...rest }) {
-  const token = Cookies.get("sheToken");
   return (
     <Route
       {...rest}
       render={(props) =>
-        token ? (
-          <Component {...props}  {...rest}/>
+        isAuthenticated() ? (
+          <Component {...props} {...rest} />
         ) : (
-          <Redirect to={`${routingConstants.LOGIN}?redirect=${window.location.pathname}`} />
+          <Redirect
+            to={`${constants.routingConstants.LOGIN}?redirect=${window.location.pathname}`}
+          />
         )
       }
     />

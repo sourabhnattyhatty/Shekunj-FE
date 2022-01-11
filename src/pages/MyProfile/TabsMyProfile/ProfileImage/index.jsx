@@ -72,7 +72,6 @@ const ProfileImage = ({ isEditable }) => {
 
   // const handleImageChange = ({ target }) => {
   //   const file = target?.files[0] || null;
-  //   debugger;
   //   if (file) {
   //     if (!checkIsValidImage(file)) {
   //       inputRef.current.value = "";
@@ -95,7 +94,11 @@ const ProfileImage = ({ isEditable }) => {
   };
   return (
     <>
-      {show && <button onClick={getCropData} className="CropBtn">Crop Image</button>}
+      {show && (
+        <button onClick={getCropData} className='CropBtn'>
+          Crop Image
+        </button>
+      )}
       <div className='myProfile_img'>
         <Avatar
           src={user?.profile_pic || noImage}
