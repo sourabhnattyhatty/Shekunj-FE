@@ -9,6 +9,7 @@ import {
   decodeToken,
   checkIsSessionExpired,
   handleErrorMessage,
+  removeUnauthorizedUser,
 } from "./utils";
 
 export {
@@ -22,4 +23,5 @@ export {
   decodeToken,
   checkIsSessionExpired,
   handleErrorMessage,
+  removeUnauthorizedUser,
 };
