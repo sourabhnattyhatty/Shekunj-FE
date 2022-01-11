@@ -41,9 +41,11 @@ function Carousel(props) {
     } else if (props.type === carouselConstant.GOVERNMENT_EXAMS) {
       totalItems = governmentExams?.govt_list?.length || 0;
     }
-    divRef.current.innerHTML = `${
-      carousel.relative(carousel.current()) + 1 || 0
-    }/${totalItems}`;
+    if (props.page === carouselConstant.HOMEPAGE) {
+      divRef.current.innerHTML = `${
+        carousel.relative(carousel.current()) + 1 || 0
+      }/${totalItems}`;
+    }
   };
 
   return (
