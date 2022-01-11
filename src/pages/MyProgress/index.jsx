@@ -89,8 +89,7 @@ function MyProgress() {
                   <Col md={12}>
                     <h6>{t("dashboardPage.certificate")}</h6>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Ut commodo .
+                    Your path to the success by our industry recognized certificates to help you achieve your desired goals.
                     </p>
                   </Col>
                 </Row>

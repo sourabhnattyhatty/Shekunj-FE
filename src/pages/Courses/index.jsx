@@ -186,11 +186,7 @@ const Courses = () => {
             <Col md={10} xs={12}>
               <h1>{t("coursesPage.heading.1")}</h1>
               <p className='courses_para mb-5'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque eget pretium nisl vitae porttitor aliquet id
-                posuere tortor. Id turpis neque urna elit pellentesque est
-                curabitur. Tincidunt fringilla viverra ut feugiat leo porta.
-                Ridiculus viverra cum aliquam curabitur.
+              SheKunj’s courses are designed for real life and real women. We want every woman should move to their creative journey forward without putting life on hold. SheKunj's courses are curated to provide practical and theoretical knowledge. We have crafted these courses to help you find inspiration that fits your routine. So look no further and enroll on SheKunj now!
               </p>
             </Col>
           </Row>

@@ -126,8 +126,7 @@ const GuidancePage = () => {
                 <div className='book_sec_content mob_hide'>
                   <h2 data-aos='slide-up'>{t("guidanceBookPage.heading.1")}</h2>
                   <p data-aos='slide-up'>
-                    Lorem ipsum dolor sit amet, consectetur <br /> adipiscing
-                    elit.
+                  from finest counsellors
                   </p>
                 </div>
 
@@ -353,7 +352,7 @@ const GuidancePage = () => {
                     {isLoading ? (
                       <CircularProgress color='secondary' size={20} />
                     ) : (
-                      t("guidanceBookPage.heading.1")
+                      t("guidanceBookPage.heading.2")
                     )}
                   </button>
                 </form>

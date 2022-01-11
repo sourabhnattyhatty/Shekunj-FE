@@ -23,7 +23,7 @@ import Community from "../../assets/images/community.png";
 import Nikita from "../../assets/images/testimonial/1.png";
 import Priya from "../../assets/images/testimonial/2.png";
 import star from "../../assets/images/Star 2.png";
-import certif from "../../assets/images/certif.jpg";
+import certif from "../../assets/images/mob_certif.png";
 import g1 from "../../assets/images/1.png";
 import g2 from "../../assets/images/2.png";
 import g3 from "../../assets/images/3.png";
@@ -129,10 +129,10 @@ function HomePage() {
                     </h4>
                     <h5>{t("homePage.mainSlider.heading.5")}</h5>
                     <p className='mb-4' data-aos='zoom-in'>
-                      {" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      In sed fermentum massa semper mauris volutpat dictum
-                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
+                      We ease your run to search for the Best Colleges across
+                      India by our hands-on approach to every necessary
+                      information about the institutes to help you learn,
+                      explore and achieve your goals.
                     </p>
                     <Link
                       to='/courses'
@@ -185,10 +185,9 @@ function HomePage() {
                     <h5>{t("homePage.mainSlider.heading.5")}</h5>
 
                     <p className='mb-4' data-aos='zoom-in'>
-                      {" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      In sed fermentum massa semper mauris volutpat dictum
-                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
+                      With the experience and expertise, SheKunj can tailor-make
+                      list of ideal institutions for the students who are
+                      looking for the best school.
                     </p>
 
                     <Link
@@ -304,8 +303,11 @@ function HomePage() {
         type={constants.carouselConstant.GOVERNMENT_EXAMS}
       />
       <Link to='/government-exams' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate' onClick={()=><Redirect to="/government-exams"/>} >
-        {t("homePage.mainSlider.button.2")}
+        <button
+          className='view_test_cate'
+          onClick={() => <Redirect to='/government-exams' />}
+        >
+          {t("homePage.mainSlider.button.2")}
         </button>
       </Link>
 
@@ -315,9 +317,7 @@ function HomePage() {
           <div className='row justify-content-center'>
             <div className='col-md-12'>
               <h3 data-aos='slide-up'>{t("homePage.community.heading")}</h3>
-              <p data-aos='slide-up'>
-              {t("homePage.community.data")}
-              </p>
+              <p data-aos='slide-up'>{t("homePage.community.data")}</p>
 
               <div className='mob_comunity_img'>
                 <img data-aos='slide-up' src={Community} alt='...' />
@@ -519,14 +519,15 @@ function HomePage() {
               <div className='certif_con'>
                 <h4>
                   {t("homePage.certificate.heading.1")}{" "}
-                  {t("homePage.certificate.heading.2")}
+                  {/* {t("homePage.certificate.heading.2")} */}
                 </h4>
 
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Feugiat sed vel scelerisque sodales tristique porttitor vitae.
-                  Ornare phasellus nibh in orci. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Feugiat sed vel scelerisque
+                  Learn and Explore new skills from the free online courses with
+                  Industry-Recognized Certificates. We have come up with the
+                  idea of creating this platform for your learning, skills
+                  enhancement and making you win the race. We are a platform for
+                  women who want to learn, hustle, explore and empower herself.
                 </p>
               </div>
             </div>
