@@ -286,6 +286,7 @@
     },
     "community": {
       "heading": "Trusted By All Women",
+      "data" : "Take a glance at the happy, glittering faces who have enrolled with SheKunj. We understand the importance of education for the solutions of tomorrow. SheKunj is a first-of-its-kind,women-centered, global network dedicated to empowerment in every community where equality is in question.",
       "button": "View Success Stories"
     },
     "certificate": {
@@ -638,7 +639,7 @@
   },
   "successCareerTestPage": {
     "heading": {
-      "1": "Select test Categories",
+      "1": "Select Mock Test Categories",
       "2": "Questions Status"
     },
     "other": {
@@ -723,7 +724,7 @@
       "3": "My Certificates",
       "4": "Logout",
       "5": "Career Option",
-      "6": "Career Test",
+      "6": "Mock Test",
       "7": "Book a Counsellor",
       "8": "Top Colleges",
       "9": "Top Schools",

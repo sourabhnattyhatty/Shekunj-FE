@@ -214,7 +214,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <Link to='/government-exams' style={{ textDecoration: "none" }}>
+      <Link to='/courses' style={{ textDecoration: "none" }}>
         <button className='view_test_cate'>
           {t("homePage.mainSlider.button.2")}
         </button>
@@ -316,11 +316,7 @@ function HomePage() {
             <div className='col-md-12'>
               <h3 data-aos='slide-up'>{t("homePage.community.heading")}</h3>
               <p data-aos='slide-up'>
-                Take a glance at the happy, glittering faces who have enrolled
-                with SheKunj. We understand the importance of education for the
-                solutions of tomorrow. SheKunj is a first-of-its-kind,
-                women-centered, global network dedicated to empowerment in every
-                community where equality is in question.
+              {t("homePage.community.data")}
               </p>
 
               <div className='mob_comunity_img'>

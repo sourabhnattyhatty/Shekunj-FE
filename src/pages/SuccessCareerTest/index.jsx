@@ -18,10 +18,7 @@ import {
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 
 import { routingConstants } from "../../utils/constants";
 import { Header, Footer } from "../../components";
