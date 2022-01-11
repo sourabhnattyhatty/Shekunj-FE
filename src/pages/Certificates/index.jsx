@@ -2,42 +2,40 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import Aos from "aos";
 
+import CertificatesDetail from "./CertificatesDetail";
 import { Footer, Header, SEO } from "../../components";
 import { timeDifferenceFromDates } from "../../utils/utils";
 import { getUserCourseCertificate } from "../../store/certificate";
+import { getGuidanceCategory } from "../../store/guidance";
+import { routingConstants } from "../../utils/constants";
 
 import clock1 from "../../assets/icons/clock1.png";
 import barChart from "../../assets/icons/bar-chart.png";
 import lecturesIcon from "../../assets/icons/list.png";
-import { getGuidanceCategory } from "../../store/guidance";
-import Aos from "aos";
+
 import "./index.scss";
-import { routingConstants } from "../../utils/constants";
-import { useTranslation } from "react-i18next";
-import CertificatesDetail from "./CertificatesDetail";
 
 function AllCertificatePage() {
-  const history = useHistory();
-
   const dispatch = useDispatch();
-
-  const { certificates } = useSelector((state) => state.certificateReducer);
-  const {lan} = useSelector(state => state.languageReducer);
-
+  const history = useHistory();
+  const certificateRef = useRef();
   const { t } = useTranslation();
 
-  const certificateRef = useRef();
+  const { certificates } = useSelector((state) => state.certificateReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
     dispatch(getUserCourseCertificate());
-  }, [dispatch,lan]);
+  }, [dispatch, lan]);
 
   useEffect(() => {
     dispatch(getGuidanceCategory(null));
     dispatch(getGuidanceCategory());
     Aos.init({ duration: 2000 });
-  }, [dispatch,lan]);
+  }, [dispatch, lan]);
 
   return (
     <div>
@@ -120,7 +118,11 @@ function AllCertificatePage() {
                         >
                           {t("allCertificatePage.button.1")}
                         </button>
-                        <button onClick={() => certificateRef.current.generatePDF()}>{t("allCertificatePage.button.2")}</button>
+                        <button
+                          onClick={() => certificateRef.current.generatePDF()}
+                        >
+                          {t("allCertificatePage.button.2")}
+                        </button>
                       </div>
                     </Col>
                   </Row>
@@ -136,6 +138,5 @@ function AllCertificatePage() {
     </div>
   );
 }
-
 
 export default AllCertificatePage;

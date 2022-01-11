@@ -3,6 +3,7 @@ const carouselConstant = {
   TEST: "TEST",
   COLLEGES: "COLLEGES",
   SCHOOLS: "SCHOOLS",
+  GOVERNMENT_EXAMS: 'GOVERNMENT_EXAMS',
   COURSE_DETAIL: "courseDetail",
   HOMEPAGE: "homePage",
 };

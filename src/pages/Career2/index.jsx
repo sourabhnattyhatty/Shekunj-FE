@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import {
@@ -9,16 +10,15 @@ import {
   toggleCollapseValue,
 } from "../../store/career";
 import { noImage } from "../../utils/ApiServices";
+
 import "../HomePage/index.scss";
 import "./index.scss";
-import { useTranslation } from "react-i18next";
 
 const CareerPage2 = () => {
   const dispatch = useDispatch();
-  const { governmentExams } = useSelector((state) => state.careerReducer);
   const { t } = useTranslation();
-
-  const {lan} = useSelector(state => state.languageReducer);
+  const { governmentExams } = useSelector((state) => state.careerReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
     dispatch(reSetFilterValue());
@@ -58,7 +58,7 @@ const CareerPage2 = () => {
                 type='governmentExams'
                 categories={{
                   name: t("careerGovExams.listItems.1"),
-                  rows: governmentExams?.govt_category || [], 
+                  rows: governmentExams?.govt_category || [],
                 }}
               />
             </Col>
@@ -66,7 +66,10 @@ const CareerPage2 = () => {
             <Col md={8} xs={12}>
               {governmentExams?.govt_list?.length > 0 ? (
                 governmentExams?.govt_list?.map((c) => (
-                  <div className='career_box noselect' style={{ height: "auto" }}>
+                  <div
+                    className='career_box noselect'
+                    style={{ height: "auto" }}
+                  >
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>

@@ -39,7 +39,11 @@ export const transformError = (error) => {
 
 export const isAuthenticated = () => {
   const token = Cookies.get("sheToken");
-  if (token) {
+  if (!token) {
+    return false;
+  }
+  const userInfo = decodeToken(token);
+  if (userInfo && !checkIsSessionExpired(userInfo?.exp)) {
     return true;
   }
   return false;
@@ -212,9 +216,19 @@ export const paragraph = (text) => {
   return lines.length > 0 ? lines.filter((o) => o !== `\r\n` || o !== "") : [];
 };
 
-export async function convertRelativeUriToFile(filePath, fileName, mimeType, cb) {
-  mimeType = mimeType || `image/${filePath.split('.')[filePath.split('.').length - 1]}`;
-  const imageUrl = await fetch(filePath, {method: 'GET', mode: 'cors', cache: 'no-cache'});
+export async function convertRelativeUriToFile(
+  filePath,
+  fileName,
+  mimeType,
+  cb,
+) {
+  mimeType =
+    mimeType || `image/${filePath.split(".")[filePath.split(".").length - 1]}`;
+  const imageUrl = await fetch(filePath, {
+    method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+  });
   const buffer = await imageUrl.arrayBuffer();
-  cb(new File([buffer], fileName, {type: mimeType}));
+  cb(new File([buffer], fileName, { type: mimeType }));
 }

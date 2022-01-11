@@ -101,12 +101,16 @@ function HomePage() {
                 <div className='row h_set' data-aos='slide-up'>
                   <div className='col-md-7 col-12'>
                     <h4 className='mt-5 pt-lg-5 mb-1'>
-                      {t("homePage.mainSlider.heading.1")}</h4>
-                      <h5>{t("homePage.mainSlider.heading.4")}</h5>
-                    
+                      {t("homePage.mainSlider.heading.1")}
+                    </h4>
+                    <h5>{t("homePage.mainSlider.heading.4")}</h5>
+
                     <p className='mb-4'>
                       {" "}
-                      We believe that there is no right age, time or place to learn. It really does not matter if you are 16 or 60, learning is an ongoing process so let’s keep it that way! Take classes on the go with the SheKunj.
+                      We believe that there is no right age, time or place to
+                      learn. It really does not matter if you are 16 or 60,
+                      learning is an ongoing process so let’s keep it that way!
+                      Take classes on the go with the SheKunj.
                     </p>
                     <Link to='/courses' className='banner_btn'>
                       {t("homePage.mainSlider.button.1")}
@@ -123,8 +127,7 @@ function HomePage() {
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
-                    <h5>{t("homePage.mainSlider.heading.5")}
-                    </h5>
+                    <h5>{t("homePage.mainSlider.heading.5")}</h5>
                     <p className='mb-4' data-aos='zoom-in'>
                       {" "}
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -149,14 +152,14 @@ function HomePage() {
                   <div className='col-md-7 col-12'>
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.3.3.1")}
-                      
-                     
                     </h4>
 
                     <h5>{t("homePage.mainSlider.heading.3.3.2")}</h5>
 
                     <p className='mb-4' data-aos='zoom-in'>
-                    Take the world’s most-advanced career advice from SheKunj's finest career counsellors online and find your best-fit career.
+                      Take the world’s most-advanced career advice from
+                      SheKunj's finest career counsellors online and find your
+                      best-fit career.
                     </p>
 
                     <Link
@@ -179,8 +182,7 @@ function HomePage() {
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
 
-                    <h5>{t("homePage.mainSlider.heading.5")}
-                    </h5>
+                    <h5>{t("homePage.mainSlider.heading.5")}</h5>
 
                     <p className='mb-4' data-aos='zoom-in'>
                       {" "}
@@ -213,7 +215,7 @@ function HomePage() {
         type={constants.carouselConstant.COURSES}
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate noselect'>
+        <button className='view_test_cate'>
           {t("homePage.mainSlider.button.2")}
         </button>
       </Link>
@@ -265,7 +267,12 @@ function HomePage() {
                   <div className='col-lg-8' data-aos='slide-up'>
                     <h3>{t("homePage.jobopportunity.heading")}</h3>
                     <p>
-                    Enroll. Learn. Explore. Grow. Work. SheKunj offers Indian women a whole new world waiting to be explored! We aim at bringing education to the women masses. The Best Certified Online Courses for a Sustainable Career are aimed at all professionals, entrepreneurs and graduates who want to excel in their profession.
+                      Enroll. Learn. Explore. Grow. Work. SheKunj offers Indian
+                      women a whole new world waiting to be explored! We aim at
+                      bringing education to the women masses. The Best Certified
+                      Online Courses for a Sustainable Career are aimed at all
+                      professionals, entrepreneurs and graduates who want to
+                      excel in their profession.
                     </p>
                     <a
                       rel='noreferrer'
@@ -294,10 +301,10 @@ function HomePage() {
         page='homePage'
         title1={t("homePage.carousel3.heading.1")}
         title2={t("homePage.carousel3.heading.2")}
-        type={constants.carouselConstant.COURSES}
+        type={constants.carouselConstant.GOVERNMENT_EXAMS}
       />
-      <Link to='/courses' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate noselect'>
+      <Link to='/government-exams' style={{ textDecoration: "none" }}>
+        <button className='view_test_cate'>
           {t("homePage.mainSlider.button.2")}
         </button>
       </Link>
@@ -309,7 +316,7 @@ function HomePage() {
             <div className='col-md-12'>
               <h3 data-aos='slide-up'>{t("homePage.community.heading")}</h3>
               <p data-aos='slide-up'>
-              Take a glance at the happy, glittering faces who have enrolled with SheKunj. We understand the importance of education for the solutions of tomorrow. SheKunj is a first-of-its-kind, women-centered, global network dedicated to empowerment in every community where equality is in question.
+              {t("homePage.community.data")}
               </p>
 
               <div className='mob_comunity_img'>
@@ -631,8 +638,8 @@ function HomePage() {
                 ornare ipsum. Tincidunt erat pulvinar viverra pharetra.
               </p>
 
-              <Link to="/courses" data-aos='slide-up' className='learn_more'>
-                {t('homePage.highlightStudents.button')}
+              <Link to='/courses' data-aos='slide-up' className='learn_more'>
+                {t("homePage.highlightStudents.button")}
               </Link>
             </div>
           </div>
