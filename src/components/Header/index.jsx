@@ -352,7 +352,7 @@ const Header = ({ page, subPage }) => {
                       className='nav-link'
                       rel='noreferrer'
                       target='_blank'
-                      href='https://octahire.com/Recruiters/job_recruiters?location='
+                      href='https://octahire.com/Home/candidate_register'
                     >
                       {t("header.heading.6")}
                     </a>

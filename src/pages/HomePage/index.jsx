@@ -216,7 +216,7 @@ function HomePage() {
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
         <button className='view_test_cate'>
-          {t("homePage.mainSlider.button.2")}
+          {t("homePage.mainSlider.button.4")}
         </button>
       </Link>
 
@@ -277,7 +277,7 @@ function HomePage() {
                     <a
                       rel='noreferrer'
                       target='_blank'
-                      href='https://octahire.com/Recruiters/job_recruiters?location='
+                      href='https://octahire.com/Home/candidate_register'
                       className='btn btn-job'
                     >
                       {t("homePage.jobopportunity.button")}

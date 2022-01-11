@@ -255,7 +255,8 @@
       "button": {
         "1": "Start Learning",
         "2": "View All Schemes",
-        "3": "View All Test"
+        "3": "View All Test",
+        "4" : "View All Courses"
       }
     },
     "carousel1": {
