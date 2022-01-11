@@ -245,8 +245,8 @@
       "heading": {
         "1": "A Promise To",
         "4": "Never Stop Learning.",
-        "2": "Anytime, anywhere, Learn",
-        "5": "on your schedule from any device",
+        "2": "Looking for a Best College",
+        "5": " to sky rocket your career?",
         "3": {
           "3.1": "Discover",
           "3.2": "Your Perfect Career"
@@ -255,7 +255,11 @@
       "button": {
         "1": "Start Learning",
         "2": "View All Schemes",
-        "3": "View All Test"
+        "3": "View All Test",
+        "4": "Book a Counsellor",
+        "5": "Top Colleges in India",
+        "6": "Top Schools in India"
+
       }
     },
     "carousel1": {
@@ -282,7 +286,7 @@
     },
     "jobopportunity": {
       "heading": "Grab job Opportunities!",
-      "button": "Opportunities"
+      "button": "View All Job Opportunities"
     },
     "community": {
       "heading": "Trusted By All Women",
@@ -296,30 +300,33 @@
       }
     },
     "highlightStudents": {
-      "heading": "Want to become a part of our next success story?",
-      "button": "Enroll Now"
+      "homeHeading": "Want to become a part of our next success story?",
+      "aboutHeading": "No Woman Is Equal Until All Women Are",
+      "aboutDescription" : "Hundreds of millions of women and girls are denied their right to education, effectively preventing their empowerment. For the sake of justice, we have to right this wrong. SheKunj has taken a step ahead to make knowledge and information accessible to each and every woman, better today than tomorrow. Take a glance at all the women who have successfully enrolled at SheKunj.",
+      "aboutButton": "View Success Stories",
+      "homeButton":"Enroll now"
     }
   },
 
   "aboutPage": {
-    "heading": "Empowering Women to Empower the Next Generation",
-    "content1": "SheKunj’s cutting-edge learning and examination platform has been designed to equip modern-age females with in-demand tech and non-tech skills. By providing the right information to women, we help them get placed, develop their personalities, and explore career pathways.",
-    "content2": "Armed with the best pedagogy experts, learning modules, and certificate courses, SheKunj is determined to impart practical training and educate women. With the right blend of tech and non-tech skills, our drive is to make a community of motivated, highly-skilled and knowledgeable women who build inspiring careers and lead with full gusto.",
+    "heading": "SheKunj is open knowledge for the forgotten billion",
+    "content1": "We aim at empowering all the women out there- be it 16 or 60- through education. SheKunj has a plethora of free courses available specially crafted for women of all ages. Every woman has the right to a safe, formal, quality education and access to lifelong learning. SheKunj wants to give a choice to all the females out there who are forced to leave school while others never have the opportunity to go in the first place.",
+    "content2": "SheKunj is free from any commercial interest. Its mission is to bring free learning to women and girls with the purpose of quickly closing the gender knowledge gap in the face of lagging literacy initiatives, and thus to become a global driving force for women’s empowerment and gender equality. ",
     "content3": "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality.",
     "review": {
-      "1": "I love their flexibility, Even when my request is too complicated to handle, the could still suggest something useful for me.",
-      "2": "Best out of the best in the online learning field...",
-      "3": "Excellent guiding instructions. They are all great mentors at life & career"
+      "1": "Very helpful vocabulary courses. Really helped me out to learn and made capable to start my Freelancing career in content writing.",
+      "2": "Best e-learning platform for building skills along with the validation. SheKunj's certificate helped me out to stand different from the crowd.",
+      "3": "Excellent platform! I guided many women toward aspiring their wished career."
     },
     "reviewerDetails": {
       "reviewerName": {
-        "1": "Nikita Sharma"
+        "1": "Ankita Ahuja"
       },
       "reviewerPost": {
-        "1": "Content Writer"
+        "1": "Career Counsellor"
       }
     },
-    "salesNumber": "by 1000+ Students for 2500+ Sales"
+    "salesNumber": "by 100+ Women's for English Speaking Course"
   },
 
   "careerPage": {
@@ -345,12 +352,12 @@
 
   "allCertificatePage": {
     "heading": {
-      "1": "Achieve your goals",
+      "1": "Way to the path of success...",
       "2": "My achievements",
       "3": "Skills Earned"
     },
     "content": {
-      "1": "All over Indian Girl students are taking their web design careers to the next-level with Shekunj Academy. Here are some of their stories."
+      "1": "Awaken from your dream, SheKunj's perfectly curated courses and certifications will help you to cope up with the challenging state of the world, by reflecting, and discovering new and great opportunities to create a new future where you have a key role to play."
     },
     "button": {
       "1": "View Certificate",
@@ -368,7 +375,7 @@
       "7": "Total time",
       "8": "Congratulations!",
       "9": "You can download the certificate",
-      "10": "Course & Certificate",
+      "10": "Certificate",
       "11": "View Full Certificate"
     },
     "name": {
@@ -446,11 +453,11 @@
   "contactUs": {
     "heading": {
       "1": "Contact us",
-      "2": "How can we help you?",
+      "2": "Simple Conversations can Lead to Great Ideas.",
       "3": "For Information"
     },
     "content": {
-      "1": "Any query or Suggestion? Feel free to contact us!"
+      "1": "Any query or suggestion? Feel free to contact us!"
     },
     "button": {
       "1": "Send"
@@ -459,11 +466,11 @@
 
   "coursesPage": {
     "banner": {
-      "heading": "Find your courses & make sure goal.",
-      "1": "LEARN AT YOUR OWN PACE",
-      "2.1": "JOIN A COMMUNITY",
-      "2.2": "OF professionals",
-      "3": "Flexible PAYMENT PLANS"
+      "heading": "30+ free courses to skyrocket your career",
+      "1": "Learn without limits at your own pace",
+      "2.1": "Any doubts? Ask ",
+      "2.2": " for help!",
+      "3": "Start for free!"
     },
     "heading": {
       "1": "Online Courses",
@@ -504,10 +511,10 @@
         "3": "What you’ll learn",
         "4": "Features:",
         "features": {
-          "1": "100% Online",
+          "1": "Learn from home!",
           "2": "Lifetime Access",
           "3": "Shareable Certificate",
-          "4": "Assignments",
+          "4": "Forum",
           "5": "Flexible Deadline",
           "6": { "heading": "Language", "data": "Hindi, English" }
         }
@@ -586,7 +593,8 @@
   },
   "guidanceBookPage": {
     "heading": {
-      "1": "Book a Session"
+      "1": "Get Free Career Guidance Session",
+      "2": "Book a Session"
     }
   },
   "changePasswordPage": {
@@ -629,8 +637,8 @@
       "1": "No Option selected!",
       "2": "back",
       "3": {
-        "1": "Choose Your",
-        "2": "Career"
+        "1": "Reach the heights ",
+        "2": "you aim for!"
       }
     },
     "button": {
@@ -654,11 +662,11 @@
   },
   "successStoriesPage": {
     "heading": {
-      "1": "Over 5,000 students have learned with us"
+      "1": "Over thousands of students have joined us in our free courses!"
     },
     "content": {
-      "1": "All over Indian Girl students are taking their web design careers to the next-level with Shekunj Academy. Here are some of their stories.",
-      "2": "Want to become our next success story?"
+      "1": "Why not you? Have a look how SheKunj has played an important role in providing the students a platform where they actually learn and explore. ",
+      "2": "Want to become a part of our next success story?"
     },
     "other": {
       "1": "Company",
@@ -667,7 +675,7 @@
     },
     "button": {
       "1": "Show",
-      "2": "Start Learning"
+      "2": "Join the movement!"
     }
   },
   "privacyPolicyPage": {

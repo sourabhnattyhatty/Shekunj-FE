@@ -140,8 +140,7 @@ const CourseDetails = () => {
                           )}
                         </h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat.
+                        We offer 100% online courses which you can access from anywhere at your own comfort!
                         </p>
                       </div>
                     </div>
@@ -156,8 +155,7 @@ const CourseDetails = () => {
                           )}
                         </h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat eget.
+                        Get the access to courses for lifetime and learn from anywhere and anytime.
                         </p>
                       </div>
                     </div>
@@ -172,8 +170,7 @@ const CourseDetails = () => {
                           )}
                         </h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat eget.
+                        Earn industry recognized certificate after the completion of course.
                         </p>
                       </div>
                     </div>
@@ -191,8 +188,7 @@ const CourseDetails = () => {
                           )}
                         </h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper.
+                        Join SheKunj, a community forum that believes women education and empowerment is in the mainstream.
                         </p>
                       </div>
                     </div>
@@ -208,8 +204,7 @@ const CourseDetails = () => {
                           )}
                         </h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper.
+                        Learn and keep a practical approach towards your courses by flexible timings and deadlines.
                         </p>
                       </div>
                     </div>
@@ -228,7 +223,8 @@ const CourseDetails = () => {
                           {t(
                             "coursesPage.coursesDetailsPage.heading.features.6.data",
                           )}
-                        </p>
+                        </p><br/>
+                        <p>Don’t be afraid if you're not familiar with English. SheKunj is here with everything that is needed to make it easier for you!</p>
                       </div>
                     </div>
                   </Col>

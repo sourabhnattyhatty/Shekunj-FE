@@ -45,7 +45,7 @@ function AllCertificatePage() {
       <div className='all_certif_banner noselect'>
         <Container>
           <Row>
-            <Col md={5} xs={12} data-aos='slide-up'>
+            <Col md={6} xs={12} data-aos='slide-up'>
               <h2>{t("allCertificatePage.heading.1")}</h2>
               <p>{t("allCertificatePage.content.1")}</p>
             </Col>

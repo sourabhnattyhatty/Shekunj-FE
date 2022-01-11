@@ -169,7 +169,7 @@ export const getUserTestQuestion =
     } catch (err) {
       if (err?.status === 400) {
         if (err.data.message === "Already course test is completed") {
-          const res = await httpServices.get(constants.USER_COURSE_RESULT);
+          const res = await httpServices.get(constants.USER_COURSE_RESULT + id);
           history?.push(routingConstants.COURSE_CERTIFICATE + res.data.id);
           toast.success(err.data.message, toasterConfig);
         } else {

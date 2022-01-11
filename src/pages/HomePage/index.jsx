@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import { constants } from "../../utils";
 import { Header, Footer, Carousel, SEO } from "../../components";
@@ -23,7 +23,7 @@ import Community from "../../assets/images/community.png";
 import Nikita from "../../assets/images/testimonial/1.png";
 import Priya from "../../assets/images/testimonial/2.png";
 import star from "../../assets/images/Star 2.png";
-import certif from "../../assets/images/certif.jpg";
+import certif from "../../assets/images/mob_certif.png";
 import g1 from "../../assets/images/1.png";
 import g2 from "../../assets/images/2.png";
 import g3 from "../../assets/images/3.png";
@@ -129,17 +129,17 @@ function HomePage() {
                     </h4>
                     <h5>{t("homePage.mainSlider.heading.5")}</h5>
                     <p className='mb-4' data-aos='zoom-in'>
-                      {" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      In sed fermentum massa semper mauris volutpat dictum
-                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
+                      We ease your run to search for the Best Colleges across
+                      India by our hands-on approach to every necessary
+                      information about the institutes to help you learn,
+                      explore and achieve your goals.
                     </p>
                     <Link
                       to='/courses'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button.1")}
+                      {t("homePage.mainSlider.button.5")}
                     </Link>
                   </div>
                 </div>
@@ -163,11 +163,11 @@ function HomePage() {
                     </p>
 
                     <Link
-                      to='/courses'
+                      to='/guidance-book'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button.1")}
+                      {t("homePage.mainSlider.button.4")}
                     </Link>
                   </div>
                 </div>
@@ -185,10 +185,9 @@ function HomePage() {
                     <h5>{t("homePage.mainSlider.heading.5")}</h5>
 
                     <p className='mb-4' data-aos='zoom-in'>
-                      {" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      In sed fermentum massa semper mauris volutpat dictum
-                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
+                      With the experience and expertise, SheKunj can tailor-make
+                      list of ideal institutions for the students who are
+                      looking for the best school.
                     </p>
 
                     <Link
@@ -196,7 +195,7 @@ function HomePage() {
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button.1")}
+                      {t("homePage.mainSlider.button.6")}
                     </Link>
                   </div>
                 </div>
@@ -216,7 +215,7 @@ function HomePage() {
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
         <button className='view_test_cate'>
-          {t("homePage.mainSlider.button.2")}
+          {t("homePage.mainSlider.button.5")}
         </button>
       </Link>
 
@@ -304,7 +303,10 @@ function HomePage() {
         type={constants.carouselConstant.GOVERNMENT_EXAMS}
       />
       <Link to='/government-exams' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate'>
+        <button
+          className='view_test_cate'
+          onClick={() => <Redirect to='/government-exams' />}
+        >
           {t("homePage.mainSlider.button.2")}
         </button>
       </Link>
@@ -315,9 +317,7 @@ function HomePage() {
           <div className='row justify-content-center'>
             <div className='col-md-12'>
               <h3 data-aos='slide-up'>{t("homePage.community.heading")}</h3>
-              <p data-aos='slide-up'>
-              {t("homePage.community.data")}
-              </p>
+              <p data-aos='slide-up'>{t("homePage.community.data")}</p>
 
               <div className='mob_comunity_img'>
                 <img data-aos='slide-up' src={Community} alt='...' />
@@ -519,14 +519,15 @@ function HomePage() {
               <div className='certif_con'>
                 <h4>
                   {t("homePage.certificate.heading.1")}{" "}
-                  {t("homePage.certificate.heading.2")}
+                  {/* {t("homePage.certificate.heading.2")} */}
                 </h4>
 
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Feugiat sed vel scelerisque sodales tristique porttitor vitae.
-                  Ornare phasellus nibh in orci. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Feugiat sed vel scelerisque
+                  Learn and Explore new skills from the free online courses with
+                  Industry-Recognized Certificates. We have come up with the
+                  idea of creating this platform for your learning, skills
+                  enhancement and making you win the race. We are a platform for
+                  women who want to learn, hustle, explore and empower herself.
                 </p>
               </div>
             </div>
@@ -628,7 +629,7 @@ function HomePage() {
 
             <div className='col-md-5 offset-md-1'>
               <h3 className='mb-3 mt-4'>
-                {t("homePage.highlightStudents.heading")}
+                {t("homePage.highlightStudents.homeHeading")}
               </h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
@@ -639,7 +640,7 @@ function HomePage() {
               </p>
 
               <Link to='/courses' data-aos='slide-up' className='learn_more'>
-                {t("homePage.highlightStudents.button")}
+                {t("homePage.highlightStudents.homeButton")}
               </Link>
             </div>
           </div>

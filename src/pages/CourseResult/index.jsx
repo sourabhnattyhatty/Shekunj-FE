@@ -60,9 +60,7 @@ function CourseTest() {
                   )}
                 </h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
-                  ornare ac commodo erat velit felis odio. In blandit fusce
-                  nulla odio. Iaculis lacus eget facilisis eu massa.
+                You are an inspiration to others! Exams are always tough, but the Champions like you make it worth while by your excellent performance.
                 </p>
               </div>
 
@@ -71,8 +69,8 @@ function CourseTest() {
                   <Col md={3} xs={12}>
                     <CircleProgressBar
                       size='small'
-                      title1='Correct'
-                      title2='Answers'
+                      title1='Result'
+                      // title2='Answers'
                       result={result?.no_of_correct_answer || 0}
                     />
                   </Col>

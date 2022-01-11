@@ -339,7 +339,7 @@ body {
 .certificate {
   background: #f8f8f8;
   position: relative;
-  background-image: url("../../assets/images/certificate1.jpg");
+  background-image: url("../../assets/images/certificate0.png");
   background-repeat: no-repeat;
   background-size: 100% 103%;
   height: 550px;
@@ -1064,7 +1064,28 @@ ul.star {
     bottom: -20px;
   }
 }
-
+.goverment-schemes{
+  text-decoration: none;
+  color: white;
+  // font-family: SegoeUI_bold;
+  // font-style: normal;
+  // font-weight: bold;
+  // font-size: 14px;
+  // line-height: 19px;
+  // color: #ffffff;
+  // background: #ec498a;
+  // border-radius: 2px;
+  // padding: 20px 42px;
+  // border: 1px solid #ffffff;
+  // text-align: center;
+  // display: block;
+  // margin: 50px auto;
+  // transition-duration: 1s;
+  // transition-timing-function: linear;
+}
+.goverment-schemes:hover{
+  color: #000;
+}
 @media only screen and (max-width: 1280px) {
   .box {
     height: auto;
