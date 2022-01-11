@@ -187,7 +187,7 @@ section.Srch_sec h3 {
   background: #fedeff;
   border-radius: 100px;
   border: none;
-  font-family: 'SegoeUI_medium';
+  font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -310,42 +310,40 @@ hr.line {
   }
 }
 
-
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  .cors_con h2 {
+    font-size: 32px;
+    padding-top: 30px;
+    font-size: 32px;
+    line-height: 120%;
+    /* or 38px */
+    color: #ee5f98;
+  }
+  .cour_box {
+    flex-wrap: inherit;
+  }
+  ul.ulcont {
+    margin-left: 15px;
+    margin-bottom: 0;
+  }
 
-.cors_con h2 {
-  font-size: 32px;
-  padding-top: 30px;
-font-size: 32px;
-line-height: 120%;
-/* or 38px */
-color: #EE5F98;
-}
-.cour_box {
-  flex-wrap: inherit;
-}
-ul.ulcont {
-  margin-left: 15px;
-  margin-bottom: 0;
-}
+  .cors_con {
+    padding: 0;
+  }
+  ul.ulcont li {
+    font-size: 15px;
+  }
 
-.cors_con {
-  padding: 0;
-}
-ul.ulcont li {
-  font-size: 15px;
-}
-
-.Cors_sec {
-  background-image: url("../../assets/images/Courses/mob_ban.png");
-  height: 695px;
-}
-.cour_box ul li img {
-  width: 38px;
-}
-.rig_ul ul li img {
-  margin-bottom: 27px;
-}
+  .Cors_sec {
+    background-image: url("../../assets/images/Courses/mob_ban.png");
+    height: 695px;
+  }
+  .cour_box ul li img {
+    width: 38px;
+  }
+  .rig_ul ul li img {
+    margin-bottom: 27px;
+  }
 }
 
 /*new*/
@@ -403,44 +401,48 @@ ul.ulcont li {
   color: #ec498a;
   border-radius: 4.45605px;
 }
-.MuiRadio-root.MuiRadio-colorPrimary.Mui-checked{
+.MuiRadio-root.MuiRadio-colorPrimary.Mui-checked {
   color: #ec498a;
 }
 
-@media screen and (min-width:1024px) and (max-width:1300px){
-  .Cors_sec{
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+  .Cors_sec {
     background-size: 100% 100%;
     height: 600px;
   }
-  .cors_con h2{
+  .cors_con h2 {
     font-size: 50px;
   }
   .cors_con {
     padding-left: 17%;
   }
-  ul.ulcont{
+  ul.ulcont {
     margin-left: 50px;
     margin-bottom: 0px;
   }
-  ul.ulcont li{
+  ul.ulcont li {
     font-size: 23px;
   }
 }
-@media screen and (min-width:768px) and (max-width:1023px){
-  .Cors_sec{
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .Cors_sec {
     background-size: 100% 100%;
     height: 500px;
   }
   .cors_con {
     padding-left: 14%;
   }
-  .cors_con h2{
+  .cors_con h2 {
     font-size: 41px;
   }
-  ul.ulcont{
+  ul.ulcont {
     margin-left: 32px;
   }
-  .Srch_sec .reset_content p{
+  .Srch_sec .reset_content p {
     font-size: 16px;
   }
+}
+.paginationDiv {
+  display: flex;
+  justify-content: center;
 }

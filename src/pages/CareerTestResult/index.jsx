@@ -11,6 +11,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { careerTestResult } from "../../store/guidance/action";
 import { useTranslation } from "react-i18next";
+import { routingConstants } from "../../utils/constants";
 
 function CourseTest() {
   const { id } = useParams();
@@ -41,7 +42,7 @@ function CourseTest() {
           <Row>
             <Col md={8} xs={12} className='offset-lg-2'>
               <div className='cou_result_cont'>
-                <h2>Your Result</h2>
+                <h2>{t("coursesPage.coursesResultPage.heading.1")}</h2>
                 <img src={win} alt='' />
                 <h2>
                   {result?.is_result ? (
@@ -133,7 +134,7 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              <Link to='/success-career-test'>
+              <Link to={routingConstants.SUCCESS_CAREER_TEST}>
                 <button className='get_certif'>{t("coursesPage.coursesResultPage.button.3")}</button>
               </Link>
             </Col>

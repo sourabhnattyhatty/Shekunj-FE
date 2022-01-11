@@ -71,6 +71,9 @@ export default function SimpleAccordion(props) {
   const {lan} = useSelector(state => state.languageReducer);
 
   const dispatch = useDispatch();
+
+  const [pageLimit] = useState(10);
+
   const [subSelected, setSubSelected] = useState(null);
   const { t } = useTranslation();
   useEffect(() => {
@@ -78,14 +81,16 @@ export default function SimpleAccordion(props) {
     dispatch(getCategoryList());
   }, [dispatch, lan]);
   const handleCategoryChange = (_, obj) => {
-    dispatch(fetchAllCourses(`?category_id=${obj.id}`));
+    dispatch(fetchAllCourses(`?category_id=${obj.id}&limit=${pageLimit}`));
     dispatch(setFilter([obj]));
     setSelectedFilter(obj.id);
     setSubSelected(0);
+    props.categoryId(obj.id);
   };
 
   const handleSubCategoryChange = (e, obj) => {
     dispatch(fetchAllCourses(`?id=${obj.id}&category_id=${selectedFilter}`));
+    props.categoryId(selectedFilter);
     setSubSelected(obj?.id);
   };
 
