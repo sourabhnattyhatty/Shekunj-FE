@@ -71,6 +71,8 @@
 
 .has-more {
   color: #d62c79;
+  cursor: pointer;
+  user-select: none;
 }
 
 .MuiRadio-root.MuiRadio-colorPrimary.Mui-checked{

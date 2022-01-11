@@ -58,21 +58,6 @@ const CareerPage = () => {
     <div>
       <SEO title='Sheकुंज - Career' />
       <Header loginPage={true} page='career' subPage='colleges' />
-{/* 
-      <div className='filter_side'>
-        <img src={x} alt='' />
-        <AccordionComponent
-          type='colleges'
-          stream={STREAM}
-          courseLength={courseSector}
-        />
-        <p className='more'>{t("careerTopColleges.other.1")}</p> <br />
-        <AccordionComponent
-          type='colleges'
-          stream={STREAM}
-          courseLength={courseSector}
-        />
-      </div> */}
 
       <div className='mainDiv_career'>
         <Container>
