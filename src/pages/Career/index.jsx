@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
-import Pagination from "../../components/Pagination";
 import {
   getTopCollages,
   reSetFilterValue,
@@ -22,10 +21,6 @@ const CareerPage = () => {
   );
   const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
-
-  const [pageLimit] = useState(10);
-  const [pageCount, setPageCount] = useState(0);
-  const [categoryPageCount, setCategoryPageCount] = useState(0);
 
   useEffect(() => {
     dispatch(reSetFilterValue());
@@ -51,41 +46,6 @@ const CareerPage = () => {
   const handleCollapse = (id, checked) => {
     dispatch(toggleCollapseValue(id, checked ? false : true, "topCollages"));
   };
-
-  // const paginationBack = () => {
-  //   if (categoryId) {
-  //     setCategoryPageCount(categoryPageCount - pageLimit);
-  //     dispatch(
-  //       getTopCollages(
-  //         `?category_id=${categoryId}&limit=${pageLimit}&offset=${
-  //           categoryPageCount - pageLimit
-  //         }`,
-  //       ),
-  //     );
-  //   } else {
-  //     setPageCount(pageCount - pageLimit);
-  //     dispatch(
-  //       getTopCollages(`?limit=${pageLimit}&offset=${pageCount - pageLimit}`),
-  //     );
-  //   }
-  // };
-  // const paginationNext = () => {
-  //   if (categoryId) {
-  //     setCategoryPageCount(categoryPageCount + pageLimit);
-  //     dispatch(
-  //       getTopCollages(
-  //         `?category_id=${categoryId}&limit=${pageLimit}&offset=${
-  //           categoryPageCount + pageLimit
-  //         }`,
-  //       ),
-  //     );
-  //   } else {
-  //     setPageCount(pageCount + pageLimit);
-  //     dispatch(
-  //       getTopCollages(`?limit=${pageLimit}&offset=${pageCount + pageLimit}`),
-  //     );
-  //   }
-  // };
 
   return (
     <div>
@@ -169,15 +129,6 @@ const CareerPage = () => {
               )}
             </Col>
           </Row>
-          {/* <div className='paginationDiv'>
-            {topCollages.collage_list?.length > pageLimit && (
-              <Pagination
-                finalCount={topCollages.collage_list?.length / pageLimit}
-                nextPage={paginationNext}
-                backPage={paginationBack}
-              />
-            )}
-          </div> */}
         </Container>
       </div>
       <Footer loginPage={false} />
