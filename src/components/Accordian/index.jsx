@@ -81,7 +81,7 @@ export default function AccordionComponent({
 
   const hasMoreCountShowFunction = (data, category, subCategory) => {
     return data?.map((s) => (
-      <li key={s?.id}>
+      s?.name && <li key={s?.id}>
         <FormControlLabel
           control={
             <Checkbox
@@ -97,7 +97,7 @@ export default function AccordionComponent({
 
   const hasMoreSchoolStateFunction = (data) => {
     return data?.map((s) => (
-      <li key={s?.id}>
+      s?.name && <li key={s?.id}>
         <FormControlLabel
           value={s?.name}
           control={

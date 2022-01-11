@@ -66,7 +66,7 @@ const CareerPage2 = () => {
             <Col md={8} xs={12}>
               {governmentExams?.govt_list?.length > 0 ? (
                 governmentExams?.govt_list?.map((c) => (
-                  <div
+                  c?.name && <div
                     className='career_box noselect'
                     style={{ height: "auto" }}
                   >

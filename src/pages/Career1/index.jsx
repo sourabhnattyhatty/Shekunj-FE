@@ -63,7 +63,7 @@ const CareerPage1 = () => {
             <Col md={8} xs={12}>
               {topSchools?.result?.length > 0 ? (
                 topSchools?.result?.map((c) => (
-                  <div className='career_box noselect' style={{ height: "auto" }}>
+                  c?.name && <div className='career_box noselect' style={{ height: "auto" }}>
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>

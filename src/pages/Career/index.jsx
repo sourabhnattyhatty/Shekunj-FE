@@ -74,7 +74,7 @@ const CareerPage = () => {
             <Col md={8} xs={12}>
               {topCollages?.collage_list?.length > 0 ? (
                 topCollages.collage_list.map((c) => (
-                  <div
+                  c?.name && <div
                     className='career_box noselect'
                     style={{ height: "auto" }}
                     key={c?.id}
