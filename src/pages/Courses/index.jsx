@@ -32,7 +32,7 @@ const Courses = () => {
   const [resetState, setResetState] = useState(false);
   const [categoryId, setCategoryId] = useState(null);
 
-  const [pageLimit] = useState(1);
+  const [pageLimit] = useState(10);
 
   const [pageCount, setPageCount] = useState(0);
   const [categoryPageCount, setCategoryPageCount] = useState(0);
@@ -97,7 +97,7 @@ const Courses = () => {
         ),
       );
     } else {
-      setPageCount(pageCount - 2);
+      setPageCount(pageCount - pageLimit);
       dispatch(
         allCourses(`?limit=${pageLimit}&offset=${pageCount - pageLimit}`),
       );

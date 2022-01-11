@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
+import Pagination from "../../components/Pagination";
 import {
   getTopCollages,
   reSetFilterValue,
@@ -21,6 +22,10 @@ const CareerPage = () => {
   );
   const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
+
+  const [pageLimit] = useState(10);
+  const [pageCount, setPageCount] = useState(0);
+  const [categoryPageCount, setCategoryPageCount] = useState(0);
 
   useEffect(() => {
     dispatch(reSetFilterValue());
@@ -47,32 +52,53 @@ const CareerPage = () => {
     dispatch(toggleCollapseValue(id, checked ? false : true, "topCollages"));
   };
 
+  // const paginationBack = () => {
+  //   if (categoryId) {
+  //     setCategoryPageCount(categoryPageCount - pageLimit);
+  //     dispatch(
+  //       getTopCollages(
+  //         `?category_id=${categoryId}&limit=${pageLimit}&offset=${
+  //           categoryPageCount - pageLimit
+  //         }`,
+  //       ),
+  //     );
+  //   } else {
+  //     setPageCount(pageCount - pageLimit);
+  //     dispatch(
+  //       getTopCollages(`?limit=${pageLimit}&offset=${pageCount - pageLimit}`),
+  //     );
+  //   }
+  // };
+  // const paginationNext = () => {
+  //   if (categoryId) {
+  //     setCategoryPageCount(categoryPageCount + pageLimit);
+  //     dispatch(
+  //       getTopCollages(
+  //         `?category_id=${categoryId}&limit=${pageLimit}&offset=${
+  //           categoryPageCount + pageLimit
+  //         }`,
+  //       ),
+  //     );
+  //   } else {
+  //     setPageCount(pageCount + pageLimit);
+  //     dispatch(
+  //       getTopCollages(`?limit=${pageLimit}&offset=${pageCount + pageLimit}`),
+  //     );
+  //   }
+  // };
+
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
       <Header loginPage={true} page='career' subPage='colleges' />
-      {/* 
-      <div className='filter_side'>
-        <img src={x} alt='' />
-        <AccordionComponent
-          type='colleges'
-          stream={STREAM}
-          courseLength={courseSector}
-        />
-        <p className='more'>{t("careerTopColleges.other.1")}</p> <br />
-        <AccordionComponent
-          type='colleges'
-          stream={STREAM}
-          courseLength={courseSector}
-        />
-      </div> */}
 
       <div className='mainDiv_career'>
         <Container>
           <div className='career_tit noselect'>
             <h2>{t("careerTopColleges.heading.1")}</h2>
             <p>
-              {t("careerTopColleges.other.2")} {STREAM?.rows?.length || 0}{" "}
+              {t("careerTopColleges.other.2")}{" "}
+              {topCollages?.collage_list?.length || 0}{" "}
               {t("careerTopColleges.other.3")}
             </p>
           </div>
@@ -143,6 +169,15 @@ const CareerPage = () => {
               )}
             </Col>
           </Row>
+          {/* <div className='paginationDiv'>
+            {topCollages.collage_list?.length > pageLimit && (
+              <Pagination
+                finalCount={topCollages.collage_list?.length / pageLimit}
+                nextPage={paginationNext}
+                backPage={paginationBack}
+              />
+            )}
+          </div> */}
         </Container>
       </div>
       <Footer loginPage={false} />

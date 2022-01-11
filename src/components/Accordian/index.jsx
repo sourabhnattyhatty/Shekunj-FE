@@ -89,7 +89,7 @@ export default function AccordionComponent({
               onChange={(e) => onChangeFilter(s?.id, e, category, subCategory)}
             />
           }
-          label={s?.name}
+          label={s?.name? s?.name : "N/A"}
         />
       </li>
     ));
@@ -106,7 +106,7 @@ export default function AccordionComponent({
               onChange={(e) => onChangeFilter(s?.id, e, "topSchools", "states")}
             />
           }
-          label={s?.name}
+          label={s?.name? s?.name : "N/A"}
         />
       </li>
     ));
