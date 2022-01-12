@@ -74,7 +74,7 @@ const CareerPage = () => {
             <Col md={8} xs={12}>
               {topCollages?.collage_list?.length > 0 ? (
                 topCollages.collage_list.map((c) => (
-                  c?.name && <div
+                  c && c.name && <div
                     className='career_box noselect'
                     style={{ height: "auto" }}
                     key={c?.id}
@@ -82,12 +82,12 @@ const CareerPage = () => {
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>
-                          <h3>{c?.name || t("common.n/a")}</h3>
+                          <h3>{c && c.name ? c.name : t("common.n/a")}</h3>
                           <p>
-                            {c?.city || t("common.n/a")},{" "}
-                            {c?.state || t("common.n/a")} •{" "}
+                            {c && c.city ? c.city : t("common.n/a")},{" "}
+                            {c && c.state ? c?.state : t("common.n/a")} •{" "}
                             <span style={{ textTransform: "capitalize" }}>
-                              {c?.collage_type || t("common.n/a")}
+                              {c && c.collage_type ? c?.collage_type : t("common.n/a")}
                             </span>
                           </p>
                           <ul>
@@ -97,11 +97,11 @@ const CareerPage = () => {
                             </li>
                             <li>
                               <span>{t("careerTopColleges.other.5")}</span> :{" "}
-                              {c?.exam || t("common.n/a")}
+                              {c && c.exam ? c?.exam : t("common.n/a")}
                             </li>
                           </ul>
                           {c?.is_collapse && (
-                            <div>{c?.about_college || t("common.n/a")}</div>
+                            <div>{c && c.about_college ? c?.about_college : t("common.n/a")}</div>
                           )}
                           <button
                             className='btn_viewCour'
