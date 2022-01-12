@@ -88,29 +88,40 @@ function CourseTest() {
       toast.error(t("error.mobile.1"));
       history.push(routingConstants.HOME_PAGE);
     }
-  }, [history, detect.isMobile, t]);
+    if (localStorage.getItem("isCarrerTestStarted")) {
+      const nv = localStorage.getItem("selectedCourseCategoryValue");
+      dispatch(endTest(nv, history));
+    }
+  }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
+
+  useEffect(() => {
+    return () => {
+      const nv = localStorage.getItem("selectedCourseCategoryValue");
+      dispatch(endTest(nv));
+    };
+  }, []);
 
   useEffect(() => {
     if (testData) {
-      if (testData?.answer === testData?.optionA) {
+      if (testData?.answer === "A") {
         setCheck1(true);
         setCheck2(false);
         setCheck3(false);
         setCheck4(false);
         setAnswer(testData?.answer);
-      } else if (testData?.answer === testData?.optionB) {
+      } else if (testData?.answer === "B") {
         setCheck2(true);
         setCheck1(false);
         setCheck3(false);
         setCheck4(false);
         setAnswer(testData?.answer);
-      } else if (testData?.answer === testData?.optionC) {
+      } else if (testData?.answer === "C") {
         setCheck3(true);
         setCheck1(false);
         setCheck2(false);
         setCheck4(false);
         setAnswer(testData?.answer);
-      } else if (testData?.answer === testData?.optionD) {
+      } else if (testData?.answer === "D") {
         setCheck4(true);
         setCheck1(false);
         setCheck2(false);
@@ -130,7 +141,6 @@ function CourseTest() {
     testData?.optionB,
     testData?.optionC,
     testData?.optionD,
-    questionNumber,
   ]);
 
   const handleFinishQuestion = () => {
@@ -142,7 +152,6 @@ function CourseTest() {
       dispatch(
         postAnswer(data, history, selectedCourseCategoryValue?.id, true),
       );
-      // dispatch(endTest(selectedCourseCategoryValue?.id, history));
       setAnswer("");
     } else {
       toast.error("Select option for next question", {
@@ -163,6 +172,7 @@ function CourseTest() {
     if (countData && countData?.career_time > 0) {
       setTestTime(parseInt(countData?.career_time, 10) * 60000);
       setShowTimer(true);
+      localStorage.setItem("isCarrerTestStarted", true);
     }
     setCheck1(false);
     setCheck2(false);
@@ -173,15 +183,6 @@ function CourseTest() {
   useEffect(() => {
     dispatch(getGuidanceCategory());
   }, [dispatch, lan]);
-
-  // const handleCategoryChange = ({ target: { value } }) => {
-  //   setSelectedCourseCategory(value?.name);
-  //   setSelectedCourseCategoryValue(value);
-  // };
-  const handleCategoryChange = (value) => {
-    setSelectedCourseCategory(value?.name);
-    setSelectedCourseCategoryValue(value);
-  };
 
   const handleStartCourse = async () => {
     if (!selectedCourseCategoryValue) {
@@ -258,10 +259,7 @@ function CourseTest() {
         position: "bottom-center",
       });
     }
-    setCheck1(false);
-    setCheck2(false);
-    setCheck3(false);
-    setCheck4(false);
+
   };
 
   const renderTimmer = (value) => {
@@ -345,9 +343,10 @@ function CourseTest() {
                       options: guidanceCategory,
                       getOptionLabel: (option) => option.name,
                     }}
-                    onChange={(_, newValue) =>
-                      setSelectedCourseCategoryValue(newValue)
-                    }
+                    onChange={(_, newValue) => {
+                      setSelectedCourseCategoryValue(newValue);
+                      localStorage.setItem("selectedCourseCategoryValue",newValue?.id);
+                    }}
                     onInputChange={(_, newInputValue) =>
                       setSelectedCourseCategory(newInputValue)
                     }
@@ -444,7 +443,7 @@ function CourseTest() {
                     <Skeleton></Skeleton>
                   ) : (
                     <p>
-                      {countData?.user_career_test_count + 1}.{" "}
+                      {questionNumber}.{" "}
                       {testData?.question}
                     </p>
                   )}

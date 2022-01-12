@@ -168,9 +168,12 @@ export const postAnswer =
   };
 
 export const endTest = (id, history) => async (dispatch) => {
-  await httpServices.post(apiConstants.CAREER.USER_CAREER_END_TEST + id);
-  // history.push(`routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id);
-  history.push(routingConstants.CAREER_TEST_RESULT + id);
+  const res = await httpServices.post(apiConstants.CAREER.USER_CAREER_END_TEST + id);
+  localStorage.removeItem("isCarrerTestStarted");
+  localStorage.removeItem("selectedCourseCategoryValue");
+  if(res.status_code === 200 && history){
+    history.push(routingConstants.CAREER_TEST_RESULT + id);
+  }
 };
 
 export const careerTestResult = (id) => async (dispatch) => {

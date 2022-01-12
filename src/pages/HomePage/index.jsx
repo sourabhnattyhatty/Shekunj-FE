@@ -23,6 +23,7 @@ import Community from "../../assets/images/community.png";
 import Nikita from "../../assets/images/testimonial/1.png";
 import Priya from "../../assets/images/testimonial/2.png";
 import star from "../../assets/images/Star 2.png";
+import half_star from "../../assets/images/half_star.svg";
 import certif from "../../assets/images/mob_certif.png";
 import g1 from "../../assets/images/1.png";
 import g2 from "../../assets/images/2.png";
@@ -135,7 +136,7 @@ function HomePage() {
                       explore and achieve your goals.
                     </p>
                     <Link
-                      to='/courses'
+                      to='/top-colleges'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
@@ -191,7 +192,7 @@ function HomePage() {
                     </p>
 
                     <Link
-                      to='/courses'
+                      to='/top-schools/'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
@@ -559,9 +560,9 @@ function HomePage() {
                         <li>
                           <img src={star} alt='' />
                         </li>
-                        <li>
+                        {/* <li>
                           <img src={star} alt='' />
-                        </li>
+                        </li> */}
                       </ul>
                       <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
                       <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
@@ -576,7 +577,7 @@ function HomePage() {
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-down'>
                     <div className='tes_box3'>
-                      <h2>4.9/5</h2>
+                      <h2>4.9</h2>
                       <ul className='star'>
                         <li>
                           <img src={star} alt='' />
@@ -591,7 +592,7 @@ function HomePage() {
                           <img src={star} alt='' />
                         </li>
                         <li>
-                          <img src={star} alt='' />
+                        <img src={half_star} alt='' />
                         </li>
                       </ul>
                       <h6>{t("aboutPage.salesNumber")}</h6>
@@ -616,7 +617,9 @@ function HomePage() {
                           <img src={star} alt='' />
                         </li>
                         <li>
-                          <img src={star} alt='' />
+                        <img src={star} alt='' />
+
+                          
                         </li>
                       </ul>
                       <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
