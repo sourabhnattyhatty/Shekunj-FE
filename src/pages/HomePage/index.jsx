@@ -631,20 +631,16 @@ function HomePage() {
             </div>
 
             <div className='col-md-5 offset-md-1'>
+            <div className="highlig">
               <h3 className='mb-3 mt-4'>
                 {t("homePage.highlightStudents.homeHeading")}
               </h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
-                donec molestie sit diam aliquam egestas erat tincidunt magna.
-                Tincidunt et faucibus a curabitur sed at sagittis orci id. Odio
-                nunc, purus a, ut integer. Ultricies orci nulla eu, libero
-                ornare ipsum. Tincidunt erat pulvinar viverra pharetra.
-              </p>
+            
 
               <Link to='/courses' data-aos='slide-up' className='learn_more'>
                 {t("homePage.highlightStudents.homeButton")}
               </Link>
+              </div>
             </div>
           </div>
         </div>
