@@ -86,10 +86,7 @@ function CourseTest() {
       dispatch(endTest(id, history));
     }
     return () => {
-      // const confirmText = window.confirm("Are you sure?");
-      // if (confirmText) {
       dispatch(endTest(id));
-      // }
     };
   }, [history, detect.isMobile, id, dispatch, t, lan]);
 
@@ -296,7 +293,8 @@ function CourseTest() {
                 <Skeleton></Skeleton>
               ) : (
                 <p>
-                  {questionCount?.user_course_test_count + 1}. {question?.question}
+                  {questionCount?.user_course_test_count + 1}.{" "}
+                  {question?.question}
                 </p>
               )}
               {question && (
