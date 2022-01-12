@@ -91,6 +91,7 @@ function CourseTest() {
     if (localStorage.getItem("isCarrerTestStarted")) {
       alert(t("alert"));
       const nv = localStorage.getItem("selectedCourseCategoryValue");
+      localStorage.removeItem("isCarrerTestStarted");
       dispatch(endTest(nv, history));
     }
   }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
@@ -173,12 +174,8 @@ function CourseTest() {
     if (countData && countData?.career_time > 0) {
       setTestTime(parseInt(countData?.career_time, 10) * 60000);
       setShowTimer(true);
-      localStorage.setItem("isCarrerTestStarted", true);
+      // localStorage.setItem("isCarrerTestStarted", true);
     }
-    setCheck1(false);
-    setCheck2(false);
-    setCheck3(false);
-    setCheck4(false);
   }, [countData, countData?.career_time]);
 
   useEffect(() => {
@@ -186,6 +183,7 @@ function CourseTest() {
   }, [dispatch, lan]);
 
   const handleStartCourse = async () => {
+    localStorage.setItem("isCarrerTestStarted", true);
     if (!selectedCourseCategoryValue) {
       return;
     }
