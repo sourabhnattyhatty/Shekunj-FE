@@ -55,7 +55,7 @@ const AboutusPage = () => {
               <div className='sec2_con'>
                 <p> {t("aboutPage.content2")}</p>
 
-                <p>{t("aboutPage.content3")}</p>
+                {/* <p>{t("aboutPage.content3")}</p> */}
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@ const AboutusPage = () => {
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-down'>
                     <div className='tes_box3'>
-                      <h2>4.9/5</h2>
+                      <h2>4.9</h2>
                       <ul className='star'>
                         <li>
                           <img src={star} alt='' />

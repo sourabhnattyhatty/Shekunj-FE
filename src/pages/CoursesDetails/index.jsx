@@ -224,7 +224,7 @@ const CourseDetails = () => {
                             "coursesPage.coursesDetailsPage.heading.features.6.data",
                           )}
                         </p>
-                        <p>Don’t be afraid if you're not familiar with English. SheKunj is here with everything that is needed to make it easier for you!</p>
+                        
                       </div>
                     </div>
                   </Col>

@@ -136,7 +136,7 @@ function HomePage() {
                       explore and achieve your goals.
                     </p>
                     <Link
-                      to='/courses'
+                      to='/top-colleges'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
@@ -192,7 +192,7 @@ function HomePage() {
                     </p>
 
                     <Link
-                      to='/courses'
+                      to='/top-schools/'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
@@ -577,7 +577,7 @@ function HomePage() {
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-down'>
                     <div className='tes_box3'>
-                      <h2>4.9/5</h2>
+                      <h2>4.9</h2>
                       <ul className='star'>
                         <li>
                           <img src={star} alt='' />
