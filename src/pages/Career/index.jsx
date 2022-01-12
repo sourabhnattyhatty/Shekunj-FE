@@ -10,6 +10,7 @@ import {
   toggleCollapseValue,
 } from "../../store/career";
 import { noImage } from "../../utils/ApiServices";
+import { paragraph } from "../../utils/utils";
 
 import "../HomePage/index.scss";
 import "./index.scss";
@@ -73,57 +74,132 @@ const CareerPage = () => {
 
             <Col md={8} xs={12}>
               {topCollages?.collage_list?.length > 0 ? (
-                topCollages.collage_list.map((c) => (
-                  c && c.name && <div
-                    className='career_box noselect'
-                    style={{ height: "auto" }}
-                    key={c?.id}
-                  >
-                    <Row>
-                      <Col md={7} xs={12}>
-                        <div className='top_col_content'>
-                          <h3>{c && c.name ? c.name : t("common.n/a")}</h3>
-                          <p>
-                            {c && c.city ? c.city : t("common.n/a")},{" "}
-                            {c && c.state ? c?.state : t("common.n/a")} •{" "}
-                            <span style={{ textTransform: "capitalize" }}>
-                              {c && c.collage_type ? c?.collage_type : t("common.n/a")}
-                            </span>
-                          </p>
-                          <ul>
-                            <li>
-                              <span>{t("careerTopColleges.other.4")}</span> : ₹{" "}
-                              {transformPrice(c?.fees)}{" "}
-                            </li>
-                            <li>
-                              <span>{t("careerTopColleges.other.5")}</span> :{" "}
-                              {c && c.exam ? c?.exam : t("common.n/a")}
-                            </li>
-                          </ul>
-                          {c?.is_collapse && (
-                            <div>{c && c.about_college ? c?.about_college : t("common.n/a")}</div>
-                          )}
-                          <button
-                            className='btn_viewCour'
-                            onClick={() =>
-                              handleCollapse(c?.id, c?.is_collapse)
-                            }
-                          >
-                            {!c?.is_collapse
-                              ? t("common.more")
-                              : t("common.less")}
-                          </button>
-                        </div>
-                      </Col>
+                topCollages.collage_list.map(
+                  (c) =>
+                    c &&
+                    c.name && (
+                      <div
+                        className='career_box noselect'
+                        style={{ height: "auto" }}
+                        key={c?.id}
+                      >
+                        <Row>
+                          <Col md={7} xs={12}>
+                            <div className='top_col_content'>
+                              <h3>{c && c.name ? c.name : t("common.n/a")}</h3>
+                              <p>
+                                {c && c.city ? c.city : t("common.n/a")},{" "}
+                                {c && c.state ? c?.state : t("common.n/a")} •{" "}
+                                <span style={{ textTransform: "capitalize" }}>
+                                  {c && c.collage_type
+                                    ? c?.collage_type
+                                    : t("common.n/a")}
+                                </span>
+                              </p>
+                              <ul>
+                                <li>
+                                  <span>{t("careerTopColleges.other.4")}</span>{" "}
+                                  : ₹ {/* {transformPrice(c?.fees)}{" "} */}
+                                  {c && c.contact_no
+                                    ? c?.contact_no
+                                    : t("common.n/a")}
+                                </li>
+                                <li>
+                                  <span>{t("careerTopColleges.other.5")}</span>{" "}
+                                  :{" "}
+                                  <a
+                                    href={c?.website}
+                                    target='_blank'
+                                    rel='noreferrer'
+                                  >
+                                    {c && c.website
+                                      ? c.website
+                                      : t("common.n/a")}
+                                  </a>
+                                </li>
+                                {c?.is_collapse && (
+                                  <>
+                                    <li>
+                                      <span>
+                                        {t("careerTopColleges.other.9")}
+                                      </span>{" "}
+                                      :{" "}
+                                      {c && c.email
+                                        ? c?.email
+                                        : t("common.n/a")}
+                                    </li>
+                                    <li>
+                                      <span>
+                                        {t("careerTopColleges.other.10")}
+                                      </span>{" "}
+                                      :{" "}
+                                      {c && c.established_year
+                                        ? c?.established_year
+                                        : t("common.n/a")}
+                                    </li>
+                                    <li>
+                                      <span>
+                                        {t("careerTopColleges.other.7")}
+                                      </span>{" "}
+                                      :{" "}
+                                      {c && c.accreditation
+                                        ? c?.accreditation
+                                        : t("common.n/a")}
+                                    </li>
+                                    <li>
+                                      <span>
+                                        {t("careerTopColleges.other.6")}
+                                      </span>{" "}
+                                      :{" "}
+                                      {c && c.about_college
+                                        ? c?.about_college
+                                        : t("common.n/a")}
+                                    </li>
+                                    <li>
+                                      <span>
+                                        {t("careerTopColleges.other.8")}
+                                      </span>{" "}
+                                      :{" "}
+                                      {c && c.courses_offered
+                                        ? paragraph(c.courses_offered).map(
+                                            (o) => <p>{o}</p>,
+                                          )
+                                        : t("common.n/a")}
+                                    </li>
+                                    <li>
+                                      <span>
+                                        {t("careerTopColleges.other.11")}
+                                      </span>{" "}
+                                      :{" "}
+                                      {c && c.gender_intech
+                                        ? c?.gender_intech
+                                        : t("common.n/a")}
+                                    </li>
+                                  </>
+                                )}
+                              </ul>
+                              <button
+                                className='btn_viewCour'
+                                onClick={() =>
+                                  handleCollapse(c?.id, c?.is_collapse)
+                                }
+                              >
+                                {!c?.is_collapse
+                                  ? t("common.more")
+                                  : t("common.less")}
+                              </button>
+                            </div>
+                          </Col>
 
-                      <Col md={5} xs={12}>
-                        <div className='career_img'>
-                          <img src={transformImg(c?.image)} alt='...' />
-                        </div>
-                      </Col>
-                    </Row>
-                  </div>
-                ))
+                          <Col md={5} xs={12}>
+                            <div className='career_img'>
+                              <img src={transformImg(c?.image)} alt='...' />
+                            </div>
+                          </Col>
+                        </Row>
+                      </div>
+                    ),
+                )
               ) : (
                 <div className='text-center'>{t("common.noDataFound")}</div>
               )}

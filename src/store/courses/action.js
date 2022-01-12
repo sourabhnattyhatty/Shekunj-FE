@@ -194,6 +194,7 @@ export const postAnswer =
         values,
       );
       dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
+      
       if (res.status_code === 200 && !last) {
         dispatch({ type: coursesTypes.QUESTION_COUNT_REQUEST });
         const res = await httpServices.get(constants.USER_TEST_COUNT + id);

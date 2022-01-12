@@ -83,6 +83,8 @@ function CourseTest() {
       history.push(routingConstants.HOME_PAGE);
     }
     if (localStorage.getItem("isTestStarted")) {
+      alert(t("alert"));
+      localStorage.removeItem("isTestStarted");
       dispatch(endTest(id, history));
     }
     return () => {

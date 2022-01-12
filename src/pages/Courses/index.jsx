@@ -46,7 +46,7 @@ const Courses = () => {
   }, [dispatch, pageLimit, lan]);
 
   useEffect(() => {
-   window.scrollTo(0,0)
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -185,9 +185,7 @@ const Courses = () => {
           <Row>
             <Col md={10} xs={12}>
               <h1>{t("coursesPage.heading.1")}</h1>
-              <p className='courses_para mb-5'>
-              SheKunj’s courses are designed for real life and real women. We want every woman should move to their creative journey forward without putting life on hold. SheKunj's courses are curated to provide practical and theoretical knowledge. We have crafted these courses to help you find inspiration that fits your routine. So look no further and enroll on SheKunj now!
-              </p>
+              <p className='courses_para mb-5'>{t("coursesPage.heading.2")}</p>
             </Col>
           </Row>
 

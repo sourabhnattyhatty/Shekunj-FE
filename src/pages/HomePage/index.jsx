@@ -108,10 +108,7 @@ function HomePage() {
 
                     <p className='mb-4'>
                       {" "}
-                      We believe that there is no right age, time or place to
-                      learn. It really does not matter if you are 16 or 60,
-                      learning is an ongoing process so let’s keep it that way!
-                      Take classes on the go with the SheKunj.
+                      {t("homePage.mainSlider.subHeading.1")}
                     </p>
                     <Link to='/courses' className='banner_btn'>
                       {t("homePage.mainSlider.button.1")}
@@ -130,10 +127,7 @@ function HomePage() {
                     </h4>
                     <h5>{t("homePage.mainSlider.heading.5")}</h5>
                     <p className='mb-4' data-aos='zoom-in'>
-                      We ease your run to search for the Best Colleges across
-                      India by our hands-on approach to every necessary
-                      information about the institutes to help you learn,
-                      explore and achieve your goals.
+                      {t("homePage.mainSlider.subHeading.2")}
                     </p>
                     <Link
                       to='/top-colleges'
@@ -158,9 +152,7 @@ function HomePage() {
                     <h5>{t("homePage.mainSlider.heading.3.3.2")}</h5>
 
                     <p className='mb-4' data-aos='zoom-in'>
-                      Take the world’s most-advanced career advice from
-                      SheKunj's finest career counsellors online and find your
-                      best-fit career.
+                      {t("homePage.mainSlider.subHeading.3")}
                     </p>
 
                     <Link
@@ -180,15 +172,13 @@ function HomePage() {
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 offset-lg-6 offset-md-5'>
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
-                      {t("homePage.mainSlider.heading.2")}
+                      {t("homePage.mainSlider.heading.6.1")}
                     </h4>
 
-                    <h5>{t("homePage.mainSlider.heading.5")}</h5>
+                    <h5>{t("homePage.mainSlider.heading.6.2")}</h5>
 
                     <p className='mb-4' data-aos='zoom-in'>
-                      With the experience and expertise, SheKunj can tailor-make
-                      list of ideal institutions for the students who are
-                      looking for the best school.
+                      {t("homePage.mainSlider.subHeading.4")}
                     </p>
 
                     <Link
@@ -216,7 +206,7 @@ function HomePage() {
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
         <button className='view_test_cate'>
-          {t("homePage.mainSlider.button.5")}
+          {t("homePage.mainSlider.button.7")}
         </button>
       </Link>
 
@@ -266,14 +256,7 @@ function HomePage() {
                 <div className='row'>
                   <div className='col-lg-8' data-aos='slide-up'>
                     <h3>{t("homePage.jobopportunity.heading")}</h3>
-                    <p>
-                      Enroll. Learn. Explore. Grow. Work. SheKunj offers Indian
-                      women a whole new world waiting to be explored! We aim at
-                      bringing education to the women masses. The Best Certified
-                      Online Courses for a Sustainable Career are aimed at all
-                      professionals, entrepreneurs and graduates who want to
-                      excel in their profession.
-                    </p>
+                    <p>{t("homePage.jobopportunity.subHeading")}</p>
                     <a
                       rel='noreferrer'
                       target='_blank'
@@ -523,13 +506,7 @@ function HomePage() {
                   {/* {t("homePage.certificate.heading.2")} */}
                 </h4>
 
-                <p>
-                  Learn and Explore new skills from the free online courses with
-                  Industry-Recognized Certificates. We have come up with the
-                  idea of creating this platform for your learning, skills
-                  enhancement and making you win the race. We are a platform for
-                  women who want to learn, hustle, explore and empower herself.
-                </p>
+                <p>{t("homePage.certificate.heading.3")} </p>
               </div>
             </div>
           </div>
@@ -592,7 +569,7 @@ function HomePage() {
                           <img src={star} alt='' />
                         </li>
                         <li>
-                        <img src={half_star} alt='' />
+                          <img src={half_star} alt='' />
                         </li>
                       </ul>
                       <h6>{t("aboutPage.salesNumber")}</h6>
@@ -617,12 +594,10 @@ function HomePage() {
                           <img src={star} alt='' />
                         </li>
                         <li>
-                        <img src={star} alt='' />
-
-                          
+                          <img src={star} alt='' />
                         </li>
                       </ul>
-                      <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
+                      <h2>{t("aboutPage.reviewerDetails.reviewerName.2")}</h2>
                       <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
                     </div>
                   </div>
@@ -634,13 +609,6 @@ function HomePage() {
               <h3 className='mb-3 mt-4'>
                 {t("homePage.highlightStudents.homeHeading")}
               </h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
-                donec molestie sit diam aliquam egestas erat tincidunt magna.
-                Tincidunt et faucibus a curabitur sed at sagittis orci id. Odio
-                nunc, purus a, ut integer. Ultricies orci nulla eu, libero
-                ornare ipsum. Tincidunt erat pulvinar viverra pharetra.
-              </p>
 
               <Link to='/courses' data-aos='slide-up' className='learn_more'>
                 {t("homePage.highlightStudents.homeButton")}

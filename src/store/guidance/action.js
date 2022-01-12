@@ -158,6 +158,18 @@ export const postAnswer =
         values,
       );
       dispatch({ type: guidanceTypes.POST_ANSWER_FINISH });
+
+      if (res.status_code === 200 && !last) {
+        dispatch({
+          type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_REQUEST,
+        });
+        const res = await httpServices.get(constants.USER_CAREER_COUNT + id);
+        dispatch({
+          type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_SUCCESS,
+          payload: res?.data,
+        });
+      }
+
       if (res.status_code === 200 && last) {
         await httpServices.post(apiConstants.CAREER.USER_CAREER_END_TEST + id);
         history.push(routingConstants.CAREER_TEST_RESULT + id);

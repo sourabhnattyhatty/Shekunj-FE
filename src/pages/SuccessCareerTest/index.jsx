@@ -89,6 +89,7 @@ function CourseTest() {
       history.push(routingConstants.HOME_PAGE);
     }
     if (localStorage.getItem("isCarrerTestStarted")) {
+      alert(t("alert"));
       const nv = localStorage.getItem("selectedCourseCategoryValue");
       dispatch(endTest(nv, history));
     }
