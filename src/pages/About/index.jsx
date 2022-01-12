@@ -3,7 +3,7 @@ import Aos from "aos";
 import { useTranslation } from "react-i18next";
 
 import { Header, Footer, SEO } from "../../components";
-
+import half_star from "../../assets/images/half_star.svg";
 import img1 from "../../assets/images/About/img1.png";
 import Nikita from "../../assets/images/Nikita-Sharma.png";
 import star from "../../assets/images/Star 2.png";
@@ -117,7 +117,7 @@ const AboutusPage = () => {
                           <img src={star} alt='' />
                         </li>
                         <li>
-                          <img src={star} alt='' />
+                        <img src={half_star} alt='' />
                         </li>
                       </ul>
                       <h6>{t("aboutPage.salesNumber")}</h6>
