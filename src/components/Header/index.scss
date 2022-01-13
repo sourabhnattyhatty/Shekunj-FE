@@ -7,7 +7,7 @@
   max-width: 100%;
 }
 header {
-  background: rgb(255 255 255);
+  background: $mainColor;
   box-shadow: 0px 8px 25px rgb(0 0 0 / 10%);
 }
 .topbar {
@@ -171,16 +171,15 @@ header {
 .guidence_button {
   background: transparent;
   border: 0;
+  // margin-top: -10px;
+  // margin-bottom: -10px;
+  
 }
 
 .toggleDrawer{
   & .MuiPaper-root {
-    width: 100%;
+    width: 70%;
   }
-}
-
-.MuiModal-root.MuiDrawer-root.MuiDrawer-modal.toggleDrawer {
-  z-index: 99999999999999999999;
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper
@@ -227,9 +226,6 @@ header {
   .other_head .btn.btn-bg-pink {
     margin-right: 15px;
   }
-  .toggleDrawer .MuiPaper-root hr {
-    display: none;
-}
   header {
     box-shadow: none;
   }
@@ -309,6 +305,14 @@ header {
   .navbar .open.collapse.show {
     left: 0px !important;
     text-align: left;
+  }
+  .guidence_button{
+      margin-top: -10px;
+      margin-bottom: -10px;
+      // background-color: #000;
+      width: 240px;
+      text-align: left;
+
   }
 }
 @media screen and (max-width: 1080px) {
