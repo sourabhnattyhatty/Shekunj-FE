@@ -542,7 +542,7 @@ function HomePage() {
                         </li> */}
                       </ul>
                       <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
-                      <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
+                      <h6>{t("aboutPage.reviewerDetails.reviewerPost.2")}</h6>
                     </div>
                   </div>
 

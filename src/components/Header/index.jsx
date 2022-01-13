@@ -235,7 +235,7 @@ const Header = ({ page, subPage }) => {
 
                 <span className='navbar-toggler-icon'></span>
               </button>
-              <Drawer anchor="left" open={showmenu}  className='toggleDrawer' >
+              <Drawer anchor="left" open={showmenu} onClick={toggleDrawer} className='toggleDrawer' >
                   <Divider />
                   <List>
                   <img src={close} alt='' style={{float:"right",marginRight:"10px"}} onClick={toggleDrawer}/>
