@@ -86,7 +86,7 @@
       "9": "Something went wrong",
       "10": "You are not allowed to do that!"
     },
-    "login":{
+    "login": {
       "1": "Google Login failed.",
       "2": "E-mail not found"
     }
@@ -137,13 +137,13 @@
       "gender": {
         "required": "Gender selection is required"
       },
-      "dob":{
+      "dob": {
         "required": "Date of Birth is required"
       },
-      "qualification":{
+      "qualification": {
         "required": "Qualification is required."
       },
-      "coursesLookingFor":{
+      "coursesLookingFor": {
         "required": "Course looking for is required."
       }
     },
@@ -243,14 +243,24 @@
   "homePage": {
     "mainSlider": {
       "heading": {
-        "1": "A Promise To",
-        "4": "Never Stop Learning.",
+        "1": "A Promise To Never",
+        "4": "Stop Learning.",
         "2": "Looking for a Best College",
-        "5": " to sky rocket your career?",
+        "5": "to sky rocket your career?",
         "3": {
           "3.1": "Discover",
           "3.2": "Your Perfect Career"
+        },
+        "6": {
+          "1": "Your preference, your grades. SheKunj knows ",
+          "2": "how to make it simple for you."
         }
+      },
+      "subHeading": {
+        "1": "We believe that there is no right age, time or place to learn. It really does not matter if you are 16 or 60, learning is an ongoing process so let’s keep it that way! Take classes on the go with the SheKunj.",
+        "2": "We ease your run to search for the Best Colleges across India by our hands-on approach to every necessary information about the institutes to help you learn, explore and achieve your goals.",
+        "3": "Take the world’s most-advanced career advice from SheKunj's finest career counsellors online and find your best-fit career.",
+        "4": "With the experience and expertise, SheKunj can tailor-make list of ideal institutions for the students who are looking for the best school."
       },
       "button": {
         "1": "Start Learning",
@@ -258,8 +268,8 @@
         "3": "View All Test",
         "4": "Book a Counsellor",
         "5": "Top Colleges in India",
-        "6": "Top Schools in India"
-
+        "6": "Top Schools in India",
+        "7": "View All Courses"
       }
     },
     "carousel1": {
@@ -286,25 +296,27 @@
     },
     "jobopportunity": {
       "heading": "Grab job Opportunities!",
+      "subHeading": "Enroll. Learn. Explore. Grow. Work. SheKunj offers Indian women a whole new world waiting to be explored! We aim at bringing education to the women masses. The Best Certified Online Courses for a Sustainable Career are aimed at all professionals, entrepreneurs and graduates who want to excel in their profession.",
       "button": "View All Job Opportunities"
     },
     "community": {
       "heading": "Trusted By All Women",
-      "data" : "Take a glance at the happy, glittering faces who have enrolled with SheKunj. We understand the importance of education for the solutions of tomorrow. SheKunj is a first-of-its-kind,women-centered, global network dedicated to empowerment in every community where equality is in question.",
+      "data": "Take a glance at the happy, glittering faces who have enrolled with SheKunj. We understand the importance of education for the solutions of tomorrow. SheKunj is a first-of-its-kind,women-centered, global network dedicated to empowerment in every community where equality is in question.",
       "button": "View Success Stories"
     },
     "certificate": {
       "heading": {
         "1": "30+ Free Courses With Industry Recognized Certifications",
-        "2": "UX Certificates"
+        "2": "UX Certificates",
+        "3": "Learn and Explore new skills from the free online courses with Industry-Recognized Certificates. We have come up with the idea of creating this platform for your learning, skills enhancement and making you win the race. We are a platform for women who want to learn, hustle, explore and empower herself."
       }
     },
     "highlightStudents": {
       "homeHeading": "Want to become a part of our next success story?",
       "aboutHeading": "No Woman Is Equal Until All Women Are",
-      "aboutDescription" : "Hundreds of millions of women and girls are denied their right to education, effectively preventing their empowerment. For the sake of justice, we have to right this wrong. SheKunj has taken a step ahead to make knowledge and information accessible to each and every woman, better today than tomorrow. Take a glance at all the women who have successfully enrolled at SheKunj.",
+      "aboutDescription": "Hundreds of millions of women and girls are denied their right to education, effectively preventing their empowerment. For the sake of justice, we have to right this wrong. SheKunj has taken a step ahead to make knowledge and information accessible to each and every woman, better today than tomorrow. Take a glance at all the women who have successfully enrolled at SheKunj.",
       "aboutButton": "View Success Stories",
-      "homeButton":"Enroll now"
+      "homeButton": "Enroll now"
     }
   },
 
@@ -315,12 +327,13 @@
     "content3": "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality.",
     "review": {
       "1": "Very helpful vocabulary courses. Really helped me out to learn and made capable to start my Freelancing career in content writing.",
-      "2": "Best e-learning platform for building skills along with the validation. SheKunj's certificate helped me out to stand different from the crowd.",
+      "2": "SheKunj's certificate helped me out to build the skills with validation.",
       "3": "Excellent platform! I guided many women toward aspiring their wished career."
     },
     "reviewerDetails": {
       "reviewerName": {
-        "1": "Nikita Sharma"
+        "1": "Nikita Sharma",
+        "2": "Ankita Sharma"
       },
       "reviewerPost": {
         "1": "Career Counsellor"
@@ -412,14 +425,20 @@
       "1": "7 More",
       "2": "Showing",
       "3": "Colleges",
-      "4": "Fees",
-      "5": "Exam"
+      "4": "Contact",
+      "5": "Website",
+      "6": "About",
+      "7": "Accreditation",
+      "8": "Course Offered",
+      "9": "Email",
+      "10": "Established Year",
+      "11": "Gender"
     },
     "heading": {
       "1": "Top Colleges in India"
     },
     "listItems": {
-      "1": "STREAM"
+      "1": "Stream"
     },
     "noDataFound": "No data found!"
   },
@@ -430,10 +449,18 @@
     },
     "listItems": {
       "1": "STATE",
-      "2": "EDUCATION BOARD"
+      "2": "Education Board"
     },
     "other": {
-      "1": "Board"
+      "1": "Board",
+      "2": "Contact",
+      "3": "Website",
+      "4": "Email",
+      "5": "Established Year",
+      "6": "About",
+      "7": "Adress",
+      "8": "Gender",
+      "9": "Levels"
     }
   },
 
@@ -467,14 +494,16 @@
   "coursesPage": {
     "banner": {
       "heading": "30+ free courses to skyrocket your career",
-      "1": "Learn without limits at your own pace",
-      "2.1": "Any doubts?  ",
+      "1": "Learn without limits",
+      "4": "at your own pace",
+      "2.1": "Any doubts?",
       "2.2": "Ask for help!",
       "3": "Start for free!"
     },
     "heading": {
       "1": "Online Courses",
-      "2": "Study top quality & advanced course content in Hindi"
+      "2": "SheKunj’s courses are designed for real life and real women. We want every woman should move to their creative journey forward without putting life on hold. SheKunj's courses are curated to provide practical and theoretical knowledge. We have crafted these courses to help you find inspiration that fits your routine.",
+      "3": "So look no further and enroll on SheKunj now!"
     },
     "accordion": {
       "1": {
@@ -516,7 +545,10 @@
           "3": "Shareable Certificate",
           "4": "Forum",
           "5": "Flexible Deadline",
-          "6": { "heading": "Translator", "data": "Don’t be afraid if you're not familiar with English. SheKunj is here with everything that is needed to make it easier for you!" }
+          "6": {
+            "heading": "Translator",
+            "data": "Don’t be afraid if you're not familiar with English. SheKunj is here with everything that is needed to make it easier for you!"
+          }
         }
       },
       "other": {
@@ -594,7 +626,7 @@
   "guidanceBookPage": {
     "heading": {
       "1": "Get Free Career Guidance Session",
-      "2": "Book a Session"
+      "2": "from finest counsellors"
     }
   },
   "changePasswordPage": {
@@ -665,8 +697,10 @@
       "1": "Over 1000+ of students have joined us in our free courses!"
     },
     "content": {
-      "1": "Why not you? Have a look how SheKunj has played an important role in providing the students a platform where they actually learn and explore. ",
-      "2": "Want to become a part of our next success story?"
+      "1": "Why not you? ",
+      "4": "Have a look how SheKunj has played an important role in providing the students a platform where they actually learn and explore.",
+      "2": "Want to become a part of our next success story?",
+      "3" : "Work today for a fruitful tomorrow!"
     },
     "other": {
       "1": "Company",
@@ -717,16 +751,16 @@
       "22": "If you have any questions regarding this Privacy Policy or the protection of your Personal Information, please contact us on support@octahire.com. You can also write to us to suggest changes in Privacy Policy"
     }
   },
-  "googleLoginComponent":{
-    "button":{
+  "googleLoginComponent": {
+    "button": {
       "1": "Login with Google"
     }
   },
-  "headerComponent":{
-    "other":{
+  "headerComponent": {
+    "other": {
       "1": "Sign In"
     },
-    "menuItem":{
+    "menuItem": {
       "1": "My Profile",
       "2": "My Progress",
       "3": "My Certificates",
@@ -738,5 +772,6 @@
       "9": "Top Schools",
       "10": "Government Schemes"
     }
-  }
+  },
+  "alert" : "After reload your test will end."
 }

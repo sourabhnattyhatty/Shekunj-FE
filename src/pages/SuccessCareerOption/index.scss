@@ -11,11 +11,22 @@
 .SucOption h2 {
   font-family: Source Sans Pro;
   font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 60px;
+  color: #333333;
+  text-transform: capitalize;
+  margin: 0;
+}
+.SucOption h3 {
+  font-family: Source Sans Pro;
+  font-style: normal;
   font-weight: bold;
   font-size: 48px;
   line-height: 60px;
   color: #333333;
   text-transform: capitalize;
+  margin: 0;
 }
 .MuiTabs-flexContainer button {
   width: 100%;

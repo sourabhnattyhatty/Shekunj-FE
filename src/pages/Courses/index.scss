@@ -14,7 +14,9 @@
   display: flex;
   flex-wrap: inherit;
 }
-
+ul.num li img {
+  margin-bottom: 40px;
+}
 .cors_con h2 {
   font-family: "SegoeUI_bold";
   font-style: normal;
@@ -29,7 +31,7 @@
 }
 .cour_box ul li img {
   max-width: 100%;
-  margin-bottom: 40px;
+  // margin-bottom: 40px;
 }
 .cour_box ul {
   padding: 0;
@@ -50,6 +52,8 @@ ul.ulcont {
   display: flex;
   gap: 1rem;
   margin-left: 80px;
+  align-items: center;
+  margin-bottom: 40px;
 }
 ul.ulcont li {
   font-family: "SegoeUI_bold";
@@ -184,6 +188,7 @@ section.Srch_sec h3 {
   max-width: 100%;
   width: auto;
   display: inline-block;
+  object-fit: contain;
 }
 .tag_btn button.btn.btn-info {
   background: #fedeff;
@@ -363,12 +368,23 @@ hr.line {
   color: #828282;
   font-family: "SegoeUI_medium";
 }
+.course_para {
+  margin-bottom: 50px;
+}
+.course_para a.shekunj_a {
+  font-size: 18px;
+  color: rgb(236 73 138);
+  text-decoration: none;
+  font-family: 'SegoeUI_medium';
+  font-weight: 600;
+}
 .Srch_sec .result_head {
   font-weight: 600;
   font-size: 18px;
-  line-height: 120%;
-  color: #000000;
-  margin-bottom: 13px;
+  line-height: 2.5;
+  color: rgb(0 0 0);
+  /* margin-bottom: 13px; */
+  margin: 0;
 }
 .Srch_sec .filter_added .filter_content {
   font-weight: normal;
@@ -388,7 +404,7 @@ hr.line {
 }
 .Srch_sec .reset_content p {
   font-weight: normal;
-  font-size: 20px;
+  font-size: 19px;
   line-height: 120%;
   text-transform: capitalize;
   color: #d62c79;

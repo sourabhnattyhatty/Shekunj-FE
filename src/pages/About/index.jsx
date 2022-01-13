@@ -145,7 +145,7 @@ const AboutusPage = () => {
                           <img src={star} alt='' />
                         </li>
                       </ul>
-                      <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
+                      <h2>{t("aboutPage.reviewerDetails.reviewerName.2")}</h2>
                       <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
                     </div>
                   </div>

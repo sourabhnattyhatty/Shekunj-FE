@@ -1,7 +1,7 @@
 import { coursesTypes } from ".";
 
 const initialCourseSector = {
-  name: "OWNERSHIP",
+  name: "Ownership",
   rows: [
     {
       id: 1,

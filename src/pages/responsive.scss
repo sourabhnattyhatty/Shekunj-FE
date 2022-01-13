@@ -81,6 +81,7 @@
   }
   .sign_in p {
     display: block !important;
+    visibility: hidden;
   }
 }
 
@@ -131,6 +132,7 @@
     padding: 25px 0px !important;
   }
   .myProfile_img {
+    display: flex !important;
     width: 115px;
     height: 115px !important;
     margin-top: 30px;
@@ -176,15 +178,18 @@
   }
   button.navbar-toggler {
     position: absolute;
-    top: 30px;
+    top: 10px;
     left: 0;
   }
+  .top_bar_btn {
+    margin-top: 5px !important;
+}
   nav.navbar.navbar-expand-md {
     position: inherit;
     padding: 0;
   }
   .navbar-brand img {
-    margin-left: 27px;
+    margin-left: 41px;
   }
   button.navbar-toggler.close_set img {
     max-width: 100%;

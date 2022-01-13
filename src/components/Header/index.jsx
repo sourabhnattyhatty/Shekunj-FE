@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { Avatar, Menu, MenuItem } from "@mui/material";
+import { Avatar, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
 
 import { getUserProfile, logOut, refreshPage } from "../../store/auth/action";
 import { isAuthenticated } from "../../utils/utils";
@@ -14,6 +14,13 @@ import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 
 const Header = ({ page, subPage }) => {
+  const paths = [{name:"About",path:"/about"}, 
+  {name:"Courses",path:"/courses"}, 
+  {name:"Guidance",},
+  {name:"Resume Builder",path:"https://octahire.com/Resume_maker"},{name:"Career",path:""},
+  {name:"Jobs",path:"https://octahire.com/Recruiters/job_recruiters?location="},
+  {name:"Blogs",path:"http://www.thehrnotes.com/"},
+  {name:"Success story",path:"/success-stories"}]
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
   const { lan } = useSelector((state) => state.languageReducer);
@@ -23,6 +30,8 @@ const Header = ({ page, subPage }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
+   const [showmenu, setShowmenu] = React.useState(false)
+  
 
   const open = Boolean(anchorEl);
   const open1 = Boolean(anchorEl1);
@@ -108,13 +117,24 @@ const Header = ({ page, subPage }) => {
     setAnchorEl2(null);
   };
 
+  const toggleDrawer = event => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setShowmenu(!showmenu);
+  };
+
   return (
     <div className="noselect">
       <header className='other_head'>
         <div className='container'>
           <div className='topbar'>
             <div className='row'>
-              <div className='col-md-3 col-12'>
+              <div className='col-md-3 col-7'>
                 <div className='sign_in'>
                   <Link className='navbar-brand' to='/'>
                     <img src={Logo} alt='...' />
@@ -204,17 +224,34 @@ const Header = ({ page, subPage }) => {
             </div>
           </div>
 
-          <div className='middle_nav_login'>
-            <nav className='navbar navbar-expand-md'>
+          <div className='middle_nav_login' >
+            <nav className='navbar navbar-expand-md '>
               <button
                 className='navbar-toggler'
                 type='button'
                 data-toggle='collapse'
                 data-target='#collapsibleNavbar'
-              >
+                onClick={toggleDrawer}>
+
                 <span className='navbar-toggler-icon'></span>
               </button>
-              <div className='collapse navbar-collapse' id='collapsibleNavbar'>
+              <Drawer anchor="left" open={showmenu}  className='toggleDrawer' >
+                  <Divider />
+                  <List>
+                  <img src={close} alt='' style={{float:"right",marginRight:"10px"}} onClick={toggleDrawer}/>
+                    {paths.map((text, index) => (
+                      <div>
+                        <ListItem className='nav-link' key={text}>
+                          <Link to={text.path}>
+                            <span style={{color:"#ec498a",fontSize:"20px", }} >{text.name}</span>
+                            </Link>
+                        </ListItem>
+                      </div>
+                    ))}  
+                  </List>
+                  <Divider />       
+              </Drawer>
+              <div className='collapse navbar-collapse' id='collapsibleNavbar' >
                 <button
                   className='navbar-toggler close_set'
                   type='button'

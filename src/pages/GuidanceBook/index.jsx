@@ -126,7 +126,7 @@ const GuidancePage = () => {
                 <div className='book_sec_content mob_hide'>
                   <h2 data-aos='slide-up'>{t("guidanceBookPage.heading.1")}</h2>
                   <p data-aos='slide-up'>
-                  from finest counsellors
+                  {t("guidanceBookPage.heading.2")}
                   </p>
                 </div>
 

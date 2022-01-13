@@ -167,7 +167,6 @@ export const getUserTestQuestion =
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
-      debugger
       if (err?.data?.status_code === 400) {
         if (err.data.message === "Already course test is completed") {
           const res = await httpServices.get(constants.USER_COURSE_RESULT + id);
@@ -195,6 +194,7 @@ export const postAnswer =
         values,
       );
       dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
+      
       if (res.status_code === 200 && !last) {
         dispatch({ type: coursesTypes.QUESTION_COUNT_REQUEST });
         const res = await httpServices.get(constants.USER_TEST_COUNT + id);
