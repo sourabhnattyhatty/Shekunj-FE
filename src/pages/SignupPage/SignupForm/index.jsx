@@ -37,8 +37,8 @@ const LoginForm = () => {
     const { t } = useTranslation();
     
     const validationSchema = Yup.object({
-      name: Yup.string().required(t("login.form1.firstNameError")),
-      last_name: Yup.string().required(t("login.form1.lastNameError")),
+      name: Yup.string().required(t("login.form1.firstNameError.required")),
+      last_name: Yup.string().required(t("login.form1.lastNameError.required")),
       contact: Yup.number().required(t("login.form1.contact.required")).positive(),
       email: Yup.string().email(t("login.form1.emailError.invalid")),
       password: Yup.string()

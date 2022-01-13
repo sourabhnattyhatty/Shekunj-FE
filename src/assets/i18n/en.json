@@ -571,7 +571,9 @@
     },
     "coursesResultPage": {
       "heading": {
-        "1": "Your Result"
+        "1": "Your Result",
+        "2": "You are an inspiration to others! Exams are always tough, but the Champions like you make it worth while by your excellent performance.",
+        "3" : "There are no secrets to success. It is the result of preparation, hard work, and learning from failure."
       },
       "other": {
         "1": "Congratulation",
@@ -697,7 +699,7 @@
     "content": {
       "1": "Why not you? Have a look how SheKunj has played an important role in providing the students a platform where they actually learn and explore. ",
       "2": "Want to become a part of our next success story?",
-      "3" : "Work today for a fruitful tomorrow!"
+      "3": "Work today for a fruitful tomorrow!"
     },
     "other": {
       "1": "Company",
@@ -770,5 +772,5 @@
       "10": "Government Schemes"
     }
   },
-  "alert" : "After reload your test will end."
+  "alert": "After reload your test will end."
 }

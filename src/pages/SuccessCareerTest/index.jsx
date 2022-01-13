@@ -88,19 +88,46 @@ function CourseTest() {
       toast.error(t("error.mobile.1"));
       history.push(routingConstants.HOME_PAGE);
     }
-    if (localStorage.getItem("isCarrerTestStarted")) {
-      alert(t("alert"));
-      const nv = localStorage.getItem("selectedCourseCategoryValue");
-      localStorage.removeItem("isCarrerTestStarted");
-      dispatch(endTest(nv, history));
-    }
+    // if (localStorage.getItem("isCarrerTestStarted")) {
+    //   alert(t("alert"));
+    //   const nv = localStorage.getItem("selectedCourseCategoryValue");
+    //   localStorage.removeItem("isCarrerTestStarted");
+    //   dispatch(endTest(nv, history));
+    // }
   }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
 
   useEffect(() => {
     return () => {
       const nv = localStorage.getItem("selectedCourseCategoryValue");
-      dispatch(endTest(nv));
+      if (nv) {
+        dispatch(endTest(nv, history));
+      }
     };
+  }, []);
+
+
+  useEffect(() => {
+    window.addEventListener("keydown", (e) => {
+      if (localStorage.getItem("isCarrerTestStarted")) {
+        if (
+          (e.which || e.keyCode) === 116 ||
+          ((e.which || e.keyCode) === 82 && e.ctrlKey)
+        ) {
+          const a = window.confirm("Are you sure you want to reload?");
+          if (a) {
+            e.preventDefault();
+            const nv = localStorage.getItem("selectedCourseCategoryValue");
+            localStorage.removeItem("isCarrerTestStarted");
+            localStorage.removeItem("selectedCourseCategoryValue");
+            if (nv) {
+              dispatch(endTest(nv, history));
+            }
+          } else {
+            e.preventDefault();
+          }
+        }
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -258,7 +285,6 @@ function CourseTest() {
         position: "bottom-center",
       });
     }
-
   };
 
   const renderTimmer = (value) => {
@@ -344,7 +370,10 @@ function CourseTest() {
                     }}
                     onChange={(_, newValue) => {
                       setSelectedCourseCategoryValue(newValue);
-                      localStorage.setItem("selectedCourseCategoryValue",newValue?.id);
+                      localStorage.setItem(
+                        "selectedCourseCategoryValue",
+                        newValue?.id,
+                      );
                     }}
                     onInputChange={(_, newInputValue) =>
                       setSelectedCourseCategory(newInputValue)
@@ -442,8 +471,7 @@ function CourseTest() {
                     <Skeleton></Skeleton>
                   ) : (
                     <p>
-                      {questionNumber}.{" "}
-                      {testData?.question}
+                      {questionNumber}. {testData?.question}
                     </p>
                   )}
                   {testData && (

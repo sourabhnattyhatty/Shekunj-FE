@@ -249,7 +249,7 @@ const CourseModule = () => {
                                     alt='...'
                                   />
                                 )}
-                                {ind+1}.{ind1 + 1} {obj?.title}
+                                {ind+1}.{ind1 + 1} {obj1?.title}
                               </li>
                             </ul>
                           </AccordionDetails>
