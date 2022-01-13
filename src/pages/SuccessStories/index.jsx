@@ -50,6 +50,7 @@ function SuccessStory() {
               <h2 data-aos='slide-up'>{t("successStoriesPage.heading.1")}</h2>
               <p>{t("successStoriesPage.content.1")}</p>
               <p>{t("successStoriesPage.content.3")}</p>
+              {/* <p>Work today for a fruitful tomorrow!</p> */}
             </Col>
           </Row>
         </Container>

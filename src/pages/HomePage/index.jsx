@@ -606,13 +606,16 @@ function HomePage() {
             </div>
 
             <div className='col-md-5 offset-md-1'>
+            <div className="highlig">
               <h3 className='mb-3 mt-4'>
                 {t("homePage.highlightStudents.homeHeading")}
               </h3>
+            
 
               <Link to='/courses' data-aos='slide-up' className='learn_more'>
                 {t("homePage.highlightStudents.homeButton")}
               </Link>
+              </div>
             </div>
           </div>
         </div>
