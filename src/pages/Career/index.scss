@@ -49,6 +49,7 @@
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
+  text-transform: capitalize;
   line-height: 30px;
   color: #323232;
   margin-bottom: 19px;
@@ -71,16 +72,18 @@
   flex-wrap: wrap;
   padding: 0;
   list-style: none;
-  max-width: 255px;
-  margin-bottom: 30px;
+  max-width: 100%;
+  margin: 0;
+  // margin-bottom: 30px;
 }
 .career_box ul li {
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  line-height: 18px;
+  line-height: 2;
   color: #828282;
+  margin-bottom: 19px;
 }
 .career_box ul li span {
   color: #4f4f4f;
@@ -99,6 +102,7 @@
   text-transform: capitalize;
   color: #ffffff;
   padding: 13px 31px;
+  margin-top: 20px;
 }
 .css-1lizpae-MuiImageListItemBar-titleWrap {
   padding: 65px 16px;

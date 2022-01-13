@@ -24,7 +24,7 @@ import Nikita from "../../assets/images/testimonial/1.png";
 import Priya from "../../assets/images/testimonial/2.png";
 import star from "../../assets/images/Star 2.png";
 import half_star from "../../assets/images/half_star.svg";
-import certif from "../../assets/images/mob_certif.png";
+import certif from "../../assets/images/mob_certif.jpg";
 import g1 from "../../assets/images/1.png";
 import g2 from "../../assets/images/2.png";
 import g3 from "../../assets/images/3.png";

@@ -134,7 +134,7 @@ const Header = ({ page, subPage }) => {
         <div className='container'>
           <div className='topbar'>
             <div className='row'>
-              <div className='col-md-3 col-12'>
+              <div className='col-md-3 col-7'>
                 <div className='sign_in'>
                   <Link className='navbar-brand' to='/'>
                     <img src={Logo} alt='...' />

@@ -29,9 +29,9 @@ function SuccessCareerOption() {
       <div className='SucOption noselect'>
         <Container>
           <h2 data-aos='slide-up'>
-            {t("successCareerOption.other.3.1")} <br />{" "}
-            {t("successCareerOption.other.3.2")}
+            {t("successCareerOption.other.3.1")}
           </h2>
+          <h3 data-aos='slide-up'>{t("successCareerOption.other.3.2")}</h3>
         </Container>
       </div>
 

@@ -7,7 +7,7 @@
   max-width: 100%;
 }
 header {
-  background: $mainColor;
+  background: rgb(255 255 255);
   box-shadow: 0px 8px 25px rgb(0 0 0 / 10%);
 }
 .topbar {
@@ -175,8 +175,12 @@ header {
 
 .toggleDrawer{
   & .MuiPaper-root {
-    width: 70%;
+    width: 100%;
   }
+}
+
+.MuiModal-root.MuiDrawer-root.MuiDrawer-modal.toggleDrawer {
+  z-index: 99999999999999999999;
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper
@@ -223,6 +227,9 @@ header {
   .other_head .btn.btn-bg-pink {
     margin-right: 15px;
   }
+  .toggleDrawer .MuiPaper-root hr {
+    display: none;
+}
   header {
     box-shadow: none;
   }

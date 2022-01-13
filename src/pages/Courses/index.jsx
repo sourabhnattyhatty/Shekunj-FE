@@ -136,7 +136,7 @@ const Courses = () => {
               <div className='cors_con'>
                 <h2>{t("coursesPage.banner.heading")}</h2>
                 <div className='cour_box'>
-                  <ul>
+                  <ul className="num">
                     <li>
                       <img src={one} alt='' srcSet='' />
                     </li>
@@ -148,11 +148,12 @@ const Courses = () => {
                     </li>
                   </ul>
                   <div className='rig_ul'>
-                    <ul className='ulcont'>
+                    <ul className='ulcont'>  
                       <li>
                         <img src={img1} alt='' />
                       </li>
-                      <li> {t("coursesPage.banner.1")}</li>
+                      <li> {t("coursesPage.banner.1")} <br /> {t("coursesPage.banner.4")}</li>
+                      
                     </ul>
 
                     <ul className='ulcont'>
@@ -184,8 +185,11 @@ const Courses = () => {
         <div className='container'>
           <Row>
             <Col md={10} xs={12}>
+            <div className="course_para">
               <h1>{t("coursesPage.heading.1")}</h1>
-              <p className='courses_para mb-5'>{t("coursesPage.heading.2")}</p>
+              <p className='courses_para mb-3'>{t("coursesPage.heading.2")}</p>
+              <Link className="shekunj_a" to="/">{t("coursesPage.heading.3")}</Link>
+              </div>
             </Col>
           </Row>
 
