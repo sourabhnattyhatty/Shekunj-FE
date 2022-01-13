@@ -86,6 +86,8 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 
 const CourseModule = () => {
   const [show, setShow] = React.useState(true);
+  const [showactive, setShowactive] = React.useState(0);
+  const [showsubactive, setShowsubactive] = React.useState(0);
   const [expanded, setExpanded] = React.useState("panel1");
   const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
     (state) => state.coursesReducer,
@@ -154,7 +156,7 @@ const CourseModule = () => {
         className={
           (count <= 33 && "red1-progress") ||
           (count <= 60 && "yellow1-progress") ||
-          (count <= 100 && "green1-progress")
+          (count <= 100 && "green1-progress") 
         }
         value={count}
         valueLabelFormat={(value) => <div>{value}%</div>}
@@ -168,6 +170,11 @@ const CourseModule = () => {
     Cookies.remove("module");
     history.push(routingConstants.COURSES_TEST + id);
   };
+
+  const handleactive = (key) => {
+    setShowactive(key)
+  }
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -226,8 +233,8 @@ const CourseModule = () => {
                         id={`panel${ind + 1}d-header`}
                       >
                         <Typography>
-                          <div className='number-bgbox'>{ind + 1}</div>
-                          {obj.title}
+                          <div className='number-bgbox' >{ind + 1}</div>
+                          <span onClick={()=>handleactive(ind)} style={{color : showactive == ind ? "pink" : "black"}} >{obj.title}</span>
                         </Typography>
                       </AccordionSummary>
                       {obj?.sub_task &&
@@ -249,7 +256,7 @@ const CourseModule = () => {
                                     alt='...'
                                   />
                                 )}
-                                {ind+1}.{ind1 + 1} {obj?.title}
+                                {ind+1}.{ind1 + 1}<span onClick={()=>setShowsubactive(obj1)} style={{color : showsubactive == obj1 ? "pink" : "black"}}> {obj?.title}</span>
                               </li>
                             </ul>
                           </AccordionDetails>
