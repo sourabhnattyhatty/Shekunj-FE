@@ -41,7 +41,6 @@ function GuidanceSelect(props) {
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (!selected) {
-              debugger
               return (
                 <>
                   {props.icon && props.title === "User" && (

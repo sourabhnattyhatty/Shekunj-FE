@@ -54,7 +54,6 @@ const ProfileImage = ({ isEditable }) => {
       fileName,
       null,
       async (file) => {
-        debugger;
         if (file) {
           if (!checkIsValidImage(file)) {
             inputRef.current.value = "";
