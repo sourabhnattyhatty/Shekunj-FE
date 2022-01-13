@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { Avatar, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
+import { Avatar, Divider, Drawer, List, Menu, MenuItem } from "@mui/material";
 
 import { getUserProfile, logOut, refreshPage } from "../../store/auth/action";
 import { isAuthenticated } from "../../utils/utils";
@@ -14,13 +14,7 @@ import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 
 const Header = ({ page, subPage }) => {
-  const paths = [{name:"About",path:"/about"}, 
-  {name:"Courses",path:"/courses"}, 
-  {name:"Guidance",},
-  {name:"Resume Builder",path:"https://octahire.com/Resume_maker"},{name:"Career",path:""},
-  {name:"Jobs",path:"https://octahire.com/Recruiters/job_recruiters?location="},
-  {name:"Blogs",path:"http://www.thehrnotes.com/"},
-  {name:"Success story",path:"/success-stories"}]
+  
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
   const { lan } = useSelector((state) => state.languageReducer);
@@ -235,19 +229,95 @@ const Header = ({ page, subPage }) => {
 
                 <span className='navbar-toggler-icon'></span>
               </button>
-              <Drawer anchor="left" open={showmenu} onClick={toggleDrawer} className='toggleDrawer' >
+              <Drawer anchor="left" open={showmenu} className='toggleDrawer' onBackdropClick={toggleDrawer} >
                   <Divider />
                   <List>
-                  <img src={close} alt='' style={{float:"right",marginRight:"10px"}} onClick={toggleDrawer}/>
-                    {paths.map((text, index) => (
-                      <div>
-                        <ListItem className='nav-link' key={text}>
-                          <Link to={text.path}>
-                            <span style={{color:"#ec498a",fontSize:"20px", }} >{text.name}</span>
-                            </Link>
-                        </ListItem>
+                  <img src={close} alt='' style={{float:"right",marginRight:"10px"}} onClick={toggleDrawer}/><br/><br/>
+                      <div >
+                        <Link to='/about' style={{color:"#ec498a",fontSize:"20px",marginLeft:"25px", marginTop:"20px" }}>About</Link><br/>
+                        <Link to='/courses' style={{color:"#ec498a",fontSize:"20px",marginLeft:"25px", marginTop:"20px"}} >Courses</Link><br/>
+                        <button
+                      className='nav-link guidence_button'
+                      id='basic-button2'
+                      aria-controls='basic-menu2'
+                      aria-haspopup='true'
+                      aria-expanded={open2 ? "true" : undefined}
+                      onClick={handleClick2}
+                      
+                    >
+                     <span style={{color:"#ec498a",fontSize:"20px",marginLeft:"8px", }} >{t("header.heading.3")}</span> 
+                    </button>
+                    <Menu
+                      id='basic-menu2'
+                      anchorEl={anchorEl2}
+                      open={open2}
+                      onClose={handleClose2}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button2",
+                      }}
+                    >
+                      <MenuItem
+                        onClick={handleGuidance1}
+                        className={subPage === "careerOption" && "active"}
+                      >
+                        {t("headerComponent.menuItem.5")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleGuidance2}
+                        className={subPage === "careerTest" && "active"}
+                      >
+                        {t("headerComponent.menuItem.6")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleGuidance3}
+                        className={subPage === "bookCounsller" && "active"}
+                      >
+                        {t("headerComponent.menuItem.7")}
+                      </MenuItem>
+                    </Menu>
+                      <a href='https://octahire.com/Resume_maker' style={{color:"#ec498a",fontSize:"20px",marginLeft:"25px", marginTop:"20px",textDecorationLine:"none"}}>Resume Builder</a><br/>                       
+                      <button
+                      className='nav-link guidence_button'
+                      id='basic-button1'
+                      aria-controls='basic-menu1'
+                      aria-haspopup='true'
+                      aria-expanded={open1 ? "true" : undefined}
+                      onClick={handleClick1}
+                    >
+                     <span style={{color:"#ec498a",fontSize:"20px",marginLeft:"8px",textDecorationLine:"none" }}> {t("header.heading.5")}</span>
+                    </button>
+                    <Menu
+                      id='basic-menu1'
+                      anchorEl={anchorEl1}
+                      open={open1}
+                      onClose={handleClose1}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button1",
+                      }}
+                    >
+                      <MenuItem
+                        onClick={handleColleges}
+                        className={subPage === "colleges" && "active"}
+                      >
+                        {t("headerComponent.menuItem.8")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleSchools}
+                        className={subPage === "schools" && "active"}
+                      >
+                        {t("headerComponent.menuItem.9")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleExams}
+                        className={subPage === "govExams" && "active"}
+                      >
+                        {t("headerComponent.menuItem.10")}
+                      </MenuItem>
+                    </Menu>
+                        <a href='https://octahire.com/Home/candidate_register' style={{color:"#ec498a",fontSize:"20px",marginLeft:"25px", marginTop:"30px",textDecorationLine:"none"}} >Jobs</a><br/>
+                        <a href='http://www.thehrnotes.com' style={{color:"#ec498a",fontSize:"20px",marginLeft:"25px", marginTop:"20px",textDecorationLine:"none"}} >Blogs</a><br/>
+                        <Link to='/success-stories' style={{color:"#ec498a",fontSize:"20px",marginLeft:"23px", marginTop:"20px",textDecorationLine:"none"}} >Success story</Link><br/>
                       </div>
-                    ))}  
                   </List>
                   <Divider />       
               </Drawer>
@@ -381,7 +451,6 @@ const Header = ({ page, subPage }) => {
                       </MenuItem>
                     </Menu>
                   </li>
-
                   <li
                     className={page === "jobs" ? "nav-item active" : "nav-item"}
                   >
