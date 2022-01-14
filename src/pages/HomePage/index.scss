@@ -1219,6 +1219,14 @@ ul.star {
   }
 }
 
+@media screen and (min-width:1024px) and (max-width:1300px){
+  .resume .resumeimg{
+    right: 45px;
+    bottom: 0px;
+    width: 550px;
+  }
+}
+
 @media screen and (min-device-width: 1420px) and (max-device-width: 1440px) {
   #myCarousel .carousel-item {
     height: 85vh !important;
