@@ -242,7 +242,7 @@ const CourseModule = () => {
                               color: showactive === ind ? "pink" : "black",
                             }}
                           >
-                            {obj.title}
+                            {obj?.title.charAt(0)?.toUpperCase() + obj?.title?.slice(1)}
                           </span>
                         </Typography>
                       </AccordionSummary>
@@ -267,14 +267,14 @@ const CourseModule = () => {
                                 )}
                                 {ind + 1}.{ind1 + 1}
                                 <span
-                                  onClick={() => setShowsubactive(obj1)}
+                                  onClick={() => setShowsubactive(ind1)}
                                   style={{
                                     color:
-                                      showsubactive === obj1 ? "pink" : "black",
+                                      showsubactive === ind1 ? "pink" : "black",
                                   }}
                                 >
                                   {" "}
-                                  {obj1?.title}
+                                   {obj1?.title?.charAt(0)?.toUpperCase() + obj1?.title?.slice(1)}
                                 </span>
                               </li>
                             </ul>
