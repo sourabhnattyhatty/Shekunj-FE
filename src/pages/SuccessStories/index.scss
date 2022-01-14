@@ -9,11 +9,17 @@
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: bold;
-  font-size: 40px;
-  line-height: 110%;
+  font-size: 31px;     
+  line-height: 130%;
   color: #ffffff;
-  margin-top: 130px;
+  margin-top: 80px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
 }
+// .SuccStory_banner h2::first-letter {
+//   color: #fff;
+//   font-size: 55px;
+// }
 .global_img {
   margin-top: 100px;
 }
@@ -27,6 +33,12 @@
   font-size: 24px;
   line-height: 120%;
   color: #ffffff;
+}
+p.sucess_first_p {
+  color: rgb(255 255 255);
+  font-size: 27px;
+  font-weight: 600;
+  font-family: 'SegoeUI_bold';
 }
 .suc_box {
   margin-top: 150px;
@@ -109,7 +121,8 @@
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
-  font-size: 60px;
+  font-size: 55px;
+  text-transform: capitalize;
   line-height: 110%;
   text-align: center;
   color: #ffffff;
@@ -121,7 +134,7 @@ button.want_btn {
   border-radius: 2px;
   padding: 12px 20px;
   border: none;
-  font-family: Sora;
+  font-family: Source Sans Pro;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -143,7 +156,7 @@ button.want_btn {
 
   .SuccStory_banner h2 {
     margin: 0;
-    font-size: 24px;
+    font-size: 24px; 
     margin-top: 15px;
   }
   .SuccStory_banner p {
@@ -196,14 +209,15 @@ button.want_btn {
   }
 }
 
+
+
 // @media screen and (max-width: 1280px) {
 //     .SuccStory_banner {
 //     height: 534px;
 // }
 // }
 
-
-@media screen and (min-width:1024px) and (max-width:1400px){
+@media screen and (min-width: 1024px) and (max-width: 1400px) {
   .SuccStory_banner {
     height: 560px;
     background-size: 100% 100%;
@@ -211,16 +225,16 @@ button.want_btn {
   }
 }
 
-@media screen and (min-width:768px) and (max-width:1023px){
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   .SuccStory_banner {
     height: 500px;
     background-size: 100% 100%;
     background-position: bottom;
   }
-  .SuccStory_banner h2{
+  .SuccStory_banner h2 {
     font-size: 33px;
   }
-  .SuccStory_banner p{
+  .SuccStory_banner p {
     font-size: 19px;
   }
 }

@@ -277,6 +277,11 @@ export const setFilterValue =
         const updatedPayload = topSchools;
         const idx = updatedPayload?.state_list?.findIndex((u) => u.id === id);
         if (idx !== -1) {
+          updatedPayload.state_list.filter((item, index) => {
+            return item.id !== id
+              ? (updatedPayload.state_list[index].isChecked = false)
+              : null;
+          });
           updatedPayload.state_list[idx].isChecked = action;
         }
         dispatch({
@@ -367,3 +372,5 @@ export const toggleCollapseValue =
       });
     }
   };
+
+

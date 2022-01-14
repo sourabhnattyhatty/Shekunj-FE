@@ -22,6 +22,7 @@
   font-size: 18px;
   line-height: 23px;
   color: #000000;
+  text-transform: capitalize;
 }
 .Com_title h2 {
   font-family: Source Sans Pro;
@@ -85,6 +86,7 @@ div#vertical-tabpanel-0 {
   height: 875px;
   overflow-y: scroll;
   display: block;
+  margin-bottom: 100px;
 }
 .CompExams span.MuiTabs-indicator {
   display: none;

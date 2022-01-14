@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { Avatar, Menu, MenuItem } from "@mui/material";
+import { Avatar, Divider, Drawer, List, Menu, MenuItem } from "@mui/material";
 
 import { getUserProfile, logOut, refreshPage } from "../../store/auth/action";
 import { isAuthenticated } from "../../utils/utils";
@@ -16,12 +16,14 @@ import { routingConstants } from "../../utils/constants";
 const Header = ({ page, subPage }) => {
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const [showmenu, setShowmenu] = React.useState(false);
 
   const open = Boolean(anchorEl);
   const open1 = Boolean(anchorEl1);
@@ -44,6 +46,7 @@ const Header = ({ page, subPage }) => {
   };
 
   const handleClick2 = (event) => {
+  
     setAnchorEl2(event.currentTarget);
   };
 
@@ -56,7 +59,7 @@ const Header = ({ page, subPage }) => {
     if (isAuthenticated()) {
       dispatch(getUserProfile());
     }
-  }, [dispatch]);
+  }, [dispatch, lan]);
 
   const handleLogout = () => {
     dispatch(logOut(history));
@@ -107,13 +110,24 @@ const Header = ({ page, subPage }) => {
     setAnchorEl2(null);
   };
 
+  const toggleDrawer = (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setShowmenu(!showmenu);
+  };
+
   return (
-    <div>
+    <div className='noselect'>
       <header className='other_head'>
         <div className='container'>
           <div className='topbar'>
             <div className='row'>
-              <div className='col-md-3 col-12'>
+              <div className='col-md-3 col-7'>
                 <div className='sign_in'>
                   <Link className='navbar-brand' to='/'>
                     <img src={Logo} alt='...' />
@@ -124,7 +138,6 @@ const Header = ({ page, subPage }) => {
               </div>
 
               <div className='col-md-9 col-5 pl-md-0 pl-lg-2 text-right'>
-                
                 <div className='top_bar_btn d-inline-flex'>
                   {isAuth ? (
                     <>
@@ -183,7 +196,9 @@ const Header = ({ page, subPage }) => {
                         >
                           {t("headerComponent.menuItem.3")}
                         </MenuItem>
-                        <MenuItem onClick={handleLogout}>{t("headerComponent.menuItem.4")}</MenuItem>
+                        <MenuItem onClick={handleLogout}>
+                          {t("headerComponent.menuItem.4")}
+                        </MenuItem>
                       </Menu>
                     </>
                   ) : (
@@ -204,15 +219,107 @@ const Header = ({ page, subPage }) => {
           </div>
 
           <div className='middle_nav_login'>
-            <nav className='navbar navbar-expand-md'>
+            <nav className='navbar navbar-expand-md '>
               <button
                 className='navbar-toggler'
                 type='button'
                 data-toggle='collapse'
                 data-target='#collapsibleNavbar'
+                onClick={toggleDrawer}
               >
                 <span className='navbar-toggler-icon'></span>
               </button>
+              <Drawer anchor="left" open={showmenu} className='toggleDrawer' onBackdropClick={toggleDrawer} >
+                  <Divider />
+                  <List>
+                  <img src={close} alt='' style={{float:"right",marginRight:"10px"}} onClick={toggleDrawer}/><br/><br/>
+                      <div >
+                        <Link to='/about' style={{color:"#EC498A",fontSize:"20px",marginLeft:"25px", marginTop:"20px" }}>About</Link><br/>
+                        <Link to='/courses' style={{color:"#EC498A",fontSize:"20px",marginLeft:"25px", marginTop:"20px"}} >Courses</Link><br/>
+                        <button
+                      className='nav-link guidence_button'
+                      id='basic-button2'
+                      aria-controls='basic-menu2'
+                      aria-haspopup='true'
+                      aria-expanded={open2 ? "true" : undefined}
+                      onClick={handleClick2}
+                    >
+                     <span style={{color:"#EC498A",fontSize:"20px",marginLeft:"8px", }} >{t("header.heading.3")}</span>
+                    </button>
+                    <Menu
+                      id='basic-menu2'
+                      anchorEl={anchorEl2}
+                      open={open2}
+                      onClose={handleClose2}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button2",
+                      }}
+                    >
+                      <MenuItem
+                        onClick={handleGuidance1}
+                        className={subPage === "careerOption" && "active"}
+                      >
+                        {t("headerComponent.menuItem.5")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleGuidance2}
+                        className={subPage === "careerTest" && "active"}
+                      >
+                        {t("headerComponent.menuItem.6")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleGuidance3}
+                        className={subPage === "bookCounsller" && "active"}
+                      >
+                        {t("headerComponent.menuItem.7")}
+                      </MenuItem>
+                    </Menu>
+                      <a href='https://octahire.com/Resume_maker' style={{color:"#EC498A",fontSize:"20px",marginLeft:"25px", marginTop:"20px",textDecorationLine:"none"}}>Resume Builder</a><br/>
+                      <button
+                      className='nav-link guidence_button'
+                      id='basic-button1'
+                      aria-controls='basic-menu1'
+                      aria-haspopup='true'
+                      aria-expanded={open1 ? "true" : undefined}
+                      onClick={handleClick1}
+                    >
+                     <span style={{color:"#EC498A",fontSize:"20px",marginLeft:"8px",textDecorationLine:"none" }}> {t("header.heading.5")}</span>
+                    </button>
+                    <Menu
+                      id='basic-menu1'
+                      anchorEl={anchorEl1}
+                      open={open1}
+                      onClose={handleClose1}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button1",
+                      }}
+                    >
+                      <MenuItem
+                        onClick={handleColleges}
+                        className={subPage === "colleges" && "active"}
+                      >
+                        {t("headerComponent.menuItem.8")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleSchools}
+                        className={subPage === "schools" && "active"}
+                      >
+                        {t("headerComponent.menuItem.9")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleExams}
+                        className={subPage === "govExams" && "active"}
+                      >
+                        {t("headerComponent.menuItem.10")}
+                      </MenuItem>
+                    </Menu>
+                        <a href='https://octahire.com/Home/candidate_register' style={{color:"#EC498A",fontSize:"20px",marginLeft:"25px", marginTop:"30px",textDecorationLine:"none"}} >Jobs</a><br/>
+                        <a href='http://www.thehrnotes.com' style={{color:"#EC498A",fontSize:"20px",marginLeft:"25px", marginTop:"20px",textDecorationLine:"none"}} >Blogs</a><br/>
+                        <Link to='/success-stories' style={{color:"#EC498A",fontSize:"20px",marginLeft:"23px", marginTop:"20px",textDecorationLine:"none"}} >Success story</Link><br/>
+                      </div>
+                  </List>
+                  <Divider />
+              </Drawer>
               <div className='collapse navbar-collapse' id='collapsibleNavbar'>
                 <button
                   className='navbar-toggler close_set'
@@ -343,7 +450,6 @@ const Header = ({ page, subPage }) => {
                       </MenuItem>
                     </Menu>
                   </li>
-
                   <li
                     className={page === "jobs" ? "nav-item active" : "nav-item"}
                   >
@@ -351,7 +457,7 @@ const Header = ({ page, subPage }) => {
                       className='nav-link'
                       rel='noreferrer'
                       target='_blank'
-                      href='https://octahire.com/Recruiters/job_recruiters?location='
+                      href='https://octahire.com/Home/candidate_register'
                     >
                       {t("header.heading.6")}
                     </a>
@@ -377,7 +483,10 @@ const Header = ({ page, subPage }) => {
                       page === "story" ? "nav-item active" : "nav-item"
                     }
                   >
-                    <Link className='nav-link' to={routingConstants.SUCCESS_STORIES}>
+                    <Link
+                      className='nav-link'
+                      to={routingConstants.SUCCESS_STORIES}
+                    >
                       {t("header.heading.8")}
                     </Link>
                   </li>

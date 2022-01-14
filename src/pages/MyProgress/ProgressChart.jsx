@@ -12,8 +12,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const ProgressChart = ({ userProgress }) => {
   const { t } = useTranslation();
 
-  
-
   const options = {
     labels: [],
     datasets: [

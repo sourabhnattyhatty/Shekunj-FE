@@ -1,0 +1,44 @@
+.mainDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+  border-radius: 5px;
+  border: 2px solid #ec498a;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}
+
+.button:disabled{
+  background-color: lightgray;
+  border-color: lightgray;
+}
+
+.numberDiv {
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  color: #ec498a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ec498a;
+  margin: 5px;
+  user-select: none;
+}
+.ofDiv {
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+  margin: 5px;
+  user-select: none;
+}
+.backImage{
+  transform: rotate(180deg);
+}

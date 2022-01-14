@@ -1,14 +1,19 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
-import noImageIcon from '../assets/images/no-image.jpeg';
-import i18njs from "../assets/i18n/i18n"
 
-import { checkIsSessionExpired, decodeToken } from ".";
-import { routingConstants } from "./constants";
-import { removeUnauthorizedUser } from "./utils";
+import noImageIcon from "../assets/images/no-image.jpeg";
+import i18njs from "../assets/i18n/i18n";
+import { checkIsSessionExpired, decodeToken, removeUnauthorizedUser } from ".";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+export const getLanguage = () => {
+  const currentLang = localStorage.getItem("i18nextLng");
+  return currentLang ? currentLang?.split("-")[0] : "en";
+};
+
+const apiBaseUrl = process.env.REACT_APP_URL_API;
+axios.defaults.baseURL = `${apiBaseUrl}${getLanguage()}/api/`;
+
 axios.defaults.withCredentials = true;
 
 export const baseURL = process.env.REACT_APP_API_URL?.slice(0, 20);
@@ -19,6 +24,8 @@ const responseBody = (response) => response.data;
 
 axios.interceptors.request.use((config) => {
   const token = Cookies.get("sheToken");
+  const baseUrl = config.url.startsWith("/") ? config.url : `/${config.url}`;
+  config.url = `${apiBaseUrl}${getLanguage()}/api${baseUrl}`;
   if (token) {
     const userInfo = decodeToken(token);
     if (userInfo?.exp && checkIsSessionExpired(userInfo?.exp)) {
@@ -33,8 +40,8 @@ axios.interceptors.response.use(
   async (response) => {
     return response;
   },
-  (error) => {
-    const { status } = error?.response;
+  async (error) => {
+    const { status } = await error?.response;
     switch (status) {
       case 401:
         removeUnauthorizedUser();

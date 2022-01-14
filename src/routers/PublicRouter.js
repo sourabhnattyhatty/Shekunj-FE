@@ -1,16 +1,15 @@
-import Cookies from "js-cookie";
 import React from "react";
 import { Route } from "react-router-dom";
 import { Redirect } from "react-router";
 
-function PublicRoute({ component: Component, ...rest }) {
-  const token = Cookies.get("sheToken");
+import { isAuthenticated } from "../utils";
 
+function PublicRoute({ component: Component, ...rest }) {
   return (
     <Route
       {...rest}
       render={(props) =>
-        token ? <Redirect to='/' /> : <Component {...props} />
+        isAuthenticated() ? <Redirect to='/' /> : <Component {...props} />
       }
     />
   );

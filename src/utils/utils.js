@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import JwtDecode from "jwt-decode";
 import moment from "moment";
 import { toast } from "react-toastify";
-import i18njs from "../assets/i18n/i18n"
+import i18njs from "../assets/i18n/i18n";
 import { routingConstants } from "./constants";
 
 export const toasterConfig = {
@@ -39,7 +39,11 @@ export const transformError = (error) => {
 
 export const isAuthenticated = () => {
   const token = Cookies.get("sheToken");
-  if (token) {
+  if (!token) {
+    return false;
+  }
+  const userInfo = decodeToken(token);
+  if (userInfo && !checkIsSessionExpired(userInfo?.exp)) {
     return true;
   }
   return false;
@@ -201,8 +205,30 @@ export const removeUnauthorizedUser = () => {
 };
 
 export const sliceString = (str) => {
-  if(str.length <= 300){
-    return str
+  if (str.length <= 300) {
+    return str;
   }
-  return `${str?.slice(0, 300)}...`
+  return `${str?.slice(0, 300)}...`;
+};
+
+export const paragraph = (text) => {
+  let lines = text.split(/(\r\n|\n|\r)/gm);
+  return lines.length > 0 ? lines.filter((o) => o !== `\r\n` || o !== "") : [];
+};
+
+export async function convertRelativeUriToFile(
+  filePath,
+  fileName,
+  mimeType,
+  cb,
+) {
+  mimeType =
+    mimeType || `image/${filePath.split(".")[filePath.split(".").length - 1]}`;
+  const imageUrl = await fetch(filePath, {
+    method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+  });
+  const buffer = await imageUrl.arrayBuffer();
+  cb(new File([buffer], fileName, { type: mimeType }));
 }

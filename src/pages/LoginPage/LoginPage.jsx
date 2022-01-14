@@ -7,7 +7,7 @@ import "./LoginPage.scss";
 function LoginPage() {
   return (
     <>
-      <div>
+      <div className="noselect">
         <SEO title='Sheकुंज - Login' />
         <Header loginPage={true} />
 

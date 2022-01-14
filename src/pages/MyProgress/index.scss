@@ -23,6 +23,26 @@
   line-height: 140%;
   color: #000000;
 }
+.Scrl_div {
+  max-height: 590px;
+  width: 100%;
+  overflow-y: scroll;
+  margin-bottom: 55px;
+  overflow-x: hidden;
+}
+.Scrl_div::-webkit-scrollbar {
+  width: 3px;
+  background-color: rgb(245 245 245);
+}
+
+.Scrl_div::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.72, rgb(198 198 199)), color-stop(0.72, rgb(198 198 199)), color-stop(0.72, rgb(198 198 199)));
+}
+.logScrl_div_form::-webkit-scrollbar-track {
+  background-color: rgb(245 245 245);
+  border-radius: 10px;
+}
 .dashboard_main .course_explore {
   background: #ec498a;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -252,6 +272,7 @@ button.explore_button.btn {
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
+  text-transform: capitalize;
   font-size: 20px;
   line-height: 140%;
   color: #000000;
@@ -337,4 +358,5 @@ button.explore_button.btn {
   .course_inprogress ul li {
     font-size: 12px;
   }
+
 }

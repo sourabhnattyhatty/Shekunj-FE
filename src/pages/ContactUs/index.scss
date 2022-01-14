@@ -6,23 +6,24 @@
     height: 410px;
 }
 .conUs_tit h3 {
-    font-family: SegoeUI_medium;
+    font-family: 'SegoeUI_bold';
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 35px;
+    text-transform: capitalize;
     line-height: 32px;
-    color: #333333;
+    color: rgb(51 51 51);
     margin-top: 55px;
 }
 .conUs_tit h2 {
     font-family: SegoeUI_bold;
     font-style: normal;
     font-weight: 900;
-    font-size: 60px;
+    font-size: 45px;
     line-height: 64px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    margin-top: 77px;
+    text-transform: capitalize;
+    color: rgb(255 255 255);
+    margin-top: 50px;
 }
 
 .ConUs_form .MuiFormControl-root.MuiTextField-root {

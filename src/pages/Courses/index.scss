@@ -8,27 +8,30 @@
 }
 
 .cors_con {
-  padding-left: 7%;
+  padding-left: 5%;
 }
 .cour_box {
   display: flex;
   flex-wrap: inherit;
 }
-
+ul.num li img {
+  margin-bottom: 40px;
+}
 .cors_con h2 {
   font-family: "SegoeUI_bold";
   font-style: normal;
   font-weight: bold;
-  font-size: 68px;
+  font-size: 55px;
   line-height: 120%;
   color: #ee5f98;
   margin: 0;
   padding-top: 68px;
   padding-bottom: 33px;
+  text-transform: capitalize;
 }
 .cour_box ul li img {
   max-width: 100%;
-  margin-bottom: 40px;
+  // margin-bottom: 40px;
 }
 .cour_box ul {
   padding: 0;
@@ -49,6 +52,8 @@ ul.ulcont {
   display: flex;
   gap: 1rem;
   margin-left: 80px;
+  align-items: center;
+  margin-bottom: 40px;
 }
 ul.ulcont li {
   font-family: "SegoeUI_bold";
@@ -57,6 +62,7 @@ ul.ulcont li {
   font-size: 25px;
   line-height: 120%;
   color: #000000;
+  text-transform: capitalize;
 }
 .Serc_type button.btn.btn-info {
   background: #ec498a;
@@ -182,12 +188,13 @@ section.Srch_sec h3 {
   max-width: 100%;
   width: auto;
   display: inline-block;
+  object-fit: contain;
 }
 .tag_btn button.btn.btn-info {
   background: #fedeff;
   border-radius: 100px;
   border: none;
-  font-family: SegoeUI_bold;
+  font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -310,42 +317,40 @@ hr.line {
   }
 }
 
-
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  .cors_con h2 {
+    font-size: 32px;
+    padding-top: 30px;
+    font-size: 32px;
+    line-height: 120%;
+    /* or 38px */
+    color: #ee5f98;
+  }
+  .cour_box {
+    flex-wrap: inherit;
+  }
+  ul.ulcont {
+    margin-left: 15px;
+    margin-bottom: 0;
+  }
 
-.cors_con h2 {
-  font-size: 32px;
-  padding-top: 30px;
-font-size: 32px;
-line-height: 120%;
-/* or 38px */
-color: #EE5F98;
-}
-.cour_box {
-  flex-wrap: inherit;
-}
-ul.ulcont {
-  margin-left: 15px;
-  margin-bottom: 0;
-}
+  .cors_con {
+    padding: 0;
+  }
+  ul.ulcont li {
+    font-size: 15px;
+  }
 
-.cors_con {
-  padding: 0;
-}
-ul.ulcont li {
-  font-size: 15px;
-}
-
-.Cors_sec {
-  background-image: url("../../assets/images/Courses/mob_ban.png");
-  height: 695px;
-}
-.cour_box ul li img {
-  width: 38px;
-}
-.rig_ul ul li img {
-  margin-bottom: 27px;
-}
+  .Cors_sec {
+    background-image: url("../../assets/images/Courses/mob_ban.png");
+    height: 695px;
+  }
+  .cour_box ul li img {
+    width: 38px;
+  }
+  .rig_ul ul li img {
+    margin-bottom: 27px;
+  }
 }
 
 /*new*/
@@ -363,12 +368,23 @@ ul.ulcont li {
   color: #828282;
   font-family: "SegoeUI_medium";
 }
+.course_para {
+  margin-bottom: 50px;
+}
+.course_para a.shekunj_a {
+  font-size: 18px;
+  color: rgb(236 73 138);
+  text-decoration: none;
+  font-family: 'SegoeUI_medium';
+  font-weight: 600;
+}
 .Srch_sec .result_head {
   font-weight: 600;
   font-size: 18px;
-  line-height: 120%;
-  color: #000000;
-  margin-bottom: 13px;
+  line-height: 2.5;
+  color: rgb(0 0 0);
+  /* margin-bottom: 13px; */
+  margin: 0;
 }
 .Srch_sec .filter_added .filter_content {
   font-weight: normal;
@@ -388,7 +404,7 @@ ul.ulcont li {
 }
 .Srch_sec .reset_content p {
   font-weight: normal;
-  font-size: 20px;
+  font-size: 19px;
   line-height: 120%;
   text-transform: capitalize;
   color: #d62c79;
@@ -403,44 +419,48 @@ ul.ulcont li {
   color: #ec498a;
   border-radius: 4.45605px;
 }
-.MuiRadio-root.MuiRadio-colorPrimary.Mui-checked{
+.MuiRadio-root.MuiRadio-colorPrimary.Mui-checked {
   color: #ec498a;
 }
 
-@media screen and (min-width:1024px) and (max-width:1300px){
-  .Cors_sec{
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+  .Cors_sec {
     background-size: 100% 100%;
     height: 600px;
   }
-  .cors_con h2{
+  .cors_con h2 {
     font-size: 50px;
   }
   .cors_con {
     padding-left: 17%;
   }
-  ul.ulcont{
+  ul.ulcont {
     margin-left: 50px;
     margin-bottom: 0px;
   }
-  ul.ulcont li{
+  ul.ulcont li {
     font-size: 23px;
   }
 }
-@media screen and (min-width:768px) and (max-width:1023px){
-  .Cors_sec{
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .Cors_sec {
     background-size: 100% 100%;
     height: 500px;
   }
   .cors_con {
     padding-left: 14%;
   }
-  .cors_con h2{
+  .cors_con h2 {
     font-size: 41px;
   }
-  ul.ulcont{
+  ul.ulcont {
     margin-left: 32px;
   }
-  .Srch_sec .reset_content p{
+  .Srch_sec .reset_content p {
     font-size: 16px;
   }
+}
+.paginationDiv {
+  display: flex;
+  justify-content: center;
 }

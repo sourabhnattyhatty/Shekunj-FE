@@ -17,6 +17,7 @@ const CurrentCourse = ({ courses }) => {
   return (
     <div className='current_course'>
       <h3>{t("dashboardPage.current")}</h3>
+      <div className="Scrl_div">
       {courses?.length > 0 ? (
         courses.map((c) => (
           <div className='course_explore'>
@@ -83,6 +84,7 @@ const CurrentCourse = ({ courses }) => {
       ) : (
         <div className=' mb-2'>{t("common.noCurrentCourse")}</div>
       )}
+      </div>
     </div>
   );
 };

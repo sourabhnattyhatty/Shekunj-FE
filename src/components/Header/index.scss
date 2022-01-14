@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@import "../../Styles/variable";
+@import '../../Styles/variable';
 
 /*top bar*/
 .navbar-brand img {
@@ -171,6 +171,15 @@ header {
 .guidence_button {
   background: transparent;
   border: 0;
+  // margin-top: -10px;
+  // margin-bottom: -10px;
+  
+}
+
+.toggleDrawer{
+  & .MuiPaper-root {
+    width: 70%;
+  }
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper
@@ -244,7 +253,7 @@ header {
     transition: ease all 0.5s;
     visibility: visible;
   }
-  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
+  .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon:before {
     transform: translateY(8px) rotate(-45deg);
   }
   .navbar-light .navbar-toggler-icon:after,
@@ -255,11 +264,11 @@ header {
     background-color: #000;
     top: 0;
     left: 0;
-    content: "";
+    content: '';
     z-index: 2;
     transition: all 300ms linear;
   }
-  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
+  .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon:after {
     transform: rotate(45deg);
   }
 
@@ -296,6 +305,14 @@ header {
   .navbar .open.collapse.show {
     left: 0px !important;
     text-align: left;
+  }
+  .guidence_button{
+      margin-top: -10px;
+      margin-bottom: -10px;
+      // background-color: #000;
+      width: 240px;
+      text-align: left;
+
   }
 }
 @media screen and (max-width: 1080px) {

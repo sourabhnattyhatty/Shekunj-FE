@@ -11,6 +11,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { careerTestResult } from "../../store/guidance/action";
 import { useTranslation } from "react-i18next";
+import { routingConstants } from "../../utils/constants";
 
 function CourseTest() {
   const { id } = useParams();
@@ -18,17 +19,18 @@ function CourseTest() {
   const { guidanceResult: result } = useSelector(
     (state) => state.guidanceReducer,
   );
+  const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
 
   React.useEffect(() => {
     dispatch(careerTestResult(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, lan]);
 
   return (
     <div>
       <Header loginPage={true} page='guidance' />
 
-      <div className='cou_resultBg'>
+      <div className='cou_resultBg noselect'>
         <Container>
           {result?.is_result && (
             <Confetti
@@ -40,7 +42,7 @@ function CourseTest() {
           <Row>
             <Col md={8} xs={12} className='offset-lg-2'>
               <div className='cou_result_cont'>
-                <h2>Your Result</h2>
+                <h2>{t("coursesPage.coursesResultPage.heading.1")}</h2>
                 <img src={win} alt='' />
                 <h2>
                   {result?.is_result ? (
@@ -56,9 +58,9 @@ function CourseTest() {
                   )}
                 </h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
-                  ornare ac commodo erat velit felis odio. In blandit fusce
-                  nulla odio. Iaculis lacus eget facilisis eu massa.
+                  {result?.is_result
+                    ? t("coursesPage.coursesResultPage.heading.2")
+                    : t("coursesPage.coursesResultPage.heading.3")}
                 </p>
               </div>
 
@@ -125,15 +127,19 @@ function CourseTest() {
                             <span>{t("common.time.2")}</span>
                           </p>
                           <br />
-                          <span>{t("coursesPage.coursesResultPage.other.5")}</span>
+                          <span>
+                            {t("coursesPage.coursesResultPage.other.5")}
+                          </span>
                         </div>
                       </div>
                     </div>
                   </Col>
                 </Row>
               </div>
-              <Link to='/SuccessCareerTest'>
-                <button className='get_certif'>{t("coursesPage.coursesResultPage.button.3")}</button>
+              <Link to={routingConstants.SUCCESS_CAREER_TEST}>
+                <button className='get_certif'>
+                  {t("coursesPage.coursesResultPage.button.3")}
+                </button>
               </Link>
             </Col>
           </Row>

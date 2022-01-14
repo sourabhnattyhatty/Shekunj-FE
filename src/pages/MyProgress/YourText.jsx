@@ -1,10 +1,10 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useTranslation } from "react-i18next";
 
 import arrowRightImg from "../../assets/images/MyProfile/arrowright.png";
 import { addNewlines } from "../../utils/utils";
-import { useTranslation } from "react-i18next";
 
 const YourTest = ({ tests }) => {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ const YourTest = ({ tests }) => {
               </Col>
             ))
           ) : (
-            <div>{t("common.noTestFound")}</div>
+            <div style={{ marginLeft: "40%" }}>{t("common.noTestFound")}</div>
           )}
         </Row>
       </div>

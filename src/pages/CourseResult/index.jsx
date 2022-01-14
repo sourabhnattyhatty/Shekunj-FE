@@ -16,21 +16,23 @@ import CircleProgressBar from "./CircleProgressBar";
 
 function CourseTest() {
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const { result } = useSelector((state) => state.coursesReducer);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const { result } = useSelector((state) => state.coursesReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
 
   React.useEffect(() => {
     if (id) {
       dispatch(testResult(id));
     }
-  }, [dispatch, id, result?.result]);
+  }, [dispatch, id, result?.result, lan]);
 
   return (
     <div>
       <Header loginPage={true} page='courses' />
 
-      <div className='cou_resultBg'>
+      <div className='cou_resultBg noselect'>
         <Container>
           {result?.is_pass && (
             <Confetti
@@ -58,9 +60,9 @@ function CourseTest() {
                   )}
                 </h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
-                  ornare ac commodo erat velit felis odio. In blandit fusce
-                  nulla odio. Iaculis lacus eget facilisis eu massa.
+                  {result?.is_pass
+                    ? t("coursesPage.coursesResultPage.heading.2")
+                    : t("coursesPage.coursesResultPage.heading.3")}
                 </p>
               </div>
 
@@ -69,32 +71,10 @@ function CourseTest() {
                   <Col md={3} xs={12}>
                     <CircleProgressBar
                       size='small'
-                      title1='Correct'
-                      title2='Answers'
+                      title1='Result'
+                      // title2='Answers'
                       result={result?.no_of_correct_answer || 0}
                     />
-                    {/* <div
-                      className='progress'
-                      data-percentage={Math.round(result?.result)}
-                    >
-                      <span className='progress-left'>
-                        <span className='progress-bar'></span>
-                      </span>
-                      <span className='progress-right'>
-                        <span className='progress-bar'></span>
-                      </span>
-                      <div className='progress-value'>
-                        <div>
-                          <p>{result?.no_of_correct_answer || 0}</p>
-                          <br />
-                          <span>
-                            {t("coursesPage.coursesResultPage.other.3.1")}{" "}
-                            <br />{" "}
-                            {t("coursesPage.coursesResultPage.other.3.2")}
-                          </span>
-                        </div>
-                      </div>
-                    </div> */}
                   </Col>
 
                   <Col md={6} xs={12}>
@@ -104,29 +84,6 @@ function CourseTest() {
                       title2='Score'
                       result={Math.round(result?.result) || 0}
                     />
-
-                    {/* <div
-                      className='progress pink_pro'
-                      data-percentage={Math.round(result?.result)}
-                    >
-                      <span className='progress-left'>
-                        <span className='progress-bar col_chg'></span>
-                      </span>
-                      <span className='progress-right'>
-                        <span className='progress-bar col_chg'></span>
-                      </span>
-                      <div className='progress-value'>
-                        <div>
-                          <p>{Math.round(result?.result) || 0}%</p>
-                          <br />
-                          <span>
-                            {t("coursesPage.coursesResultPage.other.4.1")}{" "}
-                            <br />{" "}
-                            {t("coursesPage.coursesResultPage.other.4.2")}
-                          </span>
-                        </div>
-                      </div>
-                    </div> */}
                   </Col>
 
                   <Col md={3} xs={12}>
@@ -137,29 +94,6 @@ function CourseTest() {
                         result?.test_time ? (result?.test_time).toFixed(2) : 0
                       }
                     />
-
-                    {/* <div className='progress' data-percentage='45'>
-                      <span className='progress-left'>
-                        <span className='progress-bar'></span>
-                      </span>
-                      <span className='progress-right'>
-                        <span className='progress-bar'></span>
-                      </span>
-                      <div className='progress-value'>
-                        <div>
-                          <p>
-                            {result?.test_time
-                              ? (result?.test_time).toFixed(2)
-                              : 0}{" "}
-                            <span>{t("common.time.2")}</span>
-                          </p>
-                          <br />
-                          <span>
-                            {t("coursesPage.coursesResultPage.other.5")}
-                          </span>
-                        </div>
-                      </div>
-                    </div> */}
                   </Col>
                 </Row>
               </div>

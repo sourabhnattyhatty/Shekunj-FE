@@ -22,10 +22,11 @@ function MyProgress() {
   const dispatch = useDispatch();
 
   const { t } = useTranslation();
+  const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
     dispatch(getUserCourseProgress());
-  }, [dispatch]);
+  }, [dispatch, lan]);
 
   const filterCoursesData = (coursesData = [], type) => {
     if (type === "current") {
@@ -40,7 +41,7 @@ function MyProgress() {
     <div>
       <SEO title='Sheकुंज - My Progress' />
       <Header loginPage={true} subPage='myProgress' />
-      <div className='dashboard_main pt-5 pb-5'>
+      <div className='dashboard_main pt-5 pb-5 noselect'>
         <Container>
           <Row>
             <Col md={12}>
@@ -88,8 +89,7 @@ function MyProgress() {
                   <Col md={12}>
                     <h6>{t("dashboardPage.certificate")}</h6>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Ut commodo .
+                    Your path to the success by our industry recognized certificates to help you achieve your desired goals.
                     </p>
                   </Col>
                 </Row>

@@ -3,47 +3,59 @@ import OwlCarousel from "react-owl-carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
-import { allHomeCourses } from "../../store/courses/action";
+import { allHomeCourses } from "../../store/courses";
+import { getGovernmentExams } from "../../store/career";
 import { constants } from "../../utils";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+
 import "./index.scss";
-import { routingConstants } from "../../utils/constants";
 
 function Carousel(props) {
+  const { carouselConstant, routingConstants } = constants;
   const divRef = React.useRef(null);
   const { courses, course, tests, similarCourses } = useSelector(
     (state) => state.coursesReducer,
   );
-  const dispatch = useDispatch();
+  const { governmentExams } = useSelector((state) => state.careerReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(allHomeCourses());
-  }, [dispatch, course?.category_id]);
+  }, [dispatch, course?.category_id, lan]);
+
+  useEffect(() => {
+    dispatch(getGovernmentExams());
+  }, [dispatch, lan]);
 
   const handleChange = (e) => {
     const carousel = e?.relatedTarget;
-    if (props.type === constants.carouselConstant.COURSES) {
+    let totalItems = 0;
+    if (props.type === carouselConstant.COURSES) {
+      totalItems = courses?.length || 0;
+    } else if (props.type === carouselConstant.TEST) {
+      totalItems = tests?.length || 0;
+    } else if (props.type === carouselConstant.GOVERNMENT_EXAMS) {
+      totalItems = governmentExams?.govt_list?.length || 0;
+    }
+    if (props.page === carouselConstant.HOMEPAGE) {
       divRef.current.innerHTML = `${
         carousel.relative(carousel.current()) + 1 || 0
-      }/${courses?.length || 0}`;
-    } else if (props.type === constants.carouselConstant.TEST) {
-      divRef.current.innerHTML = `${
-        carousel.relative(carousel.current()) + 1 || 0
-      }/${tests?.length || 0}`;
+      }/${totalItems}`;
     }
   };
 
   return (
-    <>
+    <div className='noselect'>
       <div className='container Our_text'>
         <p>{props.title1}</p>
         <h2>{props.title2}</h2>
       </div>
       <div className='set'>
-        {props.page === constants.carouselConstant.HOMEPAGE && (
+        {props.page === carouselConstant.HOMEPAGE && (
           <div className='abc_box'>
             <div className='abc' ref={divRef}></div>
           </div>
@@ -51,22 +63,14 @@ function Carousel(props) {
 
         <OwlCarousel
           className={
-            props.page === constants.carouselConstant.COURSE_DETAIL
+            props.page === carouselConstant.COURSE_DETAIL
               ? "similar-coursesslider"
               : "owl-theme"
           }
           loop={courses?.length > 5}
-          margin={
-            props.page === constants.carouselConstant.COURSE_DETAIL ? 10 : 210
-          }
-          nav={
-            props.page === constants.carouselConstant.COURSE_DETAIL
-              ? false
-              : true
-          }
-          items={
-            props.page === constants.carouselConstant.COURSE_DETAIL ? 1.4 : 4
-          }
+          margin={props.page === carouselConstant.COURSE_DETAIL ? 10 : 210}
+          nav={props.page === carouselConstant.COURSE_DETAIL ? false : true}
+          items={props.page === carouselConstant.COURSE_DETAIL ? 1.4 : 4}
           dots={false}
           autoPlay={true}
           smartSpeed='800'
@@ -86,17 +90,11 @@ function Carousel(props) {
               margin: 50,
             },
             1024: {
-              items:
-                props.page === constants.carouselConstant.COURSE_DETAIL
-                  ? 1.4
-                  : 3,
+              items: props.page === carouselConstant.COURSE_DETAIL ? 1.4 : 3,
               nav: true,
             },
             1200: {
-              items:
-                props.page === constants.carouselConstant.COURSE_DETAIL
-                  ? 1.4
-                  : 4,
+              items: props.page === carouselConstant.COURSE_DETAIL ? 1.4 : 4,
               nav: true,
             },
             1920: {
@@ -105,7 +103,7 @@ function Carousel(props) {
             },
           }}
         >
-          {props.page === constants.carouselConstant.COURSE_DETAIL && (
+          {props.page === carouselConstant.COURSE_DETAIL && (
             <>
               {similarCourses?.map((course, ind) => {
                 if (course?.id === Number(id)) {
@@ -113,7 +111,7 @@ function Carousel(props) {
                 }
                 return (
                   <Link
-                  to = {routingConstants.COURSE_DETAILS + course?.id}
+                    to={routingConstants.COURSE_DETAILS + course?.id}
                     className='item'
                     key={ind}
                   >
@@ -131,11 +129,11 @@ function Carousel(props) {
               })}
             </>
           )}
-          {props.type === constants.carouselConstant.COURSES && (
+          {props.type === carouselConstant.COURSES && (
             <>
               {courses?.map((obj, ind) => (
                 <Link
-                  to={routingConstants.COURSE_DETAILS +  obj?.id}
+                  to={routingConstants.COURSE_DETAILS + obj?.id}
                   className='item'
                   key={ind}
                 >
@@ -155,26 +153,50 @@ function Carousel(props) {
               ))}
             </>
           )}
-          {props.type === constants.carouselConstant.TEST && (
+          {props.type === carouselConstant.GOVERNMENT_EXAMS && (
             <>
-              {tests?.map((obj, ind) => (
-                <div className='item' key={ind}>
+              {governmentExams?.govt_list?.map((obj) => (
+                <Link
+                  to={routingConstants.GOVERNMENT_EXAMS}
+                  className='item'
+                  key={obj.id}
+                >
                   <div className='box'>
                     <div className='slide-img'>
                       <img alt='' src={obj?.image} />
                       <div className='overlay'></div>
                     </div>
                     <div className='tag_btn'>
+                      <button className='btn btn-info'>{obj?.exam}</button>
                       <h2>{obj?.name}</h2>
                     </div>
                   </div>
-                </div>
+                </Link>
+              ))}
+            </>
+          )}
+          {props.type === carouselConstant.TEST && (
+            <>
+              {tests?.map((obj, ind) => (
+                <Link to="/success-career-test">
+                  <div className='item' key={ind}>
+                    <div className='box'>
+                      <div className='slide-img'>
+                        <img alt='' src={obj?.image} />
+                        <div className='overlay'></div>
+                      </div>
+                      <div className='tag_btn'>
+                        <h2>{obj?.name}</h2>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </>
           )}
         </OwlCarousel>
       </div>
-    </>
+    </div>
   );
 }
 

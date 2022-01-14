@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import { constants } from "../../utils";
 import { Header, Footer, Carousel, SEO } from "../../components";
@@ -23,7 +23,8 @@ import Community from "../../assets/images/community.png";
 import Nikita from "../../assets/images/testimonial/1.png";
 import Priya from "../../assets/images/testimonial/2.png";
 import star from "../../assets/images/Star 2.png";
-import certif from "../../assets/images/certif.jpg";
+import half_star from "../../assets/images/half_star.svg";
+import certif from "../../assets/images/mob_certif.jpg";
 import g1 from "../../assets/images/1.png";
 import g2 from "../../assets/images/2.png";
 import g3 from "../../assets/images/3.png";
@@ -93,7 +94,7 @@ function HomePage() {
 
       {/* slider */}
 
-      <div id='myCarousel' className='banner_slider mb-5'>
+      <div id='myCarousel' className='banner_slider mb-5 noselect'>
         <div className='carousel-inner'>
           <Slider {...settings}>
             <div className='carousel-item carousel_item1'>
@@ -103,11 +104,11 @@ function HomePage() {
                     <h4 className='mt-5 pt-lg-5 mb-1'>
                       {t("homePage.mainSlider.heading.1")}
                     </h4>
+                    <h5>{t("homePage.mainSlider.heading.4")}</h5>
+
                     <p className='mb-4'>
                       {" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      In sed fermentum massa semper mauris volutpat dictum
-                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
+                      {t("homePage.mainSlider.subHeading.1")}
                     </p>
                     <Link to='/courses' className='banner_btn'>
                       {t("homePage.mainSlider.button.1")}
@@ -124,18 +125,16 @@ function HomePage() {
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
+                    <h5>{t("homePage.mainSlider.heading.5")}</h5>
                     <p className='mb-4' data-aos='zoom-in'>
-                      {" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      In sed fermentum massa semper mauris volutpat dictum
-                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
+                      {t("homePage.mainSlider.subHeading.2")}
                     </p>
                     <Link
-                      to='/courses'
+                      to='/top-colleges'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button.1")}
+                      {t("homePage.mainSlider.button.5")}
                     </Link>
                   </div>
                 </div>
@@ -148,15 +147,20 @@ function HomePage() {
                   <div className='col-md-7 col-12'>
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.3.3.1")}
-                      <span>{t("homePage.mainSlider.heading.3.3.2")}</span>
                     </h4>
 
+                    <h5>{t("homePage.mainSlider.heading.3.3.2")}</h5>
+
+                    <p className='mb-4' data-aos='zoom-in'>
+                      {t("homePage.mainSlider.subHeading.3")}
+                    </p>
+
                     <Link
-                      to='/courses'
+                      to='/guidance-book'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button.1")}
+                      {t("homePage.mainSlider.button.4")}
                     </Link>
                   </div>
                 </div>
@@ -168,22 +172,21 @@ function HomePage() {
                 <div className='row h_set'>
                   <div className='col-md-7 col-12 offset-lg-6 offset-md-5'>
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
-                      {t("homePage.mainSlider.heading.2")}
+                      {t("homePage.mainSlider.heading.6.1")}
                     </h4>
 
+                    <h5>{t("homePage.mainSlider.heading.6.2")}</h5>
+
                     <p className='mb-4' data-aos='zoom-in'>
-                      {" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      In sed fermentum massa semper mauris volutpat dictum
-                      fames. Amet hendrerit at duis porttitor ipsum.{" "}
+                      {t("homePage.mainSlider.subHeading.4")}
                     </p>
 
                     <Link
-                      to='/courses'
+                      to='/top-schools/'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
-                      {t("homePage.mainSlider.button.1")}
+                      {t("homePage.mainSlider.button.6")}
                     </Link>
                   </div>
                 </div>
@@ -202,11 +205,13 @@ function HomePage() {
         type={constants.carouselConstant.COURSES}
       />
       <Link to='/courses' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate'>{t("homePage.mainSlider.button.2")}</button>
+        <button className='view_test_cate'>
+          {t("homePage.mainSlider.button.7")}
+        </button>
       </Link>
 
       {/* resume */}
-      <section className='resume same_padding mt-5'>
+      <section className='resume same_padding mt-5 noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-7' data-aos='slide-up'>
@@ -236,10 +241,14 @@ function HomePage() {
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
       />
-      <button className='view_test_cate'>{t("homePage.mainSlider.button.3")}</button>
+      <Link to='/success-career-test' style={{ textDecoration: "none" }}>
+        <button className='view_test_cate noselect'>
+          {t("homePage.mainSlider.button.3")}
+        </button>
+      </Link>
 
       {/* Job opportunity */}
-      <section className='job-opprtunity same_padding mt-5'>
+      <section className='job-opprtunity same_padding mt-5 noselect'>
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-lg-12 col-md-11'>
@@ -247,16 +256,11 @@ function HomePage() {
                 <div className='row'>
                   <div className='col-lg-8' data-aos='slide-up'>
                     <h3>{t("homePage.jobopportunity.heading")}</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Rutrum sapien nunc sit egestas amet magnis enim.
-                      Suspendisse vulputate ut nunc lorem mi ut lacus. Felis
-                      vitae vel.
-                    </p>
+                    <p>{t("homePage.jobopportunity.subHeading")}</p>
                     <a
                       rel='noreferrer'
                       target='_blank'
-                      href='https://octahire.com/Recruiters/job_recruiters?location='
+                      href='https://octahire.com/Home/candidate_register'
                       className='btn btn-job'
                     >
                       {t("homePage.jobopportunity.button")}
@@ -278,25 +282,26 @@ function HomePage() {
       <Carousel
         items={5}
         page='homePage'
-        title1={t("homePage.carousel1.heading.1")}
-        title2={t("homePage.carousel1.heading.2")}
-        type={constants.carouselConstant.COURSES}
+        title1={t("homePage.carousel3.heading.1")}
+        title2={t("homePage.carousel3.heading.2")}
+        type={constants.carouselConstant.GOVERNMENT_EXAMS}
       />
-      <Link to='/courses' style={{ textDecoration: "none" }}>
-        <button className='view_test_cate'>{t("homePage.mainSlider.button.2")}</button>
+      <Link to='/government-exams' style={{ textDecoration: "none" }}>
+        <button
+          className='view_test_cate'
+          onClick={() => <Redirect to='/government-exams' />}
+        >
+          {t("homePage.mainSlider.button.2")}
+        </button>
       </Link>
 
       {/* career development */}
-      <section className='career_community same_padding mt-5'>
+      <section className='career_community same_padding mt-5 noselect'>
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-md-12'>
               <h3 data-aos='slide-up'>{t("homePage.community.heading")}</h3>
-              <p data-aos='slide-up'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
-                sapien nunc sit egestas amet magnis enim. Suspendisse vulputate
-                ut nunc lorem mi ut lacus. Felis vitae vel.
-              </p>
+              <p data-aos='slide-up'>{t("homePage.community.data")}</p>
 
               <div className='mob_comunity_img'>
                 <img data-aos='slide-up' src={Community} alt='...' />
@@ -388,15 +393,17 @@ function HomePage() {
 
           <div className='row justify-content-center'>
             <div className='col-md-4 text-center mt-5'>
-              <button className='btn btn-start-course' data-aos='slide-up'>
-                {t("homePage.community.button")}
-              </button>
+              <Link to='/success-stories' style={{ textDecoration: "none" }}>
+                <button className='btn btn-start-course' data-aos='slide-up'>
+                  {t("homePage.community.button")}
+                </button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <div className='career_community'>
+      <div className='career_community noselect'>
         <div className='container'>
           <div className='community_block d-md-block d-none'>
             <div className='career_community'>
@@ -484,7 +491,7 @@ function HomePage() {
         </div>
       </div>
       {/* certificate */}
-      <section className='certificate same_padding'>
+      <section className='certificate same_padding noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>
@@ -496,15 +503,10 @@ function HomePage() {
               <div className='certif_con'>
                 <h4>
                   {t("homePage.certificate.heading.1")}{" "}
-                  {t("homePage.certificate.heading.2")}
+                  {/* {t("homePage.certificate.heading.2")} */}
                 </h4>
 
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Feugiat sed vel scelerisque sodales tristique porttitor vitae.
-                  Ornare phasellus nibh in orci. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Feugiat sed vel scelerisque
-                </p>
+                <p>{t("homePage.certificate.heading.3")} </p>
               </div>
             </div>
           </div>
@@ -512,7 +514,7 @@ function HomePage() {
       </section>
 
       {/* highlight students */}
-      <section className='highlight_student same_padding'>
+      <section className='highlight_student same_padding noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>
@@ -521,9 +523,7 @@ function HomePage() {
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
                       <img src={Nikita} alt='' />
-                      <p>
-                        {t("aboutPage.review.1")}
-                      </p>
+                      <p>{t("aboutPage.review.1")}</p>
                       <ul className='star'>
                         <li>
                           <img src={star} alt='' />
@@ -537,26 +537,24 @@ function HomePage() {
                         <li>
                           <img src={star} alt='' />
                         </li>
-                        <li>
+                        {/* <li>
                           <img src={star} alt='' />
-                        </li>
+                        </li> */}
                       </ul>
                       <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
-                      <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
+                      <h6>{t("aboutPage.reviewerDetails.reviewerPost.2")}</h6>
                     </div>
                   </div>
 
                   <div className='tes_box2' data-aos='slide-up'>
-                    <h2>
-                    {t("aboutPage.review.2")}
-                    </h2>
+                    <h2>{t("aboutPage.review.2")}</h2>
                   </div>
                 </div>
 
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-down'>
                     <div className='tes_box3'>
-                      <h2>4.9/5</h2>
+                      <h2>4.9</h2>
                       <ul className='star'>
                         <li>
                           <img src={star} alt='' />
@@ -571,7 +569,7 @@ function HomePage() {
                           <img src={star} alt='' />
                         </li>
                         <li>
-                          <img src={star} alt='' />
+                          <img src={half_star} alt='' />
                         </li>
                       </ul>
                       <h6>{t("aboutPage.salesNumber")}</h6>
@@ -581,9 +579,7 @@ function HomePage() {
                   <div data-aos='slide-left'>
                     <div className='tes_box heg_cha'>
                       <img src={Priya} alt='' />
-                      <p>
-                      {t("aboutPage.review.3")}
-                      </p>
+                      <p>{t("aboutPage.review.3")}</p>
                       <ul className='star'>
                         <li>
                           <img src={star} alt='' />
@@ -601,7 +597,7 @@ function HomePage() {
                           <img src={star} alt='' />
                         </li>
                       </ul>
-                      <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
+                      <h2>{t("aboutPage.reviewerDetails.reviewerName.2")}</h2>
                       <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
                     </div>
                   </div>
@@ -610,20 +606,16 @@ function HomePage() {
             </div>
 
             <div className='col-md-5 offset-md-1'>
+            <div className="highlig">
               <h3 className='mb-3 mt-4'>
-                {t("homePage.highlightStudents.heading")}
+                {t("homePage.highlightStudents.homeHeading")}
               </h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
-                donec molestie sit diam aliquam egestas erat tincidunt magna.
-                Tincidunt et faucibus a curabitur sed at sagittis orci id. Odio
-                nunc, purus a, ut integer. Ultricies orci nulla eu, libero
-                ornare ipsum. Tincidunt erat pulvinar viverra pharetra.
-              </p>
+            
 
-              <a data-aos='slide-up' href='#!' className='learn_more'>
-                {t("homePage.highlightStudents.button")}
-              </a>
+              <Link to='/courses' data-aos='slide-up' className='learn_more'>
+                {t("homePage.highlightStudents.homeButton")}
+              </Link>
+              </div>
             </div>
           </div>
         </div>

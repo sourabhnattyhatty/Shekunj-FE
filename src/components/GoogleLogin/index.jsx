@@ -33,7 +33,7 @@ function GoogleLoginComponent({ showOr }) {
 
   return (
     <>
-      <div className='text-center'>
+      <div className='text-center noselect'>
         <GoogleLogin
           clientId={clientId}
           onSuccess={(res) => responseGoogle(res)}

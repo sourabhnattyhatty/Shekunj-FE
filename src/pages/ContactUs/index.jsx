@@ -22,7 +22,7 @@ function ContactUs() {
     subject: Yup.string().required(t("Subject is required")),
     message: Yup.string().required(t("Message is required")),
   });
-  const { handleSubmit, handleChange, handleBlur, values, errors, touched, setFieldValue } =
+  const { handleSubmit, handleChange, handleBlur, values, errors, touched, setFieldValue, isSubmitting } =
     useFormik({
       initialValues: {
         name: "",
@@ -45,7 +45,7 @@ function ContactUs() {
     }
 
   return (
-    <div>
+    <div className="noselect">
       <Header loginPage={false} page='home' />
       <div className='main_div_conUs'>
         <Container>
@@ -99,7 +99,7 @@ function ContactUs() {
                           onBlur={handleBlur}
                           autoComplete='off'
                         />
-                        <Error error={errors.name} touched={touched.name} />
+                        <Error error={errors.name} touched={touched.name} isSubmitting={isSubmitting}/>
                       </div>
 
                       <div className='mb-3'>
@@ -128,6 +128,7 @@ function ContactUs() {
                         <Error
                           error={errors.subject}
                           touched={touched.subject}
+                          isSubmitting={isSubmitting}
                         />
                       </div>
 
@@ -145,6 +146,7 @@ function ContactUs() {
                         <Error
                           error={errors.message}
                           touched={touched.message}
+                          isSubmitting={isSubmitting}
                         />
                       </div>
                     </div>

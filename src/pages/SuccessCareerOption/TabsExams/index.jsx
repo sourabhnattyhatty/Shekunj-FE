@@ -57,36 +57,41 @@ export default function VerticalTabs() {
   const [value, setValue] = useState(0);
   const [tabValue, setTabValue] = useState(0);
   const [categoryDetail, setCategoryDetail] = useState(false);
-  const [showGovtExams, setShowGovtExams] = useState(true);
-  const { guidanceCategory, guidanceCategoryDetail, isLoading } = useSelector(
+  const [showGovtExams, setShowGovtExams] = useState(false);
+  const { careerOptions, guidanceCategoryDetail, isLoading } = useSelector(
     (state) => state.guidanceReducer,
   );
   const { t } = useTranslation();
+
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };
 
   const handleChangeGovtExam = (value) => {
-    setShowGovtExams(value);
+    setShowGovtExams(false);
     setCategoryDetail(false);
     setValue(0);
     dispatch(getGuidanceCategory());
   };
 
   const handleExamChange = (obj, id) => {
-    setShowGovtExams(false);
-    setCategoryDetail(true);
+    setShowGovtExams(true);
+    setCategoryDetail(false);
     setValue(0);
     setTabValue(obj);
     dispatch(resetCategoryDetail());
     dispatch(getGuidanceCategoryDetail(id));
   };
 
-  const onBackChange = () => {
+  const handleFullView = () => {
+    setShowGovtExams(false);
+    setCategoryDetail(true);
+  };
+
+  const onBackChange = (obj, id) => {
     setCategoryDetail(false);
     setShowGovtExams(true);
-    dispatch(resetCategoryDetail());
   };
 
   function renderExamTypes() {
@@ -105,7 +110,7 @@ export default function VerticalTabs() {
           aria-label='categories'
           sx={{ borderRight: 1, borderColor: "divider" }}
         >
-          {guidanceCategory?.public?.map((g, i) => (
+          {careerOptions?.map((g, i) => (
             <>
               <Tab
                 key={g?.id}
@@ -136,30 +141,30 @@ export default function VerticalTabs() {
         <Row>
           {renderExamTypes()}
           {!showGovtExams && !categoryDetail && (
-            <div className='col-8 text-center mt-5'>{t("successCareerOption.other.1")}</div>
+            <div className='col-8 text-center mt-5'>
+              {t("successCareerOption.other.1")}
+            </div>
           )}
           <Col md={8} xs={12}>
             <TabPanel value={value} index={0}>
               <Row>
-                {showGovtExams &&
-                  (guidanceCategory?.private?.length > 0 ? (
-                    guidanceCategory?.private?.map((obj) => (
-                      <Col md={6} xs={12}>
-                        <div className='tabs_box'>
-                          <h2>{obj.name}</h2>
-                          <p style={{ wordWrap: "break-word" }}>
-                            {obj.short_description}
-                          </p>
-                          <button onClick={() => handleExamChange(obj)}>
-                          {t("successCareerOption.button.1")}
-                          </button>
-                        </div>
-                        <br />
-                      </Col>
-                    ))
-                  ) : (
-                    <div className='text-center'>{t("common.noDataFound")}</div>
-                  ))}
+                {showGovtExams && careerOptions && (
+                  <Col md={6} xs={12}>
+                    <div className='tabs_box'>
+                      <h2>{guidanceCategoryDetail?.category_name}</h2>
+                      <p style={{ wordWrap: "break-word" }}>
+                        {`${careerOptions[tabValue].short_description.slice(
+                          0,
+                          100,
+                        )}...`}
+                      </p>
+                      <button onClick={() => handleFullView()}>
+                        {t("successCareerOption.button.1")}
+                      </button>
+                    </div>
+                    <br />
+                  </Col>
+                )}
               </Row>
             </TabPanel>
 
@@ -177,16 +182,6 @@ export default function VerticalTabs() {
                   </div>
                   <div className='banking-examheader'>
                     <h2>{guidanceCategoryDetail?.category_name}</h2>
-                    {/* <ul className='list-inline'>
-                      <li className='list-inline-item'>
-                        <img src={Share} alt='' className='mr-3' />
-                        Share
-                      </li>
-                      <li className='list-inline-item'>
-                        <img src={Bookmark} alt='' className='mr-3' />
-                        Save
-                      </li>
-                    </ul> */}
                   </div>
                   {guidanceCategoryDetail?.description ? (
                     <div
@@ -197,7 +192,9 @@ export default function VerticalTabs() {
                     ></div>
                   ) : (
                     <div className='text-center'>
-                      {isLoading ? t("common.loading") : t("common.noDataFound")}
+                      {isLoading
+                        ? t("common.loading")
+                        : t("common.noDataFound")}
                     </div>
                   )}
                   <hr className='border-colorbottom'></hr>

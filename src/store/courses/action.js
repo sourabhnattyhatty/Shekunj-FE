@@ -167,15 +167,14 @@ export const getUserTestQuestion =
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
-      if (err?.status === 400) {
+      if (err?.data?.status_code === 400) {
         if (err.data.message === "Already course test is completed") {
-          const res = await httpServices.get(
-            `/course/user-course-result/${id}`,
-          );
+          const res = await httpServices.get(constants.USER_COURSE_RESULT + id);
           history?.push(routingConstants.COURSE_CERTIFICATE + res.data.id);
           toast.success(err.data.message, toasterConfig);
         } else {
           history?.push(routingConstants.COURSES_RESULT + id);
+          window.localStorage.removeItem("isTestStarted");
         }
       } else if (err.data.status_code === 500) {
         history?.push(routingConstants.COURSES_RESULT + id);
@@ -191,10 +190,11 @@ export const postAnswer =
     try {
       dispatch({ type: coursesTypes.POST_ANSWER_REQUEST });
       const res = await httpServices.post(
-        `/course/user-test-course/${id}`,
+        constants.USER_TEST_COURSE + id,
         values,
       );
       dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
+      
       if (res.status_code === 200 && !last) {
         dispatch({ type: coursesTypes.QUESTION_COUNT_REQUEST });
         const res = await httpServices.get(constants.USER_TEST_COUNT + id);
@@ -205,8 +205,9 @@ export const postAnswer =
       }
 
       if (res.status_code === 200 && last) {
-        await httpServices.post(`/course/user-course-end-time/${id}`);
+        await httpServices.post(constants.USER_COURSE_END_TIME + id);
         history.push(routingConstants.COURSES_RESULT + id);
+        window.localStorage.removeItem("isTestStarted");
       }
     } catch (err) {
       dispatch({ type: coursesTypes.POST_ANSWER_FAIL });
@@ -257,8 +258,12 @@ export const setFilter =
     dispatch({ type: coursesTypes.SELECTED_FILTER, payload });
   };
 
-export const endTest = (id) => async (dispatch) => {
-  await httpServices.post(constants.USER_COURSE_END_TIME + id);
+export const endTest = (id,history) => async (dispatch) => {
+  const res = await httpServices.post(constants.USER_COURSE_END_TIME + id);
+  window.localStorage.removeItem("isTestStarted");
+  if(res.status_code === 200 && history){
+    history?.push(routingConstants.COURSES_RESULT + id);
+  }
 };
 
 export const testResult = (id) => async (dispatch) => {

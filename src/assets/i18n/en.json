@@ -86,7 +86,7 @@
       "9": "Something went wrong",
       "10": "You are not allowed to do that!"
     },
-    "login":{
+    "login": {
       "1": "Google Login failed.",
       "2": "E-mail not found"
     }
@@ -137,13 +137,13 @@
       "gender": {
         "required": "Gender selection is required"
       },
-      "dob":{
+      "dob": {
         "required": "Date of Birth is required"
       },
-      "qualification":{
+      "qualification": {
         "required": "Qualification is required."
       },
-      "coursesLookingFor":{
+      "coursesLookingFor": {
         "required": "Course looking for is required."
       }
     },
@@ -243,74 +243,104 @@
   "homePage": {
     "mainSlider": {
       "heading": {
-        "1": "Anytime, anywhere, Learn on your schedule from any device",
-        "2": "Anytime, anywhere, Learn on your schedule from any device",
+        "1": "A Promise To Never",
+        "4": "Stop Learning.",
+        "2": "Looking for a Best College",
+        "5": "to sky rocket your career?",
         "3": {
-          "3.1": "OWN YOUR FUTURE BY",
-          "3.2": "Learning Skills"
+          "3.1": "Discover",
+          "3.2": "Your Perfect Career"
+        },
+        "6": {
+          "1": "Your preference, your grades. SheKunj knows ",
+          "2": "how to make it simple for you."
         }
       },
+      "subHeading": {
+        "1": "We believe that there is no right age, time or place to learn. It really does not matter if you are 16 or 60, learning is an ongoing process so let’s keep it that way! Take classes on the go with the SheKunj.",
+        "2": "We ease your run to search for the Best Colleges across India by our hands-on approach to every necessary information about the institutes to help you learn, explore and achieve your goals.",
+        "3": "Take the world’s most-advanced career advice from SheKunj's finest career counsellors online and find your best-fit career.",
+        "4": "With the experience and expertise, SheKunj can tailor-make list of ideal institutions for the students who are looking for the best school."
+      },
       "button": {
-        "1": "Start Course",
-        "2": "View All Courses",
-        "3": "View All Test Categories"
+        "1": "Start Learning",
+        "2": "View All Schemes",
+        "3": "View All Test",
+        "4": "Book a Counsellor",
+        "5": "Top Colleges in India",
+        "6": "Top Schools in India",
+        "7": "View All Courses"
       }
     },
     "carousel1": {
       "heading": {
         "1": "Our",
-        "2": "Most Popular Courses"
+        "2": "Most Popular courses"
       }
     },
     "carousel2": {
       "heading": {
         "1": "CHALLENGING",
-        "2": "Online Tests"
+        "2": "Mock Tests"
+      }
+    },
+    "carousel3": {
+      "heading": {
+        "1": "Helpful",
+        "2": "Government Schemes"
       }
     },
     "resume": {
-      "heading": "Design your resume in real time and download a print-ready PDF.",
-      "button": "DESIGN MY RESUME"
+      "heading": "Land your dream job by designing a perfect resume in a print-ready format",
+      "button": "Create Your CV Now"
     },
     "jobopportunity": {
-      "heading": "Grab job Opportunities...",
-      "button": "view all job opportunities"
+      "heading": "Grab job Opportunities!",
+      "subHeading": "Enroll. Learn. Explore. Grow. Work. SheKunj offers Indian women a whole new world waiting to be explored! We aim at bringing education to the women masses. The Best Certified Online Courses for a Sustainable Career are aimed at all professionals, entrepreneurs and graduates who want to excel in their profession.",
+      "button": "View All Job Opportunities"
     },
     "community": {
-      "heading": "Shekunj Career Development Community",
-      "button": "Start Course"
+      "heading": "Trusted By All Women",
+      "data": "Take a glance at the happy, glittering faces who have enrolled with SheKunj. We understand the importance of education for the solutions of tomorrow. SheKunj is a first-of-its-kind,women-centered, global network dedicated to empowerment in every community where equality is in question.",
+      "button": "View Success Stories"
     },
     "certificate": {
       "heading": {
-        "1": "Gain Industry-Recognized",
-        "2": "UX Certificates"
+        "1": "30+ Free Courses With Industry Recognized Certifications",
+        "2": "UX Certificates",
+        "3": "Learn and Explore new skills from the free online courses with Industry-Recognized Certificates. We have come up with the idea of creating this platform for your learning, skills enhancement and making you win the race. We are a platform for women who want to learn, hustle, explore and empower herself."
       }
     },
     "highlightStudents": {
-      "heading": "Our highlighted students revealing",
-      "button": "Learn more"
+      "homeHeading": "Want to become a part of our next success story?",
+      "aboutHeading": "No Woman Is Equal Until All Women Are",
+      "aboutDescription": "Hundreds of millions of women and girls are denied their right to education, effectively preventing their empowerment. For the sake of justice, we have to right this wrong. SheKunj has taken a step ahead to make knowledge and information accessible to each and every woman, better today than tomorrow. Take a glance at all the women who have successfully enrolled at SheKunj.",
+      "aboutButton": "View Success Stories",
+      "homeButton": "Enroll now"
     }
   },
 
   "aboutPage": {
-    "heading": "Empowering Women to Empower the Next Generation",
-    "content1": "SheKunj’s cutting-edge learning and examination platform has been designed to equip modern-age females with in-demand tech and non-tech skills. By providing the right information to women, we help them get placed, develop their personalities, and explore career pathways.",
-    "content2": "Armed with the best pedagogy experts, learning modules, and certificate courses, SheKunj is determined to impart practical training and educate women. With the right blend of tech and non-tech skills, our drive is to make a community of motivated, highly-skilled and knowledgeable women who build inspiring careers and lead with full gusto.",
+    "heading": "SheKunj is open knowledge for the forgotten billion",
+    "content1": "We aim at empowering all the women out there- be it 16 or 60- through education. SheKunj has a plethora of free courses available specially crafted for women of all ages. Every woman has the right to a safe, formal, quality education and access to lifelong learning. SheKunj wants to give a choice to all the females out there who are forced to leave school while others never have the opportunity to go in the first place.",
+    "content2": "SheKunj is free from any commercial interest. Its mission is to bring free learning to women and girls with the purpose of quickly closing the gender knowledge gap in the face of lagging literacy initiatives, and thus to become a global driving force for women’s empowerment and gender equality. ",
     "content3": "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality.",
     "review": {
-      "1": "I love their flexibility, Even when my request is too complicated to handle, the could still suggest something useful for me.",
-      "2": "Best out of the best in the online learning field...",
-      "3": "Excellent guiding instructions. They are all great mentors at life & career"
+      "1": "Very helpful vocabulary courses. Really helped me out to learn and made capable to start my Freelancing career in content writing.",
+      "2": "SheKunj's certificate helped me out to build the skills with validation.",
+      "3": "Excellent platform! I guided many women toward aspiring their wished career."
     },
     "reviewerDetails": {
       "reviewerName": {
-        "1": "Nikita Sharma"
+        "1": "Nikita Sharma",
+        "2": "Ankita Sharma"
       },
       "reviewerPost": {
-        "1": "Content Writer"
+        "1": "Career Counsellor",
+        "2": "Content writer"
       }
     },
-    "salesNumber": "by 1000+ Students for 2500+ Sales"
+    "salesNumber": "by 100+ Women's for English Speaking Course"
   },
 
   "careerPage": {
@@ -336,12 +366,12 @@
 
   "allCertificatePage": {
     "heading": {
-      "1": "Achieve your goals",
+      "1": "Way to the path of success...",
       "2": "My achievements",
       "3": "Skills Earned"
     },
     "content": {
-      "1": "All over Indian Girl students are taking their web design careers to the next-level with Shekunj Academy. Here are some of their stories."
+      "1": "Awaken from your dream, SheKunj's perfectly curated courses and certifications will help you to cope up with the challenging state of the world, by reflecting, and discovering new and great opportunities to create a new future where you have a key role to play."
     },
     "button": {
       "1": "View Certificate",
@@ -359,7 +389,7 @@
       "7": "Total time",
       "8": "Congratulations!",
       "9": "You can download the certificate",
-      "10": "Course & Certificate",
+      "10": "Certificate",
       "11": "View Full Certificate"
     },
     "name": {
@@ -386,8 +416,8 @@
     "other": {
       "1": "Conducted from",
       "2": "Destination: Best in class",
-      "3": "PRESIDENT DIRECTOR",
-      "4": "NAME SURNAME"
+      "3": "FOUNDER",
+      "4": "RAHUL BHARGAVA"
     }
   },
 
@@ -396,14 +426,20 @@
       "1": "7 More",
       "2": "Showing",
       "3": "Colleges",
-      "4": "Fees",
-      "5": "Exam"
+      "4": "Contact",
+      "5": "Website",
+      "6": "About",
+      "7": "Accreditation",
+      "8": "Course Offered",
+      "9": "Email",
+      "10": "Established Year",
+      "11": "Gender"
     },
     "heading": {
       "1": "Top Colleges in India"
     },
     "listItems": {
-      "1": "STREAM"
+      "1": "Stream"
     },
     "noDataFound": "No data found!"
   },
@@ -414,16 +450,24 @@
     },
     "listItems": {
       "1": "STATE",
-      "2": "EDUCATION BOARD"
+      "2": "Education Board"
     },
     "other": {
-      "1": "Board"
+      "1": "Board",
+      "2": "Contact",
+      "3": "Website",
+      "4": "Email",
+      "5": "Established Year",
+      "6": "About",
+      "7": "Adress",
+      "8": "Gender",
+      "9": "Levels"
     }
   },
 
   "careerGovExams": {
     "heading": {
-      "1": "Government Exams"
+      "1": "Government Schemes"
     },
     "listItems": {
       "1": "CATEGORIES"
@@ -437,11 +481,11 @@
   "contactUs": {
     "heading": {
       "1": "Contact us",
-      "2": "How can we help you?",
+      "2": "Simple Conversations can Lead to Great Ideas.",
       "3": "For Information"
     },
     "content": {
-      "1": "Any query or Suggestion? Feel free to contact us!"
+      "1": "Any query or suggestion? Feel free to contact us!"
     },
     "button": {
       "1": "Send"
@@ -450,15 +494,17 @@
 
   "coursesPage": {
     "banner": {
-      "heading": "Find your courses & make sure goal.",
-      "1": "LEARN AT YOUR OWN PACE",
-      "2.1": "JOIN A COMMUNITY",
-      "2.2": "OF professionals",
-      "3": "Flexible PAYMENT PLANS"
+      "heading": "30+ free courses to skyrocket your career",
+      "1": "Learn without limits",
+      "4": "at your own pace",
+      "2.1": "Any doubts?",
+      "2.2": "Ask for help!",
+      "3": "Start for free!"
     },
     "heading": {
       "1": "Online Courses",
-      "2": "Study top quality & advanced course content in Hindi"
+      "2": "SheKunj’s courses are designed for real life and real women. We want every woman should move to their creative journey forward without putting life on hold. SheKunj's courses are curated to provide practical and theoretical knowledge. We have crafted these courses to help you find inspiration that fits your routine.",
+      "3": "So look no further and enroll on SheKunj now!"
     },
     "accordion": {
       "1": {
@@ -495,12 +541,15 @@
         "3": "What you’ll learn",
         "4": "Features:",
         "features": {
-          "1": "100% Online",
+          "1": "Learn from home!",
           "2": "Lifetime Access",
           "3": "Shareable Certificate",
-          "4": "Assignments",
+          "4": "Forum",
           "5": "Flexible Deadline",
-          "6": { "heading": "Language", "data": "Hindi, English" }
+          "6": {
+            "heading": "Translator",
+            "data": "Don’t be afraid if you're not familiar with English. SheKunj is here with everything that is needed to make it easier for you!"
+          }
         }
       },
       "other": {
@@ -525,7 +574,9 @@
     },
     "coursesResultPage": {
       "heading": {
-        "1": "Your Result"
+        "1": "Your Result",
+        "2": "You are an inspiration to others! Exams are always tough, but the Champions like you make it worth while by your excellent performance.",
+        "3" : "There are no secrets to success. It is the result of preparation, hard work, and learning from failure."
       },
       "other": {
         "1": "Congratulation",
@@ -565,19 +616,20 @@
     "greeting": "Hello {{name}}!",
     "wish": "Good to see you back!",
     "current": "Current Course",
-    "inProgress": "Course in progress",
+    "inProgress": "In Progress",
     "certificate": "Certificate",
     "explore": "Explore",
     "button": {
       "1": "All Certificates"
     },
     "heading": {
-      "1": "Your test"
+      "1": "Career test"
     }
   },
   "guidanceBookPage": {
     "heading": {
-      "1": "Book a Session"
+      "1": "Get Free Career Guidance Session",
+      "2": "from finest counsellors"
     }
   },
   "changePasswordPage": {
@@ -620,8 +672,8 @@
       "1": "No Option selected!",
       "2": "back",
       "3": {
-        "1": "Choose Your",
-        "2": "Career"
+        "1": "Reach the heights ",
+        "2": "you aim for!"
       }
     },
     "button": {
@@ -630,7 +682,7 @@
   },
   "successCareerTestPage": {
     "heading": {
-      "1": "Select test Categories",
+      "1": "Select Mock Test Categories",
       "2": "Questions Status"
     },
     "other": {
@@ -645,11 +697,13 @@
   },
   "successStoriesPage": {
     "heading": {
-      "1": "Over 5,000 students have learned with us"
+      "1": "Over 1000+ of students have joined us in our free courses!"
     },
     "content": {
-      "1": "All over Indian Girl students are taking their web design careers to the next-level with Shekunj Academy. Here are some of their stories.",
-      "2": "Want to become our next success story?"
+      "1": "Why not you? ",
+      "4": "Have a look how SheKunj has played an important role in providing the students a platform where they actually learn and explore.",
+      "2": "Want to become a part of our next success story?",
+      "3": "Work today for a fruitful tomorrow!"
     },
     "other": {
       "1": "Company",
@@ -658,7 +712,7 @@
     },
     "button": {
       "1": "Show",
-      "2": "Start Learning"
+      "2": "Join the movement!"
     }
   },
   "privacyPolicyPage": {
@@ -700,26 +754,27 @@
       "22": "If you have any questions regarding this Privacy Policy or the protection of your Personal Information, please contact us on support@octahire.com. You can also write to us to suggest changes in Privacy Policy"
     }
   },
-  "googleLoginComponent":{
-    "button":{
+  "googleLoginComponent": {
+    "button": {
       "1": "Login with Google"
     }
   },
-  "headerComponent":{
-    "other":{
+  "headerComponent": {
+    "other": {
       "1": "Sign In"
     },
-    "menuItem":{
+    "menuItem": {
       "1": "My Profile",
       "2": "My Progress",
       "3": "My Certificates",
       "4": "Logout",
       "5": "Career Option",
-      "6": "Career Test",
+      "6": "Mock Test",
       "7": "Book a Counsellor",
       "8": "Top Colleges",
       "9": "Top Schools",
-      "10": "Government Exams"
+      "10": "Government Schemes"
     }
-  }
+  },
+  "alert": "After reload your test will end."
 }

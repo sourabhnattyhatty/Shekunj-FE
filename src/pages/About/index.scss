@@ -9,10 +9,16 @@ section.about_ban {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 38px;
   line-height: 120%;
-  color: #323232;
-  margin-top: 198px;
+  color: rgb(50 50 50);
+  margin-top: 130px;
+  margin-bottom: 39px;
+  text-transform: capitalize;
+}
+.about_Con h2::first-letter {
+  color: rgb(236 73 138);
+  font-size: 65px;
 }
 .mob_abo_banner img {
   max-width: 100%;
@@ -24,8 +30,8 @@ section.about_ban {
   font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 30px;
+  font-size: 18px;
+  line-height: 31px;
   color: #4f4f4f;
 }
 section.ban_sec2 {
@@ -33,6 +39,9 @@ section.ban_sec2 {
 }
 .sec2_con {
   padding: 50px 10px;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 section.ban_sec2 img {
   width: 100%;
@@ -43,8 +52,8 @@ section.ban_sec2 p {
   font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 31px;
   color: #4f4f4f;
 }
 section.about_testim {
@@ -64,16 +73,16 @@ section.about_testim {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: bold;
-  font-size: 40px;
-  line-height: 53px;
-  color: #323232;
+  font-size: 32px;
+  line-height: 45px;
+  color: rgb(50 50 50);
 }
 .our_his p {
   font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 18px;
+  line-height: 31px;
   color: #323232;
 }
 @media only screen and (min-width: 992px) and (max-width: 1400px) {

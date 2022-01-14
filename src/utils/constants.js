@@ -3,6 +3,7 @@ const carouselConstant = {
   TEST: "TEST",
   COLLEGES: "COLLEGES",
   SCHOOLS: "SCHOOLS",
+  GOVERNMENT_EXAMS: 'GOVERNMENT_EXAMS',
   COURSE_DETAIL: "courseDetail",
   HOMEPAGE: "homePage",
 };
@@ -26,6 +27,7 @@ const routingConstants = {
   FORGOT: "/forgot",
   GOVERNMENT_EXAMS: "/government-exams/",
   GUIDANCE_BOOK: "/guidance-book/",
+  HELP_AND_SUPPORT: "/help-and-support",
   HOME_PAGE: "/",
   LOGIN: "/login",
   MY_PROFILE: "/my-profile/",
@@ -54,8 +56,11 @@ const apiConstants = {
   },
   CAREER: {
     GOVERNMENT_EXAMS: "career/government-exam/",
+    START_USER_CAREER_TEST: "career/start-user-career-test/",
     TOP_COLLEGE_LIST: "career/top-collage-list/",
     TOP_SCHOOL_LIST: "career/top-school-list/",
+    USER_CAREER_TEST_RESULT: "/career/user-career-test-result/",
+    USER_CAREER_END_TEST: "/career/user-career-test-end/"
   },
   CERTIFICATE: {
     USER_ALL_CERTIFICATE: "course/user-all-certificate/",
@@ -81,6 +86,7 @@ const apiConstants = {
     GUIDANCE_CATEGORY : "career/guidance-category/",
     START_USER_CAREER_TEST : "career/start-user-career-test/",
     USER_CAREER_COUNT : "career/user-career-count/",
+    CAREER_TEST_CATEGORY : "course/online-test-category-list/",
   },
   MY_PROGRESS : {
     USER_PROGRESS : "course/user-progress/",

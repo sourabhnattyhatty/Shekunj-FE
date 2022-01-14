@@ -23,28 +23,46 @@ import "./index.scss";
 import "../../pages/HomePage/index.scss";
 import SimpleAccordion from "./Accordian";
 import { routingConstants } from "../../utils/constants";
+import Pagination from "../../components/Pagination";
 
-const Courses = (props) => {
+const Courses = () => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.coursesReducer);
   const [isSubSelected, setIsSubSelected] = useState(false);
   const [resetState, setResetState] = useState(false);
+  const [categoryId, setCategoryId] = useState(null);
+
+  const [pageLimit] = useState(10);
+
+  const [pageCount, setPageCount] = useState(0);
+  const [categoryPageCount, setCategoryPageCount] = useState(0);
+
   const dispatch = useDispatch();
+
+  const { lan } = useSelector((state) => state.languageReducer);
+
   useEffect(() => {
-    dispatch(allCourses());
-  }, [dispatch]);
+    dispatch(allCourses(`?limit=${pageLimit}`));
+  }, [dispatch, pageLimit, lan]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
   const handleResetFilter = () => {
     if (state?.selectedFilter) {
-      dispatch(allCourses(null));
+      dispatch(allCourses(`?limit=${pageLimit}&offset=0`));
+      setPageCount(0);
     }
     dispatch(setFilter(null));
+    setCategoryId(null);
+    setCategoryPageCount(0);
   };
   const handleResetFilterDemo = (s, obj) => {
-    dispatch(allCourses(`?category_id=${s.category_id}`));
+    dispatch(allCourses(`?category_id=${s.category_id}&limit=${pageLimit}`));
     dispatch(setFilter([obj]));
     setIsSubSelected(false);
     setResetState(true);
@@ -71,18 +89,54 @@ const Courses = (props) => {
       </Link>
     ));
   };
+
+  const paginationBack = () => {
+    if (categoryId) {
+      setCategoryPageCount(categoryPageCount - pageLimit);
+      dispatch(
+        allCourses(
+          `?category_id=${categoryId}&limit=${pageLimit}&offset=${
+            categoryPageCount - pageLimit
+          }`,
+        ),
+      );
+    } else {
+      setPageCount(pageCount - pageLimit);
+      dispatch(
+        allCourses(`?limit=${pageLimit}&offset=${pageCount - pageLimit}`),
+      );
+    }
+  };
+  const paginationNext = () => {
+    if (categoryId) {
+      setCategoryPageCount(categoryPageCount + pageLimit);
+      dispatch(
+        allCourses(
+          `?category_id=${categoryId}&limit=${pageLimit}&offset=${
+            categoryPageCount + pageLimit
+          }`,
+        ),
+      );
+    } else {
+      setPageCount(pageCount + pageLimit);
+      dispatch(
+        allCourses(`?limit=${pageLimit}&offset=${pageCount + pageLimit}`),
+      );
+    }
+  };
+
   return (
     <div>
       <SEO title='Sheकुंज - Courses' />
       <Header loginPage={true} page='courses' />
-      <section className='Cors_sec'>
+      <section className='Cors_sec noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-lg-7 col-md-9'>
               <div className='cors_con'>
                 <h2>{t("coursesPage.banner.heading")}</h2>
                 <div className='cour_box'>
-                  <ul>
+                  <ul className="num">
                     <li>
                       <img src={one} alt='' srcSet='' />
                     </li>
@@ -94,11 +148,12 @@ const Courses = (props) => {
                     </li>
                   </ul>
                   <div className='rig_ul'>
-                    <ul className='ulcont'>
+                    <ul className='ulcont'>  
                       <li>
                         <img src={img1} alt='' />
                       </li>
-                      <li> {t("coursesPage.banner.1")}</li>
+                      <li> {t("coursesPage.banner.1")} <br /> {t("coursesPage.banner.4")}</li>
+                      
                     </ul>
 
                     <ul className='ulcont'>
@@ -126,18 +181,15 @@ const Courses = (props) => {
         </div>
       </section>
 
-      <section className='Srch_sec mb-5'>
+      <section className='Srch_sec mb-5 noselect'>
         <div className='container'>
           <Row>
             <Col md={10} xs={12}>
+            <div className="course_para">
               <h1>{t("coursesPage.heading.1")}</h1>
-              <p className='courses_para mb-5'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque eget pretium nisl vitae porttitor aliquet id
-                posuere tortor. Id turpis neque urna elit pellentesque est
-                curabitur. Tincidunt fringilla viverra ut feugiat leo porta.
-                Ridiculus viverra cum aliquam curabitur.
-              </p>
+              <p className='courses_para mb-3'>{t("coursesPage.heading.2")}</p>
+              <Link className="shekunj_a" to="/">{t("coursesPage.heading.3")}</Link>
+              </div>
             </Col>
           </Row>
 
@@ -151,13 +203,17 @@ const Courses = (props) => {
                 changeResetAgain={(val) => {
                   setResetState(val);
                 }}
+                categoryId={(val) => {
+                  setCategoryId(val);
+                  setPageCount(0);
+                  setCategoryPageCount(0);
+                }}
               />
             </div>
             <div className='col-md-8 col-sm-8'>
               <div className='content_right'>
                 <h3 className='result_head'>
-                  {t("coursesPage.other.1.1")}{" "}
-                  {state?.allCourses?.results?.length || 0}{" "}
+                  {t("coursesPage.other.1.1")} {state?.allCourses?.count || 0}{" "}
                   {t("coursesPage.other.1.2")}
                 </h3>
 
@@ -166,7 +222,7 @@ const Courses = (props) => {
                     <div className='filter_added mb-5'>
                       {state?.selectedFilter?.length > 0 &&
                         isSubSelected &&
-                        state?.allCourses?.results?.map((s, i) => {
+                        state?.allCourses?.results?.map((s) => {
                           return (
                             <div key={s.id} className='filter_content'>
                               {s.name}{" "}
@@ -175,7 +231,7 @@ const Courses = (props) => {
                                 onClick={() =>
                                   handleResetFilterDemo(
                                     s,
-                                    state?.categoryList[i],
+                                    state?.selectedFilter[0],
                                   )
                                 }
                                 className='ml-3'
@@ -207,6 +263,15 @@ const Courses = (props) => {
                     <div className='text-center mt-2'>
                       {t("common.noDataFound")}
                     </div>
+                  )}
+                </div>
+                <div className='paginationDiv'>
+                  {state?.allCourses?.count > pageLimit && (
+                    <Pagination
+                      finalCount={state?.allCourses?.count / pageLimit}
+                      nextPage={paginationNext}
+                      backPage={paginationBack}
+                    />
                   )}
                 </div>
               </div>

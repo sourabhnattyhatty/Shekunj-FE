@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import {
@@ -9,19 +10,20 @@ import {
   toggleCollapseValue,
 } from "../../store/career";
 import { noImage } from "../../utils/ApiServices";
+
 import "../HomePage/index.scss";
 import "./index.scss";
-import { useTranslation } from "react-i18next";
 
 const CareerPage2 = () => {
   const dispatch = useDispatch();
-  const { governmentExams } = useSelector((state) => state.careerReducer);
   const { t } = useTranslation();
+  const { governmentExams } = useSelector((state) => state.careerReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
     dispatch(reSetFilterValue());
     dispatch(getGovernmentExams());
-  }, [dispatch]);
+  }, [dispatch, lan]);
 
   const transformPrice = (price) => {
     let nf = new Intl.NumberFormat("en-US");
@@ -47,7 +49,7 @@ const CareerPage2 = () => {
 
       <div className='mainDiv_career'>
         <Container>
-          <div className='career_tit'>
+          <div className='career_tit noselect'>
             <h2>{t("careerGovExams.heading.1")}</h2>
           </div>
           <Row>
@@ -64,23 +66,29 @@ const CareerPage2 = () => {
             <Col md={8} xs={12}>
               {governmentExams?.govt_list?.length > 0 ? (
                 governmentExams?.govt_list?.map((c) => (
-                  <div className='career_box' style={{ height: "auto" }}>
+                  c?.name && <div
+                    className='career_box noselect'
+                    style={{ height: "auto" }}
+                  >
                     <Row>
                       <Col md={7} xs={12}>
                         <div className='top_col_content'>
                           <h3>{c?.name || t("common.n/a")}</h3>
                           <p style={{ textTransform: "capitalize" }}>
-                            {c?.city || t("common.n/a")}, {c?.state || t("common.n/a")} •{" "}
+                            {c?.city || t("common.n/a")},{" "}
+                            {c?.state || t("common.n/a")} •{" "}
                             <span style={{ textTransform: "capitalize" }}>
                               {c?.exam_type || t("common.n/a")}
                             </span>
                           </p>
                           <ul>
                             <li>
-                              <span>{t("careerGovExams.other.1")}</span> : ₹ {transformPrice(c?.fees)}{" "}
+                              <span>{t("careerGovExams.other.1")}</span> : ₹{" "}
+                              {transformPrice(c?.fees)}{" "}
                             </li>
                             <li>
-                              <span>{t("careerGovExams.other.2")}</span> : {c?.exam}
+                              <span>{t("careerGovExams.other.2")}</span> :{" "}
+                              {c?.exam}
                             </li>
                           </ul>
                           {c?.is_collapse && (

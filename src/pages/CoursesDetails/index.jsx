@@ -17,11 +17,6 @@ import Language1 from "../../assets/icons/Language1.png";
 
 import { Header, Footer, SEO, Carousel } from "../../components";
 
-// import Device from "../../assets/images/CoursesDetails/Device.png";
-// import clock from "../../assets/images/CoursesDetails/clock.png";
-// import certificate from "../../assets/images/CoursesDetails/certificate.png";
-// import Support from "../../assets/images/CoursesDetails/Support.png";
-// import forum from "../../assets/images/CoursesDetails/forum.png";
 
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
@@ -31,23 +26,25 @@ const CourseDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { course } = useSelector((state) => state.coursesReducer);
+  const {lan} = useSelector(state => state.languageReducer);
+
   const { t } = useTranslation();
   useEffect(() => {
     dispatch(singleCourseDetails(id));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [dispatch, id]);
+  }, [dispatch, id,lan]);
 
   useEffect(() => {
     if (course?.category_id) {
       dispatch(getSimilarCourses(course?.category_id));
     }
-  }, [dispatch, course]);
+  }, [dispatch, course,lan]);
 
   return (
     <div>
       <SEO title='Sheकुंज - Course Detail' />
       <Header loginPage={true} page='courses' />
-      <section className='CouDtl_ban'>
+      <section className='CouDtl_ban noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-7'>
@@ -71,7 +68,7 @@ const CourseDetails = () => {
         </div>
       </section>
 
-      <section className='Coutl_sec1 mb-5'>
+      <section className='Coutl_sec1 mb-5 noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-7'>
@@ -80,7 +77,6 @@ const CourseDetails = () => {
                 <p>{course?.description}</p>
               </div>
               <div className='mt-2 mb-2'>
-                {/* <SocialShare /> */}
               </div>
               <div className='sec1_con2 con_setSec1'>
                 <h2>{t("coursesPage.coursesDetailsPage.heading.3")}</h2>
@@ -144,8 +140,7 @@ const CourseDetails = () => {
                           )}
                         </h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat.
+                        We offer 100% online courses which you can access from anywhere at your own comfort!
                         </p>
                       </div>
                     </div>
@@ -160,8 +155,7 @@ const CourseDetails = () => {
                           )}
                         </h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat eget.
+                        Get the access to courses for lifetime and learn from anywhere and anytime.
                         </p>
                       </div>
                     </div>
@@ -176,8 +170,7 @@ const CourseDetails = () => {
                           )}
                         </h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper feugiat eget.
+                        Earn industry recognized certificate after the completion of course.
                         </p>
                       </div>
                     </div>
@@ -195,8 +188,7 @@ const CourseDetails = () => {
                           )}
                         </h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper.
+                        Join SheKunj, a community forum that believes women education and empowerment is in the mainstream.
                         </p>
                       </div>
                     </div>
@@ -212,8 +204,7 @@ const CourseDetails = () => {
                           )}
                         </h6>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Vel ipsum netus semper.
+                        Learn and keep a practical approach towards your courses by flexible timings and deadlines.
                         </p>
                       </div>
                     </div>
@@ -233,6 +224,7 @@ const CourseDetails = () => {
                             "coursesPage.coursesDetailsPage.heading.features.6.data",
                           )}
                         </p>
+                        
                       </div>
                     </div>
                   </Col>

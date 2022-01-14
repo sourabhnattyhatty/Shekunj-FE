@@ -30,6 +30,9 @@ input:focus {
     max-width: 1100px;
   }
 }
+:focus-visible {
+  outline: none;
+}
 
 img.vert-move {
   -webkit-animation: mover 1s infinite alternate;

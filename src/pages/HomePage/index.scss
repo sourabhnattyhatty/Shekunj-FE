@@ -39,7 +39,19 @@ body {
   background-image: url("../../assets/images/banner/4.png");
 }
 #myCarousel .carousel-item h4 {
-  font-weight: bold;
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 42px;
+  line-height: 120%;
+  max-width: 510px;
+  width: 100%;
+}
+#myCarousel .carousel-item h5 {
+  font-family: "SegoeUI_medium";
+  text-transform: capitalize;
+  font-style: normal;
+  font-weight: 600;
   font-size: 42px;
   line-height: 120%;
   max-width: 510px;
@@ -47,12 +59,10 @@ body {
 }
 #myCarousel .carousel-item h4 span {
   font-family: SegoeUI_medium;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 48px;
-  line-height: 72px;
-  text-transform: uppercase;
-  color: #000000;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  padding-right: 18%;
   display: block;
 }
 #myCarousel .carousel-item p {
@@ -205,6 +215,7 @@ body {
 }
 .resume h4 {
   font-family: SegoeUI_medium;
+  text-transform: capitalize;
   font-weight: 500;
   font-size: 36px;
   line-height: 50px;
@@ -234,11 +245,11 @@ body {
   background-size: 100% 100%;
   padding: 65px 79px;
   height: 348px;
-  text-align: center;
+  // text-align: center;
 }
 .job-opprtunity-bg h3 {
-  font-family: "SegoeUI_bold";
-  font-weight: bold;
+  font-family: "SegoeUI_medium";
+  font-weight: 600;
   font-style: normal;
   font-size: 40px;
   line-height: 60px;
@@ -330,7 +341,7 @@ body {
 .certificate {
   background: #f8f8f8;
   position: relative;
-  background-image: url("../../assets/images/certificate1.jpg");
+  background-image: url("../../assets/images/certificate0.jpg");
   background-repeat: no-repeat;
   background-size: 100% 103%;
   height: 550px;
@@ -362,11 +373,18 @@ body {
 .highlight_student h3 {
   font-family: "SegoeUI_bold";
   font-weight: bold;
-  font-size: 40px;
+  font-size: 35px;
   line-height: 50px;
   display: flex;
   align-items: center;
   color: #fff;
+  text-transform: capitalize;
+}
+.highlig {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
 }
 .highlight_student p {
   font-family: "SegoeUI_medium";
@@ -444,7 +462,8 @@ body {
   font-size: 13px;
   line-height: 19px;
   text-align: center;
-  color: #bdbdbd;
+  text-transform: capitalize;
+  // color: #bdbdbd;
 }
 .tes_box h2 {
   font-family: SegoeUI_bold;
@@ -480,6 +499,7 @@ body {
   line-height: 19px;
   color: #404451;
   padding: 19px 15px;
+  text-transform: capitalize;
 }
 .tes_box3 {
   width: 145px;
@@ -543,6 +563,7 @@ body {
   align-items: center;
   text-align: center;
   color: #444851;
+  text-transform: capitalize;
 }
 ul.star li {
   display: inline-block;
@@ -574,7 +595,7 @@ ul.star {
   color: #ffffff;
 }
 .container.Our_text p {
-  font-family: SegoeUI_bold;
+  font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -588,13 +609,13 @@ ul.star {
   margin: 30px 0px;
 }
 .container.Our_text h2 {
-  font-family: SegoeUI_bold;
+  font-family: "SegoeUI_medium";
   font-style: normal;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 40px;
   line-height: 52px;
   text-transform: capitalize;
-  color: #323232;
+  color: rgb(50 50 50);
   margin-bottom: 30px;
 }
 .career_community {
@@ -884,7 +905,7 @@ ul.star {
     height: auto;
     padding: 30px 15px 0px;
     background-image: none;
-    background-color: #463434;
+    background-image: url("../../assets/images/Mob_joinbg.png");
   }
   .job-opprtunity-bg h3 {
     font-size: 24px;
@@ -914,7 +935,11 @@ ul.star {
   }
   .resume h4 {
     margin-top: 50px;
+    font-size: 20px !important;
   }
+  .job-opprtunity-bg {
+    padding: 20px 15px 0 15px !important;
+}
   .resume {
     height: 580px;
     padding: 0;
@@ -978,7 +1003,10 @@ ul.star {
   #myCarousel .carousel-item .banner_btn {
     margin: 0 auto;
     display: block;
-    width: 190px;
+    width: 230px;
+  }
+  #myCarousel .carousel-item h5 {
+    font-size: 28px;
   }
   .job-opprtunity-bg p {
     font-size: 14px;
@@ -1055,7 +1083,28 @@ ul.star {
     bottom: -20px;
   }
 }
-
+.goverment-schemes{
+  text-decoration: none;
+  color: white;
+  // font-family: SegoeUI_bold;
+  // font-style: normal;
+  // font-weight: bold;
+  // font-size: 14px;
+  // line-height: 19px;
+  // color: #ffffff;
+  // background: #ec498a;
+  // border-radius: 2px;
+  // padding: 20px 42px;
+  // border: 1px solid #ffffff;
+  // text-align: center;
+  // display: block;
+  // margin: 50px auto;
+  // transition-duration: 1s;
+  // transition-timing-function: linear;
+}
+.goverment-schemes:hover{
+  color: #000;
+}
 @media only screen and (max-width: 1280px) {
   .box {
     height: auto;
@@ -1098,7 +1147,6 @@ ul.star {
   // #myCarousel .carousel-item {
   //   height: 60vh;
   // }
-  
 }
 // @media screen and (min-device-width: 1400px) and (max-device-width:1440px) {
 //   #myCarousel .carousel-item{
@@ -1115,9 +1163,7 @@ ul.star {
   position: relative;
 }
 
-
-
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px) { 
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   #myCarousel .carousel-item {
     height: 30vh;
   }
@@ -1130,47 +1176,51 @@ ul.star {
   .resume .resumeimg {
     right: 0;
     width: 430px;
-}
-#myCarousel .carousel-item h4 {
-  font-size: 21px;
-}
-.certificate {
-  background-image: none;
-}
-.cer_img {
-  display: block;
-}
-.cer_img img {
-  max-width: 100%;
-}
-.mob_comunity_img {
-  display: block;
-}
-.community-img.mt-5 {
-  display: none;
-}
-.job-opprtunity-bg .jobimg {
-  top: -65px;
-}
-.tes_box {
-  height: auto !important;
-}
-.tes_box2 {
-  width: 100%;
-}
-}
-
-
-@media screen and (max-width: 768px) {
-  .job-opprtunity-bg .jobimg {
+  }
+  #myCarousel .carousel-item h4 {
+    font-size: 21px;
+  }
+  .certificate {
+    background-image: none;
+  }
+  .cer_img {
+    display: block;
+  }
+  .cer_img img {
+    max-width: 100%;
+  }
+  .mob_comunity_img {
+    display: block;
+  }
+  .community-img.mt-5 {
     display: none;
   }
+  .job-opprtunity-bg .jobimg {
+    top: -65px;
+  }
+  .tes_box {
+    height: auto !important;
+  }
+  .tes_box2 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  // .job-opprtunity-bg .jobimg {
+  //   display: none;
+  // }
   .job-opprtunity-bg {
     padding: 35px 79px;
   }
   .highlight_student h3 {
     font-size: 28px;
     line-height: 40px;
+  }
 }
 
+@media screen and (min-device-width: 1420px) and (max-device-width: 1440px) {
+  #myCarousel .carousel-item {
+    height: 85vh !important;
+  }
 }
