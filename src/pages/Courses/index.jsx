@@ -188,7 +188,7 @@ const Courses = () => {
             <div className="course_para">
               <h1>{t("coursesPage.heading.1")}</h1>
               <p className='courses_para mb-3'>{t("coursesPage.heading.2")}</p>
-              <Link className="shekunj_a" to="/">{t("coursesPage.heading.3")}</Link>
+              <Link className="shekunj_a" to="/login">{t("coursesPage.heading.3")}</Link>
               </div>
             </Col>
           </Row>
