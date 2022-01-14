@@ -74,15 +74,13 @@ function CourseTest() {
   const detect = useDeviceDetect();
   // eslint-disable-next-line no-unused-vars
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
-    (state) => state.guidanceReducer,
+    (state) => state?.guidanceReducer,
   );
-
   const { lan } = useSelector((state) => state.languageReducer);
 
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
 
   const { t } = useTranslation();
-
   useEffect(() => {
     if (detect.isMobile) {
       toast.error(t("error.mobile.1"));
@@ -249,14 +247,14 @@ function CourseTest() {
   };
 
   const handleNextQuestion = () => {
-    setQuestionNumber((prev) => prev + 1);
     const data = {
       answer,
       career_test: testData?.id,
     };
     const newProgress = (countData?.user_career_test_count + 1) * progress;
-
+    
     if (answer) {
+      setQuestionNumber((prev) => prev + 1);
       dispatch(
         postAnswer(data, history, selectedCourseCategoryValue?.id, false),
       );
