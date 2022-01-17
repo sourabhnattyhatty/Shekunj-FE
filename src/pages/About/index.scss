@@ -18,7 +18,10 @@ section.about_ban {
 }
 .about_Con h2::first-letter {
   color: rgb(236 73 138);
-  font-size: 65px;
+  // font-size: 65px;
+}
+.about_Con h2 span {
+  color: rgb(236 73 138);
 }
 .mob_abo_banner img {
   max-width: 100%;

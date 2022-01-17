@@ -189,7 +189,6 @@ export const postAnswer =
       if (res.status_code === 200 && last) {
         await httpServices.post(apiConstants.CAREER.USER_CAREER_END_TEST + id);
         history.push(routingConstants.CAREER_TEST_RESULT + id);
-        debugger
         localStorage.removeItem("isCarrerTestStarted");
         localStorage.removeItem("selectedCourseCategoryValue");
       }

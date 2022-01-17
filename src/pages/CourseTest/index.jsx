@@ -82,15 +82,39 @@ function CourseTest() {
       toast.error(t("error.mobile.1"));
       history.push(routingConstants.HOME_PAGE);
     }
-    if (localStorage.getItem("isTestStarted")) {
-      alert(t("alert"));
-      localStorage.removeItem("isTestStarted");
-      dispatch(endTest(id, history));
-    }
+    // if (localStorage.getItem("isTestStarted")) {
+    //   alert(t("alert"));
+    //   localStorage.removeItem("isTestStarted");
+    //   dispatch(endTest(id, history));
+    // }
     return () => {
-      dispatch(endTest(id));
+      if (id) {
+        dispatch(endTest(id));
+      }
     };
   }, [history, detect.isMobile, id, dispatch, t, lan]);
+
+  useEffect(() => {
+    window.addEventListener("keydown", (e) => {
+      if (localStorage.getItem("isTestStarted")) {
+        if (
+          (e.which || e.keyCode) === 116 ||
+          ((e.which || e.keyCode) === 82 && e.ctrlKey)
+        ) {
+          const a = window.confirm("Are you sure you want to reload?");
+          if (a) {
+            e.preventDefault();
+            localStorage.removeItem("isTestStarted");
+            if (id) {
+              dispatch(endTest(id, history));
+            }
+          } else {
+            e.preventDefault();
+          }
+        }
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (question) {
@@ -295,7 +319,7 @@ function CourseTest() {
                 <Skeleton></Skeleton>
               ) : (
                 <p>
-                  {questionCount?.user_course_test_count + 1}.{" "}
+                  {questionNumber}.{" "}
                   {question?.question}
                 </p>
               )}

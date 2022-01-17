@@ -72,7 +72,9 @@ const ProgressChart = ({ userProgress }) => {
     <div className='course_completedright'>
       <Row>
         <Col md={7} xs={6}>
-          <Doughnut data={options} plugins={plugins} />
+          {userProgress?.complate_course && (
+            <Doughnut data={options} plugins={plugins} />
+          )}
         </Col>
 
         <Col md={5} xs={6}>

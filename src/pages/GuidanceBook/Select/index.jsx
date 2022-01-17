@@ -55,10 +55,10 @@ function GuidanceSelect(props) {
                   {props.icon && props.title === "Course Looking For" && (
                     <img src={Course} alt='...' />
                   )}
-                  {props.icon && props.heading === "highestEducation" && (
+                  {props.icon && props.title === "Highest Education" && (
                     <img src={Education} alt='...' />
                   )}
-                  {props.icon && props.heading === "stream" && (
+                  {props.icon && props.title === "Stream" && (
                     <img src={Stream} alt='...' />
                   )}
                   <em>{props?.title}</em>

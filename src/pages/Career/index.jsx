@@ -9,8 +9,8 @@ import {
   reSetFilterValue,
   toggleCollapseValue,
 } from "../../store/career";
-import { noImage } from "../../utils/ApiServices";
 import { paragraph } from "../../utils/utils";
+import TopCollage from "../../assets/images/Career/clg.jpg"
 
 import "../HomePage/index.scss";
 import "./index.scss";
@@ -28,15 +28,15 @@ const CareerPage = () => {
     dispatch(getTopCollages());
   }, [dispatch, lan]);
 
-  const transformPrice = (price) => {
-    let nf = new Intl.NumberFormat("en-US");
-    return nf.format(
-      Number.isNaN(parseInt(price, 10)) ? 0 : parseInt(price, 10) || 0,
-    );
-  };
+  // const transformPrice = (price) => {
+  //   let nf = new Intl.NumberFormat("en-US");
+  //   return nf.format(
+  //     Number.isNaN(parseInt(price, 10)) ? 0 : parseInt(price, 10) || 0,
+  //   );
+  // };
 
   const transformImg = (image) => {
-    return image ? image : noImage;
+    return image ? image : TopCollage;
   };
 
   const STREAM = {
@@ -99,7 +99,7 @@ const CareerPage = () => {
                               <ul>
                                 <li>
                                   <span>{t("careerTopColleges.other.4")}</span>{" "}
-                                  : ₹ {/* {transformPrice(c?.fees)}{" "} */}
+                                  : {/* {transformPrice(c?.fees)}{" "} */}
                                   {c && c.contact_no
                                     ? c?.contact_no
                                     : t("common.n/a")}

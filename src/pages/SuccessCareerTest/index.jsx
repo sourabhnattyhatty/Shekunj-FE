@@ -74,33 +74,58 @@ function CourseTest() {
   const detect = useDeviceDetect();
   // eslint-disable-next-line no-unused-vars
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
-    (state) => state.guidanceReducer,
+    (state) => state?.guidanceReducer,
   );
-
   const { lan } = useSelector((state) => state.languageReducer);
 
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
 
   const { t } = useTranslation();
-
   useEffect(() => {
     if (detect.isMobile) {
       toast.error(t("error.mobile.1"));
       history.push(routingConstants.HOME_PAGE);
     }
-    if (localStorage.getItem("isCarrerTestStarted")) {
-      alert(t("alert"));
-      const nv = localStorage.getItem("selectedCourseCategoryValue");
-      localStorage.removeItem("isCarrerTestStarted");
-      dispatch(endTest(nv, history));
-    }
+    // if (localStorage.getItem("isCarrerTestStarted")) {
+    //   alert(t("alert"));
+    //   const nv = localStorage.getItem("selectedCourseCategoryValue");
+    //   localStorage.removeItem("isCarrerTestStarted");
+    //   dispatch(endTest(nv, history));
+    // }
   }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
 
   useEffect(() => {
     return () => {
       const nv = localStorage.getItem("selectedCourseCategoryValue");
-      dispatch(endTest(nv));
+      if (nv) {
+        dispatch(endTest(nv, history));
+      }
     };
+  }, []);
+
+
+  useEffect(() => {
+    window.addEventListener("keydown", (e) => {
+      if (localStorage.getItem("isCarrerTestStarted")) {
+        if (
+          (e.which || e.keyCode) === 116 ||
+          ((e.which || e.keyCode) === 82 && e.ctrlKey)
+        ) {
+          const a = window.confirm("Are you sure you want to reload?");
+          if (a) {
+            e.preventDefault();
+            const nv = localStorage.getItem("selectedCourseCategoryValue");
+            localStorage.removeItem("isCarrerTestStarted");
+            localStorage.removeItem("selectedCourseCategoryValue");
+            if (nv) {
+              dispatch(endTest(nv, history));
+            }
+          } else {
+            e.preventDefault();
+          }
+        }
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -222,14 +247,14 @@ function CourseTest() {
   };
 
   const handleNextQuestion = () => {
-    setQuestionNumber((prev) => prev + 1);
     const data = {
       answer,
       career_test: testData?.id,
     };
     const newProgress = (countData?.user_career_test_count + 1) * progress;
-
+    
     if (answer) {
+      setQuestionNumber((prev) => prev + 1);
       dispatch(
         postAnswer(data, history, selectedCourseCategoryValue?.id, false),
       );
@@ -258,7 +283,6 @@ function CourseTest() {
         position: "bottom-center",
       });
     }
-
   };
 
   const renderTimmer = (value) => {
@@ -344,7 +368,10 @@ function CourseTest() {
                     }}
                     onChange={(_, newValue) => {
                       setSelectedCourseCategoryValue(newValue);
-                      localStorage.setItem("selectedCourseCategoryValue",newValue?.id);
+                      localStorage.setItem(
+                        "selectedCourseCategoryValue",
+                        newValue?.id,
+                      );
                     }}
                     onInputChange={(_, newInputValue) =>
                       setSelectedCourseCategory(newInputValue)
@@ -442,8 +469,7 @@ function CourseTest() {
                     <Skeleton></Skeleton>
                   ) : (
                     <p>
-                      {questionNumber}.{" "}
-                      {testData?.question}
+                      {questionNumber}. {testData?.question}
                     </p>
                   )}
                   {testData && (

@@ -60,7 +60,9 @@ function CourseTest() {
                   )}
                 </h2>
                 <p>
-                You are an inspiration to others! Exams are always tough, but the Champions like you make it worth while by your excellent performance.
+                  {result?.is_pass
+                    ? t("coursesPage.coursesResultPage.heading.2")
+                    : t("coursesPage.coursesResultPage.heading.3")}
                 </p>
               </div>
 

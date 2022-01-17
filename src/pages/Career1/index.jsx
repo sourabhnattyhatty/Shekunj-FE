@@ -10,9 +10,9 @@ import {
 import "../HomePage/index.scss";
 import "./index.scss";
 
-import { noImage } from "../../utils/ApiServices";
 import { useTranslation } from "react-i18next";
 import { paragraph } from "../../utils/utils";
+import TopSchool from "../../assets/images/Career/scl.jpg";
 
 const CareerPage1 = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const CareerPage1 = () => {
   }, [dispatch, lan]);
 
   const transformImg = (image) => {
-    return image ? image : noImage;
+    return image ? image : TopSchool;
   };
 
   const handleCollapse = (id, checked) => {
