@@ -87,7 +87,7 @@ export const singleCourseDetails = (id) => async (dispatch) => {
 };
 
 export const startCourse =
-  (id, page = 1, progress = 0, onLoad = false) =>
+  (id, page = 1 , progress = 0, onLoad = false) =>
   async (dispatch, getState) => {
     try {
       dispatch({ type: coursesTypes.COURSE_REQUEST });

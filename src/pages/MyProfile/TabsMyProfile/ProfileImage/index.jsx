@@ -15,11 +15,11 @@ import { convertRelativeUriToFile } from "../../../../utils/utils";
 import profile_img from "../../../../assets/images/MyProfile/profile_img.png";
 import x from "../../../../assets/images/MyProfile/x.png";
 
-
 const ProfileImage = ({ isEditable }) => {
   const [fileName, setFileName] = useState("");
   const [image, setImage] = useState(null);
   const [cropper, setCropper] = useState();
+  const cropperRef = useRef(null);
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -48,34 +48,38 @@ const ProfileImage = ({ isEditable }) => {
     setFileName(files[0].name);
   };
 
+  const onCrop = () => {
+    const imageElement = cropperRef?.current;
+    const cropper = imageElement?.cropper;
+    setCropper(cropper);
+  };
+
+
   const getCropData = () => {
-    convertRelativeUriToFile(
-      cropper.getCroppedCanvas().toDataURL(),
-      fileName,
-      null,
-      async (file) => {
-        if (file) {
-          if (!checkIsValidImage(file)) {
-            inputRef.current.value = "";
-            setOpen(false);
-          } else {
-            dispatch(
-              updateProfile(user?.id, {
-                profile_pic: file,
-                name: user.name,
-                last_name: user.last_name,
-              }),
-            );
-            setOpen(false);
-            setImage(null);
-            setFileName("");
-          }
-        } else {
-          toast.error(t("error.other.3"));
+    debugger;
+    convertRelativeUriToFile(cropper?.getCroppedCanvas()?.toDataURL(), fileName, null, async (file) => {
+      if (file) {
+        if (!checkIsValidImage(file)) {
+          inputRef.current.value = "";
           setOpen(false);
+        } else {
+          debugger
+          dispatch(
+            updateProfile(user?.id, {
+              profile_pic: file,
+              name: user.name,
+              last_name: user.last_name,
+            }),
+          );
+          setOpen(false);
+          setImage(null);
+          setFileName("");
         }
-      },
-    );
+      } else {
+        toast.error(t("error.other.3"));
+        setOpen(false);
+      }
+    });
   };
 
   const style = {
@@ -102,6 +106,7 @@ const ProfileImage = ({ isEditable }) => {
           src={user?.profile_pic || noImage}
           sx={{ width: 200, height: 200 }}
         />
+        {/* <img src={user?.profile_pic || noImage} alt="..."/> */}
         <input
           type='file'
           id='file'
@@ -131,6 +136,7 @@ const ProfileImage = ({ isEditable }) => {
           >
             <img src={x} alt='...' />
           </button>
+          {/* {cropper?.getCroppedCanvas()?.toDataURL() &&   <img height={100} width={100} src={cropper?.getCroppedCanvas()?.toDataURL()} alt='...' />} */}
           <div className='pro_pop_con'>
             {image ? (
               <Cropper
@@ -140,15 +146,15 @@ const ProfileImage = ({ isEditable }) => {
                 preview='.img-preview'
                 src={image}
                 viewMode={1}
-                minCropBoxHeight={5}
-                minCropBoxWidth={5}
+                minCropBoxHeight={10}
+                minCropBoxWidth={10}
                 background={false}
                 responsive={true}
                 autoCropArea={1}
                 checkOrientation={false}
-                onInitialized={(instance) => {
-                  setCropper(instance);
-                }}
+                onInitialized={(instance) => setCropper(instance)}
+                crop={onCrop}
+                ref={cropperRef}
                 guides={true}
               />
             ) : (

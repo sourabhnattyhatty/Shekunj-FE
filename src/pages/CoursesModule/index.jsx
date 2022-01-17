@@ -94,7 +94,7 @@ const CourseModule = () => {
   );
   console.log(
     "🚀 ~ file: index.jsx ~ line 93 ~ CourseModule ~ course",
-    course,
+    course.file_link,
     courseModulesList,
   );
   const { lan } = useSelector((state) => state.languageReducer);
@@ -175,6 +175,14 @@ const CourseModule = () => {
 
   const handleactive = (key) => {
     setShowactive(key);
+  };
+
+  const embededLink = (link = null) => {
+    if (link) {
+      const a = link?.split("=");
+      return a[1];
+    }
+    return "";
   };
 
   return (
@@ -321,12 +329,27 @@ const CourseModule = () => {
                       ))}
                     </>
                   ) : (
-                    <div
-                      className='des_dynamic_con'
-                      dangerouslySetInnerHTML={{
-                        __html: course?.description,
-                      }}
-                    />
+                    <>
+                      <div
+                        className='des_dynamic_con'
+                        dangerouslySetInnerHTML={{
+                          __html: course?.description,
+                        }}
+                      />
+                      {course?.file_link && (
+                        <iframe
+                          width='560'
+                          height='315'
+                          src={`https://www.youtube.com/embed/${embededLink(
+                            course?.file_link,
+                          )}`}
+                          title='YouTube video player'
+                          frameborder='0'
+                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                          allowfullscreen
+                        ></iframe>
+                      )}
+                    </>
                   )}
 
                   <div className='prev_next_btn'>

@@ -45,17 +45,11 @@ function CourseTest() {
                 <h2>{t("coursesPage.coursesResultPage.heading.1")}</h2>
                 <img src={win} alt='' />
                 <h2>
-                  {result?.is_result ? (
-                    <>
-                      {t("coursesPage.coursesResultPage.other.1")}{" "}
-                      <b>{result?.name}!</b>
-                    </>
-                  ) : (
-                    <>
-                      {t("coursesPage.coursesResultPage.other.2")}{" "}
-                      <b>{result?.name}!</b>
-                    </>
-                  )}
+                  <b>
+                    {result?.is_result &&
+                      t("coursesPage.coursesResultPage.other.1")}{" "}
+                    {result?.name}!
+                  </b>
                 </h2>
                 <p>
                   {result?.is_result
