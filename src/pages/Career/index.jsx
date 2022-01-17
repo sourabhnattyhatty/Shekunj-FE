@@ -99,7 +99,7 @@ const CareerPage = () => {
                               <ul>
                                 <li>
                                   <span>{t("careerTopColleges.other.4")}</span>{" "}
-                                  : ₹ {/* {transformPrice(c?.fees)}{" "} */}
+                                  : {/* {transformPrice(c?.fees)}{" "} */}
                                   {c && c.contact_no
                                     ? c?.contact_no
                                     : t("common.n/a")}

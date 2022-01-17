@@ -110,6 +110,10 @@ function HomePage() {
                       {" "}
                       {t("homePage.mainSlider.subHeading.1")}
                     </p>
+                    <h2 className='mb-4'>
+                      {" "}
+                      {t("homePage.mainSlider.subHeading.5")}
+                    </h2>
                     <Link to='/courses' className='banner_btn'>
                       {t("homePage.mainSlider.button.1")}
                     </Link>

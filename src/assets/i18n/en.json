@@ -93,18 +93,18 @@
   },
   "login": {
     "authContent": {
-      "heading": "Register for Easy & Real Learning to make you Job Ready",
+      "heading": "Register Now to Unleash the Power of Knowledge!",
       "content1": {
-        "heading": "Practical Focused Approach",
-        "cont": "We believe Why is more important than How. You may know how to use a tool but you will only learn why it will work for the end-users when you engage in practicals under the guidance of mentors who have done 100s of projects for their clients."
+        "heading": "Get Enlightened",
+        "cont": "Top it off with the plethora of best curated courses that round out your skills and enrich you day to day."
       },
       "content2": {
-        "heading": "Get real work experience",
-        "cont": "Our Master's Program does not complete without an Internship because we want you to learn how Industry works."
+        "heading": "E-Certificates upon Course Completion",
+        "cont": "Get industry recognized certifications after every course completion and achieve your career goals."
       },
       "content3": {
-        "heading": "In Hinglish",
-        "cont": "All our courses are in spoken language i.e Hindi + English. These tools or subjects can be a little tricky or complicated but our lectures are very simple to understand."
+        "heading": "Easy Translation",
+        "cont": "Don't be afraid if you're not familiar with English. SheKunj is here in Hindi as well to help you understand the things better!"
       }
     },
     "heading": "Login on Shekunj",
@@ -245,22 +245,23 @@
       "heading": {
         "1": "A Promise To Never",
         "4": "Stop Learning.",
-        "2": "Looking for a Best College",
-        "5": "to sky rocket your career?",
+        "2": "Get insights about colleges",
+        "5": "on your fingertips",
         "3": {
           "3.1": "Discover",
           "3.2": "Your Perfect Career"
         },
         "6": {
-          "1": "Your preference, your grades. SheKunj knows ",
-          "2": "how to make it simple for you."
+          "1": "Give High-Quality Education ",
+          "2": "to Your Children"
         }
       },
       "subHeading": {
-        "1": "We believe that there is no right age, time or place to learn. It really does not matter if you are 16 or 60, learning is an ongoing process so let’s keep it that way! Take classes on the go with the SheKunj.",
-        "2": "We ease your run to search for the Best Colleges across India by our hands-on approach to every necessary information about the institutes to help you learn, explore and achieve your goals.",
+        "1": "We believe that there is no right age, time or place to learn. It really does not matter if you are 16 or 60, learning is an ongoing process, so let’s keep it that way!",
+        "5": "Get onboard with SheKunj and start learning now.",
+        "2": "Choosing the right college for admission sometimes makes our mind spin, doesn't it? SheKunj provides you the detailed information about the leading Colleges.",
         "3": "Take the world’s most-advanced career advice from SheKunj's finest career counsellors online and find your best-fit career.",
-        "4": "With the experience and expertise, SheKunj can tailor-make list of ideal institutions for the students who are looking for the best school."
+        "4": "Send your children to the best schools in India. Get a bird-eye view of all the top schools based on a well-balanced, well-resourced, innovative teaching methods and excellent educational experiences."
       },
       "button": {
         "1": "Start Learning",
@@ -286,7 +287,7 @@
     },
     "carousel3": {
       "heading": {
-        "1": "Helpful",
+        "1": "Supportive",
         "2": "Government Schemes"
       }
     },
@@ -295,8 +296,8 @@
       "button": "Create Your CV Now"
     },
     "jobopportunity": {
-      "heading": "Grab job Opportunities!",
-      "subHeading": "Enroll. Learn. Explore. Grow. Work. SheKunj offers Indian women a whole new world waiting to be explored! We aim at bringing education to the women masses. The Best Certified Online Courses for a Sustainable Career are aimed at all professionals, entrepreneurs and graduates who want to excel in their profession.",
+      "heading": "Seeking for a Chance and a Change?",
+      "subHeading": "Go no further. We here at Shekunj offer the best jobs coming from the best companies of India. Search jobs and break this monotony.",
       "button": "View All Job Opportunities"
     },
     "community": {
@@ -321,7 +322,10 @@
   },
 
   "aboutPage": {
-    "heading": "SheKunj is open knowledge for the forgotten billion",
+    "heading": {
+      "1" : "SheKunj",
+      "2" : "is open knowledge for the forgotten billion"
+    },
     "content1": "We aim at empowering all the women out there- be it 16 or 60- through education. SheKunj has a plethora of free courses available specially crafted for women of all ages. Every woman has the right to a safe, formal, quality education and access to lifelong learning. SheKunj wants to give a choice to all the females out there who are forced to leave school while others never have the opportunity to go in the first place.",
     "content2": "SheKunj is free from any commercial interest. Its mission is to bring free learning to women and girls with the purpose of quickly closing the gender knowledge gap in the face of lagging literacy initiatives, and thus to become a global driving force for women’s empowerment and gender equality. ",
     "content3": "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality.",
@@ -498,12 +502,12 @@
       "1": "Learn without limits",
       "4": "at your own pace",
       "2.1": "Any doubts?",
-      "2.2": "Ask for help!",
+      "2.2": "we're here to help.",
       "3": "Start for free!"
     },
     "heading": {
       "1": "Online Courses",
-      "2": "SheKunj’s courses are designed for real life and real women. We want every woman should move to their creative journey forward without putting life on hold. SheKunj's courses are curated to provide practical and theoretical knowledge. We have crafted these courses to help you find inspiration that fits your routine.",
+      "2": "SheKunj’s courses are designed to kick-start your career and launch you to new heights of success. We want every woman should move to their creative journey forward without putting life on hold. SheKunj's courses are curated to provide practical and theoretical knowledge. We have crafted these courses to help you find inspiration that fits your routine.",
       "3": "So look no further and enroll on SheKunj now!"
     },
     "accordion": {

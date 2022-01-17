@@ -42,9 +42,10 @@ body {
   font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: normal;
-  font-size: 42px;
+  text-transform: capitalize;
+  font-size: 40px;
   line-height: 120%;
-  max-width: 510px;
+  // max-width: 510px;
   width: 100%;
 }
 #myCarousel .carousel-item h5 {
@@ -71,6 +72,11 @@ body {
   font-size: 18px;
   line-height: 27px;
   padding-right: 18%;
+}
+.carousel-item.carousel_item1 h2 {
+  font-size: 22px;
+  font-family: 'SegoeUI_bold';
+  text-transform: capitalize;
 }
 #myCarousel .carousel-item .banner_btn {
   font-family: SegoeUI_medium;
@@ -251,15 +257,15 @@ body {
   font-family: "SegoeUI_medium";
   font-weight: 600;
   font-style: normal;
-  font-size: 40px;
+  font-size: 35px;
   line-height: 60px;
-  text-transform: capitalize;
+  // text-transform: capitalize;
   color: #ffffff;
 }
 .job-opprtunity-bg p {
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 27px;
   color: #ffffff;
 }
 .job-opprtunity-bg .btn.btn-job {

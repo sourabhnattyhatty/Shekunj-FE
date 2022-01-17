@@ -120,9 +120,12 @@ button.CropBtn {
   color: rgb(236 73 138);
 }
 .myProfile_img img {
-  border-radius: 50%;
+  // border-radius: 50%;
   box-shadow: 1px 2px 15px #ccc;
   border: 3px solid #e6e6e6;
+}
+.myProfile_img .MuiAvatar-root.MuiAvatar-circular {
+  border-radius: 0;
 }
 .change_pass .form-control {
   background: #ffffff;

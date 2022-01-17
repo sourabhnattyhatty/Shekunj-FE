@@ -36,7 +36,9 @@ const AboutusPage = () => {
             </div>
             <div className='col-lg-6 col-md-7'>
               <div className='about_Con'>
-                <h2>{t("aboutPage.heading")}</h2>
+                <h2>
+                  <span>{t("aboutPage.heading.1")}</span> {t("aboutPage.heading.2")}
+                </h2>
                 <p>{t("aboutPage.content1")}</p>
               </div>
             </div>
@@ -117,7 +119,7 @@ const AboutusPage = () => {
                           <img src={star} alt='' />
                         </li>
                         <li>
-                        <img src={half_star} alt='' />
+                          <img src={half_star} alt='' />
                         </li>
                       </ul>
                       <h6>{t("aboutPage.salesNumber")}</h6>
@@ -159,7 +161,7 @@ const AboutusPage = () => {
                 <p className='mb-5'>
                   {t("homePage.highlightStudents.aboutDescription")}
                 </p>
-                <Link to="/success-stories">
+                <Link to='/success-stories'>
                   <a
                     data-aos='zoom-in'
                     href='#!'
