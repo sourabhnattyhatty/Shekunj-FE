@@ -19,12 +19,12 @@ function CourseTest() {
   const { guidanceResult: result } = useSelector(
     (state) => state.guidanceReducer,
   );
-  const {lan} = useSelector(state => state.languageReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
 
   React.useEffect(() => {
     dispatch(careerTestResult(id));
-  }, [dispatch, id,lan]);
+  }, [dispatch, id, lan]);
 
   return (
     <div>
@@ -58,9 +58,9 @@ function CourseTest() {
                   )}
                 </h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
-                  ornare ac commodo erat velit felis odio. In blandit fusce
-                  nulla odio. Iaculis lacus eget facilisis eu massa.
+                  {result?.is_result
+                    ? t("coursesPage.coursesResultPage.heading.2")
+                    : t("coursesPage.coursesResultPage.heading.3")}
                 </p>
               </div>
 
@@ -127,7 +127,9 @@ function CourseTest() {
                             <span>{t("common.time.2")}</span>
                           </p>
                           <br />
-                          <span>{t("coursesPage.coursesResultPage.other.5")}</span>
+                          <span>
+                            {t("coursesPage.coursesResultPage.other.5")}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -135,7 +137,9 @@ function CourseTest() {
                 </Row>
               </div>
               <Link to={routingConstants.SUCCESS_CAREER_TEST}>
-                <button className='get_certif'>{t("coursesPage.coursesResultPage.button.3")}</button>
+                <button className='get_certif'>
+                  {t("coursesPage.coursesResultPage.button.3")}
+                </button>
               </Link>
             </Col>
           </Row>

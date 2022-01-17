@@ -189,7 +189,6 @@ export const postAnswer =
       if (res.status_code === 200 && last) {
         await httpServices.post(apiConstants.CAREER.USER_CAREER_END_TEST + id);
         history.push(routingConstants.CAREER_TEST_RESULT + id);
-        debugger
         localStorage.removeItem("isCarrerTestStarted");
         localStorage.removeItem("selectedCourseCategoryValue");
       }
@@ -206,7 +205,7 @@ export const endTest = (id, history) => async (dispatch) => {
   localStorage.removeItem("selectedCourseCategoryValue");
   if (res.status_code === 200 && history) {
     localStorage.removeItem("selectedCourseCategoryValue");
-    history.push(routingConstants.CAREER_TEST_RESULT + id);
+    // history.push(routingConstants.CAREER_TEST_RESULT + id);
   }
 };
 

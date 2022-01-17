@@ -34,7 +34,7 @@ const AboutusPage = () => {
                 <img src={mob_banner} alt='' />
               </div>
             </div>
-            <div className='col-lg-5 col-md-7'>
+            <div className='col-lg-6 col-md-7'>
               <div className='about_Con'>
                 <h2>{t("aboutPage.heading")}</h2>
                 <p>{t("aboutPage.content1")}</p>

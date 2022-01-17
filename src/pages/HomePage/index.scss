@@ -49,6 +49,7 @@ body {
 }
 #myCarousel .carousel-item h5 {
   font-family: "SegoeUI_medium";
+  text-transform: capitalize;
   font-style: normal;
   font-weight: 600;
   font-size: 42px;
@@ -214,6 +215,7 @@ body {
 }
 .resume h4 {
   font-family: SegoeUI_medium;
+  text-transform: capitalize;
   font-weight: 500;
   font-size: 36px;
   line-height: 50px;
@@ -339,7 +341,7 @@ body {
 .certificate {
   background: #f8f8f8;
   position: relative;
-  background-image: url("../../assets/images/certificate0.png");
+  background-image: url("../../assets/images/certificate0.jpg");
   background-repeat: no-repeat;
   background-size: 100% 103%;
   height: 550px;
@@ -376,6 +378,13 @@ body {
   display: flex;
   align-items: center;
   color: #fff;
+  text-transform: capitalize;
+}
+.highlig {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
 }
 .highlight_student p {
   font-family: "SegoeUI_medium";
@@ -453,6 +462,7 @@ body {
   font-size: 13px;
   line-height: 19px;
   text-align: center;
+  text-transform: capitalize;
   // color: #bdbdbd;
 }
 .tes_box h2 {
@@ -489,6 +499,7 @@ body {
   line-height: 19px;
   color: #404451;
   padding: 19px 15px;
+  text-transform: capitalize;
 }
 .tes_box3 {
   width: 145px;
@@ -552,6 +563,7 @@ body {
   align-items: center;
   text-align: center;
   color: #444851;
+  text-transform: capitalize;
 }
 ul.star li {
   display: inline-block;
@@ -893,7 +905,7 @@ ul.star {
     height: auto;
     padding: 30px 15px 0px;
     background-image: none;
-    background-color: #463434;
+    background-image: url("../../assets/images/Mob_joinbg.png");
   }
   .job-opprtunity-bg h3 {
     font-size: 24px;
@@ -923,7 +935,11 @@ ul.star {
   }
   .resume h4 {
     margin-top: 50px;
+    font-size: 20px !important;
   }
+  .job-opprtunity-bg {
+    padding: 20px 15px 0 15px !important;
+}
   .resume {
     height: 580px;
     padding: 0;
@@ -987,7 +1003,10 @@ ul.star {
   #myCarousel .carousel-item .banner_btn {
     margin: 0 auto;
     display: block;
-    width: 190px;
+    width: 230px;
+  }
+  #myCarousel .carousel-item h5 {
+    font-size: 28px;
   }
   .job-opprtunity-bg p {
     font-size: 14px;
@@ -1188,15 +1207,23 @@ ul.star {
 }
 
 @media screen and (max-width: 768px) {
-  .job-opprtunity-bg .jobimg {
-    display: none;
-  }
+  // .job-opprtunity-bg .jobimg {
+  //   display: none;
+  // }
   .job-opprtunity-bg {
     padding: 35px 79px;
   }
   .highlight_student h3 {
     font-size: 28px;
     line-height: 40px;
+  }
+}
+
+@media screen and (min-width:1024px) and (max-width:1300px){
+  .resume .resumeimg{
+    right: 45px;
+    bottom: 0px;
+    width: 550px;
   }
 }
 

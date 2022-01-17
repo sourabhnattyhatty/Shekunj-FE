@@ -92,8 +92,12 @@ const CourseModule = () => {
   const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
     (state) => state.coursesReducer,
   );
-  console.log("🚀 ~ file: index.jsx ~ line 93 ~ CourseModule ~ course", course,courseModulesList)
-  const {lan} = useSelector(state => state.languageReducer);
+  console.log(
+    "🚀 ~ file: index.jsx ~ line 93 ~ CourseModule ~ course",
+    course,
+    courseModulesList,
+  );
+  const { lan } = useSelector((state) => state.languageReducer);
 
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
@@ -104,16 +108,14 @@ const CourseModule = () => {
   const fun = () => {
     const p = [];
     courseModulesList?.forEach((obj) => {
-      obj?.sub_task?.forEach((item,ind) => {
+      obj?.sub_task?.forEach((item, ind) => {
         p.push(ind);
-      })
-    })
+      });
+    });
     return Math.round(100 / (p.length || 0)) || 0;
-  } 
+  };
 
-    const progress = courseModulesList && fun();
-
-  
+  const progress = courseModulesList && fun();
 
   React.useEffect(() => {
     if (detect.isMobile) {
@@ -125,7 +127,7 @@ const CourseModule = () => {
   React.useEffect(() => {
     dispatch(startCourse(id));
     dispatch(getSingleCourseModule(id));
-  }, [dispatch, id,lan]);
+  }, [dispatch, id, lan]);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -156,7 +158,7 @@ const CourseModule = () => {
         className={
           (count <= 33 && "red1-progress") ||
           (count <= 60 && "yellow1-progress") ||
-          (count <= 100 && "green1-progress") 
+          (count <= 100 && "green1-progress")
         }
         value={count}
         valueLabelFormat={(value) => <div>{value}%</div>}
@@ -172,8 +174,8 @@ const CourseModule = () => {
   };
 
   const handleactive = (key) => {
-    setShowactive(key)
-  }
+    setShowactive(key);
+  };
 
   return (
     <div>
@@ -233,8 +235,15 @@ const CourseModule = () => {
                         id={`panel${ind + 1}d-header`}
                       >
                         <Typography>
-                          <div className='number-bgbox' >{ind + 1}</div>
-                          <span onClick={()=>handleactive(ind)} style={{color : showactive == ind ? "pink" : "black"}} >{obj.title}</span>
+                          <div className='number-bgbox'>{ind + 1}</div>
+                          <span
+                            onClick={() => handleactive(ind)}
+                            style={{
+                              color: showactive === ind ? "pink" : "black",
+                            }}
+                          >
+                            {obj?.title.charAt(0)?.toUpperCase() + obj?.title?.slice(1)}
+                          </span>
                         </Typography>
                       </AccordionSummary>
                       {obj?.sub_task &&
@@ -256,7 +265,17 @@ const CourseModule = () => {
                                     alt='...'
                                   />
                                 )}
-                                {ind+1}.{ind1 + 1}<span onClick={()=>setShowsubactive(obj1)} style={{color : showsubactive == obj1 ? "pink" : "black"}}> {obj?.title}</span>
+                                {ind + 1}.{ind1 + 1}
+                                <span
+                                  onClick={() => setShowsubactive(ind1)}
+                                  style={{
+                                    color:
+                                      showsubactive === ind1 ? "pink" : "black",
+                                  }}
+                                >
+                                  {" "}
+                                   {obj1?.title?.charAt(0)?.toUpperCase() + obj1?.title?.slice(1)}
+                                </span>
                               </li>
                             </ul>
                           </AccordionDetails>
