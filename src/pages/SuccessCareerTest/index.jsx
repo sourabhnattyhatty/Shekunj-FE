@@ -76,11 +76,22 @@ function CourseTest() {
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
     (state) => state?.guidanceReducer,
   );
+  
   const { lan } = useSelector((state) => state.languageReducer);
 
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
 
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const unloadCallback = (event) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+    window.addEventListener("beforeunload", unloadCallback);
+    return () => window.removeEventListener("beforeunload", unloadCallback); 
+  }, []);
+
   useEffect(() => {
     if (detect.isMobile) {
       toast.error(t("error.mobile.1"));
@@ -101,7 +112,7 @@ function CourseTest() {
         dispatch(endTest(nv, history));
       }
     };
-  }, []);
+  }, [dispatch, history]);
 
 
   useEffect(() => {
