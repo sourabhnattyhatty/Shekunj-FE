@@ -61,7 +61,7 @@ function CourseTest() {
               <div className='pro_div'>
                 <Row>
                   <Col md={3} xs={12}>
-                    <div className='progress' data-percentage='90'>
+                    <div className='progress' data-percentage={Math.round(result?.result)}>
                       <span className='progress-left'>
                         <span className='progress-bar'></span>
                       </span>
@@ -83,7 +83,7 @@ function CourseTest() {
                   </Col>
 
                   <Col md={6} xs={12}>
-                    <div className='progress pink_pro' data-percentage='78'>
+                    <div className='progress pink_pro' data-percentage={Math.round(result?.result)}>
                       <span className='progress-left'>
                         <span className='progress-bar col_chg'></span>
                       </span>
