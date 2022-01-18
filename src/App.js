@@ -174,7 +174,7 @@ function App() {
         />
         <Route
           exact
-          path={routingConstants.ForgetPassword}
+          path={routingConstants.FORGOT_PASSWORD}
           component={ForgetPassword}
         />
         <Route path='*' component={PageNotFound} />
