@@ -87,7 +87,7 @@ export const singleCourseDetails = (id) => async (dispatch) => {
 };
 
 export const startCourse =
-  (id, page = 1 , progress = 0, onLoad = false) =>
+  (id, page = 1, progress = 0, onLoad = false) =>
   async (dispatch, getState) => {
     try {
       dispatch({ type: coursesTypes.COURSE_REQUEST });
@@ -146,6 +146,7 @@ export const getSimilarCourses = (categoryId) => async (dispatch) => {
 export const getUserTestQuestion =
   (id, history, module, progress) => async (dispatch) => {
     try {
+      debugger;
       dispatch({ type: coursesTypes.TEST_QUEDTION_REQUEST });
       let res;
       if (module) {
@@ -167,6 +168,7 @@ export const getUserTestQuestion =
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
+      debugger;
       if (err?.data?.status_code === 400) {
         if (err.data.message === "Already course test is completed") {
           const res = await httpServices.get(constants.USER_COURSE_RESULT + id);
@@ -194,7 +196,7 @@ export const postAnswer =
         values,
       );
       dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
-      
+
       if (res.status_code === 200 && !last) {
         dispatch({ type: coursesTypes.QUESTION_COUNT_REQUEST });
         const res = await httpServices.get(constants.USER_TEST_COUNT + id);
@@ -258,10 +260,10 @@ export const setFilter =
     dispatch({ type: coursesTypes.SELECTED_FILTER, payload });
   };
 
-export const endTest = (id,history) => async (dispatch) => {
+export const endTest = (id, history) => async (dispatch) => {
   const res = await httpServices.post(constants.USER_COURSE_END_TIME + id);
   window.localStorage.removeItem("isTestStarted");
-  if(res.status_code === 200 && history){
+  if (res.status_code === 200 && history) {
     history?.push(routingConstants.COURSES_RESULT + id);
   }
 };

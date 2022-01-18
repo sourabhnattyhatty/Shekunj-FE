@@ -32,13 +32,13 @@ const CourseDetails = () => {
   useEffect(() => {
     dispatch(singleCourseDetails(id));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [dispatch, id,lan]);
+  }, [dispatch, id, lan]);
 
   useEffect(() => {
     if (course?.category_id) {
       dispatch(getSimilarCourses(course?.category_id));
     }
-  }, [dispatch, course,lan]);
+  }, [dispatch, course?.category_id, lan]);
 
   return (
     <div>

@@ -93,7 +93,7 @@ function ContactUs() {
                         <TextField
                           name='name'
                           type='text'
-                          placeholder='Name'
+                          placeholder={t('ContactUs.placeholders.name')}
                           onChange={handleChange}
                           value={values.name}
                           onBlur={handleBlur}
@@ -106,7 +106,7 @@ function ContactUs() {
                         <TextField
                           name='email'
                           type='email'
-                          placeholder='Email'
+                          placeholder={t('ContactUs.placeholders.email')}
                           autoComplete='off'
                           onChange={handleChange}
                           value={values.email}
@@ -119,7 +119,7 @@ function ContactUs() {
                         <TextField
                           name='subject'
                           type='text'
-                          placeholder='Subject'
+                          placeholder={t('ContactUs.placeholders.subject')}
                           autoComplete='off'
                           onChange={handleChange}
                           value={values.subject}
@@ -138,7 +138,7 @@ function ContactUs() {
                           name='message'
                           aria-label='minimum height'
                           minRows={3}
-                          placeholder='Message'
+                          placeholder={t('ContactUs.placeholders.msg')}
                           onChange={handleChange}
                           value={values.message}
                           onBlur={handleBlur}

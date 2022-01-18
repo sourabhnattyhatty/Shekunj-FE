@@ -79,14 +79,9 @@ function CourseTest() {
     dispatch(getUserTestQuestion(id, history));
     dispatch(testCountSummery(id, history));
     if (detect.isMobile) {
-      toast.error(t("error.mobile.1"));
-      history.push(routingConstants.HOME_PAGE);
+      history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
     }
-    // if (localStorage.getItem("isTestStarted")) {
-    //   alert(t("alert"));
-    //   localStorage.removeItem("isTestStarted");
-    //   dispatch(endTest(id, history));
-    // }
+
     return () => {
       if (id) {
         dispatch(endTest(id));
@@ -114,7 +109,7 @@ function CourseTest() {
         }
       }
     });
-  }, []);
+  }, [dispatch, history, id]);
 
   useEffect(() => {
     if (question) {
@@ -261,8 +256,8 @@ function CourseTest() {
     );
   };
 
-  const handleAnswerCheck = (e) => {
-    setAnswer(e.target.labels[0].children[1].innerText);
+  const handleAnswerCheck = (e, ans) => {
+    setAnswer(ans);
     if (e.target.value === "1") {
       setCheck1(true);
       setCheck2(false);
@@ -319,8 +314,7 @@ function CourseTest() {
                 <Skeleton></Skeleton>
               ) : (
                 <p>
-                  {questionNumber}.{" "}
-                  {question?.question}
+                  {questionNumber}. {question?.question}
                 </p>
               )}
               {question && (
@@ -334,7 +328,7 @@ function CourseTest() {
                         control={
                           <Radio
                             checked={check1}
-                            onChange={handleAnswerCheck}
+                            onChange={(e) => handleAnswerCheck(e, "A")}
                           />
                         }
                         label={question?.optionA}
@@ -349,7 +343,7 @@ function CourseTest() {
                         control={
                           <Radio
                             checked={check2}
-                            onChange={handleAnswerCheck}
+                            onChange={(e) => handleAnswerCheck(e, "B")}
                           />
                         }
                         label={question?.optionB}
@@ -364,7 +358,7 @@ function CourseTest() {
                         control={
                           <Radio
                             checked={check3}
-                            onChange={handleAnswerCheck}
+                            onChange={(e) => handleAnswerCheck(e, "C")}
                           />
                         }
                         label={question?.optionC}
@@ -379,7 +373,7 @@ function CourseTest() {
                         control={
                           <Radio
                             checked={check4}
-                            onChange={handleAnswerCheck}
+                            onChange={(e) => handleAnswerCheck(e, "D")}
                           />
                         }
                         label={question?.optionD}

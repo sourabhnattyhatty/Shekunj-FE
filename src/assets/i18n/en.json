@@ -780,5 +780,19 @@
       "10": "Government Schemes"
     }
   },
-  "alert": "After reload your test will end."
+  "alert": "After reload your test will end.",
+
+  "ContactUs" : {
+    "placeholders" : {
+      "name" : "Name",
+      "email" : "Email",
+      "subject" : "Subject",
+      "msg" : "Message"
+    }
+  },
+
+  "deskTopView" : {
+    "heading" : "Start Your Learning in Full Desktop Site",
+    "button" : "Desktop View"
+  }
 }

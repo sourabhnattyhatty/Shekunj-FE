@@ -76,7 +76,7 @@ function CourseTest() {
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
     (state) => state?.guidanceReducer,
   );
-  
+
   const { lan } = useSelector((state) => state.languageReducer);
 
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
@@ -89,20 +89,13 @@ function CourseTest() {
       event.returnValue = "";
     };
     window.addEventListener("beforeunload", unloadCallback);
-    return () => window.removeEventListener("beforeunload", unloadCallback); 
+    return () => window.removeEventListener("beforeunload", unloadCallback);
   }, []);
 
   useEffect(() => {
     if (detect.isMobile) {
-      toast.error(t("error.mobile.1"));
-      history.push(routingConstants.HOME_PAGE);
+      history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
     }
-    // if (localStorage.getItem("isCarrerTestStarted")) {
-    //   alert(t("alert"));
-    //   const nv = localStorage.getItem("selectedCourseCategoryValue");
-    //   localStorage.removeItem("isCarrerTestStarted");
-    //   dispatch(endTest(nv, history));
-    // }
   }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
 
   useEffect(() => {
@@ -113,7 +106,6 @@ function CourseTest() {
       }
     };
   }, [dispatch, history]);
-
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
@@ -137,7 +129,7 @@ function CourseTest() {
         }
       }
     });
-  }, []);
+  }, [dispatch, history]);
 
   useEffect(() => {
     if (testData) {
@@ -263,7 +255,7 @@ function CourseTest() {
       career_test: testData?.id,
     };
     const newProgress = (countData?.user_career_test_count + 1) * progress;
-    
+
     if (answer) {
       setQuestionNumber((prev) => prev + 1);
       dispatch(

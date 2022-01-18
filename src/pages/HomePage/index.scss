@@ -1238,3 +1238,42 @@ ul.star {
     height: 85vh !important;
   }
 }
+.mock_test_pop.MuiBox-root {
+  background: #FFFFFF;
+  border-radius: 10px;
+  width: 80%;
+  height: 230px;
+  text-align: center;
+  border: none;
+  position: relative;
+}
+.mock_test_pop.MuiBox-root h2 {
+  font-family: 'SegoeUI_medium';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 120%;
+  text-align: center;
+  text-transform: capitalize;
+  color: #323232;
+  margin: 21px auto;
+}
+.mock_test_pop.MuiBox-root button.btn.btn-info {
+  background: #EC498A;
+  border: none;
+  font-family: Roboto;
+  width: 115px;
+  height: 30px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #FFFFFF;
+}
+.mock_test_pop.MuiBox-root img.close_img {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}

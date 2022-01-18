@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory, useLocation } from "react-router-dom";
 
 import { constants } from "../../utils";
 import { Header, Footer, Carousel, SEO } from "../../components";
@@ -17,6 +17,8 @@ import "../../pages/responsive.scss";
 import "../../pages/responsive.scss";
 import "./index.scss";
 
+import x from "../../assets/images/Career/x.png";
+import desktop from "../../assets/icons/desktop.png";
 import Resume from "../../assets/images/resume.png";
 import Girl from "../../assets/images/job1.png";
 import Community from "../../assets/images/community.png";
@@ -45,9 +47,38 @@ import g17 from "../../assets/images/17.png";
 import g18 from "../../assets/images/18.png";
 import g19 from "../../assets/images/19.png";
 import g20 from "../../assets/images/20.png";
+import { Box, Modal, Typography } from "@mui/material";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 function HomePage() {
+  const history = useHistory();
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setOpen(false);
+    history.push("/");
+  };
   const { t } = useTranslation();
+
+  function useQuery() {
+    const { search } = useLocation();
+
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+  let query = useQuery();
+
+  const redirect = query.get("redirect");
 
   const settings = {
     dots: false,
@@ -85,7 +116,10 @@ function HomePage() {
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
-  }, []);
+    if (redirect) {
+      handleOpen();
+    }
+  }, [redirect]);
 
   return (
     <div>
@@ -610,20 +644,42 @@ function HomePage() {
             </div>
 
             <div className='col-md-5 offset-md-1'>
-            <div className="highlig">
-              <h3 className='mb-3 mt-4'>
-                {t("homePage.highlightStudents.homeHeading")}
-              </h3>
-            
+              <div className='highlig'>
+                <h3 className='mb-3 mt-4'>
+                  {t("homePage.highlightStudents.homeHeading")}
+                </h3>
 
-              <Link to='/courses' data-aos='slide-up' className='learn_more'>
-                {t("homePage.highlightStudents.homeButton")}
-              </Link>
+                <Link to='/courses' data-aos='slide-up' className='learn_more'>
+                  {t("homePage.highlightStudents.homeButton")}
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
+      >
+        <Box className='mock_test_pop' sx={style}>
+          <img
+            className='close_img'
+            src={x}
+            alt='...'
+            onClick={() => handleClose()}
+          />
+          <img src={desktop} alt='...' />
+          <Typography id='modal-modal-title' variant='h6' component='h2'>
+            {t('deskTopView.heading')}
+          </Typography>
+          <button className='btn btn-info' onClick={() => handleClose()}>
+          {t('deskTopView.button')}
+          </button>
+        </Box>
+      </Modal>
 
       <Footer loginPage={false} />
     </div>

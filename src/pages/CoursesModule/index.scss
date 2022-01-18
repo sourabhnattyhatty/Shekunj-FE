@@ -269,6 +269,9 @@ span.MuiSlider-rail {
   color: #ffffff;
   padding: 10px 50px;
 }
+.prev_next_btn {
+  margin-top: 25px;
+}
 .prev_next_btn .back_button {
   border-radius: 2px;
   background: #ffffff;
@@ -474,4 +477,7 @@ span.MuiSlider-mark.MuiSlider-markActive {
   .prev_next_btn .next_button {
     width: 100%;
   }
+}
+.imgSet img {
+  max-width: 100%;
 }
