@@ -133,21 +133,17 @@ function HomePage() {
           <Slider {...settings}>
             <div className='carousel-item carousel_item1'>
               <div className='container'>
-                <div className='row h_set' data-aos='slide-up'>
+                <div className='row h_set mt-5' data-aos='slide-up'>
                   <div className='col-md-7 col-12'>
                     <h4 className='mt-5 pt-lg-5 mb-1'>
                       {t("homePage.mainSlider.heading.1")}
                     </h4>
                     <h5>{t("homePage.mainSlider.heading.4")}</h5>
 
-                    <p className='mb-4'>
+                    <p className='mb-4 mt-3'>
                       {" "}
                       {t("homePage.mainSlider.subHeading.1")}
                     </p>
-                    <h2 className='mb-4'>
-                      {" "}
-                      {t("homePage.mainSlider.subHeading.5")}
-                    </h2>
                     <Link to='/courses' className='banner_btn'>
                       {t("homePage.mainSlider.button.1")}
                     </Link>
@@ -158,13 +154,13 @@ function HomePage() {
 
             <div className='carousel-item carousel_item2'>
               <div className='container'>
-                <div className='row h_set'>
+                <div className='row h_set mt-5'>
                   <div className='col-md-7 col-12'>
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.2")}
                     </h4>
                     <h5>{t("homePage.mainSlider.heading.5")}</h5>
-                    <p className='mb-4' data-aos='zoom-in'>
+                    <p className='mb-4 mt-3' data-aos='zoom-in'>
                       {t("homePage.mainSlider.subHeading.2")}
                     </p>
                     <Link
@@ -181,7 +177,7 @@ function HomePage() {
 
             <div className='carousel-item carousel_item3'>
               <div className='container'>
-                <div className='row h_set'>
+                <div className='row h_set mt-5'>
                   <div className='col-md-7 col-12'>
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.3.3.1")}
@@ -189,7 +185,7 @@ function HomePage() {
 
                     <h5>{t("homePage.mainSlider.heading.3.3.2")}</h5>
 
-                    <p className='mb-4' data-aos='zoom-in'>
+                    <p className='mb-4 mt-3' data-aos='zoom-in'>
                       {t("homePage.mainSlider.subHeading.3")}
                     </p>
 
@@ -207,7 +203,7 @@ function HomePage() {
 
             <div className='carousel-item carousel_item4'>
               <div className='container'>
-                <div className='row h_set'>
+                <div className='row h_set mt-5'>
                   <div className='col-md-7 col-12 offset-lg-6 offset-md-5'>
                     <h4 className='mt-5 pt-lg-5 mb-1' data-aos='zoom-in'>
                       {t("homePage.mainSlider.heading.6.1")}
@@ -215,7 +211,7 @@ function HomePage() {
 
                     <h5>{t("homePage.mainSlider.heading.6.2")}</h5>
 
-                    <p className='mb-4' data-aos='zoom-in'>
+                    <p className='mb-4 mt-3' data-aos='zoom-in'>
                       {t("homePage.mainSlider.subHeading.4")}
                     </p>
 

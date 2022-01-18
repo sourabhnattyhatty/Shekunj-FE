@@ -37,6 +37,7 @@ const SuccessCareerOption = React.lazy(() =>
 const MyProgress = React.lazy(() => import("./pages/MyProgress"));
 const ContactUs = React.lazy(() => import("./pages/ContactUs"));
 const AllCertificatePage = React.lazy(() => import("./pages/Certificates"));
+const ForgetPassword = React.lazy(() => import("./pages/ForgetPassword"));
 const CertificateDetail = React.lazy(() =>
   import("./pages/Certificates/CertificatesDetail"),
 );
@@ -170,6 +171,11 @@ function App() {
           exact
           path={routingConstants.PRIVACY_POLICY}
           component={PrivacyPolicy}
+        />
+        <Route
+          exact
+          path={routingConstants.ForgetPassword}
+          component={ForgetPassword}
         />
         <Route path='*' component={PageNotFound} />
       </Switch>

@@ -57,6 +57,7 @@ body {
   line-height: 120%;
   max-width: 510px;
   width: 100%;
+  margin: 0;
 }
 #myCarousel .carousel-item h4 span {
   font-family: SegoeUI_medium;
@@ -80,6 +81,7 @@ body {
 }
 #myCarousel .carousel-item .banner_btn {
   font-family: SegoeUI_medium;
+  text-transform: capitalize;
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
   font-style: normal;
@@ -249,7 +251,7 @@ body {
   background-image: url("../../assets/images/joinbg.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  padding: 65px 79px;
+  padding: 85px 79px;
   height: 348px;
   // text-align: center;
 }
@@ -258,14 +260,16 @@ body {
   font-weight: 600;
   font-style: normal;
   font-size: 35px;
-  line-height: 60px;
+  line-height: 40px;
   // text-transform: capitalize;
   color: #ffffff;
+  margin: 0;
 }
 .job-opprtunity-bg p {
   font-weight: 500;
   font-size: 18px;
   line-height: 27px;
+  margin: 15px 0;
   color: #ffffff;
 }
 .job-opprtunity-bg .btn.btn-job {
