@@ -97,6 +97,8 @@ function LoginForm2() {
           <Error error={errors.password} touched={touched.password} />
         </div>
 
+        <p className="fer_pass">forgot password?</p>
+
         <button type='submit' className='btn btn_login w-100'>
           {isLoading ? (
             <CircularProgress color='secondary' size={20} />
