@@ -86,7 +86,7 @@ function CourseTest() {
   useEffect(() => {
     const unloadCallback = (event) => {
       event.preventDefault();
-      event.returnValue = "";
+      event.returnValue = "abc?";
     };
     window.addEventListener("beforeunload", unloadCallback);
     return () => window.removeEventListener("beforeunload", unloadCallback);
@@ -114,12 +114,18 @@ function CourseTest() {
           (e.which || e.keyCode) === 116 ||
           ((e.which || e.keyCode) === 82 && e.ctrlKey)
         ) {
-          const a = window.confirm("Are you sure you want to reload?");
+          const a = window.confirm(
+            "Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page",
+          );
           if (a) {
             e.preventDefault();
             const nv = localStorage.getItem("selectedCourseCategoryValue");
             localStorage.removeItem("isCarrerTestStarted");
             localStorage.removeItem("selectedCourseCategoryValue");
+            history.push(
+              routingConstants.CAREER_TEST_RESULT +
+                selectedCourseCategoryValue?.id,
+            );
             if (nv) {
               dispatch(endTest(nv, history));
             }
@@ -130,6 +136,17 @@ function CourseTest() {
       }
     });
   }, [dispatch, history]);
+
+  // useEffect(() => {
+  //   const unloadCallback = (event) => {
+  //     var r = window.confirm("Successful Message!");
+  //     if (r == true){
+  //       window.location.reload();
+  //     }
+  //   };
+  //   window.addEventListener("beforeunload", unloadCallback);
+  //   return () => window.removeEventListener("beforeunload", unloadCallback);
+  // }, []);
 
   useEffect(() => {
     if (testData) {

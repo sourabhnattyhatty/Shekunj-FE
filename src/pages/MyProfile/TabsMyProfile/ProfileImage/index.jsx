@@ -101,6 +101,7 @@ const ProfileImage = ({ isEditable }) => {
   };
   return (
     <>
+        {/* { console.log(user?.profile_pic)}        <img src={user?.profile_pic || noImage} alt="" /> */}
       <div className='myProfile_img'>
         <Avatar
           src={user?.profile_pic || noImage}

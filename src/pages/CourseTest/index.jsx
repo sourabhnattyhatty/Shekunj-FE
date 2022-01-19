@@ -96,7 +96,7 @@ function CourseTest() {
           (e.which || e.keyCode) === 116 ||
           ((e.which || e.keyCode) === 82 && e.ctrlKey)
         ) {
-          const a = window.confirm("Are you sure you want to reload?");
+          const a = window.confirm("Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page");
           if (a) {
             e.preventDefault();
             localStorage.removeItem("isTestStarted");
