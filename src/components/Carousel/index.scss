@@ -427,6 +427,10 @@ button.btn.btn_Courses {
   padding: 23px 80px !important;
   width: 100%;
 }
+.owl-carousel .owl-item img {
+  object-fit: contain;
+  height: auto;
+}
 }
 
 @media screen and (max-width: 1024px) {

@@ -1172,6 +1172,13 @@ ul.star {
   height: 550px;
   position: relative;
 }
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+
+#myCarousel .carousel-item .banner_btn {
+  padding: 17px 10px;
+}
+
+}
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   #myCarousel .carousel-item {
