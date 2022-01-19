@@ -12,11 +12,11 @@ function UserInfo(props) {
   return (
     <div className='myProfile_box'>
       <Row>
-        <Col md={3} xs={12}>
+        <Col lg={3} md={4} xs={12}>
           <ProfileImage isEditable={true} />
         </Col>
 
-        <Col md={5} xs={12}>
+        <Col lg={5} md={6} xs={12}>
           <h2>{user?.name || t("common.n/a")}</h2>
           <div className='user_detail'>
             <ul>

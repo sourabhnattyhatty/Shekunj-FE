@@ -48,6 +48,8 @@ function Carousel(props) {
     }
   };
 
+  console.log(">>>>>>>>>",courses?.length)
+
   return (
     <div className='noselect'>
       <div className='container Our_text'>
@@ -67,7 +69,8 @@ function Carousel(props) {
               ? "similar-coursesslider"
               : "owl-theme"
           }
-          loop={courses?.length > 5}
+          loop={true}
+          // loop={courses?.length > 5}
           margin={props.page === carouselConstant.COURSE_DETAIL ? 10 : 210}
           nav={props.page === carouselConstant.COURSE_DETAIL ? false : true}
           items={props.page === carouselConstant.COURSE_DETAIL ? 1.4 : 4}

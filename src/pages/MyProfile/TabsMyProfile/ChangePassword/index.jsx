@@ -58,11 +58,11 @@ function ChangePassword() {
 
   return (
     <Row>
-      <Col md={3} xs={12}>
+      <Col lg={3} md={4} xs={12}>
         <ProfileImage isEditable={true} />
       </Col>
 
-      <Col md={5} xs={12}>
+      <Col lg={5} md={6} xs={12}>
         <div className='change_pass'>
           <form onSubmit={handleSubmit}>
             <div className='form-group'>

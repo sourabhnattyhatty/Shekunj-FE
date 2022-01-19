@@ -154,12 +154,10 @@
     "content": "Don't have an account?",
     "signupLink": "REGISTER HERE",
     "T&C": {
-      "content1": "Please read our",
+      "content1": "By signing up, you agree to our  and ",
+      "link1": "Terms",
       "content2": "and",
-      "content3": "to understand how we use your personal data.",
-      "link1": "Privacy Notice",
-      "link2": "Cookie Notice",
-      "link3": "Legal terms"
+      "link3": "Policies."
     },
     "google": "Register with Google"
   },
