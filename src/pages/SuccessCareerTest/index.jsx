@@ -83,14 +83,7 @@ function CourseTest() {
 
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const unloadCallback = (event) => {
-      event.preventDefault();
-      event.returnValue = "";
-    };
-    window.addEventListener("beforeunload", unloadCallback);
-    return () => window.removeEventListener("beforeunload", unloadCallback); 
-  }, []);
+
 
   useEffect(() => {
     if (detect.isMobile) {
@@ -112,22 +105,22 @@ function CourseTest() {
         dispatch(endTest(nv, history));
       }
     };
-  }, [dispatch, history]);
-
+  }, [dispatch, history]); 
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
       if (localStorage.getItem("isCarrerTestStarted")) {
         if (
           (e.which || e.keyCode) === 116 ||
-          ((e.which || e.keyCode) === 82 && e.ctrlKey)
+          ((e.which || e.keyCode) === 82 && e.ctrlKey  )
         ) {
-          const a = window.confirm("Are you sure you want to reload?");
+          const a = window.confirm("Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page");
           if (a) {
             e.preventDefault();
             const nv = localStorage.getItem("selectedCourseCategoryValue");
             localStorage.removeItem("isCarrerTestStarted");
             localStorage.removeItem("selectedCourseCategoryValue");
+            history.push(routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id,);
             if (nv) {
               dispatch(endTest(nv, history));
             }
@@ -138,6 +131,17 @@ function CourseTest() {
       }
     });
   }, []);
+
+  // useEffect(() => {
+  //   const unloadCallback = (event) => {
+  //     var r = window.confirm("Successful Message!");
+  //     if (r == true){
+  //       window.location.reload();
+  //     }
+  //   };
+  //   window.addEventListener("beforeunload", unloadCallback);
+  //   return () => window.removeEventListener("beforeunload", unloadCallback);
+  // }, []);
 
   useEffect(() => {
     if (testData) {
