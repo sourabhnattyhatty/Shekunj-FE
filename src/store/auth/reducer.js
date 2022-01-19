@@ -118,7 +118,7 @@ export const authReducer = (state = initialState, action) => {
         error: action.payload,
       };
 
-      case authTypes.CONTACT_US_REQUEST:
+    case authTypes.CONTACT_US_REQUEST:
       return {
         ...state,
         isLoading: true,
@@ -136,6 +136,26 @@ export const authReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload,
       };
+
+    case authTypes.FORGOT_PASSWORD_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case authTypes.FORGOT_PASSWORD_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+      };
+    case authTypes.FORGOT_PASSWORD_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+
     default:
       return state;
   }

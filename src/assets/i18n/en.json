@@ -597,7 +597,8 @@
       "button": {
         "1": "Get Your Certificate",
         "2": "Start Course Again",
-        "3": "Go to Career Test"
+        "3": "Go to Career Test",
+        "4" : "Start Another Course"
       }
     },
     "other": {
