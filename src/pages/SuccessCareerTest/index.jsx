@@ -85,12 +85,28 @@ function CourseTest() {
 
   useEffect(() => {
     const unloadCallback = (event) => {
-      event.preventDefault();
-      event.returnValue = "abc?";
+      if (localStorage.getItem("isCarrerTestStarted")) {
+        const ref = window.confirm(
+          "hello, Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page",
+        );
+        if (ref) {
+          const nv = localStorage.getItem("selectedCourseCategoryValue");
+          localStorage.removeItem("isCarrerTestStarted");
+          localStorage.removeItem("selectedCourseCategoryValue");
+          history.push(
+            routingConstants.CAREER_TEST_RESULT +
+              selectedCourseCategoryValue?.id,
+          );
+          if (nv) {
+            dispatch(endTest(nv, history));
+          }
+        }
+      }
     };
-    window.addEventListener("beforeunload", unloadCallback);
-    return () => window.removeEventListener("beforeunload", unloadCallback);
+    window.addEventListener("load", unloadCallback);
+    return () => window.removeEventListener("load", unloadCallback);
   }, []);
+
 
   useEffect(() => {
     if (detect.isMobile) {
@@ -118,14 +134,14 @@ function CourseTest() {
             "Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page",
           );
           if (a) {
-            e.preventDefault();
             const nv = localStorage.getItem("selectedCourseCategoryValue");
             localStorage.removeItem("isCarrerTestStarted");
-            localStorage.removeItem("selectedCourseCategoryValue");
+            // localStorage.removeItem("selectedCourseCategoryValue");
             history.push(
               routingConstants.CAREER_TEST_RESULT +
                 selectedCourseCategoryValue?.id,
             );
+            e.preventDefault();
             if (nv) {
               dispatch(endTest(nv, history));
             }
@@ -135,7 +151,7 @@ function CourseTest() {
         }
       }
     });
-  }, [dispatch, history]);
+  }, []);
 
   // useEffect(() => {
   //   const unloadCallback = (event) => {

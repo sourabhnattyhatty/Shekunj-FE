@@ -117,25 +117,25 @@ function CourseTest() {
 
   useEffect(() => {
     if (question) {
-      if (question?.answer === question?.optionA) {
+      if (question?.answer === "A") {
         setCheck1(true);
         setCheck2(false);
         setCheck3(false);
         setCheck4(false);
         setAnswer(question?.answer);
-      } else if (question?.answer === question?.optionB) {
+      } else if (question?.answer === "B") {
         setCheck2(true);
         setCheck1(false);
         setCheck3(false);
         setCheck4(false);
         setAnswer(question?.answer);
-      } else if (question?.answer === question?.optionC) {
+      } else if (question?.answer === "C") {
         setCheck3(true);
         setCheck1(false);
         setCheck2(false);
         setCheck4(false);
         setAnswer(question?.answer);
-      } else if (question?.answer === question?.optionD) {
+      } else if (question?.answer === "D") {
         setCheck4(true);
         setCheck1(false);
         setCheck2(false);
