@@ -82,12 +82,16 @@ function CourseTest() {
       history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
     }
 
+    
+  }, [history, detect.isMobile, id, dispatch, t, lan]);
+
+  useEffect(() => {
     return () => {
       if (id) {
         dispatch(endTest(id));
       }
     };
-  }, [history, detect.isMobile, id, dispatch, t, lan]);
+  },[dispatch,id]);
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {

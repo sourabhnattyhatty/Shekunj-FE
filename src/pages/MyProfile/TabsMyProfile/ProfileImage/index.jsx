@@ -56,14 +56,12 @@ const ProfileImage = ({ isEditable }) => {
 
 
   const getCropData = () => {
-    debugger;
     convertRelativeUriToFile(cropper?.getCroppedCanvas()?.toDataURL(), fileName, null, async (file) => {
       if (file) {
         if (!checkIsValidImage(file)) {
           inputRef.current.value = "";
           setOpen(false);
         } else {
-          debugger
           dispatch(
             updateProfile(user?.id, {
               profile_pic: file,

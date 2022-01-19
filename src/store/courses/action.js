@@ -146,7 +146,6 @@ export const getSimilarCourses = (categoryId) => async (dispatch) => {
 export const getUserTestQuestion =
   (id, history, module, progress) => async (dispatch) => {
     try {
-      debugger;
       dispatch({ type: coursesTypes.TEST_QUEDTION_REQUEST });
       let res;
       if (module) {
@@ -168,7 +167,6 @@ export const getUserTestQuestion =
       }
       dispatch({ type: coursesTypes.TEST_QUEDTION_FINISH, payload: res.data });
     } catch (err) {
-      debugger;
       if (err?.data?.status_code === 400) {
         if (err.data.message === "Already course test is completed") {
           const res = await httpServices.get(constants.USER_COURSE_RESULT + id);
