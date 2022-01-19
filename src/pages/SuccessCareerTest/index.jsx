@@ -106,12 +106,8 @@ function CourseTest() {
       }
     };
   }, [dispatch, history]); 
-   
 
-
-
-  useEffect(() => {  
-    
+  useEffect(() => {
     window.addEventListener("keydown", (e) => {
       if (localStorage.getItem("isCarrerTestStarted")) {
         if (
@@ -120,11 +116,11 @@ function CourseTest() {
         ) {
           const a = window.confirm("Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page");
           if (a) {
-           history.push(routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id,);
             e.preventDefault();
             const nv = localStorage.getItem("selectedCourseCategoryValue");
             localStorage.removeItem("isCarrerTestStarted");
             localStorage.removeItem("selectedCourseCategoryValue");
+            history.push(routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id,);
             if (nv) {
               dispatch(endTest(nv, history));
             }
