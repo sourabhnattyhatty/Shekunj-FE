@@ -45,17 +45,11 @@ function CourseTest() {
                 <h2>{t("coursesPage.coursesResultPage.heading.1")}</h2>
                 <img src={win} alt='' />
                 <h2>
-                  {result?.is_result ? (
-                    <>
-                      {t("coursesPage.coursesResultPage.other.1")}{" "}
-                      <b>{result?.name}!</b>
-                    </>
-                  ) : (
-                    <>
-                      {t("coursesPage.coursesResultPage.other.2")}{" "}
-                      <b>{result?.name}!</b>
-                    </>
-                  )}
+                  <b>
+                    {result?.is_result &&
+                      t("coursesPage.coursesResultPage.other.1")}{" "}
+                    {result?.name}!
+                  </b>
                 </h2>
                 <p>
                   {result?.is_result
@@ -67,7 +61,7 @@ function CourseTest() {
               <div className='pro_div'>
                 <Row>
                   <Col md={3} xs={12}>
-                    <div className='progress' data-percentage='90'>
+                    <div className='progress' data-percentage={Math.round(result?.result)}>
                       <span className='progress-left'>
                         <span className='progress-bar'></span>
                       </span>
@@ -89,7 +83,7 @@ function CourseTest() {
                   </Col>
 
                   <Col md={6} xs={12}>
-                    <div className='progress pink_pro' data-percentage='78'>
+                    <div className='progress pink_pro' data-percentage={Math.round(result?.result)}>
                       <span className='progress-left'>
                         <span className='progress-bar col_chg'></span>
                       </span>

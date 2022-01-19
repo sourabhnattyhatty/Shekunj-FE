@@ -1,5 +1,5 @@
 import React from "react";
-import "./CircleProgressBar.scss";
+// import "./CircleProgressBar.scss";
 
 function CircleProgressBar({ size,title1,title2,result }) {
     

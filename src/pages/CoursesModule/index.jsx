@@ -92,12 +92,10 @@ const CourseModule = () => {
   const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
     (state) => state.coursesReducer,
   );
-  console.log(
-    "🚀 ~ file: index.jsx ~ line 93 ~ CourseModule ~ course",
-    course,
-    courseModulesList,
-  );
+
   const { lan } = useSelector((state) => state.languageReducer);
+
+  
 
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
@@ -119,10 +117,9 @@ const CourseModule = () => {
 
   React.useEffect(() => {
     if (detect.isMobile) {
-      toast.error(t("error.mobile.1"));
-      history.push(routingConstants.HOME_PAGE);
+      history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
     }
-  }, [history, detect, t]);
+  }, [history, detect.isMobile, t]);
 
   React.useEffect(() => {
     dispatch(startCourse(id));
@@ -138,14 +135,14 @@ const CourseModule = () => {
   };
 
   const handlePrevModule = (page) => {
-    Cookies.set("module", page);
+    // Cookies.set("module", page);
     const p = (page - 1) * progress;
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const handleNextModule = (page) => {
-    Cookies.set("module", page);
+    // Cookies.set("module", page);
     const p = (page - 1) * progress;
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -169,12 +166,20 @@ const CourseModule = () => {
   };
 
   const handleFinish = () => {
-    Cookies.remove("module");
+    // Cookies.remove("module");
     history.push(routingConstants.COURSES_TEST + id);
   };
 
   const handleactive = (key) => {
     setShowactive(key);
+  };
+
+  const embededLink = (link = null) => {
+    if (link) {
+      const a = link?.split("=");
+      return a[1];
+    }
+    return "";
   };
 
   return (
@@ -225,70 +230,83 @@ const CourseModule = () => {
                       onClick={handleAccordian}
                     />
                   </div>
-                  {courseModulesList?.map((obj, ind) => (
-                    <Accordion
-                      expanded={expanded === `panel${ind + 1}`}
-                      onChange={handleChange(`panel${ind + 1}`)}
-                    >
-                      <AccordionSummary
-                        aria-controls={`panel${ind + 1}d-content`}
-                        id={`panel${ind + 1}d-header`}
-                      >
-                        <Typography>
-                          <div className='number-bgbox'>{ind + 1}</div>
-                          <span
-                            onClick={() => handleactive(ind)}
-                            style={{
-                              color: showactive === ind ? "pink" : "black",
-                            }}
+                  {courseModulesList?.map(
+                    (obj, ind) =>
+                      obj?.title && (
+                        <Accordion
+                          expanded={expanded === `panel${ind + 1}`}
+                          onChange={handleChange(`panel${ind + 1}`)}
+                          key={ind}
+                        >
+                          <AccordionSummary
+                            aria-controls={`panel${ind + 1}d-content`}
+                            id={`panel${ind + 1}d-header`}
                           >
-                            {obj.title}
-                          </span>
-                        </Typography>
-                      </AccordionSummary>
-                      {obj?.sub_task &&
-                        obj?.sub_task?.map((obj1, ind1) => (
-                          <AccordionDetails>
-                            <ul className='pl-5 position-relative'>
-                              <li
-                                key={obj?.id}
-                                className={
-                                  Number(course?.id) === obj?.id
-                                    ? "active-accordiantext"
-                                    : ""
-                                }
+                            <Typography>
+                              <div className='number-bgbox'>{ind + 1}</div>
+                              <span
+                                onClick={() => handleactive(ind)}
+                                style={{
+                                  color: showactive === ind ? "pink" : "black",
+                                }}
                               >
-                                {Number(course?.id) === obj?.id && (
-                                  <img
-                                    src={Rightcheck}
-                                    className='ml-2'
-                                    alt='...'
-                                  />
-                                )}
-                                {ind + 1}.{ind1 + 1}
-                                <span
-                                  onClick={() => setShowsubactive(obj1)}
-                                  style={{
-                                    color:
-                                      showsubactive === obj1 ? "pink" : "black",
-                                  }}
-                                >
-                                  {" "}
-                                  {obj1?.title}
-                                </span>
-                              </li>
-                            </ul>
-                          </AccordionDetails>
-                        ))}
-                    </Accordion>
-                  ))}
+                                {/* {obj?.title.charAt(0)?.toUpperCase() +
+                              obj?.title?.slice(1)} */}
+                                {obj?.title}
+                              </span>
+                            </Typography>
+                          </AccordionSummary>
+                          {obj?.sub_task &&
+                            obj?.sub_task?.map(
+                              (obj1, ind1) =>
+                                obj1?.title && (
+                                  <AccordionDetails key={ind1}>
+                                    <ul className='pl-5 position-relative'>
+                                      <li
+                                        key={obj?.id}
+                                        className={
+                                          Number(course?.id) === obj?.id
+                                            ? "active-accordiantext"
+                                            : ""
+                                        }
+                                      >
+                                        {Number(course?.id) === obj?.id && (
+                                          <img
+                                            src={Rightcheck}
+                                            className='ml-2'
+                                            alt='...'
+                                          />
+                                        )}
+                                        {ind + 1}.{ind1 + 1}
+                                        <span
+                                          onClick={() => setShowsubactive(ind1)}
+                                          style={{
+                                            color:
+                                              showsubactive === ind1
+                                                ? "pink"
+                                                : "black",
+                                          }}
+                                        >
+                                          {" "}
+                                          {/* {obj1?.title?.charAt(0)?.toUpperCase() +
+                                    obj1?.title?.slice(1)} */}
+                                          {obj1?.title}
+                                        </span>
+                                      </li>
+                                    </ul>
+                                  </AccordionDetails>
+                                ),
+                            )}
+                        </Accordion>
+                      ),
+                  )}
                 </div>
               </Col>
             )}
 
             <Col md={show ? 8 : 11} xs={12}>
-              <div className='card_courses'>
-                <div className='card'>
+              <div>
+                <div>
                   {isLoading ? (
                     <>
                       {[1, 2].map((a) => (
@@ -323,7 +341,7 @@ const CourseModule = () => {
                   ) : (
                     <>
                       <div
-                        className='des_dynamic_con'
+                        className='imgSet'
                         dangerouslySetInnerHTML={{
                           __html: course?.description,
                         }}
@@ -332,11 +350,13 @@ const CourseModule = () => {
                         <iframe
                           width='560'
                           height='315'
-                          src={course?.file_link}
+                          src={`https://www.youtube.com/embed/${embededLink(
+                            course?.file_link,
+                          )}`}
                           title='YouTube video player'
-                          frameborder='0'
+                          frameBorder='0'
                           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                          allowfullscreen
+                          allowFullScreen
                         ></iframe>
                       )}
                     </>
@@ -384,6 +404,7 @@ const CourseModule = () => {
           </Row>
         </Container>
       </div>
+
       <ScrollToTop />
       <Footer loginPage={false} />
     </div>

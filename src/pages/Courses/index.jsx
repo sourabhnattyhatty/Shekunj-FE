@@ -15,7 +15,6 @@ import three from "../../assets/images/Courses/03.png";
 import img1 from "../../assets/images/Courses/img1.png";
 import img2 from "../../assets/images/Courses/img2.png";
 import img3 from "../../assets/images/Courses/img3.png";
-
 import Cross from "../../assets/icons/cross.png";
 import Reset from "../../assets/icons/reset.png";
 
@@ -42,14 +41,14 @@ const Courses = () => {
   const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
-    dispatch(allCourses(`?limit=${pageLimit}`));
+    dispatch(allCourses());
+    // dispatch(allCourses(`?limit=${pageLimit}`));
   }, [dispatch, pageLimit, lan]);
 
+  
+  
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
   const handleResetFilter = () => {

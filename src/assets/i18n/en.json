@@ -577,7 +577,7 @@
       "heading": {
         "1": "Your Result",
         "2": "You are an inspiration to others! Exams are always tough, but the Champions like you make it worth while by your excellent performance.",
-        "3" : "There are no secrets to success. It is the result of preparation, hard work, and learning from failure."
+        "3" : "This time you couldn’t make it but next time you can! Try again, and give you 100%!"
       },
       "other": {
         "1": "Congratulation",
@@ -777,5 +777,19 @@
       "10": "Government Schemes"
     }
   },
-  "alert": "After reload your test will end."
+  "alert": "After reload your test will end.",
+
+  "ContactUs" : {
+    "placeholders" : {
+      "name" : "Name",
+      "email" : "Email",
+      "subject" : "Subject",
+      "msg" : "Message"
+    }
+  },
+
+  "deskTopView" : {
+    "heading" : "Start Your Learning in Full Desktop Site",
+    "button" : "Desktop View"
+  }
 }

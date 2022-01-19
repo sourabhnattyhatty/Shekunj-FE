@@ -76,22 +76,42 @@ function CourseTest() {
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
     (state) => state?.guidanceReducer,
   );
+
   const { lan } = useSelector((state) => state.languageReducer);
 
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
 
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const unloadCallback = (event) => {
+      if (localStorage.getItem("isCarrerTestStarted")) {
+        const ref = window.confirm(
+          "hello, Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page",
+        );
+        if (ref) {
+          const nv = localStorage.getItem("selectedCourseCategoryValue");
+          localStorage.removeItem("isCarrerTestStarted");
+          localStorage.removeItem("selectedCourseCategoryValue");
+          history.push(
+            routingConstants.CAREER_TEST_RESULT +
+              selectedCourseCategoryValue?.id,
+          );
+          if (nv) {
+            dispatch(endTest(nv, history));
+          }
+        }
+      }
+    };
+    window.addEventListener("load", unloadCallback);
+    return () => window.removeEventListener("load", unloadCallback);
+  }, []);
+
+
   useEffect(() => {
     if (detect.isMobile) {
-      toast.error(t("error.mobile.1"));
-      history.push(routingConstants.HOME_PAGE);
+      history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
     }
-    // if (localStorage.getItem("isCarrerTestStarted")) {
-    //   alert(t("alert"));
-    //   const nv = localStorage.getItem("selectedCourseCategoryValue");
-    //   localStorage.removeItem("isCarrerTestStarted");
-    //   dispatch(endTest(nv, history));
-    // }
   }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
 
   useEffect(() => {
@@ -101,8 +121,7 @@ function CourseTest() {
         dispatch(endTest(nv, history));
       }
     };
-  }, []);
-
+  }, [dispatch, history]);
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
@@ -111,12 +130,18 @@ function CourseTest() {
           (e.which || e.keyCode) === 116 ||
           ((e.which || e.keyCode) === 82 && e.ctrlKey)
         ) {
-          const a = window.confirm("Are you sure you want to reload?");
+          const a = window.confirm(
+            "Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page",
+          );
           if (a) {
-            e.preventDefault();
             const nv = localStorage.getItem("selectedCourseCategoryValue");
             localStorage.removeItem("isCarrerTestStarted");
-            localStorage.removeItem("selectedCourseCategoryValue");
+            // localStorage.removeItem("selectedCourseCategoryValue");
+            history.push(
+              routingConstants.CAREER_TEST_RESULT +
+                selectedCourseCategoryValue?.id,
+            );
+            e.preventDefault();
             if (nv) {
               dispatch(endTest(nv, history));
             }
@@ -127,6 +152,17 @@ function CourseTest() {
       }
     });
   }, []);
+
+  // useEffect(() => {
+  //   const unloadCallback = (event) => {
+  //     var r = window.confirm("Successful Message!");
+  //     if (r == true){
+  //       window.location.reload();
+  //     }
+  //   };
+  //   window.addEventListener("beforeunload", unloadCallback);
+  //   return () => window.removeEventListener("beforeunload", unloadCallback);
+  // }, []);
 
   useEffect(() => {
     if (testData) {
@@ -252,7 +288,7 @@ function CourseTest() {
       career_test: testData?.id,
     };
     const newProgress = (countData?.user_career_test_count + 1) * progress;
-    
+
     if (answer) {
       setQuestionNumber((prev) => prev + 1);
       dispatch(

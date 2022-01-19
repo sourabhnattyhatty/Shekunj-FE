@@ -205,7 +205,7 @@ export const endTest = (id, history) => async (dispatch) => {
   localStorage.removeItem("selectedCourseCategoryValue");
   if (res.status_code === 200 && history) {
     localStorage.removeItem("selectedCourseCategoryValue");
-    history.push(routingConstants.CAREER_TEST_RESULT + id);
+    // history.push(routingConstants.CAREER_TEST_RESULT + id);
   }
 };
 

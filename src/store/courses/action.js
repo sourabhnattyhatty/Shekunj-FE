@@ -194,7 +194,7 @@ export const postAnswer =
         values,
       );
       dispatch({ type: coursesTypes.POST_ANSWER_FINISH });
-      
+
       if (res.status_code === 200 && !last) {
         dispatch({ type: coursesTypes.QUESTION_COUNT_REQUEST });
         const res = await httpServices.get(constants.USER_TEST_COUNT + id);
@@ -258,10 +258,10 @@ export const setFilter =
     dispatch({ type: coursesTypes.SELECTED_FILTER, payload });
   };
 
-export const endTest = (id,history) => async (dispatch) => {
+export const endTest = (id, history) => async (dispatch) => {
   const res = await httpServices.post(constants.USER_COURSE_END_TIME + id);
   window.localStorage.removeItem("isTestStarted");
-  if(res.status_code === 200 && history){
+  if (res.status_code === 200 && history) {
     history?.push(routingConstants.COURSES_RESULT + id);
   }
 };

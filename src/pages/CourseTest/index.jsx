@@ -79,20 +79,19 @@ function CourseTest() {
     dispatch(getUserTestQuestion(id, history));
     dispatch(testCountSummery(id, history));
     if (detect.isMobile) {
-      toast.error(t("error.mobile.1"));
-      history.push(routingConstants.HOME_PAGE);
+      history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
     }
-    // if (localStorage.getItem("isTestStarted")) {
-    //   alert(t("alert"));
-    //   localStorage.removeItem("isTestStarted");
-    //   dispatch(endTest(id, history));
-    // }
+
+    
+  }, [history, detect.isMobile, id, dispatch, t, lan]);
+
+  useEffect(() => {
     return () => {
       if (id) {
         dispatch(endTest(id));
       }
     };
-  }, [history, detect.isMobile, id, dispatch, t, lan]);
+  },[dispatch,id]);
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
@@ -101,7 +100,7 @@ function CourseTest() {
           (e.which || e.keyCode) === 116 ||
           ((e.which || e.keyCode) === 82 && e.ctrlKey)
         ) {
-          const a = window.confirm("Are you sure you want to reload?");
+          const a = window.confirm("Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page");
           if (a) {
             e.preventDefault();
             localStorage.removeItem("isTestStarted");
@@ -114,29 +113,29 @@ function CourseTest() {
         }
       }
     });
-  }, []);
+  }, [dispatch, history, id]);
 
   useEffect(() => {
     if (question) {
-      if (question?.answer === question?.optionA) {
+      if (question?.answer === "A") {
         setCheck1(true);
         setCheck2(false);
         setCheck3(false);
         setCheck4(false);
         setAnswer(question?.answer);
-      } else if (question?.answer === question?.optionB) {
+      } else if (question?.answer === "B") {
         setCheck2(true);
         setCheck1(false);
         setCheck3(false);
         setCheck4(false);
         setAnswer(question?.answer);
-      } else if (question?.answer === question?.optionC) {
+      } else if (question?.answer === "C") {
         setCheck3(true);
         setCheck1(false);
         setCheck2(false);
         setCheck4(false);
         setAnswer(question?.answer);
-      } else if (question?.answer === question?.optionD) {
+      } else if (question?.answer === "D") {
         setCheck4(true);
         setCheck1(false);
         setCheck2(false);
@@ -261,8 +260,8 @@ function CourseTest() {
     );
   };
 
-  const handleAnswerCheck = (e) => {
-    setAnswer(e.target.labels[0].children[1].innerText);
+  const handleAnswerCheck = (e, ans) => {
+    setAnswer(ans);
     if (e.target.value === "1") {
       setCheck1(true);
       setCheck2(false);
@@ -319,8 +318,7 @@ function CourseTest() {
                 <Skeleton></Skeleton>
               ) : (
                 <p>
-                  {questionNumber}.{" "}
-                  {question?.question}
+                  {questionNumber}. {question?.question}
                 </p>
               )}
               {question && (
@@ -334,7 +332,7 @@ function CourseTest() {
                         control={
                           <Radio
                             checked={check1}
-                            onChange={handleAnswerCheck}
+                            onChange={(e) => handleAnswerCheck(e, "A")}
                           />
                         }
                         label={question?.optionA}
@@ -349,7 +347,7 @@ function CourseTest() {
                         control={
                           <Radio
                             checked={check2}
-                            onChange={handleAnswerCheck}
+                            onChange={(e) => handleAnswerCheck(e, "B")}
                           />
                         }
                         label={question?.optionB}
@@ -364,7 +362,7 @@ function CourseTest() {
                         control={
                           <Radio
                             checked={check3}
-                            onChange={handleAnswerCheck}
+                            onChange={(e) => handleAnswerCheck(e, "C")}
                           />
                         }
                         label={question?.optionC}
@@ -379,7 +377,7 @@ function CourseTest() {
                         control={
                           <Radio
                             checked={check4}
-                            onChange={handleAnswerCheck}
+                            onChange={(e) => handleAnswerCheck(e, "D")}
                           />
                         }
                         label={question?.optionD}

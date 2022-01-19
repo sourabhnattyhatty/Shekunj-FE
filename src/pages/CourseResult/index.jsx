@@ -3,8 +3,8 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { Header, Footer, ScrollToTop } from "../../components";
 import Confetti from "react-confetti";
-
-import "./index.scss";
+import "../CareerTestResult/index.scss";
+// import "./index.scss";
 import "../CoursesModule/index.scss";
 import win from "../../assets/images/Courses/win.png";
 import { Link, useParams } from "react-router-dom";
@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { testResult } from "../../store/courses/action";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
-import CircleProgressBar from "./CircleProgressBar";
 
 function CourseTest() {
   const { id } = useParams();
@@ -47,17 +46,11 @@ function CourseTest() {
                 <h2>{t("coursesPage.coursesResultPage.heading.1")}</h2>
                 <img src={win} alt='' />
                 <h2>
-                  {result?.is_pass ? (
-                    <>
-                      {t("coursesPage.coursesResultPage.other.1")}{" "}
-                      <b>{result?.name}!</b>
-                    </>
-                  ) : (
-                    <>
-                      {t("coursesPage.coursesResultPage.other.2")}{" "}
-                      <b>{result?.name}!</b>
-                    </>
-                  )}
+                  <b>
+                    {result?.is_pass &&
+                      t("coursesPage.coursesResultPage.other.1")}{" "}
+                    {result?.name}!
+                  </b>
                 </h2>
                 <p>
                   {result?.is_pass
@@ -69,31 +62,78 @@ function CourseTest() {
               <div className='pro_div'>
                 <Row>
                   <Col md={3} xs={12}>
-                    <CircleProgressBar
-                      size='small'
-                      title1='Result'
-                      // title2='Answers'
-                      result={result?.no_of_correct_answer || 0}
-                    />
+                    <div
+                      className='progress'
+                      data-percentage={Math.round(result?.result)}
+                    >
+                      <span className='progress-left'>
+                        <span className='progress-bar'></span>
+                      </span>
+                      <span className='progress-right'>
+                        <span className='progress-bar'></span>
+                      </span>
+                      <div className='progress-value'>
+                        <div>
+                          <p>{result?.no_of_correct_answer || 0}</p>
+                          <br />
+                          <span>
+                            {t("coursesPage.coursesResultPage.other.3.1")}{" "}
+                            <br />{" "}
+                            {t("coursesPage.coursesResultPage.other.3.2")}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </Col>
 
                   <Col md={6} xs={12}>
-                    <CircleProgressBar
-                      size='medium'
-                      title1='Candidate’s'
-                      title2='Score'
-                      result={Math.round(result?.result) || 0}
-                    />
+                    <div
+                      className='progress pink_pro'
+                      data-percentage={Math.round(result?.result)}
+                    >
+                      <span className='progress-left'>
+                        <span className='progress-bar col_chg'></span>
+                      </span>
+                      <span className='progress-right'>
+                        <span className='progress-bar col_chg'></span>
+                      </span>
+                      <div className='progress-value'>
+                        <div>
+                          <p>{Math.round(result?.result) || 0}%</p>
+                          <br />
+                          <span>
+                            {t("coursesPage.coursesResultPage.other.4.1")}{" "}
+                            <br />{" "}
+                            {t("coursesPage.coursesResultPage.other.4.2")}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </Col>
 
                   <Col md={3} xs={12}>
-                    <CircleProgressBar
-                      size='small1'
-                      title1='Total Time'
-                      result={
-                        result?.test_time ? (result?.test_time).toFixed(2) : 0
-                      }
-                    />
+                    <div className='progress' data-percentage='45'>
+                      <span className='progress-left'>
+                        <span className='progress-bar'></span>
+                      </span>
+                      <span className='progress-right'>
+                        <span className='progress-bar'></span>
+                      </span>
+                      <div className='progress-value'>
+                        <div>
+                          <p>
+                            {result?.test_time
+                              ? (result?.test_time).toFixed(2)
+                              : 0}{" "}
+                            <span>{t("common.time.2")}</span>
+                          </p>
+                          <br />
+                          <span>
+                            {t("coursesPage.coursesResultPage.other.5")}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </Col>
                 </Row>
               </div>

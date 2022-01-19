@@ -9,10 +9,11 @@ import Lock from "../../../../assets/icons/lock.png";
 
 import Error from "../../../../components/Error";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { onLogin } from "../../../../store/auth/action";
 import { CircularProgress } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { routingConstants } from "../../../../utils/constants";
 
 function LoginForm2() {
   const { isLoading } = useSelector((state) => state.authReducer);
@@ -52,7 +53,10 @@ function LoginForm2() {
     <>
       <form onSubmit={handleSubmit}>
         <div className='form-group mb-4'>
-          <label>{t("common.formHeadings.mobile")}<span>*</span></label>
+          <label>
+            {t("common.formHeadings.mobile")}
+            <span>*</span>
+          </label>
           <TextField
             name='contact'
             type='number'
@@ -75,7 +79,7 @@ function LoginForm2() {
 
         <div className='form-group'>
           <label>
-          {t("common.formHeadings.password")} <span>*</span>
+            {t("common.formHeadings.password")} <span>*</span>
           </label>
           <TextField
             name='password'
@@ -97,7 +101,9 @@ function LoginForm2() {
           <Error error={errors.password} touched={touched.password} />
         </div>
 
-        <p className="fer_pass">forgot password?</p>
+        <Link to={routingConstants.FORGOT_PASSWORD} className='fer_pass'>
+          forgot password?
+        </Link>
 
         <button type='submit' className='btn btn_login w-100'>
           {isLoading ? (
