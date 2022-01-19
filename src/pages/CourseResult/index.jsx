@@ -58,7 +58,6 @@ function CourseTest() {
                     : t("coursesPage.coursesResultPage.heading.3")}
                 </p>
               </div>
-
               <div className='pro_div'>
                 <Row>
                   <Col md={3} xs={12}>
@@ -137,7 +136,7 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              <Link
+              {/* <Link
                 to={
                   result?.is_pass
                     ? routingConstants.COURSE_CERTIFICATE + result?.id
@@ -149,7 +148,28 @@ function CourseTest() {
                     ? t("coursesPage.coursesResultPage.button.1")
                     : t("coursesPage.coursesResultPage.button.2")}
                 </button>
-              </Link>
+              </Link> */}
+              {!result?.is_pass && (
+                <Link to={routingConstants.COURSE_DETAILS + id}>
+                  <button className='get_certif'>
+                    {t("coursesPage.coursesResultPage.button.2")}
+                  </button>
+                </Link>
+              )}
+              {result?.is_pass && result?.has_certificate && (
+                <Link to={routingConstants.COURSE_CERTIFICATE + result?.id}>
+                  <button className='get_certif'>
+                    {t("coursesPage.coursesResultPage.button.1")}
+                  </button>
+                </Link>
+              )}{" "}
+              {result?.is_pass && !result?.has_certificate && (
+                <Link to={routingConstants.COURSES}>
+                  <button className='get_certif'>
+                    {t("coursesPage.coursesResultPage.button.4")}
+                  </button>
+                </Link>
+              )}
             </Col>
           </Row>
         </Container>

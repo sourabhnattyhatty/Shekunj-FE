@@ -22,11 +22,11 @@ import { Skeleton } from "@mui/material";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleCourseModule, startCourse } from "../../store/courses/action";
-import { toast } from "react-toastify";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
-import Cookies from "js-cookie";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
+
+import { subModule } from "../../store/courses";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -95,8 +95,6 @@ const CourseModule = () => {
 
   const { lan } = useSelector((state) => state.languageReducer);
 
-  
-
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
   const { id } = useParams();
@@ -135,14 +133,12 @@ const CourseModule = () => {
   };
 
   const handlePrevModule = (page) => {
-    // Cookies.set("module", page);
     const p = (page - 1) * progress;
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const handleNextModule = (page) => {
-    // Cookies.set("module", page);
     const p = (page - 1) * progress;
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -166,7 +162,6 @@ const CourseModule = () => {
   };
 
   const handleFinish = () => {
-    // Cookies.remove("module");
     history.push(routingConstants.COURSES_TEST + id);
   };
 
@@ -181,6 +176,10 @@ const CourseModule = () => {
     }
     return "";
   };
+
+  const openSubModule = (id) => {
+    dispatch(subModule(id))
+  }
 
   return (
     <div>
@@ -250,8 +249,6 @@ const CourseModule = () => {
                                   color: showactive === ind ? "pink" : "black",
                                 }}
                               >
-                                {/* {obj?.title.charAt(0)?.toUpperCase() +
-                              obj?.title?.slice(1)} */}
                                 {obj?.title}
                               </span>
                             </Typography>
@@ -269,6 +266,7 @@ const CourseModule = () => {
                                             ? "active-accordiantext"
                                             : ""
                                         }
+                                        onClick={() => openSubModule(obj1?.id) }
                                       >
                                         {Number(course?.id) === obj?.id && (
                                           <img
@@ -288,8 +286,6 @@ const CourseModule = () => {
                                           }}
                                         >
                                           {" "}
-                                          {/* {obj1?.title?.charAt(0)?.toUpperCase() +
-                                    obj1?.title?.slice(1)} */}
                                           {obj1?.title}
                                         </span>
                                       </li>

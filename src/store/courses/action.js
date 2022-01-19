@@ -288,3 +288,19 @@ export const setCollapseSuccessStory = (id, action) => (dispatch, getState) => {
     payload: updatedPayload,
   });
 };
+
+export const subModule = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: coursesTypes.COURSE_REQUEST });
+    const res = await httpServices.get(
+      `/course/sub-course-module-detail/${id}`,
+    );
+    dispatch({
+      type: coursesTypes.COURSE_FINISH,
+      payload: res.data,
+      progress: res.data.progress ? parseInt(res.data.progress, 10) : 0,
+    });
+  } catch (err) {
+    dispatch({ type: coursesTypes.COURSE_FAIL });
+  }
+};
