@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -16,6 +16,9 @@ import CertificatesDetail from "../Certificates/CertificatesDetail";
 function AllCertificatePage() {
   const dispatch = useDispatch();
   const { certificates } = useSelector((state) => state.certificateReducer);
+
+  const certificateRef = useRef();
+
 
   useEffect(() => {
     dispatch(getUserCourseCertificate());
@@ -57,6 +60,7 @@ function AllCertificatePage() {
                       {/* <img className='certif_img' src={Certificate01} alt='' /> */}
                       <CertificatesDetail
                         ref={certificateRef}
+                        certificateData={c}
                         showButton={false}
                         size='small'
                       />
