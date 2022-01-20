@@ -155,9 +155,7 @@
     "signupLink": "REGISTER HERE",
     "T&C": {
       "content1": "By signing up, you agree to our  and ",
-      "link1": "Terms",
-      "content2": "and",
-      "link3": "Policies."
+      "link1": "Terms and Policies"
     },
     "google": "Register with Google"
   },
@@ -407,8 +405,8 @@
   "certificateDetailPage": {
     "content": {
       "1": {
-        "1": "With membership number",
-        "2": "has been successfully completed the course"
+        "1": "By learning with SheKunj, you have enlarged your vision, sharpened",
+        "2": "your expertise and made yourself even more empowered."
       }
     },
     "heading": {

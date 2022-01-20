@@ -300,9 +300,7 @@ const LoginForm = () => {
 
         <div className='text-center'>
           <p className='policy_para'>
-            {t("login.T&C.content1")} <a href='#!'> {t("login.T&C.link1")} </a>{" "}
-            , <a href='#!'>  </a>{" "}
-            {t("login.T&C.content2")} <a href='#!'> {t("login.T&C.link3")} </a>
+            {t("login.T&C.content1")} <a href='/privacy-policy'> {t("login.T&C.link1")} </a>
           </p>
         </div>
       </div>

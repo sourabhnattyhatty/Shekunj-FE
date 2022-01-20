@@ -83,30 +83,14 @@ const CertificatesDetail = forwardRef((props, ref) => {
                 {t("certificateDetailPage.content.1.2")}
               </p>
               <p className='second-number'>
-                {/* {t("certificateDetailPage.other.1")}{" "} */}
                 Date of achievement: <span> 10/01/2022 </span>
-                {/* {formatDate(certificate?.course_start_time, "MMM Do YYYY")} to{" "} */}
-                {/* {formatDate(certificate?.course_end_time, "MMM Do YYYY")} */}
               </p>
               <p>
-                {/* {t("certificateDetailPage.other.2")} */}
                 Certificate ID: <span> 000000000000</span>
               </p>
             </div>
           </Col>
         </Row>
-
-        {/* <div
-          className={
-            props.size === "large" ? "date_set_large" : "date_set_small"
-          }
-        >
-          <div className='date-certi'>
-            {formatDate(certificate?.course_end_time, "DD/MM/YYYY")}
-          </div>
-          <hr className='hr_line2' />
-          <div className='date-text'>{t("common.time.7")}</div>
-        </div> */}
 
         <div className='cer_logo'>
           <img src={logo1} alt='' srcset='' />
