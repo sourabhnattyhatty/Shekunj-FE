@@ -77,20 +77,14 @@ function CourseTest() {
     (state) => state?.guidanceReducer,
   );
 
-  const { lan } = useSelector((state) => state.languageReducer);
 
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
 
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const unloadCallback = (event) => {
-      event.preventDefault();
-      event.returnValue = "abc?";
-    };
-    window.addEventListener("beforeunload", unloadCallback);
-    return () => window.removeEventListener("beforeunload", unloadCallback);
-  }, []);
+  useEffect(()=> {
+    setQuestionNumber(countData?.user_career_test_count + 1)
+  },[countData])
 
   useEffect(() => {
     if (detect.isMobile) {
@@ -98,6 +92,7 @@ function CourseTest() {
     }
   }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
 
+  const { lan } = useSelector((state) => state.languageReducer);
   useEffect(() => {
     return () => {
       const nv = localStorage.getItem("selectedCourseCategoryValue");
@@ -107,35 +102,35 @@ function CourseTest() {
     };
   }, [dispatch, history]);
 
-  useEffect(() => {
-    window.addEventListener("keydown", (e) => {
-      if (localStorage.getItem("isCarrerTestStarted")) {
-        if (
-          (e.which || e.keyCode) === 116 ||
-          ((e.which || e.keyCode) === 82 && e.ctrlKey)
-        ) {
-          const a = window.confirm(
-            "Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page",
-          );
-          if (a) {
-            e.preventDefault();
-            const nv = localStorage.getItem("selectedCourseCategoryValue");
-            localStorage.removeItem("isCarrerTestStarted");
-            localStorage.removeItem("selectedCourseCategoryValue");
-            history.push(
-              routingConstants.CAREER_TEST_RESULT +
-                selectedCourseCategoryValue?.id,
-            );
-            if (nv) {
-              dispatch(endTest(nv, history));
-            }
-          } else {
-            e.preventDefault();
-          }
-        }
-      }
-    });
-  }, [dispatch, history]);
+  // useEffect(() => {
+  //   window.addEventListener("keydown", (e) => {
+  //     if (localStorage.getItem("isCarrerTestStarted")) {
+  //       if (
+  //         (e.which || e.keyCode) === 116 ||
+  //         ((e.which || e.keyCode) === 82 && e.ctrlKey)
+  //       ) {
+  //         const a = window.confirm(
+  //           "Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page",
+  //         );
+  //         if (a) {
+  //           const nv = localStorage.getItem("selectedCourseCategoryValue");
+  //           localStorage.removeItem("isCarrerTestStarted");
+  //           // localStorage.removeItem("selectedCourseCategoryValue");
+  //           history.push(
+  //             routingConstants.CAREER_TEST_RESULT +
+  //               selectedCourseCategoryValue?.id,
+  //           );
+  //           e.preventDefault();
+  //           if (nv) {
+  //             dispatch(endTest(nv, history));
+  //           }
+  //         } else {
+  //           e.preventDefault();
+  //         }
+  //       }
+  //     }
+  //   });
+  // }, []);
 
   // useEffect(() => {
   //   const unloadCallback = (event) => {
@@ -589,7 +584,6 @@ function CourseTest() {
                   </Row>
                 </div>
               </Col>
-
               <Col md={4} xs={12}>
                 <div className='que_status noselect'>
                   <h2>{t("successCareerTestPage.heading.2")}</h2>

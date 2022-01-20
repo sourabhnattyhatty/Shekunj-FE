@@ -62,10 +62,12 @@ function AllCertificatePage() {
                   <Row>
                     <Col md={6} xs={12}>
                       <CertificatesDetail
+                       certificateData={c}
                         ref={certificateRef}
                         showButton={false}
                         size='small'
                         id={c?.id}
+                        key={c?.id}
                       />
                     </Col>
                     <Col md={6} xs={12}>
