@@ -65,6 +65,13 @@ const InProgressCourse = ({ courses }) => {
                         color='text.secondary'
                       >
                         {c?.progress || 0}%
+                        <Col md={3} xs={12}>
+                        {c?.has_certificate ? 
+                        <button className='btn certificate_button' onClick={() => history.push(routingConstants.ALL_CERTIFICATE_DETAIL + c?.id)}>
+                        {t("dashboardPage.certificate")}
+                        </button>
+                      : null}
+                      </Col>
                       </Typography>
                     </Box>
                   </Box>

@@ -146,7 +146,7 @@ const CourseModule = () => {
 
   const renderProgress = (count = 0) => {
     return (
-      <IOSSlider
+      <IOSSlider  
         aria-label='ios slider'
         className={
           (count <= 33 && "red1-progress") ||
@@ -273,7 +273,7 @@ const CourseModule = () => {
                                             src={Rightcheck}
                                             className='ml-2'
                                             alt='...'
-                                          />
+                                          />  
                                         )}
                                         {ind + 1}.{ind1 + 1}
                                         <span
@@ -299,7 +299,6 @@ const CourseModule = () => {
                 </div>
               </Col>
             )}
-
             <Col md={show ? 8 : 11} xs={12}>
               <div>
                 <div>
