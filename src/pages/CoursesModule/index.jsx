@@ -250,8 +250,6 @@ const CourseModule = () => {
                                   color: showactive === ind ? "pink" : "black",
                                 }}
                               >
-                                {/* {obj?.title.charAt(0)?.toUpperCase() +
-                              obj?.title?.slice(1)} */}
                                 {obj?.title}
                               </span>
                             </Typography>
@@ -347,23 +345,24 @@ const CourseModule = () => {
                         }}
                       />
                       {course?.file_link && (
-                        <iframe
-                          width='560'
-                          height='315'
-                          src={`https://www.youtube.com/embed/${embededLink(
-                            course?.file_link,
-                          )}`}
-                          title='YouTube video player'
-                          frameBorder='0'
-                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                          allowFullScreen
-                        ></iframe>
-                      )}
+                        <>
+                          <p>Here is the video</p>
+                          <iframe
+                            width='560'
+                            height='315'
+                            src={`https://www.youtube.com/embed/${embededLink(course?.file_link)}`}
+                            title='YouTube video player'
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                            allowFullScreen
+                          ></iframe>
+                        </>
+                        )}
                     </>
                   )}
 
                   <div className='prev_next_btn'>
-                    <Row>
+                    <Row> 
                       <Col md={6} xs={6}>
                         <button
                           className='back_button'
