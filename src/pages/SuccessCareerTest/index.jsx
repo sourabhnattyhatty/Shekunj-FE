@@ -81,10 +81,11 @@ function CourseTest() {
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
 
   const { t } = useTranslation();
+  const { lan } = useSelector((state) => state.languageReducer);
 
-  useEffect(()=> {
-    setQuestionNumber(countData?.user_career_test_count + 1)
-  },[countData])
+  // useEffect(()=> {
+  //   setQuestionNumber(countData?.user_career_test_count + 1)
+  // },[countData])
 
   useEffect(() => {
     if (detect.isMobile) {
@@ -92,7 +93,6 @@ function CourseTest() {
     }
   }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
 
-  const { lan } = useSelector((state) => state.languageReducer);
   useEffect(() => {
     return () => {
       const nv = localStorage.getItem("selectedCourseCategoryValue");
