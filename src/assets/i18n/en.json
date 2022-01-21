@@ -154,12 +154,8 @@
     "content": "Don't have an account?",
     "signupLink": "REGISTER HERE",
     "T&C": {
-      "content1": "Please read our",
-      "content2": "and",
-      "content3": "to understand how we use your personal data.",
-      "link1": "Privacy Notice",
-      "link2": "Cookie Notice",
-      "link3": "Legal terms"
+      "content1": "By signing up, you agree to our  and ",
+      "link1": "Terms and Policies"
     },
     "google": "Register with Google"
   },
@@ -409,8 +405,8 @@
   "certificateDetailPage": {
     "content": {
       "1": {
-        "1": "With membership number",
-        "2": "has been successfully completed the course"
+        "1": "By learning with SheKunj, you have enlarged your vision, sharpened",
+        "2": "your expertise and made yourself even more empowered."
       }
     },
     "heading": {

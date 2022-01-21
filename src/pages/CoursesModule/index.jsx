@@ -146,7 +146,7 @@ const CourseModule = () => {
 
   const renderProgress = (count = 0) => {
     return (
-      <IOSSlider
+      <IOSSlider  
         aria-label='ios slider'
         className={
           (count <= 33 && "red1-progress") ||
@@ -273,7 +273,7 @@ const CourseModule = () => {
                                             src={Rightcheck}
                                             className='ml-2'
                                             alt='...'
-                                          />
+                                          />  
                                         )}
                                         {ind + 1}.{ind1 + 1}
                                         <span
@@ -299,7 +299,6 @@ const CourseModule = () => {
                 </div>
               </Col>
             )}
-
             <Col md={show ? 8 : 11} xs={12}>
               <div>
                 <div>
@@ -343,23 +342,24 @@ const CourseModule = () => {
                         }}
                       />
                       {course?.file_link && (
-                        <iframe
-                          width='560'
-                          height='315'
-                          src={`https://www.youtube.com/embed/${embededLink(
-                            course?.file_link,
-                          )}`}
-                          title='YouTube video player'
-                          frameBorder='0'
-                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                          allowFullScreen
-                        ></iframe>
-                      )}
+                        <>
+                          <h2><strong>Here is the video</strong></h2>
+                          <iframe
+                            width='560'
+                            height='315'
+                            src={`https://www.youtube.com/embed/${embededLink(course?.file_link)}`}
+                            title='YouTube video player'
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                            allowFullScreen
+                          ></iframe>
+                        </>
+                        )}
                     </>
                   )}
 
                   <div className='prev_next_btn'>
-                    <Row>
+                    <Row> 
                       <Col md={6} xs={6}>
                         <button
                           className='back_button'

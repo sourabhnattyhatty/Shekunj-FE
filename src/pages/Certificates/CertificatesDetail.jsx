@@ -17,6 +17,7 @@ import logo22 from "../../assets/images/AllCertificate/logo22.png";
 import logo3 from "../../assets/images/AllCertificate/logo3.png";
 
 import "./index.scss";
+import moment from "moment";
 
 const CertificatesDetail = forwardRef((props, ref) => {
   const dispatch = useDispatch();
@@ -43,12 +44,12 @@ const CertificatesDetail = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     generatePDF() {
-      const doc = new jsPDF("p", "pt", "a3");
+      const doc = new jsPDF("landscape", "px", "A4");
       const node = document.querySelector(".box_certificate_small");
       htmlToImage.toJpeg(node).then(function (dataUrl) {
         const img = new Image();
         img.src = dataUrl;
-        doc.addImage(img, "JPGE", 0, 250, 840, 500);
+        doc.addImage(img, "JPGE", 0, 0, 632, 448);
         doc.save("mycertificate.pdf");
       });
     },
@@ -85,35 +86,19 @@ const CertificatesDetail = forwardRef((props, ref) => {
                 {t("certificateDetailPage.content.1.2")}
               </p>
               <p className='second-number'>
-                {/* {t("certificateDetailPage.other.1")}{" "} */}
-                Date of achievement: <span> 10/01/2022 </span>
-                {/* {formatDate(certificate?.course_start_time, "MMM Do YYYY")} to{" "} */}
-                {/* {formatDate(certificate?.course_end_time, "MMM Do YYYY")} */}
+                Date of achievement : {moment(certificateData?.course_end_time).format('DD-MM-YYYY')}
               </p>
               <p>
-                {/* {t("certificateDetailPage.other.2")} */}
                 Certificate ID: <span> 000000000000</span>
               </p>
             </div>
           </Col>
         </Row>
 
-        {/* <div
-          className={
-            props.size === "large" ? "date_set_large" : "date_set_small"
-          }
-        >
-          <div className='date-certi'>
-            {formatDate(certificate?.course_end_time, "DD/MM/YYYY")}
-          </div>
-          <hr className='hr_line2' />
-          <div className='date-text'>{t("common.time.7")}</div>
-        </div> */}
-
         <div className='cer_logo'>
-          <img src={logo1} alt='' srcset='' />
-          <img src={logo22} alt='' srcset='' />
-          <img src={logo3} alt='' srcset='' />
+          <img className="img1" src={logo1} alt='' srcset='' />
+          <img className="img2" src={logo22} alt='' srcset='' />
+          <img className="img3" src={logo3} alt='' srcset='' />
         </div>
         <div className='signature_set'>
           <img src={signature} alt='' />

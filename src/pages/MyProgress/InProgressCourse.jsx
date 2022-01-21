@@ -65,12 +65,14 @@ const InProgressCourse = ({ courses }) => {
                         color='text.secondary'
                       >
                         {c?.progress || 0}%
+                        <Col md={3} xs={12}>
+                      </Col>
                       </Typography>
                     </Box>
                   </Box>
                 </div>
               </Col>
-              {c?.in_progress_course && (
+              {c?.has_certificate ?  (
                 <Col md={3} xs={12}>
                   <div
                     className='button_paddingarea'
@@ -80,8 +82,8 @@ const InProgressCourse = ({ courses }) => {
                      {t("dashboardPage.certificate")}
                     </button>
                   </div>
-                </Col>
-              )}
+                </Col>)
+              : null }
             </Row>
           </div>
         ))

@@ -90,10 +90,10 @@ function EditProfile(props) {
     <>
       <form onSubmit={handleSubmit}>
         <Row>
-          <Col md={3} xs={12}>
+          <Col lg={3} md={4} xs={12}>
             <ProfileImage isEditable={true} />
           </Col>
-          <Col md={4} xs={12}>
+          <Col lg={4} md={4} xs={12}>
             <div className='edit_profile'>
               <div className='form-group mb-4'>
                 <label htmlFor=''>{t("common.formHeadings.fname")}</label>
@@ -203,7 +203,7 @@ function EditProfile(props) {
               </div>
             </div>
           </Col>
-          <Col md={4} xs={12}>
+          <Col lg={4} md={4} xs={12}>
             <div className='edit_profile'>
               <div className='form-group mb-4'>
                 <label htmlFor=''>{t("common.formHeadings.lname")}</label>
