@@ -89,6 +89,7 @@ const CourseModule = () => {
   const [showactive, setShowactive] = React.useState(0);
   const [showsubactive, setShowsubactive] = React.useState(0);
   const [expanded, setExpanded] = React.useState("panel1");
+  const [showCurrentContent, setShowCurrentContent] = React.useState();
   const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
     (state) => state.coursesReducer,
   );
@@ -139,10 +140,19 @@ const CourseModule = () => {
   };
 
   const handleNextModule = (page) => {
+    localStorage.setItem("pageID",page)
     const p = (page - 1) * progress;
+    setShowsubactive(showsubactive + 1)
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
+
+
+  // React.useEffect(() => {
+  //   if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+  //     console.log(localStorage.getItem("pageID"))
+  //   }
+  // }, []);
 
   const renderProgress = (count = 0) => {
     return (
@@ -165,10 +175,6 @@ const CourseModule = () => {
     history.push(routingConstants.COURSES_TEST + id);
   };
 
-  const handleactive = (key) => {
-    setShowactive(key);
-  };
-
   const embededLink = (link = null) => {
     if (link) {
       const a = link?.split("=");
@@ -180,7 +186,7 @@ const CourseModule = () => {
   const openSubModule = (id) => {
     dispatch(subModule(id))
   }
-
+ 
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -244,11 +250,11 @@ const CourseModule = () => {
                             <Typography>
                               <div className='number-bgbox'>{ind + 1}</div>
                               <span
-                                onClick={() => handleactive(ind)}
+                                onClick={() => setShowactive(ind)}
                                 style={{
                                   color: showactive === ind ? "pink" : "black",
-                                }}
-                              >
+                                }}>
+                                  {  }
                                 {obj?.title}
                               </span>
                             </Typography>
@@ -286,7 +292,7 @@ const CourseModule = () => {
                                           }}
                                         >
                                           {" "}
-                                          {obj1?.title}
+                                           {obj?.title } 
                                         </span>
                                       </li>
                                     </ul>
@@ -338,7 +344,7 @@ const CourseModule = () => {
                       <div
                         className='imgSet'
                         dangerouslySetInnerHTML={{
-                          __html: course?.description,
+                          __html: course?.description
                         }}
                       />
                       {course?.file_link && (
@@ -372,7 +378,6 @@ const CourseModule = () => {
                           {t("coursesPage.coursesModulePage.button.1")}
                         </button>
                       </Col>
-
                       <Col md={6} xs={6} className='text-right'>
                         {course?.next_module === null ? (
                           <button
