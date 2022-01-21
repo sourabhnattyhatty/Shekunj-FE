@@ -66,18 +66,13 @@ const InProgressCourse = ({ courses }) => {
                       >
                         {c?.progress || 0}%
                         <Col md={3} xs={12}>
-                        {c?.has_certificate ? 
-                        <button className='btn certificate_button' onClick={() => history.push(routingConstants.ALL_CERTIFICATE_DETAIL + c?.id)}>
-                        {t("dashboardPage.certificate")}
-                        </button>
-                      : null}
                       </Col>
                       </Typography>
                     </Box>
                   </Box>
                 </div>
               </Col>
-              {c?.in_progress_course && (
+              {c?.has_certificate ?  (
                 <Col md={3} xs={12}>
                   <div
                     className='button_paddingarea'
@@ -87,8 +82,8 @@ const InProgressCourse = ({ courses }) => {
                      {t("dashboardPage.certificate")}
                     </button>
                   </div>
-                </Col>
-              )}
+                </Col>)
+              : null }
             </Row>
           </div>
         ))
