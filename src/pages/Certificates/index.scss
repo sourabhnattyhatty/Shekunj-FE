@@ -116,7 +116,7 @@
   height: 810px;
   position: relative;
   display: grid;
-  align-items: flex-end;
+  align-items: center;
 }
 .box_certificate_large::after {
   content: "";
@@ -307,8 +307,18 @@ button.back_course {
   margin-left: 30px !important;
   margin-bottom: 10px !important;
 }
-.box_certificate_small .cer_logo img {
-  width: 85px;
+// .box_certificate_small .cer_logo img {
+//   width: 85px;
+// }
+
+.box_certificate_small .cer_logo img.img1 {
+  height: 40px;
+}
+.box_certificate_small .cer_logo img.img2 {
+  height: 30px;
+}
+.box_certificate_small .cer_logo img.img3 {
+  height: 20px;
 }
 .cercifi_con_small h3 {
   font-family: Ubuntu;
@@ -378,6 +388,7 @@ hr.hr_line2 {
 .cercifi_con_small {
   padding-top: 0%;
   text-align: left;
+  margin: 0;
 }
 .box_certificate_small {
   padding: 0;
@@ -460,8 +471,18 @@ hr.hr_line2 {
   }
 }
 
-.box_certificate_large .cer_logo img {
-  width: 150px;
+// .box_certificate_large .cer_logo img {
+//   width: 150px;
+// }
+
+.box_certificate_large .cer_logo img.img1 {
+  height: 70px;
+}
+.box_certificate_large .cer_logo img.img2 {
+  height: 65px;
+}
+.box_certificate_large .cer_logo img.img3 {
+  height: 40px;
 }
 
 .cer_logo {
@@ -471,6 +492,8 @@ hr.hr_line2 {
   gap: 2rem;
   margin-left: 67px;
   margin-bottom: 30px;
+  position: absolute;
+  bottom: 0;
 }
 .cercifi_con_small h2 {
   font-family: Dancing Script;
