@@ -95,18 +95,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
           </Col>
         </Row>
 
-        {/* <div
-          className={
-            props.size === "large" ? "date_set_large" : "date_set_small"
-          }
-        >
-          <div className='date-certi'>
-            {formatDate(certificate?.course_end_time, "DD/MM/YYYY")}
-          </div>
-          <hr className='hr_line2' />
-          <div className='date-text'>{t("common.time.7")}</div>
-        </div> */}
-
         <div className='cer_logo'>
           <img src={logo1} alt='' srcset='' />
           <img src={logo22} alt='' srcset='' />
