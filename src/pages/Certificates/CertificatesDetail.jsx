@@ -105,8 +105,8 @@ const CertificatesDetail = forwardRef((props, ref) => {
           <hr className='hr_line2' />
           <div className='name-surname'>
             {t("certificateDetailPage.other.4")}
-          </div>
           <div className='president'>{t("certificateDetailPage.other.3")}</div>
+          </div>
         </div>
       </div>
       {props.showButton && (
