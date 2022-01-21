@@ -120,7 +120,12 @@ input:autofill {
 }
 
 .btn.btn_login:hover {
-  background: #000;
+  background: #ffffff;
+  // border: 1px solid #ec498a;
+  color: #ec498a; 
+  // border-radius: 2px;
+  transition: 1s ease;
+
 }
 .login_form .policy_para {
   font-family: "SegoeUI_medium";
