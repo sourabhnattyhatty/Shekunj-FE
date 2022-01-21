@@ -343,7 +343,7 @@ const CourseModule = () => {
                       />
                       {course?.file_link && (
                         <>
-                          <p>Here is the video</p>
+                          <h2><strong>Here is the video</strong></h2>
                           <iframe
                             width='560'
                             height='315'
