@@ -93,9 +93,9 @@ const CertificatesDetail = forwardRef((props, ref) => {
         </Row>
 
         <div className='cer_logo'>
-          <img src={logo1} alt='' srcset='' />
-          <img src={logo22} alt='' srcset='' />
-          <img src={logo3} alt='' srcset='' />
+          <img className="img1" src={logo1} alt='' srcset='' />
+          <img className="img2" src={logo22} alt='' srcset='' />
+          <img className="img3" src={logo3} alt='' srcset='' />
         </div>
         <div className='signature_set'>
           <img src={signature} alt='' />
