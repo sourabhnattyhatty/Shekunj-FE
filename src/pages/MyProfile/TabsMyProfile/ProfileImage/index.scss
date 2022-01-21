@@ -84,3 +84,15 @@ button.upl_img {
 //     width: 300px !important;
 //     height: 300px !important;
 // }
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+.upload_input {
+    margin: 46px 10px 30px;
+}
+.upload_input input {
+    width: 60%;
+}
+.upload_input button {
+    width: 40%;
+}
+}
