@@ -84,7 +84,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
               <p className='first-number'>
                 {t("certificateDetailPage.content.1.1")} {" "}
                 {t("certificateDetailPage.content.1.2")}
-              </p><br/>
+              </p>
               <p className='second-number'>
                 Date of achievement : {moment(certificateData?.course_end_time).format('DD-MM-YYYY')}
               </p>
