@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Timer from "react-compound-timer";
-git import useExitPrompt from "../../hooks/useExitPromt";
+import useExitPrompt from "../../hooks/useExitPromt";
 
 import {
   Autocomplete,
