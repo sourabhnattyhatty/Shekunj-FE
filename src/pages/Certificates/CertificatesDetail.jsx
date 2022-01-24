@@ -79,7 +79,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
               <h5>for successfully completing the course</h5>
               <h3>{certificate?.course_name}</h3>
               <p className='first-number'>
-                {t("certificateDetailPage.content.1.1")} {certificate?.id}{" "}
+                {t("certificateDetailPage.content.1.1")} {" "}
                 {t("certificateDetailPage.content.1.2")}
               </p>
               <p className='second-number'>
