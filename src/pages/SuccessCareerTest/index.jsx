@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Timer from "react-compound-timer";
+import useExitPrompt from "../../hooks/useExitPromt";
 
 import {
   Autocomplete,
@@ -54,6 +55,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 }));
 
 function CourseTest() {
+  const [showExitPrompt, setShowExitPrompt] = useExitPrompt(false);
   const [questionNumber, setQuestionNumber] = React.useState(1);
   const [answer, setAnswer] = React.useState();
   const [toggle, setToggle] = React.useState(true);
@@ -77,7 +79,6 @@ function CourseTest() {
     (state) => state?.guidanceReducer,
   );
 
-
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
 
   const { t } = useTranslation();
@@ -86,6 +87,18 @@ function CourseTest() {
   // useEffect(()=> {
   //   setQuestionNumber(countData?.user_career_test_count + 1)
   // },[countData])
+
+  useEffect(() => {
+    const nv = localStorage.getItem("selectedCourseCategoryValue");    
+    localStorage.removeItem("isCarrerTestStarted");
+    setShowExitPrompt(false)    
+    if (nv) {
+      dispatch(endTest(nv, history));
+      history.push(
+        routingConstants.CAREER_TEST_RESULT + nv,
+      ); 
+    }
+  }, []);
 
   useEffect(() => {
     if (detect.isMobile) {
@@ -101,6 +114,12 @@ function CourseTest() {
       }
     };
   }, [dispatch, history]);
+
+  useEffect(() => {
+    return () => {
+      setShowExitPrompt(false);
+    };
+  }, []);
 
   // useEffect(() => {
   //   window.addEventListener("keydown", (e) => {
@@ -223,6 +242,7 @@ function CourseTest() {
   }, [dispatch, lan]);
 
   const handleStartCourse = async () => {
+    setShowExitPrompt(true);
     localStorage.setItem("isCarrerTestStarted", true);
     if (!selectedCourseCategoryValue) {
       return;

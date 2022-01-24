@@ -58,7 +58,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
   return (
     <div className='container p-0'>
       <div className='mob_box_certificate_small'></div>
-
       <div
         className={
           props.size === "large"
