@@ -14,6 +14,7 @@ import useDeviceDetect from "../../hooks/useDeviceDetect";
 import Slider from "@mui/material/Slider";
 import Timer from "react-compound-timer";
 
+import useExitPrompt from "../../hooks/useExitPromt";
 import { Header, Footer } from "../../components";
 
 import "./index.scss";
@@ -50,6 +51,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 }));
 
 function CourseTest() {
+  const [showExitPrompt, setShowExitPrompt] = useExitPrompt(false);
   const [questionNumber, setQuestionNumber] = React.useState(1);
   const [answer, setAnswer] = React.useState();
   const [showTimer, setShowTimer] = React.useState(false);
@@ -70,14 +72,24 @@ function CourseTest() {
   const { question, questionCount, isLoading } = useSelector(
     (state) => state.coursesReducer,
   );
-  useEffect(()=> {
-    setQuestionNumber(questionCount.user_course_test_count + 1)
-  },[questionCount])
+  useEffect(() => {
+    setQuestionNumber(questionCount.user_course_test_count + 1);
+  }, [questionCount]);
 
   const { lan } = useSelector((state) => state.languageReducer);
 
   const progress =
     Math.round(100 / (questionCount?.total_course_que || 0)) || 0;
+
+  useEffect(() => {
+    const nv = localStorage.getItem("selectedCourseCategoryValue");
+    localStorage.removeItem("isCarrerTestStarted");
+    setShowExitPrompt(false);
+    if (nv) {
+      dispatch(endTest(nv, history));
+      history.push(routingConstants.CAREER_TEST_RESULT + nv);
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
@@ -93,7 +105,11 @@ function CourseTest() {
         dispatch(endTest(id));
       }
     };
-  },[dispatch,id]);
+  }, [dispatch, id]);
+
+  useEffect(()=>{
+    setShowExitPrompt(true);
+  },[])
 
   // useEffect(() => {
   //   window.addEventListener("keydown", (e) => {
@@ -196,7 +212,8 @@ function CourseTest() {
     }
   };
 
-  const handleFinishQuestion = () => {
+  const handleFinishQuestion = () => {    
+    setShowExitPrompt(true);
     const data = {
       answer,
       course_test: question?.id,
@@ -233,7 +250,7 @@ function CourseTest() {
     );
   };
 
-  const handleTestFinished = () => {
+  const handleTestFinished = () => {   
     dispatch(endTest(id));
     toast.error(t("error.other.2"));
     history.push(routingConstants.COURSES_RESULT + id);
@@ -304,7 +321,6 @@ function CourseTest() {
             </Col>
           </Row>
         </div>
-
         <div className='time_set noselect'>
           <p>
             <img src={time} alt='' /> {t("common.time.5")}{" "}
