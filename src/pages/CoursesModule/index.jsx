@@ -22,11 +22,11 @@ import { Skeleton } from "@mui/material";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleCourseModule, startCourse } from "../../store/courses/action";
-import { toast } from "react-toastify";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
-import Cookies from "js-cookie";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
+
+import { subModule } from "../../store/courses";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -89,13 +89,12 @@ const CourseModule = () => {
   const [showactive, setShowactive] = React.useState(0);
   const [showsubactive, setShowsubactive] = React.useState(0);
   const [expanded, setExpanded] = React.useState("panel1");
+  const [showCurrentContent, setShowCurrentContent] = React.useState();
   const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
     (state) => state.coursesReducer,
   );
 
   const { lan } = useSelector((state) => state.languageReducer);
-
-  
 
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
@@ -135,22 +134,29 @@ const CourseModule = () => {
   };
 
   const handlePrevModule = (page) => {
-    // Cookies.set("module", page);
     const p = (page - 1) * progress;
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const handleNextModule = (page) => {
-    // Cookies.set("module", page);
+    localStorage.setItem("pageID",page)
     const p = (page - 1) * progress;
+    setShowsubactive(showsubactive + 1)
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
+
+  // React.useEffect(() => {
+  //   if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+  //     console.log(localStorage.getItem("pageID"))
+  //   }
+  // }, []);
+
   const renderProgress = (count = 0) => {
     return (
-      <IOSSlider
+      <IOSSlider  
         aria-label='ios slider'
         className={
           (count <= 33 && "red1-progress") ||
@@ -166,12 +172,7 @@ const CourseModule = () => {
   };
 
   const handleFinish = () => {
-    // Cookies.remove("module");
     history.push(routingConstants.COURSES_TEST + id);
-  };
-
-  const handleactive = (key) => {
-    setShowactive(key);
   };
 
   const embededLink = (link = null) => {
@@ -182,6 +183,10 @@ const CourseModule = () => {
     return "";
   };
 
+  const openSubModule = (id) => {
+    dispatch(subModule(id))
+  }
+ 
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -245,13 +250,11 @@ const CourseModule = () => {
                             <Typography>
                               <div className='number-bgbox'>{ind + 1}</div>
                               <span
-                                onClick={() => handleactive(ind)}
+                                onClick={() => setShowactive(ind)}
                                 style={{
                                   color: showactive === ind ? "pink" : "black",
-                                }}
-                              >
-                                {/* {obj?.title.charAt(0)?.toUpperCase() +
-                              obj?.title?.slice(1)} */}
+                                }}>
+                                  {  }
                                 {obj?.title}
                               </span>
                             </Typography>
@@ -269,13 +272,14 @@ const CourseModule = () => {
                                             ? "active-accordiantext"
                                             : ""
                                         }
+                                        onClick={() => openSubModule(obj1?.id) }
                                       >
                                         {Number(course?.id) === obj?.id && (
                                           <img
                                             src={Rightcheck}
                                             className='ml-2'
                                             alt='...'
-                                          />
+                                          />  
                                         )}
                                         {ind + 1}.{ind1 + 1}
                                         <span
@@ -288,9 +292,7 @@ const CourseModule = () => {
                                           }}
                                         >
                                           {" "}
-                                          {/* {obj1?.title?.charAt(0)?.toUpperCase() +
-                                    obj1?.title?.slice(1)} */}
-                                          {obj1?.title}
+                                           {obj?.title } 
                                         </span>
                                       </li>
                                     </ul>
@@ -303,7 +305,6 @@ const CourseModule = () => {
                 </div>
               </Col>
             )}
-
             <Col md={show ? 8 : 11} xs={12}>
               <div>
                 <div>
@@ -343,27 +344,28 @@ const CourseModule = () => {
                       <div
                         className='imgSet'
                         dangerouslySetInnerHTML={{
-                          __html: course?.description,
+                          __html: course?.description
                         }}
                       />
                       {course?.file_link && (
-                        <iframe
-                          width='560'
-                          height='315'
-                          src={`https://www.youtube.com/embed/${embededLink(
-                            course?.file_link,
-                          )}`}
-                          title='YouTube video player'
-                          frameBorder='0'
-                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                          allowFullScreen
-                        ></iframe>
-                      )}
+                        <>
+                          <h2><strong>Here is the video</strong></h2>
+                          <iframe
+                            width='560'
+                            height='315'
+                            src={`https://www.youtube.com/embed/${embededLink(course?.file_link)}`}
+                            title='YouTube video player'
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                            allowFullScreen
+                          ></iframe>
+                        </>
+                        )}
                     </>
                   )}
 
                   <div className='prev_next_btn'>
-                    <Row>
+                    <Row> 
                       <Col md={6} xs={6}>
                         <button
                           className='back_button'
@@ -376,7 +378,6 @@ const CourseModule = () => {
                           {t("coursesPage.coursesModulePage.button.1")}
                         </button>
                       </Col>
-
                       <Col md={6} xs={6} className='text-right'>
                         {course?.next_module === null ? (
                           <button

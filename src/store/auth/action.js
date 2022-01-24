@@ -209,3 +209,15 @@ export const contactUs = (values) => async(dispatch) => {
     dispatch({type:authTypes.CONTACT_VERIFY_FAIL});
   }
 }
+
+export const forgotPassword = (value) => async (dispatch) => {
+  try{
+    dispatch({type: authTypes.FORGOT_PASSWORD_REQUEST})
+    const res = await httpServices.post('/authentication/forget-password/',value);
+    dispatch({type:authTypes.FORGOT_PASSWORD_FINISH})
+    toast.success(res.data,toasterConfig);
+    return res
+  }catch(err){
+    dispatch({type:authTypes.FORGOT_PASSWORD_FAIL});
+  }
+}

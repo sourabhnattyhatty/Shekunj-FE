@@ -70,6 +70,10 @@ function CourseTest() {
   const { question, questionCount, isLoading } = useSelector(
     (state) => state.coursesReducer,
   );
+  useEffect(()=> {
+    setQuestionNumber(questionCount.user_course_test_count + 1)
+  },[questionCount])
+
   const { lan } = useSelector((state) => state.languageReducer);
 
   const progress =
@@ -81,8 +85,6 @@ function CourseTest() {
     if (detect.isMobile) {
       history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
     }
-
-    
   }, [history, detect.isMobile, id, dispatch, t, lan]);
 
   useEffect(() => {
@@ -93,27 +95,27 @@ function CourseTest() {
     };
   },[dispatch,id]);
 
-  useEffect(() => {
-    window.addEventListener("keydown", (e) => {
-      if (localStorage.getItem("isTestStarted")) {
-        if (
-          (e.which || e.keyCode) === 116 ||
-          ((e.which || e.keyCode) === 82 && e.ctrlKey)
-        ) {
-          const a = window.confirm("Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page");
-          if (a) {
-            e.preventDefault();
-            localStorage.removeItem("isTestStarted");
-            if (id) {
-              dispatch(endTest(id, history));
-            }
-          } else {
-            e.preventDefault();
-          }
-        }
-      }
-    });
-  }, [dispatch, history, id]);
+  // useEffect(() => {
+  //   window.addEventListener("keydown", (e) => {
+  //     if (localStorage.getItem("isTestStarted")) {
+  //       if (
+  //         (e.which || e.keyCode) === 116 ||
+  //         ((e.which || e.keyCode) === 82 && e.ctrlKey)
+  //       ) {
+  //         const a = window.confirm("Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page");
+  //         if (a) {
+  //           e.preventDefault();
+  //           localStorage.removeItem("isTestStarted");
+  //           if (id) {
+  //             dispatch(endTest(id, history));
+  //           }
+  //         } else {
+  //           e.preventDefault();
+  //         }
+  //       }
+  //     }
+  //   });
+  // }, [dispatch, history, id]);
 
   useEffect(() => {
     if (question) {
@@ -419,7 +421,6 @@ function CourseTest() {
               </Row>
             </div>
           </Col>
-
           <Col md={4} xs={12}>
             <div className='que_status noselect'>
               <h2>{t("successCareerTestPage.heading.2")}</h2>

@@ -93,7 +93,7 @@ function MyProgress() {
                     </p>
                   </Col>
                 </Row>
-                <div>
+                <div>                  
                   <Link to={routingConstants.ALL_CERTIFICATE_PAGE}>
                     <button className='btn all_certificatebutton'>
                       {t("dashboardPage.button.1")}

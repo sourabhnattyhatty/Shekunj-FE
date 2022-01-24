@@ -48,7 +48,6 @@ function Carousel(props) {
     }
   };
 
-  console.log(">>>>>>>>>",courses?.length)
 
   return (
     <div className='noselect'>
@@ -103,6 +102,7 @@ function Carousel(props) {
             1920: {
               items: 5,
               margin: 250,
+              nav:true,
             },
           }}
         >

@@ -17,12 +17,15 @@ import logo22 from "../../assets/images/AllCertificate/logo22.png";
 import logo3 from "../../assets/images/AllCertificate/logo3.png";
 
 import "./index.scss";
+import moment from "moment";
 
 const CertificatesDetail = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
   const { t } = useTranslation();
+
+  const{certificateData} = props
 
   const { certificateDetail: certificate } = useSelector(
     (state) => state.certificateReducer,
@@ -41,12 +44,12 @@ const CertificatesDetail = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     generatePDF() {
-      const doc = new jsPDF("p", "pt", "a3");
+      const doc = new jsPDF("landscape", "px", "A4");
       const node = document.querySelector(".box_certificate_small");
       htmlToImage.toJpeg(node).then(function (dataUrl) {
         const img = new Image();
         img.src = dataUrl;
-        doc.addImage(img, "JPGE", 0, 250, 840, 500);
+        doc.addImage(img, "JPGE", -12, -12, 654, 470);
         doc.save("mycertificate.pdf");
       });
     },
@@ -76,18 +79,18 @@ const CertificatesDetail = forwardRef((props, ref) => {
               <img className='last-img' src={para} alt='' />
               <h2>{certificate?.name || t("common.n/a")}</h2>
               <hr className='hr_line' />
-              <h5>for successfully completing the course</h5>
+              <h5  className="certi-ref">for successfully completing the course</h5>
               <h3>{certificate?.course_name}</h3>
               <p className='first-number'>
                 {t("certificateDetailPage.content.1.1")} {" "}
                 {t("certificateDetailPage.content.1.2")}
-              </p>
+              </p><br/>
               <p className='second-number'>
-                Date of achievement: <span> 10/01/2022 </span>
+                Date of achievement : {moment(certificateData?.course_end_time).format('DD-MM-YYYY')}
               </p>
-              <p>
+              {/* <p>
                 Certificate ID: <span> 000000000000</span>
-              </p>
+              </p> */}
             </div>
           </Col>
         </Row>
@@ -102,8 +105,8 @@ const CertificatesDetail = forwardRef((props, ref) => {
           <hr className='hr_line2' />
           <div className='name-surname'>
             {t("certificateDetailPage.other.4")}
-          </div>
           <div className='president'>{t("certificateDetailPage.other.3")}</div>
+          </div>
         </div>
       </div>
       {props.showButton && (
