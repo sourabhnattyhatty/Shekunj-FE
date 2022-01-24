@@ -79,10 +79,10 @@ const CertificatesDetail = forwardRef((props, ref) => {
               <img className='last-img' src={para} alt='' />
               <h2>{certificate?.name || t("common.n/a")}</h2>
               <hr className='hr_line' />
-              <h5 className="certi-ref" >for successfully completing the course</h5>
-              <h3>“{certificateData? certificateData.course_name : certificate?.course_name}”</h3>
+              <h5  className="certi-ref">for successfully completing the course</h5>
+              <h3>{certificate?.course_name}</h3>
               <p className='first-number'>
-                {t("certificateDetailPage.content.1.1")} {certificate?.id}{" "}
+                {t("certificateDetailPage.content.1.1")} {" "}
                 {t("certificateDetailPage.content.1.2")}
               </p><br/>
               <p className='second-number'>
