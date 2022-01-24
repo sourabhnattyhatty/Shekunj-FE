@@ -1,0 +1,2 @@
+(this["webpackJsonpshekunj-frontend"]=this["webpackJsonpshekunj-frontend"]||[]).push([[6],{554:function(n,t,s){},654:function(n,t,s){},655:function(n,t,s){"use strict";t.a=s.p+"static/media/win.8e229cba.png"}}]);
+//# sourceMappingURL=6.95597a32.chunk.js.map
