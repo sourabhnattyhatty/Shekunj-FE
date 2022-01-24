@@ -238,11 +238,20 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      <Link to='/courses' style={{ textDecoration: "none" }}>
+      
+      {/* <Link to='/courses' style={{ textDecoration: "none" }}>
+      <span>
         <button className='view_test_cate'>
           {t("homePage.mainSlider.button.7")}
         </button>
-      </Link>
+      </span>
+      </Link> */}
+
+      <div className="courses">
+            <Link to="/courses"  style={{ textDecoration: "none" }} className="view_test_cate"> 
+            {t("homePage.mainSlider.button.7")}
+            </Link>
+      </div>
 
       {/* resume */}
       <section className='resume same_padding mt-5 noselect'>
@@ -275,11 +284,17 @@ function HomePage() {
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
       />
-      <Link to='/success-career-test' style={{ textDecoration: "none" }}>
+        <div className="courses">
+              <Link to="/success-career-test"  style={{ textDecoration: "none" }} className="view_test_cate  noselect"> 
+              {t("homePage.mainSlider.button.3")}
+              </Link>
+
+        </div>
+      {/* <Link to='/success-career-test' style={{ textDecoration: "none" }}>
         <button className='view_test_cate noselect'>
           {t("homePage.mainSlider.button.3")}
         </button>
-      </Link>
+      </Link> */}
 
       {/* Job opportunity */}
       <section className='job-opprtunity same_padding mt-5 noselect'>
@@ -320,14 +335,21 @@ function HomePage() {
         title2={t("homePage.carousel3.heading.2")}
         type={constants.carouselConstant.GOVERNMENT_EXAMS}
       />
-      <Link to='/government-exams' style={{ textDecoration: "none" }}>
+      <div className="courses">
+            <Link to="/government-exams"  style={{ textDecoration: "none" }} className="view_test_cate">  
+            
+            {t("homePage.mainSlider.button.2")}
+            </Link>
+
+      </div>
+      {/* <Link to='/government-exams' style={{ textDecoration: "none" }}>
         <button
           className='view_test_cate'
           onClick={() => <Redirect to='/government-exams' />}
         >
           {t("homePage.mainSlider.button.2")}
         </button>
-      </Link>
+      </Link> */}
 
       {/* career development */}
       <section className='career_community same_padding mt-5 noselect'>

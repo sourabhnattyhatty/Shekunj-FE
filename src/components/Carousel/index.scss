@@ -274,6 +274,39 @@ button.view_test_cate:hover {
   color: #ec498a;
   transition: 1s;
 }
+.courses{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin: 50px auto;
+  user-select: none;
+}
+.view_test_cate {
+  font-family: SegoeUI_bold;
+  user-select: none;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  color: #FFFFFF;
+  background: #EC498A;
+  border-radius: 2px;
+  padding: 20px 42px;
+  border: 1px solid #FFFFFF;
+  text-align: center;
+  display: block;
+  margin: 50px auto;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+}
+.courses :hover{
+  border: 1px solid #EC498A;
+  background-color: transparent;
+  color: #EC498A;
+  user-select: none;
+  transition: 1s;
+  cursor: pointer;
+}
 .buy-btn {
   width: 160px;
   height: 40px;
