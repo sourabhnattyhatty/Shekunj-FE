@@ -49,7 +49,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
       htmlToImage.toJpeg(node).then(function (dataUrl) {
         const img = new Image();
         img.src = dataUrl;
-        doc.addImage(img, "JPGE", 0, 0, 642, 458);
+        doc.addImage(img, "JPGE", -12, -12, 654, 470);
         doc.save("mycertificate.pdf");
       });
     },
