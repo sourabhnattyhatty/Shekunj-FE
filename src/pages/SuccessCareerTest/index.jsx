@@ -90,6 +90,7 @@ function CourseTest() {
 
   useEffect(() => {
     const nv = localStorage.getItem("selectedCourseCategoryValue");    
+    localStorage.removeItem("selectedCourseCategoryValue")
     localStorage.removeItem("isCarrerTestStarted");
     setShowExitPrompt(false)    
     if (nv) {
