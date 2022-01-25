@@ -81,15 +81,17 @@ function CourseTest() {
   const progress =
     Math.round(100 / (questionCount?.total_course_que || 0)) || 0;
 
-  useEffect(() => {
-    const nv = localStorage.getItem("selectedCourseCategoryValue");
-    localStorage.removeItem("isCarrerTestStarted");
-    setShowExitPrompt(false);
-    if (nv) {
-      dispatch(endTest(nv, history));
-      history.push(routingConstants.CAREER_TEST_RESULT + nv);
-    }
-  }, []);
+  // useEffect(() => {
+  //  // const nv = localStorage.getItem("selectedCourseCategoryValue");
+  //   //localStorage.removeItem("isCarrerTestStarted");
+  //  // setShowExitPrompt(false);
+  //  let status  = localStorage.getItem("NeedToRelaod");
+  //  if (status === "YES") {
+  //    //dispatch(endTest(nv, history));
+  //    localStorage.setItem("NeedToRelaod", "NO")
+  //    history.push(routingConstants.CAREER_TEST_RESULT + 16);
+  //  }
+  // }, []);
 
   useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
@@ -109,6 +111,13 @@ function CourseTest() {
 
   useEffect(()=>{
     setShowExitPrompt(true);
+    // if(showExitPrompt){
+    // setShowExitPrompt(false);
+    // // if (nv) {
+    //  //  dispatch(endTest(nv, history));
+    //    history.push(routingConstants.CAREER_TEST_RESULT + 16);
+    // }
+    localStorage.setItem("NeedToRelaod", "YES");
   },[])
 
   // useEffect(() => {
