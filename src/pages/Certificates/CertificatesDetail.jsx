@@ -58,7 +58,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
   return (
     <div className='container p-0'>
       <div className='mob_box_certificate_small'></div>
-
       <div
         className={
           props.size === "large"
@@ -86,7 +85,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
                 {t("certificateDetailPage.content.1.2")}
               </p><br/>
               <p className='second-number'>
-                Date of achievement : {moment(certificateData?.course_end_time).format('DD-MM-YYYY')}
+                Date of achievement : {moment(certificate?.course_end_time).format('DD-MM-YYYY')}
               </p>
               {/* <p>
                 Certificate ID: <span> 000000000000</span>
