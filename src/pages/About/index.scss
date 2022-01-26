@@ -6,20 +6,31 @@ section.about_ban {
   background-repeat: no-repeat;
 }
 .about_Con h2 {
-  font-family: SegoeUI_bold;
+  font-family: SegoeUI_medium;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 38px;
   line-height: 120%;
   color: rgb(50 50 50);
   margin-top: 130px;
-  margin-bottom: 39px;
+  // margin-bottom: 39px;
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+.about_Con h5 {
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 120%;
+  color: rgb(236 73 138);
+  margin-bottom: 20px;
   text-transform: capitalize;
 }
-.about_Con h2::first-letter {
-  color: rgb(236 73 138);
-  // font-size: 65px;
-}
+// .about_Con h2::first-letter {
+//   color: rgb(236 73 138);
+//   // font-size: 65px;
+// }
 .about_Con h2 span {
   color: rgb(236 73 138);
 }
@@ -33,15 +44,16 @@ section.about_ban {
   font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 31px;
   color: #4f4f4f;
+  max-width: 91%;
 }
 section.ban_sec2 {
   margin-top: -130px;
 }
 .sec2_con {
-  padding: 50px 10px;
+  padding: 50px 30px 10px 30px;
   display: flex;
   align-items: center;
   height: 100%;
@@ -55,7 +67,7 @@ section.ban_sec2 p {
   font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 31px;
   color: #4f4f4f;
 }
@@ -73,18 +85,27 @@ section.about_testim {
   margin: 0 50px;
 }
 .our_his h2 {
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 45px;
+  color: rgb(50 50 50);
+  margin: 0;
+}
+.our_his h5 {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: bold;
   font-size: 32px;
   line-height: 45px;
-  color: rgb(50 50 50);
+  color: rgb(236 73 138);
 }
 .our_his p {
   font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 31px;
   color: #323232;
 }

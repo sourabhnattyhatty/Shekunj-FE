@@ -36,9 +36,8 @@ const AboutusPage = () => {
             </div>
             <div className='col-lg-6 col-md-7'>
               <div className='about_Con'>
-                <h2>
-                  <span>{t("aboutPage.heading.1")}</span> {t("aboutPage.heading.2")}
-                </h2>
+                <h2>{t("aboutPage.heading.1")}</h2>
+                <h5>{t("aboutPage.heading.2")}</h5>
                 <p>{t("aboutPage.content1")}</p>
               </div>
             </div>
@@ -158,6 +157,7 @@ const AboutusPage = () => {
             <div className='col-md-6'>
               <div className='our_his'>
                 <h2>{t("homePage.highlightStudents.aboutHeading")}</h2>
+                <h5>{t("homePage.highlightStudents.1")}</h5>
                 <p className='mb-5'>
                   {t("homePage.highlightStudents.aboutDescription")}
                 </p>
