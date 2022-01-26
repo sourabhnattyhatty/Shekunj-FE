@@ -154,8 +154,10 @@
     "content": "Don't have an account?",
     "signupLink": "REGISTER HERE",
     "T&C": {
-      "content1": "By signing up, you agree to our  and ",
-      "link1": "Terms and Policies"
+      "content1": "By signing up, you agree to SheKunj's",
+      "link1": "Terms of Use",
+      "content2": "and",
+      "link2": "Privacy Policy."
     },
     "google": "Register with Google"
   },
@@ -240,7 +242,7 @@
     "mainSlider": {
       "heading": {
         "1": "A Promise To Never Stop",
-        "4": "Learning.",
+        "4": "Learning",
         "2": "Get insights about colleges",
         "5": "on your fingertips",
         "3": {
@@ -259,7 +261,7 @@
         "4": "Send your children to the best schools in India. Get a bird-eye view of all the top schools based on a well-balanced, well-resourced, innovative teaching methods and excellent educational experiences."
       },
       "button": {
-        "1": "Get onboard and start learning.",
+        "1": "Get onboard and start learning",
         "2": "View All Schemes",
         "3": "View All Test",
         "4": "Book a Counsellor",
@@ -292,12 +294,12 @@
     },
     "jobopportunity": {
       "heading": "Seeking for a Chance and a Change?",
-      "subHeading": "Go no further. We here at Shekunj offer the best jobs coming from the best companies of India. Search jobs and break this monotony.",
+      "subHeading": "Go nowhere. We here at Shekunj offer the best job opportunities from the best companies. Find a job and move towards your bright future.",
       "button": "View All Job Opportunities"
     },
     "community": {
       "heading": "Trusted By All Women",
-      "data": "Take a glance at the happy, glittering faces who have enrolled with SheKunj. We understand the importance of education for the solutions of tomorrow. SheKunj is a first-of-its-kind,women-centered, global network dedicated to empowerment in every community where equality is in question.",
+      "data": "Take a glance at the happy, glittering faces who have enrolled with SheKunj. We understand the importance of education for the solutions of tomorrow. SheKunj is a first-of-its-kind, women-centered, global network dedicated to the women empowerment",
       "button": "View Success Stories"
     },
     "certificate": {
@@ -309,21 +311,22 @@
     },
     "highlightStudents": {
       "homeHeading": "Want to become a part of our next success story?",
-      "aboutHeading": "No Woman Is Equal Until All Women Are",
-      "aboutDescription": "Hundreds of millions of women and girls are denied their right to education, effectively preventing their empowerment. For the sake of justice, we have to right this wrong. SheKunj has taken a step ahead to make knowledge and information accessible to each and every woman, better today than tomorrow. Take a glance at all the women who have successfully enrolled at SheKunj.",
+      "aboutHeading": "Strong Women,",
+      "1": "Stronger Foundation.",
+      "aboutDescription": "Making women more educated and empowered is the main aim of Shekunj. An educated woman can do wonders in her field and an empowered woman can lead and empower others. Take a glance at the women successfully enrolled and studied at Shekunj. Join our Women Empowerment Army for becoming the best!",
       "aboutButton": "View Success Stories",
-      "homeButton": "Enroll now"
+      "homeButton": "Enroll Now"
     }
   },
 
   "aboutPage": {
     "heading": {
-      "1" : "SheKunj",
-      "2" : "is open knowledge for the forgotten billion"
+      "1" : "Helping Women to Quest",
+      "2" : "the Evolution"
     },
-    "content1": "We aim at empowering all the women out there- be it 16 or 60- through education. SheKunj has a plethora of free courses available specially crafted for women of all ages. Every woman has the right to a safe, formal, quality education and access to lifelong learning. SheKunj wants to give a choice to all the females out there who are forced to leave school while others never have the opportunity to go in the first place.",
-    "content2": "SheKunj is free from any commercial interest. Its mission is to bring free learning to women and girls with the purpose of quickly closing the gender knowledge gap in the face of lagging literacy initiatives, and thus to become a global driving force for women’s empowerment and gender equality. ",
-    "content3": "We not only thrive on imparting the right skills, but we are also persistent in our approach to develop their personality beyond professional realms such that they conquer every battle of their life with double the vigor and courage. With our tribe of determined, dependable, and proficient women, our sole focus is to uplift women and turn their dreams into a reality.",
+    "content1": "Shekunj promotes personal growth for women to achieve their full potential and aims to empower all the women out there - be they 16 or 60 years old - through education and guidance. We are a platform working as a charioteer, by providing opportunities to every woman out there who desires to learn, grow and excel in different fields. We help them to uncover their strengths, step into power, and achieve their goals with perfection.",
+    "content2": "We believe that education leads to empowerment, and that is the truth. Education has the power to make you stand out and prove the world that a WOMAN can actually fulfill her dreams on her own. We in Shekunj, have a profusion of free courses available crafted specially for women irrespective of ages. Our purpose is to bring open source of learning to women and girls and contribute in closing the knowledge gap as well as in gender diversity.",
+    "content3": "Making women more educated and empowered is the main aim of Shekunj. An educated woman can do wonders in her field and an empowered woman can lead and empower others. Take a glance at the women successfully enrolled and studied at Shekunj. Join our Women Empowerment Army for becoming the best!",
     "review": {
       "1": "Very helpful vocabulary courses. Really helped me out to learn and made capable to start my Freelancing career in content writing.",
       "2": "SheKunj's certificate helped me out to build the skills with validation.",
@@ -365,12 +368,12 @@
 
   "allCertificatePage": {
     "heading": {
-      "1": "Way to the path of success...",
+      "1": "Your Way to The Path of Success.",
       "2": "My achievements",
       "3": "Skills Earned"
     },
     "content": {
-      "1": "Awaken from your dream, SheKunj's perfectly curated courses and certifications will help you to cope up with the challenging state of the world, by reflecting, and discovering new and great opportunities to create a new future where you have a key role to play."
+      "1": "SheKunj's perfectly curated courses and certifications will help you to cope up with the challenging state of the world and create a better future."
     },
     "button": {
       "1": "View Certificate",

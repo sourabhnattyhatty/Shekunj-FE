@@ -24,29 +24,30 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { routingConstants } from "../../../utils/constants";
 
-
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
   const [alertVisible, setAlertVisible] = useState(false);
-  
+
   const dispatch = useDispatch();
   const history = useHistory();
   const { isLoading, verifyLoading } = useSelector(
     (state) => state.authReducer,
-    );
-    const { t } = useTranslation();
-    
-    const validationSchema = Yup.object({
-      name: Yup.string().required(t("login.form1.firstNameError.required")),
-      last_name: Yup.string().required(t("login.form1.lastNameError.required")),
-      contact: Yup.number().required(t("login.form1.contact.required")).positive(),
-      email: Yup.string().email(t("login.form1.emailError.invalid")),
-      password: Yup.string()
-        .min(6, t("login.form1.passError.min"))
-        .required(t("login.form1.passError.required")),
-      otp: Yup.number().required(t("login.form1.otp.required")),
-      gender: Yup.string().required(t("login.form1.gender.required")),
-    });
+  );
+  const { t } = useTranslation();
+
+  const validationSchema = Yup.object({
+    name: Yup.string().required(t("login.form1.firstNameError.required")),
+    last_name: Yup.string().required(t("login.form1.lastNameError.required")),
+    contact: Yup.number()
+      .required(t("login.form1.contact.required"))
+      .positive(),
+    email: Yup.string().email(t("login.form1.emailError.invalid")),
+    password: Yup.string()
+      .min(6, t("login.form1.passError.min"))
+      .required(t("login.form1.passError.required")),
+    otp: Yup.number().required(t("login.form1.otp.required")),
+    gender: Yup.string().required(t("login.form1.gender.required")),
+  });
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
       initialValues: {
@@ -300,7 +301,10 @@ const LoginForm = () => {
 
         <div className='text-center'>
           <p className='policy_para'>
-            {t("login.T&C.content1")} <a href='/privacy-policy'> {t("login.T&C.link1")} </a>
+            {t("login.T&C.content1")}{" "}
+            <a href='/privacy-policy'> {t("login.T&C.link1")} </a>
+            {t("login.T&C.content2")}
+            <a href='/privacy-policy'> {t("login.T&C.link2")} </a>
           </p>
         </div>
       </div>
