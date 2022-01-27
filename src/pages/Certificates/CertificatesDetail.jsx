@@ -18,6 +18,8 @@ import logo3 from "../../assets/images/AllCertificate/logo3.png";
 
 import "./index.scss";
 import moment from "moment";
+//import html2canvas from "html2canvas";
+//import domtoimage from "dom-to-image";
 
 const CertificatesDetail = forwardRef((props, ref) => {
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
   const { id } = useParams();
   const { t } = useTranslation();
 
-  const{certificateData} = props
+  const { certificateData } = props;
 
   const { certificateDetail: certificate } = useSelector(
     (state) => state.certificateReducer,
@@ -45,18 +47,29 @@ const CertificatesDetail = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     generatePDF() {
       const doc = new jsPDF("landscape", "px", "A4");
-      const node = document.querySelector(".box_certificate_small");
+      const node = document.querySelector(".box_certificate_small");      
       htmlToImage.toJpeg(node).then(function (dataUrl) {
         const img = new Image();
         img.src = dataUrl;
         doc.addImage(img, "JPGE", -12, -12, 654, 470);
         doc.save("mycertificate.pdf");
+
+        // html2canvas( document.querySelector(".box_certificate_small"), {
+        //   onrendered: function (canvas) {
+        //       var imgData = canvas.toDataURL(
+        //           'image/png');
+        //       var doc = new jsPDF("l", "mm", "a4");
+        //       doc.deletePage(1);
+        //       doc.addPage(250, 300);
+        //       doc.addImage(imgData, 'PNG', 10, 10);
+        //       doc.save('WebSiteScreen.pdf');
+        //   }
       });
     },
   }));
 
   return (
-    <div className='container p-0'>
+    <div className='container p-0' id='capture'>
       <div className='mob_box_certificate_small'></div>
       <div
         className={
@@ -78,14 +91,17 @@ const CertificatesDetail = forwardRef((props, ref) => {
               <img className='last-img' src={para} alt='' />
               <h2>{certificate?.name || t("common.n/a")}</h2>
               <hr className='hr_line' />
-              <h5  className="certi-ref">for successfully completing the course</h5>
+              <h5 className='certi-ref'>
+                for successfully completing the course
+              </h5>
               <h3>{certificate?.course_name}</h3>
               <p className='first-number'>
-                {t("certificateDetailPage.content.1.1")} {" "}
+                {t("certificateDetailPage.content.1.1")}{" "}
                 {t("certificateDetailPage.content.1.2")}
               </p>
               <p className='second-number'>
-                Date of achievement : {moment(certificate?.course_end_time).format('DD-MM-YYYY')}
+                Date of achievement :{" "}
+                {moment(certificate?.course_end_time).format("DD-MM-YYYY")}
               </p>
               {/* <p>
                 Certificate ID: <span> 000000000000</span>
@@ -95,16 +111,18 @@ const CertificatesDetail = forwardRef((props, ref) => {
         </Row>
 
         <div className='cer_logo'>
-          <img className="img1" src={logo1} alt='' srcset='' />
-          <img className="img2" src={logo22} alt='' srcset='' />
-          <img className="img3" src={logo3} alt='' srcset='' />
+          <img className='img1' src={logo1} alt='' srcset='' />
+          <img className='img2' src={logo22} alt='' srcset='' />
+          <img className='img3' src={logo3} alt='' srcset='' />
         </div>
         <div className='signature_set'>
           <img src={signature} alt='' />
           <hr className='hr_line2' />
           <div className='name-surname'>
             {t("certificateDetailPage.other.4")}
-          <div className='president'>{t("certificateDetailPage.other.3")}</div>
+            <div className='president'>
+              {t("certificateDetailPage.other.3")}
+            </div>
           </div>
         </div>
       </div>

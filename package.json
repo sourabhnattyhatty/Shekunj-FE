@@ -19,6 +19,7 @@
     "axios": "^0.24.0",
     "bootstrap": "^4.6.1",
     "chart.js": "^3.6.2",
+    "dom-to-image": "^2.6.0",
     "env-cmd": "^10.1.0",
     "formik": "^2.2.9",
     "html-to-image": "^1.9.0",
