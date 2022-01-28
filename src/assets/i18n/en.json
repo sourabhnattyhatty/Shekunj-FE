@@ -506,7 +506,7 @@
     "heading": {
       "1": "Online Courses",
       "2": "SheKunj’s courses are designed to kick-start your career and launch you to new heights of success. We want every woman should move to their creative journey forward without putting life on hold. SheKunj's courses are curated to provide practical and theoretical knowledge. We have crafted these courses to help you find inspiration that fits your routine.",
-      "3": "So look no further and enroll on SheKunj now!"
+      "3": "So look go nowhere and enroll on SheKunj now!"
     },
     "accordion": {
       "1": {
@@ -721,7 +721,7 @@
   "privacyPolicyPage": {
     "heading": {
       "1": "Privacy Policy",
-      "2": "Scope of this Privacy Policy",
+      "2": "Introduction and Basics :",
       "3": "Type of Personal Information we received or collect",
       "4": "How We Use Information",
       "5": "Cookies",
@@ -734,10 +734,10 @@
         "1": "Personal information",
         "2": "Means any information related to an identified or identifiable person including common identifiers like name, identification number, location details, online identifier or one or more factors specific to the physical,psychological, genetic,mental, economic, cultural or social identity of that person and any other information that is so categorized by applicable laws. We collect information about you and/or of your usage to provide better services and offerings. The Personal Information that we collect, and how we collect it, depends how you interact and connect with us. We collect the following categories of Personal Information in the following ways"
       },
-      "2": "Name, email address, password, country, city, contact number and company/organization that you are associated with, when you sign up for alerts on the Platform;",
-      "3": "Information that one would usually include in a resume, including name, contact details including e-mail address and mobile number, work experience, educational qualifications, data relating to your current and past remuneration or salary, a copy of your resume, etc. when you register on the Platform;",
-      "4": "Information about the services that you use and how you use them, including log information and location information, when you are a user of the services through the Platform;",
-      "5": "We may collect your Personal Information such as name, age, contact details, preferences, etc. through surveys and forms, when you choose to participate in these surveys etc.",
+      "2": "Many of our services require you to register/sign up for an account on shekunj.com. When you do, we will ask for personal information, such as, but not limited to your name, email address and telephone number to create/update your account.",
+      "3": "• To provide you additional services, we may collect your profile information such as, but not limited to educational background, work experience, date of birth.",
+      "4": "• We collect information about the services that you use and how you use them such as, but not limited to log information and location information.",
+      "5": "We may collect your personal information such as but not limited to student profile, student details and other related ",
       "6": "We may also collect information relating to your caste and information about whether you are eligible for any affirmative action programmes or policies, if you opt to provide such information;",
       "7": "When you communicate with us or use the Platform to communicate with other Users (such as partners, franchises), we collect information about your communication and any information you choose to provide;",
       "8": "When you visit the Platform, we use cookies to automatically collect, store and use technical information about your system and interaction with our Platform",

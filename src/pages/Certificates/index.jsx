@@ -17,6 +17,7 @@ import barChart from "../../assets/icons/bar-chart.png";
 import lecturesIcon from "../../assets/icons/list.png";
 
 import "./index.scss";
+import CertificateSmall from "../../components/CertificateSmall";
 
 function AllCertificatePage() {
   const dispatch = useDispatch();
@@ -61,10 +62,9 @@ function AllCertificatePage() {
                 <div className='all_certif_box' key={c?.id}>
                   <Row>
                     <Col md={6} xs={12}>
-                      <CertificatesDetail
+                      <CertificateSmall
                        certificateData={c}
-                        ref={certificateRef}
-                        showButton={false}
+                        ref={certificateRef}                        
                         size='small'
                         id={c?.id}
                         key={c?.id}
@@ -121,7 +121,7 @@ function AllCertificatePage() {
                           {t("allCertificatePage.button.1")}
                         </button>
                         <button
-                          onClick={() => certificateRef.current.generatePDF()}
+                          onClick={() => certificateRef.current.generatePDF(c?.id)}
                         >
                           {t("allCertificatePage.button.2")}
                         </button>
