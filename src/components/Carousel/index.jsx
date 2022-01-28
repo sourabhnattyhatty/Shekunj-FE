@@ -8,7 +8,7 @@ import { getGovernmentExams } from "../../store/career";
 import { constants } from "../../utils";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";           
 
 import "./index.scss";
 

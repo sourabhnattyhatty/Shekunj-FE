@@ -60,3 +60,8 @@
 .login_form .MuiOutlinedInput-input {
   padding-left: 9px;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
