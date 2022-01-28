@@ -188,7 +188,7 @@ hr.line {
 .slide-img img {
   width: 100% !important;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   box-sizing: border-box;
 }
 .detail-box {
@@ -462,7 +462,7 @@ button.btn.btn_Courses {
   width: 100%;
 }
 .owl-carousel .owl-item img {
-  object-fit: contain;
+  object-fit: contain !important;
   // height: auto;
 }
 }
