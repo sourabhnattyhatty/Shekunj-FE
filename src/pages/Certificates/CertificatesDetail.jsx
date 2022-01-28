@@ -62,13 +62,13 @@ const CertificatesDetail = forwardRef((props, ref) => {
   }, []);
 
   const downloadPDF = () => {
-    const doc = new jsPDF("landscape", "px", "A4");
+    const doc = new jsPDF("landscape", "px", "A4", false);
     const node = document.querySelector(".box_certificate_large");
     htmlToImage.toJpeg(node).then(function (dataUrl) {
       setIsLoaded(true);
       const img = new Image();
       img.src = dataUrl;
-      doc.addImage(img, "JPGE", 0, 0, 600, 420);
+      doc.addImage(img, "JPGE", 0, 0, 630, 420);
       doc.save("mycertificate.pdf");
     });
   };
@@ -83,9 +83,9 @@ const CertificatesDetail = forwardRef((props, ref) => {
   }));
 
   return (
-    <>
+    <div style={{width: "100%",display: "flex", justifyContent: "center"}}>
       {isLoaded === false && <Loader />}
-      <div className='container p-0' id='capture'>
+      <div style={{width: "95%", }} className=' p-0' id='capture'>
         <div className='mob_box_certificate_small'></div>
         <div
           id='download'
@@ -145,13 +145,16 @@ const CertificatesDetail = forwardRef((props, ref) => {
         </div>
         {props.showButton && (
           <Link to='/courses'>
+            <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: 15, marginBottom:15}}>
             <button className='back_course'>
               {t("allCertificatePage.button.3")}
             </button>
+
+            </div>
           </Link>
         )}
       </div>
-    </>
+    </div>
   );
 });
 
