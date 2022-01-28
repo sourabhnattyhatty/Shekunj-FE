@@ -64,7 +64,7 @@ const InProgressCourse = ({ courses }) => {
                           component='div'
                           color='text.secondary'
                         >
-                          {c?.progress.toFixed(2) || 0}%<Col md={3} xs={12}></Col>
+                          {c?.progress.toFixed(0) || 0}%<Col md={3} xs={12}></Col>
                         </Typography>
                       </Box>
                     </Box>
