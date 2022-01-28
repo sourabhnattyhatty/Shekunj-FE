@@ -41,7 +41,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
     (state) => state.certificateReducer,
   );
   const { lan } = useSelector((state) => state.languageReducer);
-
+ 
   useEffect(() => {
     if (props?.id) {
       dispatch(getUserCourseCertificateDetail(props?.id, history));
@@ -74,7 +74,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
   };
 
   useImperativeHandle(ref, () => ({
-    generatePDF() {
+    generatePDF() {      
       if (location.pathname !== "/certificate-detail/") {
         history.push(`/certificate-detail/${props?.id}/true`);
         // return
