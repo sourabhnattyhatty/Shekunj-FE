@@ -26,7 +26,8 @@ const InProgressCourse = ({ courses }) => {
               <Row>
                 <Col md={7} xs={9}>
                   <h6>{truncate(c?.course_name, 40) || "N/A"}</h6>
-                  <p>{truncate(c?.description, 40) || "N/A"}</p>
+                  {/* <p>{truncate(c?.description, 40) || "N/A"}</p> */}
+                  <div dangerouslySetInnerHTML={{ __html:truncate(c?.description, 40) || "N/A"} } />
                   <ul className='p-0 list-style-none list-inline'>
                     <li className='list-inline-item mr-4'>
                       <img src={calendarBlackImg} alt='...' className='pr-2' />{" "}

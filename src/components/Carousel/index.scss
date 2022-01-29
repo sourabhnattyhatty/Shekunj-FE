@@ -66,8 +66,8 @@ a.item {
   text-decoration: none;
 }
 .owl-carousel .owl-stage-outer {
-  // overflow: inherit;
-  overflow: hidden;
+  overflow: inherit;
+  // overflow: hidden;
 }
 .owl-nav button.owl-prev::before {
   content: "";
@@ -111,6 +111,7 @@ a.item {
 .owl-carousel .owl-item img {
   display: inline-block;
   width: auto;
+  padding: 10px 0;
 }
 
 .similar-coursesslider .boxnew {

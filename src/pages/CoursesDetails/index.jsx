@@ -74,7 +74,8 @@ const CourseDetails = () => {
             <div className='col-md-7'>
               <div className='sec1_des'>
                 <h2>{t("coursesPage.coursesDetailsPage.heading.2")}</h2>
-                <p>{course?.description}</p>
+                {/* <p>{course?.description}</p> */}
+                <div dangerouslySetInnerHTML={{ __html: course?.description }} />
               </div>
               <div className='mt-2 mb-2'>
               </div>
@@ -96,9 +97,7 @@ const CourseDetails = () => {
                     );
                   })}
                 </Row>
-              </div>
-
-              
+              </div>              
             </div>
 
             <div className='col-md-5'>
@@ -126,7 +125,6 @@ const CourseDetails = () => {
               <Col lg={7} md={12}>
               <div className='sec1_con2'>
                 <h2>{t("coursesPage.coursesDetailsPage.heading.4")}</h2>
-
                 <Row>
                   <Col md={6} xs={12}>
                     <div className='features_box'>

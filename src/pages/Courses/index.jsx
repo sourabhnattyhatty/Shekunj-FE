@@ -170,7 +170,7 @@ const Courses = () => {
                       <li>
                         <img src={img3} alt='' />
                       </li>
-                      <li> {t("coursesPage.banner.3")}</li>
+                      <li style={{marginTop: '-25px'}}> {t("coursesPage.banner.3")}</li>
                     </ul>
                   </div>
                 </div>
