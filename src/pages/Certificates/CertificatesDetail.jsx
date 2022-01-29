@@ -69,6 +69,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
       const img = new Image();
       img.src = dataUrl;
       doc.addImage(img, "JPGE", 0, 0, 630, 420);
+      //doc.addImage(img, "JPGE", -12, 0, 654, 470);
       doc.save("mycertificate.pdf");
     });
   };
