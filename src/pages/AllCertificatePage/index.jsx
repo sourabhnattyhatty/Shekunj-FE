@@ -1,4 +1,4 @@
-import React, { useEffect,useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -18,7 +18,6 @@ function AllCertificatePage() {
   const { certificates } = useSelector((state) => state.certificateReducer);
 
   const certificateRef = useRef();
-
 
   useEffect(() => {
     dispatch(getUserCourseCertificate());
@@ -68,7 +67,11 @@ function AllCertificatePage() {
 
                     <Col md={7} xs={12}>
                       <div className='all_certif_con'>
-                        <h2>{c?.course_name || t("common.n/a")}</h2>
+                        <h2>
+                          {" "}
+                          {c?.name || t("common.n/a")}&nbsp;
+                          {c && c?.last_name}
+                        </h2>
                         <p>{c?.description || t("common.n/a")} </p>
                         <div className='all_list'>
                           <ul>

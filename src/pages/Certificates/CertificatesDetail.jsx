@@ -41,7 +41,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
     (state) => state.certificateReducer,
   );
   const { lan } = useSelector((state) => state.languageReducer);
- 
+
   useEffect(() => {
     if (props?.id) {
       dispatch(getUserCourseCertificateDetail(props?.id, history));
@@ -75,7 +75,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
   };
 
   useImperativeHandle(ref, () => ({
-    generatePDF() {      
+    generatePDF() {
       if (location.pathname !== "/certificate-detail/") {
         history.push(`/certificate-detail/${props?.id}/true`);
         // return
@@ -84,9 +84,9 @@ const CertificatesDetail = forwardRef((props, ref) => {
   }));
 
   return (
-    <div style={{width: "100%",display: "flex", justifyContent: "center"}}>
+    <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
       {isLoaded === false && <Loader />}
-      <div style={{width: "95%", }} className=' p-0' id='capture'>
+      <div style={{ width: "95%" }} className=' p-0' id='capture'>
         <div className='mob_box_certificate_small'></div>
         <div
           id='download'
@@ -107,7 +107,10 @@ const CertificatesDetail = forwardRef((props, ref) => {
               >
                 <img className='cer_text' src={Certificate_text} alt='' />
                 <img className='last-img' src={para} alt='' />
-                <h2>{certificate?.name || t("common.n/a")}</h2>
+                <h2>
+                  {certificate?.name || t("common.n/a")}&nbsp;
+                  {certificate && certificate?.last_name}
+                </h2>
                 <hr className='hr_line' />
                 <h5 className='certi-ref'>
                   for successfully completing the course
@@ -146,11 +149,18 @@ const CertificatesDetail = forwardRef((props, ref) => {
         </div>
         {props.showButton && (
           <Link to='/courses'>
-            <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: 15, marginBottom:15}}>
-            <button className='back_course'>
-              {t("allCertificatePage.button.3")}
-            </button>
-
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                marginTop: 15,
+                marginBottom: 15,
+              }}
+            >
+              <button className='back_course'>
+                {t("allCertificatePage.button.3")}
+              </button>
             </div>
           </Link>
         )}

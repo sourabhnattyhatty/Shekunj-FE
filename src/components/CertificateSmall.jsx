@@ -60,7 +60,11 @@ import React, {
                 >
                   <img className='cer_text' src={Certificate_text} alt='' />
                   <img className='last-img' src={para} alt='' />
-                  <h2>{certificateData?.name || t("common.n/a")}</h2>
+                  <h2>
+                    {/* {certificateData?.name || t("common.n/a")} */}
+                  {certificateData?.name || t("common.n/a")}&nbsp;
+                  {certificateData && certificateData?.last_name}
+                  </h2>
                   <hr className='hr_line' />
                   <h5 className='certi-ref'>
                     for successfully completing the course

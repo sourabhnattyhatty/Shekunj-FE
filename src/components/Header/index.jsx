@@ -165,7 +165,8 @@ const Header = ({ page, subPage }) => {
                         aria-expanded={open ? "true" : undefined}
                         onClick={handleClick}
                       >
-                        {user?.name || t("common.n/a")}
+                        {user?.name  || t("common.n/a")}&nbsp;
+                        {user &&  user?.last_name}
                       </span>
                       <Menu
                         id='basic-menu'
