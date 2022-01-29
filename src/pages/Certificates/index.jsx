@@ -73,7 +73,8 @@ function AllCertificatePage() {
                     <Col md={6} xs={12}>
                       <div className='all_certif_con'>
                         <h2>{c?.course_name || t("common.n/a")}</h2>
-                        <p>{c?.description || t("common.n/a")} </p>
+                        {/* <p>{c?.description || t("common.n/a")} </p> */}
+                        <div dangerouslySetInnerHTML={{ __html: c?.description || t("common.n/a") }} />
                         <div className='all_list'>
                           <ul>
                             <li>

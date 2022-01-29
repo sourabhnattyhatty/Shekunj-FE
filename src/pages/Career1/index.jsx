@@ -13,6 +13,7 @@ import "./index.scss";
 import { useTranslation } from "react-i18next";
 import { paragraph } from "../../utils/utils";
 import TopSchool from "../../assets/images/Career/scl.jpg";
+import { Link } from "react-router-dom";
 
 const CareerPage1 = () => {
   const dispatch = useDispatch();
@@ -92,16 +93,13 @@ const CareerPage1 = () => {
                                   {c?.contact_no || t("common.n/a")}{" "}
                                 </li>
                                 <li>
-                                  <span>{t("careerTopSchools.other.3")}</span> :{" "}
-                                  <a
-                                    href={c?.website}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                  >
+                                  <span>{t("careerTopSchools.other.3")}</span> :{" "}                                 
+                                  <Link to={{ pathname: `http://${c?.website}` }} target="_blank" >
                                     {c && c.website
                                       ? c.website
-                                      : t("common.n/a")}
-                                  </a>
+                                      : t("common.n/a")
+                                    }
+                                  </Link>                                      
                                 </li>
                                 {c?.is_collapse && (
                                   <>
