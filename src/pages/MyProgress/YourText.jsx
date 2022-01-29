@@ -10,7 +10,7 @@ const YourTest = ({ tests }) => {
   const { t } = useTranslation();
   return (
     <div className='your-testdiv'>
-      <h6>{t("dashboardPage.heading.1")}</h6>
+      <h6>{t("dashboardPage.heading.2")}</h6>
       <div className='your-testcontent'>
         <Row>
           {tests?.length > 0 ? (
