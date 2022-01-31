@@ -30,6 +30,7 @@ function EditProfile(props) {
 
   const validationSchema = Yup.object({
     name: Yup.string().required(t("login.form1.firstNameError.required")),
+    contact: Yup.string().required(t("login.form1.firstNameError.required")),
     last_name: Yup.string().required(t("login.form1.lastNameError.required")),
     email: Yup.string().email(t("login.form1.emailError.invalid")).nullable(),
     highest_education: Yup.string().nullable(),
@@ -52,6 +53,7 @@ function EditProfile(props) {
     enableReinitialize: true,
     initialValues: {
       name: user?.name || "",
+      contact: user?.contact || "",
       email: user?.email || "",
       highest_education: user?.highest_education || "",
       last_name: user?.last_name || "",
@@ -231,9 +233,11 @@ function EditProfile(props) {
                 <label htmlFor=''>{t("common.formHeadings.mobile")}</label>
                 <TextField
                   name='contact'
-                  type='text'
-                  value={user?.contact}
-                  disabled
+                  type='tel'
+                  value={values.contact}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  // disabled
                   className='form-control'
                   autoComplete='off'
                   placeholder={t("common.placeHolders.mobile")}

@@ -17,7 +17,7 @@ function UserInfo(props) {
         </Col>
 
         <Col lg={5} md={6} xs={12}>
-          <h2>{user?.name || t("common.n/a")}</h2>
+          <h2>{user?.name || t("common.n/a")} {user?.last_name || t("common.n/a")} </h2>
           <div className='user_detail'>
             <ul>
               <li>

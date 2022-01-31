@@ -337,7 +337,7 @@ function HomePage() {
       />
       <div className="courses">
             <Link to="/government-exams"  style={{ textDecoration: "none" }} className="view_test_cate">  
-            
+
             {t("homePage.mainSlider.button.2")}
             </Link>
 

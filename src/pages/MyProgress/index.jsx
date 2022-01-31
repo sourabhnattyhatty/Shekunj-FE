@@ -46,7 +46,7 @@ function MyProgress() {
           <Row>
             <Col md={12}>
               <h1>
-                {t("common.greeting.hello")} {user?.name || t("common.n/a")}!
+                {t("common.greeting.hello")} {user?.name || t("common.n/a")} {user?.last_name || t("common.n/a")}!
               </h1>
               <p className='dashboard_back'>
                 {t("common.greeting.goodToSeeYou")}

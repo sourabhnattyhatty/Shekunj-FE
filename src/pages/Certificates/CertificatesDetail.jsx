@@ -147,7 +147,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
           </div>
         </div>
         {props.showButton && (
-          <Link to='/all-certificate-page'>
+          <Link to='/all-certificate-page' style={{ textDecoration: "none" }} >
             <div
               style={{
                 width: "100%",
