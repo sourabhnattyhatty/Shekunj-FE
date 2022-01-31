@@ -10,7 +10,7 @@ import { Link, useHistory, useParams, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import jsPDF from "jspdf";
 import * as htmlToImage from "html-to-image";
-import Loading from "react-fullscreen-loading";
+import { Loading } from "react-fullscreen-loading";
 
 import { getUserCourseCertificateDetail } from "../../store/certificate";
 import { routingConstants } from "../../utils/constants";
@@ -51,7 +51,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
       history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
   }, [id, history, dispatch, props?.id, lan]);
-
+ 
   useEffect(() => {
     if (isDownload) {
       setIsLoaded(false);
@@ -68,7 +68,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
       setIsLoaded(true);
       const img = new Image();
       img.src = dataUrl;
-      doc.addImage(img, "JPGE", 0, 0, 630, 420);
+      doc.addImage(img, "JPGE", 0, -14, 630, 455);
       //doc.addImage(img, "JPGE", -12, 0, 654, 470);
       doc.save("mycertificate.pdf");
     });
@@ -78,7 +78,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
     generatePDF() {
       if (location.pathname !== "/certificate-detail/") {
         history.push(`/certificate-detail/${props?.id}/true`);
-        // return
       }
     },
   }));
@@ -148,7 +147,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
           </div>
         </div>
         {props.showButton && (
-          <Link to='/courses'>
+          <Link to='/all-certificate-page' style={{ textDecoration: "none" }} >
             <div
               style={{
                 width: "100%",

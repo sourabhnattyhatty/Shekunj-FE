@@ -212,7 +212,7 @@ export const sliceString = (str) => {
 };
 
 export const paragraph = (text) => {
-  let lines = text.split(/(\r\n|\n|\r)/gm);
+  let lines = text
   return lines.length > 0 ? lines.filter((o) => o !== `\r\n` || o !== "") : [];
 };
 
