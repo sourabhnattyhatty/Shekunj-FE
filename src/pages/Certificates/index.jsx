@@ -38,6 +38,7 @@ function AllCertificatePage() {
     Aos.init({ duration: 2000 });
   }, [dispatch, lan]);
 
+  
   return (
     <div>
       <SEO title='Sheकुंज - All Certificates' />
@@ -122,8 +123,7 @@ function AllCertificatePage() {
                           {t("allCertificatePage.button.1")}
                         </button>
                         <button
-                          onClick={() => certificateRef.current.generatePDF(c?.id)}
-                        >
+                          onClick={() => certificateRef.current.generatePDF(c?.id)}>
                           {t("allCertificatePage.button.2")}
                         </button>
                       </div>
