@@ -94,7 +94,7 @@ const CareerPage1 = () => {
                                 </li>
                                 <li>
                                   <span>{t("careerTopSchools.other.3")}</span> :{" "}                                 
-                                  <Link to={{ pathname: `http://${c?.website}` }} target="_blank" >
+                                  <Link to={{ pathname: `${c?.website}` }} target="_blank" >
                                     {c && c.website
                                       ? c.website
                                       : t("common.n/a")

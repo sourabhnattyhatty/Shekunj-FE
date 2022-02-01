@@ -147,7 +147,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
           </div>
         </div>
         {props.showButton && (
-          <Link to='/all-certificate-page' style={{ textDecoration: "none" }} >
             <div
               style={{
                 width: "100%",
@@ -155,13 +154,15 @@ const CertificatesDetail = forwardRef((props, ref) => {
                 justifyContent: "center",
                 marginTop: 15,
                 marginBottom: 15,
+                userSelect:"none"
               }}
             >
+              <Link to='/all-certificate-page' style={{ textDecoration: "none" }} >
               <button className='back_course'>
                 {t("allCertificatePage.button.3")}
               </button>
+            </Link>
             </div>
-          </Link>
         )}
       </div>
     </div>

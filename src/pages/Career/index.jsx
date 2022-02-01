@@ -14,6 +14,7 @@ import TopCollage from "../../assets/images/Career/clg.jpg"
 
 import "../HomePage/index.scss";
 import "./index.scss";
+import { Link } from "react-router-dom";
 
 const CareerPage = () => {
   const dispatch = useDispatch();
@@ -107,15 +108,15 @@ const CareerPage = () => {
                                 <li>
                                   <span>{t("careerTopColleges.other.5")}</span>{" "}
                                   :{" "}
-                                  <a
-                                    href={c?.website}
+                                  <Link
+                                    to={{ pathname: `http://${c?.website}`}}
                                     target='_blank'
                                     rel='noreferrer'
                                   >
                                     {c && c.website
                                       ? c.website
                                       : t("common.n/a")}
-                                  </a>
+                                  </Link>
                                 </li>
                                 {c?.is_collapse && (
                                   <>

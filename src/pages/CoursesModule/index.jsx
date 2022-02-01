@@ -94,8 +94,6 @@ const CourseModule = () => {
     (state) => state.coursesReducer,
   );
 
-  console.log("0000000", course)
-
   const { lan } = useSelector((state) => state.languageReducer);
 
   const dispatch = useDispatch();
