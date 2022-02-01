@@ -155,9 +155,7 @@
     "signupLink": "REGISTER HERE",
     "T&C": {
       "content1": "By signing up, you agree to SheKunj's",
-      "link1": "Terms of Use",
-      "content2": "and",
-      "link2": "Privacy Policy."
+      "link1": "Terms and Policies"
     },
     "google": "Register with Google"
   },
@@ -721,7 +719,7 @@
   },
   "privacyPolicyPage": {
     "heading": {
-      "1": "Privacy Policy",
+      "1": "Terms and Policies",
       "2": "Introduction and Basics :",
       "3": "Type of Personal Information we received or collect",
       "4": "How We Use Information",
