@@ -3,7 +3,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useTranslation } from "react-i18next";
 
-import arrowRightImg from "../../assets/images/MyProfile/arrowright.png";
 import { addNewlines } from "../../utils/utils";
 
 const YourTest = ({ tests }) => {
@@ -19,8 +18,7 @@ const YourTest = ({ tests }) => {
                 <div className='first-test'>
                   <h5>{addNewlines(t?.course_name, true, 30) || "N/A"}</h5>
                   <p>
-                    {t?.test_progress || 0}% <br />{" "}
-                    <img src={arrowRightImg} alt='' />
+                    {t?.test_progress || 0}
                   </p>
                 </div>
               </Col>
