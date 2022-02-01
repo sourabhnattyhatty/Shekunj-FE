@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import OwlCarousel from "react-owl-carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -8,7 +8,7 @@ import { getGovernmentExams } from "../../store/career";
 import { constants } from "../../utils";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";           
+import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import "./index.scss";
 
@@ -18,6 +18,7 @@ function Carousel(props) {
   const { courses, course, tests, similarCourses } = useSelector(
     (state) => state.coursesReducer,
   );
+  const [number, setNumber] = useState(null);
   const { governmentExams } = useSelector((state) => state.careerReducer);
   const { lan } = useSelector((state) => state.languageReducer);
   const { id } = useParams();
@@ -42,12 +43,13 @@ function Carousel(props) {
       totalItems = governmentExams?.govt_list?.length || 0;
     }
     if (props.page === carouselConstant.HOMEPAGE) {
-      divRef.current.innerHTML = `${
-        carousel.relative(carousel.current()) + 1 || 0
-      }/${totalItems}`;
+      if (divRef.current) {
+        divRef.current.innerHTML = `${
+          carousel.relative(carousel.current()) + 1 || 0
+        }/${totalItems}`;
+      }
     }
   };
-
 
   return (
     <div className='noselect'>
@@ -74,7 +76,9 @@ function Carousel(props) {
           nav={props.page === carouselConstant.COURSE_DETAIL ? false : true}
           items={props.page === carouselConstant.COURSE_DETAIL ? 1.4 : 4}
           dots={false}
-          autoPlay={true}
+          autoplay={true}
+          autoplayTimeout='1500'
+          autoplayHoverPause={false}
           smartSpeed='800'
           onChanged={(e) => handleChange(e)}
           responsive={{
@@ -102,7 +106,7 @@ function Carousel(props) {
             1920: {
               items: 5,
               margin: 250,
-              nav:true,
+              nav: true,
             },
           }}
         >
@@ -181,7 +185,7 @@ function Carousel(props) {
           {props.type === carouselConstant.TEST && (
             <>
               {tests?.map((obj, ind) => (
-                <Link to="/success-career-test">
+                <Link to='/success-career-test'>
                   <div className='item' key={ind}>
                     <div className='box'>
                       <div className='slide-img'>
