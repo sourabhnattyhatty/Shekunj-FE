@@ -94,6 +94,8 @@ const CourseModule = () => {
     (state) => state.coursesReducer,
   );
 
+  console.log("0000000", course)
+
   const { lan } = useSelector((state) => state.languageReducer);
 
   const dispatch = useDispatch();
@@ -135,6 +137,8 @@ const CourseModule = () => {
 
   const handlePrevModule = (page) => {
     const p = (page - 1) * progress;
+    setShowsubactive(showsubactive - 1);
+    setShowactive(course.current_module-1);
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -142,7 +146,8 @@ const CourseModule = () => {
   const handleNextModule = (page) => {
     localStorage.setItem("pageID",page)
     const p = (page - 1) * progress;
-    setShowsubactive(showsubactive + 1)
+    setShowsubactive(showsubactive + 1);
+    setShowactive(course.current_module+1);
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -198,11 +203,9 @@ const CourseModule = () => {
                 <Stack spacing={2} direction='row'>
                   <h2>{t("coursesPage.coursesModulePage.heading.1")}</h2>
                 </Stack>
-
                 {renderProgress(moduleprogress)}
               </div>
-            </Col>
-
+            </Col>            
             {!show && (
               <div className='tog_set'>
                 <img src={toggle} alt='' onClick={handleAccordian} />
@@ -224,7 +227,7 @@ const CourseModule = () => {
               </div>
             )}
             {show && (
-              <Col md={4} xs={12}>
+              <Col md={4} xs={12}>               
                 <div className='accordion_box'>
                   <div className='close_btn'>
                     <h4>{t("coursesPage.coursesModulePage.heading.2")}</h4>
@@ -237,7 +240,7 @@ const CourseModule = () => {
                   </div>
                   {courseModulesList?.map(
                     (obj, ind) =>
-                      obj?.title && (
+                      obj?.heading && (
                         <Accordion
                           expanded={expanded === `panel${ind + 1}`}
                           onChange={handleChange(`panel${ind + 1}`)}
@@ -255,7 +258,7 @@ const CourseModule = () => {
                                   color: showactive === ind ? "pink" : "black",
                                 }}>
                                   {  }
-                                {obj?.title}
+                                {obj?.heading}
                               </span>
                             </Typography>
                           </AccordionSummary>
@@ -292,7 +295,7 @@ const CourseModule = () => {
                                           }}
                                         >
                                           {" "}
-                                           {obj?.title } 
+                                           {obj1?.title } 
                                         </span>
                                       </li>
                                     </ul>
@@ -362,8 +365,7 @@ const CourseModule = () => {
                         </>
                         )}
                     </>
-                  )}
-
+                  )}   
                   <div className='prev_next_btn'>
                     <Row> 
                       <Col md={6} xs={6}>
@@ -405,7 +407,6 @@ const CourseModule = () => {
           </Row>
         </Container>
       </div>
-
       <ScrollToTop />
       <Footer loginPage={false} />
     </div>

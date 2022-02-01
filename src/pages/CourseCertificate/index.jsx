@@ -39,6 +39,10 @@ function CourseTest() {
     }
   }, [id, history, dispatch, lan]);
 
+  const redirectToDownload  = () =>{
+    history.push(`/certificate-detail/${id}/true`);
+  }
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -122,7 +126,8 @@ function CourseTest() {
                     src={Dawnload}
                     alt=''
                     style={{ cursor: "pointer" }}
-                    onClick={() => certificateRef.current.generatePDF()}
+                    //onClick={() => certificateRef.current.generatePDF()}
+                    onClick={()=>redirectToDownload()}
                   />
                   <br />
                 </p>

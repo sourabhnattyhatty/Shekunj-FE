@@ -120,7 +120,7 @@ function App() {
         />
         <PrivateRoute
           exact
-          path={`${routingConstants.ALL_CERTIFICATE_DETAIL}:id`}
+          path={`${routingConstants.ALL_CERTIFICATE_DETAIL}:id/:isDownload?`}
           component={CertificateDetail}
           showButton
           size='large'
