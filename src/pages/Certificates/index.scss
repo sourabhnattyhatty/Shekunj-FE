@@ -117,6 +117,7 @@
   position: relative;
   display: grid;
   align-items: center;
+  margin: 0 !important;
 }
 .box_certificate_large::after {
   content: "";
@@ -559,4 +560,86 @@ hr.hr_line2 {
   line-height: 10px;
   text-transform: uppercase;
   color: #454343;
+}
+
+// 
+
+div#cer_PDF {
+  width: 3508px;
+  height: 2480px;
+  background-size: cover;
+}
+// div#cer_PDF img {
+//   width: 100%;
+// }
+
+div#cer_PDF .cercifi_con_large h2 {
+  font-family: Dancing Script;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0;
+  font-size: 178.405px;
+  // line-height: 53px;
+  display: flex;
+  align-items: center;
+  color: rgb(236 73 138);
+}
+div#cer_PDF img.last-img {
+  margin-bottom: 86px;
+  margin-top: 35px;
+}
+div#cer_PDF .cercifi_con_large h5 {
+  font-size: 74.0206px;
+  line-height: 98px;
+}
+div#cer_PDF .cercifi_con_large h3 {
+  font-size: 90.4696px;
+  line-height: 120px;
+}
+div#cer_PDF p.first-number {
+  font-size: 57.5716px;
+  line-height: 77px;
+}
+div#cer_PDF .cercifi_con_large p {
+  font-size: 57.5716px;
+  line-height: 77px;
+}
+div#cer_PDF hr.hr_line {
+  max-width: 1722;
+}
+div#cer_PDF::after {
+  background-image: url("../../assets/images/PSD_Certificate/logo.png");
+  background-repeat: no-repeat;
+    width: 552px;
+    background-size: cover;
+    height: 160px;
+}
+
+div#cer_PDF .cer_logo img.img1 { height: auto;}
+div#cer_PDF .cer_logo img.img2 { height: auto;}
+div#cer_PDF .cer_logo img.img3 { height: auto;}
+
+div#cer_PDF .signature_set .name-surname {
+  font-size: 61.6626px;
+  line-height: 82px;
+  max-width: 550px;
+}
+div#cer_PDF .signature_set img {
+  width: auto;
+}
+div#cer_PDF .signature_set .president {
+  font-size: 47.5746px;
+  line-height: 63px;
+}
+div#cer_PDF .cer_logo {
+  gap: 11rem;
+}
+
+  @media screen and (max-width: 1280px) {
+    hr.hr_line2 {
+      margin: 4.46px 0 4.39px !important  ;
+  }
+  .content img {
+      margin-bottom: 0 !important;
+  }
 }
