@@ -117,6 +117,7 @@
   position: relative;
   display: grid;
   align-items: center;
+  margin: 0 !important;
 }
 .box_certificate_large::after {
   content: "";
@@ -559,4 +560,37 @@ hr.hr_line2 {
   line-height: 10px;
   text-transform: uppercase;
   color: #454343;
+}
+
+// 
+
+div#cer_PDF {
+  width: 3508px;
+  height: 2480px;
+  background-size: cover;
+}
+// div#cer_PDF img {
+//   width: 100%;
+// }
+
+div#cer_PDF .cercifi_con_large h2 {
+  font-family: Dancing Script;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0;
+  font-size: 178.405px;
+  line-height: 53px;
+  display: flex;
+  align-items: center;
+  color: rgb(236 73 138);
+}
+
+
+  @media screen and (max-width: 1280px) {
+    hr.hr_line2 {
+      margin: 4.46px 0 4.39px !important  ;
+  }
+  .content img {
+      margin-bottom: 0 !important;
+  }
 }
