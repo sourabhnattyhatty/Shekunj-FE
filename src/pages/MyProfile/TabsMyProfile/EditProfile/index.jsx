@@ -1,38 +1,40 @@
-import React, { useState, useEffect } from "react";
-import { InputAdornment, TextField } from "@mui/material";
-import { Col, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
-import { useFormik } from "formik";
-import { CircularProgress } from "@mui/material";
-import * as Yup from "yup";
-import moment from "moment";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import React, { useState, useEffect } from 'react';
+import { InputAdornment, TextField } from '@mui/material';
+import { Col, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { useFormik } from 'formik';
+import { CircularProgress } from '@mui/material';
+import * as Yup from 'yup';
+import moment from 'moment';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
-import { updateProfile } from "../../../../store/auth/action";
-import statesCities from "../../../../utils/statesCities.json";
-import GuidanceSelect from "../../../GuidanceBook/Select";
-import { Error } from "../../../../components";
-import ProfileImage from "../ProfileImage";
+import { updateProfile } from '../../../../store/auth/action';
+import statesCities from '../../../../utils/statesCities.json';
+import GuidanceSelect from '../../../GuidanceBook/Select';
+import { Error } from '../../../../components';
+import ProfileImage from '../ProfileImage';
 
-import User from "../../../../assets/images/MyProfile/user.png";
-import Calendar from "../../../../assets/images/MyProfile/calendar.png";
-import phone from "../../../../assets/images/MyProfile/phone.png";
+import User from '../../../../assets/images/MyProfile/user.png';
+import Calendar from '../../../../assets/images/MyProfile/calendar.png';
+import phone from '../../../../assets/images/MyProfile/phone.png';
 
-import "./index.scss";
+import './index.scss';
 
-function EditProfile(props) {
+function EditProfile (props) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { user, isLoading } = useSelector((state) => state.authReducer);
+  const { user, isLoading } = useSelector(state => state.authReducer);
   const [cities, setCities] = useState([]);
 
   const validationSchema = Yup.object({
-    name: Yup.string().required(t("login.form1.firstNameError.required")),
-    contact: Yup.string().required(t("login.form1.firstNameError.required")),
-    last_name: Yup.string().required(t("login.form1.lastNameError.required")),
-    email: Yup.string().email(t("login.form1.emailError.invalid")).nullable(),
+    name: Yup.string().required(t('login.form1.firstNameError.required')),
+    contact: Yup.string().required(t("login.form1.contactNumberError.required")),
+    last_name: Yup.string().required(t('login.form1.lastNameError.required')),
+    email: Yup.string()
+      .email(t('login.form1.emailError.invalid'))
+      .nullable(),
     highest_education: Yup.string().nullable(),
     dob: Yup.string().nullable(),
     state: Yup.string().nullable(),
@@ -52,20 +54,20 @@ function EditProfile(props) {
   } = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: user?.name || "",
+      name: user?.name || '',
       contact: user?.contact || "",
-      email: user?.email || "",
-      highest_education: user?.highest_education || "",
-      last_name: user?.last_name || "",
+      email: user?.email || '',
+      highest_education: user?.highest_education || '',
+      last_name: user?.last_name || '',
       dob: user.dob
-        ? moment(user?.dob, "DD-MM-YYYY").format("YYYY-MM-DD")
+        ? moment(user?.dob, 'DD-MM-YYYY').format('YYYY-MM-DD')
         : null,
       state: user?.state,
       city: user?.city,
       stream: user?.stream,
     },
     validationSchema,
-    onSubmit(values) {
+    onSubmit (values) {
       dispatch(updateProfile(user?.id, values));
       props.func();
     },
@@ -78,14 +80,14 @@ function EditProfile(props) {
     }
   }, [user, values.state]);
 
-  const filterCities = (state) =>
-    statesCities?.find((c) => c?.name === state)?.districts || [];
+  const filterCities = state =>
+    statesCities?.find(c => c?.name === state)?.districts || [];
 
-  const handleStateChange = (value) => {
+  const handleStateChange = value => {
     const foundCities = filterCities(value);
     if (foundCities) setCities(foundCities);
-    setFieldValue("city", "");
-    setFieldValue("state", value);
+    setFieldValue('city', '');
+    setFieldValue('state', value);
   };
 
   return (
@@ -98,7 +100,7 @@ function EditProfile(props) {
           <Col lg={4} md={4} xs={12}>
             <div className='edit_profile'>
               <div className='form-group mb-4'>
-                <label htmlFor=''>{t("common.formHeadings.fname")}</label>
+                <label htmlFor=''>{t('common.formHeadings.fname')}</label>
                 <TextField
                   name='name'
                   type='text'
@@ -107,7 +109,7 @@ function EditProfile(props) {
                   value={values.name}
                   className='form-control'
                   autoComplete='off'
-                  placeholder={t("common.placeHolders.fname")}
+                  placeholder={t('common.placeHolders.fname')}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -120,16 +122,16 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-4'>
-                <label htmlFor=''>{t("common.formHeadings.email")}</label>
+                <label htmlFor=''>{t('common.formHeadings.email')}</label>
                 <TextField
                   name='email'
                   type='text'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  className={"form-control"}
+                  className={'form-control'}
                   autoComplete='off'
-                  placeholder={t("common.placeHolders.email")}
+                  placeholder={t('common.placeHolders.email')}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -142,16 +144,18 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-3'>
-                <label htmlFor=''>{t("common.formHeadings.highest_education")}</label>
+                <label htmlFor=''>
+                  {t('common.formHeadings.highest_education')}
+                </label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
                     icon={true}
-                    title={t("common.formHeadings.highest_education")}
-                    listItem={["10th", "12th", "Diploma", "PG", "UG"]}
+                    title={t('common.formHeadings.highest_education')}
+                    listItem={['10th', '12th', 'Diploma', 'PG', 'UG']}
                     defaultValue={values.highest_education}
-                    updateValues={(value) =>
-                      setFieldValue("highest_education", value)
+                    updateValues={value =>
+                      setFieldValue('highest_education', value)
                     }
                   />
                   <Error
@@ -162,23 +166,23 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group'>
-                <label htmlFor=''>{t("common.formHeadings.dob")}</label>
+                <label htmlFor=''>{t('common.formHeadings.dob')}</label>
                 <div className='form-group mzero'>
                   <img className='calendar_icon' src={Calendar} alt='...' />
                   <DatePicker
                     selected={
-                      values?.dob && typeof values?.dob !== "undefined"
+                      values?.dob && typeof values?.dob !== 'undefined'
                         ? new Date(values.dob)
                         : null
                     }
-                    placeholderText={t("common.placeHolders.dob")}
+                    placeholderText={t('common.placeHolders.dob')}
                     className='form-control'
                     maxDate={new Date()}
                     dateFormat='dd-MM-yyyy'
-                    onChange={(date) =>
+                    onChange={date =>
                       setFieldValue(
-                        "dob",
-                        moment(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
+                        'dob',
+                        moment(date, 'DD-MM-YYYY').format('YYYY-MM-DD'),
                       )
                     }
                     peekNextMonth
@@ -191,14 +195,14 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-4 mt-4'>
-                <label htmlFor=''>{t("common.formHeadings.city")}</label>
+                <label htmlFor=''>{t('common.formHeadings.city')}</label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
-                    title={t("common.formHeadings.city")}
+                    title={t('common.formHeadings.city')}
                     listItem={cities}
                     defaultValue={values.city}
-                    updateValues={(value) => setFieldValue("city", value)}
+                    updateValues={value => setFieldValue('city', value)}
                   />
                   <Error error={errors.city} touched={touched.city} />
                 </div>
@@ -208,7 +212,7 @@ function EditProfile(props) {
           <Col lg={4} md={4} xs={12}>
             <div className='edit_profile'>
               <div className='form-group mb-4'>
-                <label htmlFor=''>{t("common.formHeadings.lname")}</label>
+                <label htmlFor=''>{t('common.formHeadings.lname')}</label>
                 <TextField
                   name='last_name'
                   type='text'
@@ -217,7 +221,7 @@ function EditProfile(props) {
                   value={values.last_name}
                   className='form-control'
                   autoComplete='off'
-                  placeholder={t("common.placeHolders.lname")}
+                  placeholder={t('common.placeHolders.lname')}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -230,17 +234,16 @@ function EditProfile(props) {
               </div>
 
               <div className='form-group mb-4'>
-                <label htmlFor=''>{t("common.formHeadings.mobile")}</label>
+                <label htmlFor=''>{t('common.formHeadings.mobile')}</label>
                 <TextField
                   name='contact'
                   type='tel'
                   value={values.contact}
                   onChange={handleChange}
-                  onBlur={handleBlur}
                   // disabled
                   className='form-control'
                   autoComplete='off'
-                  placeholder={t("common.placeHolders.mobile")}
+                  placeholder={t('common.placeHolders.mobile')}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -249,28 +252,29 @@ function EditProfile(props) {
                     ),
                   }}
                 />
+                 <Error error={errors.contact} touched={touched.contact} />
               </div>
 
               <div className='form-group mb-3'>
-                <label htmlFor=''>{t("common.formHeadings.stream")}</label>
+                <label htmlFor=''>{t('common.formHeadings.stream')}</label>
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
                     icon={true}
-                    title={t("common.formHeadings.stream")}
+                    title={t('common.formHeadings.stream')}
                     defaultValue={values.stream}
-                    updateValues={(value) => setFieldValue("stream", value)}
+                    updateValues={value => setFieldValue('stream', value)}
                   />
                   <Error error={errors.stream} touched={touched.stream} />
                 </div>
               </div>
 
               <div className='form-group mb-4'>
-                <label htmlFor=''>{t("common.formHeadings.state")}</label>{" "}
+                <label htmlFor=''>{t('common.formHeadings.state')}</label>{' '}
                 <div className='form-group mzero'>
                   <GuidanceSelect
                     flag={true}
-                    title={t("common.formHeadings.state")}
+                    title={t('common.formHeadings.state')}
                     listItem={statesCities}
                     defaultValue={values?.state}
                     updateValues={handleStateChange}
@@ -290,7 +294,7 @@ function EditProfile(props) {
               {isSubmitting || isLoading ? (
                 <CircularProgress color='secondary' size={20} />
               ) : (
-                t("common.formHeadings.button.save")
+                t('common.formHeadings.button.save')
               )}
             </button>
           </Col>

@@ -84,6 +84,7 @@ function createFormData(item) {
   for (const key in item) {
     formData.append(key, item[key]);
   }
+  console.log('%%%%%%%%%%%%%%%%%%%%%%',item)
   return formData;
 }
 

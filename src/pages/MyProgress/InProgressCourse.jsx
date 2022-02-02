@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 const InProgressCourse = ({ courses }) => {
   const history = useHistory();
   const { t } = useTranslation();
+
   return (
     <div className='current_course'>
       <h3>{t("dashboardPage.inProgress")}</h3>

@@ -164,9 +164,13 @@ export const getUserProfile = () => async (dispatch) => {
 };
 
 export const updateProfile = (id, values) => async (dispatch) => {
+
   try {
     if (values.id) {
       delete values.id;
+    }
+    if (!values.contact) {
+      delete values.contact;
     }
     if (!values.dob || values.dob === "Invalid date") {
       delete values.dob;

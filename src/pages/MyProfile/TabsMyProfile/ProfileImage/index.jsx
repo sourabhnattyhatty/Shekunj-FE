@@ -29,7 +29,6 @@ const ProfileImage = ({ isEditable }) => {
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
-
   const { user } = useSelector((state) => state.authReducer);
 
   const onChange = (e) => {
@@ -53,7 +52,6 @@ const ProfileImage = ({ isEditable }) => {
     const cropper = imageElement?.cropper;
     setCropper(cropper);
   };
-
 
   const getCropData = () => {
     convertRelativeUriToFile(cropper?.getCroppedCanvas()?.toDataURL(), fileName, null, async (file) => {

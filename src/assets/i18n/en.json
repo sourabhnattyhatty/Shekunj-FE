@@ -122,6 +122,9 @@
       "firstNameError": {
         "required": "First Name is required"
       },
+      "contactNumberError":{
+        "required": "Contact Number is required"
+      },
       "lastNameError": {
         "required": "Last Name is required"
       },
