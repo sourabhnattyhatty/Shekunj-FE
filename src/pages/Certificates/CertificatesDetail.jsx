@@ -23,6 +23,10 @@ import logo22 from "../../assets/images/AllCertificate/logo22.png";
 import logo3 from "../../assets/images/AllCertificate/logo3.png";
 import PSD_Certificate from "../../assets/images/PSD_Certificate/Certificate_pdf.png";
 import thiscer_img from "../../assets/images/PSD_Certificate/thiscer_img.png";
+import logo11 from "../../assets/images/PSD_Certificate/logo1.png";
+import logo222 from "../../assets/images/PSD_Certificate/logo2.png";
+import logo33 from "../../assets/images/PSD_Certificate/logo3.png";
+import signature_pdf from "../../assets/images/PSD_Certificate/signature_pdf.png";
 
 import "./index.scss";
 import moment from "moment";
@@ -132,9 +136,9 @@ const CertificatesDetail = forwardRef((props, ref) => {
             </Col>
           </Row>
           <div className='cer_logo'>
-            <img className='img1' src={logo1} alt='' srcset='' />
-            <img className='img2' src={logo22} alt='' srcset='' />
-            <img className='img3' src={logo3} alt='' srcset='' />
+            <img className='img1' src={logo11} alt='' srcset='' />
+            <img className='img2' src={logo222} alt='' srcset='' />
+            <img className='img3' src={logo33} alt='' srcset='' />
           </div>
           <div className='signature_set'>
             <img src={signature} alt='' />
@@ -220,7 +224,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
             <img className='img3' src={logo3} alt='' srcset='' />
           </div>
           <div className='signature_set'>
-            <img src={signature} alt='' />
+            <img src={signature_pdf} alt='' />
             <hr className='hr_line2' />
             <div className='name-surname'>
               {t('certificateDetailPage.other.4')}
