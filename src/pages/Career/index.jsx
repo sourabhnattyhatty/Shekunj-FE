@@ -159,8 +159,8 @@ const CareerPage = () => {
                                     <li>
                                       <span>
                                         {t("careerTopColleges.other.8")}
-                                      </span>{" "}
-                                      :{" "}
+                                      </span>
+                                      :
                                       {c && c.courses_offered
                                         ? paragraph(c.courses_offered).map(
                                             (o) => <p>{o}</p>,
