@@ -71,7 +71,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
     const doc = new jsPDF('landscape', 'px', 'A4', false);
     const node = document.querySelector('.box_certificate_large');
     htmlToImage.toJpeg(node).then(function (dataUrl) {
-      setIsLoaded(true);
+      setIsLoaded(true);  
       const img = new Image();
       img.src = dataUrl;
       doc.addImage(img, 'JPGE', 0, -14, 630, 450);
@@ -130,7 +130,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
                   {t('certificateDetailPage.content.1.2')}
                 </p>
                 <p className='second-number'>
-                  Date of achievement :{' '}
+                  Date of Achievement :{' '}
                   {moment(certificate?.course_end_time).format('DD-MM-YYYY')}
                 </p>
                 {/* <p>

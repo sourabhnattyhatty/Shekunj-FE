@@ -568,6 +568,8 @@ div#cer_PDF {
   width: 3508px;
   height: 2480px;
   background-size: cover;
+  padding-top: 391px;
+  display: block !important;
 }
 // div#cer_PDF img {
 //   width: 100%;
@@ -608,11 +610,14 @@ div#cer_PDF hr.hr_line {
   max-width: 1722;
 }
 div#cer_PDF::after {
-  background-image: url("../../assets/images/PSD_Certificate/logo.png");
+  background-image: none;
   background-repeat: no-repeat;
     width: 552px;
     background-size: cover;
     height: 160px;
+}
+div#cer_PDF {
+  background-image: url("../../assets/images/PSD_Certificate/bg.png");
 }
 
 div#cer_PDF .cer_logo img.img1 { height: auto;}
@@ -634,7 +639,9 @@ div#cer_PDF .signature_set .president {
 div#cer_PDF .cer_logo {
   gap: 11rem;
 }
-
+div#cer_PDF hr.hr_line2 {
+  margin: 24.89px 0 28.19px 0;
+}
   @media screen and (max-width: 1280px) {
     hr.hr_line2 {
       margin: 4.46px 0 4.39px !important  ;
