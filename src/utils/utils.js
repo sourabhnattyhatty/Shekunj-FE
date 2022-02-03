@@ -213,7 +213,8 @@ export const sliceString = (str) => {
 
 export const paragraph = (text) => {
   let lines = text
-  return lines?.length > 0 ? text.filter((o) => o !== `\r\n` || o !== "") : [];
+  // return lines?.length > 0 ? text.filter((o) => o !== `\r\n` || o !== "") : [];
+  return lines?.length > 0 ? text:'';
 };
 
 export async function convertRelativeUriToFile(
