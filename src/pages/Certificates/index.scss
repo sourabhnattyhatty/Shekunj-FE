@@ -571,6 +571,12 @@ div#cer_PDF {
   padding-top: 391px;
   display: block !important;
 }
+div#cer_PDF .cer_logo {
+  margin-left: 153px;
+}
+div#cer_PDF .signature_set {
+  right: 153px;
+}
 // div#cer_PDF img {
 //   width: 100%;
 // }
@@ -597,6 +603,8 @@ div#cer_PDF .cercifi_con_large h5 {
 div#cer_PDF .cercifi_con_large h3 {
   font-size: 90.4696px;
   line-height: 120px;
+  margin-top: 29px;
+  margin-bottom: 53px;
 }
 div#cer_PDF p.first-number {
   font-size: 57.5716px;
@@ -605,9 +613,12 @@ div#cer_PDF p.first-number {
 div#cer_PDF .cercifi_con_large p {
   font-size: 57.5716px;
   line-height: 77px;
+  margin-bottom: 61px;
 }
 div#cer_PDF hr.hr_line {
-  max-width: 1722;
+  max-width: 1722px;
+  margin-top: 47px;
+  margin-bottom: 81px;
 }
 div#cer_PDF::after {
   background-image: none;
