@@ -71,7 +71,7 @@ import React, {
                   </h5>
                   <h3>{certificateData?.course_name}</h3>
                   <p className='first-number'>
-                    {t("certificateDetailPage.content.1.1")}{" "}
+                    {t("certificateDetailPage.content.1.1")}{" "}<br/>
                     {t("certificateDetailPage.content.1.2")}
                   </p>
                   <p className='second-number'>

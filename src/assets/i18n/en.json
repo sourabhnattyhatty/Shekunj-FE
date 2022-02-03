@@ -619,8 +619,8 @@
   "dashboardPage": {
     "greeting": "Hello {{name}}!",
     "wish": "Good to see you back!",
-    "current": "Current Course",
-    "inProgress": "In Progress",
+    "current": "Current inprogress courses",
+    "inProgress": "Results of course appeared",
     "certificate": "Certificate",
     "explore": "Explore",
     "button": {
@@ -628,7 +628,7 @@
     },
     "heading": {
       "1": "Career test",
-      "2":"Course"
+      "2":"Scored percentage"
     }
   },
   "guidanceBookPage": {
