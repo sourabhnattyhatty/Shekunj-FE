@@ -3,34 +3,34 @@ import React, {
   useState,
   forwardRef,
   useImperativeHandle,
-} from "react";
-import { Col, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, useParams, useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import jsPDF from "jspdf";
-import * as htmlToImage from "html-to-image";
-import { Loading } from "react-fullscreen-loading";
+} from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory, useParams, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import jsPDF from 'jspdf';
+import * as htmlToImage from 'html-to-image';
+import { Loading } from 'react-fullscreen-loading';
 
-import { getUserCourseCertificateDetail } from "../../store/certificate";
-import { routingConstants } from "../../utils/constants";
+import { getUserCourseCertificateDetail } from '../../store/certificate';
+import { routingConstants } from '../../utils/constants';
 
-import Certificate_text from "../../assets/images/AllCertificate/Certificate_text.png";
-import para from "../../assets/images/AllCertificate/para.png";
-import signature from "../../assets/images/AllCertificate/signature.png";
-import logo1 from "../../assets/images/AllCertificate/logo1.png";
-import logo22 from "../../assets/images/AllCertificate/logo22.png";
-import logo3 from "../../assets/images/AllCertificate/logo3.png";
-import PSD_Certificate from "../../assets/images/PSD_Certificate/Certificate_pdf.png";
-import thiscer_img from "../../assets/images/PSD_Certificate/thiscer_img.png";
-import logo11 from "../../assets/images/PSD_Certificate/logo1.png";
-import logo222 from "../../assets/images/PSD_Certificate/logo2.png";
-import logo33 from "../../assets/images/PSD_Certificate/logo3.png";
-import signature_pdf from "../../assets/images/PSD_Certificate/signature_pdf.png";
+import Certificate_text from '../../assets/images/AllCertificate/Certificate_text.png';
+import para from '../../assets/images/AllCertificate/para.png';
+import signature from '../../assets/images/AllCertificate/signature.png';
+import logo1 from '../../assets/images/AllCertificate/logo1.png';
+import logo22 from '../../assets/images/AllCertificate/logo22.png';
+import logo3 from '../../assets/images/AllCertificate/logo3.png';
+import PSD_Certificate from '../../assets/images/PSD_Certificate/Certificate_pdf.png';
+import thiscer_img from '../../assets/images/PSD_Certificate/thiscer_img.png';
+import logo11 from '../../assets/images/PSD_Certificate/logo1.png';
+import logo222 from '../../assets/images/PSD_Certificate/logo2.png';
+import logo33 from '../../assets/images/PSD_Certificate/logo3.png';
+import signature_pdf from '../../assets/images/PSD_Certificate/signature_pdf.png';
 
-import "./index.scss";
-import moment from "moment";
-import { Loader } from "../../components";
+import './index.scss';
+import moment from 'moment';
+import { Loader } from '../../components';
 
 const CertificatesDetail = forwardRef((props, ref) => {
   const dispatch = useDispatch();
@@ -44,9 +44,9 @@ const CertificatesDetail = forwardRef((props, ref) => {
   const [isLoaded, setIsLoaded] = useState(true);
 
   const { certificateDetail: certificate } = useSelector(
-    (state) => state.certificateReducer,
+    state => state.certificateReducer,
   );
-  const { lan } = useSelector((state) => state.languageReducer);
+  const { lan } = useSelector(state => state.languageReducer);
 
   useEffect(() => {
     if (props?.id) {
@@ -57,7 +57,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
       history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
   }, [id, history, dispatch, props?.id, lan]);
- 
+
   useEffect(() => {
     if (isDownload) {
       setIsLoaded(false);
@@ -68,28 +68,31 @@ const CertificatesDetail = forwardRef((props, ref) => {
   }, []);
 
   const downloadPDF = () => {
-    const doc = new jsPDF("landscape", "px", "A4", false);
-    const node = document.querySelector(".box_certificate_large");
+    const doc = new jsPDF('landscape', 'px', 'A4', false);
+    const node = document.querySelector('.box_certificate_large');
     htmlToImage.toJpeg(node).then(function (dataUrl) {
-      setIsLoaded(true);
+      setIsLoaded(true);  
       const img = new Image();
       img.src = dataUrl;
-      doc.addImage(img, "JPGE", 0, -14, 630, 450);
+      doc.addImage(img, 'JPGE', 0, -14, 630, 450);
       //doc.addImage(img, "JPGE", -12, 0, 654, 470);
-      doc.save("mycertificate.pdf");
+      doc.save('mycertificate.pdf');
     });
   };
 
   useImperativeHandle(ref, () => ({
-    generatePDF() {
-      if (location.pathname !== "/certificate-detail/") {
+    generatePDF () {
+      if (location.pathname !== '/certificate-detail/') {
         history.push(`/certificate-detail/${props?.id}/true`);
       }
     },
   }));
 
   return isDownload ? (
-    <div className="noselect" style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+    <div
+      className='noselect'
+      style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+    >
       {isLoaded === false && <Loader />}
       <div style={{ width: '95%' }} className=' p-0' id='capture'>
         <div className='mob_box_certificate_small'></div>
@@ -110,7 +113,8 @@ const CertificatesDetail = forwardRef((props, ref) => {
                     : 'cercifi_con_small'
                 }
               >
-                <img className='cer_text' src={PSD_Certificate} alt='' /><br/>
+                <img className='cer_text' src={PSD_Certificate} alt='' />
+                <br />
                 <img className='last-img' src={thiscer_img} alt='' />
                 <h2>
                   {certificate?.name || t('common.n/a')}&nbsp;
@@ -122,11 +126,11 @@ const CertificatesDetail = forwardRef((props, ref) => {
                 </h5>
                 <h3>{certificate?.course_name}</h3>
                 <p className='first-number'>
-                  {t('certificateDetailPage.content.1.1')}{' '}<br/>
+                  {t('certificateDetailPage.content.1.1')} <br />
                   {t('certificateDetailPage.content.1.2')}
                 </p>
                 <p className='second-number'>
-                  Date of achievement :{' '}
+                  Date of Achievement :{' '}
                   {moment(certificate?.course_end_time).format('DD-MM-YYYY')}
                 </p>
                 {/* <p>
@@ -172,7 +176,10 @@ const CertificatesDetail = forwardRef((props, ref) => {
       </div>
     </div>
   ) : (
-    <div className="noselect" style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+    <div
+      className='noselect'
+      style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+    >
       {isLoaded === false && <Loader />}
       <div style={{ width: '95%' }} className=' p-0' id='capture'>
         <div className='mob_box_certificate_small'></div>
@@ -205,7 +212,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
                 </h5>
                 <h3>{certificate?.course_name}</h3>
                 <p className='first-number'>
-                  {t('certificateDetailPage.content.1.1')}{' '} <br/>
+                  {t('certificateDetailPage.content.1.1')} <br />
                   {t('certificateDetailPage.content.1.2')}
                 </p>
                 <p className='second-number'>
