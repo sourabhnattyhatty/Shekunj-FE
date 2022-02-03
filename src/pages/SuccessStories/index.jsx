@@ -78,7 +78,7 @@ function SuccessStory() {
 
                           <p className="noselect">
                             {(s?.is_collapse
-                              ? paragraph(s?.description).map((o) => <p>{o}</p>)
+                              ? paragraph(s?.description)
                               : sliceString(s?.description)) || t("common.n/a")}
                           </p>
 
@@ -122,7 +122,7 @@ function SuccessStory() {
 
                           <p className="noselect">
                             {(s?.is_collapse
-                              ? paragraph(s?.description).map((o) => <p>{o}</p>)
+                              ? paragraph(s?.description)
                               : sliceString(s?.description)) || t("common.n/a")}
                           </p>
 
