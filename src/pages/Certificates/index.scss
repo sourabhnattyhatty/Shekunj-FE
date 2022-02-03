@@ -106,17 +106,18 @@
   color: #fff;
 }
 .box_certificate_large {
-  background-image: url("../../assets/images/AllCertificate/certificate_bg1.png");
+  background-image: url("../../assets/images/AllCertificate/new_cer.png");
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
   width: 100%;
-  background-color: rgb(255 255 255);
+  // background-color: rgb(255 255 255);
   // box-shadow: 0px 0px 3px #ccc;
   filter: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.1));
   padding: 15px;
-  height: 810px;
+  height: 1060px;
   position: relative;
-  display: grid;
+  display: block;
+  padding-top: 170px;
   align-items: center;
   margin: 0 !important;
 }
@@ -139,7 +140,7 @@
 .signature_set {
   position: absolute;
   bottom: 42px;
-  right: 67px;
+  right: 100px;
   text-align: center;
 }
 .box_certificate_small .signature_set img {
