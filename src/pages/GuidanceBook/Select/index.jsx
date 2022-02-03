@@ -11,7 +11,7 @@ import Course from "../../../assets/icons/Course.png";
 import Education from "../../../assets/images/MyProfile/education.png";
 import Stream from "../../../assets/images/MyProfile/Stream.png";
 
-const names = ["Engineering", "Medical", "Arts", "Science", "Pharmacy"];
+const names = ["Engineering", "Medical", "Arts", "Science", "Pharmacy","Commerce"];
 
 function GuidanceSelect(props) {
   const [defaultValue, setDefaultValue] = React.useState(props.defaultValue);
