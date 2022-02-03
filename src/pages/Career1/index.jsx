@@ -23,6 +23,7 @@ const CareerPage1 = () => {
   const { t } = useTranslation();
   const { lan } = useSelector((state) => state.languageReducer);
 
+
   useEffect(() => {
     dispatch(reSetFilterValue());
     dispatch(getTopSchools());
@@ -103,14 +104,22 @@ const CareerPage1 = () => {
                                 </li>
                                 {c?.is_collapse && (
                                   <>
-                                    <li>
+                                    {/* <li>
                                       <span>
                                         {t("careerTopSchools.other.7")}
                                       </span>{" "}
                                       : {c?.address ? paragraph(c.address).map(
-                                            (o) => <p>{o}</p>,
+                                            (o) => 
+                                            <p>{o}</p>,
                                           ) : t("common.n/a")}
+                                    </li> */}
+                                    <li>
+                                      <span>
+                                        {t("careerTopSchools.other.7")}
+                                      </span>{" "}
+                                      : {c?.address}
                                     </li>
+                                  
                                     <li>
                                       <span>
                                         {t("careerTopSchools.other.4")}

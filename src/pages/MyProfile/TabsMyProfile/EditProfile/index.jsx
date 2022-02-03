@@ -240,7 +240,7 @@ function EditProfile (props) {
                   type='tel'
                   value={values.contact}
                   onChange={handleChange}
-                  // disabled
+                  disabled={user.auth_provider === "contact" ? true : false }
                   className='form-control'
                   autoComplete='off'
                   placeholder={t('common.placeHolders.mobile')}

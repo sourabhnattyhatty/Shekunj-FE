@@ -75,7 +75,7 @@ import React, {
                     {t("certificateDetailPage.content.1.2")}
                   </p>
                   <p className='second-number'>
-                    Date of achievement :{" "}
+                    Date of Achievement :{" "}
                     {moment(certificateData?.course_end_time).format("DD-MM-YYYY")}
                   </p>                 
                 </div>
