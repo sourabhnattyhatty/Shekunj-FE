@@ -205,7 +205,7 @@ const CourseModule = () => {
               </div>
             </Col>            
             {!show && (
-              <div className='tog_set'>
+              <div className='tog_set' onClick={()=>{console.log("Hello")}}>
                 <img src={toggle} alt='' onClick={handleAccordian} />
                 <div className='number-bgbox'>1</div>
                 <ul className='pl-2 position-relative'>
@@ -217,6 +217,7 @@ const CourseModule = () => {
                           ? "active-accordiantext"
                           : ""
                       }
+                      style={{cursor:"pointer"}}
                     >
                       1.{ind + 1}
                     </li>
@@ -255,7 +256,6 @@ const CourseModule = () => {
                                 style={{
                                   color: showactive === ind ? "pink" : "black",
                                 }}>
-                                  {  }
                                 {obj?.heading}
                               </span>
                             </Typography>
@@ -289,10 +289,10 @@ const CourseModule = () => {
                                             color:
                                               showsubactive === ind1
                                                 ? "pink"
-                                                : "black",
+                                                : "black", 
+                                                cursor:"pointer"
                                           }}
                                         >
-                                          {" "}
                                            {obj1?.title } 
                                         </span>
                                       </li>
