@@ -66,15 +66,17 @@ function ContactUs() {
             <Row>
               <Col md={6} xs={12}>
                 <div className='add_con'>
-                  <h3>{t("contactUs.heading.3")}</h3>
+                  
                   <Row>
                     <Col md={6} xs={12}>
+                    <h3>{t("contactUs.heading.3")}</h3>
                       <p>
                         <img src={mail2} alt='' /> Info@shekunj.com
                       </p>
                     </Col>
 
                     <Col md={6} xs={12}>
+                    <h3>{t("contactUs.heading.4")}</h3>
                       <p>
                         <img src={mail2} alt='' /> Support@shekunj.com
                       </p>
