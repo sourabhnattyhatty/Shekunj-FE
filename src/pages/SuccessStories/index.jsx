@@ -76,7 +76,7 @@ function SuccessStory() {
                             {s?.name || t("common.n/a")}{" "}
                           </h2>
 
-                          <p className="noselect">
+                          <p className="noselect" style={{whiteSpace:"pre-line"}}>
                             {(s?.is_collapse
                               ? paragraph(s?.description)
                               : sliceString(s?.description)) || t("common.n/a")}
@@ -120,7 +120,7 @@ function SuccessStory() {
                             {s?.name || t("common.n/a")}{" "}
                           </h2>
 
-                          <p className="noselect">
+                          <p className="noselect" style={{whiteSpace:"pre-line"}}>
                             {(s?.is_collapse
                               ? paragraph(s?.description)
                               : sliceString(s?.description)) || t("common.n/a")}
