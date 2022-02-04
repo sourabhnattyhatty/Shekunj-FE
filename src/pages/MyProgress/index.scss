@@ -33,19 +33,19 @@
 .Scrl_div.set {
   max-height: 630px;
 }
-.Scrl_div::-webkit-scrollbar {
-  width: 3px;
-  background-color: rgb(245 245 245);
-}
+// .Scrl_div::-webkit-scrollbar {
+//   width: 3px;
+//   background-color: rgb(245 245 245);
+// }
 
-.Scrl_div::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.72, rgb(198 198 199)), color-stop(0.72, rgb(198 198 199)), color-stop(0.72, rgb(198 198 199)));
-}
-.logScrl_div_form::-webkit-scrollbar-track {
-  background-color: rgb(245 245 245);
-  border-radius: 10px;
-}
+// .Scrl_div::-webkit-scrollbar-thumb {
+//   border-radius: 10px;
+//   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.72, rgb(198 198 199)), color-stop(0.72, rgb(198 198 199)), color-stop(0.72, rgb(198 198 199)));
+// }
+// .logScrl_div_form::-webkit-scrollbar-track {
+//   background-color: rgb(245 245 245);
+//   border-radius: 10px;
+// }
 .dashboard_main .course_explore {
   background: #ec498a;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -211,10 +211,13 @@ button.explore_button.btn {
   color: #000000;
 }
 .course_inprogress .MuiCircularProgress-determinate {
-  width: 60px !important;
-  height: 60px !important;
+  width: 68px !important;
+  height: 68px !important;
   transform: rotate(0deg) !important;
   color: #ec498a;
+}
+span.MuiCircularProgress-root.sets circle {
+  stroke-width: 1.5px !important;
 }
 .progress-coursebardiv {
   padding: 20px 0px;
