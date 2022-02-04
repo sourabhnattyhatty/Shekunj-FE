@@ -205,9 +205,9 @@ const CourseModule = () => {
               </div>
             </Col>            
             {!show && (
-              <div className='tog_set' onClick={()=>{console.log("Hello")}}>
+              <div className='tog_set'>
                 <img src={toggle} alt='' onClick={handleAccordian} />
-                <div className='number-bgbox'>1</div>
+                {/* <div className='number-bgbox'>1</div> */}
                 <ul className='pl-2 position-relative'>
                   {courseModulesList.map((obj, ind) => (
                     <li
@@ -218,8 +218,9 @@ const CourseModule = () => {
                           : ""
                       }
                       style={{cursor:"pointer"}}
+                      onClick={() => openSubModule(obj?.id) }
                     >
-                      1.{ind + 1}
+                       {ind + 1}
                     </li>
                   ))}
                 </ul>

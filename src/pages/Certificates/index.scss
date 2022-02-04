@@ -200,7 +200,7 @@ hr.hr_line {
   line-height: 39px;
   display: flex;
   align-items: center;
-  text-transform: capitalize;
+  text-transform: lowercase;
   color: rgb(236 73 138);
 }
 .cercifi_con_large h5 {
@@ -527,13 +527,13 @@ hr.hr_line2 {
   margin-bottom: 5px;
 }
 .cercifi_con_small h3 {
-  font-family: Segoe UI;
+  font-family: SegoeUI_medium;
   font-style: normal;
   font-weight: 600;
   font-size: 13.6554px;
   // margin-top: -1%;
   line-height: 18px;
-  text-transform: capitalize;
+  text-transform: lowercase;
   color: rgb(236 73 138);
 }
 .cercifi_con_small hr.hr_line {

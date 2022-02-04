@@ -46,6 +46,7 @@ const InProgressCourse = ({ courses }) => {
                   <div className='progress-coursebardiv'>
                     <Box sx={{ position: "relative", display: "inline-flex" }}>
                       <CircularProgress
+                      className="sets"
                         variant='determinate'
                         value={c?.progress || 0}
                       />
