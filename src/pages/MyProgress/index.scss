@@ -216,6 +216,9 @@ button.explore_button.btn {
   transform: rotate(0deg) !important;
   color: #ec498a;
 }
+span.MuiCircularProgress-root.sets circle {
+  stroke-width: 1.5px !important;
+}
 .progress-coursebardiv {
   padding: 20px 0px;
 }
