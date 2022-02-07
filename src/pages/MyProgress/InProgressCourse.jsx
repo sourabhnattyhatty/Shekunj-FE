@@ -77,14 +77,14 @@ const InProgressCourse = ({ courses }) => {
                   <Col md={3} xs={12}>
                     <div
                       className='button_paddingarea'
-                      onClick={() =>
-                        history.push(
-                          routingConstants.ALL_CERTIFICATE_DETAIL + c?.id,
-                        )
-                      }
                     >
                       { c.has_certificate && c.in_progress_course &&
-                        <button className='btn certificate_button'>
+                        <button className='btn certificate_button'         
+                        onClick={() =>
+                          history.push(
+                            routingConstants.ALL_CERTIFICATE_DETAIL + c?.id,
+                          )
+                        }>
                           {t("dashboardPage.certificate")}
                         </button>
                       }

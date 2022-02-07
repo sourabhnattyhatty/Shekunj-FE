@@ -51,7 +51,7 @@ function ForgetPassword() {
       const res = await dispatch(
         forgotPassword({ contact: String(values.contact) }, history),
       );
-      if (res.status_code === 200) {
+      if (res?.status_code === 200) {
         setShow((prev) => !prev);
       }
     }
@@ -91,7 +91,7 @@ function ForgetPassword() {
                       {isLoading ? (
                         <CircularProgress color='secondary' size={20} />
                       ) : (
-                        "Request For Temprary Password"
+                        "Request For Temporary Password"
                       )}
                     </button>
                   )}

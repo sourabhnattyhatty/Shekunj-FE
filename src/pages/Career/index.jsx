@@ -106,10 +106,9 @@ const CareerPage = () => {
                                     : t("common.n/a")}
                                 </li>
                                 <li>
-                                  <span>{t("careerTopColleges.other.5")}</span>{" "}
-                                  :{" "}
+                                  <span>{t("careerTopColleges.other.5")}</span>:{" "}                                  
                                   <Link
-                                    to={{ pathname: `http://${c?.website}`}}
+                                    to={{ pathname: `http://${c?.website.trim()}`}}
                                     target='_blank'
                                     rel='noreferrer'
                                   >
@@ -118,6 +117,7 @@ const CareerPage = () => {
                                       : t("common.n/a")}
                                   </Link>
                                 </li>
+                            
                                 {c?.is_collapse && (
                                   <>
                                     <li>
