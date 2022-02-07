@@ -23,6 +23,7 @@ const CareerPage1 = () => {
   const { t } = useTranslation();
   const { lan } = useSelector((state) => state.languageReducer);
 
+
   useEffect(() => {
     dispatch(reSetFilterValue());
     dispatch(getTopSchools());
@@ -94,7 +95,11 @@ const CareerPage1 = () => {
                                 </li>
                                 <li>
                                   <span>{t("careerTopSchools.other.3")}</span> :{" "}                                 
-                                  <Link to={{ pathname: `${c?.website}` }} target="_blank" >
+                                  <Link 
+                                    to={{ pathname: `http://${c?.website}` }}  
+                                    target='_blank'
+                                    rel='noreferrer'
+                                  >
                                     {c && c.website
                                       ? c.website
                                       : t("common.n/a")
@@ -103,14 +108,22 @@ const CareerPage1 = () => {
                                 </li>
                                 {c?.is_collapse && (
                                   <>
-                                    <li>
+                                    {/* <li>
                                       <span>
                                         {t("careerTopSchools.other.7")}
                                       </span>{" "}
                                       : {c?.address ? paragraph(c.address).map(
-                                            (o) => <p>{o}</p>,
+                                            (o) => 
+                                            <p>{o}</p>,
                                           ) : t("common.n/a")}
+                                    </li> */}
+                                    <li>
+                                      <span>
+                                        {t("careerTopSchools.other.7")}
+                                      </span>{" "}
+                                      : {c?.address}
                                     </li>
+                                  
                                     <li>
                                       <span>
                                         {t("careerTopSchools.other.4")}

@@ -46,8 +46,8 @@ function SuccessStory() {
                 <img src={global} alt='' className='vert-move' />
               </div>
             </Col>
-            <Col md={6}>
-              <h2 data-aos='slide-up'>{t("successStoriesPage.heading.1")}</h2>
+            <Col md={6} data-aos='slide-up'>
+              <h2> {t("successStoriesPage.heading.1")}</h2>
               <p className="sucess_first_p">{t("successStoriesPage.content.1")}</p>
               <p>{t("successStoriesPage.content.4")}</p>
             </Col>
@@ -76,7 +76,7 @@ function SuccessStory() {
                             {s?.name || t("common.n/a")}{" "}
                           </h2>
 
-                          <p className="noselect">
+                          <p className="noselect" style={{whiteSpace:"pre-line"}}>
                             {(s?.is_collapse
                               ? paragraph(s?.description)
                               : sliceString(s?.description)) || t("common.n/a")}
@@ -120,7 +120,7 @@ function SuccessStory() {
                             {s?.name || t("common.n/a")}{" "}
                           </h2>
 
-                          <p className="noselect">
+                          <p className="noselect" style={{whiteSpace:"pre-line"}}>
                             {(s?.is_collapse
                               ? paragraph(s?.description)
                               : sliceString(s?.description)) || t("common.n/a")}

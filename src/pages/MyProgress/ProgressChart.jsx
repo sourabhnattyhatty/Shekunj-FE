@@ -78,20 +78,22 @@ const ProgressChart = ({ userProgress }) => {
         </Col>
 
         <Col md={5} xs={6}>
-          <div className='course_prog pink_col'>
-            <h6>{userProgress?.in_progress_course || 0}</h6>
-            <h3>
-              {t("myProgressPage.heading.1.1")} <br />{" "}
-              {t("myProgressPage.heading.1.2")}
-            </h3>
-          </div>
+          <div className='set_pro'>
+            <div className='course_prog pink_col'>
+              <h6>{userProgress?.in_progress_course || 0}</h6>
+              <h3>
+                {t("myProgressPage.heading.1.1")} <br />{" "}
+                {t("myProgressPage.heading.1.2")}
+              </h3>
+            </div>
 
-          <div className='course_prog yelloow_col'>
-            <h6>{userProgress?.complate_course || 0}</h6>
-            <h3>
-              {t("myProgressPage.heading.1.1")} <br />{" "}
-              {t("myProgressPage.heading.1.3")}
-            </h3>
+            <div className='course_prog yelloow_col'>
+              <h6>{userProgress?.complate_course || 0}</h6>
+              <h3>
+                {t("myProgressPage.heading.1.1")} <br />{" "}
+                {t("myProgressPage.heading.1.3")}
+              </h3>
+            </div>
           </div>
 
           {/* <div className='course_prog purple_col'>

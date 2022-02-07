@@ -24,32 +24,40 @@
   color: #000000;
 }
 .Scrl_div {
-  max-height: 590px;
+  max-height: 700px;
   width: 100%;
   overflow-y: scroll;
   margin-bottom: 55px;
   overflow-x: hidden;
 }
-.Scrl_div::-webkit-scrollbar {
-  width: 3px;
-  background-color: rgb(245 245 245);
+.Scrl_div.set {
+  max-height: 630px;
 }
+// .Scrl_div::-webkit-scrollbar {
+//   width: 3px;
+//   background-color: rgb(245 245 245);
+// }
 
-.Scrl_div::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.72, rgb(198 198 199)), color-stop(0.72, rgb(198 198 199)), color-stop(0.72, rgb(198 198 199)));
-}
-.logScrl_div_form::-webkit-scrollbar-track {
-  background-color: rgb(245 245 245);
-  border-radius: 10px;
-}
+// .Scrl_div::-webkit-scrollbar-thumb {
+//   border-radius: 10px;
+//   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.72, rgb(198 198 199)), color-stop(0.72, rgb(198 198 199)), color-stop(0.72, rgb(198 198 199)));
+// }
+// .logScrl_div_form::-webkit-scrollbar-track {
+//   background-color: rgb(245 245 245);
+//   border-radius: 10px;
+// }
 .dashboard_main .course_explore {
   background: #ec498a;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 23px;
   height: 103px;
-  margin-bottom: 40px;
+  margin: 20px 7px;
+}
+.set_pro {
+  display: grid;
+  align-items: center;
+  height: 100%;
 }
 .course_prog {
   display: flex;
@@ -131,12 +139,12 @@ button.explore_button.btn {
   color: #fff;
 }
 .course_inprogress {
-  background: #ffffff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  background: rgb(255 255 255);
+  box-shadow: 0px 0px 20px rgb(0 0 0 / 10%);
   border-radius: 10px;
   padding: 12px 15px;
   height: 120px;
-  margin-bottom: 20px;
+  margin: 20px 7px;
 }
 .course_inprogress h6 {
   font-style: normal;
@@ -203,10 +211,13 @@ button.explore_button.btn {
   color: #000000;
 }
 .course_inprogress .MuiCircularProgress-determinate {
-  width: 60px !important;
-  height: 60px !important;
+  width: 68px !important;
+  height: 68px !important;
   transform: rotate(0deg) !important;
   color: #ec498a;
+}
+span.MuiCircularProgress-root.sets circle {
+  stroke-width: 1.5px !important;
 }
 .progress-coursebardiv {
   padding: 20px 0px;

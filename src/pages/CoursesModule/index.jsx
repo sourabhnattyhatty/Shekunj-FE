@@ -207,7 +207,7 @@ const CourseModule = () => {
             {!show && (
               <div className='tog_set'>
                 <img src={toggle} alt='' onClick={handleAccordian} />
-                <div className='number-bgbox'>1</div>
+                {/* <div className='number-bgbox'>1</div> */}
                 <ul className='pl-2 position-relative'>
                   {courseModulesList.map((obj, ind) => (
                     <li
@@ -217,8 +217,10 @@ const CourseModule = () => {
                           ? "active-accordiantext"
                           : ""
                       }
+                      style={{cursor:"pointer"}}
+                      onClick={() => openSubModule(obj?.id) }
                     >
-                      1.{ind + 1}
+                       {ind + 1}
                     </li>
                   ))}
                 </ul>
@@ -255,7 +257,6 @@ const CourseModule = () => {
                                 style={{
                                   color: showactive === ind ? "pink" : "black",
                                 }}>
-                                  {  }
                                 {obj?.heading}
                               </span>
                             </Typography>
@@ -289,10 +290,10 @@ const CourseModule = () => {
                                             color:
                                               showsubactive === ind1
                                                 ? "pink"
-                                                : "black",
+                                                : "black", 
+                                                cursor:"pointer"
                                           }}
                                         >
-                                          {" "}
                                            {obj1?.title } 
                                         </span>
                                       </li>

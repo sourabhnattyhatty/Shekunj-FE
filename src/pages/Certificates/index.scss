@@ -109,17 +109,14 @@
   background-image: url("../../assets/images/AllCertificate/new_cer.png");
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
-  // background-color: rgb(255 255 255);
-  // box-shadow: 0px 0px 3px #ccc;
+  width: 90%;
+  margin: 0 auto;
   filter: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.1));
-  padding: 15px;
-  height: 1060px;
+  height: 960px;
   position: relative;
   display: block;
   padding-top: 170px;
   align-items: center;
-  margin: 0 !important;
 }
 .box_certificate_large::after {
   content: "";
@@ -128,7 +125,7 @@
   background-size: contain;
   height: 58px;
   position: absolute;
-  right: 42px;
+  right: 100px;
   top: 42px;
 }
 .date_set_large {
@@ -203,7 +200,7 @@ hr.hr_line {
   line-height: 39px;
   display: flex;
   align-items: center;
-  text-transform: capitalize;
+  text-transform: lowercase;
   color: rgb(236 73 138);
 }
 .cercifi_con_large h5 {
@@ -530,13 +527,13 @@ hr.hr_line2 {
   margin-bottom: 5px;
 }
 .cercifi_con_small h3 {
-  font-family: Segoe UI;
+  font-family: SegoeUI_medium;
   font-style: normal;
   font-weight: 600;
   font-size: 13.6554px;
   // margin-top: -1%;
   line-height: 18px;
-  text-transform: capitalize;
+  text-transform: lowercase;
   color: rgb(236 73 138);
 }
 .cercifi_con_small hr.hr_line {
