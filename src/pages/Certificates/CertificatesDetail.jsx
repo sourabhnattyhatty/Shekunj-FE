@@ -15,7 +15,7 @@ import { Loading } from 'react-fullscreen-loading';
 import { getUserCourseCertificateDetail } from '../../store/certificate';
 import { routingConstants } from '../../utils/constants';
 
-import Certificate_text from '../../assets/images/AllCertificate/Certificate_text.png';
+import Certificate_text from '../../assets/images/AllCertificate/View_Certificate.png';
 import para from '../../assets/images/AllCertificate/para.png';
 import signature from '../../assets/images/AllCertificate/signature.png';
 import logo1 from '../../assets/images/AllCertificate/logo1.png';

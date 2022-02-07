@@ -222,6 +222,8 @@ export const forgotPassword = (value) => async (dispatch) => {
     toast.success(res.data,toasterConfig);
     return res
   }catch(err){
+    debugger
     dispatch({type:authTypes.FORGOT_PASSWORD_FAIL});
+    toast.error(err?.data?.errors?.error[0]);
   }
 }

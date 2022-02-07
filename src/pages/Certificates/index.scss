@@ -186,6 +186,7 @@ hr.hr_line {
 }
 .cercifi_con_large img.cer_text {
   margin-bottom: 23px;
+  max-width: 100%;
 }
 .cercifi_con_large img.last-img {
   margin-bottom: 26px;
@@ -200,7 +201,7 @@ hr.hr_line {
   line-height: 39px;
   display: flex;
   align-items: center;
-  text-transform: lowercase;
+  // text-transform: lowercase;
   color: rgb(236 73 138);
 }
 .cercifi_con_large h5 {
@@ -533,7 +534,7 @@ hr.hr_line2 {
   font-size: 13.6554px;
   // margin-top: -1%;
   line-height: 18px;
-  text-transform: lowercase;
+  // text-transform: lowercase;
   color: rgb(236 73 138);
 }
 .cercifi_con_small hr.hr_line {

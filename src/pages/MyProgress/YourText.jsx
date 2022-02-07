@@ -18,7 +18,7 @@ const YourTest = ({ tests }) => {
                 <div className='first-test'>
                   <h5>{addNewlines(t?.course_name, true, 30) || "N/A"}</h5>
                   <p>
-                    {t?.test_progress || 0}
+                    {t?.test_progress || 0}%
                   </p>
                 </div>
               </Col>
