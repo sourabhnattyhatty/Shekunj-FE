@@ -91,7 +91,7 @@ function ForgetPassword() {
                       {isLoading ? (
                         <CircularProgress color='secondary' size={20} />
                       ) : (
-                        "Request For Temprary Password"
+                        "Request For Temporary Password"
                       )}
                     </button>
                   )}
