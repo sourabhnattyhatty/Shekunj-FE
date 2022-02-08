@@ -26,6 +26,7 @@
 .Scrl_div {
   max-height: 700px;
   width: 100%;
+  display: block !important;
   overflow-y: scroll;
   margin-bottom: 55px;
   overflow-x: hidden;

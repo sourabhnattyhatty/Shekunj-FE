@@ -85,7 +85,7 @@ export const contactVerify = (value) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: authTypes.CONTACT_VERIFY_FAIL });
     if (error?.status === 400) {
-      toast.error(error.data.errors.error[0], toasterConfig);
+      toast.error(error?.data?.errors?.error[0], toasterConfig);
     }
   }
 };
@@ -222,7 +222,6 @@ export const forgotPassword = (value) => async (dispatch) => {
     toast.success(res.data,toasterConfig);
     return res
   }catch(err){
-    debugger
     dispatch({type:authTypes.FORGOT_PASSWORD_FAIL});
     toast.error(err?.data?.errors?.error[0]);
   }
