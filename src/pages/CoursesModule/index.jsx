@@ -189,6 +189,11 @@ const CourseModule = () => {
   const openSubModule = (id) => {
     dispatch(subModule(id))
   }
+
+  const manageClick = (obj1) => {
+    openSubModule(obj1?.id)
+      return (handleNextModule(course?.next_module))
+  }
  
   return (
     <div>
@@ -207,23 +212,60 @@ const CourseModule = () => {
             {!show && (
               <div className='tog_set'>
                 <img src={toggle} alt='' onClick={handleAccordian} />
-                {/* <div className='number-bgbox'>1</div> */}
                 <ul className='pl-2 position-relative'>
-                  {courseModulesList.map((obj, ind) => (
-                    <li
-                      key={obj?.id}
-                      className={
-                        Number(course?.current_module) > obj?.id
-                          ? "active-accordiantext"
-                          : ""
-                      }
-                      style={{cursor:"pointer"}}
-                      onClick={() => openSubModule(obj?.id) }
-                    >
-                       {ind + 1}
-                    </li>
-                  ))}
-                </ul>
+                   {courseModulesList.map((obj, ind) => (
+                     <li
+                       key={obj?.id}
+                       className={
+                         Number(course?.current_module) > obj?.id
+                           ? "active-accordiantext"
+                           : ""
+                       }
+                     >
+                        <div className='number-bgbox'>{ind + 1}</div>
+                          {obj?.sub_task &&
+                            obj?.sub_task?.map(
+                              (obj1, ind1) =>
+                                obj1?.title && (
+                                  <li key={ind1}>
+                                    <ul className='pl-5 position-relative'>
+                                      <li
+                                        key={obj?.id}
+                                        className={
+                                          Number(course?.id) === obj?.id
+                                            ? "active-accordiantext"
+                                            : ""
+                                        }
+                                        style={{cursor:'pointer', marginLeft:'-40px'}}
+                                        // onClick={() => openSubModule(obj1?.id) }
+                                        onClick={()=>manageClick(obj1)}
+                                      >
+                                        {Number(course?.id) === obj?.id && (
+                                          <img
+                                            src={Rightcheck}
+                                            className='ml-2'
+                                            alt='...'
+                                          />  
+                                        )}
+                                        <span
+                                          style={{
+                                            color:
+                                              showsubactive === ind1
+                                                ? "pink"
+                                                : "black", 
+                                                cursor:"pointer"
+                                          }}
+                                        >
+                                         {ind + 1}.{ind1 + 1}
+                                        </span>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                ),
+                            )}
+                     </li>
+                   ))}
+                 </ul>
               </div>
             )}
             {show && (
@@ -274,7 +316,7 @@ const CourseModule = () => {
                                             ? "active-accordiantext"
                                             : ""
                                         }
-                                        onClick={() => openSubModule(obj1?.id) }
+                                        // onClick={()=>manageClick(obj1)}
                                       >
                                         {Number(course?.id) === obj?.id && (
                                           <img
@@ -285,7 +327,8 @@ const CourseModule = () => {
                                         )}
                                         {ind + 1}.{ind1 + 1}
                                         <span
-                                          onClick={() => setShowsubactive(ind1)}
+                                          // onClick={() => setShowsubactive(ind1)}
+                                          onClick={()=>manageClick(obj1)}
                                           style={{
                                             color:
                                               showsubactive === ind1

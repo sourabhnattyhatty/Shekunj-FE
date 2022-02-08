@@ -92,7 +92,7 @@ const CareerPage2 = () => {
                             </li>
                           </ul>
                           {c?.is_collapse && (
-                            <div>{c?.about_exam || t("common.n/a")}</div>
+                            <div>{c?.about_exam.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n') || t("common.n/a")}</div>
                           )}
                           <button
                             className='btn_viewCour'

@@ -78,8 +78,8 @@ function SuccessStory() {
 
                           <p className="noselect" style={{whiteSpace:"pre-line"}}>
                             {(s?.is_collapse
-                              ? paragraph(s?.description)
-                              : sliceString(s?.description)) || t("common.n/a")}
+                              ? paragraph(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))
+                              : sliceString(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))) || t("common.n/a")}
                           </p>
 
                           {s?.description?.length >= 300 && (

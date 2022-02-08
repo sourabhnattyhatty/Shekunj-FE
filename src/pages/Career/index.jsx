@@ -108,7 +108,7 @@ const CareerPage = () => {
                                 <li>
                                   <span>{t("careerTopColleges.other.5")}</span>:{" "}                                  
                                   <Link
-                                    to={{ pathname: `http://${c?.website.trim()}`}}
+                                    to={{ pathname: c?.website.match('^http://') || c?.website.match('^https://')?`${c?.website.trim()}`:`http://${c?.website.trim()}`}}
                                     target='_blank'
                                     rel='noreferrer'
                                   >
@@ -153,7 +153,7 @@ const CareerPage = () => {
                                       </span>{" "}
                                       :{" "}
                                       {c && c.about_college
-                                        ? c?.about_college
+                                        ? c?.about_college.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n')
                                         : t("common.n/a")}
                                     </li>
                                     <li>
@@ -163,7 +163,7 @@ const CareerPage = () => {
                                       :
                                       {c && c.courses_offered
                                         ? paragraph(c.courses_offered).map(
-                                            (o) => <p>{o}</p>,
+                                            (o) => <p>{o.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n')}</p>,
                                           )
                                         : t("common.n/a")}
                                     </li>
