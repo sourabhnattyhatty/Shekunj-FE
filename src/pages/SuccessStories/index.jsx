@@ -26,6 +26,7 @@ function SuccessStory() {
 
   const { t } = useTranslation();
 
+
   React.useEffect(() => {
     dispatch(fetchSuccessStories());
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -80,6 +81,7 @@ function SuccessStory() {
                             {(s?.is_collapse
                               ? paragraph(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))
                               : sliceString(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))) || t("common.n/a")}
+                         {/* <div dangerouslySetInnerHTML={{ __html:s.description }} /> */}
                           </p>
 
                           {s?.description?.length >= 300 && (
@@ -120,7 +122,7 @@ function SuccessStory() {
                             {s?.name || t("common.n/a")}{" "}
                           </h2>
 
-                          <p className="noselect" style={{whiteSpace:"pre-line"}}>
+                          <p className="noselect">
                             {(s?.is_collapse
                               ? paragraph(s?.description)
                               : sliceString(s?.description)) || t("common.n/a")}
