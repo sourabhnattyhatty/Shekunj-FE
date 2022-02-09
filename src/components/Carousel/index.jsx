@@ -103,6 +103,11 @@ function Carousel(props) {
               items: props.page === carouselConstant.COURSE_DETAIL ? 1.4 : 4,
               nav: true,
             },
+            1366: {
+              items: props.page === carouselConstant.COURSE_DETAIL ? 1.4 : 4,
+              nav: true,
+              margin: 250,
+            },
             1920: {
               items: 5,
               margin: 250,
