@@ -140,7 +140,8 @@ const CareerPage1 = () => {
                                       <span>
                                         {t("careerTopSchools.other.6")}
                                       </span>{" "}
-                                      : {c?.about_school.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n') || t("common.n/a")}
+                                      {/* : {c?.about_school.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n') || t("common.n/a")} */}
+                                      <div dangerouslySetInnerHTML={{ __html:`<div>${c.about_school}</div>` }} />
                                     </li>
                                     <li>
                                       <span>

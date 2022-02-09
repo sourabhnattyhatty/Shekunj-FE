@@ -76,12 +76,13 @@ function SuccessStory() {
                             />
                             {s?.name || t("common.n/a")}{" "}
                           </h2>
-
-                          <p className="noselect" style={{whiteSpace:"pre-line"}}>
-                            {(s?.is_collapse
+                          <p className="noselect">
+                            
+                            {/* {(s?.is_collapse
                               ? paragraph(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))
-                              : sliceString(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))) || t("common.n/a")}
-                         {/* <div dangerouslySetInnerHTML={{ __html:s.description }} /> */}
+                              : sliceString(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))) || t("common.n/a")} */}
+                         {(s?.is_collapse === true ?
+                         <div dangerouslySetInnerHTML={{ __html:`<div>${s.description}</div>` }} />:<div style={{maxHeight: "120px",overflow: 'hidden'}} dangerouslySetInnerHTML={{ __html:`<div>${s.description}</div>` }} />)}
                           </p>
 
                           {s?.description?.length >= 300 && (
@@ -123,9 +124,10 @@ function SuccessStory() {
                           </h2>
 
                           <p className="noselect">
-                            {(s?.is_collapse
+                            {/* {(s?.is_collapse
                               ? paragraph(s?.description)
-                              : sliceString(s?.description)) || t("common.n/a")}
+                              : sliceString(s?.description)) || t("common.n/a")} */}
+                          {(s?.is_collapse === true ? <div dangerouslySetInnerHTML={{ __html:`<div>${s.description}</div>` }} />:<div style={{maxHeight: "120px",overflow: 'hidden'}} dangerouslySetInnerHTML={{ __html:`<div>${s.description}</div>` }} />)}
                           </p>
 
                           {s?.description?.length >= 300 && (

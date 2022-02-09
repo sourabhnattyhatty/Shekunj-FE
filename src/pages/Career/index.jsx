@@ -152,20 +152,22 @@ const CareerPage = () => {
                                         {t("careerTopColleges.other.6")}
                                       </span>{" "}
                                       :{" "}
-                                      {c && c.about_college
+                                      {/* {c && c.about_college
                                         ? c?.about_college.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n')
-                                        : t("common.n/a")}
+                                        : t("common.n/a")} */}
+                                        <div dangerouslySetInnerHTML={{ __html:`<div>${c.about_college}</div>` }} />
                                     </li>
                                     <li>
                                       <span>
                                         {t("careerTopColleges.other.8")}
                                       </span>
                                       :
-                                      {c && c.courses_offered
+                                      {/* {c && c.courses_offered
                                         ? paragraph(c.courses_offered).map(
                                             (o) => <p>{o.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n')}</p>,
                                           )
-                                        : t("common.n/a")}
+                                        : t("common.n/a")} */}
+                                        <div dangerouslySetInnerHTML={{ __html:`<div>${c.courses_offered}</div>` }} />
                                     </li>
                                     <li>
                                       <span>

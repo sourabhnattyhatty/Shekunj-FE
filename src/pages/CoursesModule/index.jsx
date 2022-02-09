@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -27,6 +27,8 @@ import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
 
 import { subModule } from "../../store/courses";
+import { coursesTypes } from "../../store/courses/types";
+import { useRef } from "react";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -89,10 +91,14 @@ const CourseModule = () => {
   const [showactive, setShowactive] = React.useState(0);
   const [showsubactive, setShowsubactive] = React.useState(0);
   const [expanded, setExpanded] = React.useState("panel1");
-  const [showCurrentContent, setShowCurrentContent] = React.useState();
-  const { courseModulesList, course, isLoading, moduleprogress } = useSelector(
+  // const [showCurrentContent, setShowCurrentContent] = React.useState();
+  const { courseModulesList, course, isLoading, moduleprogress,currentModal} = useSelector(
     (state) => state.coursesReducer,
   );
+
+  useEffect(()=>{
+    handleCurrentModule();
+  },[currentModal])
 
   const { lan } = useSelector((state) => state.languageReducer);
 
@@ -113,6 +119,20 @@ const CourseModule = () => {
   };
 
   const progress = courseModulesList && fun();
+
+  const willDispatchCurrentModal = useRef(true);
+
+  useEffect(()=>{
+    if(!willDispatchCurrentModal.current || progress === Infinity) return;
+    dispatch({
+      type: coursesTypes.CURRENT_MODAL,
+      payload: 1
+    });    
+    
+    if(progress !== Infinity){
+      willDispatchCurrentModal.current = false
+    }
+  },[progress])
 
   React.useEffect(() => {
     if (detect.isMobile) {
@@ -137,6 +157,7 @@ const CourseModule = () => {
     const p = (page - 1) * progress;
     setShowsubactive(showsubactive - 1);
     setShowactive(course.current_module-1);
+    
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -150,6 +171,12 @@ const CourseModule = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
+
+  const handleCurrentModule = (page) =>{
+    const p = currentModal * progress;
+    dispatch(startCourse(id, page, p, true));
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }
 
   // React.useEffect(() => {
   //   if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
@@ -186,13 +213,14 @@ const CourseModule = () => {
     return "";
   };
 
-  const openSubModule = (id) => {
-    dispatch(subModule(id))
+  const openSubModule = (obj1) => {
+    dispatch(subModule(obj1?.id))
   }
 
-  const manageClick = (obj1) => {
-    openSubModule(obj1?.id)
-      return (handleNextModule(course?.next_module))
+  const manageClick = (ind1,obj1) => {
+    openSubModule(obj1)
+    setShowsubactive(ind1)
+    return (handleCurrentModule(course?.currentModal))
   }
  
   return (
@@ -238,7 +266,7 @@ const CourseModule = () => {
                                         }
                                         style={{cursor:'pointer', marginLeft:'-40px'}}
                                         // onClick={() => openSubModule(obj1?.id) }
-                                        onClick={()=>manageClick(obj1)}
+                                        onClick={()=>manageClick(ind1,obj1)}
                                       >
                                         {Number(course?.id) === obj?.id && (
                                           <img
@@ -316,7 +344,6 @@ const CourseModule = () => {
                                             ? "active-accordiantext"
                                             : ""
                                         }
-                                        // onClick={()=>manageClick(obj1)}
                                       >
                                         {Number(course?.id) === obj?.id && (
                                           <img
@@ -328,7 +355,7 @@ const CourseModule = () => {
                                         {ind + 1}.{ind1 + 1}
                                         <span
                                           // onClick={() => setShowsubactive(ind1)}
-                                          onClick={()=>manageClick(obj1)}
+                                          onClick={()=>manageClick(ind1,obj1)}
                                           style={{
                                             color:
                                               showsubactive === ind1
@@ -386,12 +413,15 @@ const CourseModule = () => {
                     </>
                   ) : (
                     <>
-                      <div
-                        className='imgSet'
+                      {/* <div
+                        className='imgSet innerhtmlcontainer'
                         dangerouslySetInnerHTML={{
                           __html: course?.description
                         }}
-                      />
+                      /> */}
+                      <iframe src={`https://shekunj.s3.amazonaws.com/media/sub_course_module_description_files/Module_4-converted.pdf#toolbar=0&navpanes=0&scrollbar=0"`} frameBorder='0'
+                            width="100%" height="600px"
+                          ></iframe>
                       {course?.file_link && (
                         <>
                           <h2><strong>Here is the video</strong></h2>

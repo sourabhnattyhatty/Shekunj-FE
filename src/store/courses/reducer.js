@@ -16,9 +16,11 @@ const initialState = {
   selectedFilter: null,
   categoryList: [],
   result: {},
+  currentModal: 0
 };
 
 export const coursesReducer = (state = initialState, action) => {
+
   switch (action.type) {
     case coursesTypes.HOME_COURSE_REQUEST:
       return {
@@ -262,6 +264,11 @@ export const coursesReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload,
       };
+    case coursesTypes.CURRENT_MODAL:
+      return{
+        ...state,
+        currentModal:action.payload
+      }
     default:
       return state;
   }

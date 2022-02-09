@@ -300,6 +300,11 @@ export const subModule = (id) => async (dispatch) => {
       payload: res.data,
       progress: res.data.progress ? parseInt(res.data.progress, 10) : 0,
     });
+    dispatch({
+      type: coursesTypes.CURRENT_MODAL,
+      payload: res?.data?.current_module,
+    });
+    
   } catch (err) {
     dispatch({ type: coursesTypes.COURSE_FAIL });
   }
