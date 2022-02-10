@@ -96,12 +96,12 @@ const CareerPage1 = () => {
                                 <li>
                                   <span>{t("careerTopSchools.other.3")}</span> :{" "}                                 
                                   <Link 
-                                    to={{ pathname: c?.website.match('^http://') || c?.website.match('^https://')?`${c?.website}`:`http://${c?.website}` }}  
+                                    to={{ pathname: c?.website?.match('^http://') || c?.website?.match('^https://')?`${c?.website}`:`http://${c?.website}` }}  
                                     target='_blank'
                                     rel='noreferrer'
                                   >
-                                    {c && c.website
-                                      ? c.website
+                                    {c && c?.website
+                                      ? c?.website
                                       : t("common.n/a")
                                     }
                                   </Link>                                      
