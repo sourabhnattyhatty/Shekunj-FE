@@ -97,7 +97,7 @@ const CourseModule = () => {
   );
 
   useEffect(()=>{
-    handleCurrentModule();
+    handleCurrentModule(currentModal);
   },[currentModal])
 
   const { lan } = useSelector((state) => state.languageReducer);
@@ -220,7 +220,7 @@ const CourseModule = () => {
   const manageClick = (ind1,obj1) => {
     openSubModule(obj1)
     setShowsubactive(ind1)
-    return (handleCurrentModule(course?.currentModal))
+    return (handleCurrentModule(currentModal))
   }
  
   return (
@@ -413,15 +413,15 @@ const CourseModule = () => {
                     </>
                   ) : (
                     <>
-                      {/* <div
+                      <div
                         className='imgSet innerhtmlcontainer'
                         dangerouslySetInnerHTML={{
                           __html: course?.description
                         }}
-                      /> */}
-                      <iframe src={`https://shekunj.s3.amazonaws.com/media/sub_course_module_description_files/Module_4-converted.pdf#toolbar=0&navpanes=0&scrollbar=0"`} frameBorder='0'
+                      />
+                      {/* <iframe src={`https://shekunj.s3.amazonaws.com/media/sub_course_module_description_files/Module_4-converted.pdf#toolbar=0&navpanes=0&scrollbar=0"`} frameBorder='0'
                             width="100%" height="600px"
-                          ></iframe>
+                          ></iframe> */}
                       {course?.file_link && (
                         <>
                           <h2><strong>Here is the video</strong></h2>
