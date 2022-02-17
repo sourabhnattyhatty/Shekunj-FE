@@ -92,6 +92,7 @@ const CourseModule = () => {
   const [showsubactive, setShowsubactive] = React.useState(0);
   const [expanded, setExpanded] = React.useState('panel1');
   // const [showCurrentContent, setShowCurrentContent] = React.useState();
+
   const {
     courseModulesList,
     course,
@@ -180,13 +181,11 @@ const CourseModule = () => {
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
-
   // React.useEffect(() => {
   //   if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
   //     console.log(localStorage.getItem("pageID"))
   //   }
   // }, []);
-
   const renderProgress = (count = 0) => {
     return (
       <IOSSlider
@@ -224,6 +223,48 @@ const CourseModule = () => {
     openSubModule(obj1);
     setShowsubactive(ind1);
     return handleCurrentModule(currentModal);
+  };
+
+  const testRef = useRef();
+
+  const manageContent = () => {
+    if (course?.is_pdf && course?.pdf_height < 6075) {
+      return (
+        <div
+          style={{ height: `${course?.pdf_height - 600}pt`, width: `${94}%` }}
+          onContextMenu={e => e.preventDefault()}
+        >
+          <iframe
+            id='fraDisabled'
+            ref={testRef}
+            width={`${94}%`}
+            height={`${course?.pdf_height}pt`}
+            frameBorder='0'
+            title='iFrame'
+            allowfullscreen='true'
+            src={`${course?.description}#toolbar=0&navpanes=0&scrollbar=0&view=fit"`}
+            style={{
+              overflow: 'hidden',
+              pointerEvents: 'none',
+              overflowX: 'hidden',
+              overflowY: 'hidden',
+            }}
+            scrolling='no'
+          />
+        </div>
+      );
+    } else if (course?.is_pdf && course?.pdf_height > 6075) {
+      return <div>Could not support a PDF of more then 8100px height.</div>;
+    } else {
+      return (
+        <div
+          className='imgSet innerhtmlcontainer'
+          dangerouslySetInnerHTML={{
+            __html: course?.description,
+          }}
+        />
+      );
+    }
   };
 
   return (
@@ -421,24 +462,8 @@ const CourseModule = () => {
                       ))}
                     </>
                   ) : (
-                    <>
-                      {course?.is_pdf ? (
-                        <iframe
-                          id='iframe'
-                          src={`${course?.description}#toolbar=0&navpanes=0&scrollbar=0"`}
-                          frameBorder='0'
-                          width='100%'
-                          height='600px'
-                          title='iFrame'
-                        />
-                      ) : (
-                        <div
-                          className='imgSet innerhtmlcontainer'
-                          dangerouslySetInnerHTML={{
-                            __html: course?.description,
-                          }}
-                        />
-                      )}
+                    <div class='iframe-divarea'>
+                      {manageContent()}
                       {course?.file_link && (
                         <>
                           <h2>
@@ -457,7 +482,7 @@ const CourseModule = () => {
                           ></iframe>
                         </>
                       )}
-                    </>
+                    </div>
                   )}
                   <div className='prev_next_btn'>
                     <Row>
