@@ -231,14 +231,14 @@ const CourseModule = () => {
     if (course?.is_pdf && course?.pdf_height < 6075) {
       return (
         <div
-          style={{ height: `${course?.pdf_height - 600}pt`, width: `${94}%` }}
+          style={{ height: `${Math.round(course?.pdf_height * 1.333)}px`, width: `${100}%` }}
           onContextMenu={e => e.preventDefault()}
         >
           <iframe
             id='fraDisabled'
             ref={testRef}
-            width={`${94}%`}
-            height={`${course?.pdf_height}pt`}
+            width={`${100}%`}
+            height={`${Math.round(course?.pdf_height * 1.333)}px`}
             frameBorder='0'
             title='iFrame'
             allowfullscreen='true'
@@ -248,6 +248,7 @@ const CourseModule = () => {
               pointerEvents: 'none',
               overflowX: 'hidden',
               overflowY: 'hidden',
+              display:'block'
             }}
             scrolling='no'
           />
