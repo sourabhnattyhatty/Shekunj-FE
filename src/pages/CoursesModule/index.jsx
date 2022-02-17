@@ -231,7 +231,7 @@ const CourseModule = () => {
     if (course?.is_pdf && course?.pdf_height < 6075) {
       return (
         <div
-          style={{ height: `${Math.round(course?.pdf_height * 1.333)}px`, width: `${100}%` }}
+          style={{ height: `${Math.round(course?.pdf_height * 1.333)}px`, width: `${110}%` }}
           onContextMenu={e => e.preventDefault()}
         >
           <iframe
