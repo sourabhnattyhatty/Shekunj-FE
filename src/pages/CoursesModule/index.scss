@@ -459,6 +459,9 @@ span.MuiSlider-mark.MuiSlider-markActive {
   right: 0;
   margin: auto;
 }
+.iframeconatinerwdth{
+  max-width: 100%!important;
+}
 .innerhtmlcontainer .awdiv{
   position: relative!important;
 }
@@ -496,6 +499,3 @@ span.MuiSlider-mark.MuiSlider-markActive {
   max-width: 100%;
 }
 
-.iframe-divarea iframe{
-  overflow: hidden;
-}

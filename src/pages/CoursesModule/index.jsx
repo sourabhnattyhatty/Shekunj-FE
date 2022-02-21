@@ -92,6 +92,7 @@ const CourseModule = () => {
   const [showsubactive, setShowsubactive] = React.useState(0);
   const [expanded, setExpanded] = React.useState('panel1');
   // const [showCurrentContent, setShowCurrentContent] = React.useState();
+  const [currentProgress,setCurrentProgress] = React.useState();
 
   const {
     courseModulesList,
@@ -100,6 +101,8 @@ const CourseModule = () => {
     moduleprogress,
     currentModal,
   } = useSelector(state => state.coursesReducer);
+
+  console.log("--",course)
 
   useEffect(() => {
     handleCurrentModule(currentModal);
@@ -146,9 +149,9 @@ const CourseModule = () => {
   }, [history, detect.isMobile, t]);
 
   React.useEffect(() => {
-    dispatch(startCourse(id));
+    dispatch(startCourse(id, currentModal, currentProgress, true));
     dispatch(getSingleCourseModule(id));
-  }, [dispatch, id, lan]);
+  }, [dispatch, id, lan,course?.description]);
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -179,6 +182,7 @@ const CourseModule = () => {
   const handleCurrentModule = page => {
     const p = currentModal * progress;
     dispatch(startCourse(id, page, p, true));
+    setCurrentProgress(p)
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
   // React.useEffect(() => {
@@ -231,7 +235,7 @@ const CourseModule = () => {
     if (course?.is_pdf && course?.pdf_height < 6075) {
       return (
         <div
-          style={{ height: `${Math.round(course?.pdf_height * 1.333)}px`, width: `${110}%` }}
+          style={{ height: `${Math.round(course?.pdf_height * 1.333)}px`, width: `${100}%` }}
           onContextMenu={e => e.preventDefault()}
         >
           <iframe
@@ -255,7 +259,7 @@ const CourseModule = () => {
         </div>
       );
     } else if (course?.is_pdf && course?.pdf_height > 6075) {
-      return <div>Could not support a PDF of more then 8100px height.</div>;
+      return <div>{t('coursesPage.pdfSize.heading')}</div>;
     } else {
       return (
         <div
