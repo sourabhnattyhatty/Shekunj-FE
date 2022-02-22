@@ -93,6 +93,7 @@ const CourseModule = () => {
   const [expanded, setExpanded] = React.useState('panel1');
   // const [showCurrentContent, setShowCurrentContent] = React.useState();
   const [currentProgress,setCurrentProgress] = React.useState();
+  const [changeLanguage, setChangeLanguage] = React.useState(false);
 
   const {
     courseModulesList,
@@ -101,8 +102,6 @@ const CourseModule = () => {
     moduleprogress,
     currentModal,
   } = useSelector(state => state.coursesReducer);
-
-  console.log("--",course)
 
   useEffect(() => {
     handleCurrentModule(currentModal);
@@ -151,7 +150,7 @@ const CourseModule = () => {
   React.useEffect(() => {
     dispatch(startCourse(id, currentModal, currentProgress, true));
     dispatch(getSingleCourseModule(id));
-  }, [dispatch, id, lan,course?.description]);
+  }, [dispatch, id, lan, course?.description]);
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -161,11 +160,14 @@ const CourseModule = () => {
     setShow(prev => !prev);
   };
 
+  const manageLanguage = () => {
+    setChangeLanguage(!changeLanguage)
+  }
+
   const handlePrevModule = page => {
     const p = (page - 1) * progress;
     setShowsubactive(showsubactive - 1);
     setShowactive(course.current_module - 1);
-
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
@@ -185,11 +187,13 @@ const CourseModule = () => {
     setCurrentProgress(p)
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
+
   // React.useEffect(() => {
   //   if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
   //     console.log(localStorage.getItem("pageID"))
   //   }
   // }, []);
+
   const renderProgress = (count = 0) => {
     return (
       <IOSSlider
@@ -223,9 +227,9 @@ const CourseModule = () => {
     dispatch(subModule(obj1?.id));
   };
 
-  const manageClick = (ind1, obj1) => {
+  const manageClick = (ind1, obj1, ind) => {
     openSubModule(obj1);
-    setShowsubactive(ind1);
+    setShowsubactive(`${ind + 1}.${ind1 + 1}`);
     return handleCurrentModule(currentModal);
   };
 
@@ -239,7 +243,7 @@ const CourseModule = () => {
           onContextMenu={e => e.preventDefault()}
         >
           <iframe
-            id='fraDisabled'
+            id='idIframe'
             ref={testRef}
             width={`${100}%`}
             height={`${Math.round(course?.pdf_height * 1.333)}px`}
@@ -248,6 +252,7 @@ const CourseModule = () => {
             allowfullscreen='true'
             src={`${course?.description}#toolbar=0&navpanes=0&scrollbar=0&view=fit"`}
             style={{
+              position:'absolute',
               overflow: 'hidden',
               pointerEvents: 'none',
               overflowX: 'hidden',
@@ -305,6 +310,7 @@ const CourseModule = () => {
                           (obj1, ind1) =>
                             obj1?.title && (
                               <li key={ind1}>
+                                {console.log('ind1',`${ind + 1}.${ind1 + 1}`)}
                                 <ul className='pl-5 position-relative'>
                                   <li
                                     key={obj?.id}
@@ -318,7 +324,7 @@ const CourseModule = () => {
                                       marginLeft: '-40px',
                                     }}
                                     // onClick={() => openSubModule(obj1?.id) }
-                                    onClick={() => manageClick(ind1, obj1)}
+                                    onClick={() => manageClick(ind1, obj1, ind)}
                                   >
                                     {Number(course?.id) === obj?.id && (
                                       <img
@@ -330,7 +336,7 @@ const CourseModule = () => {
                                     <span
                                       style={{
                                         color:
-                                          showsubactive === ind1
+                                          showsubactive === `${ind + 1}.${ind1 + 1}`
                                             ? 'pink'
                                             : 'black',
                                         cursor: 'pointer',
@@ -409,11 +415,11 @@ const CourseModule = () => {
                                         <span
                                           // onClick={() => setShowsubactive(ind1)}
                                           onClick={() =>
-                                            manageClick(ind1, obj1)
+                                            manageClick(ind1, obj1, ind)
                                           }
                                           style={{
                                             color:
-                                              showsubactive === ind1
+                                              showsubactive === `${ind + 1}.${ind1 + 1}`
                                                 ? 'pink'
                                                 : 'black',
                                             cursor: 'pointer',
