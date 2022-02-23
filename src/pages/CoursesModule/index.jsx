@@ -92,8 +92,7 @@ const CourseModule = () => {
   const [showsubactive, setShowsubactive] = React.useState(0);
   const [expanded, setExpanded] = React.useState('panel1');
   // const [showCurrentContent, setShowCurrentContent] = React.useState();
-  const [currentProgress,setCurrentProgress] = React.useState();
-  const [changeLanguage, setChangeLanguage] = React.useState(false);
+  const [currentProgress, setCurrentProgress] = React.useState();
 
   const {
     courseModulesList,
@@ -150,7 +149,7 @@ const CourseModule = () => {
   React.useEffect(() => {
     dispatch(startCourse(id, currentModal, currentProgress, true));
     dispatch(getSingleCourseModule(id));
-  }, [dispatch, id, lan, course?.description]);
+  }, [dispatch, id, lan]);
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -159,10 +158,6 @@ const CourseModule = () => {
   const handleAccordian = () => {
     setShow(prev => !prev);
   };
-
-  const manageLanguage = () => {
-    setChangeLanguage(!changeLanguage)
-  }
 
   const handlePrevModule = page => {
     const p = (page - 1) * progress;
@@ -183,9 +178,19 @@ const CourseModule = () => {
 
   const handleCurrentModule = page => {
     const p = currentModal * progress;
-    dispatch(startCourse(id, page, p, true));
-    setCurrentProgress(p)
+    dispatch(startCourse(id, page, p > 100 ? 100 : p, true));
+    setCurrentProgress(p > 100 ? 100 : p)
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
+
+  const openSubModule = obj1 => {
+    dispatch(subModule(obj1?.id));
+  };
+
+  const manageClick = (ind1, obj1, ind) => {
+    openSubModule(obj1);
+    setShowsubactive(`${ind + 1}.${ind1 + 1}`);
+    return handleCurrentModule(currentModal);
   };
 
   // React.useEffect(() => {
@@ -223,16 +228,6 @@ const CourseModule = () => {
     return '';
   };
 
-  const openSubModule = obj1 => {
-    dispatch(subModule(obj1?.id));
-  };
-
-  const manageClick = (ind1, obj1, ind) => {
-    openSubModule(obj1);
-    setShowsubactive(`${ind + 1}.${ind1 + 1}`);
-    return handleCurrentModule(currentModal);
-  };
-
   const testRef = useRef();
 
   const manageContent = () => {
@@ -252,12 +247,12 @@ const CourseModule = () => {
             allowfullscreen='true'
             src={`${course?.description}#toolbar=0&navpanes=0&scrollbar=0&view=fit"`}
             style={{
-              position:'absolute',
+              position: 'absolute',
               overflow: 'hidden',
               pointerEvents: 'none',
               overflowX: 'hidden',
               overflowY: 'hidden',
-              display:'block'
+              display: 'block'
             }}
             scrolling='no'
           />
@@ -310,7 +305,6 @@ const CourseModule = () => {
                           (obj1, ind1) =>
                             obj1?.title && (
                               <li key={ind1}>
-                                {console.log('ind1',`${ind + 1}.${ind1 + 1}`)}
                                 <ul className='pl-5 position-relative'>
                                   <li
                                     key={obj?.id}
@@ -425,7 +419,7 @@ const CourseModule = () => {
                                             cursor: 'pointer',
                                           }}
                                         >
-                                          {obj1?.title}
+                                          <>&nbsp;</> {obj1?.title}
                                         </span>
                                       </li>
                                     </ul>
