@@ -75,7 +75,7 @@
       "2": "Not valid OTP"
     },
     "other": {
-      "1": "Select option for next question",
+      "1": "Select option to move forward",
       "2": "Test finished!",
       "3": "Please select valid file",
       "4": "Please provide contact number.",
@@ -614,6 +614,9 @@
       "2": "Duplicate",
       "3": "Archive",
       "4": "More"
+    },
+    "pdfSize":{
+      "heading":"Can not support a PDF of more than 8100 px"
     }
   },
 

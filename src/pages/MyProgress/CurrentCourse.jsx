@@ -39,7 +39,7 @@ const CurrentCourse = ({ courses }) => {
                     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
                       <CircularProgress
                         variant='determinate'
-                        value={c?.progress || 0}
+                        value={parseInt(c?.progress).toFixed(0) || 0}
                       />
                       <Box
                         sx={{
@@ -58,7 +58,7 @@ const CurrentCourse = ({ courses }) => {
                           component='div'
                           color='text.secondary'
                         >
-                          {c?.progress || 0}%
+                          {parseInt(c?.progress).toFixed(0) || 0}%
                         </Typography>
                       </Box>
                     </Box>

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
@@ -10,9 +9,7 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
-
 import { Header, Footer, ScrollToTop } from '../../components';
-
 import Rightcheck from '../../assets/images/Courses/right.png';
 import Stack from '@mui/material/Stack';
 import close from '../../assets/images/Courses/close.png';
@@ -25,7 +22,6 @@ import { getSingleCourseModule, startCourse } from '../../store/courses/action';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { routingConstants } from '../../utils/constants';
 import { useTranslation } from 'react-i18next';
-
 import { subModule } from '../../store/courses';
 import { coursesTypes } from '../../store/courses/types';
 import { useRef } from 'react';
@@ -73,7 +69,6 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? '#3880ff' : '#3880ff',
   height: 10,
   padding: '15px 0',
-
   '& .MuiSlider-valueLabel': {
     fontSize: 12,
     fontWeight: 'normal',
@@ -92,6 +87,7 @@ const CourseModule = () => {
   const [showsubactive, setShowsubactive] = React.useState(0);
   const [expanded, setExpanded] = React.useState('panel1');
   // const [showCurrentContent, setShowCurrentContent] = React.useState();
+  const [currentProgress, setCurrentProgress] = React.useState();
   const {
     courseModulesList,
     course,
@@ -100,18 +96,20 @@ const CourseModule = () => {
     currentModal,
   } = useSelector(state => state.coursesReducer);
 
+  const lastSelectedIndexOne = useRef()
+  const lastSelectedObject = useRef()
+  const lastSelectedIndex = useRef()
+
   useEffect(() => {
     handleCurrentModule(currentModal);
   }, [currentModal]);
 
   const { lan } = useSelector(state => state.languageReducer);
-
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
   const { id } = useParams();
   const history = useHistory();
   const { t } = useTranslation();
-
   const fun = () => {
     const p = [];
     courseModulesList?.forEach(obj => {
@@ -123,16 +121,13 @@ const CourseModule = () => {
   };
 
   const progress = courseModulesList && fun();
-
   const willDispatchCurrentModal = useRef(true);
-
   useEffect(() => {
     if (!willDispatchCurrentModal.current || progress === Infinity) return;
     dispatch({
       type: coursesTypes.CURRENT_MODAL,
       payload: 1,
     });
-
     if (progress !== Infinity) {
       willDispatchCurrentModal.current = false;
     }
@@ -145,7 +140,7 @@ const CourseModule = () => {
   }, [history, detect.isMobile, t]);
 
   React.useEffect(() => {
-    dispatch(startCourse(id));
+    dispatch(startCourse(id, currentModal, currentProgress, true));
     dispatch(getSingleCourseModule(id));
   }, [dispatch, id, lan]);
 
@@ -154,14 +149,23 @@ const CourseModule = () => {
   };
 
   const handleAccordian = () => {
+    
     setShow(prev => !prev);
+    
+    const ratio = (course?.pdf_height > course?.pdf_width ? (course?.pdf_height / course?.pdf_width) : (course?.pdf_width / course?.pdf_height))
+    const width = (course?.pdf_width * 1.333) - testRef.current.offsetWidth;
+    const result = width * ratio
+    setIframe((course?.pdf_height * 1.333) - result)
+
+    if(lastSelectedIndexOne,lastSelectedObject,lastSelectedIndex){
+    manageClick(lastSelectedIndexOne.current,lastSelectedObject.current,lastSelectedIndex.current);
+    }
   };
 
   const handlePrevModule = page => {
     const p = (page - 1) * progress;
     setShowsubactive(showsubactive - 1);
     setShowactive(course.current_module - 1);
-
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
@@ -170,6 +174,7 @@ const CourseModule = () => {
     localStorage.setItem('pageID', page);
     const p = (page - 1) * progress;
     setShowsubactive(showsubactive + 1);
+    // setShowsubactive(`${lastSelectedIndex.current + 1}.${lastSelectedIndexOne.current + 1}`)
     setShowactive(course.current_module + 1);
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -177,8 +182,23 @@ const CourseModule = () => {
 
   const handleCurrentModule = page => {
     const p = currentModal * progress;
-    dispatch(startCourse(id, page, p, true));
+    dispatch(startCourse(id, page, p > 100 ? 100 : p, true));
+    setCurrentProgress(p > 100 ? 100 : p)
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
+
+  const openSubModule = obj1 => {
+    dispatch(subModule(obj1?.id));
+  };
+
+  const manageClick = (ind1, obj1, ind) => {
+    lastSelectedIndexOne.current = ind1;
+    lastSelectedObject.current = obj1;
+    lastSelectedIndex.current = ind;
+
+    openSubModule(obj1);
+    setShowsubactive(`${ind + 1}.${ind1 + 1}`);
+    return handleCurrentModule(currentModal);
   };
 
   // React.useEffect(() => {
@@ -187,6 +207,7 @@ const CourseModule = () => {
   //   }
   // }, []);
 
+  const [iframeWidth, setIframe] = React.useState("100%")
   const renderProgress = (count = 0) => {
     return (
       <IOSSlider
@@ -216,15 +237,54 @@ const CourseModule = () => {
     return '';
   };
 
-  const openSubModule = obj1 => {
-    dispatch(subModule(obj1?.id));
+  const testRef = useRef();
+
+  const manageContent = () => {
+    if (course?.is_pdf && course?.pdf_height < 6075) {
+      return (
+        <div
+          onContextMenu={e => e.preventDefault()}
+        >
+       <iframe
+            id='idIframe'
+            ref={testRef}
+            width={`${100}%`}
+            height={`${iframeWidth}`}
+            frameBorder='0'
+            title='iFrame'
+            allowfullscreen='true'
+            src={`${course?.description}#toolbar=0&navpanes=0&scrollbar=0&view=fit"`}
+            style={{
+              overflow: 'hidden',
+              pointerEvents: 'none',
+              overflowX: 'hidden',
+              overflowY: 'hidden',
+              display: 'block'
+            }}
+            onLoad={() => {
+              const ratio = (course?.pdf_height > course?.pdf_width ? (course?.pdf_height / course?.pdf_width) : (course?.pdf_width / course?.pdf_height))
+              const width = (course?.pdf_width * 1.333) - testRef.current.offsetWidth;
+              const result = width * ratio
+              setIframe((course?.pdf_height * 1.333) - result)
+            }}
+            scrolling='no'
+          />
+        </div>
+      );
+    } else if (course?.is_pdf && course?.pdf_height > 6075) {
+      return <div>{t('coursesPage.pdfSize.heading')}</div>;
+    } else {
+      return (
+        <div
+          className='imgSet innerhtmlcontainer'
+          dangerouslySetInnerHTML={{
+            __html: course?.description,
+          }}
+        />
+      );
+    }
   };
 
-  const manageClick = (ind1, obj1) => {
-    openSubModule(obj1);
-    setShowsubactive(ind1);
-    return handleCurrentModule(currentModal);
-  };
 
   return (
     <div>
@@ -272,7 +332,7 @@ const CourseModule = () => {
                                       marginLeft: '-40px',
                                     }}
                                     // onClick={() => openSubModule(obj1?.id) }
-                                    onClick={() => manageClick(ind1, obj1)}
+                                    onClick={() => manageClick(ind1, obj1, ind)}
                                   >
                                     {Number(course?.id) === obj?.id && (
                                       <img
@@ -284,7 +344,7 @@ const CourseModule = () => {
                                     <span
                                       style={{
                                         color:
-                                          showsubactive === ind1
+                                          showsubactive === `${ind + 1}.${ind1 + 1}`
                                             ? 'pink'
                                             : 'black',
                                         cursor: 'pointer',
@@ -363,17 +423,17 @@ const CourseModule = () => {
                                         <span
                                           // onClick={() => setShowsubactive(ind1)}
                                           onClick={() =>
-                                            manageClick(ind1, obj1)
+                                            manageClick(ind1, obj1, ind)
                                           }
                                           style={{
                                             color:
-                                              showsubactive === ind1
+                                              showsubactive === `${ind + 1}.${ind1 + 1}`
                                                 ? 'pink'
                                                 : 'black',
                                             cursor: 'pointer',
                                           }}
                                         >
-                                          {obj1?.title}
+                                          <>&nbsp;</> {obj1?.title}
                                         </span>
                                       </li>
                                     </ul>
@@ -387,6 +447,7 @@ const CourseModule = () => {
               </Col>
             )}
             <Col md={show ? 8 : 11} xs={12}>
+             
               <div>
                 <div>
                   {isLoading ? (
@@ -421,24 +482,8 @@ const CourseModule = () => {
                       ))}
                     </>
                   ) : (
-                    <>
-                      {course?.is_pdf ? (
-                        <iframe
-                          id='iframe'
-                          src={`${course?.description}#toolbar=0&navpanes=0&scrollbar=0"`}
-                          frameBorder='0'
-                          width='100%'
-                          height='600px'
-                          title='iFrame'
-                        />
-                      ) : (
-                        <div
-                          className='imgSet innerhtmlcontainer'
-                          dangerouslySetInnerHTML={{
-                            __html: course?.description,
-                          }}
-                        />
-                      )}
+                    <div class='iframe-divarea'>
+                      {manageContent()}
                       {course?.file_link && (
                         <>
                           <h2>
@@ -457,7 +502,7 @@ const CourseModule = () => {
                           ></iframe>
                         </>
                       )}
-                    </>
+                    </div>
                   )}
                   <div className='prev_next_btn'>
                     <Row>
@@ -498,6 +543,7 @@ const CourseModule = () => {
               </div>
             </Col>
           </Row>
+         
         </Container>
       </div>
       <ScrollToTop />
