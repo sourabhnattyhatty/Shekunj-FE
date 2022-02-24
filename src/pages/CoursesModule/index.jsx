@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
@@ -10,9 +9,7 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
-
 import { Header, Footer, ScrollToTop } from '../../components';
-
 import Rightcheck from '../../assets/images/Courses/right.png';
 import Stack from '@mui/material/Stack';
 import close from '../../assets/images/Courses/close.png';
@@ -25,11 +22,9 @@ import { getSingleCourseModule, startCourse } from '../../store/courses/action';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { routingConstants } from '../../utils/constants';
 import { useTranslation } from 'react-i18next';
-
 import { subModule } from '../../store/courses';
 import { coursesTypes } from '../../store/courses/types';
 import { useRef } from 'react';
-
 const Accordion = styled(props => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -41,7 +36,6 @@ const Accordion = styled(props => (
     display: 'none',
   },
 }));
-
 const AccordionSummary = styled(props => (
   <MuiAccordionSummary
     expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
@@ -63,17 +57,14 @@ const AccordionSummary = styled(props => (
     marginLeft: theme.spacing(1),
   },
 }));
-
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
-
 const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? '#3880ff' : '#3880ff',
   height: 10,
   padding: '15px 0',
-
   '& .MuiSlider-valueLabel': {
     fontSize: 12,
     fontWeight: 'normal',
@@ -85,7 +76,6 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
     },
   },
 }));
-
 const CourseModule = () => {
   const [show, setShow] = React.useState(true);
   const [showactive, setShowactive] = React.useState(0);
@@ -93,7 +83,6 @@ const CourseModule = () => {
   const [expanded, setExpanded] = React.useState('panel1');
   // const [showCurrentContent, setShowCurrentContent] = React.useState();
   const [currentProgress, setCurrentProgress] = React.useState();
-
   const {
     courseModulesList,
     course,
@@ -101,19 +90,15 @@ const CourseModule = () => {
     moduleprogress,
     currentModal,
   } = useSelector(state => state.coursesReducer);
-
   useEffect(() => {
     handleCurrentModule(currentModal);
   }, [currentModal]);
-
   const { lan } = useSelector(state => state.languageReducer);
-
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
   const { id } = useParams();
   const history = useHistory();
   const { t } = useTranslation();
-
   const fun = () => {
     const p = [];
     courseModulesList?.forEach(obj => {
@@ -123,42 +108,33 @@ const CourseModule = () => {
     });
     return Math.round(100 / (p.length || 0)) || 0;
   };
-
   const progress = courseModulesList && fun();
-
   const willDispatchCurrentModal = useRef(true);
-
   useEffect(() => {
     if (!willDispatchCurrentModal.current || progress === Infinity) return;
     dispatch({
       type: coursesTypes.CURRENT_MODAL,
       payload: 1,
     });
-
     if (progress !== Infinity) {
       willDispatchCurrentModal.current = false;
     }
   }, [progress]);
-
   React.useEffect(() => {
     if (detect.isMobile) {
       history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
     }
   }, [history, detect.isMobile, t]);
-
   React.useEffect(() => {
     dispatch(startCourse(id, currentModal, currentProgress, true));
     dispatch(getSingleCourseModule(id));
   }, [dispatch, id, lan]);
-
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-
   const handleAccordian = () => {
     setShow(prev => !prev);
   };
-
   const handlePrevModule = page => {
     const p = (page - 1) * progress;
     setShowsubactive(showsubactive - 1);
@@ -166,7 +142,6 @@ const CourseModule = () => {
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
-
   const handleNextModule = page => {
     localStorage.setItem('pageID', page);
     const p = (page - 1) * progress;
@@ -175,30 +150,26 @@ const CourseModule = () => {
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
-
   const handleCurrentModule = page => {
     const p = currentModal * progress;
     dispatch(startCourse(id, page, p > 100 ? 100 : p, true));
     setCurrentProgress(p > 100 ? 100 : p)
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
-
   const openSubModule = obj1 => {
     dispatch(subModule(obj1?.id));
   };
-
   const manageClick = (ind1, obj1, ind) => {
     openSubModule(obj1);
     setShowsubactive(`${ind + 1}.${ind1 + 1}`);
     return handleCurrentModule(currentModal);
   };
-
   // React.useEffect(() => {
   //   if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
   //     console.log(localStorage.getItem("pageID"))
   //   }
   // }, []);
-
+  const [iframeWidth, setIframe] = React.useState("100%")
   const renderProgress = (count = 0) => {
     return (
       <IOSSlider
@@ -215,11 +186,9 @@ const CourseModule = () => {
       />
     );
   };
-
   const handleFinish = () => {
     history.push(routingConstants.COURSES_TEST + id);
   };
-
   const embededLink = (link = null) => {
     if (link) {
       const a = link?.split('=');
@@ -227,32 +196,35 @@ const CourseModule = () => {
     }
     return '';
   };
-
   const testRef = useRef();
-
   const manageContent = () => {
     if (course?.is_pdf && course?.pdf_height < 6075) {
       return (
         <div
-          style={{ height: `${Math.round(course?.pdf_height * 1.333)}px`, width: `${100}%` }}
+        // style={{height: iframeWidth}}
           onContextMenu={e => e.preventDefault()}
         >
           <iframe
             id='idIframe'
             ref={testRef}
             width={`${100}%`}
-            height={`${Math.round(course?.pdf_height * 1.333)}px`}
+            height={`${iframeWidth}`}
             frameBorder='0'
             title='iFrame'
             allowfullscreen='true'
             src={`${course?.description}#toolbar=0&navpanes=0&scrollbar=0&view=fit"`}
             style={{
-              position: 'absolute',
               overflow: 'hidden',
               pointerEvents: 'none',
               overflowX: 'hidden',
               overflowY: 'hidden',
               display: 'block'
+            }}
+            onLoad={()=>{
+             const ratio = (course?.pdf_height > course?.pdf_width ? (course?.pdf_height / course?.pdf_width) : (course?.pdf_width / course?.pdf_height))
+             const width = (course?.pdf_width * 1.333)  - testRef.current.offsetWidth;
+             const result = width * ratio
+              setIframe((course?.pdf_height*1.333) - result)
             }}
             scrolling='no'
           />
@@ -271,7 +243,6 @@ const CourseModule = () => {
       );
     }
   };
-
   return (
     <div>
       <Header loginPage={true} page='courses' />
@@ -535,5 +506,4 @@ const CourseModule = () => {
     </div>
   );
 };
-
 export default CourseModule;

@@ -614,6 +614,9 @@
       "2": "Duplicate",
       "3": "Archive",
       "4": "More"
+    },
+    "pdfSize":{
+      "heading":"Can not support a PDF of more than 8100 px"
     }
   },
 
