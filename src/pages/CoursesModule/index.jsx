@@ -96,6 +96,10 @@ const CourseModule = () => {
     currentModal,
   } = useSelector(state => state.coursesReducer);
 
+  const lastSelectedIndexOne = useRef()
+  const lastSelectedObject = useRef()
+  const lastSelectedIndex = useRef()
+
   useEffect(() => {
     handleCurrentModule(currentModal);
   }, [currentModal]);
@@ -138,14 +142,24 @@ const CourseModule = () => {
   React.useEffect(() => {
     dispatch(startCourse(id, currentModal, currentProgress, true));
     dispatch(getSingleCourseModule(id));
-  }, [dispatch, id, lan, course?.description]);
+  }, [dispatch, id, lan]);
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
   const handleAccordian = () => {
+    
     setShow(prev => !prev);
+    
+    const ratio = (course?.pdf_height > course?.pdf_width ? (course?.pdf_height / course?.pdf_width) : (course?.pdf_width / course?.pdf_height))
+    const width = (course?.pdf_width * 1.333) - testRef.current.offsetWidth;
+    const result = width * ratio
+    setIframe((course?.pdf_height * 1.333) - result)
+
+    if(lastSelectedIndexOne,lastSelectedObject,lastSelectedIndex){
+    manageClick(lastSelectedIndexOne.current,lastSelectedObject.current,lastSelectedIndex.current);
+    }
   };
 
   const handlePrevModule = page => {
@@ -160,6 +174,7 @@ const CourseModule = () => {
     localStorage.setItem('pageID', page);
     const p = (page - 1) * progress;
     setShowsubactive(showsubactive + 1);
+    // setShowsubactive(`${lastSelectedIndex.current + 1}.${lastSelectedIndexOne.current + 1}`)
     setShowactive(course.current_module + 1);
     dispatch(startCourse(id, page, p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -177,6 +192,10 @@ const CourseModule = () => {
   };
 
   const manageClick = (ind1, obj1, ind) => {
+    lastSelectedIndexOne.current = ind1;
+    lastSelectedObject.current = obj1;
+    lastSelectedIndex.current = ind;
+
     openSubModule(obj1);
     setShowsubactive(`${ind + 1}.${ind1 + 1}`);
     return handleCurrentModule(currentModal);
@@ -224,10 +243,9 @@ const CourseModule = () => {
     if (course?.is_pdf && course?.pdf_height < 6075) {
       return (
         <div
-          // style={{height: iframeWidth}}
           onContextMenu={e => e.preventDefault()}
         >
-          <iframe
+       <iframe
             id='idIframe'
             ref={testRef}
             width={`${100}%`}
@@ -429,6 +447,7 @@ const CourseModule = () => {
               </Col>
             )}
             <Col md={show ? 8 : 11} xs={12}>
+             
               <div>
                 <div>
                   {isLoading ? (
@@ -524,6 +543,7 @@ const CourseModule = () => {
               </div>
             </Col>
           </Row>
+         
         </Container>
       </div>
       <ScrollToTop />
