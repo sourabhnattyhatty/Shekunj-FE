@@ -120,6 +120,7 @@ const CourseModule = () => {
   };
 
   const progress = courseModulesList && fun();
+
   const willDispatchCurrentModal = useRef(true);
   useEffect(() => {
     if (!willDispatchCurrentModal.current || progress === Infinity) return;
@@ -148,32 +149,39 @@ const CourseModule = () => {
   };
 
   const handleAccordian = () => {
-
     setShow(prev => !prev);
-
     const ratio = (course?.pdf_height > course?.pdf_width ? (course?.pdf_height / course?.pdf_width) : (course?.pdf_width / course?.pdf_height))
     const width = (course?.pdf_width * 1.333) - testRef.current?.offsetWidth;
     const result = width * ratio
     setIframe((course?.pdf_height * 1.333) - result)
 
-    if (lastSelectedIndexOne, lastSelectedObject, lastSelectedIndex) {
+    if (lastSelectedIndexOne.current &&  lastSelectedIndex.current) {
       manageClick(lastSelectedIndexOne.current, lastSelectedObject.current, lastSelectedIndex.current);
     }
   };
 
   const handlePrevModule = page => {
-    const p = (page - 1) * progress;
+   const splitedArr = arr[page - 1].split('.');
+   const value = parseInt(splitedArr[0])
+   if(Math.round(arr[page]) - (Math.round(arr[page - 1])) === 1){
+    setExpanded(`panel${value}`)
+   }
+    const p = (page) * progress;
     setShowsubActive(arr[page - 1]);
-    dispatch(startCourse(id, page, p, true));
+    dispatch(startCourse(id, page, p === 0 ? progress :p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   const handleNextModule = page => {
-
-    localStorage.setItem('pageID', page);
-    const p = (page - 1) * progress;
+    const splitedArr = arr[page - 1].split('.');
+    const value = parseInt(splitedArr[0])
+    const valueOne = parseInt(splitedArr[1])
+    if(valueOne === 1){
+      setExpanded(`panel${value}`)
+    }
+    const p = (page) * progress;
     setShowsubActive(arr[page - 1]);
-    dispatch(startCourse(id, page, p, true));
+    dispatch(startCourse(id, page, p > 100 ? 100 : p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
@@ -189,6 +197,7 @@ const CourseModule = () => {
   };
 
   const manageClick = (ind1, obj1, ind) => {
+    debugger
     lastSelectedIndexOne.current = ind1;
     lastSelectedObject.current = obj1;
     lastSelectedIndex.current = ind;
@@ -196,6 +205,7 @@ const CourseModule = () => {
     openSubModule(obj1);
     setShowsubActive(`${ind + 1}.${ind1 + 1}`);
     return handleCurrentModule(currentModal);
+    
   };
 
   const [iframeWidth, setIframe] = React.useState("100%")
@@ -275,6 +285,7 @@ const CourseModule = () => {
   };
 
   useEffect(() => {
+    console.log('sssss',courseModulesList);
     const data = [];
     courseModulesList.forEach((obj, ind) => {
       obj.sub_task.forEach((obj1, ind1) => {
@@ -282,7 +293,7 @@ const CourseModule = () => {
       })
     })
     setArray(data);
-  }, [courseModulesList])
+  }, [courseModulesList.length])
 
   return (
     <div>
@@ -330,8 +341,6 @@ const CourseModule = () => {
                                       cursor: 'pointer',
                                       marginLeft: '-40px',
                                     }}
-                                    // onClick={() => openSubModule(obj1?.id) }
-                                    onClick={() => manageClick(ind1, obj1, ind)}
                                   >
                                     {Number(course?.id) === obj?.id && (
                                       <img
@@ -341,6 +350,7 @@ const CourseModule = () => {
                                       />
                                     )}
                                     <span
+                                      onClick={() => manageClick(ind1, obj1, ind)}
                                       style={{
                                         color:
                                           showSubActive === `${ind + 1}.${ind1 + 1}`
@@ -418,7 +428,6 @@ const CourseModule = () => {
                                           onClick={() =>
                                             manageClick(ind1, obj1, ind)
                                           }
-
                                           style={{
                                             color:
                                               showSubActive === `${ind + 1}.${ind1 + 1}`

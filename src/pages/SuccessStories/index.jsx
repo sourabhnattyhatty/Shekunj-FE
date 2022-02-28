@@ -14,7 +14,6 @@ import double_quote from "../../assets/icons/double_quote.png";
 import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
-import { paragraph, sliceString } from "../../utils/utils";
 
 function SuccessStory() {
   const history = useHistory();
