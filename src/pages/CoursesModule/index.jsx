@@ -142,7 +142,7 @@ const CourseModule = () => {
   React.useEffect(() => {
     dispatch(startCourse(id, currentModal, currentProgress, true));
     dispatch(getSingleCourseModule(id));
-  }, [dispatch, id, lan]);
+  }, [dispatch, id, lan, course?.description]);
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -197,7 +197,6 @@ const CourseModule = () => {
   };
 
   const manageClick = (ind1, obj1, ind) => {
-    debugger
     lastSelectedIndexOne.current = ind1;
     lastSelectedObject.current = obj1;
     lastSelectedIndex.current = ind;
