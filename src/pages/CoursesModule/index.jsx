@@ -142,7 +142,7 @@ const CourseModule = () => {
   React.useEffect(() => {
     dispatch(startCourse(id, currentModal, currentProgress, true));
     dispatch(getSingleCourseModule(id));
-  }, [dispatch, id, lan, course?.description]);
+  }, [dispatch, id, lan]);
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
