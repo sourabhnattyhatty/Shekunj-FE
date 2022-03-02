@@ -83,11 +83,10 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 
 const CourseModule = () => {
   const [show, setShow] = React.useState(true);
-  const [showactive, setShowactive] = React.useState(0);
-  const [showsubactive, setShowsubactive] = React.useState(0);
+  const [showSubActive, setShowsubActive] = React.useState('1.1');
   const [expanded, setExpanded] = React.useState('panel1');
-  // const [showCurrentContent, setShowCurrentContent] = React.useState();
   const [currentProgress, setCurrentProgress] = React.useState();
+  const [arr, setArray] = React.useState();
   const {
     courseModulesList,
     course,
@@ -121,6 +120,7 @@ const CourseModule = () => {
   };
 
   const progress = courseModulesList && fun();
+
   const willDispatchCurrentModal = useRef(true);
   useEffect(() => {
     if (!willDispatchCurrentModal.current || progress === Infinity) return;
@@ -139,9 +139,10 @@ const CourseModule = () => {
     }
   }, [history, detect.isMobile, t]);
 
+
   React.useEffect(() => {
-    dispatch(startCourse(id, currentModal, currentProgress, true));
-    dispatch(getSingleCourseModule(id));
+      dispatch(startCourse(id, currentModal, currentProgress, true));
+      dispatch(getSingleCourseModule(id));
   }, [dispatch, id, lan]);
 
   const handleChange = panel => (event, newExpanded) => {
@@ -149,42 +150,48 @@ const CourseModule = () => {
   };
 
   const handleAccordian = () => {
-    
     setShow(prev => !prev);
-    
     const ratio = (course?.pdf_height > course?.pdf_width ? (course?.pdf_height / course?.pdf_width) : (course?.pdf_width / course?.pdf_height))
-    const width = (course?.pdf_width * 1.333) - testRef.current.offsetWidth;
+    const width = (course?.pdf_width * 1.333) - testRef.current?.offsetWidth;
     const result = width * ratio
     setIframe((course?.pdf_height * 1.333) - result)
 
-    if(lastSelectedIndexOne,lastSelectedObject,lastSelectedIndex){
-    manageClick(lastSelectedIndexOne.current,lastSelectedObject.current,lastSelectedIndex.current);
+    if (lastSelectedIndexOne.current &&  lastSelectedIndex.current) {
+      manageClick(lastSelectedIndexOne.current, lastSelectedObject.current, lastSelectedIndex.current);
     }
+    handleCurrentModule(false);   
   };
 
   const handlePrevModule = page => {
-    const p = (page - 1) * progress;
-    setShowsubactive(showsubactive - 1);
-    setShowactive(course.current_module - 1);
-    dispatch(startCourse(id, page, p, true));
+   const splitedArr = arr[page - 1].split('.');
+   const value = parseInt(splitedArr[0])
+   if(Math.round(arr[page]) - (Math.round(arr[page - 1])) === 1){
+    setExpanded(`panel${value}`)
+   }
+    const p = (page) * progress;
+    setShowsubActive(arr[page - 1]);
+    dispatch(startCourse(id, page, p === 0 ? progress :p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   const handleNextModule = page => {
-    localStorage.setItem('pageID', page);
-    const p = (page - 1) * progress;
-    setShowsubactive(showsubactive + 1);
-    // setShowsubactive(`${lastSelectedIndex.current + 1}.${lastSelectedIndexOne.current + 1}`)
-    setShowactive(course.current_module + 1);
-    dispatch(startCourse(id, page, p, true));
+    const splitedArr = arr[page - 1].split('.');
+    const value = parseInt(splitedArr[0])
+    const valueOne = parseInt(splitedArr[1])
+    if(valueOne === 1){
+      setExpanded(`panel${value}`)
+    }
+    const p = (page) * progress;
+    setShowsubActive(arr[page - 1]);
+    dispatch(startCourse(id, page, p > 100 ? 100 : p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
-  const handleCurrentModule = page => {
+  const handleCurrentModule = (page, scrollTop = true) => {
     const p = currentModal * progress;
     dispatch(startCourse(id, page, p > 100 ? 100 : p, true));
     setCurrentProgress(p > 100 ? 100 : p)
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   const openSubModule = obj1 => {
@@ -195,17 +202,11 @@ const CourseModule = () => {
     lastSelectedIndexOne.current = ind1;
     lastSelectedObject.current = obj1;
     lastSelectedIndex.current = ind;
-
+    
     openSubModule(obj1);
-    setShowsubactive(`${ind + 1}.${ind1 + 1}`);
+    setShowsubActive(`${ind + 1}.${ind1 + 1}`);
     return handleCurrentModule(currentModal);
   };
-
-  // React.useEffect(() => {
-  //   if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-  //     console.log(localStorage.getItem("pageID"))
-  //   }
-  // }, []);
 
   const [iframeWidth, setIframe] = React.useState("100%")
   const renderProgress = (count = 0) => {
@@ -240,12 +241,12 @@ const CourseModule = () => {
   const testRef = useRef();
 
   const manageContent = () => {
-    if (course?.is_pdf && course?.pdf_height < 6075) {
+    if (course?.is_pdf && course.description !== null) {
       return (
         <div
           onContextMenu={e => e.preventDefault()}
         >
-       <iframe
+          <iframe
             id='idIframe'
             ref={testRef}
             width={`${100}%`}
@@ -253,6 +254,7 @@ const CourseModule = () => {
             frameBorder='0'
             title='iFrame'
             allowfullscreen='true'
+            key={course?.heading}
             src={`${course?.description}#toolbar=0&navpanes=0&scrollbar=0&view=fit"`}
             style={{
               overflow: 'hidden',
@@ -263,7 +265,7 @@ const CourseModule = () => {
             }}
             onLoad={() => {
               const ratio = (course?.pdf_height > course?.pdf_width ? (course?.pdf_height / course?.pdf_width) : (course?.pdf_width / course?.pdf_height))
-              const width = (course?.pdf_width * 1.333) - testRef.current.offsetWidth;
+              const width = (course?.pdf_width * 1.333) - testRef.current?.offsetWidth;
               const result = width * ratio
               setIframe((course?.pdf_height * 1.333) - result)
             }}
@@ -271,7 +273,7 @@ const CourseModule = () => {
           />
         </div>
       );
-    } else if (course?.is_pdf && course?.pdf_height > 6075) {
+    }else if(course.description === null){
       return <div>{t('coursesPage.pdfSize.heading')}</div>;
     } else {
       return (
@@ -285,6 +287,15 @@ const CourseModule = () => {
     }
   };
 
+  useEffect(() => {
+    const data = [];
+    courseModulesList.forEach((obj, ind) => {
+      obj.sub_task.forEach((obj1, ind1) => {
+        data.push(`${ind + 1}.${ind1 + 1}`)
+      })
+    })
+    setArray(data);
+  }, [courseModulesList.length])
 
   return (
     <div>
@@ -300,6 +311,7 @@ const CourseModule = () => {
                 {renderProgress(moduleprogress)}
               </div>
             </Col>
+
             {!show && (
               <div className='tog_set'>
                 <img src={toggle} alt='' onClick={handleAccordian} />
@@ -331,8 +343,6 @@ const CourseModule = () => {
                                       cursor: 'pointer',
                                       marginLeft: '-40px',
                                     }}
-                                    // onClick={() => openSubModule(obj1?.id) }
-                                    onClick={() => manageClick(ind1, obj1, ind)}
                                   >
                                     {Number(course?.id) === obj?.id && (
                                       <img
@@ -342,9 +352,11 @@ const CourseModule = () => {
                                       />
                                     )}
                                     <span
+                                      onClick={() => manageClick(ind1, obj1, ind)}
+                                      
                                       style={{
                                         color:
-                                          showsubactive === `${ind + 1}.${ind1 + 1}`
+                                          showSubActive === `${ind + 1}.${ind1 + 1}`
                                             ? 'pink'
                                             : 'black',
                                         cursor: 'pointer',
@@ -388,12 +400,7 @@ const CourseModule = () => {
                           >
                             <Typography>
                               <div className='number-bgbox'>{ind + 1}</div>
-                              <span
-                                onClick={() => setShowactive(ind)}
-                                style={{
-                                  color: showactive === ind ? 'pink' : 'black',
-                                }}
-                              >
+                              <span>
                                 {obj?.heading}
                               </span>
                             </Typography>
@@ -421,13 +428,12 @@ const CourseModule = () => {
                                         )}
                                         {ind + 1}.{ind1 + 1}
                                         <span
-                                          // onClick={() => setShowsubactive(ind1)}
                                           onClick={() =>
                                             manageClick(ind1, obj1, ind)
                                           }
                                           style={{
                                             color:
-                                              showsubactive === `${ind + 1}.${ind1 + 1}`
+                                              showSubActive === `${ind + 1}.${ind1 + 1}`
                                                 ? 'pink'
                                                 : 'black',
                                             cursor: 'pointer',
@@ -447,7 +453,7 @@ const CourseModule = () => {
               </Col>
             )}
             <Col md={show ? 8 : 11} xs={12}>
-             
+
               <div>
                 <div>
                   {isLoading ? (
@@ -543,7 +549,6 @@ const CourseModule = () => {
               </div>
             </Col>
           </Row>
-         
         </Container>
       </div>
       <ScrollToTop />

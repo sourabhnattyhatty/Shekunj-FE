@@ -9,7 +9,6 @@ import {
   reSetFilterValue,
   toggleCollapseValue,
 } from "../../store/career";
-import { paragraph } from "../../utils/utils";
 import TopCollage from "../../assets/images/Career/clg.jpg"
 
 import "../HomePage/index.scss";

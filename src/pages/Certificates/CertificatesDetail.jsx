@@ -10,7 +10,6 @@ import { Link, useHistory, useParams, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import jsPDF from 'jspdf';
 import * as htmlToImage from 'html-to-image';
-import { Loading } from 'react-fullscreen-loading';
 
 import { getUserCourseCertificateDetail } from '../../store/certificate';
 import { routingConstants } from '../../utils/constants';
@@ -40,7 +39,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
   const { id, isDownload } = useParams();
   const { t } = useTranslation();
 
-  const { certificateData } = props;
   const [isLoaded, setIsLoaded] = useState(true);
 
   const { certificateDetail: certificate } = useSelector(

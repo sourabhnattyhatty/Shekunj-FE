@@ -3,7 +3,6 @@ import React, {
     useImperativeHandle,
   } from "react";
   import { Col, Row } from "react-bootstrap";
-  import { useDispatch } from "react-redux";
   import { useHistory, useLocation } from "react-router-dom";
   import { useTranslation } from "react-i18next";
   
@@ -18,7 +17,6 @@ import React, {
   import moment from "moment";
   
   const CertificateSmall = forwardRef((props, ref) => {
-    const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
     

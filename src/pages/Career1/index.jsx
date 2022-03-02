@@ -11,7 +11,6 @@ import "../HomePage/index.scss";
 import "./index.scss";
 
 import { useTranslation } from "react-i18next";
-import { paragraph } from "../../utils/utils";
 import TopSchool from "../../assets/images/Career/scl.jpg";
 import { Link } from "react-router-dom";
 

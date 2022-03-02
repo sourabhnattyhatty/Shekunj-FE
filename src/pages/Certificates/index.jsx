@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Aos from "aos";
 
-import CertificatesDetail from "./CertificatesDetail";
 import { Footer, Header, SEO } from "../../components";
 import { timeDifferenceFromDates } from "../../utils/utils";
 import { getUserCourseCertificate } from "../../store/certificate";

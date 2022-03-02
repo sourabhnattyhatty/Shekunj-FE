@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -18,7 +18,6 @@ function Carousel(props) {
   const { courses, course, tests, similarCourses } = useSelector(
     (state) => state.coursesReducer,
   );
-  const [number, setNumber] = useState(null);
   const { governmentExams } = useSelector((state) => state.careerReducer);
   const { lan } = useSelector((state) => state.languageReducer);
   const { id } = useParams();
