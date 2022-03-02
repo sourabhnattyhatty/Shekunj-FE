@@ -139,9 +139,10 @@ const CourseModule = () => {
     }
   }, [history, detect.isMobile, t]);
 
+
   React.useEffect(() => {
-    dispatch(startCourse(id, currentModal, currentProgress, true));
-    dispatch(getSingleCourseModule(id));
+      dispatch(startCourse(id, currentModal, currentProgress, true));
+      dispatch(getSingleCourseModule(id));
   }, [dispatch, id, lan]);
 
   const handleChange = panel => (event, newExpanded) => {
@@ -158,6 +159,7 @@ const CourseModule = () => {
     if (lastSelectedIndexOne.current &&  lastSelectedIndex.current) {
       manageClick(lastSelectedIndexOne.current, lastSelectedObject.current, lastSelectedIndex.current);
     }
+    handleCurrentModule(false);   
   };
 
   const handlePrevModule = page => {
@@ -185,11 +187,11 @@ const CourseModule = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
-  const handleCurrentModule = page => {
+  const handleCurrentModule = (page, scrollTop = true) => {
     const p = currentModal * progress;
     dispatch(startCourse(id, page, p > 100 ? 100 : p, true));
     setCurrentProgress(p > 100 ? 100 : p)
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   const openSubModule = obj1 => {
@@ -200,11 +202,10 @@ const CourseModule = () => {
     lastSelectedIndexOne.current = ind1;
     lastSelectedObject.current = obj1;
     lastSelectedIndex.current = ind;
-
+    
     openSubModule(obj1);
     setShowsubActive(`${ind + 1}.${ind1 + 1}`);
     return handleCurrentModule(currentModal);
-    
   };
 
   const [iframeWidth, setIframe] = React.useState("100%")
@@ -240,7 +241,7 @@ const CourseModule = () => {
   const testRef = useRef();
 
   const manageContent = () => {
-    if (course?.is_pdf) {
+    if (course?.is_pdf && course.description !== null) {
       return (
         <div
           onContextMenu={e => e.preventDefault()}
@@ -253,6 +254,7 @@ const CourseModule = () => {
             frameBorder='0'
             title='iFrame'
             allowfullscreen='true'
+            key={course?.heading}
             src={`${course?.description}#toolbar=0&navpanes=0&scrollbar=0&view=fit"`}
             style={{
               overflow: 'hidden',
@@ -271,6 +273,8 @@ const CourseModule = () => {
           />
         </div>
       );
+    }else if(course.description === null){
+      return <div>{t('coursesPage.pdfSize.heading')}</div>;
     } else {
       return (
         <div
@@ -284,7 +288,6 @@ const CourseModule = () => {
   };
 
   useEffect(() => {
-    console.log('sssss',courseModulesList);
     const data = [];
     courseModulesList.forEach((obj, ind) => {
       obj.sub_task.forEach((obj1, ind1) => {
@@ -350,6 +353,7 @@ const CourseModule = () => {
                                     )}
                                     <span
                                       onClick={() => manageClick(ind1, obj1, ind)}
+                                      
                                       style={{
                                         color:
                                           showSubActive === `${ind + 1}.${ind1 + 1}`
