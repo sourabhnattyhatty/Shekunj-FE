@@ -17,7 +17,8 @@ import img2 from "../../assets/images/Courses/img2.png";
 import img3 from "../../assets/images/Courses/img3.png";
 import Cross from "../../assets/icons/cross.png";
 import Reset from "../../assets/icons/reset.png";
-
+import add from "../../assets/images/add.png";
+import add1 from "../../assets/images/add1.png";
 import "./index.scss";
 import "../../pages/HomePage/index.scss";
 import SimpleAccordion from "./Accordian";
@@ -45,8 +46,8 @@ const Courses = () => {
     // dispatch(allCourses(`?limit=${pageLimit}`));
   }, [dispatch, pageLimit, lan]);
 
-  
-  
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
     Aos.init({ duration: 2000 });
@@ -68,25 +69,45 @@ const Courses = () => {
   };
 
   const checkFunction = () => {
-    return state?.allCourses?.results?.map((obj) => (
-      <Link
-        to={routingConstants.COURSE_DETAILS + obj.id}
-        className='col-md-6'
-        key={obj?.id}
-      >
-        <div className='box box_hov'>
-          <div className='slide-img'>
-            <img alt='' src={obj?.image} />
-            <div className='overlay'></div>
-          </div>
+    return state?.allCourses?.results?.map((obj, index) => {
+      return (
+        <>
+          <Link
+            to={routingConstants.COURSE_DETAILS + obj.id}
+            className='col-md-6'
+            key={obj?.id}
+          >
+            <div className='box box_hov'>
+              <div className='slide-img'>
+                <img alt='' src={obj?.image} />
+                <div className='overlay'></div>
+              </div>
 
-          <div className='tag_btn'>
-            <button className='btn btn-info'>{obj?.category_name}</button>
-            <h6>{obj?.name}</h6>
-          </div>
-        </div>
-      </Link>
-    ));
+              <div className='tag_btn'>
+                <button className='btn btn-info'>{obj?.category_name}</button>
+                <h6>{obj?.name}</h6>
+              </div>
+            </div>
+
+          </Link>
+          {(index % 5 == 4)
+            ?
+            <>
+              <div className='col-md-6'>
+                <div className='google_add_box box_hov'>
+                  <div className='slide-img'>
+                    <img src={add1} alt='Image' className='google_add_box_img' />
+                    <div className='overlay'></div>
+                  </div>
+                </div>
+              </div>
+            </>
+            : ''
+          }
+
+        </>
+      )
+    });
   };
 
   const paginationBack = () => {
@@ -94,8 +115,7 @@ const Courses = () => {
       setCategoryPageCount(categoryPageCount - pageLimit);
       dispatch(
         allCourses(
-          `?category_id=${categoryId}&limit=${pageLimit}&offset=${
-            categoryPageCount - pageLimit
+          `?category_id=${categoryId}&limit=${pageLimit}&offset=${categoryPageCount - pageLimit
           }`,
         ),
       );
@@ -111,8 +131,7 @@ const Courses = () => {
       setCategoryPageCount(categoryPageCount + pageLimit);
       dispatch(
         allCourses(
-          `?category_id=${categoryId}&limit=${pageLimit}&offset=${
-            categoryPageCount + pageLimit
+          `?category_id=${categoryId}&limit=${pageLimit}&offset=${categoryPageCount + pageLimit
           }`,
         ),
       );
@@ -147,12 +166,12 @@ const Courses = () => {
                     </li>
                   </ul>
                   <div className='rig_ul'>
-                    <ul className='ulcont'>  
+                    <ul className='ulcont'>
                       <li>
                         <img src={img1} alt='' />
                       </li>
                       <li> {t("coursesPage.banner.1")} <br /> {t("coursesPage.banner.4")}</li>
-                      
+
                     </ul>
 
                     <ul className='ulcont'>
@@ -170,7 +189,7 @@ const Courses = () => {
                       <li>
                         <img src={img3} alt='' />
                       </li>
-                      <li style={{marginTop: '-25px'}}> {t("coursesPage.banner.3")}</li>
+                      <li style={{ marginTop: '-25px' }}> {t("coursesPage.banner.3")}</li>
                     </ul>
                   </div>
                 </div>
@@ -180,14 +199,15 @@ const Courses = () => {
         </div>
       </section>
 
+
       <section className='Srch_sec mb-5 noselect'>
         <div className='container'>
           <Row>
             <Col md={10} xs={12}>
-            <div className="course_para">
-              <h1>{t("coursesPage.heading.1")}</h1>
-              <p className='courses_para mb-3'>{t("coursesPage.heading.2")}</p>
-              <Link className="shekunj_a" to="/login">{t("coursesPage.heading.3")}</Link>
+              <div className="course_para">
+                <h1>{t("coursesPage.heading.1")}</h1>
+                <p className='courses_para mb-3'>{t("coursesPage.heading.2")}</p>
+                <Link className="shekunj_a" to="/login">{t("coursesPage.heading.3")}</Link>
               </div>
             </Col>
           </Row>
@@ -208,6 +228,14 @@ const Courses = () => {
                   setCategoryPageCount(0);
                 }}
               />
+
+              {/* google add */}
+              <div className='row'>
+                <div className='col-md-12'>
+                  <img src={add} alt='Image' className='google_add_courses' />
+                </div>
+              </div>
+
             </div>
             <div className='col-md-8 col-sm-8'>
               <div className='content_right'>
@@ -258,6 +286,7 @@ const Courses = () => {
                 <div className='row'>
                   {state?.allCourses?.results?.length > 0 ? (
                     checkFunction()
+
                   ) : (
                     <div className='text-center mt-2'>
                       {t("common.noDataFound")}

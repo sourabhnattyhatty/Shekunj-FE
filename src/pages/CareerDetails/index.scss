@@ -59,13 +59,16 @@
 }
 .career_box h3 {
   font-family: Poppins;
+
   text-transform: capitalize;
+  
   color: #323232;
+ 
+
   font-size: .875rem;
   line-height: 1.3125rem;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: -15px;
   max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -153,11 +156,18 @@
   text-align: center;
   color: #ffffff;
 }
-@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+@media screen and (max-device-width: 667px) {
+  .iframe_box{
+    width: 310px!important;
+    height: 175px!important;
+  }
   .career_box {
     height: auto;
     box-shadow: none;
     padding: 0;
+  }
+  .deatil_box_right{
+   margin-top: 20px;
   }
 
   .career_tit h2 {
@@ -224,6 +234,19 @@
   }
 }
 
+@media only screen and (min-device-width: 375px) {
+  .iframe_box{
+    width: 310px!important;
+    height: 175px!important;
+  }
+}
+@media only screen and (min-device-width: 412px) {
+  .iframe_box{
+    width: 345px!important;
+    height: 175px!important;
+  }
+}
+
 .filter_side {
   display: none;
 }
@@ -279,7 +302,24 @@
   margin: 0px;
   display: block;
 }
+
+.deatil_box_right{
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+  padding: 18px;
+}
+.deatil_box_right h5{
+  background: #fff;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #DFDFDF;
+  margin: 0px;
+  display: block;
+}
+
 .right_gallery{
   width: 100%;
   padding-bottom: 15px;
+}
+.iframe_box{
+  width: 345px;
+  height: 175px;
 }

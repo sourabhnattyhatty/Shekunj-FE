@@ -6,12 +6,27 @@ import Logo from "../../assets/images/whitelogo.svg";
 import LogoBlack from "../../assets/images/whitelogo.svg";
 import ChangeLanguageButton from "../LanguageButton";
 import { routingConstants } from "../../utils/constants";
+import add from "../../assets/images/add.png";
 
 const Footer = ({ loginPage }) => {
   const { t } = useTranslation();
 
   return (
+
+
     <div className="noselect">
+
+      {/* google add */}
+      <section>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12'>
+              <img src={add} alt='Image' className='footer_google_add' />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className={loginPage ? "footer_login" : "footer_other"}>
         <div className='container'>
           <div className='row'>
@@ -44,29 +59,38 @@ const Footer = ({ loginPage }) => {
               </ul>
             </div>
 
-            <div className='col-md-3 col-4'>
-              <ul className='p-0'>
-                <li>
-                  <Link to={routingConstants.PRIVACY_POLICY}>
-                    {t("footer.links.col3.1")}
-                  </Link>
-                </li>
+            <div className='col-md-9 col-sm-12'>
+              <div className='row'>
+                <div className='col-md-4 col-4'>
+                  <ul className='p-0'>
+                    <li>
+                      <Link to={routingConstants.PRIVACY_POLICY}>
+                        {t("footer.links.col3.1")}
+                      </Link>
+                    </li>
+                    <li>
+                      {/* <Link to={routingConstants.HELP_AND_SUPPORT}>{t("footer.links.col2.3")}</Link> */}
+                      <Link to={routingConstants.CONTACT_US}>{t("footer.links.col2.3")}</Link>
+                    </li>
+                  </ul>
+                </div>
 
-                <li>
-                  {/* <Link to={routingConstants.HELP_AND_SUPPORT}>{t("footer.links.col2.3")}</Link> */}
-                  <Link to={routingConstants.CONTACT_US}>{t("footer.links.col2.3")}</Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className='col-md-3 col-4'>
-              <div className='set_language'>
-                <ChangeLanguageButton />
+                <div className='col-md-8 col-sm-12'>
+                  <div className='set_language'>
+                    <ChangeLanguageButton />
+                  </div>
+                  <div className='row'>
+                    <div className='col-md-12'>
+                      <img src={add} alt='Image' className='bottom_google_add' />
+                    </div>
+                  </div>
+                </div>
+                
               </div>
             </div>
           </div>
 
-          <div className='bottom-footer mt-5'>
+          <div className='bottom-footer mt-3'>
             <div className='row'>
               <div className='col-lg-9 col-md-8 col-6 text-left'>
                 <Link className='' to='/'>

@@ -41,20 +41,44 @@ footer ul li a:hover {
 }
 
 footer .set_language .MuiButton-text.MuiButton-textPrimary {
-  width: 100%;
+  width: 30%;
   color: #fff !important;
   font-weight: 300 !important;
   font-size: 16px !important;
   line-height: 20px !important;
   border: 1px solid #ffffff !important;
   text-align: left !important;
+  margin-left: 160px;
+}
+.footer_google_add{
+  width: 100%;
+  padding: 60px 0px;
+}
+
+.bottom_google_add{
+  width: 100%;
+padding-top: 20px;
 }
 
 
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
 
+  footer .set_language .MuiButton-text.MuiButton-textPrimary {
+    width: 70%;
+    color: #fff !important;
+    font-weight: 300 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    border: 1px solid #ffffff !important;
+    text-align: left !important;
+    margin-left: 0px;
+  }
 .set_language .makeStyles-language-1 {
   width: 100%;
+}
+.footer_google_add{
+  width: 100%;
+  padding: 30px !important;;
 }
 
 }

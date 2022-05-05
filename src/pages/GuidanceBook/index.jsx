@@ -28,6 +28,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { bookCounseller } from "../../store/guidance/action";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
+import add from "../../assets/images/add.png";
+import add2 from "../../assets/images/add2.png";
+
 
 function range(start, end) {
   return Array(end - start + 1)
@@ -56,7 +59,7 @@ const months = [
 ];
 
 const GuidancePage = () => {
-  const { isLoading } = useSelector((state) => state.guidanceReducer);  
+  const { isLoading } = useSelector((state) => state.guidanceReducer);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -67,7 +70,6 @@ const GuidancePage = () => {
       .required(t("login.form1.emailError.required"))
       .email(t("login.form1.emailError.invalid")),
     mobile_number: Yup.number().positive(),
-    alternate_number: Yup.number().positive(),
     message: Yup.string().required(t("login.form1.message.required")),
   });
 
@@ -85,12 +87,10 @@ const GuidancePage = () => {
       last_name: "",
       email_address: "",
       mobile_number: "",
-      alternate_number: "",
       day: "",
       month: "",
       year: "",
       date_of_birth: "",
-      gender: "",
       qualifications: "",
       course_looking_for: "",
       message: "",
@@ -103,7 +103,6 @@ const GuidancePage = () => {
       values = {
         ...values,
         date_of_birth: dateOfBirth,
-        gender: values?.gender,
         qualifications: values?.qualifications,
         course_looking_for: values?.course_looking_for,
       };
@@ -126,7 +125,7 @@ const GuidancePage = () => {
                 <div className='book_sec_content mob_hide'>
                   <h2 data-aos='slide-up'>{t("guidanceBookPage.heading.1")}</h2>
                   <p data-aos='slide-up'>
-                  {t("guidanceBookPage.heading.2")}
+                    {t("guidanceBookPage.heading.2")}
                   </p>
                 </div>
 
@@ -141,7 +140,7 @@ const GuidancePage = () => {
               </div>
             </Col>
 
-            <Col md={7} xs={12}>
+            <Col md={6} xs={12}>
               <div className='book_sec_content mob_show'>
                 <h2>{t("guidanceBookPage.heading.1")}</h2>
                 <p>
@@ -151,51 +150,58 @@ const GuidancePage = () => {
               </div>
               <div className='guidance_book_form'>
                 <form onSubmit={handleSubmit}>
-                  <div className='form-group'>
-                    <TextField
-                      name='first_name'
-                      type='text'
-                      placeholder={t("common.placeHolders.fname")}
-                      autoComplete='off'
-                      onChange={handleChange}
-                      value={values.first_name}
-                      onBlur={handleBlur}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position='start'>
-                            <img src={User2} alt='...' />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    <Error
-                      error={errors.first_name}
-                      touched={touched.first_name}
-                    />
-                  </div>
+                  <Row>
+                    <Col md={6} xs={12}>
+                      <div className='form-group'>
+                        <TextField
+                          name='first_name'
+                          type='text'
+                          placeholder={t("common.placeHolders.fname")}
+                          autoComplete='off'
+                          onChange={handleChange}
+                          value={values.first_name}
+                          onBlur={handleBlur}
+                          InputProps={{
+                            startAdornment: (
+                              <InputAdornment position='start'>
+                                <img src={User2} alt='...' />
+                              </InputAdornment>
+                            ),
+                          }}
+                        />
+                        <Error
+                          error={errors.first_name}
+                          touched={touched.first_name}
+                        />
+                      </div>
+                    </Col>
 
-                  <div className='form-group'>
-                    <TextField
-                      name='last_name'
-                      type='text'
-                      placeholder={t("common.placeHolders.lname")}
-                      autoComplete='off'
-                      onChange={handleChange}
-                      value={values.last_name}
-                      onBlur={handleBlur}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position='start'>
-                            <img src={User3} alt='...' />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    <Error
-                      error={errors.last_name}
-                      touched={touched.last_name}
-                    />
-                  </div>
+                    <Col md={6} xs={12}>
+                      <div className='form-group'>
+                        <TextField
+                          name='last_name'
+                          type='text'
+                          placeholder={t("common.placeHolders.lname")}
+                          autoComplete='off'
+                          onChange={handleChange}
+                          value={values.last_name}
+                          onBlur={handleBlur}
+                          InputProps={{
+                            startAdornment: (
+                              <InputAdornment position='start'>
+                                <img src={User3} alt='...' />
+                              </InputAdornment>
+                            ),
+                          }}
+                        />
+                        <Error
+                          error={errors.last_name}
+                          touched={touched.last_name}
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+
 
                   <div className='form-group'>
                     <TextField
@@ -243,29 +249,6 @@ const GuidancePage = () => {
                     />
                   </div>
 
-                  <div className='form-group'>
-                    <TextField
-                      name='alternate_number'
-                      type='number'
-                      placeholder={t("common.placeHolders.alternateMobile")}
-                      autoComplete='off'
-                      value={values.alternate_number}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position='start'>
-                            <img src={phone} alt='...' />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    <Error
-                      error={errors.alternate_number}
-                      touched={touched.alternate_number}
-                    />
-                  </div>
-
                   <Row>
                     <Col md={4} xs={12}>
                       <div className='form-group mzero'>
@@ -303,43 +286,43 @@ const GuidancePage = () => {
                       </div>
                     </Col>
                   </Row>
-                  <div className='form-group mzero'>
-                    <GuidanceSelect
-                      title={t("common.formHeadings.gender")}
-                      icon={true}
-                      listItem={["female", "male"]}
-                      defaultValue=''
-                      updateValues={(value) => setFieldValue("gender", value)}
-                    />
-                  </div>
-                  <div className='form-group mzero'>
-                    <GuidanceSelect
-                      title={t("common.formHeadings.qualification")}
-                      icon={true}
-                      listItem={highEducation}
-                      defaultValue=''
-                      updateValues={(value) =>
-                        setFieldValue("qualifications", value)
-                      }
-                    />
-                  </div>
-                  <div className='form-group mzero'>
-                    <GuidanceSelect
-                      title={t("common.formHeadings.coursesLooking")}
-                      icon={true}
-                      listItem={courseLookingFor}
-                      defaultValue=''
-                      updateValues={(value) =>
-                        setFieldValue("course_looking_for", value)
-                      }
-                    />
-                  </div>
+
+                  <Row>
+
+                    <Col md={6} xs={12}>
+                      <div className='form-group mzero'>
+                        <GuidanceSelect
+                          title={t("common.formHeadings.qualification")}
+                          icon={true}
+                          listItem={highEducation}
+                          defaultValue=''
+                          updateValues={(value) =>
+                            setFieldValue("qualifications", value)
+                          }
+                        />
+                      </div>
+                    </Col>
+                    <Col md={6} xs={12}>
+                      <div className='form-group mzero'>
+                        <GuidanceSelect
+                          title={t("common.formHeadings.coursesLooking")}
+                          icon={true}
+                          listItem={courseLookingFor}
+                          defaultValue=''
+                          updateValues={(value) =>
+                            setFieldValue("course_looking_for", value)
+                          }
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+
                   <div className='form-group mzero'>
                     <TextareaAutosize
                       name='message'
                       className='textarea_set'
                       aria-label='minimum height'
-                      minRows={7}
+                      minRows={3}
                       placeholder={t("common.placeHolders.message")}
                       value={values.message}
                       onChange={handleChange}
@@ -357,6 +340,14 @@ const GuidancePage = () => {
                   </button>
                 </form>
               </div>
+            </Col>
+
+            <Col md={1} xs={12}>
+              <Container>
+                <Row>
+                  <img src={add2} alt='Image' className='google_add' />
+                </Row>
+              </Container>
             </Col>
           </Row>
         </Container>

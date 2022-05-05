@@ -6,7 +6,7 @@ import {
   getSimilarCourses,
   singleCourseDetails,
 } from "../../store/courses/action";
-import { Row, Col } from "react-bootstrap";
+import {Container, Row, Col } from "react-bootstrap";
 import Check from "../../assets/icons/check1.png";
 import monitor from "../../assets/icons/monitor.png";
 import lifetime1 from "../../assets/icons/lifetime1.png";
@@ -14,6 +14,7 @@ import certificate1 from "../../assets/icons/certificate1.png";
 import clipboard from "../../assets/icons/clipboard.png";
 import flexible1 from "../../assets/icons/flexible1.png";
 import Language1 from "../../assets/icons/Language1.png";
+import add from "../../assets/images/add.png";
 
 import { Header, Footer, SEO, Carousel } from "../../components";
 
@@ -26,7 +27,7 @@ const CourseDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { course } = useSelector((state) => state.coursesReducer);
-  const {lan} = useSelector(state => state.languageReducer);
+  const { lan } = useSelector(state => state.languageReducer);
 
   const { t } = useTranslation();
   useEffect(() => {
@@ -68,7 +69,7 @@ const CourseDetails = () => {
         </div>
       </section>
 
-      <section className='Coutl_sec1 mb-5 noselect'>
+      <section className='Coutl_sec1 noselect'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-7'>
@@ -97,7 +98,7 @@ const CourseDetails = () => {
                     );
                   })}
                 </Row>
-              </div>              
+              </div>
             </div>
 
             <div className='col-md-5'>
@@ -111,6 +112,9 @@ const CourseDetails = () => {
                 <h3 className='similar-coursestext'>
                   {t("coursesPage.coursesDetailsPage.other.2")}
                 </h3>
+
+
+
                 <div className='cou_set_similer'>
                   <Carousel page='courseDetail' />
                 </div>
@@ -120,114 +124,122 @@ const CourseDetails = () => {
               </div>
             </div>
 
+            <Container>
+              <Row>
+                <div className='col-md-12'>
+                  <img src={add} alt='Image' className='google_add' />
+                </div>
+              </Row>
+            </Container>
 
             <Row>
               <Col lg={7} md={12}>
-              <div className='sec1_con2'>
-                <h2>{t("coursesPage.coursesDetailsPage.heading.4")}</h2>
-                <Row>
-                  <Col md={6} xs={12}>
-                    <div className='features_box'>
-                      <div>
-                        <img src={monitor} alt='' srcSet='' />
-                      </div>
-                      <div>
-                        <h6>
-                          {t(
-                            "coursesPage.coursesDetailsPage.heading.features.1",
-                          )}
-                        </h6>
-                        <p>
-                        We offer 100% online courses which you can access from anywhere at your own comfort!
-                        </p>
-                      </div>
-                    </div>
-                    <div className='features_box'>
-                      <div>
-                        <img src={lifetime1} alt='' srcSet='' />
-                      </div>
-                      <div>
-                        <h6>
-                          {t(
-                            "coursesPage.coursesDetailsPage.heading.features.2",
-                          )}
-                        </h6>
-                        <p>
-                        Get the access to courses for lifetime and learn from anywhere and anytime.
-                        </p>
-                      </div>
-                    </div>
-                    <div className='features_box'>
-                      <div>
-                        <img src={certificate1} alt='' srcSet='' />
-                      </div>
-                      <div>
-                        <h6>
-                          {t(
-                            "coursesPage.coursesDetailsPage.heading.features.3",
-                          )}
-                        </h6>
-                        <p>
-                        Earn industry recognized certificate after the completion of course.
-                        </p>
-                      </div>
-                    </div>
-                  </Col>
+                <div className='sec1_con2'>
+                  <h2>{t("coursesPage.coursesDetailsPage.heading.4")}</h2>
 
-                  <Col md={6} xs={12}>
-                    <div className='features_box'>
-                      <div>
-                        <img src={clipboard} alt='' srcSet='' />
+                  <Row>
+                    <Col md={6} xs={12}>
+                      <div className='features_box'>
+                        <div>
+                          <img src={monitor} alt='' srcSet='' />
+                        </div>
+                        <div>
+                          <h6>
+                            {t(
+                              "coursesPage.coursesDetailsPage.heading.features.1",
+                            )}
+                          </h6>
+                          <p>
+                            We offer 100% online courses which you can access from anywhere at your own comfort!
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h6>
-                          {t(
-                            "coursesPage.coursesDetailsPage.heading.features.4",
-                          )}
-                        </h6>
-                        <p>
-                        Join SheKunj, a community forum that believes women education and empowerment is in the mainstream.
-                        </p>
+                      <div className='features_box'>
+                        <div>
+                          <img src={lifetime1} alt='' srcSet='' />
+                        </div>
+                        <div>
+                          <h6>
+                            {t(
+                              "coursesPage.coursesDetailsPage.heading.features.2",
+                            )}
+                          </h6>
+                          <p>
+                            Get the access to courses for lifetime and learn from anywhere and anytime.
+                          </p>
+                        </div>
                       </div>
-                    </div>
+                      <div className='features_box'>
+                        <div>
+                          <img src={certificate1} alt='' srcSet='' />
+                        </div>
+                        <div>
+                          <h6>
+                            {t(
+                              "coursesPage.coursesDetailsPage.heading.features.3",
+                            )}
+                          </h6>
+                          <p>
+                            Earn industry recognized certificate after the completion of course.
+                          </p>
+                        </div>
+                      </div>
+                    </Col>
 
-                    <div className='features_box'>
-                      <div>
-                        <img src={flexible1} alt='' srcSet='' />
+                    <Col md={6} xs={12}>
+                      <div className='features_box'>
+                        <div>
+                          <img src={clipboard} alt='' srcSet='' />
+                        </div>
+                        <div>
+                          <h6>
+                            {t(
+                              "coursesPage.coursesDetailsPage.heading.features.4",
+                            )}
+                          </h6>
+                          <p>
+                            Join SheKunj, a community forum that believes women education and empowerment is in the mainstream.
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h6>
-                          {t(
-                            "coursesPage.coursesDetailsPage.heading.features.5",
-                          )}
-                        </h6>
-                        <p>
-                        Learn and keep a practical approach towards your courses by flexible timings and deadlines.
-                        </p>
-                      </div>
-                    </div>
 
-                    <div className='features_box'>
-                      <div>
-                        <img src={Language1} alt='' srcSet='' />
+                      <div className='features_box'>
+                        <div>
+                          <img src={flexible1} alt='' srcSet='' />
+                        </div>
+                        <div>
+                          <h6>
+                            {t(
+                              "coursesPage.coursesDetailsPage.heading.features.5",
+                            )}
+                          </h6>
+                          <p>
+                            Learn and keep a practical approach towards your courses by flexible timings and deadlines.
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h6>
-                          {t(
-                            "coursesPage.coursesDetailsPage.heading.features.6.heading",
-                          )}
-                        </h6>
-                        <p>
-                          {t(
-                            "coursesPage.coursesDetailsPage.heading.features.6.data",
-                          )}
-                        </p>
-                        
+
+                      <div className='features_box'>
+                        <div>
+                          <img src={Language1} alt='' srcSet='' />
+                        </div>
+                        <div>
+                          <h6>
+                            {t(
+                              "coursesPage.coursesDetailsPage.heading.features.6.heading",
+                            )}
+                          </h6>
+                          <p>
+                            {t(
+                              "coursesPage.coursesDetailsPage.heading.features.6.data",
+                            )}
+                          </p>
+
+                        </div>
                       </div>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
+                    </Col>
+                  </Row>
+                </div>
               </Col>
             </Row>
           </div>

@@ -2,32 +2,37 @@
   background: #ffe2ec;
   padding: 80px 0;
 }
+
 .guidance_book_form {
   background-color: #fff;
   border-radius: 5px;
-  padding: 59px;
+  padding: 50px 40px;
 }
+
 .guidance_book_form em {
   font-style: inherit;
 }
+
 .guidance_con h2 {
   font-family: 'SegoeUI_medium';
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 52px;
   color: rgb(96 96 96);
 }
+
 .guidance_con p {
   font-family: 'SegoeUI_bold';
   text-transform: capitalize;
   font-style: normal;
   font-weight: normal;
-  font-size: 38px;
+  font-size: 30px;
   line-height: 30px;
   color: rgb(0 0 0);
   margin-bottom: 35px;
 }
+
 .guidance_con img {
   max-width: 100%;
   margin-top: 30px;
@@ -36,10 +41,12 @@
 .guidance_book_form span.MuiTabs-indicator {
   border-bottom: none !important;
 }
+
 .guidance_book_form .MuiTabs-flexContainer {
   justify-content: space-between;
   margin-top: 20px;
 }
+
 .guidance_book_form .MuiTabPanel-root {
   padding: 24px 0 !important;
 }
@@ -53,6 +60,7 @@
   transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   background-color: transparent;
 }
+
 .guidance_book_form .MuiTab-root.Mui-selected {
   font-family: Poppins;
   font-style: normal;
@@ -68,6 +76,7 @@
   width: 48%;
   height: 42px;
 }
+
 .guidance_book_form .MuiFormControl-root.MuiTextField-root {
   background: #fcfcfd;
   border: 1px solid #e6e5eb;
@@ -76,6 +85,7 @@
   width: 100%;
   height: 50px;
 }
+
 .guidance_book_form .MuiButtonBase-root.MuiTab-root {
   font-family: "SegoeUI_medium";
   font-style: normal;
@@ -85,16 +95,20 @@
   color: #425466;
   padding: 0;
 }
+
 .guidance_book_form .MuiOutlinedInput-root {
   height: 50px;
   // padding: 0px 0 0px 6px;
 }
+
 .guidance_book_form .MuiOutlinedInput-notchedOutline {
   border: none;
 }
+
 .guidance_book_form .MuiSelect-select.MuiSelect-outlined img {
   margin-right: 9px;
 }
+
 .guidance_book_form select {
   background: #fcfcfd;
   border: 1px solid #e6e5eb;
@@ -103,6 +117,7 @@
   width: 100%;
   height: 50px;
 }
+
 .guidance_book_form .MuiFormControl-root {
   width: 100%;
   background-color: #fcfcfd;
@@ -112,9 +127,11 @@
   width: 100%;
   height: 50px;
 }
+
 .guidance_book_form .form-group.mzero .MuiFormControl-root {
   margin: 0;
 }
+
 .guidance_book_form textarea.textarea_set {
   width: 100%;
   background: #fcfcfd;
@@ -123,9 +140,11 @@
   border-radius: 5px;
   padding: 15px 12px;
 }
+
 .guidance_book_form textarea.textarea_set:focus {
   outline: none;
 }
+
 .guidance_book_form .MuiSelect-select.MuiSelect-outlined {
   font-family: SegoeUI_medium;
   font-style: normal;
@@ -134,30 +153,34 @@
   line-height: 20px;
   color: #5f6377;
 }
+
 .guidance_book_form svg.MuiSvgIcon-root {
   background-image: url("../../assets/icons/down.png") !important;
   background-repeat: no-repeat;
   color: #fff !important;
 }
-.guidance_book_form
-  svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-1636szt {
+
+.guidance_book_form svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-1636szt {
   right: 5px !important;
   top: calc(50% - 0.15em) !important;
 }
-.guidance_book_form
-  svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.MuiSelect-iconOpen.css-1yhq19e {
+
+.guidance_book_form svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.MuiSelect-iconOpen.css-1yhq19e {
   right: 15px !important;
   top: calc(50% - 1em) !important;
 }
+
 .guidance_book_form .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
   color: #fff;
   top: calc(50% - 5px);
 }
+
 .guidance_book_form .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
   color: #fff;
   right: 18px;
   top: calc(50% - 0.9em);
 }
+
 button.book_sess_btn {
   background: #ec498a;
   border: 1px solid #ec498a;
@@ -175,18 +198,22 @@ button.book_sess_btn {
   padding: 14px;
   transition-duration: 1s;
 }
+
 button.book_sess_btn:hover {
   border: 1px solid #ec498a;
   color: #ec498a;
   background-color: transparent;
 }
+
 .g_book_img {
   display: flex;
   justify-content: space-between;
 }
+
 .book_sec_content.mob_show {
   display: none;
 }
+
 .book_sec_content.mob_show h2 {
   font-family: SegoeUI_bold;
   font-style: normal;
@@ -205,6 +232,7 @@ button.book_sess_btn:hover {
   line-height: 140%;
   color: #828282;
 }
+
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
   .guidance_book_form {
     padding: 30px;
@@ -233,4 +261,14 @@ button.book_sess_btn:hover {
   .other_head .MuiButton-text.MuiButton-root {
     display: none;
   }
+
+  .google_add {
+    width: 100%;
+    padding-top: 20px !important;
+  }
+}
+
+.google_add {
+  width: 100%;
+  padding-top: 0px;
 }

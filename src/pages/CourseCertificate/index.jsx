@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserCourseCertificateDetail } from "../../store/certificate";
 
 import CertificatesDetail from "../Certificates/CertificatesDetail";
+import add from "../../assets/images/add.png";
 
 function CourseTest() {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ function CourseTest() {
     }
   }, [id, history, dispatch, lan]);
 
-  const redirectToDownload  = () =>{
+  const redirectToDownload = () => {
     history.push(`/certificate-detail/${id}/true`);
   }
 
@@ -99,7 +100,7 @@ function CourseTest() {
                     onClick={() =>
                       history.push(
                         routingConstants.ALL_CERTIFICATE_DETAIL +
-                          certificate?.id,
+                        certificate?.id,
                       )
                     }
                     style={{ cursor: "pointer" }}
@@ -127,7 +128,7 @@ function CourseTest() {
                     alt=''
                     style={{ cursor: "pointer" }}
                     //onClick={() => certificateRef.current.generatePDF()}
-                    onClick={()=>redirectToDownload()}
+                    onClick={() => redirectToDownload()}
                   />
                   <br />
                 </p>
@@ -135,6 +136,7 @@ function CourseTest() {
             </Col>
           </Row>
         </Container>
+
       </div>
 
       <Footer loginPage={false} />

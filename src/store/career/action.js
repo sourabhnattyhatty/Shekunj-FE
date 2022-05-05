@@ -243,6 +243,27 @@ export const getTopCollages =
     }
   };
 
+
+  export const singleCareerDetails = (id) => async (dispatch) => {
+    try {
+      dispatch({ type: coursesTypes.TOP_COLLAGE_REQUEST });
+      const res = await httpServices.get(constants.TOP_COLLEGES + "/" + id );
+
+      console.log("ttttttttt", res)
+      dispatch({
+        type: coursesTypes.TOP_COLLAGE_FINISH,
+        payload: {
+          ...res?.data,
+          image: res?.data.image ? res?.data?.image : httpServices.noImage,
+        },
+      });
+    } catch (error) {
+      dispatch({ type: coursesTypes.TOP_COLLAGE_FAIL });
+    }
+  };
+
+
+
 export const setFilterValue =
   (id, action, arrayType, subType) => async (dispatch, getState) => {
     const { courseSector, topCollages, topSchools, governmentExams } =

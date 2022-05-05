@@ -19,6 +19,7 @@ const routingConstants = {
   CONTACT_US: "/contact-us/",
   COURSE_CERTIFICATE: "/course-certificate/",
   COURSE_DETAILS: "/courses-details/",
+  CAREER_DETAILS: "/career-details/",
   COURSES_MODULE: "/courses-module/",
   COURSES_RESULT: "/course-result/",
   COURSES_TEST: "/courses-test/",
@@ -41,6 +42,8 @@ const routingConstants = {
   SUCCESS_CAREER_TEST: "/success-career-test/",
   SUCCESS_STORIES: "/success-stories/",
   TOP_COLLEGES: "/top-colleges/",
+  TOP_COLLEGE: "/top-college/",
+  TOP_COLLEGES_DETAILS: "/top-colleges/detail/",
   TOP_SCHOOLS: "/top-schools/",
 };
 
@@ -60,6 +63,7 @@ const apiConstants = {
     START_USER_CAREER_TEST: "career/start-user-career-test/",
     TOP_COLLEGE_LIST: "career/top-collage-list/",
     TOP_SCHOOL_LIST: "career/top-school-list/",
+    CAREER_DETAILS: "/career-details/",
     USER_CAREER_TEST_RESULT: "/career/user-career-test-result/",
     USER_CAREER_END_TEST: "/career/user-career-test-end/"
   },

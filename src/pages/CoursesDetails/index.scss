@@ -437,12 +437,29 @@ section.CouDtl_ban .row {
   section.CouDtl_ban .row {
     height: auto ;
   }
+  .google_add{
+    width: 100%;
+    padding-right: 0px!important;
+  }
+  .google_add_left{
+    width: 100%;
+  padding: 0px 30px;
+  }
 }
 .sec1_con2.con_setSec1 .features_box {
   background-color: transparent;
   box-shadow: none;
   height: auto;
   padding: 0;
+}
+.google_add{
+  width: 100%;
+padding-bottom: 30px;
+  padding-top: 30px;
+}
+.google_add_left{
+  width: 100%;
+  padding-bottom: 30px;
 }
 
 

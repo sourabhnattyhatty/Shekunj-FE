@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
@@ -11,12 +11,23 @@ import InProgressCourse from "./InProgressCourse";
 import YourTest from "./YourText";
 import { Header, Footer, SEO } from "../../components";
 import { getUserCourseProgress } from "../../store/my-progress";
+import AddsPopup from '../AddsPopup/AddsPopup'
 
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
 
 function MyProgress() {
+
+  
+  const [addPopup, setAddPopup] = useState(false);
+  const handleClose = () => setAddPopup(false);
+  const handleShow = () => setAddPopup(true);
+
+  useEffect(() => {
+    handleShow()
+  }, []);
+
   const { user } = useSelector((state) => state.authReducer);
   const { myProgress } = useSelector((state) => state.myProgressReducer);
   const dispatch = useDispatch();
@@ -105,6 +116,8 @@ function MyProgress() {
             </Col>
             {/* right side content end */}
           </Row>
+          <AddsPopup popupShow={addPopup}
+            popupClose={handleClose} />
         </Container>
       </div>
       <Footer loginPage={false} />

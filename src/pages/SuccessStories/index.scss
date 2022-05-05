@@ -41,7 +41,7 @@ p.sucess_first_p {
   font-family: 'SegoeUI_bold';
 }
 .suc_box {
-  margin-top: 150px;
+  margin-top: 40px;
 }
 .suc_box h2 {
   font-family: Poppins;
@@ -177,6 +177,7 @@ button.want_btn {
 
   .suc_box h2 {
     font-size: 16px;
+    padding-top: 20px;
   }
 
   .suc_box h3 {
@@ -207,6 +208,12 @@ button.want_btn {
   .suc_box .col-md-4.col-12 {
     order: 1;
   }
+  .google_add{
+    width: 100%;
+   padding-top: 40px;
+  }
+  
+  
 }
 
 
@@ -237,4 +244,13 @@ button.want_btn {
   .SuccStory_banner p {
     font-size: 19px;
   }
+}
+
+.google_add{
+  width: 100%;
+ padding-top: 40px;
+}
+.google_add_story{
+  width: 100%;
+ padding-top: 40px;
 }

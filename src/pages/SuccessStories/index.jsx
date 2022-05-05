@@ -14,6 +14,7 @@ import double_quote from "../../assets/icons/double_quote.png";
 import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
+import add from "../../assets/images/add.png";
 
 function SuccessStory() {
   const history = useHistory();
@@ -54,6 +55,14 @@ function SuccessStory() {
           </Row>
         </Container>
       </div>
+       {/* google add */}
+       <Container>
+        <Row>
+          <div className='col-md-12'>
+            <img src={add} alt='Image' className='google_add' />
+          </div>
+        </Row>
+      </Container>
 
       <Container>
         {successStories?.length > 0 &&
@@ -150,6 +159,8 @@ function SuccessStory() {
                       </>
                     )}
                   </Row>
+
+                  { (idx%2==1) ?<img src={add} alt='Image'  className='google_add_story' /> :'' }
                 </div>
               </>
             ))}

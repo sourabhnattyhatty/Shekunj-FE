@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Aos from "aos";
+import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { Link, Redirect, useHistory, useLocation } from "react-router-dom";
 
@@ -17,6 +18,7 @@ import "../../pages/responsive.scss";
 import "../../pages/responsive.scss";
 import "./index.scss";
 
+import add from "../../assets/images/add.png";
 import x from "../../assets/images/Career/x.png";
 import desktop from "../../assets/icons/desktop.png";
 import Resume from "../../assets/images/resume.png";
@@ -120,6 +122,20 @@ function HomePage() {
       handleOpen();
     }
   }, [redirect]);
+
+  useEffect(() => {
+    getAddImage();
+	}, [])
+
+  const [addImage, setAddImage] = useState([]);
+
+	function getAddImage() {
+		axios.get('http://127.0.0.1:8000/api/private_adds/private_add')
+			.then((response) => {
+        console.log("yessssssssssssss",response.data)
+				
+			});
+	}
 
   return (
     <div>
@@ -238,7 +254,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      
+
       {/* <Link to='/courses' style={{ textDecoration: "none" }}>
       <span>
         <button className='view_test_cate'>
@@ -248,10 +264,21 @@ function HomePage() {
       </Link> */}
 
       <div className="courses">
-            <Link to="/courses"  style={{ textDecoration: "none" }} className="view_test_cate"> 
-            {t("homePage.mainSlider.button.7")}
-            </Link>
+        <Link to="/courses" style={{ textDecoration: "none" }} className="view_test_cate">
+          {t("homePage.mainSlider.button.7")}
+        </Link>
       </div>
+
+       {/* google add */}
+       <section>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12'>
+            <img src={add} alt='Image'  className='google_add' />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* resume */}
       <section className='resume same_padding mt-5 noselect'>
@@ -284,17 +311,28 @@ function HomePage() {
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
       />
-        <div className="courses">
-              <Link to="/success-career-test"  style={{ textDecoration: "none" }} className="view_test_cate  noselect"> 
-              {t("homePage.mainSlider.button.3")}
-              </Link>
+      <div className="courses">
+        <Link to="/success-career-test" style={{ textDecoration: "none" }} className="view_test_cate  noselect">
+          {t("homePage.mainSlider.button.3")}
+        </Link>
 
-        </div>
+      </div>
       {/* <Link to='/success-career-test' style={{ textDecoration: "none" }}>
         <button className='view_test_cate noselect'>
           {t("homePage.mainSlider.button.3")}
         </button>
       </Link> */}
+
+      {/* google add */}
+      <section>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12'>
+            <img src={add} alt='Image'  className='google_add' />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Job opportunity */}
       <section className='job-opprtunity same_padding mt-5 noselect'>
@@ -328,6 +366,8 @@ function HomePage() {
         </div>
       </section>
 
+      
+
       <Carousel
         items={5}
         page='homePage'
@@ -336,12 +376,24 @@ function HomePage() {
         type={constants.carouselConstant.GOVERNMENT_EXAMS}
       />
       <div className="courses">
-            <Link to="/government-exams"  style={{ textDecoration: "none" }} className="view_test_cate">  
+        <Link to="/government-exams" style={{ textDecoration: "none" }} className="view_test_cate">
 
-            {t("homePage.mainSlider.button.2")}
-            </Link>
-
+          {t("homePage.mainSlider.button.2")}
+        </Link>
       </div>
+
+     {/* google add */}
+     <section>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12'>
+            <img src={add} alt='Image'  className='google_add' />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
       {/* <Link to='/government-exams' style={{ textDecoration: "none" }}>
         <button
           className='view_test_cate'
@@ -694,7 +746,7 @@ function HomePage() {
             {t('deskTopView.heading')}
           </Typography>
           <button className='btn btn-info' onClick={() => handleClose()}>
-          {t('deskTopView.button')}
+            {t('deskTopView.button')}
           </button>
         </Box>
       </Modal>
