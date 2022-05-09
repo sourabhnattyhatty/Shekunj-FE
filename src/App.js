@@ -14,6 +14,7 @@ const HomePage = React.lazy(() => import("./pages/HomePage"));
 const About = React.lazy(() => import("./pages/About"));
 const Career = React.lazy(() => import("./pages/Career"));
 const CareerDetails = React.lazy(() => import("./pages/CareerDetails"));
+const Career1Details = React.lazy(() => import("./pages/Career1Details"));
 const Career1 = React.lazy(() => import("./pages/Career1"));
 const Career2 = React.lazy(() => import("./pages/Career2"));
 const MyProfile = React.lazy(() => import("./pages/MyProfile"));
@@ -136,8 +137,13 @@ function App() {
         />
         <PrivateRoute
           exact
-          path={`${routingConstants.CAREER_DETAILS}:id`}
+          path={`${routingConstants.TOP_COLLEGE}:id`}
           component={CareerDetails}
+        />
+        <PrivateRoute
+          exact
+          path={`${routingConstants.TOP_SCHOOLS}:id`}
+          component={Career1Details}
         />
         <PrivateRoute
           exact

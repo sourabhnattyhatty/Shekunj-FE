@@ -32,7 +32,7 @@ const Courses = () => {
   const [resetState, setResetState] = useState(false);
   const [categoryId, setCategoryId] = useState(null);
 
-  const [pageLimit] = useState(10);
+  const [pageLimit] = useState(5);
 
   const [pageCount, setPageCount] = useState(0);
   const [categoryPageCount, setCategoryPageCount] = useState(0);
@@ -128,7 +128,10 @@ const Courses = () => {
   };
   const paginationNext = () => {
     if (categoryId) {
-      setCategoryPageCount(categoryPageCount + pageLimit);
+      
+      setCategoryPageCount(categoryPageCount + pageLimit, ()=>{console.log(categoryPageCount, pageLimit)});
+
+
       dispatch(
         allCourses(
           `?category_id=${categoryId}&limit=${pageLimit}&offset=${categoryPageCount + pageLimit
@@ -136,6 +139,7 @@ const Courses = () => {
         ),
       );
     } else {
+      console.log(pageCount, pageLimit);
       setPageCount(pageCount + pageLimit);
       dispatch(
         allCourses(`?limit=${pageLimit}&offset=${pageCount + pageLimit}`),

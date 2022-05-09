@@ -247,9 +247,8 @@ export const getTopCollages =
   export const singleCareerDetails = (id) => async (dispatch) => {
     try {
       dispatch({ type: coursesTypes.TOP_COLLAGE_REQUEST });
-      const res = await httpServices.get(constants.TOP_COLLEGES + "/" + id );
-
-      console.log("ttttttttt", res)
+      const res = await httpServices.get("career/top-collage" + "/" + id );
+      
       dispatch({
         type: coursesTypes.TOP_COLLAGE_FINISH,
         payload: {
@@ -259,6 +258,24 @@ export const getTopCollages =
       });
     } catch (error) {
       dispatch({ type: coursesTypes.TOP_COLLAGE_FAIL });
+    }
+  };
+
+  
+  export const singleCareer1Details = (id) => async (dispatch) => {
+    try {
+      dispatch({ type: coursesTypes.TOP_SCHOOL_REQUEST });
+      const res = await httpServices.get("career/top-school" + "/" + id );
+      
+      dispatch({
+        type: coursesTypes.TOP_SCHOOL_FINISH,
+        payload: {
+          ...res?.data,
+          image: res?.data.image ? res?.data?.image : httpServices.noImage,
+        },
+      });
+    } catch (error) {
+      dispatch({ type: coursesTypes.TOP_SCHOOL_FAIL });
     }
   };
 

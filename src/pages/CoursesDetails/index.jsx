@@ -132,6 +132,7 @@ const CourseDetails = () => {
               </Row>
             </Container>
 
+            <Container>
             <Row>
               <Col lg={7} md={12}>
                 <div className='sec1_con2'>
@@ -242,6 +243,8 @@ const CourseDetails = () => {
                 </div>
               </Col>
             </Row>
+            </Container>
+
           </div>
         </div>
       </section>

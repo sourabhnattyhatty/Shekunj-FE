@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
+import { routingConstants } from "../../utils/constants";
 import {
   getTopSchools,
   reSetFilterValue,
@@ -72,9 +73,23 @@ const CareerPage1 = () => {
                         style={{ height: "auto" }}
                       >
                         <Row>
-                          <Col md={7} xs={12}>
+                        <Col md={3} xs={12}>
+                            <div className='career_img'>
+                              <img srcSet={transformImg(c?.image)} alt='...' />
+                            </div>
+                          </Col>
+
+                          <Col md={9} xs={12}>
                             <div className='top_col_content'>
-                              <h3>{c?.name || t("common.n/a")}</h3>
+                            <h3>
+                                  <Link
+                                    to={routingConstants.TOP_SCHOOLS + c.id}
+                                    className='col-md-6'
+                                    key={c?.id}
+                                  >
+                                    {c?.name || t("common.n/a")}
+                                    </Link>
+                                    </h3>
                               <p style={{ textTransform: "capitalize" }}>
                                 {c?.city || t("common.n/a")},{" "}
                                 {c?.state || t("common.n/a")} •{" "}
@@ -170,11 +185,7 @@ const CareerPage1 = () => {
                             </div>
                           </Col>
 
-                          <Col md={5} xs={12}>
-                            <div className='career_img'>
-                              <img srcSet={transformImg(c?.image)} alt='...' />
-                            </div>
-                          </Col>
+                          
                         </Row>
                       </div>
                     ),

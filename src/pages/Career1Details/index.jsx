@@ -5,10 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import { Link, useParams } from "react-router-dom";
 import {
-    getTopCollages,
     reSetFilterValue,
     toggleCollapseValue,
-    singleCareerDetails,
+    singleCareer1Details,
 } from "../../store/career";
 import TopCollage from "../../assets/images/Career/clg.jpg"
 import add from "../../assets/images/add.png";
@@ -16,17 +15,17 @@ import gallery1 from "../../assets/images/gal1.jpg";
 import "../HomePage/index.scss";
 import "./index.scss";
 
-const CareerDetails = () => {
+const Career1Details = () => {
 
     const { id } = useParams();
-    const { topCollages } = useSelector((state) => state.careerReducer);
-    console.log('yesy', topCollages)
+    const { topSchools } = useSelector((state) => state.careerReducer);
+    console.log('yesy', topSchools)
     const dispatch = useDispatch();
     const { lan } = useSelector((state) => state.languageReducer);
     const { t } = useTranslation();
 
     useEffect(() => {
-        dispatch(singleCareerDetails(id));
+        dispatch(singleCareer1Details(id));
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }, [dispatch, id, lan]);
 
@@ -44,7 +43,7 @@ const CareerDetails = () => {
                     <div className='col-md-12 college_banner'>
                         <div className="college_detail_banner ">
                             <div className="college_logo">
-                                <img src={transformImg(topCollages?.image)} alt='...' />
+                                <img src={transformImg(topSchools?.image)} alt='...' />
                             </div>
 
                         </div>
@@ -54,23 +53,22 @@ const CareerDetails = () => {
 
             <div className='mainDiv_career'>
 
-
                 <Container>
                     <Row>
                         <Col md={8} xs={12}>
                             <div className='deatil_box'>
-                                <h4>{topCollages && topCollages.name ? topCollages.name : t("common.n/a")}</h4>
+                                <h4>{topSchools && topSchools.name ? topSchools.name : t("common.n/a")}</h4>
 
-                                {topCollages && topCollages.state ? topCollages?.state : t("common.n/a")} •{" "}
+                                {topSchools && topSchools.state ? topSchools?.state : t("common.n/a")} •{" "}
                                 <span style={{ textTransform: "capitalize" }}>
-                                    {topCollages && topCollages.collage_type
-                                        ? topCollages?.collage_type
+                                    {topSchools && topSchools.collage_type
+                                        ? topSchools?.collage_type
                                         : t("common.n/a")}
 
                                     <h6> <span>{t("careerTopColleges.other.4")}</span>{" "}
                                         : {/* {transformPrice(c?.fees)}{" "} */}
-                                        {topCollages && topCollages.contact_no
-                                            ? topCollages?.contact_no
+                                        {topSchools && topSchools.contact_no
+                                            ? topSchools?.contact_no
                                             : t("common.n/a")}</h6>
 
 
@@ -78,12 +76,12 @@ const CareerDetails = () => {
 
                                 <h6>
                                     <Link
-                                        to={{ pathname: topCollages?.website }}
+                                        to={{ pathname: topSchools?.website }}
                                         target='_blank'
                                         rel='noreferrer'
                                     >
-                                        {topCollages && topCollages.website
-                                            ? topCollages.website
+                                        {topSchools && topSchools.website
+                                            ? topSchools.website
                                             : t("common.n/a")}
                                     </Link>
                                 </h6>
@@ -92,24 +90,24 @@ const CareerDetails = () => {
                                         {t("careerTopColleges.other.9")}
                                     </span>{" "}
                                     :{" "}
-                                    {topCollages && topCollages.email
-                                        ? topCollages?.email
+                                    {topSchools && topSchools.email
+                                        ? topSchools?.email
                                         : t("common.n/a")}
                                 </h6>
                                 <span>
                                     {t("careerTopColleges.other.10")}
                                 </span>{" "}
                                 :{" "}
-                                {topCollages && topCollages.established_year
-                                    ? topCollages?.established_year
+                                {topSchools && topSchools.established_year
+                                    ? topSchools?.established_year
                                     : t("common.n/a")}
                                 <h6>
                                     <span>
                                         {t("careerTopColleges.other.7")}
                                     </span>{" "}
                                     :{" "}
-                                    {topCollages && topCollages.accreditation
-                                        ? topCollages?.accreditation
+                                    {topSchools && topSchools.accreditation
+                                        ? topSchools?.accreditation
                                         : t("common.n/a")}
                                 </h6>
                                 <p>
@@ -117,7 +115,7 @@ const CareerDetails = () => {
                                         {t("careerTopColleges.other.6")}
                                     </span>{" "}
                                     :{" "}
-                                    <div dangerouslySetInnerHTML={{ __html: `<div>${topCollages.about_college}</div>` }} />
+                                    <div dangerouslySetInnerHTML={{ __html: `<div>${topSchools.about_college}</div>` }} />
                                 </p>
 
                                 <p>
@@ -125,7 +123,7 @@ const CareerDetails = () => {
                                         {t("careerTopColleges.other.8")}
                                     </span>
                                     :
-                                    <div dangerouslySetInnerHTML={{ __html: `<div>${topCollages.courses_offered}</div>` }} />
+                                    <div dangerouslySetInnerHTML={{ __html: `<div>${topSchools.courses_offered}</div>` }} />
 
                                 </p>
                                 <h6>
@@ -133,8 +131,8 @@ const CareerDetails = () => {
                                         {t("careerTopColleges.other.11")}
                                     </span>{" "}
                                     :{" "}
-                                    {topCollages && topCollages.gender_intech
-                                        ? topCollages?.gender_intech
+                                    {topSchools && topSchools.gender_intech
+                                        ? topSchools?.gender_intech
                                         : t("common.n/a")}
                                 </h6>
 
@@ -189,4 +187,4 @@ const CareerDetails = () => {
     );
 };
 
-export default CareerDetails;
+export default Career1Details;

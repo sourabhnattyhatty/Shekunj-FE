@@ -108,7 +108,7 @@ const CareerPage = () => {
                               <div className='top_col_content'>
                                 <h3>
                                   <Link
-                                    to={routingConstants.CAREER_DETAILS + c.id}
+                                    to={routingConstants.TOP_COLLEGE + c.id}
                                     className='col-md-6'
                                     key={c?.id}
                                   >
