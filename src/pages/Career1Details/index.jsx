@@ -89,7 +89,7 @@ const Career1Details = () => {
                                                     : {topSchools && topSchools.contact_no}
                                                 </h6>
                                             </span>
-                                        </Col>
+                                    </Col>
                                     )}
 
                                     {topSchools.board_type && (
