@@ -185,10 +185,22 @@ hr.hr_line {
 .date_set_small {
   left: 9px !important;
 }
+.google_add_cer{
+  width: 100%;
+padding-right: 30px!important;
+}
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .skill_flex {
     flex-wrap: wrap;
   }
+  
+
+}
+
+.google_add_cer{
+  width: 100%;
+padding-left: 30px;
+padding-right: 80px;
 }

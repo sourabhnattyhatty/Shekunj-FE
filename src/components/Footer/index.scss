@@ -5,14 +5,17 @@
   background: #1c1d1f;
   padding: 50px 0px 20px;
 }
+
 .footer_login {
   background: #1c1d1f;
   padding: 50px 0px 20px;
 }
+
 footer ul li {
   list-style-type: none;
   margin-bottom: 10px;
 }
+
 footer ul li a {
   font-family: "SegoeUI_medium";
   font-weight: normal;
@@ -21,10 +24,12 @@ footer ul li a {
   color: #fff;
   transition: 0.25s ease;
 }
+
 footer ul li a:hover {
   color: #ec498a;
   text-decoration: none;
 }
+
 .bottom-footer p {
   font-family: "SegoeUI_medium";
   font-weight: 300;
@@ -41,7 +46,7 @@ footer ul li a:hover {
 }
 
 footer .set_language .MuiButton-text.MuiButton-textPrimary {
-  width: 100%;
+  width: 70%;
   color: #fff !important;
   font-weight: 300 !important;
   font-size: 16px !important;
@@ -53,8 +58,52 @@ footer .set_language .MuiButton-text.MuiButton-textPrimary {
 
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
 
-.set_language .makeStyles-language-1 {
-  width: 100%;
+  footer .set_language .MuiButton-text.MuiButton-textPrimary {
+    width: 70%;
+    color: #fff !important;
+    font-weight: 300 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    border: 1px solid #ffffff !important;
+    text-align: left !important;
+    margin-left: 0px;
+  }
+
+  .set_language .makeStyles-language-1 {
+    width: 100%;
+  }
+
+  .google_ads_footer {
+    margin: 10px 0px !important;
+    height: 39px !important;
+    width: 80% !important;
+  }
+  .footer_ads_bottom {
+    height: 79px !important;
+    margin-top: 30px !important;
+    width: 100% !important;
+  }
+
 }
 
+.google_ads_footer {
+  margin: 40px 0px;
+  height: 120px;
+  width: 84%;
+  object-fit: cover;
+}
+
+.ads_footer_cover {
+  text-align: center;
+}
+
+.footer_ads_bottom_parent {
+  text-align: center;
+}
+
+.footer_ads_bottom {
+  height: 79px;
+  margin-top: 30px;
+  width: 100%;
+  object-fit: cover;
 }

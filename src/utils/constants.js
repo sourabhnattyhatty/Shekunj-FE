@@ -3,7 +3,7 @@ const carouselConstant = {
   TEST: "TEST",
   COLLEGES: "COLLEGES",
   SCHOOLS: "SCHOOLS",
-  GOVERNMENT_EXAMS: 'GOVERNMENT_EXAMS',
+  GOVERNMENT_SCHEMES: 'GOVERNMENT_SCHEMES',
   COURSE_DETAIL: "courseDetail",
   HOMEPAGE: "homePage",
 };
@@ -25,8 +25,9 @@ const routingConstants = {
   COURSES: "/courses/",
   EMAIL_PAGE: "/email-page/",
   FORGOT_PASSWORD : "/ForgetPassword",
+  DATA_NOT_FOUND : "/data-not-found",
   FORGOT: "/forgot",
-  GOVERNMENT_EXAMS: "/government-exams/",
+  GOVERNMENT_SCHEMES: "/government-schemes/",
   GUIDANCE_BOOK: "/guidance-book/",
   HELP_AND_SUPPORT: "/help-and-support",
   HOME_PAGE: "/",
@@ -42,6 +43,7 @@ const routingConstants = {
   SUCCESS_STORIES: "/success-stories/",
   TOP_COLLEGES: "/top-colleges/",
   TOP_SCHOOLS: "/top-schools/",
+  TOP_SCHOOL: "/top-school/"
 };
 
 const apiConstants = {
@@ -56,7 +58,7 @@ const apiConstants = {
     USER_SEND_OTP : "authentication/user-send-otp/",
   },
   CAREER: {
-    GOVERNMENT_EXAMS: "career/government-exam/",
+    GOVERNMENT_SCHEMES: "career/government-exam/",
     START_USER_CAREER_TEST: "career/start-user-career-test/",
     TOP_COLLEGE_LIST: "career/top-collage-list/",
     TOP_SCHOOL_LIST: "career/top-school-list/",

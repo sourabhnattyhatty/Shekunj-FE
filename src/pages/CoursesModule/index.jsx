@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import AddsPopup from '../AddsPopup/AddsPopup'
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -25,6 +26,7 @@ import { useTranslation } from 'react-i18next';
 import { subModule } from '../../store/courses';
 import { coursesTypes } from '../../store/courses/types';
 import { useRef } from 'react';
+import axios from "axios";
 
 const Accordion = styled(props => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -82,6 +84,16 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 }));
 
 const CourseModule = () => {
+
+
+  const [addPopup, setAddPopup] = useState(false);
+  const handleClose = () => setAddPopup(false);
+  const handleShow = () => setAddPopup(true);
+
+  useEffect(() => {
+    handleShow()
+  }, []);
+
   const [show, setShow] = React.useState(true);
   const [showSubActive, setShowsubActive] = React.useState('1.1');
   const [expanded, setExpanded] = React.useState('panel1');
@@ -141,8 +153,8 @@ const CourseModule = () => {
 
 
   React.useEffect(() => {
-      dispatch(startCourse(id, currentModal, currentProgress, true));
-      dispatch(getSingleCourseModule(id));
+    dispatch(startCourse(id, currentModal, currentProgress, true));
+    dispatch(getSingleCourseModule(id));
   }, [dispatch, id, lan]);
 
   const handleChange = panel => (event, newExpanded) => {
@@ -156,21 +168,21 @@ const CourseModule = () => {
     const result = width * ratio
     setIframe((course?.pdf_height * 1.333) - result)
 
-    if (lastSelectedIndexOne.current &&  lastSelectedIndex.current) {
+    if (lastSelectedIndexOne.current && lastSelectedIndex.current) {
       manageClick(lastSelectedIndexOne.current, lastSelectedObject.current, lastSelectedIndex.current);
     }
-    handleCurrentModule(false);   
+    handleCurrentModule(false);
   };
 
   const handlePrevModule = page => {
-   const splitedArr = arr[page - 1].split('.');
-   const value = parseInt(splitedArr[0])
-   if(Math.round(arr[page]) - (Math.round(arr[page - 1])) === 1){
-    setExpanded(`panel${value}`)
-   }
+    const splitedArr = arr[page - 1].split('.');
+    const value = parseInt(splitedArr[0])
+    if (Math.round(arr[page]) - (Math.round(arr[page - 1])) === 1) {
+      setExpanded(`panel${value}`)
+    }
     const p = (page) * progress;
     setShowsubActive(arr[page - 1]);
-    dispatch(startCourse(id, page, p === 0 ? progress :p, true));
+    dispatch(startCourse(id, page, p === 0 ? progress : p, true));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
@@ -178,7 +190,7 @@ const CourseModule = () => {
     const splitedArr = arr[page - 1].split('.');
     const value = parseInt(splitedArr[0])
     const valueOne = parseInt(splitedArr[1])
-    if(valueOne === 1){
+    if (valueOne === 1) {
       setExpanded(`panel${value}`)
     }
     const p = (page) * progress;
@@ -191,7 +203,7 @@ const CourseModule = () => {
     const p = currentModal * progress;
     dispatch(startCourse(id, page, p > 100 ? 100 : p, true));
     setCurrentProgress(p > 100 ? 100 : p)
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   const openSubModule = obj1 => {
@@ -202,7 +214,7 @@ const CourseModule = () => {
     lastSelectedIndexOne.current = ind1;
     lastSelectedObject.current = obj1;
     lastSelectedIndex.current = ind;
-    
+
     openSubModule(obj1);
     setShowsubActive(`${ind + 1}.${ind1 + 1}`);
     return handleCurrentModule(currentModal);
@@ -273,7 +285,7 @@ const CourseModule = () => {
           />
         </div>
       );
-    }else if(course.description === null){
+    } else if (course.description === null) {
       return <div>{t('coursesPage.pdfSize.heading')}</div>;
     } else {
       return (
@@ -297,10 +309,32 @@ const CourseModule = () => {
     setArray(data);
   }, [courseModulesList.length])
 
+  const [adsCourseModule, setAdsCourseModule] = useState([]);
+
+	useEffect(() => {
+		axios.get('/private_adds/private_add?image_type=courses_module')
+			.then((response) => {
+				setAdsCourseModule(response.data.results);
+			});
+	}, [])
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
       <div className='course_module mt-md-0 mb-md-0 mt-4 mb-4 noselect'>
+
+        <Container>
+          <Row>
+            <div className='col-md-12'>
+              <div className='ads_course_mod_cover'>
+            <a href={adsCourseModule[0]?.url_adds}  target='_blank'>
+              <img src={adsCourseModule[0]?.image} alt='Image' className='ads_Course_module' />
+              </a>
+              </div>
+            </div>
+          </Row>
+        </Container>
+
         <Container>
           <Row className='pt-md-5 pb-md-5'>
             <Col md={12} xs={12} className='text-left mb-5'>
@@ -353,7 +387,7 @@ const CourseModule = () => {
                                     )}
                                     <span
                                       onClick={() => manageClick(ind1, obj1, ind)}
-                                      
+
                                       style={{
                                         color:
                                           showSubActive === `${ind + 1}.${ind1 + 1}`
@@ -549,6 +583,8 @@ const CourseModule = () => {
               </div>
             </Col>
           </Row>
+          <AddsPopup popupShow={addPopup}
+            popupClose={handleClose} />
         </Container>
       </div>
       <ScrollToTop />

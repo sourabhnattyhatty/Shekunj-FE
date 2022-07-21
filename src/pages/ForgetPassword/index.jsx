@@ -65,7 +65,7 @@ function ForgetPassword() {
         <div className='ForPass_feild'>
           <Row>
             <Col lg={6} md={6} xs={12}>
-              <img src={wrongpassword} alt='' srcset='' />
+              <img src={wrongpassword} alt='' srcSet='' />
             </Col>
 
             <Col lg={6} md={6} xs={12}>

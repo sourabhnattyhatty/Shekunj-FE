@@ -41,7 +41,7 @@ export const allCourses =
     try {
       dispatch({ type: coursesTypes.COURSES_REQUEST });
       const res = await httpServices.get(
-        filter ? `${constants.COURSE_LIST + filter}` : `${constants.COURSE_LIST}?limit=10`,
+        filter ? `${constants.COURSE_LIST + filter}` : `${constants.COURSE_LIST}?limit=5`,
       );
       dispatch({
         type: coursesTypes.COURSES_FINISH,

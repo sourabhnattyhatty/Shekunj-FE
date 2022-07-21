@@ -17,9 +17,7 @@ export const bookCounseller = (value) => async (dispatch) => {
     dispatch({ type: guidanceTypes.BOOK_SESSION_FAIL });
     if (error.data.errors.date_of_birth) {
       toast.error(i18njs.t("login.form1.dob.required"), toasterConfig);
-    } else if (error.data.errors.gender) {
-      toast.error(i18njs.t("login.form1.gender.required"), toasterConfig);
-    } else if (error.data.errors.qualifications) {
+    }  else if (error.data.errors.qualifications) {
       toast.error(
         i18njs.t("login.form1.qualification.required"),
         toasterConfig,

@@ -6,12 +6,47 @@ import Logo from "../../assets/images/whitelogo.svg";
 import LogoBlack from "../../assets/images/whitelogo.svg";
 import ChangeLanguageButton from "../LanguageButton";
 import { routingConstants } from "../../utils/constants";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 const Footer = ({ loginPage }) => {
   const { t } = useTranslation();
 
+  const dispatch = useDispatch();
+  const [adsFooter1, setAdsFooter1] = useState([]);
+  const [adsFooter2, setAdsFooter2] = useState([]);
+
+	useEffect(() => {
+		axios.get('/private_adds/private_add?image_type=footer_1')
+			.then((response) => {
+				setAdsFooter1(response.data.results);
+			});
+	}, [])
+  useEffect(() => {
+		axios.get('/private_adds/private_add?image_type=footer_2')
+			.then((response) => {
+				setAdsFooter2(response.data.results);
+			});
+	}, [])
+  
+
   return (
     <div className="noselect">
+
+      {/* google add */}
+      <section>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12 ads_footer_cover'>
+            <a href={adsFooter1[0]?.url_adds}  target='_blank'>
+            <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' />
+            </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className={loginPage ? "footer_login" : "footer_other"}>
         <div className='container'>
           <div className='row'>
@@ -44,29 +79,43 @@ const Footer = ({ loginPage }) => {
               </ul>
             </div>
 
-            <div className='col-md-3 col-4'>
-              <ul className='p-0'>
-                <li>
-                  <Link to={routingConstants.PRIVACY_POLICY}>
-                    {t("footer.links.col3.1")}
-                  </Link>
-                </li>
+            <div className='col-md-9 col-sm-12'>
+              <div className='row'>
+                <div className='col-md-3 col-3'>
+                  <ul className='p-0'>
+                    <li>
+                      <Link to={routingConstants.PRIVACY_POLICY}>
+                        {t("footer.links.col3.1")}
+                      </Link>
+                    </li>
+                    <li>
+                      {/* <Link to={routingConstants.HELP_AND_SUPPORT}>{t("footer.links.col2.3")}</Link> */}
+                      <Link to={routingConstants.CONTACT_US}>{t("footer.links.col2.3")}</Link>
+                    </li>
+                    <li>
+                    <div className='set_language'>
+                    <ChangeLanguageButton />
+                  </div>
+                    </li>
+                  </ul>
+                </div>
 
-                <li>
-                  {/* <Link to={routingConstants.HELP_AND_SUPPORT}>{t("footer.links.col2.3")}</Link> */}
-                  <Link to={routingConstants.CONTACT_US}>{t("footer.links.col2.3")}</Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className='col-md-3 col-4'>
-              <div className='set_language'>
-                <ChangeLanguageButton />
+                <div className='col-md-9 col-sm-12'>
+                  <div className='row'>
+                    <div className='col-md-12'>
+                      <div className="footer_ads_bottom_parent">
+                    <a href={adsFooter2[0]?.url_adds}  target='_blank'>
+                    <img src={adsFooter2[0]?.image} alt='Image' className='footer_ads_bottom' />
+                    </a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className='bottom-footer mt-5'>
+          <div className='bottom-footer mt-3'>
             <div className='row'>
               <div className='col-lg-9 col-md-8 col-6 text-left'>
                 <Link className='' to='/'>

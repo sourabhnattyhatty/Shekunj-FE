@@ -5,17 +5,19 @@
   height: 620px;
   background-size: cover;
 }
+
 .SuccStory_banner h2 {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: bold;
-  font-size: 31px;     
+  font-size: 31px;
   line-height: 130%;
   color: #ffffff;
   margin-top: 80px;
   margin-bottom: 15px;
   text-transform: capitalize;
 }
+
 // .SuccStory_banner h2::first-letter {
 //   color: #fff;
 //   font-size: 55px;
@@ -23,9 +25,11 @@
 .global_img {
   margin-top: 100px;
 }
+
 .global_img img {
   max-width: 100%;
 }
+
 .SuccStory_banner p {
   font-family: SegoeUI_medium;
   font-style: normal;
@@ -34,15 +38,18 @@
   line-height: 120%;
   color: #ffffff;
 }
+
 p.sucess_first_p {
   color: rgb(255 255 255);
   font-size: 27px;
   font-weight: 600;
   font-family: 'SegoeUI_bold';
 }
+
 .suc_box {
-  margin-top: 150px;
+  margin-top: 30px;
 }
+
 .suc_box h2 {
   font-family: Poppins;
   font-style: normal;
@@ -51,6 +58,7 @@ p.sucess_first_p {
   line-height: 120%;
   color: #d62c79;
 }
+
 .suc_box h3 {
   font-family: Poppins;
   font-style: normal;
@@ -59,6 +67,7 @@ p.sucess_first_p {
   line-height: 140%;
   color: #333333;
 }
+
 .suc_box p {
   font-family: Poppins;
   font-style: normal;
@@ -67,6 +76,7 @@ p.sucess_first_p {
   line-height: 140%;
   color: #828282;
 }
+
 .suc_btn button {
   background: #ffe2ec;
   border: 1px solid #ffe2ec;
@@ -80,25 +90,31 @@ p.sucess_first_p {
   line-height: 15px;
   color: #ec498a;
 }
+
 .suc_btn hr {
   width: 226px;
   border: 1px solid #e3e4eb;
 }
+
 .suc_btn {
   display: flex;
   gap: 1rem;
 }
+
 .suc_box img.quote_img {
   max-width: 100%;
   vertical-align: bottom;
   margin-right: 10px;
 }
+
 .suc_box img {
   max-width: 100%;
 }
+
 .suc_box ul {
   padding: 0;
 }
+
 .suc_box ul li {
   font-family: Poppins;
   font-style: normal;
@@ -109,6 +125,7 @@ p.sucess_first_p {
   list-style: none;
   color: #333333;
 }
+
 .want {
   background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
   height: 507px;
@@ -117,6 +134,7 @@ p.sucess_first_p {
   align-items: center;
   margin-top: 70px;
 }
+
 .want h2 {
   font-family: Poppins;
   font-style: normal;
@@ -129,6 +147,7 @@ p.sucess_first_p {
   max-width: 1057px;
   margin: 0 auto;
 }
+
 button.want_btn {
   background: #ec498a;
   border-radius: 2px;
@@ -156,16 +175,19 @@ button.want_btn {
 
   .SuccStory_banner h2 {
     margin: 0;
-    font-size: 24px; 
+    font-size: 24px;
     margin-top: 15px;
   }
+
   .SuccStory_banner p {
     font-size: 16px;
     margin-top: 15px;
   }
+
   .suc_box {
     margin-top: 40px;
   }
+
   .suc_btn hr {
     width: 80px;
   }
@@ -177,6 +199,7 @@ button.want_btn {
 
   .suc_box h2 {
     font-size: 16px;
+    padding-top: 20px;
   }
 
   .suc_box h3 {
@@ -207,6 +230,15 @@ button.want_btn {
   .suc_box .col-md-4.col-12 {
     order: 1;
   }
+  .ads_story_cover_img {
+    margin: 10px 0px !important;
+    height: 39px !important;
+    width: 80% !important;
+  }
+  .ads_succ_story{
+    height: 47px !important;
+  }
+
 }
 
 
@@ -231,10 +263,34 @@ button.want_btn {
     background-size: 100% 100%;
     background-position: bottom;
   }
+
   .SuccStory_banner h2 {
     font-size: 33px;
   }
+
   .SuccStory_banner p {
     font-size: 19px;
   }
+  .ads_story_cover_img {
+    margin: 10px 0px !important;
+    height: 39px !important;
+    width: 80% !important;
+  }
+}
+
+.ads_story_cover {
+  text-align: center;
+}
+
+.ads_story_cover_img {
+  margin: 40px 0px;
+  height: 120px;
+  width: 84%;
+  object-fit: cover;
+}
+.ads_succ_story{
+  margin: 30px 0px;
+  height: 120px;
+  width: 84%;
+  object-fit: cover;
 }

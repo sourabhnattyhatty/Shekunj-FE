@@ -91,7 +91,7 @@ const Header = ({ page, subPage }) => {
   };
 
   const handleExams = () => {
-    history.push(routingConstants.GOVERNMENT_EXAMS);
+    history.push(routingConstants.GOVERNMENT_SCHEMES);
     setAnchorEl1(null);
   };
 

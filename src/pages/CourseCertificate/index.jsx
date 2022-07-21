@@ -13,7 +13,6 @@ import { useTranslation } from "react-i18next";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCourseCertificateDetail } from "../../store/certificate";
-
 import CertificatesDetail from "../Certificates/CertificatesDetail";
 
 function CourseTest() {
@@ -39,7 +38,7 @@ function CourseTest() {
     }
   }, [id, history, dispatch, lan]);
 
-  const redirectToDownload  = () =>{
+  const redirectToDownload = () => {
     history.push(`/certificate-detail/${id}/true`);
   }
 
@@ -95,30 +94,12 @@ function CourseTest() {
               <div className='certi_img'>
                 <p>
                   <div
-                    className='content'
-                    onClick={() =>
-                      history.push(
-                        routingConstants.ALL_CERTIFICATE_DETAIL +
-                          certificate?.id,
-                      )
-                    }
-                    style={{ cursor: "pointer" }}
-                  >
-                    <div className='content-overlay'></div>
-
+                    className='content'>
                     <CertificatesDetail
                       ref={certificateRef}
                       showButton={false}
                       size='small'
                     />
-                    <div className='content-details fadeIn-bottom'>
-                      <h3 className='content-title'>
-                        <img src={fullscreen_icon} alt='' />
-                      </h3>
-                      <p className='content-text'>
-                        {t("allCertificatePage.other.11")}
-                      </p>
-                    </div>
                   </div>
                 </p>
                 <p className='certificate-downloaddiv'>
@@ -127,7 +108,7 @@ function CourseTest() {
                     alt=''
                     style={{ cursor: "pointer" }}
                     //onClick={() => certificateRef.current.generatePDF()}
-                    onClick={()=>redirectToDownload()}
+                    onClick={() => redirectToDownload()}
                   />
                   <br />
                 </p>
@@ -135,6 +116,7 @@ function CourseTest() {
             </Col>
           </Row>
         </Container>
+
       </div>
 
       <Footer loginPage={false} />

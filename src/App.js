@@ -1,10 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-
 import PublicRoute from "./routers/PublicRouter";
 import PrivateRoute from "./routers/PrivateRouter";
 import { routingConstants } from "./utils/constants";
-
 import "./App.css";
 
 const ForgotPage = React.lazy(() => import("./pages/ForgotPage/ForgotPage"));
@@ -13,6 +11,9 @@ const LoginPage = React.lazy(() => import("./pages/LoginPage/LoginPage"));
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const About = React.lazy(() => import("./pages/About"));
 const Career = React.lazy(() => import("./pages/Career"));
+const CareerDetails = React.lazy(() => import("./pages/CareerDetails"));
+const Career1Details = React.lazy(() => import("./pages/Career1Details"));
+const Career2Details = React.lazy(() => import("./pages/Career2Details"));
 const Career1 = React.lazy(() => import("./pages/Career1"));
 const Career2 = React.lazy(() => import("./pages/Career2"));
 const MyProfile = React.lazy(() => import("./pages/MyProfile"));
@@ -47,6 +48,7 @@ const SuccessCareerOption2 = React.lazy(() =>
   import("./pages/SuccessCareerOption/SuccessCareerOption2"),
 );
 const PageNotFound = React.lazy(() => import("./pages/PageNotFound"));
+const DataNotFound = React.lazy(() => import("./pages/DataNotFound"));
 
 function App() {
   return (
@@ -75,10 +77,11 @@ function App() {
         <Route exact path={routingConstants.HOME_PAGE} component={HomePage} />
         <Route exact path={routingConstants.ABOUT} component={About} />
         <Route exact path={routingConstants.TOP_COLLEGES} component={Career} />
+     
         <Route exact path={routingConstants.TOP_SCHOOLS} component={Career1} />
         <Route
           exact
-          path={routingConstants.GOVERNMENT_EXAMS}
+          path={routingConstants.GOVERNMENT_SCHEMES}
           component={Career2}
         />
         <Route exact path={routingConstants.COURSES} component={Courses} />
@@ -134,6 +137,21 @@ function App() {
         />
         <PrivateRoute
           exact
+          path={`${routingConstants.TOP_COLLEGES}:id`}
+          component={CareerDetails}
+        />
+        <PrivateRoute
+          exact
+          path={`${routingConstants.TOP_SCHOOL}:id`}
+          component={Career1Details}
+        />
+        <PrivateRoute
+          exact
+          path={`${routingConstants.GOVERNMENT_SCHEMES}:id`}
+          component={Career2Details}
+        />
+        <PrivateRoute
+          exact
           path={`${routingConstants.COURSES_MODULE}:id`}
           component={CoursesModule}
         />
@@ -174,8 +192,13 @@ function App() {
         />
         <Route
           exact
-          path={routingConstants.FORGOT_PASSWORD}
+          path= {routingConstants.FORGOT_PASSWORD}
           component={ForgetPassword}
+        />
+        <Route
+          exact
+          path={routingConstants.DATA_NOT_FOUND}
+          component={DataNotFound}
         />
         <Route path='*' component={PageNotFound} />
       </Switch>

@@ -112,9 +112,6 @@ export default function SimpleAccordion(props) {
   return (
     <div className='accordion_box_all'>
       <Accordion>
-        <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
-          <Typography>{t("coursesPage.accordion.1.heading")}</Typography>
-        </AccordionSummary>
         <AccordionDetails>
           {categoryList?.map((obj, idx) => {
             return (

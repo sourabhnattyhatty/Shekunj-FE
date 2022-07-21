@@ -494,8 +494,33 @@ span.MuiSlider-mark.MuiSlider-markActive {
   .prev_next_btn .next_button {
     width: 100%;
   }
+  .ads_Course_module{
+    margin: 10px 0px !important;
+    height: 39px !important;
+    width: 80% !important;
+  }
 }
 .imgSet img {
   max-width: 100%;
+}
+.btn-close{
+  box-sizing: content-box;
+    width: 20px;
+    height: 20px;
+    padding: 7px;
+    color: #000;
+    background-image: url("../../assets/icons/cross.png");
+    border: 0;
+    border-radius: 0.25rem;
+    opacity: 1.5; 
+}
+.ads_Course_module{
+  margin: 40px 0px;
+  height: 120px;
+  width: 84%;
+  object-fit: cover;
+}
+.ads_course_mod_cover {
+  text-align: center;
 }
 

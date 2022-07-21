@@ -1,0 +1,18 @@
+.btn-close {
+  box-sizing: content-box;
+  width: 20px;
+  height: 20px;
+  padding: 7px;
+  color: #000;
+  background-image: url("../../assets/icons/cross.png");
+  border: 0;
+  border-radius: 0.25rem;
+  opacity: 1.5;
+}
+
+.pop_up_add {
+  margin: 20px 0px;
+  height: 98px;
+  width: 100%;
+  object-fit: cover;
+}

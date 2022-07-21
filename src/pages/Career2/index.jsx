@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { routingConstants } from "../../utils/constants";
 
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import {
@@ -13,6 +14,8 @@ import { noImage } from "../../utils/ApiServices";
 
 import "../HomePage/index.scss";
 import "./index.scss";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const CareerPage2 = () => {
   const dispatch = useDispatch();
@@ -42,12 +45,36 @@ const CareerPage2 = () => {
     );
   };
 
+  const [govBannerAds, setGovBannerAds] = useState([]);
+  const [govBoxAds, setGovBoxAds] = useState([]);
+  useEffect(() => {
+    axios.get('/private_adds/private_add?image_type=govt_scm_cover')
+      .then((response) => {
+        setGovBannerAds(response.data.results);
+      });
+  }, [])
+  useEffect(() => {
+    axios.get('/private_adds/private_add?image_type=govt_scm_box')
+      .then((response) => {
+        setGovBoxAds(response.data.results);
+      });
+  }, [])
+
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
       <Header loginPage={true} page='career' subPage='govExams' />
+      <Container>
+        <Row>
+          <div className='col-md-12 ads_gov_cover'>
+            <a href={govBannerAds[0]?.url_adds} target='_blank'>
+              <img src={govBannerAds[0]?.image} alt='Image' className='ads_gov' />
+            </a>
+          </div>
+        </Row>
+      </Container>
 
-      <div className='mainDiv_career'>
+      <div className='mainDiv_gov'>
         <Container>
           <div className='career_tit noselect'>
             <h2>{t("careerGovExams.heading.1")}</h2>
@@ -64,58 +91,110 @@ const CareerPage2 = () => {
             </Col>
 
             <Col md={8} xs={12}>
-              {governmentExams?.govt_list?.length > 0 ? (
-                governmentExams?.govt_list?.map((c) => (
-                  c?.name && <div
-                    className='career_box noselect'
-                    style={{ height: "auto" }}
-                  >
-                    <Row>
-                      <Col md={7} xs={12}>
-                        <div className='top_col_content'>
-                          <h3>{c?.name || t("common.n/a")}</h3>
-                          <p style={{ textTransform: "capitalize" }}>
-                            {c?.city || t("common.n/a")},{" "}
-                            {c?.state || t("common.n/a")} •{" "}
-                            <span style={{ textTransform: "capitalize" }}>
-                              {c?.exam_type || t("common.n/a")}
-                            </span>
-                          </p>
-                          <ul>
-                            <li>
-                              <span>{t("careerGovExams.other.1")}</span> : ₹{" "}
-                              {transformPrice(c?.fees)}{" "}
-                            </li>
-                            <li>
-                              <span>{t("careerGovExams.other.2")}</span> :{" "}
-                              {c?.exam}
-                            </li>
-                          </ul>
-                          {c?.is_collapse && (
-                            // <div>{c?.about_exam.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n') || t("common.n/a")}</div>
-                            <div dangerouslySetInnerHTML={{ __html:`<div>${c.about_exam}</div>` }} />
-                          )}
-                          <button
-                            className='btn_viewCour'
-                            onClick={() =>
-                              handleCollapse(c?.id, c?.is_collapse)
-                            }
-                          >
-                            {!c?.is_collapse
-                              ? t("common.more")
-                              : t("common.less")}
-                          </button>
-                        </div>
-                      </Col>
 
-                      <Col md={5} xs={12}>
-                        <div className='career_img'>
-                          <img srcSet={transformImg(c?.image)} alt='...' />
+              {governmentExams?.govt_list?.length > 0 ? (
+                governmentExams?.govt_list?.map(
+                  (c, index) =>
+                    c?.name && (
+                      <>
+                        <div
+                          className='career_box noselect'
+                          style={{ height: "auto" }}
+                        >
+                          <Row>
+                            <Col md={3} xs={12}>
+                              <div className='gov_logo_box'>
+                                <Link
+                                  to={routingConstants.GOVERNMENT_SCHEMES + c.id}
+                                  className='col-md-6'
+                                  key={c?.id}
+                                >
+                                  <div className="career_logo_box">
+                                    <img srcSet={transformImg(c?.logo)} alt='...' className='career_logo_img' />
+                                  </div>
+                                </Link>
+                              </div>
+                            </Col>
+                            <Col md={9} xs={12}>
+                              <div className='top_col_content'>
+                                <h3>
+                                  <Link
+                                    to={routingConstants.GOVERNMENT_SCHEMES + c.id}
+                                    className='col-md-6'
+                                    key={c?.id}
+                                  >
+                                    {c && c.name}
+                                  </Link></h3>
+
+                                <ul class="list-inline list-unstyled">
+                                  {c.state && (
+                                    <li>
+                                      <span>{t("careerGovExams.other.8")}</span> : {" "}
+                                      {c && c.state}
+                                    </li>
+                                  )}
+                                  {c.state && (
+                                    <li>|</li>
+                                  )}
+                                  {c.scheme_level && (
+                                    <li>
+                                      <span>{t("careerGovExams.other.4")}</span> : {" "}
+                                      {c && c.scheme_level}
+                                    </li>
+                                  )}
+
+                                  {c.scheme_level && (
+                                    <li>|</li>
+                                  )}
+
+                                  {c.age_criteria && (
+                                    <li>
+                                      <span>{t("careerGovExams.other.6")}</span> : {" "}
+                                      {c && c.age_criteria}
+                                    </li>
+                                  )}
+                                </ul>
+
+                                <Row>
+                                  {c.whom_this_scheme_for && (
+                                    <Col md={12} xs={12}>
+                                      <span className="gov_scm_heading">{t("careerGovExams.other.5")}</span> : {" "}
+                                      {c && c.whom_this_scheme_for}
+                                    </Col>
+                                  )}
+                                  {c.benefits && (
+                                    <Col md={12} xs={12}>
+                                      <span className="gov_scm_heading">{t("careerGovExams.other.7")}</span> : {" "}
+                                      {c && c.benefits}
+                                    </Col>
+                                  )}
+                                  {c.official_link && (
+                                    <Col md={12} xs={12}>
+                                      <span className="gov_scm_heading">{t("careerGovExams.other.9")}</span> : {" "}
+                                      <Link
+                                        to={{ pathname: c?.official_link }}
+                                        target='_blank'
+                                        rel='noreferrer'>
+                                        {c && c.official_link}
+                                      </Link>
+                                    </Col>
+                                  )}
+                                </Row>
+
+                              </div>
+                            </Col>
+                          </Row>
                         </div>
-                      </Col>
-                    </Row>
-                  </div>
-                ))
+                        <Row>
+                          {(index % 4 == 3) ? <> <div className='career_box_add'>
+                            <a href={govBoxAds[0]?.url_adds} target='_blank'>
+                              <img src={govBoxAds[0]?.image} alt='Image'
+                                className='ads_gov_box' />
+                            </a> </div></> : ''}
+                        </Row>
+                      </>
+                    ),
+                )
               ) : (
                 <div className='text-center'>{t("common.noDataFound")}</div>
               )}

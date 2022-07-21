@@ -7,13 +7,13 @@ const initialCourseSector = {
       id: 1,
       name: "Private",
       isChecked: false,
-      value: "private",
+      value: "Private",
     },
     {
       id: 2,
       name: "Government",
       isChecked: false,
-      value: "government",
+      value: "Government",
     },
   ],
 };
@@ -63,6 +63,27 @@ export const careerReducer = (state = initialState, action) => {
         error: null,
       };
     case coursesTypes.TOP_COLLAGE_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+
+
+      case coursesTypes.TOP_COLLAGE_SEARCH_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.TOP_COLLAGE_SEARCH_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        topCollages: action.payload,
+        error: null,
+      };
+    case coursesTypes.TOP_COLLAGE_SEARCH_FAIL:
       return {
         ...state,
         isLoading: false,
@@ -118,7 +139,7 @@ export const careerReducer = (state = initialState, action) => {
         governmentExams: {
           ...state.governmentExams,
           govt_category:
-            state.governmentExams?.govt_category?.map((r) => ({
+           Array.isArray(state.governmentExams?.govt_category) && state.governmentExams?.govt_category?.map((r) => ({
               ...r,
               isChecked: false,
             })) || [],

@@ -436,13 +436,20 @@
       "8": "Course Offered",
       "9": "Email",
       "10": "Established Year",
-      "11": "Gender"
+      "11": "Gender",
+      "12": "Type",
+      "13": "Location",
+      "14": "Level",
+      "15": "Address"
     },
     "heading": {
       "1": "Top Colleges in India"
     },
     "listItems": {
-      "1": "Stream"
+      "1": "Stream",
+      "2": "State",
+      "3": "City",
+      "4":"Ownership"
     },
     "noDataFound": "No data found!"
   },
@@ -452,8 +459,11 @@
       "1": "Top Schools in India"
     },
     "listItems": {
-      "1": "STATE",
-      "2": "Education Board"
+      "1": "State",
+      "2": "Education Board",
+      "3":"City",
+      "4":"Category",
+      "5":"Ownership"
     },
     "other": {
       "1": "Board",
@@ -464,11 +474,15 @@
       "6": "About",
       "7": "Adress",
       "8": "Gender",
-      "9": "Levels"
+      "9": "Levels",
+      "10":"Type",
+      "11":"Schools",
+      "12":"Showing"
     }
   },
 
   "careerGovExams": {
+
     "heading": {
       "1": "Government Schemes"
     },
@@ -477,7 +491,15 @@
     },
     "other": {
       "1": "Fees",
-      "2": "Board"
+      "2": "Board",
+      "3": "Location",
+      "4": "Scheme Level",
+      "5": "Whom This Scheme For",
+      "6": "Age Criteria",
+      "7": "Benefits",
+      "8" :"State",
+      "9" :"Website"
+
     }
   },
 
@@ -638,7 +660,8 @@
   "guidanceBookPage": {
     "heading": {
       "1": "Get Free Career Guidance Session",
-      "2": "from finest counsellors"
+      "2": "from finest counsellors",
+      "3": "Book a Counsellor"
     }
   },
   "changePasswordPage": {

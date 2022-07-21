@@ -30,7 +30,7 @@ import signature_pdf from '../../assets/images/PSD_Certificate/signature_pdf.png
 import './index.scss';
 import moment from 'moment';
 import { Loader } from '../../components';
-
+const thiscer_img1 = require("../../assets/images/PSD_Certificate/thiscer_img.png")
 const CertificatesDetail = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -60,21 +60,33 @@ const CertificatesDetail = forwardRef((props, ref) => {
     if (isDownload) {
       setIsLoaded(false);
       setTimeout(() => {
-        downloadPDF();
-      }, 1000);
+        const node = document.querySelector('.box_certificate_large');
+        const element = node.cloneNode(true)
+          element.setAttribute("id","_new_cer_PDF")
+          element.classList.add('cer_PDF')
+          if(element.getElementsByClassName("cetificateText")[0]){
+              console.log("thiscer_img1",thiscer_img1?.default)
+              element.getElementsByClassName("cetificateText")[0].setAttribute("src",thiscer_img1?.default)
+          }
+          setTimeout(()=>{
+            document.body.appendChild(element);
+              downloadPDF(element);
+          },3000) 
+      }, 2000);
     }
   }, []);
 
-  const downloadPDF = () => {
+  const downloadPDF = (node) => {
     const doc = new jsPDF('landscape', 'px', 'A4', false);
-    const node = document.querySelector('.box_certificate_large');
     htmlToImage.toJpeg(node).then(function (dataUrl) {
       setIsLoaded(true);  
       const img = new Image();
       img.src = dataUrl;
-      doc.addImage(img, 'JPGE', 0, 0, 630, 440);
+      doc.addImage(img, 'JPGE', 0, -10, 630, 440);
       //doc.addImage(img, "JPGE", -12, 0, 654, 470);
       doc.save('mycertificate.pdf');
+     // doc.save(`${certificate && certificate?.last_name}`);
+      document.getElementById("_new_cer_PDF").remove()
     });
   };
 
@@ -113,7 +125,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
               >
                 <img className='cer_text' src={PSD_Certificate} alt='' />
                 <br />
-                <img className='last-img' src={thiscer_img} alt='' />
+                <img className='last-img cetificateText'  src={para} alt='' />
                 <h2>
                   {certificate?.name || t('common.n/a')}&nbsp;
                   {certificate && certificate?.last_name}
@@ -131,16 +143,16 @@ const CertificatesDetail = forwardRef((props, ref) => {
                   Date of Achievement :{' '}
                   {moment(certificate?.course_end_time).format('DD-MM-YYYY')}
                 </p>
-                {/* <p>
-            Certificate ID: <span> 000000000000</span>
-          </p> */}
+                <p>
+                  Certificate ID: <span> SH{id}</span>
+                </p>
               </div>
             </Col>
           </Row>
           <div className='cer_logo'>
-            <img className='img1' src={logo11} alt='' srcset='' />
-            <img className='img2' src={logo222} alt='' srcset='' />
-            <img className='img3' src={logo33} alt='' srcset='' />
+            <img className='img1' src={logo11} alt='' srcSet='' />
+            <img className='img2' src={logo222} alt='' srcSet='' />
+            <img className='img3' src={logo33} alt='' srcSet='' />
           </div>
           <div className='signature_set'>
             <img src={signature} alt='' />
@@ -217,16 +229,16 @@ const CertificatesDetail = forwardRef((props, ref) => {
                   Date of Achievement :{' '}
                   {moment(certificate?.course_end_time).format('DD-MM-YYYY')}
                 </p>
-                {/* <p>
-                Certificate ID: <span> 000000000000</span>
-              </p> */}
+                <p>
+                  Certificate ID: <span> SH{id}</span>
+                </p>
               </div>
             </Col>
           </Row>
           <div className='cer_logo'>
-            <img className='img1' src={logo1} alt='' srcset='' />
-            <img className='img2' src={logo22} alt='' srcset='' />
-            <img className='img3' src={logo3} alt='' srcset='' />
+            <img className='img1' src={logo1} alt='' srcSet='' />
+            <img className='img2' src={logo22} alt='' srcSet='' />
+            <img className='img3' src={logo3} alt='' srcSet='' />
           </div>
           <div className='signature_set'>
             <img src={signature_pdf} alt='' />

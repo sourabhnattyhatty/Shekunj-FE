@@ -564,24 +564,24 @@ hr.hr_line2 {
 
 // 
 
-div#cer_PDF {
+div.cer_PDF {
   width: 3508px;
   height: 2480px;
   background-size: cover;
   padding-top: 391px;
   display: block !important;
 }
-div#cer_PDF .cer_logo {
+div.cer_PDF .cer_logo {
   margin-left: 153px;
 }
-div#cer_PDF .signature_set {
+div.cer_PDF .signature_set {
   right: 153px;
 }
-// div#cer_PDF img {
+// div.cer_PDF img {
 //   width: 100%;
 // }
 
-div#cer_PDF .cercifi_con_large h2 {
+div.cer_PDF .cercifi_con_large h2 {
   font-family: Dancing Script;
   font-style: normal;
   font-weight: normal;
@@ -592,65 +592,65 @@ div#cer_PDF .cercifi_con_large h2 {
   align-items: center;
   color: rgb(236 73 138);
 }
-div#cer_PDF img.last-img {
+div.cer_PDF img.last-img {
   margin-bottom: 86px;
   margin-top: 35px;
 }
-div#cer_PDF .cercifi_con_large h5 {
+div.cer_PDF .cercifi_con_large h5 {
   font-size: 74.0206px;
   line-height: 98px;
 }
-div#cer_PDF .cercifi_con_large h3 {
+div.cer_PDF .cercifi_con_large h3 {
   font-size: 90.4696px;
   line-height: 120px;
   margin-top: 29px;
   margin-bottom: 53px;
 }
-div#cer_PDF p.first-number {
+div.cer_PDF p.first-number {
   font-size: 57.5716px;
   line-height: 77px;
 }
-div#cer_PDF .cercifi_con_large p {
+div.cer_PDF .cercifi_con_large p {
   font-size: 57.5716px;
   line-height: 77px;
   margin-bottom: 61px;
 }
-div#cer_PDF hr.hr_line {
+div.cer_PDF hr.hr_line {
   max-width: 1722px;
   margin-top: 47px;
   margin-bottom: 81px;
 }
-div#cer_PDF::after {
+div.cer_PDF::after {
   background-image: none;
   background-repeat: no-repeat;
     width: 552px;
     background-size: cover;
     height: 160px;
 }
-div#cer_PDF {
+div.cer_PDF {
   background-image: url("../../assets/images/PSD_Certificate/bg.png");
 }
 
-div#cer_PDF .cer_logo img.img1 { height: auto;}
-div#cer_PDF .cer_logo img.img2 { height: auto;}
-div#cer_PDF .cer_logo img.img3 { height: auto;}
+div.cer_PDF .cer_logo img.img1 { height: auto;}
+div.cer_PDF .cer_logo img.img2 { height: auto;}
+div.cer_PDF .cer_logo img.img3 { height: auto;}
 
-div#cer_PDF .signature_set .name-surname {
+div.cer_PDF .signature_set .name-surname {
   font-size: 61.6626px;
   line-height: 82px;
   max-width: 550px;
 }
-div#cer_PDF .signature_set img {
+div.cer_PDF .signature_set img {
   width: auto;
 }
-div#cer_PDF .signature_set .president {
+div.cer_PDF .signature_set .president {
   font-size: 47.5746px;
   line-height: 63px;
 }
-div#cer_PDF .cer_logo {
+div.cer_PDF .cer_logo {
   gap: 11rem;
 }
-div#cer_PDF hr.hr_line2 {
+div.cer_PDF hr.hr_line2 {
   margin: 24.89px 0 28.19px 0;
 }
   @media screen and (max-width: 1280px) {

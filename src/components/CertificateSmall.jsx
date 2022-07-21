@@ -75,15 +75,18 @@ import React, {
                   <p className='second-number'>
                     Date of Achievement :{" "}
                     {moment(certificateData?.course_end_time).format("DD-MM-YYYY")}
-                  </p>                 
+                  </p> 
+                  <p>
+                  Certificate ID: <span> SH{certificateData?.id}</span>
+                </p>                
                 </div>
               </Col>
             </Row>
   
             <div className='cer_logo'>
-              <img className='img1' src={logo1} alt='' srcset='' />
-              <img className='img2' src={logo22} alt='' srcset='' />
-              <img className='img3' src={logo3} alt='' srcset='' />
+              <img className='img1' src={logo1} alt='' srcSet='' />
+              <img className='img2' src={logo22} alt='' srcSet='' />
+              <img className='img3' src={logo3} alt='' srcSet='' />
             </div>
             <div className='signature_set'>
               <img src={signature} alt='' />

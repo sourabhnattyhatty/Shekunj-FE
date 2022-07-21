@@ -5,7 +5,6 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 import User2 from "../../../assets/icons/user2.png";
-import Gender from "../../../assets/icons/gender.png";
 import Qualifications from "../../../assets/icons/Qualifications.png";
 import Course from "../../../assets/icons/Course.png";
 import Education from "../../../assets/images/MyProfile/education.png";
@@ -45,9 +44,6 @@ function GuidanceSelect(props) {
                 <>
                   {props.icon && props.title === "User" && (
                     <img src={User2} alt='...' />
-                  )}
-                  {props.icon && props.title === "Gender" && (
-                    <img src={Gender} alt='...' />
                   )}
                   {props.icon && props.title === "Qualifications" && (
                     <img src={Qualifications} alt='...' />

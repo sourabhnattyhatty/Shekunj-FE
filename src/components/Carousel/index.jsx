@@ -38,7 +38,7 @@ function Carousel(props) {
       totalItems = courses?.length || 0;
     } else if (props.type === carouselConstant.TEST) {
       totalItems = tests?.length || 0;
-    } else if (props.type === carouselConstant.GOVERNMENT_EXAMS) {
+    } else if (props.type === carouselConstant.GOVERNMENT_SCHEMES) {
       totalItems = governmentExams?.govt_list?.length || 0;
     }
     if (props.page === carouselConstant.HOMEPAGE) {
@@ -164,11 +164,11 @@ function Carousel(props) {
               ))}
             </>
           )}
-          {props.type === carouselConstant.GOVERNMENT_EXAMS && (
+          {props.type === carouselConstant.GOVERNMENT_SCHEMES && (
             <>
               {governmentExams?.govt_list?.map((obj) => (
                 <Link
-                  to={routingConstants.GOVERNMENT_EXAMS}
+                  to={routingConstants.GOVERNMENT_SCHEMES + obj.id}
                   className='item'
                   key={obj.id}
                 >

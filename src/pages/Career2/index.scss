@@ -1,9 +1,11 @@
-.mainDiv_career {
-  padding: 80px 0;
+.mainDiv_gov {
+  margin-top: 0px;
 }
+
 .career_tit {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
+
 .career_tit h2 {
   font-family: Poppins;
   font-style: normal;
@@ -12,6 +14,7 @@
   line-height: 52px;
   color: #323232;
 }
+
 .career_tit p {
   font-family: Poppins;
   font-style: normal;
@@ -20,51 +23,69 @@
   line-height: 30px;
   color: #828282;
 }
+
 .career_box {
   background: #ffffff;
   width: 100%;
   height: 268px;
-  box-shadow: 0px 4px 50px rgb(0 0 0 / 10%);
-  border-radius: 10px;
-  padding: 30px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+  border-radius: 5px;
+  padding: 20px 15px;
   align-items: center;
   display: grid;
   margin-bottom: 30px;
 }
-.career_img img {
-  max-width: 100%;
-  border-radius: 15px;
-}
+
 .css-ztrqiq-MuiImageListItemBar-root {
   border-radius: 15px;
 }
-.career_img {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100%;
+
+.career_logo_img {
+  width: 100%;
 }
+
+.career_logo_box {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gov_logo_box {
+  margin-left: -15px;
+  height: 130px;
+  width: 130px;
+}
+
 .career_box h3 {
   font-family: Poppins;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 30px;
+  text-transform: capitalize;
   color: #323232;
-  margin-bottom: 19px;
+  font-size: 16px;
+  line-height: 1.3125rem;
+  margin-top: 0;
+  margin-bottom: 5px;
+  margin-left: -15px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
+
 .career_box p {
   font-family: Poppins;
   font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 18px;
   color: #828282;
-  margin-bottom: 19px;
+  position: relative;
+  font-size: 14px;
 }
+
 .career_box p span {
   color: #4f4f4f;
 }
+
 .career_box ul {
   display: flex;
   justify-content: space-between;
@@ -75,18 +96,21 @@
   margin: 0;
   // margin-bottom: 30px;
 }
+
 .career_box ul li {
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 2;
   color: #828282;
-  margin-bottom: 19px;
+  margin-bottom: 2px;
 }
+
 .career_box ul li span {
   color: #4f4f4f;
 }
+
 .career_box button {
   background: #ec498a;
   border: 1px solid #ec498a;
@@ -103,6 +127,7 @@
   padding: 13px 31px;
   margin-top: 20px;
 }
+
 .career_img .css-1lizpae-MuiImageListItemBar-titleWrap {
   padding: 65px 16px;
   color: #fff;
@@ -115,9 +140,11 @@
   text-align: center;
   display: none;
 }
+
 .career_img .MuiImageListItemBar-root {
   display: none;
 }
+
 .MuiImageListItemBar-title.css-dasnyc-MuiImageListItemBar-title,
 .MuiImageListItemBar-subtitle.css-hk6gwf-MuiImageListItemBar-subtitle {
   font-family: Poppins;
@@ -128,11 +155,18 @@
   text-align: center;
   color: #ffffff;
 }
+
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
   .career_box {
-    height: auto;
-    box-shadow: none;
-    padding: 0;
+    background: #ffffff;
+    width: 100%;
+    height: 268px;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+    border-radius: 5px;
+    padding: 15px;
+    align-items: center;
+    display: grid;
+    margin-bottom: 30px;
   }
 
   .career_tit h2 {
@@ -142,6 +176,7 @@
   .career_box h3 {
     padding-top: 15px;
   }
+
   .top_col_content {
     border-bottom: 1px solid #e3e4eb;
     padding-bottom: 30px;
@@ -172,13 +207,59 @@
   }
 
   .mainDiv_career {
-    padding: 15px 0;
+    margin-top: 80px;
   }
 
   .career_box .col-md-7.col-12 .career_img {
     order: 1;
   }
+
   .career_box .col-md-7.col-12 {
     order: 2;
   }
+
+  .ads_gov {
+    margin: 10px 0px !important;
+    height: 39px !important;
+    width: 80% !important;
+  }
+  .ads_gov_box{
+    height: 47px !important;
+    margin-left: 15px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+.gov_scm_heading {
+  color: #4f4f4f;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.career_box_add {
+  background: #ffffff;
+  width: 100%;
+  margin: 0px 15px;
+  align-items: center;
+  display: grid;
+  margin-bottom: 30px;
+}
+
+.ads_gov {
+  margin: 40px 0px;
+  height: 120px;
+  width: 84%;
+  object-fit: cover;
+}
+
+.ads_gov_cover {
+  text-align: center;
+}
+.ads_gov_box{
+  height: 92px;
+  width: 100%;
+  object-fit: cover;
 }

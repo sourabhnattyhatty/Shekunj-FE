@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Aos from "aos";
+import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { Link, Redirect, useHistory, useLocation } from "react-router-dom";
-
 import { constants } from "../../utils";
 import { Header, Footer, Carousel, SEO } from "../../components";
 
@@ -17,6 +17,7 @@ import "../../pages/responsive.scss";
 import "../../pages/responsive.scss";
 import "./index.scss";
 
+import add from "../../assets/images/add.png";
 import x from "../../assets/images/Career/x.png";
 import desktop from "../../assets/icons/desktop.png";
 import Resume from "../../assets/images/resume.png";
@@ -48,6 +49,7 @@ import g18 from "../../assets/images/18.png";
 import g19 from "../../assets/images/19.png";
 import g20 from "../../assets/images/20.png";
 import { Box, Modal, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 
 const style = {
   position: "absolute",
@@ -120,6 +122,29 @@ function HomePage() {
       handleOpen();
     }
   }, [redirect]);
+
+  const [adsPosition1, setAdsPosition1] = useState([]);
+  const [adsPosition2, setAdsPosition2] = useState([]);
+  const [adsPosition3, setAdsPosition3] = useState([]);
+
+	useEffect(() => {
+		axios.get('/private_adds/private_add?image_type=home_position_1')
+			.then((response) => {
+				setAdsPosition1(response.data.results);
+			});
+	}, [])
+  useEffect(() => {
+		axios.get('/private_adds/private_add?image_type=home_position_2')
+			.then((response) => {
+				setAdsPosition2(response.data.results);
+			});
+	}, [])
+  useEffect(() => {
+		axios.get('/private_adds/private_add?image_type=home_position_3')
+			.then((response) => {
+				setAdsPosition3(response.data.results);
+			});
+	}, [])
 
   return (
     <div>
@@ -238,7 +263,7 @@ function HomePage() {
         title2={t("homePage.carousel1.heading.2")}
         type={constants.carouselConstant.COURSES}
       />
-      
+
       {/* <Link to='/courses' style={{ textDecoration: "none" }}>
       <span>
         <button className='view_test_cate'>
@@ -248,10 +273,23 @@ function HomePage() {
       </Link> */}
 
       <div className="courses">
-            <Link to="/courses"  style={{ textDecoration: "none" }} className="view_test_cate"> 
-            {t("homePage.mainSlider.button.7")}
-            </Link>
+        <Link to="/courses" style={{ textDecoration: "none" }} className="view_test_cate">
+          {t("homePage.mainSlider.button.7")}
+        </Link>
       </div>
+
+      {/* google add */}
+      <section>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12 ads_home_cover'>
+              <a href={adsPosition1[0]?.url_adds}  target='_blank'>
+              <img src={adsPosition1[0]?.image} alt='Image' className='google_ads_home' />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* resume */}
       <section className='resume same_padding mt-5 noselect'>
@@ -284,17 +322,30 @@ function HomePage() {
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
       />
-        <div className="courses">
-              <Link to="/success-career-test"  style={{ textDecoration: "none" }} className="view_test_cate  noselect"> 
-              {t("homePage.mainSlider.button.3")}
-              </Link>
+      <div className="courses">
+        <Link to="/success-career-test" style={{ textDecoration: "none" }} className="view_test_cate  noselect">
+          {t("homePage.mainSlider.button.3")}
+        </Link>
 
-        </div>
+      </div>
       {/* <Link to='/success-career-test' style={{ textDecoration: "none" }}>
         <button className='view_test_cate noselect'>
           {t("homePage.mainSlider.button.3")}
         </button>
       </Link> */}
+
+      {/* google add */}
+      <section>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12 ads_home_cover'>
+            <a href={adsPosition2[0]?.url_adds}  target='_blank'>
+              <img src={adsPosition2[0]?.image} alt='Image' className='google_ads_home' />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Job opportunity */}
       <section className='job-opprtunity same_padding mt-5 noselect'>
@@ -328,20 +379,36 @@ function HomePage() {
         </div>
       </section>
 
+
+
       <Carousel
         items={5}
         page='homePage'
         title1={t("homePage.carousel3.heading.1")}
         title2={t("homePage.carousel3.heading.2")}
-        type={constants.carouselConstant.GOVERNMENT_EXAMS}
+        type={constants.carouselConstant.GOVERNMENT_SCHEMES}
       />
       <div className="courses">
-            <Link to="/government-exams"  style={{ textDecoration: "none" }} className="view_test_cate">  
+        <Link to="/government-schemes" style={{ textDecoration: "none" }} className="view_test_cate">
 
-            {t("homePage.mainSlider.button.2")}
-            </Link>
-
+          {t("homePage.mainSlider.button.2")}
+        </Link>
       </div>
+
+      {/* google add */}
+      <section>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12 ads_home_cover'>
+            <a href={adsPosition3[0]?.url_adds}  target='_blank'>
+              <img src={adsPosition3[0]?.image} alt='Image' className='google_ads_home' />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* <Link to='/government-exams' style={{ textDecoration: "none" }}>
         <button
           className='view_test_cate'
@@ -694,7 +761,7 @@ function HomePage() {
             {t('deskTopView.heading')}
           </Typography>
           <button className='btn btn-info' onClick={() => handleClose()}>
-          {t('deskTopView.button')}
+            {t('deskTopView.button')}
           </button>
         </Box>
       </Modal>
