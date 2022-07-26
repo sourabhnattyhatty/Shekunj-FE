@@ -56,6 +56,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
     }
   }, [id, history, dispatch, props?.id, lan]);
 
+  
   useEffect(() => {
     if (isDownload) {
       setIsLoaded(false);
