@@ -219,6 +219,25 @@ export default function AccordionComponent({
     );
   };
 
+  const hasMoreCollegeStreamFunction = (data) => {
+    return data && data.length && data.map((c) => (
+   c?.name &&
+   <li key={c?.id}>
+     <FormControlLabel
+       value={c?.name}
+       control={
+         <Radio
+           checked={c?.isChecked}
+           onChange={(e) => onChangeFilter(c?.id, e, "courseSector","stream")}
+         />
+       }
+       label={c?.name ? c?.name : "N/A"}
+     />
+   </li>
+ ));
+
+};
+
   const hasMoreCollegeCityFunction = (data) => {
     return data?.map(
       (c, index) =>
@@ -275,14 +294,11 @@ export default function AccordionComponent({
             </AccordionSummary>
             <AccordionDetails>
               <ul className='pl-0'>
-                <FormGroup>
+                <RadioGroup>
                   {remainingColleges
-                    ? hasMoreCountShowFunction(stream?.rows, "stream")
-                    : hasMoreCountShowFunction(
-                        stream?.rows?.slice(0, 3),
-                        "stream",
-                      )}
-                </FormGroup>
+                   ? hasMoreCollegeStreamFunction(stream?.rows)
+                   : hasMoreCollegeStreamFunction(stream?.rows?.slice(0, 3))}
+                </RadioGroup>
               </ul>
               {hasMoreCount(stream?.rows, 3) > 0 && (
                 <div

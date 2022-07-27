@@ -146,7 +146,8 @@ const CareerPage = () => {
             <Col md={4} xs={12}>
               <AccordionComponent
                 type='colleges'
-                stream={STREAM}
+                //stream={STREAM}
+                stream={courseSector}
                 ownership={OWNERSHIP}
                 state={STATE}
                 city={CITY}

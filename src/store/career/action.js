@@ -335,21 +335,21 @@ const handleTopCollagesFilter = (topCollages, courseSector) => {
     cityIdString = `city__in=${cityList.map((r) => r?.name).join(",")}`;
   }
 
-  const streamList = topCollages.collage_stream_list?.filter(
+  const streamList = courseSector?.rows?.filter(
     (r) => r?.isChecked,
   );
   let streamIdString = undefined;
   if (streamList?.length > 0) {
-    streamIdString = `college_category_id__in=${streamList
-      .map((r) => r?.id)
-      .join(",")}`;
+    streamIdString = `search=${streamList
+      .map((r) => r?.value)
+      }`;
   }
 
   const collageList = topCollages?.college_type?.filter((r) => r?.isChecked);
   let collageIdString = undefined;
   if (collageList?.length > 0) {
     collageIdString = `collage_type__in=${collageList
-      .map((r) => r?.value)
+      .map((r) => r?.name)
       .join(",")}`;
   }
 
@@ -633,7 +633,7 @@ export const setFilterValue =
     //   });
     //   await dispatch(getTopCollages(true));
     // } 
-
+    
     else if (arrayType === "topSchools") {
       if (subType === "states") {
         const updatedPayload = topSchools;
@@ -768,20 +768,40 @@ export const setFilterValue =
         });
         await dispatch(getTopCollages(true));
       }
-      const idx = updatedPayload?.collage_stream_list?.findIndex(
-        (u) => u.id === id,
-      );
-      if (idx !== -1) {
-        updatedPayload.collage_stream_list[idx].isChecked = action;
+      if (subType === "stream") {
+        const updatedPayload = courseSector;
+        const idx = updatedPayload?.rows?.findIndex((u) => u.id === id);
+        if (idx !== -1) {
+          updatedPayload.rows.filter((item, index) => {
+            return item.id !== id
+              ? (updatedPayload.rows[index].isChecked = false)
+              : null;
+          });
+          updatedPayload.rows[idx].isChecked = action;
+        }
+        dispatch({
+          type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
+          payload: {
+            data: updatedPayload,
+            type: "stream",
+          },
+        });
+        await dispatch(getTopCollages(true));
       }
-      dispatch({
-        type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
-        payload: {
-          data: updatedPayload,
-          type: "stream",
-        },
-      });
-      await dispatch(getTopCollages(true));
+      // const idx = updatedPayload?.collage_stream_list?.findIndex(
+      //   (u) => u.id === id,
+      // );
+      // if (idx !== -1) {
+      //   updatedPayload.collage_stream_list[idx].isChecked = action;
+      // }
+      // dispatch({
+      //   type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
+      //   payload: {
+      //     data: updatedPayload,
+      //     type: "stream",
+      //   },
+      // });
+      // await dispatch(getTopCollages(true));
     }
 
 
