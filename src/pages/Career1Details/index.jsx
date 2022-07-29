@@ -61,14 +61,12 @@ const Career1Details = () => {
                     </div>
                 </Row>
             </Container>
-{console.log("topSchools---",topSchools)}
             <div className='DetailMainDiv_career'>
                 <Container>
                     <Row>
                         <Col md={8} xs={12}>
                             <div className='deatil_box'>
                                 <h4 className='mb-3'>{topSchools && topSchools.name}</h4>
-                                {console.log("")}
                                 <Row>
                                     <Col md={12} xs={12}>
                                         {topSchools && topSchools.city} {topSchools.city && (",")}{" "}
@@ -76,8 +74,15 @@ const Career1Details = () => {
                                         {/* <span style={{ textTransform: "capitalize" }}>
                                             {topSchools && topSchools.school_type && topSchools.school_type||{}}
                                         </span> */}
-                                       
-                                          {/* <h6>{topSchools.map(name => <h2>{name.name}</h2>)} </h6> */}
+                                        {topSchools && typeof(topSchools.school_type)=='string'?
+                                         <span style={{ textTransform: "capitalize" }}>
+                                         {topSchools && topSchools.school_type && topSchools.school_type||{}}
+                                     </span>
+                                     :
+                                     ''
+                                        }
+                                        
+                                        
                                     </Col>
                                 </Row>
                                 <Row className='mt-3'>
