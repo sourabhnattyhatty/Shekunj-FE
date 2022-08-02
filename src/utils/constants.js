@@ -43,7 +43,10 @@ const routingConstants = {
   SUCCESS_STORIES: "/success-stories/",
   TOP_COLLEGES: "/top-colleges/",
   TOP_SCHOOLS: "/top-schools/",
-  TOP_SCHOOL: "/top-school/"
+  TOP_SCHOOL: "/top-school/",
+  MORE_BLOG:  "/more-blog/",
+  MORE_EVENT: "/more-event/",
+  MORE_MAGAZINE:"/more-magazine/",
 };
 
 const apiConstants = {

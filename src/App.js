@@ -11,6 +11,9 @@ const LoginPage = React.lazy(() => import("./pages/LoginPage/LoginPage"));
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const About = React.lazy(() => import("./pages/About"));
 const Career = React.lazy(() => import("./pages/Career"));
+const BlogPage = React.lazy(() => import("./pages/More/BlogPage"));
+const EventPage = React.lazy(() => import("./pages/More/EventPage"));
+const MagazinePage = React.lazy(() => import("./pages/More/MagazinePage"));
 const CareerDetails = React.lazy(() => import("./pages/CareerDetails"));
 const Career1Details = React.lazy(() => import("./pages/Career1Details"));
 const Career2Details = React.lazy(() => import("./pages/Career2Details"));
@@ -77,8 +80,11 @@ function App() {
         <Route exact path={routingConstants.HOME_PAGE} component={HomePage} />
         <Route exact path={routingConstants.ABOUT} component={About} />
         <Route exact path={routingConstants.TOP_COLLEGES} component={Career} />
-     
         <Route exact path={routingConstants.TOP_SCHOOLS} component={Career1} />
+        <Route exact path={routingConstants.MORE_BLOG} component={BlogPage} />
+        <Route exact path={routingConstants.MORE_EVENT} component={EventPage} />
+        <Route exact path={routingConstants.MORE_MAGAZINE} component={MagazinePage} />
+        
         <Route
           exact
           path={routingConstants.GOVERNMENT_SCHEMES}
