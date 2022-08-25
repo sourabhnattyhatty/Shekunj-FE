@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -15,15 +15,22 @@ import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { getAllEvents } from "../../store/events";
+import Moment from "react-moment";
 
 function EventPage() {
   const history = useHistory();
+  const { events } = useSelector((state) => state.eventsReducer);
   const dispatch = useDispatch();
-  const { successStories } = useSelector((state) => {
-    return state.coursesReducer;
-  });
+
+  console.log("Eventsssssss", events);
+
   const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
+
+  useEffect(() => {
+    dispatch(getAllEvents());
+  }, [dispatch, lan]);
 
   React.useEffect(() => {
     dispatch(fetchSuccessStories());
@@ -38,23 +45,91 @@ function EventPage() {
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
 
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=success_stories_banner')
+    axios
+      .get("/private_adds/private_add?image_type=success_stories_banner")
       .then((response) => {
         setStoriesBannerAds(response.data.results);
       });
-  }, [])
+  }, []);
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=success_stories_box')
+    axios
+      .get("/private_adds/private_add?image_type=success_stories_box")
       .then((response) => {
         setStoriesBoxAds(response.data.results);
       });
-  }, [])
+  }, []);
 
   return (
     <div>
-      <Header loginPage={true} page='more' subPage="moreEvent"/>
-      <div className="text-center"><h1>EventPage</h1></div>
-  
+      <Header loginPage={true} page='more' subPage='moreEvent' />
+      <div className='text-center'>
+        {" "}
+        <nav class='navbar navbar-custom'>
+          <h2>All Events</h2>
+        </nav>
+      </div>
+      <div className='Home'>
+        <div className='filters'>
+          <span className='title'>Filter</span>
+          <span>
+            <Form.Check
+              inline
+              label='Faveroite'
+              name='group1'
+              type='checkbox'
+              id={`inline-1`}
+            />
+          </span>
+          <Button variant='light'>Clear Filters</Button>
+        </div>
+        <div className='EventsContainer'>
+          {events?.event_list?.length > 0 ? (
+            events?.event_list?.map((c) => {
+              console.log("c", c);
+              return (
+                <>
+                  <Col sm={6}>
+                    <Card key={c?.id} >
+                      <Card.Body className='eventCards' key={c?.id}>
+                        <img
+                          src={c && c.image}
+                          class='card-img-top'
+                          alt='...'
+                        ></img>
+                        <Card.Title class="icon_favorite">
+                          <h3 class="c-heading-6">
+                          {c && c.title}
+                          </h3>
+                        </Card.Title>
+                        
+                        <Card.Subtitle className='mb-2 text-muted'>
+                          <Moment format='D MMM YYYY' withTitle>
+                            {c && c.created_at}
+                          </Moment>
+                        </Card.Subtitle>
+                        <Card.Text>
+                          <p class='card-text'>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: `<div>${c && c.about_event}</div>`,
+                              }}
+                            />
+                          </p>
+                        </Card.Text>
+                        <Button href={c && c.form_link} className="c-button" variant='primary'>
+                          Registration and details
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </>
+              );
+            })
+          ) : (
+            <div className='text-center'>{t("common.noDataFound")}</div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

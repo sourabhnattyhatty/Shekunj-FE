@@ -44,8 +44,8 @@ const routingConstants = {
   TOP_COLLEGES: "/top-colleges/",
   TOP_SCHOOLS: "/top-schools/",
   TOP_SCHOOL: "/top-school/",
-  MORE_BLOG:  "/more-blog/",
-  MORE_EVENT: "/more-event/",
+  MORE_BLOG:  "/blogs/",
+  MORE_EVENT: "/events/",
   MORE_MAGAZINE:"/more-magazine/",
 };
 
@@ -96,7 +96,14 @@ const apiConstants = {
   },
   MY_PROGRESS : {
     USER_PROGRESS : "course/user-progress/",
+  },
+  ALL_BLOGS : {
+    ALL_BLOGS : "more/blogs",
+  },
+  ALL_EVENTS : {
+    ALL_EVENTS : "more/events",
   }
+
 };
 
 export { carouselConstant, routingConstants, apiConstants };

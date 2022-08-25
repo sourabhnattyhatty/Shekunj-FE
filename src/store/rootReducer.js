@@ -8,6 +8,8 @@ import { myProgressReducer } from "./my-progress";
 import { certificateReducer } from "./certificate";
 import { languageReducer } from "./language";
 import {adsReducer} from "./ads"
+import {blogsReducer} from "./blogs"
+import { eventsReducer } from "./events";
 
 export default combineReducers({
   authReducer,
@@ -17,5 +19,7 @@ export default combineReducers({
   myProgressReducer,
   certificateReducer,
   languageReducer,
-  adsReducer
+  adsReducer,
+  blogsReducer,
+  eventsReducer,
 });
