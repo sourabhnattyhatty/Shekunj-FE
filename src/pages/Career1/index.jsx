@@ -173,7 +173,7 @@ const CareerPage1 = () => {
                                 <h3>
                                   <Link
                                     to={routingConstants.TOP_SCHOOL + c.id}
-                                    className='col-md-6'
+                                    className=''
                                     key={c?.id} >
                                     {c && c.name}
                                   </Link>

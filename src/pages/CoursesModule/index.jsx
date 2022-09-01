@@ -146,9 +146,9 @@ const CourseModule = () => {
   }, [progress]);
 
   React.useEffect(() => {
-    if (detect.isMobile) {
-      history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
-    }
+    // if (detect.isMobile) {
+    //   history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
+    // }
   }, [history, detect.isMobile, t]);
 
 

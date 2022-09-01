@@ -271,3 +271,39 @@ button.book_sess_btn:hover {
   height: 614px;
   padding-top: 0px;
 }
+
+
+// KC 30-08-2022
+
+@media screen and (max-width:767px){
+
+.addimage098 {
+    width: 100%;
+}
+.addimage098 img {
+  width: 100%;
+  object-fit: contain;
+}
+.career_box h3 {
+  white-space: unset;
+  /* text-overflow: ellipsis; */
+}
+.college_ads_box {
+  height: 92px;
+  margin-left: 0;
+}
+.college_ads_box {
+  width: 79%;
+  object-fit: cover;
+  margin: auto;
+  text-align: center;
+  display: block;
+}
+.career_box h3 {
+  white-space: unset;
+}
+
+
+
+
+}

@@ -101,11 +101,11 @@ function CourseTest() {
     }
   }, []);
 
-  useEffect(() => {
-    if (detect.isMobile) {
-      history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
-    }
-  }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
+  // useEffect(() => {
+  //   if (detect.isMobile) {
+  //     history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
+  //   }
+  // }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
 
   useEffect(() => {
     return () => {

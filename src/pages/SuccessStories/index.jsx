@@ -131,13 +131,13 @@ function SuccessStory() {
                         </Col>
 
                         <Col md={4} xs={12}>
-                          <img src={s?.image} alt='' />
+                          <img className="story_image" src={s?.image} alt='' />
                         </Col>
                       </>
                     ) : (
                       <>
                         <Col md={4} xs={12}>
-                          <img src={s?.image} alt='' />
+                          <img className="story_image" src={s?.image} alt='' />
                         </Col>
                         <Col md={8} xs={12}>
                           <h2>

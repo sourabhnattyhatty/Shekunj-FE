@@ -206,3 +206,36 @@
     margin-top: 30px;
   }
 }
+
+
+
+
+// 30/08/2022
+
+
+
+@media screen and (max-width:767px){
+	
+  span#basic-button {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 60px;
+}
+.set_language {
+  width: 161px;
+}
+.google_ads_home {
+  margin: 5px 0px !important;
+  height: 45px !important;
+  width: 100% !important;
+}
+.career_box h3 {
+  white-space: unset !important;
+  text-overflow: ellipsis;
+}
+
+
+
+}

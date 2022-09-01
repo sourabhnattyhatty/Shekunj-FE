@@ -352,7 +352,7 @@ const GuidancePage = () => {
             <Col md={2} xs={12}>
               <Container>
                 <Row>
-                <a href={bookCounsellorAds[0]?.url_adds} target='_blank'>
+                <a href={bookCounsellorAds[0]?.url_adds} className="addimage098" target='_blank'>
                   <img src={bookCounsellorAds[0]?.image} alt='Image' className='ads_guidence' />
                   </a>
                 </Row>

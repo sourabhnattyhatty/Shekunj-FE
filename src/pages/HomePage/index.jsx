@@ -348,7 +348,7 @@ function HomePage() {
       </section>
 
       {/* Job opportunity */}
-      <section className='job-opprtunity same_padding mt-5 noselect'>
+      <section className='job-opprtunity same_padding mt-1 noselect'>
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-lg-12 col-md-11'>

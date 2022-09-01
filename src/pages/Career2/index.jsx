@@ -120,7 +120,7 @@ const CareerPage2 = () => {
                                 <h3>
                                   <Link
                                     to={routingConstants.GOVERNMENT_SCHEMES + c.id}
-                                    className='col-md-6'
+                                    className=''
                                     key={c?.id}
                                   >
                                     {c && c.name}

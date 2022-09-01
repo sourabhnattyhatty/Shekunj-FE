@@ -117,8 +117,18 @@ form.set_form button {
   color: #ff008d;
 }
 
-
-// 30/08/2022
-
+@media screen and (max-width:767px){
 
 
+.college_ads_box {
+  height: 47px !important;
+  margin-left: 15px !important;
+  margin-bottom: 20px !important;
+  width: 90% !important;
+  object-fit: contain !important;
+}
+.top_col_content h3 {
+  margin-left: 0px !important;
+}
+
+}

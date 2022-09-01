@@ -85,7 +85,7 @@ function ContactUs() {
                 </div>
               </Col>
 
-              <Col md={6} xs={12}>
+              <Col md={6} xs={12} className="contact_banner01">
                 <div className='ConUs_form'>
                   <p>{t("contactUs.content.1")} </p>
 

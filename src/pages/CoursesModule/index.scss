@@ -524,3 +524,20 @@ span.MuiSlider-mark.MuiSlider-markActive {
   text-align: center;
 }
 
+// 30/08/2022
+
+@media screen and (max-width:767px){
+
+.course_module .css-pl1y3u-MuiSlider-root {
+  width: 90%;
+}
+.modal-content {
+  width: 90%;
+
+}
+iframe {
+  width: 100%;
+}
+
+
+}
