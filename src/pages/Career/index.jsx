@@ -22,7 +22,7 @@ import test from "../../assets/images/test.jpg"
 
 const CareerPage = () => {
   const dispatch = useDispatch();
-  const { topCollages, courseSector } = useSelector(
+  const { topCollages, courseSector,ownership } = useSelector(
     (state) => state.careerReducer,
   );
 
@@ -58,10 +58,16 @@ const CareerPage = () => {
     name: t("careerTopColleges.listItems.3"),
     rows: topCollages?.city_list || [],
   };
-  const OWNERSHIP = {
-    name: t("careerTopColleges.listItems.4"),
-    rows: topCollages?.college_type || [],
-  };
+
+  // const ownership = {
+  //   name: t("careerTopColleges.listItems.4"),
+  //   rows: topCollages?.college_type || [],
+  // };
+
+//  const ownership={
+//   name: t("careerTopColleges.listItems.4"),
+//   rows: topCollages?.state_list || [],
+//  }
 
   const [collegeBannerAds, setCollegeBannerAds] = useState([]);
   const [collegeBoxAds, setCollegeBoxAds] = useState([]);
@@ -148,7 +154,7 @@ const CareerPage = () => {
                 type='colleges'
                 //stream={STREAM}
                 stream={courseSector}
-                ownership={OWNERSHIP}
+                ownership={ownership}
                 state={STATE}
                 city={CITY}
               />

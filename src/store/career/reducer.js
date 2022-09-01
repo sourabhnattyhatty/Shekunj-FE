@@ -1,5 +1,23 @@
 import { coursesTypes } from ".";
 
+const initialOwnership = {
+  name: "Ownership",
+  rows: [
+    {
+      id: 1,
+      name: "Private",
+      isChecked: false,
+      value: "Private",
+    },
+    {
+      id: 2,
+      name: "Government",
+      isChecked: false,
+      value: "Government",
+    },
+  ]
+}
+
 const initialCourseSector = {
   name: "Stream",
   rows: [
@@ -220,6 +238,7 @@ const initialState = {
   topSchools: [],
   error: null,
   courseSector: initialCourseSector,
+  ownership:initialOwnership,
   lan : true
 };
 
@@ -355,6 +374,13 @@ export const careerReducer = (state = initialState, action) => {
         courseSector: {
           ...initialCourseSector,
           rows: initialCourseSector.rows.map((r) => ({
+            ...r,
+            isChecked: false,
+          })),
+        },
+        ownership: {
+          ...initialOwnership,
+          rows: initialOwnership.rows.map((r) => ({
             ...r,
             isChecked: false,
           })),

@@ -260,28 +260,46 @@ export default function AccordionComponent({
     );
   };
 
-  const hasMoreCollegeOwnerShipFunction = (data) => {
-    return data?.map(
-      (c, index) =>
-        c && (
-          <li key={index}>
-            <FormControlLabel
-              value={c.name}
-              control={
-                <Checkbox
-                  checked={c?.isChecked}
-                  onChange={(e) =>
-                    onChangeFilter(c.id, e, "topCollages", "ownership")
-                  }
-                />
-              }
-              label={c?.name ? c?.name : "N/A"}
-            />
-          </li>
-        ),
-    );
-  };
+  // const hasMoreCollegeOwnerShipFunction = (data) => {
+  //   return data?.map(
+  //     (c, index) =>
+  //       c && (
+  //         <li key={index}>
+  //           <FormControlLabel
+  //             value={c.name}
+  //             control={
+  //               <Checkbox
+  //                 checked={c?.isChecked}
+  //                 onChange={(e) =>
+  //                   onChangeFilter(c.id, e, "ownership", "ownership")
+  //                 }
+  //               />
+  //             }
+  //             label={c?.name ? c?.name : "N/A"}
+  //           />
+  //         </li>
+  //       ),
+  //   );
+  // };
 
+
+  const hasMoreCollegeOwnerShipFunction = (data) => {
+  return data && data.length && data.map((c) => (
+    c?.name &&
+    <li key={c?.id}>
+      <FormControlLabel
+        value={c?.name}
+        control={
+          <Radio
+            checked={c?.isChecked}
+            onChange={(e) => onChangeFilter(c?.id, e, "ownership","ownership")}
+          />
+        }
+        label={c?.name ? c?.name : "N/A"}
+      />
+    </li>
+  ));
+      }
   
 
   return (
