@@ -240,6 +240,7 @@ const CourseModule = () => {
 
   const handleFinish = () => {
     history.push(routingConstants.COURSES_TEST + id);
+
   };
 
   const embededLink = (link = null) => {

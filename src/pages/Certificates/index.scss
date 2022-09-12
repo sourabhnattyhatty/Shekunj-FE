@@ -244,10 +244,11 @@ button.back_course {
     width: 150px;
   }
   .box_certificate_small {
-    display: none !important;
+    // display: none !important;
   }
   .mob_box_certificate_small {
-    display: block !important;
+    // display: block !important;
+    display: none;
   }
   .box_certificate_large.mt-4 {
     display: none;
@@ -256,6 +257,19 @@ button.back_course {
   margin: 30px auto;
   display: block;
 }
+.cercifi_con_small {
+  width: 67%;
+}
+.box_certificate_small .offset-3.col-md-7.col-12 {
+  padding: 0px;
+  flex: 60%;
+  max-width: 60%;
+}
+
+
+
+
+
 }
 
 .mob_box_certificate_small {

@@ -212,7 +212,18 @@
 
 // 30/08/2022
 
+// Ipad css
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+ 
+  .ads_footer_cover {
+    margin-top: 200px;
+}
+
+
+}
+
+// Mobile css
 
 @media screen and (max-width:767px){
 	
@@ -235,7 +246,34 @@
   white-space: unset !important;
   text-overflow: ellipsis;
 }
+.modal-content {
+  width: 90%;
+  margin: auto;
+}
+.pop_up_add {
+  margin: 0px 0px;
+  height: 60;
+  width: 100%;
+  object-fit: contain;
+}
+.cou_resultBg {
+  height: auto;
+  padding: 35px 0;
+  margin: 0;
+}
+img.searchclose {
+  display: none;
+  }
+  .mainDiv_school {
+    overflow: hidden;
+}
+.ads_footer_cover {
+  margin-top: 150px;
+}
+
 
 
 
 }
+
+

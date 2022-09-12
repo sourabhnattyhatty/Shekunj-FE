@@ -96,9 +96,9 @@ function CourseTest() {
   useEffect(() => {
     dispatch(getUserTestQuestion(id, history));
     dispatch(testCountSummery(id, history));
-    if (detect.isMobile) {
-      history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
-    }
+    // if (detect.isMobile) {
+    //   history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
+    // }
   }, [history, detect.isMobile, id, dispatch, t, lan]);
 
   useEffect(() => {
