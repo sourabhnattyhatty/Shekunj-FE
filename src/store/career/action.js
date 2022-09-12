@@ -58,15 +58,20 @@ export const getGovernmentExams =
 const handleTopSchoolsFilter = (topSchools, courseSector,ownership) => {
   const url = constants.TOP_SCHOOL_LIST;
   const stateList = topSchools?.state_list?.filter((r) => r?.isChecked);
+  console.log("stateListtttt",stateList)
   let stateIdString = undefined;
   if (stateList?.length > 0) {
     stateIdString = `state__in=${stateList.map((r) => r?.name).join(",")}`;
+    console.log("stateIdStringgggg",stateIdString)
   }
   const cityList = topSchools?.city_list?.filter((r) => r?.isChecked);
+  console.log("cityListtttt",cityList)
   let cityIdString = undefined;
   if (cityList?.length > 0) {
     cityIdString = `city__in=${cityList.map((r) => r?.name).join(",")}`;
+    console.log("cityIdStringgggg",cityIdString)
   }
+
   const categoryList = topSchools?.gender_intech?.filter((r) => r?.isChecked);
   let categoryIdString = undefined;
   if (categoryList?.length > 0) {
@@ -76,6 +81,7 @@ const handleTopSchoolsFilter = (topSchools, courseSector,ownership) => {
   let boardIdString = undefined;
   if (boardList?.length > 0) {
     boardIdString = `board_type__in=${boardList.map((r) => r?.name).join(",")}`;
+    console.log("boardIdStringgggg",boardIdString)
   }
   // const schoolList = topSchools?.school_type?.filter((r) => r?.isChecked);
   // let schoolIdString = undefined;
@@ -329,17 +335,22 @@ const handleTopCollagesFilter = (topCollages, courseSector,ownership) => {
 
   const url = constants.TOP_COLLEGE_LIST;
   const stateList = topCollages?.state_list?.filter((r) => r?.isChecked);
+  console.log("College_stateListtttt",stateList)
+  
 
   let stateIdString = undefined;
   if (stateList?.length > 0) {
     stateIdString = `state__in=${stateList.map((r) => r?.name).join(",")}`;
+    console.log("College_stateIdStringgggg",stateIdString)
   }
 
   const cityList = topCollages?.city_list?.filter((r) => r?.isChecked);
+  console.log("College_cityListtttt",cityList)
 
   let cityIdString = undefined;
   if (cityList?.length > 0) {
     cityIdString = `city__in=${cityList.map((r) => r?.name).join(",")}`;
+    console.log("College_cityIdStringgggg",cityIdString)
   }
 
   const streamList = courseSector?.rows?.filter(
@@ -673,20 +684,24 @@ export const setFilterValue =
         const updatedPayload = topSchools;
 
         const idx = updatedPayload?.city_list?.findIndex((u) => u.id === id);
+        // if (idx !== -1) {
+        //   updatedPayload.city_list.filter((item, index) => {
+        //     return item.id !== id
+        //       ? (updatedPayload.city_list[index].isChecked = false)
+        //       : null;
+        //   });
         if (idx !== -1) {
-          updatedPayload.city_list.filter((item, index) => {
-            return item.id !== id
-              ? (updatedPayload.city_list[index].isChecked = false)
-              : null;
-          });
           updatedPayload.city_list[idx].isChecked = action;
         }
+        //   updatedPayload.city_list[idx].isChecked = action;
+        // }
         dispatch({
           type: coursesTypes.TOP_SCHOOL_FINISH,
           payload: updatedPayload,
         });
         await dispatch(getTopSchools(true));
       }
+      
       // if (subType === "ownership") {
       //   const updatedPayload = topSchools;
       //   const idx = updatedPayload?.school_type?.findIndex((u) => u.id === id);
@@ -774,7 +789,7 @@ export const setFilterValue =
           type: coursesTypes.TOP_COLLAGE_FINISH,
           payload: updatedPayload,
         });
-        await dispatch(getTopCollages(false));
+        await dispatch(getTopCollages(true));
       }
       if (subType === "city") {
         const updatedPayload = topCollages;
@@ -791,7 +806,7 @@ export const setFilterValue =
           type: coursesTypes.TOP_COLLAGE_FINISH,
           payload: updatedPayload,
         });
-        await dispatch(getTopCollages(false));
+        await dispatch(getTopCollages(true));
       }
       if (subType === "ownership") {
         const updatedPayload = ownership;

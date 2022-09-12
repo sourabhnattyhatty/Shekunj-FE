@@ -43,7 +43,8 @@ const routingConstants = {
   SUCCESS_STORIES: "/success-stories/",
   TOP_COLLEGES: "/top-colleges/",
   TOP_SCHOOLS: "/top-schools/",
-  TOP_SCHOOL: "/top-school/"
+  TOP_SCHOOL: "/top-school/",
+  FAQ:"/faq/"
 };
 
 const apiConstants = {
@@ -93,6 +94,9 @@ const apiConstants = {
   },
   MY_PROGRESS : {
     USER_PROGRESS : "course/user-progress/",
+  },
+  FAQ : {
+    FAQ : "/more/faqs/",
   }
 };
 

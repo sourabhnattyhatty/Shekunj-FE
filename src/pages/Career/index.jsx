@@ -45,10 +45,10 @@ const CareerPage = () => {
     return image ? image : TopCollage;
   };
 
-  const STREAM = {
-    name: t("careerTopColleges.listItems.1"),
-    rows: topCollages?.collage_stream_list || [],
-  };
+  // const STREAM = {
+  //   name: t("careerTopColleges.listItems.1"),
+  //   rows: topCollages?.collage_stream_list || [],
+  // };
 
   const STATE = {
     name: t("careerTopColleges.listItems.2"),

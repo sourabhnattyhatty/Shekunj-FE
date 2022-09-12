@@ -126,6 +126,33 @@ function HomePage() {
   const [adsPosition1, setAdsPosition1] = useState([]);
   const [adsPosition2, setAdsPosition2] = useState([]);
   const [adsPosition3, setAdsPosition3] = useState([]);
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const [status, setStatus] = useState(null);
+
+  const getLocation = () => {
+    if (!navigator.geolocation) {
+        setStatus('Geolocation is not supported by your browser');
+    } else {
+        setStatus('Locating...');
+        navigator.geolocation.getCurrentPosition((position) => {
+            setStatus(null);
+            setLat(position.coords.latitude);
+            setLng(position.coords.longitude);
+        });
+    }   
+}
+console.log('longlat',lng,lat)
+
+useEffect(() => {
+    getLocation();
+    if (lat && lng !== null) {
+        axios.post(`/location?latitude=${lat}&longitude=${lng}`)
+            .then((response) => {
+                console.log(response)
+            });
+    }
+}, [lat, lng]);
 
 	useEffect(() => {
 		axios.get('/private_adds/private_add?image_type=home_position_1')

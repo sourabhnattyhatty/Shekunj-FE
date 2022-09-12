@@ -336,19 +336,20 @@ export const careerReducer = (state = initialState, action) => {
         isLoading: false,
         governmentExams: data,
       };
+      
     case coursesTypes.GOVERNMENT_EXAM_FILTER_RESET:
       return {
         ...state,
         isLoading: false,
         topCollages: {
-          ...state.topCollages?.collage_stream_list,
-          collage_stream_list: state.topCollages?.collage_stream_list?.map(
-            (r) =>
-              ({
-                ...r,
-                isChecked: false,
-              } || []),
-          ),
+          // ...state.topCollages?.collage_stream_list,
+          // collage_stream_list: state.topCollages?.collage_stream_list?.map(
+          //   (r) =>
+          //     ({
+          //       ...r,
+          //       isChecked: false,
+          //     } || []),
+          // ),
         },
         governmentExams: {
           ...state.governmentExams,
@@ -367,6 +368,11 @@ export const careerReducer = (state = initialState, action) => {
             })) || [],
           state_list:
             state.topSchools?.state_list?.map((r) => ({
+              ...r,
+              isChecked: false,
+            })) || [],
+            city_list:
+            state.topSchools?.city_list?.map((r) => ({
               ...r,
               isChecked: false,
             })) || [],
