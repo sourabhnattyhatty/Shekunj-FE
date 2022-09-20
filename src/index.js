@@ -16,6 +16,7 @@ import "./index.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./assets/i18n/i18n";
+// import '@react-pdf-viewer/core/lib/styles/index.css';
 
 ReactDOM.render(
   <React.StrictMode>

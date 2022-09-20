@@ -141,6 +141,7 @@ function Faq() {
                     <Accordion.Header>
                       {/* Accordion ques */}
                       {c.question}
+                      
                      {/* <img src="src\assets\icons\down1.png"/>
                       <img src="src\assets\icons\up.png"/> */}
                     </Accordion.Header>

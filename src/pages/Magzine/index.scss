@@ -230,12 +230,14 @@
     .suc_box .col-md-4.col-12 {
       order: 1;
     }
+  
     .ads_story_cover_img {
       margin: 10px 0px !important;
       height: 39px !important;
       width: 80% !important;
     }
-    .ads_succ_story{
+  
+    .ads_succ_story {
       height: 47px !important;
     }
   
@@ -271,6 +273,7 @@
     .SuccStory_banner p {
       font-size: 19px;
     }
+  
     .ads_story_cover_img {
       margin: 10px 0px !important;
       height: 39px !important;
@@ -288,72 +291,215 @@
     width: 84%;
     object-fit: cover;
   }
-  .ads_succ_story{
+  
+  .ads_succ_story {
     margin: 30px 0px;
     height: 120px;
     width: 84%;
     object-fit: cover;
   }
-  .accordion-button{
-     width:100%;
-     align-items: center;
-    //  border:  solid rgb(223, 225, 229);
-     font-family: "SegoeUI_medium" !important;
-     font-size: 24px;
-     padding:10px;
-     border: none;
-     text-align: left;
-     padding-left: 30px;
-    
-    
-  }
-  .FaqAccordion{
-
-    border-top: 0px solid rgb(223, 225, 229);
-  }
- .arrow {
-    font: 24px / 1 FontAwesome;
-    // display: inline-block;
-    vertical-align: middle;
-    margin-right: 8px;
-    transform: translateY(-2px);
-    border: 0px;
-    height: 30px;
-    width: 20px;
-    float: right;
-}
-.accordion-body {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 40px;
-    margin: 0px 0px 5px;
-    padding:10px;
-    margin-bottom:10px !important;
-    border: solid rgb(223, 225, 229) !important;
-    // background-color:#db6b98 !important;
-    background-image: linear-gradient(120deg, #fad0c4, #db6b98);
-    color: #0c0000;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-.FaqContainer{
-    padding: 10px;
-    margin:10px;
-}
-.NavHeading{
-  text-align: center;
-}
-
-// .accordion-button.collapsed::after {
-
-//   background: url("src\assets\icons\down1.png.svg");
-
-// }
-
-// .accordion-button:not(.collapsed)::after {
-
-//   background: url("src\assets\icons\down1.png.svg");
-
-// }
   
- 
+  .containerBlog {
+    margin: 90px;
+    padding: 10px;
+    display: inline-block;
+    width: calc(100% - 176px);
+    background-color: #fad0c4;
+    color: white
+  }
+  
+  .containerBlog p {
+    margin: 16px;
+    padding: 10px;
+  
+  }
+  
+  .containerBlog h1 {
+    margin: 16px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .Card {
+    padding: 32px 100px;
+    margin: 16px 32px;
+    background-color: #d45d93;
+    box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+  }
+  
+  .card-title {
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 900;
+    font-stretch: normal;
+    font-size: 36px;
+    line-height: normal;
+    font-family: "Playfair Display", serif;
+  }
+  
+  .card {
+    margin: 20px;
+    box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+    border-radius: 10px;
+  }
+  
+  .Card img {
+    padding: 20px;
+  }
+  
+  .Card h5 {
+    padding: 10px;
+    color: #000000;
+  }
+  
+  .Card h6 {
+    padding: 10px;
+  }
+  
+  .Card a {
+    margin-left: 200px;
+    color: #99130b;
+    font-weight: 700px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .card-text-details {
+    font-family: "times", "times new roman", serif;
+    letter-spacing: 0.20000000298023224px;
+    color: #6c6c6c;
+    font: 15px Roboto, sans-serif;
+    line-height: 1.6em;
+    padding: 10px;
+  }
+  
+  .Card h3 {
+    color: #000000;
+  }
+  
+  .linkto {
+    color: #99130b;
+  }
+  
+  .col-md-8 {
+    padding-bottom: 30px;
+  }
+  
+  .NavLink {
+    color: #99130b !important;
+    font-weight: 400;
+    font-size: large;
+    font: 20px Roboto, sans-serif;
+  }
+  
+  .NavDrop {
+    color: #0c0c0c !important;
+    font-weight: 400;
+    font-size: large;
+    font-weight: bold;
+    font: 20px Roboto, sans-serif;
+  }
+  
+  .navbar-nav .NavDrop .nav-link {
+    color: #0c0c0c !important;
+  }
+  
+  .navbar-custom {
+    background-color: #ec498a;
+    color: #ffffff !important;
+    justify-content: center;
+  }
+  
+  .navbar-custom h2 {
+    text-align: center !important;
+  }
+  
+  .EventsContainer {
+    display: flex;
+    width: 78%;
+    padding: 20px;
+    // flex-wrap: wrap;
+    justify-content: space-around;
+  }
+   
+  .filters>span {
+    padding-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 30px;
+  }
+  
+  .Home {
+    display: flex;
+    flex-direction: row;
+    background-color: #fad0c4
+  }
+   
+  .c-heading-6 {
+    font-family: Segoe UI, SegoeUI;
+    font-size: 20px;
+    color: #000000;
+    padding: 10px 0;
+    max-height: 3.6em;
+    line-height: 1.1em;
+    display: inline-block;
+    word-wrap: break-word;
+    overflow: hidden;
+    -webkit-text-stroke-width: thin;
+    width: 83%;
+    height: 3.6em;
+    margin-bottom: -10px;
+  }
+  
+  .card-text {
+    margin: 0 0 10px 0;
+    font-family: Segoe UI, SegoeUI;
+    font-size: 14px;
+    font-weight: 600 !important;
+    color: #000000;
+  }
+  
+  .text-muted {
+    font-family: Segoe UI, SegoeUI;
+  }
+  
+  .c-button {
+    font-family: Segoe UI, SegoeUI;
+    max-width: 80% !important;
+    width: 80%;
+    height: 38px;
+    color: white;
+    background-color: #0078d4;
+    padding: 0 10px 0 5px;
+    text-align: center;
+    padding-top: 5px;
+    font-weight: bold;
+  }
+  
+  .magzinePdf{
+   text-align: center !important;
+  color: #a63d67 !important;
+  }
+  .magzineCardBody{
+    text-align: center;
+    background-image: linear-gradient(180deg,#fad0c4, white);
+    transition: ease-in-out;
+  }
+  .createdText{
+    text-align: start !important;
+    color: #6c757d !important;
+  }
+  .updatedText{
+    text-align: end !important;
+    color: #6c757d !important;
+  }
+//   .iframe {
+//     overflow: scroll !important;
+//     width: 1349px;
+//     height: 100%;
+//     border: 1px solid black;
+// }

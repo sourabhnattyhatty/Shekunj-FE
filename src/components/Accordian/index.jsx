@@ -115,22 +115,44 @@ export default function AccordionComponent({
     );
   };
 
+  // const hasMoreSchoolStateFunction = (data) => {
+  //   return data?.map(
+  //     (s) =>
+  //       s?.name && (
+  //         <li key={s?.id}>
+  //           <FormControlLabel
+  //             value={s?.name}
+  //             control={
+  //               <Radio
+  //                 checked={s?.isChecked}
+  //                 onChange={(e) =>
+  //                   onChangeFilter(s?.id, e, "topSchools", "states")
+  //                 }
+  //               />
+  //             }
+  //             label={s?.name ? s?.name : "N/A"}
+  //           />       
+  //         </li>
+  //       ),
+  //   );
+  // };
+
   const hasMoreSchoolStateFunction = (data) => {
     return data?.map(
-      (s) =>
-        s?.name && (
-          <li key={s?.id}>
+      (c,index) =>
+        c && (
+          <li key={index}>
             <FormControlLabel
-              value={s?.name}
+              value={c?.name}
               control={
-                <Radio
-                  checked={s?.isChecked}
+                <CheckBox
+                checked={c?.isChecked}
                   onChange={(e) =>
-                    onChangeFilter(s?.id, e, "topSchools", "states")
+                    onChangeFilter(c?.id, e, "topSchools", "states")
                   }
                 />
               }
-              label={s?.name ? s?.name : "N/A"}
+              label={c?.name ? c?.name : "N/A"}
             />       
           </li>
         ),
@@ -198,22 +220,43 @@ export default function AccordionComponent({
 
   };
 
+  // const hasMoreCollegeStateFunction = (data) => {
+  //   return data?.map(
+  //     (s, index) =>
+  //       s && (
+  //         <li key={index}>
+  //           <FormControlLabel
+  //             value={s.name}
+  //             control={
+  //               <Radio
+  //                 checked={s?.isChecked}
+  //                 onChange={(e) =>
+  //                   onChangeFilter(s.id, e, "topCollages", "state")
+  //                 }
+  //               />
+  //             }
+  //             label={s?.name ? s?.name : "N/A"}
+  //           />
+  //         </li>
+  //       ),
+  //   );
+  // };
   const hasMoreCollegeStateFunction = (data) => {
     return data?.map(
-      (s, index) =>
-        s && (
+      (c, index) =>
+        c && (
           <li key={index}>
             <FormControlLabel
-              value={s.name}
+              value={c.name}
               control={
-                <Radio
-                  checked={s?.isChecked}
+                <CheckBox
+                  checked={c?.isChecked}
                   onChange={(e) =>
-                    onChangeFilter(s.id, e, "topCollages", "state")
+                    onChangeFilter(c.id, e, "topCollages", "state")
                   }
                 />
               }
-              label={s?.name ? s?.name : "N/A"}
+              label={c?.name ? c?.name : "N/A"}
             />
           </li>
         ),
@@ -365,11 +408,24 @@ export default function AccordionComponent({
             </AccordionSummary>
             <AccordionDetails>
               <ul className='pl-0'>
-                <RadioGroup name='radio-buttons-group'>
-                  {remainingCollegeState
+                {/* <RadioGroup name='radio-buttons-group'> */}
+                <FormGroup>
+                  {/* {remainingCollegeState
                     ? hasMoreCollegeStateFunction(state?.rows)
-                    : hasMoreCollegeStateFunction(state?.rows?.slice(0, 3))}
-                </RadioGroup>
+                    : hasMoreCollegeStateFunction(state?.rows?.slice(0, 3))} */}
+                            {remainingCollegeCity
+                    ? hasMoreCountShowFunction(
+                      state?.rows,
+                      "topCollages",
+                        "state",
+                      )
+                    : hasMoreCountShowFunction(
+                      state?.rows?.slice(0, 6),
+                        "topCollages",
+                        "state",
+                      )}
+                {/* </RadioGroup> */}
+                </FormGroup>
               </ul>
               {hasMoreCount(state?.rows, 3) > 0 && (
                 <div
@@ -429,11 +485,24 @@ export default function AccordionComponent({
             </AccordionSummary>
             <AccordionDetails>
               <ul className='pl-0'>
-                <RadioGroup name='radio-buttons-group'>
-                  {remainingSchoolsState
+                {/* <RadioGroup name='radio-buttons-group'> */}
+                <FormGroup>
+                  {/* {remainingSchoolsState
                     ? hasMoreSchoolStateFunction(states?.rows)
-                    : hasMoreSchoolStateFunction(states?.rows?.slice(0, 3))}
-                </RadioGroup>
+                    : hasMoreSchoolStateFunction(states?.rows?.slice(0, 3))} */}
+                             {remainingCollegeCity
+                    ? hasMoreCountShowFunction(
+                      states?.rows,
+                      "topSchools",
+                        "states",
+                      )
+                    : hasMoreCountShowFunction(
+                      states?.rows?.slice(0, 6),
+                        "topSchools",
+                        "states",
+                      )}
+                {/* </RadioGroup> */}
+                </FormGroup>
               </ul>
               {hasMoreCount(states?.rows, 3) > 0 && (
                 <div

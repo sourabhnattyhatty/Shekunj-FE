@@ -9,6 +9,7 @@ import { certificateReducer } from "./certificate";
 import { languageReducer } from "./language";
 import {adsReducer} from "./ads";
 import { faqReducer } from "./faq";
+import { magzinesReducer } from "./magzine";
 
 export default combineReducers({
   authReducer,
@@ -19,5 +20,6 @@ export default combineReducers({
   certificateReducer,
   languageReducer,
   adsReducer,
-  faqReducer
+  faqReducer,
+  magzinesReducer
 });
