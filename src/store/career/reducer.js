@@ -49,7 +49,7 @@ const initialCourseSector = {
       id: 8,
       name: "Computer Application",
       isChecked: false,
-      value: "Computer Application",  
+      value: "Computer Application",
     },
     {
       id: 9,
@@ -91,13 +91,13 @@ const initialCourseSector = {
       id: 15,
       name: "Energy Technology",
       isChecked: false,
-      value: "Energy Technology", 
+      value: "Energy Technology",
     },
     {
       id: 16,
       name: "Fashion",
       isChecked: false,
-      value: "Fashion", 
+      value: "Fashion",
     },
     {
       id: 17,
@@ -133,7 +133,7 @@ const initialCourseSector = {
       id: 22,
       name: "Law",
       isChecked: false,
-      value: "Law", 
+      value: "Law",
     },
     {
       id: 23,
@@ -164,7 +164,7 @@ const initialCourseSector = {
       name: "Paramedical",
       isChecked: false,
       value: "Paramedical",
-     
+
     },
     {
       id: 28,
@@ -176,7 +176,7 @@ const initialCourseSector = {
       id: 29,
       name: "Pharmacy",
       isChecked: false,
-      value: "Pharmacy",  
+      value: "Pharmacy",
     },
     {
       id: 30,
@@ -194,14 +194,14 @@ const initialCourseSector = {
       id: 32,
       name: "Polytechnic",
       isChecked: false,
-      value: "Polytechnic",      
+      value: "Polytechnic",
     },
     {
       id: 33,
       name: "Science",
       isChecked: false,
       value: "Science",
-   
+
     },
     {
       id: 34,
@@ -209,9 +209,85 @@ const initialCourseSector = {
       isChecked: false,
       value: "Social work",
     },
-   
+
   ],
 };
+const initialOwnership = {
+  name: "Ownership",
+  rows: [
+    {
+      id: 1,
+      name: "Private",
+      isChecked: false,
+      value: "Private",
+    },
+    {
+      id: 2,
+      name: "Government",
+      isChecked: false,
+      value: "Government",
+    },
+  ],
+};
+const initialCategory = {
+  name: "Category",
+  rows: [
+    {
+      id: 1,
+      name: "Girls",
+      isChecked: false,
+      value: "Girls",
+    },
+    {
+      id: 2,
+      name: "Boys",
+      isChecked: false,
+      value: "Boys",
+    },
+    {
+      id: 3,
+      name: "Co-Ed",
+      isChecked: false,
+      value: "Co-Ed",
+    },
+  ],
+};
+const initialEducationBoard = {
+  name: "Category",
+  rows: [
+    {
+      id: 1,
+      name: "ICSE/ISC",
+      isChecked: false,
+      value: "ICSE/ISC",
+    },
+    {
+      id: 2,
+      name: "Mp Board",
+      isChecked: false,
+      value: "Mp Board",
+    },
+    {
+      id: 3,
+      name: "State Board",
+      isChecked: false,
+      value: "State Board",
+    },
+    {
+      id: 4,
+      name: "MPBSE Board",
+      isChecked: false,
+      value: "MPBSE Board",
+    },
+    {
+      id: 5,
+      name: "CBSE",
+      isChecked: false,
+      value: "CBSE",
+    },
+  ],
+};
+
 
 const initialState = {
   isLoading: false,
@@ -220,7 +296,10 @@ const initialState = {
   topSchools: [],
   error: null,
   courseSector: initialCourseSector,
-  lan : true
+  lan: true,
+  categoryList: initialCategory,
+  educationBoard: initialEducationBoard,
+  ownership: initialOwnership
 };
 
 export const careerReducer = (state = initialState, action) => {
@@ -265,7 +344,7 @@ export const careerReducer = (state = initialState, action) => {
       };
 
 
-      case coursesTypes.TOP_COLLAGE_SEARCH_REQUEST:
+    case coursesTypes.TOP_COLLAGE_SEARCH_REQUEST:
       return {
         ...state,
         isLoading: true,
@@ -321,20 +400,20 @@ export const careerReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        topCollages: {
-          ...state.topCollages?.collage_stream_list,
-          collage_stream_list: state.topCollages?.collage_stream_list?.map(
-            (r) =>
-              ({
-                ...r,
-                isChecked: false,
-              } || []),
-          ),
-        },
+        // topCollages: {
+        //   ...state.topCollages?.collage_stream_list,
+        //   collage_stream_list: state.topCollages?.collage_stream_list?.map(
+        //     (r) =>
+        //       ({
+        //         ...r,
+        //         isChecked: false,
+        //       } || []),
+        //   ),
+        // },
         governmentExams: {
           ...state.governmentExams,
           govt_category:
-           Array.isArray(state.governmentExams?.govt_category) && state.governmentExams?.govt_category?.map((r) => ({
+            Array.isArray(state.governmentExams?.govt_category) && state.governmentExams?.govt_category?.map((r) => ({
               ...r,
               isChecked: false,
             })) || [],
@@ -351,6 +430,11 @@ export const careerReducer = (state = initialState, action) => {
               ...r,
               isChecked: false,
             })) || [],
+          city_list:
+            state.topSchools?.city_list?.map((r) => ({
+              ...r,
+              isChecked: false,
+            })) || [],
         },
         courseSector: {
           ...initialCourseSector,
@@ -359,7 +443,29 @@ export const careerReducer = (state = initialState, action) => {
             isChecked: false,
           })),
         },
+        categoryList: {
+          ...initialCategory,
+          rows: initialCategory.rows.map((r) => ({
+            ...r,
+            isChecked: false,
+          })),
+        },
+        educationBoard: {
+          ...initialEducationBoard,
+          rows: initialEducationBoard.rows.map((r) => ({
+            ...r,
+            isChecked: false,
+          })),
+        },
+        ownership: {
+          ...initialOwnership,
+          rows: initialOwnership.rows.map((r) => ({
+            ...r,
+            isChecked: false,
+          })),
+        },
       };
+
     default:
       return state;
   }

@@ -43,9 +43,8 @@ function Carousel(props) {
     }
     if (props.page === carouselConstant.HOMEPAGE) {
       if (divRef.current) {
-        divRef.current.innerHTML = `${
-          carousel.relative(carousel.current()) + 1 || 0
-        }/${totalItems}`;
+        divRef.current.innerHTML = `${carousel.relative(carousel.current()) + 1 || 0
+          }/${totalItems}`;
       }
     }
   };
@@ -174,7 +173,7 @@ function Carousel(props) {
                 >
                   <div className='box'>
                     <div className='slide-img'>
-                      <img alt='' src={obj?.image} />
+                      <img alt='' src={obj?.logo} />
                       <div className='overlay'></div>
                     </div>
                     <div className='tag_btn'>

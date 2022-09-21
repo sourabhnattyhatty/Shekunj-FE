@@ -186,7 +186,7 @@ export const getTopSchools =
         dispatch({ type: coursesTypes.TOP_SCHOOL_REQUEST });
         const res = await httpServices.get(
           filter === true ? handleTopSchoolsFilter(topSchools, courseSector)
-                          : filter ? url + filter : url,
+            : filter ? url + filter : url,
         );
         let updatedPayload = res?.data;
         let updatedResponse = res?.data;
@@ -225,7 +225,7 @@ export const getTopSchools =
             isChecked: false,
           }),
         );
-        const { state_list, board_list, city_list, gender_intech,school_type } = updatedResponse;
+        const { state_list, board_list, city_list, gender_intech, school_type } = updatedResponse;
         if (state_list?.length > 0) {
           updatedPayload.state_list = state_list.map((r) => {
             r.isChecked = false;
@@ -420,7 +420,7 @@ export const getTopCollages =
 
         const res = await httpServices.get(
           filter === true ? handleTopCollagesFilter(topCollages, courseSector)
-                          : filter ? url + filter : url,
+            : filter ? url + filter : url,
         );
 
         let updatedPayload = res?.data;
@@ -633,7 +633,7 @@ export const setFilterValue =
     //   });
     //   await dispatch(getTopCollages(true));
     // } 
-    
+
     else if (arrayType === "topSchools") {
       if (subType === "states") {
         const updatedPayload = topSchools;
@@ -653,7 +653,7 @@ export const setFilterValue =
         });
         await dispatch(getTopSchools(true));
       }
-      if (subType === "city") {
+      if (subType === "cities") {
         const updatedPayload = topSchools;
 
         const idx = updatedPayload?.city_list?.findIndex((u) => u.id === id);
@@ -681,7 +681,8 @@ export const setFilterValue =
           type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
           payload: {
             data: updatedPayload,
-            type: "courseSector",
+            // type: "courseSector",
+            type: "topSchools",
           },
         });
         await dispatch(getTopSchools(true));
@@ -734,7 +735,7 @@ export const setFilterValue =
           type: coursesTypes.TOP_COLLAGE_FINISH,
           payload: updatedPayload,
         });
-        await dispatch(getTopCollages(false));
+        await dispatch(getTopCollages(true));
       }
       if (subType === "city") {
         const updatedPayload = topCollages;
@@ -751,7 +752,7 @@ export const setFilterValue =
           type: coursesTypes.TOP_COLLAGE_FINISH,
           payload: updatedPayload,
         });
-        await dispatch(getTopCollages(false));
+        await dispatch(getTopCollages(true));
       }
       if (subType === "ownership") {
         const updatedPayload = topCollages;

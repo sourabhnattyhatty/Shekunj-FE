@@ -17,8 +17,17 @@ import Cross from "../../assets/icons/cross.png";
 import Search from "../../assets/icons/search1.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import ContentLoader, { Facebook } from 'react-content-loader';
 
 const CareerPage1 = () => {
+  // const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 4000);
+  // }, []);
   const dispatch = useDispatch();
   const { topSchools, courseSector } = useSelector(
     (state) => state.careerReducer,
@@ -77,15 +86,20 @@ const CareerPage1 = () => {
         <Row>
           <div className='col-md-12'>
             <div className="ads_school_cover">
-            <a href={schoolBannerAds[0]?.url_adds} target='_blank'>
-              <img src={schoolBannerAds[0]?.image} alt='Image' className='ads_school' />
-            </a>
+              <a href={schoolBannerAds[0]?.url_adds} target='_blank'>
+                <img src={schoolBannerAds[0]?.image} alt='Image' className='ads_school' />
+              </a>
             </div>
           </div>
         </Row>
       </Container>
 
       <div className='mainDiv_school'>
+        {/* {loading ? (
+        <div className="loader-container">
+      	  <div className="spinner"></div>
+        </div>
+      ) : ( */}
         <Container>
           <div className='career_tit noselect'>
             <Row>
@@ -205,7 +219,7 @@ const CareerPage1 = () => {
                                     <li>
                                       <span>
                                         <span>{t("careerTopSchools.other.10")}</span> :{" "}
-                                        {c?.gender_intech }
+                                        {c?.gender_intech}
                                       </span>
                                     </li>
                                   )}
@@ -214,7 +228,7 @@ const CareerPage1 = () => {
                                 <ul><li>
                                   <span>
                                     {c && c.city},{" "}
-                                    {c && c.state }
+                                    {c && c.state}
                                   </span>
                                 </li></ul>
 
@@ -233,12 +247,19 @@ const CareerPage1 = () => {
                                   {c.website && (
                                     <li>
                                       <span>{t("careerTopSchools.other.3")}</span> :{" "}
-                                      <Link
+                                      {/* <Link
                                         to={{ pathname: c?.website }}
                                         target='_blank'
                                         rel='noreferrer'>
                                         {c && c.website}
-                                      </Link>
+                                      </Link> */}
+                                      <a
+                                        rel='noreferrer'
+                                        target='_blank'
+                                        href={`https:/${c?.website}`}
+                                      >
+                                        {c && c?.website}
+                                      </a>
                                     </li>
                                   )}
                                 </ul>
@@ -257,12 +278,23 @@ const CareerPage1 = () => {
 
                     ),
                 )
-              ) : (
-                <div className='text-center'>{t("common.noDataFound")}</div>
-              )}
+              ) :
+                //  (
+                //   <div className='text-center'>{t("common.noDataFound")}</div>
+                // )
+                (
+                  <ContentLoader viewBox="0 0 380 70">
+                    {/* Only SVG shapes */}
+                    <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
+                    <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
+                    <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
+                  </ContentLoader>
+                )
+              }
             </Col>
           </Row>
         </Container>
+        {/* )} */}
       </div>
 
       <Footer loginPage={false} />

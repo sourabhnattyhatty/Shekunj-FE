@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { routingConstants } from "../../utils/constants";
-
+import ContentLoader, { Facebook } from 'react-content-loader';
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import {
   getTopCollages,
@@ -19,8 +19,18 @@ import Search from "../../assets/icons/search1.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import test from "../../assets/images/test.jpg"
+// import { Link,Route } from "react-router-dom";
 
 const CareerPage = () => {
+  // const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   },2000);
+  // }, []);
+
   const dispatch = useDispatch();
   const { topCollages, courseSector } = useSelector(
     (state) => state.careerReducer,
@@ -45,10 +55,10 @@ const CareerPage = () => {
     return image ? image : TopCollage;
   };
 
-  const STREAM = {
-    name: t("careerTopColleges.listItems.1"),
-    rows: topCollages?.collage_stream_list || [],
-  };
+  // const STREAM = {
+  //   name: t("careerTopColleges.listItems.1"),
+  //   rows: topCollages?.collage_stream_list || [],
+  // };
 
   const STATE = {
     name: t("careerTopColleges.listItems.2"),
@@ -98,9 +108,9 @@ const CareerPage = () => {
         <Row>
           <div className='col-md-12'>
             <div className="add_college_cover">
-            <a href={collegeBannerAds[0]?.url_adds} target='_blank'>
-              <img src={collegeBannerAds[0]?.image} alt='Image' className=' google_add_college' />
-            </a>
+              <a href={collegeBannerAds[0]?.url_adds} target='_blank'>
+                <img src={collegeBannerAds[0]?.image} alt='Image' className=' google_add_college' />
+              </a>
             </div>
           </div>
         </Row>
@@ -154,13 +164,22 @@ const CareerPage = () => {
               />
             </Col>
 
+
             <Col md={8} xs={12}>
+
               {topCollages?.collage_list?.length > 0 ? (
                 topCollages.collage_list.map(
                   (c, index) =>
                     c &&
                     c.name && (
                       <>
+                        {/* {console.log("c",c)}
+                           {loading ? (
+                      <div className="loader-container">
+      	              <div className="spinner"></div>
+                      </div>
+                      ) : ( */}
+
                         <div className='career_box noselect'
                           style={{ height: "auto" }} key={c?.id} >
                           <Row>
@@ -224,14 +243,14 @@ const CareerPage = () => {
                                 </ul>
 
                                 <ul>
-                                  
-                                    <li>
-                                      <span>
-                                        {c && c.city }{" "}
-                                        {c && c.state }
-                                      </span>
-                                    </li>
-                               
+
+                                  <li>
+                                    <span>
+                                      {c && c.city}{" "}
+                                      {c && c.state}
+                                    </span>
+                                  </li>
+
 
                                 </ul>
 
@@ -240,7 +259,7 @@ const CareerPage = () => {
                                     <li>
                                       <p>
                                         <span>{t("careerTopColleges.other.4")}</span>{" "}
-                                        : 
+                                        :
                                         {c && c.contact_no}
                                       </p>
                                     </li>
@@ -249,21 +268,30 @@ const CareerPage = () => {
                                   {c.website && (
                                     <li>
                                       <span>{t("careerTopColleges.other.5")}</span>:{" "}
-                                      <Link
+                                      {/* <Link
                                         to={{ pathname: c?.website }}
                                         target='_blank'
                                         rel='noreferrer'>
                                         {c && c.website}
-                                      </Link>
+                                      </Link> */}
+                                      <a
+                                        rel='noreferrer'
+                                        target='_blank'
+                                        href={`https:/${c?.website}`}
+                                      >
+                                        {c && c?.website}
+                                      </a>
                                     </li>
 
                                   )}
                                 </ul>
                               </div>
+
                             </Col>
+
                           </Row>
                         </div>
-
+                        {/* )} */}
                         <Row>
                           {(index % 4 == 3) ? <> <div>
                             <a href={collegeBoxAds[0]?.url_adds} target='_blank'>
@@ -274,10 +302,28 @@ const CareerPage = () => {
                       </>
                     ),
                 )
-              ) : (
-                <div className='text-center'>{t("common.noDataFound")}</div>
-              )}
+              ) :
+                //  (
+                //   <div className='text-center'>{t("common.noDataFound")}</div>
+                // )
+                //  (
+                //   <div className="loader-container">
+                //     <div className="spinner"></div>
+                //   </div>
+                // ) 
+
+                (
+                  <ContentLoader viewBox="0 0 380 70">
+                    {/* Only SVG shapes */}
+                    <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
+                    <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
+                    <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
+                  </ContentLoader>
+                )
+              }
+
             </Col>
+
           </Row>
         </Container>
       </div>

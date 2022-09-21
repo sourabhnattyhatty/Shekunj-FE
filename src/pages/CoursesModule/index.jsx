@@ -27,6 +27,7 @@ import { subModule } from '../../store/courses';
 import { coursesTypes } from '../../store/courses/types';
 import { useRef } from 'react';
 import axios from "axios";
+import ContentLoader, { Facebook } from 'react-content-loader';
 
 const Accordion = styled(props => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -89,6 +90,14 @@ const CourseModule = () => {
   const [addPopup, setAddPopup] = useState(false);
   const handleClose = () => setAddPopup(false);
   const handleShow = () => setAddPopup(true);
+  // const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 4000);
+  // }, []);
 
   useEffect(() => {
     handleShow()
@@ -311,12 +320,12 @@ const CourseModule = () => {
 
   const [adsCourseModule, setAdsCourseModule] = useState([]);
 
-	useEffect(() => {
-		axios.get('/private_adds/private_add?image_type=courses_module')
-			.then((response) => {
-				setAdsCourseModule(response.data.results);
-			});
-	}, [])
+  useEffect(() => {
+    axios.get('/private_adds/private_add?image_type=courses_module')
+      .then((response) => {
+        setAdsCourseModule(response.data.results);
+      });
+  }, [])
 
   return (
     <div>
@@ -327,13 +336,18 @@ const CourseModule = () => {
           <Row>
             <div className='col-md-12'>
               <div className='ads_course_mod_cover'>
-            <a href={adsCourseModule[0]?.url_adds}  target='_blank'>
-              <img src={adsCourseModule[0]?.image} alt='Image' className='ads_Course_module' />
-              </a>
+                <a href={adsCourseModule[0]?.url_adds} target='_blank'>
+                  <img src={adsCourseModule[0]?.image} alt='Image' className='ads_Course_module' />
+                </a>
               </div>
             </div>
           </Row>
         </Container>
+        {/* {loading ? (
+        <div className="loader-container">
+      	  <div className="spinner"></div>
+        </div>
+      ) : ( */}
 
         <Container>
           <Row className='pt-md-5 pb-md-5'>
@@ -586,6 +600,7 @@ const CourseModule = () => {
           <AddsPopup popupShow={addPopup}
             popupClose={handleClose} />
         </Container>
+        {/* )} */}
       </div>
       <ScrollToTop />
       <Footer loginPage={false} />

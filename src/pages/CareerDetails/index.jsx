@@ -3,7 +3,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
-import { Link, useParams } from "react-router-dom";
+// import { Link, useParams } from "react-router-dom";
+import ContentLoader, { Facebook } from 'react-content-loader';
+import { Link, useParams, Route } from "react-router-dom";
 import {
     getTopCollages,
     reSetFilterValue,
@@ -109,16 +111,25 @@ const CareerDetails = () => {
                                 </Row>
 
                                 <Row>
-                                    {topCollages.website && (
+                                    {topCollages?.website && (
                                         <Col md={6} xs={12}>
                                             <h6>
                                                 <span>{t("careerTopColleges.other.5")}</span>:{" "}
-                                                <Link
+                                                {/* <Link
                                                     to={{ pathname: topCollages?.website }}
                                                     target='_blank'
                                                     rel='noreferrer'>
                                                     {topCollages && topCollages.website}
+                                                </Link> */}
+                                                <Link
+                                                    to={topCollages?.website}
+                                                    target='_blank'
+                                                >
+                                                    {topCollages && topCollages?.website}
                                                 </Link>
+                                                <Route exact path={topCollages?.website} />
+                                                {console.log("topCollages?.website", topCollages?.website)}
+
                                             </h6>
                                         </Col>
                                     )}

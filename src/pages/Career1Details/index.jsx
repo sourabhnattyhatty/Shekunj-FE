@@ -61,7 +61,7 @@ const Career1Details = () => {
                     </div>
                 </Row>
             </Container>
-{console.log("topSchools---",topSchools)}
+            {console.log("topSchools---", topSchools)}
             <div className='DetailMainDiv_career'>
                 <Container>
                     <Row>
@@ -76,8 +76,8 @@ const Career1Details = () => {
                                         {/* <span style={{ textTransform: "capitalize" }}>
                                             {topSchools && topSchools.school_type && topSchools.school_type||{}}
                                         </span> */}
-                                       
-                                          {/* <h6>{topSchools.map(name => <h2>{name.name}</h2>)} </h6> */}
+
+                                        {/* <h6>{topSchools.map(name => <h2>{name.name}</h2>)} </h6> */}
                                     </Col>
                                 </Row>
                                 <Row className='mt-3'>
@@ -89,7 +89,7 @@ const Career1Details = () => {
                                                     : {topSchools && topSchools.contact_no}
                                                 </h6>
                                             </span>
-                                    </Col>
+                                        </Col>
                                     )}
 
                                     {topSchools.board_type && (
@@ -104,63 +104,66 @@ const Career1Details = () => {
                                 </Row>
 
                                 <Row>
-                                {topSchools.email && (
-                                    <Col md={6} xs={12}>
-                                        <h6>
+                                    {topSchools.email && (
+                                        <Col md={6} xs={12}>
+                                            <h6>
+                                                <span>
+                                                    {t("careerTopColleges.other.9")}
+                                                </span>{" "}
+                                                :{" "}
+                                                {topSchools && topSchools.email}
+                                            </h6>
+                                        </Col>
+                                    )}
+                                    {topSchools.established_year && (
+                                        <Col md={6} xs={12}>
                                             <span>
-                                                {t("careerTopColleges.other.9")}
+                                                {t("careerTopColleges.other.10")}
                                             </span>{" "}
                                             :{" "}
-                                            {topSchools && topSchools.email}
-                                        </h6>
-                                    </Col>
-                                )}
-                                {topSchools.established_year && (
-                                    <Col md={6} xs={12}>
-                                        <span>
-                                            {t("careerTopColleges.other.10")}
-                                        </span>{" "}
-                                        :{" "}
-                                        {topSchools && topSchools.established_year}
-                                    </Col>
-                                )}
+                                            {topSchools && topSchools.established_year}
+                                        </Col>
+                                    )}
                                 </Row>
 
                                 <Row>
-                                {topSchools.level && (
-                                    <Col md={6} xs={12}>
-                                        <h6>
-                                            <span>
-                                                {t("careerTopColleges.other.14")}
-                                            </span>{" "}
-                                            :{" "}
-                                            {topSchools && topSchools.level}
-                                        </h6>
-                                    </Col>
-                                )}
-                                {topSchools.website && (
-                                    <Col md={6} xs={12}>
-                                        <h6>
-                                            <span>{t("careerTopSchools.other.3")}</span> :{" "}
-                                            <Link
-                                                to={{ pathname: topSchools?.website }}
-                                                target='_blank'
-                                                rel='noreferrer'>
-                                                {topSchools && topSchools.website}
-                                            </Link>
-                                        </h6>
-                                    </Col>
-                                )}
+                                    {topSchools.level && (
+                                        <Col md={6} xs={12}>
+                                            <h6>
+                                                <span>
+                                                    {t("careerTopColleges.other.14")}
+                                                </span>{" "}
+                                                :{" "}
+                                                {topSchools && topSchools.level}
+                                            </h6>
+                                        </Col>
+                                    )}
+                                    {topSchools.website && (
+                                        <Col md={6} xs={12}>
+                                            <h6>
+                                                <span>{t("careerTopSchools.other.3")}</span> :{" "}
+                                                <Link
+                                                    // to={{ pathname: topSchools?.website }}
+                                                    to={topSchools?.website}
+
+                                                    target='_blank'
+                                                // rel='noreferrer'
+                                                >
+                                                    {topSchools && topSchools?.website}
+                                                </Link>
+                                            </h6>
+                                        </Col>
+                                    )}
                                 </Row>
 
                                 {topSchools.about_school && (
-                                <p style={{ textAlign: 'justify' }} className='mt-3'>
-                                    <span>
-                                        {t("careerTopSchools.other.6")}
-                                    </span>{" "}
-                                    :{" "}
-                                    <div dangerouslySetInnerHTML={{ __html: `<div>${topSchools.about_school}</div>` }} />
-                                </p>
+                                    <p style={{ textAlign: 'justify' }} className='mt-3'>
+                                        <span>
+                                            {t("careerTopSchools.other.6")}
+                                        </span>{" "}
+                                        :{" "}
+                                        <div dangerouslySetInnerHTML={{ __html: `<div>${topSchools.about_school}</div>` }} />
+                                    </p>
                                 )}
                             </div>
                         </Col>

@@ -36,6 +36,7 @@
     "react-chartjs-2": "^4.0.0",
     "react-compound-timer": "^1.2.0",
     "react-confetti": "^6.0.1",
+    "react-content-loader": "^6.2.0",
     "react-cropper": "^2.1.8",
     "react-datepicker": "^4.5.0",
     "react-device-detect": "^2.1.2",
