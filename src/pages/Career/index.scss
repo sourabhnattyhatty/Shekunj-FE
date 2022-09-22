@@ -205,7 +205,7 @@
   }
 
   .accordion_box_all {
-    display: none;
+    // display: none;
   }
 
   .career_tit {
@@ -259,7 +259,7 @@
   }
   .college_ads_box{
     height: 47px !important;
-    margin-left: 15px !important;
+    // margin-left: 15px !important;
     margin-bottom: 20px !important;
   }
 }
@@ -367,11 +367,11 @@
   margin-left: 75px;
 }
 .college_ads_box{
-  height: 92px;
-  margin-left: 15px;
+  // height: 92px;
+  // margin-left: 15px;
   margin-bottom: 30px;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 @media screen and (max-width:767px){

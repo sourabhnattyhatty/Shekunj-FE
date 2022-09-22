@@ -110,6 +110,7 @@ function CourseTest() {
                     //onClick={() => certificateRef.current.generatePDF()}
                     onClick={() => redirectToDownload()}
                   />
+                  <span className="download-cerificate">Download</span>
                   <br />
                 </p>
               </div>

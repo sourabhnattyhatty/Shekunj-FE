@@ -154,7 +154,7 @@ const CareerPage = () => {
               />
             </Col>
 
-            <Col md={8} xs={12}>
+            <Col md={8} xs={12} className="top_collages_add_g">
               {topCollages?.collage_list?.length > 0 ? (
                 topCollages.collage_list.map(
                   (c, index) =>
@@ -264,13 +264,13 @@ const CareerPage = () => {
                           </Row>
                         </div>
 
-                        <Row>
-                          {(index % 4 == 3) ? <> <div>
+                        <div className="top_clg_add_img">
+                          {(index % 4 == 3) ? <>
                             <a href={collegeBoxAds[0]?.url_adds} target='_blank'>
                               <img src={collegeBoxAds[0]?.image} alt='Image'
                                 className='college_ads_box' />
-                            </a> </div></> : ''}
-                        </Row>
+                            </a> </> : ''}
+                        </div>
                       </>
                     ),
                 )
