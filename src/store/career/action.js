@@ -769,40 +769,40 @@ export const setFilterValue =
         });
         await dispatch(getTopCollages(true));
       }
-      if (subType === "stream") {
-        const updatedPayload = courseSector;
-        const idx = updatedPayload?.rows?.findIndex((u) => u.id === id);
-        if (idx !== -1) {
-          updatedPayload.rows.filter((item, index) => {
-            return item.id !== id
-              ? (updatedPayload.rows[index].isChecked = false)
-              : null;
-          });
-          updatedPayload.rows[idx].isChecked = action;
-        }
-        dispatch({
-          type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
-          payload: {
-            data: updatedPayload,
-            type: "stream",
-          },
-        });
-        await dispatch(getTopCollages(true));
-      }
-      // const idx = updatedPayload?.collage_stream_list?.findIndex(
-      //   (u) => u.id === id,
-      // );
-      // if (idx !== -1) {
-      //   updatedPayload.collage_stream_list[idx].isChecked = action;
+      // if (subType === "stream") {
+      //   const updatedPayload = courseSector;
+      //   const idx = updatedPayload?.rows?.findIndex((u) => u.id === id);
+      //   if (idx !== -1) {
+      //     updatedPayload.rows.filter((item, index) => {
+      //       return item.id !== id
+      //         ? (updatedPayload.rows[index].isChecked = false)
+      //         : null;
+      //     });
+      //     updatedPayload.rows[idx].isChecked = action;
+      //   }
+      //   dispatch({
+      //     type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
+      //     payload: {
+      //       data: updatedPayload,
+      //       type: "stream",
+      //     },
+      //   });
+      //   await dispatch(getTopCollages(true));
       // }
-      // dispatch({
-      //   type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
-      //   payload: {
-      //     data: updatedPayload,
-      //     type: "stream",
-      //   },
-      // });
-      // await dispatch(getTopCollages(true));
+      const idx = updatedPayload?.collage_stream_list?.findIndex(
+        (u) => u.id === id,
+      );
+      if (idx !== -1) {
+        updatedPayload.collage_stream_list[idx].isChecked = action;
+      }
+      dispatch({
+        type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
+        payload: {
+          data: updatedPayload,
+          type: "stream",
+        },
+      });
+      await dispatch(getTopCollages(true));
     }
 
 

@@ -553,3 +553,29 @@ span.MuiSlider-mark.MuiSlider-markActive {
   }
 }
 
+// 30/08/2022
+
+@media screen and (max-width:767px){
+
+.course_module .css-pl1y3u-MuiSlider-root {
+  width: 90%;
+}
+.modal-content {
+  width: 90%;
+
+}
+iframe {
+  width: 100%;
+}
+body.modal-open {
+  padding-right: 0 !important;
+}
+.circular_progress_module {
+  width: 90%;
+  margin: auto;
+}
+
+
+
+
+}

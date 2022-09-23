@@ -68,7 +68,6 @@ const Career1Details = () => {
                         <Col md={8} xs={12}>
                             <div className='deatil_box'>
                                 <h4 className='mb-3'>{topSchools && topSchools.name}</h4>
-                                {console.log("")}
                                 <Row>
                                     <Col md={12} xs={12}>
                                         {topSchools && topSchools.city} {topSchools.city && (",")}{" "}

@@ -116,3 +116,30 @@ form.set_form button {
   font-weight: 500;
   color: #ff008d;
 }
+
+// KC CSS Sep 12 2022
+
+@media screen and (max-width:767px){
+
+
+.college_ads_box {
+  height: 40px !important;
+  // margin-left: 15px !important;
+  margin-bottom: 20px !important;
+  width: 90% !important;
+  object-fit: contain !important;
+}
+.top_col_content h3 {
+  margin-left: 0px !important;
+}
+img.searchclose {
+display: none;
+}
+
+
+
+
+
+
+
+}

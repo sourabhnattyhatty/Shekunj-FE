@@ -660,3 +660,15 @@ hr.line {
 .suggList:hover {
   background-color: #eee;
 }
+// KC 30-08-2022
+
+@media screen and (max-width:767px){
+	.searchInput {
+    width: 230px;
+}
+.course_para a.shekunj_a {
+
+  bottom: 19px;
+  position: relative;
+}
+}

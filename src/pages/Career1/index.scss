@@ -248,6 +248,7 @@
     height: 47px !important;
     margin-left: 15px !important;
     margin-bottom: 20px !important;
+    width: inherit !important;
   }
 
   .searchSection {
@@ -398,3 +399,14 @@
 //       transform: rotate(360deg);
 //   }
 // }
+
+@media screen and (max-width:767px){
+
+  .top_col_content h3 {
+    margin-left: 0px !important;
+  }
+  
+  }
+  .top_col_content h3 {
+    margin-left: 1px !important;
+  }

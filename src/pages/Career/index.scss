@@ -205,7 +205,7 @@
   }
 
   .accordion_box_all {
-    display: none;
+    // display: none;
   }
 
   .career_tit {
@@ -261,7 +261,7 @@
 
   .college_ads_box {
     height: 47px !important;
-    margin-left: 15px !important;
+    // margin-left: 15px !important;
     margin-bottom: 20px !important;
   }
 }
@@ -407,3 +407,23 @@
 //       transform: rotate(360deg);
 //   }
 // }
+
+// .college_ads_box{
+//   // height: 92px;
+//   // margin-left: 15px;
+//   margin-bottom: 30px;
+//   width: 100%;
+//   object-fit: contain;
+// }
+
+@media screen and (max-width:767px){
+
+  .top_col_content h3 {
+    margin-left: 0px !important;
+  }
+  
+  }
+
+  .top_col_content h3 {
+    margin-left: 1px !important;
+  }

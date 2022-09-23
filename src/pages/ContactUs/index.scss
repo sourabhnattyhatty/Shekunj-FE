@@ -117,3 +117,32 @@
     bottom: 120px;
     width: 100%;
 }
+
+@media screen and (max-width:767px){
+    .add_con {
+        bottom: 0 !important;
+    }
+    .contact_banner01  .ConUs_form {
+        margin-top: 50px;
+    }
+    .conUs_tit h2 {
+        margin-top: 20px;
+        font-size: 29px;
+        line-height: 40px;
+    
+    }
+    .add_con {
+        position: unset;
+    }
+    .main_div_conUs {
+        height: auto;
+    }
+    .add_main {
+        position: relative;
+        margin-top: 40px;
+    }
+    .ConUs_form {
+        margin-bottom: 30px;
+    }
+}
+

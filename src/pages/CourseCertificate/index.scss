@@ -195,6 +195,45 @@ padding-right: 30px!important;
   .skill_flex {
     flex-wrap: wrap;
   }
+
+  .box_certificate_small .offset-3.col-md-7.col-12 {
+    padding: 0;
+    flex: 100% !important;
+    max-width: 100% !important;
+  }
+  .cercifi_con_small h3 {
+    font-size: 10 !important;
+  }
+  .box_certificate_small {
+    height: 350px!important;
+  }
+  .certi_img p img {
+    max-width: 100% !important;
+  }
+  .your-testcontent .col-lg-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .college_ads_box {
+    height: 45px !important;
+    margin-left: 0px !important;
+    margin-bottom: 20px !important;
+    margin: auto;
+    left: 0;
+    right: 0;
+  }
+  .cercifi_con_small {
+    margin-top: 0px !important;
+  }
+  .cercifi_con_small h2 {
+    font-size: 18px !important;
+  }
+  .box_certificate_small {
+    height: 400px !important;
+  }
+  .box_certificate_small .signature_set {
+    bottom: 40px !important;
+  }
   
 
 }
@@ -203,4 +242,71 @@ padding-right: 30px!important;
   width: 100%;
 padding-left: 30px;
 padding-right: 80px;
+}
+// sep 13
+
+span.download-cerificate {
+  line-height: 44px;
+  color: #fff;
+  font-weight: 700;
+}
+.certificate-downloaddiv img {
+  margin-bottom: 0 !important;
+}
+.certificate-downloaddiv {
+  background: #ec498a;
+  border-radius: 5px;
+  padding-right: 8px !important;
+}
+
+
+@media screen and (max-width:767px){
+
+.box_certificate_small .offset-3.col-md-7.col-12 {
+  padding: 0;
+  flex: 100% !important;
+  max-width: 100% !important;
+}
+.cercifi_con_small h3 {
+  font-size: 10 !important;
+}
+.box_certificate_small {
+  height: 350px!important;
+}
+.certi_img p img {
+  max-width: 100% !important;
+}
+.your-testcontent .col-lg-6 {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+}
+.college_ads_box {
+  height: 45px !important;
+  margin-left: 0px !important;
+  margin-bottom: 20px !important;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+.cercifi_con_small {
+  margin-top: 0px !important;
+}
+.cercifi_con_small h2 {
+  font-size: 18px !important;
+}
+.box_certificate_small {
+  height: 400px !important;
+}
+.box_certificate_small .signature_set {
+  bottom: 40px !important;
+}
+
+
+
+
+
+
+
+
+
 }

@@ -30,7 +30,7 @@ const AddsPopup = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <a href={popupAds[0]?.url_adds} target='_blank'>
-                        <img src={popupAds[0]?.image} alt='Image' className='pop_up_add' />
+                        <img src={popupAds[0]?.image} alt='Image' className='pop_up_add modaladimage' />
                     </a>
                 </Modal.Body>
 

@@ -16,7 +16,7 @@ import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 
-function SuccessStory() {
+function BlogPage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const { successStories } = useSelector((state) => {
@@ -52,7 +52,7 @@ function SuccessStory() {
 
   return (
     <div>
-      <Header loginPage={true} page='story' />
+      <Header loginPage={true} page='more' subPage="moreblog"/>
       <div className='SuccStory_banner'>
         <Container>
           <Row>
@@ -131,13 +131,13 @@ function SuccessStory() {
                         </Col>
 
                         <Col md={4} xs={12}>
-                          <img className="story_image" src={s?.image} alt='' />
+                          <img src={s?.image} alt='' />
                         </Col>
                       </>
                     ) : (
                       <>
                         <Col md={4} xs={12}>
-                          <img className="story_image" src={s?.image} alt='' />
+                          <img src={s?.image} alt='' />
                         </Col>
                         <Col md={8} xs={12}>
                           <h2>
@@ -205,4 +205,4 @@ function SuccessStory() {
   );
 }
 
-export default SuccessStory;
+export default BlogPage;

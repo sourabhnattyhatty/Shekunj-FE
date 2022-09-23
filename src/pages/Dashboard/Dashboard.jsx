@@ -240,7 +240,7 @@ const Dashboard = () => {
               </div>
             </Col>
             {/* right side content */}
-            <Col md={5} xs={12}>
+            <Col md={5} xs={12} className="certifcate_list_box">
               <div className='course_completedright'></div>
               <div className='certificate-section'>
                 <Row>
@@ -261,7 +261,7 @@ const Dashboard = () => {
                   </button>
                 </div>
               </div>
-              <div className='your-testdiv'>
+              <div className='your-testdiv certificate_txt_box'>
                 <h6>{t("dashboardPage.heading.1")}</h6>
                 <div className='your-testcontent'>
                   <Row>

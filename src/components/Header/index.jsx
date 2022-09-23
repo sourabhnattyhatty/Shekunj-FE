@@ -23,11 +23,13 @@ const Header = ({ page, subPage }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const [anchorEl3, setAnchorEl3] = React.useState(null);
   const [showmenu, setShowmenu] = React.useState(false);
 
   const open = Boolean(anchorEl);
   const open1 = Boolean(anchorEl1);
   const open2 = Boolean(anchorEl2);
+  const open3 = Boolean(anchorEl3);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -52,6 +54,14 @@ const Header = ({ page, subPage }) => {
 
   const handleClose2 = () => {
     setAnchorEl2(null);
+  };
+
+  const handleClick3 = (event) => {
+    setAnchorEl3(event.currentTarget);
+  };
+
+  const handleClose3 = () => {
+    setAnchorEl3(null);
   };
 
   useEffect(() => {
@@ -109,6 +119,22 @@ const Header = ({ page, subPage }) => {
     history.push(routingConstants.GUIDANCE_BOOK);
     setAnchorEl2(null);
   };
+
+  const handleMoreBlogs = () => {
+    history.push(routingConstants.MORE_BLOG);
+    setAnchorEl3(null);
+  };
+
+  const handleMoreEvent = () => {
+    history.push(routingConstants.MORE_EVENT);
+    setAnchorEl3(null);
+  };
+
+  const handleMoreMagazine = () => {
+    history.push(routingConstants.MORE_MAGAZINE);
+    setAnchorEl3(null);
+  };
+
 
   const toggleDrawer = (event) => {
     if (
@@ -466,17 +492,55 @@ const Header = ({ page, subPage }) => {
 
                   <li
                     className={
-                      page === "blogs" ? "nav-item active" : "nav-item"
+                      page === "more" ? "nav-item active" : "nav-item"
                     }
                   >
-                    <a
+                    {/* <a
                       className='nav-link'
                       rel='noreferrer'
                       target='_blank'
                       href={routingConstants.BLOGS}
                     >
                       {t("header.heading.7")}
-                    </a>
+                    </a> */}
+                     <button
+                      className='nav-link guidence_button'
+                      id='basic-button3'
+                      aria-controls='basic-menu3'
+                      aria-haspopup='true'
+                      aria-expanded={open3 ? "true" : undefined}
+                      onClick={handleClick3}
+                    >
+                      {t("header.heading.7")}
+                    </button>
+                    <Menu
+                      id='basic-menu3'
+                      anchorEl={anchorEl3}
+                      open={open3}
+                      onClose={handleClose3}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button3",
+                      }}
+                    >
+                      <MenuItem
+                        onClick={handleMoreEvent}
+                        className={subPage === "moreEvent" && "active"}
+                      >
+                        {t("headerComponent.menuItem.11")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleMoreMagazine}
+                        className={subPage === "moreMagazine" && "active"}
+                      >
+                        {t("headerComponent.menuItem.12")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleMoreBlogs}
+                        className={subPage === "moreblog" && "active"}
+                      >
+                        {t("headerComponent.menuItem.13")}
+                      </MenuItem>
+                    </Menu>
                   </li>
 
                   <li

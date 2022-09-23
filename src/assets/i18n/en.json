@@ -212,7 +212,7 @@
       "4": "Resume Builder",
       "5": "Career",
       "6": "Jobs",
-      "7": "Blogs",
+      "7": "More",
       "8": "Success story"
     }
   },
@@ -805,7 +805,10 @@
       "7": "Book a Counsellor",
       "8": "Top Colleges",
       "9": "Top Schools",
-      "10": "Government Schemes"
+      "10": "Government Schemes",
+      "11":"Events",
+      "12":"E-magazine",
+      "13":"Blog"
     }
   },
   "alert": "After reload your test will end.",

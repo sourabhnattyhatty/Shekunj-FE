@@ -30,7 +30,7 @@ function CourseTest() {
     <div>
       <Header loginPage={true} page='guidance' />
 
-      <div className='cou_resultBg noselect'>
+      <div className='cou_resultBg noselect add_botom_space'>
         <Container>
           {result?.is_result && (
             <Confetti

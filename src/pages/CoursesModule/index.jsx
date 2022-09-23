@@ -26,6 +26,8 @@ import { useTranslation } from 'react-i18next';
 import { subModule } from '../../store/courses';
 import { coursesTypes } from '../../store/courses/types';
 import { useRef } from 'react';
+// import { Document, Page } from 'react-pdf';
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import axios from "axios";
 import ContentLoader, { Facebook } from 'react-content-loader';
 
@@ -155,9 +157,9 @@ const CourseModule = () => {
   }, [progress]);
 
   React.useEffect(() => {
-    if (detect.isMobile) {
-      history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
-    }
+    // if (detect.isMobile) {
+    //   history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
+    // }
   }, [history, detect.isMobile, t]);
 
 
@@ -249,6 +251,7 @@ const CourseModule = () => {
 
   const handleFinish = () => {
     history.push(routingConstants.COURSES_TEST + id);
+
   };
 
   const embededLink = (link = null) => {
@@ -267,7 +270,7 @@ const CourseModule = () => {
         <div
           onContextMenu={e => e.preventDefault()}
         >
-          <iframe
+          {/* <iframe
             id='idIframe'
             ref={testRef}
             width={`${100}%`}
@@ -291,12 +294,24 @@ const CourseModule = () => {
               setIframe((course?.pdf_height * 1.333) - result)
             }}
             scrolling='no'
-          />
+          /> */}
+          <Document   options={{ cMapUrl: 'cmaps/', cMapPacked: true }} file={course?.description} onLoadSuccess={onDocumentLoadSuccess}>
+      {[...Array(course?.total_pages)]?.map((page, index) => {
+
+        return (
+          <Page pageNumber={index + 1} />
+
+        )
+
+      }
+      )}
+      </Document>
+
         </div>
       );
     } else if (course.description === null) {
       return <div>{t('coursesPage.pdfSize.heading')}</div>;
-    } else {
+    } else  {
       return (
         <div
           className='imgSet innerhtmlcontainer'
@@ -319,6 +334,14 @@ const CourseModule = () => {
   }, [courseModulesList.length])
 
   const [adsCourseModule, setAdsCourseModule] = useState([]);
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+
+  function onDocumentLoadSuccess({ numPages }) {
+
+    setNumPages(numPages);
+  }
 
   useEffect(() => {
     axios.get('/private_adds/private_add?image_type=courses_module')
@@ -327,16 +350,18 @@ const CourseModule = () => {
       });
   }, [])
 
+  const keys = [...Array().keys(course?.total_pages)];
+
   return (
     <div>
       <Header loginPage={true} page='courses' />
-      <div className='course_module mt-md-0 mb-md-0 mt-4 mb-4 noselect'>
+      <div className='course_module mt-md-0 mb-md-0 mt-4 mb-4 noselect kuldeep_pdf'>
 
         <Container>
           <Row>
             <div className='col-md-12'>
               <div className='ads_course_mod_cover'>
-                <a href={adsCourseModule[0]?.url_adds} target='_blank'>
+                <a href={adsCourseModule[0]?.url_adds}  target='_blank'>
                   <img src={adsCourseModule[0]?.image} alt='Image' className='ads_Course_module' />
                 </a>
               </div>
@@ -536,8 +561,12 @@ const CourseModule = () => {
                       ))}
                     </>
                   ) : (
+
+
                     <div class='iframe-divarea'>
+
                       {manageContent()}
+
                       {course?.file_link && (
                         <>
                           <h2>

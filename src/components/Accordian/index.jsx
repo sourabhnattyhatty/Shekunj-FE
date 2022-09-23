@@ -328,7 +328,7 @@ export default function AccordionComponent({
 
 
   return (
-    <div className='accordion_box_all'>
+    <div className='accordion_box_all label_list_radio ul_list_radio_filter'>
       {type === "colleges" && (
         <>
           <Accordion>
