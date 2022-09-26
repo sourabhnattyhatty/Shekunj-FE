@@ -199,25 +199,45 @@ export default function AccordionComponent({
         ),
     );
   };
+   // const hasMoreSchoolCategoryFunction = (data) => {
+  //   return data && data.length && data.map((c) => (
+  //     c?.name &&
+  //     <li key={c?.id}>
+  //       <FormControlLabel
+  //         value={c?.name}
+  //         control={
+  //           <Radio
+  //             checked={c?.isChecked}
+  //             onChange={(e) => onChangeFilter(c?.id, e, "topSchools", "category")}
+  //           />
+  //         }
+  //         label={c?.name ? c?.name : "N/A"}
+  //       />
+  //     </li>
+  //   ));
+
+  // };
+
   const hasMoreSchoolCategoryFunction = (data) => {
-    return data && data.length && data.map((c) => (
-      c?.name &&
-      <li key={c?.id}>
+    return data.map (
+      (c) =>
+        c?.name && (
+          <li key={c?.id}>
         <FormControlLabel
           value={c?.name}
           control={
-            <Radio
+            <Checkbox
               checked={c?.isChecked}
-              onChange={(e) => onChangeFilter(c?.id, e, "topSchools", "category")}
+              onChange={(e) => onChangeFilter(c?.id, e, "topSchools", "category")
+            }
             />
           }
           label={c?.name ? c?.name : "N/A"}
         />
       </li>
-    ));
-
-  };
-
+    )
+    )
+  }
   // const hasMoreCollegeStateFunction = (data) => {
   //   return data?.map(
   //     (s, index) =>
@@ -263,13 +283,14 @@ export default function AccordionComponent({
   };
 
   const hasMoreCollegeStreamFunction = (data) => {
-    return data && data.length && data.map((c) => (
-      c?.name &&
-      <li key={c?.id}>
+    return data.map (
+  (c,index)=>(
+  c &&
+      <li key={index}>
         <FormControlLabel
           value={c?.name}
           control={
-            <Radio
+            <Checkbox
               checked={c?.isChecked}
               onChange={(e) => onChangeFilter(c?.id, e, "courseSector", "stream")}
             />
@@ -278,8 +299,8 @@ export default function AccordionComponent({
         />
       </li>
     ));
-
   };
+
 
   const hasMoreCollegeCityFunction = (data) => {
     return data?.map(
