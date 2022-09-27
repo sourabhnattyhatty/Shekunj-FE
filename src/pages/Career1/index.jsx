@@ -143,7 +143,7 @@ const CareerPage1 = () => {
                 }}
                 cities={{
                   name: t("careerTopSchools.listItems.3"),
-                  rows: topSchools?.city_list,
+                  rows: topSchools?.city_list || [],
                 }}
                 ownership={{
                   name: t("careerTopSchools.listItems.5"),
@@ -158,6 +158,7 @@ const CareerPage1 = () => {
                   rows: topSchools?.gender_intech,
                 }}
               />
+              {console.log("citiessss",topSchools?.city_list)}
             </Col>
 
             <Col md={8} xs={12}>

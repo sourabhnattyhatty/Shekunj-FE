@@ -1,0 +1,6 @@
+export const faqTypes = {
+    FETCH_FAQ_REQUEST: "[FAQ] FETCH REQUEST",
+    FETCH_FAQ_FINISH: "[FAQ] FETCH FINISH",
+    FETCH_FAQ_FAIL: "[FAQ] FETCH FAIL",
+  };
+  

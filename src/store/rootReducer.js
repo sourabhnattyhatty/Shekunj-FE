@@ -7,7 +7,9 @@ import { guidanceReducer } from "./guidance";
 import { myProgressReducer } from "./my-progress";
 import { certificateReducer } from "./certificate";
 import { languageReducer } from "./language";
-import {adsReducer} from "./ads"
+import {adsReducer} from "./ads";
+import { faqReducer } from "./faq";
+import { magzinesReducer } from "./magzine";
 
 export default combineReducers({
   authReducer,
@@ -17,5 +19,7 @@ export default combineReducers({
   myProgressReducer,
   certificateReducer,
   languageReducer,
-  adsReducer
+  adsReducer,
+  faqReducer,
+  magzinesReducer
 });

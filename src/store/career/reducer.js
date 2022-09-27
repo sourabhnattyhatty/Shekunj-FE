@@ -1,5 +1,23 @@
 import { coursesTypes } from ".";
 
+const initialOwnership = {
+  name: "Ownership",
+  rows: [
+    {
+      id: 1,
+      name: "Private",
+      isChecked: false,
+      value: "private",
+    },
+    {
+      id: 2,
+      name: "Government",
+      isChecked: false,
+      value: "government",
+    },
+  ]
+}
+
 const initialCourseSector = {
   name: "Stream",
   rows: [
@@ -212,23 +230,23 @@ const initialCourseSector = {
 
   ],
 };
-const initialOwnership = {
-  name: "Ownership",
-  rows: [
-    {
-      id: 1,
-      name: "Private",
-      isChecked: false,
-      value: "Private",
-    },
-    {
-      id: 2,
-      name: "Government",
-      isChecked: false,
-      value: "Government",
-    },
-  ],
-};
+// const initialOwnership = {
+//   name: "Ownership",
+//   rows: [
+//     {
+//       id: 1,
+//       name: "Private",
+//       isChecked: false,
+//       value: "Private",
+//     },
+//     {
+//       id: 2,
+//       name: "Government",
+//       isChecked: false,
+//       value: "Government",
+//     },
+//   ],
+// };
 const initialCategory = {
   name: "Category",
   rows: [
@@ -396,6 +414,7 @@ export const careerReducer = (state = initialState, action) => {
         isLoading: false,
         governmentExams: data,
       };
+      
     case coursesTypes.GOVERNMENT_EXAM_FILTER_RESET:
       return {
         ...state,

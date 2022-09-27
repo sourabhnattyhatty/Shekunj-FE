@@ -55,18 +55,23 @@ export const getGovernmentExams =
       }
     };
 
-const handleTopSchoolsFilter = (topSchools, courseSector) => {
+const handleTopSchoolsFilter = (topSchools, courseSector,ownership) => {
   const url = constants.TOP_SCHOOL_LIST;
   const stateList = topSchools?.state_list?.filter((r) => r?.isChecked);
+  console.log("stateListtttt",stateList)
   let stateIdString = undefined;
   if (stateList?.length > 0) {
     stateIdString = `state__in=${stateList.map((r) => r?.name).join(",")}`;
+    console.log("stateIdStringgggg",stateIdString)
   }
   const cityList = topSchools?.city_list?.filter((r) => r?.isChecked);
+  console.log("cityListtttt",cityList)
   let cityIdString = undefined;
   if (cityList?.length > 0) {
     cityIdString = `city__in=${cityList.map((r) => r?.name).join(",")}`;
+    console.log("cityIdStringgggg",cityIdString)
   }
+
   const categoryList = topSchools?.gender_intech?.filter((r) => r?.isChecked);
   let categoryIdString = undefined;
   if (categoryList?.length > 0) {
@@ -76,14 +81,22 @@ const handleTopSchoolsFilter = (topSchools, courseSector) => {
   let boardIdString = undefined;
   if (boardList?.length > 0) {
     boardIdString = `board_type__in=${boardList.map((r) => r?.name).join(",")}`;
+    console.log("boardIdStringgggg",boardIdString)
   }
-  const schoolList = topSchools?.school_type?.filter((r) => r?.isChecked);
+  // const schoolList = topSchools?.school_type?.filter((r) => r?.isChecked);
+  // let schoolIdString = undefined;
+  // if (schoolList?.length > 0) {
+  //   schoolIdString = `school_type__in=${schoolList
+  //     .map((r) => r?.name)
+  //     .join(",")}`;
+  // }
+  const schoolList = ownership?.rows?.filter((r) => r?.isChecked);
   let schoolIdString = undefined;
   if (schoolList?.length > 0) {
     schoolIdString = `school_type__in=${schoolList
-      .map((r) => r?.name)
-      .join(",")}`;
-  }
+          .map((r) => r?.name)
+          .join(",")}`;
+      }
 
   if (stateIdString && !cityIdString && !categoryIdString && !boardIdString && !schoolIdString) {
     return `${url}?${stateIdString}`;
@@ -182,7 +195,7 @@ export const getTopSchools =
     async (dispatch, getState) => {
       try {
         const url = constants.TOP_SCHOOL_LIST;
-        const { topSchools, courseSector } = getState().careerReducer;
+        const { topSchools, courseSector,ownership } = getState().careerReducer;
         dispatch({ type: coursesTypes.TOP_SCHOOL_REQUEST });
         const res = await httpServices.get(
           filter === true ? handleTopSchoolsFilter(topSchools, courseSector)
@@ -318,21 +331,26 @@ export const getTopSchools =
       }
     };
 
-const handleTopCollagesFilter = (topCollages, courseSector) => {
+const handleTopCollagesFilter = (topCollages, courseSector,ownership) => {
 
   const url = constants.TOP_COLLEGE_LIST;
   const stateList = topCollages?.state_list?.filter((r) => r?.isChecked);
+  console.log("College_stateListtttt",stateList)
+  
 
   let stateIdString = undefined;
   if (stateList?.length > 0) {
     stateIdString = `state__in=${stateList.map((r) => r?.name).join(",")}`;
+    console.log("College_stateIdStringgggg",stateIdString)
   }
 
   const cityList = topCollages?.city_list?.filter((r) => r?.isChecked);
+  console.log("College_cityListtttt",cityList)
 
   let cityIdString = undefined;
   if (cityList?.length > 0) {
     cityIdString = `city__in=${cityList.map((r) => r?.name).join(",")}`;
+    console.log("College_cityIdStringgggg",cityIdString)
   }
 
   const streamList = courseSector?.rows?.filter(
@@ -345,13 +363,22 @@ const handleTopCollagesFilter = (topCollages, courseSector) => {
       }`;
   }
 
-  const collageList = topCollages?.college_type?.filter((r) => r?.isChecked);
+  // const collageList = topCollages?.college_type?.filter((r) => r?.isChecked);
+  // let collageIdString = undefined;
+  // if (collageList?.length > 0) {
+  //   collageIdString = `collage_type__in=${collageList
+  //     .map((r) => r?.name)
+  //     .join(",")}`;
+  // }
+    const collageList = ownership?.rows?.filter((r) => r?.isChecked);
   let collageIdString = undefined;
   if (collageList?.length > 0) {
     collageIdString = `collage_type__in=${collageList
       .map((r) => r?.name)
       .join(",")}`;
   }
+
+
 
 
   if (streamIdString && !collageIdString && !stateIdString && !cityIdString) {
@@ -413,7 +440,7 @@ export const getTopCollages =
       try {
         const url = constants.TOP_COLLEGE_LIST;
 
-        const { courseSector, topCollages } = getState().careerReducer;
+        const { courseSector, topCollages,ownership } = getState().careerReducer;
         dispatch({ type: coursesTypes.TOP_COLLAGE_REQUEST });
 
         console.log("filter", filter)
@@ -604,7 +631,7 @@ export const singleCareer2Details = (id) => async (dispatch) => {
 
 export const setFilterValue =
   (id, action, arrayType, subType) => async (dispatch, getState) => {
-    const { courseSector, topCollages, topSchools, governmentExams } =
+    const { courseSector, topCollages, topSchools, governmentExams, ownership } =
       getState().careerReducer;
     if (arrayType === "governmentExam") {
       const updatedPayload = governmentExams;
@@ -657,25 +684,52 @@ export const setFilterValue =
         const updatedPayload = topSchools;
 
         const idx = updatedPayload?.city_list?.findIndex((u) => u.id === id);
+        // if (idx !== -1) {
+        //   updatedPayload.city_list.filter((item, index) => {
+        //     return item.id !== id
+        //       ? (updatedPayload.city_list[index].isChecked = false)
+        //       : null;
+        //   });
         if (idx !== -1) {
-          updatedPayload.city_list.filter((item, index) => {
-            return item.id !== id
-              ? (updatedPayload.city_list[index].isChecked = false)
-              : null;
-          });
           updatedPayload.city_list[idx].isChecked = action;
         }
+        //   updatedPayload.city_list[idx].isChecked = action;
+        // }
         dispatch({
           type: coursesTypes.TOP_SCHOOL_FINISH,
           payload: updatedPayload,
         });
         await dispatch(getTopSchools(true));
       }
+      
+      // if (subType === "ownership") {
+      //   const updatedPayload = topSchools;
+      //   const idx = updatedPayload?.school_type?.findIndex((u) => u.id === id);
+      //   if (idx !== -1) {
+      //     updatedPayload.school_type[idx].isChecked = action;
+      //   }
+      //   dispatch({
+      //     type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
+      //     payload: {
+      //       data: updatedPayload,
+      //       type: "courseSector",
+      //     },
+      //   });
+      //   await dispatch(getTopSchools(true));
+      // }
       if (subType === "ownership") {
-        const updatedPayload = topSchools;
-        const idx = updatedPayload?.school_type?.findIndex((u) => u.id === id);
+        const updatedPayload = ownership;
+        const idx = updatedPayload?.rows?.findIndex((u) => u.id === id);
+        // if (idx !== -1) {
+        //   updatedPayload.college_type[idx].isChecked = action;
+        // }
         if (idx !== -1) {
-          updatedPayload.school_type[idx].isChecked = action;
+          updatedPayload.rows?.filter((item, index) => {
+            return item.id !== id
+              ? (updatedPayload.rows[index].isChecked = false)
+              : null;
+          });
+          updatedPayload.rows[idx].isChecked = action;
         }
         dispatch({
           type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
@@ -687,6 +741,7 @@ export const setFilterValue =
         });
         await dispatch(getTopSchools(true));
       }
+
       if (subType === "educationBoard") {
         const updatedPayload = topSchools;
         const idx = updatedPayload?.board_list?.findIndex((u) => u.id === id);
@@ -755,16 +810,24 @@ export const setFilterValue =
         await dispatch(getTopCollages(true));
       }
       if (subType === "ownership") {
-        const updatedPayload = topCollages;
-        const idx = updatedPayload?.college_type?.findIndex((u) => u.id === id);
+        const updatedPayload = ownership;
+        const idx = updatedPayload?.rows?.findIndex((u) => u.id === id);
+        // if (idx !== -1) {
+        //   updatedPayload.college_type[idx].isChecked = action;
+        // }
         if (idx !== -1) {
-          updatedPayload.college_type[idx].isChecked = action;
+          updatedPayload.rows?.filter((item, index) => {
+            return item.id !== id
+              ? (updatedPayload.rows[index].isChecked = false)
+              : null;
+          });
+          updatedPayload.rows[idx].isChecked = action;
         }
         dispatch({
           type: coursesTypes.GOVERNMENT_EXAM_FILTER_SET,
           payload: {
             data: updatedPayload,
-            type: "topCollages",
+            type: "ownership",
           },
         });
         await dispatch(getTopCollages(true));

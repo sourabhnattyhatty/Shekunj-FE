@@ -30,6 +30,8 @@ const CourseTest = React.lazy(() => import("./pages/CourseTest"));
 const CourseResult = React.lazy(() => import("./pages/CourseResult"));
 const CareerTestResult = React.lazy(() => import("./pages/CareerTestResult"));
 const CourseCertificate = React.lazy(() => import("./pages/CourseCertificate"));
+const Faq = React.lazy(() => import("./pages/Faq"));
+const Magzine = React.lazy(() => import("./pages/Magzine"));
 const CertificateFullView = React.lazy(() =>
   import("./pages/CertificateFullView"),
 );
@@ -83,8 +85,10 @@ function App() {
         <Route exact path={routingConstants.TOP_SCHOOLS} component={Career1} />
         <Route exact path={routingConstants.MORE_BLOG} component={BlogPage} />
         <Route exact path={routingConstants.MORE_EVENT} component={EventPage} />
-        <Route exact path={routingConstants.MORE_MAGAZINE} component={MagazinePage} />
+        {/* <Route exact path={routingConstants.MORE_MAGAZINE} component={MagazinePage} /> */}
         
+        <Route exact path={routingConstants.FAQ} component={Faq} />
+        <Route exact path={routingConstants.MAGZINE} component={Magzine} />
         <Route
           exact
           path={routingConstants.GOVERNMENT_SCHEMES}

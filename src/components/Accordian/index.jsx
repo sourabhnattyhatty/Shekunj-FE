@@ -12,6 +12,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { Radio, RadioGroup } from "@mui/material";
 import { setFilterValue } from "../../store/career";
 import "./index.scss";
+import { CheckBox } from "@mui/icons-material";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -260,6 +261,27 @@ export default function AccordionComponent({
   //   );
   // };
 
+  // const hasMoreCollegeStateFunction = (data) => {
+  //   return data?.map(
+  //     (s, index) =>
+  //       s && (
+  //         <li key={index}>
+  //           <FormControlLabel
+  //             value={s.name}
+  //             control={
+  //               <Radio
+  //                 checked={s?.isChecked}
+  //                 onChange={(e) =>
+  //                   onChangeFilter(s.id, e, "topCollages", "state")
+  //                 }
+  //               />
+  //             }
+  //             label={s?.name ? s?.name : "N/A"}
+  //           />
+  //         </li>
+  //       ),
+  //   );
+  // };
   const hasMoreCollegeStateFunction = (data) => {
     return data?.map(
       (c, index) =>
@@ -335,7 +357,7 @@ export default function AccordionComponent({
                 <Checkbox
                   checked={c?.isChecked}
                   onChange={(e) =>
-                    onChangeFilter(c.id, e, "topCollages", "ownership")
+                    onChangeFilter(c.id, e, "ownership", "ownership")
                   }
                 />
               }
@@ -347,6 +369,24 @@ export default function AccordionComponent({
   };
 
 
+  // const hasMoreCollegeOwnerShipFunction = (data) => {
+  // return data && data.length && data.map((c) => (
+  //   c?.name &&
+  //   <li key={c?.id}>
+  //     <FormControlLabel
+  //       value={c?.name}
+  //       control={
+  //         <Radio
+  //           checked={c?.isChecked}
+  //           onChange={(e) => onChangeFilter(c?.id, e, "ownership","ownership")}
+  //         />
+  //       }
+  //       label={c?.name ? c?.name : "N/A"}
+  //     />
+  //   </li>
+  // ));
+  //     }
+  
 
   return (
     <div className='accordion_box_all label_list_radio ul_list_radio_filter'>

@@ -5,7 +5,8 @@ import toasterConfig from "../../utils/toasterCongig";
 import Cookies from "js-cookie";
 import moment from "moment";
 import { apiConstants, routingConstants } from "../../utils/constants";
-import i18njs from "../../assets/i18n/i18n"
+import i18njs from "../../assets/i18n/i18n";
+import axios from "axios";
 const constants = apiConstants.AUTH;
 
 export const onLogin = (values, history, redirect) => async (dispatch) => {
@@ -20,7 +21,28 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
     if (redirect) {
       history.push(redirect);
     } else {
-      history.push(routingConstants.MY_PROGESS);
+      history.push(
+        routingConstants.MY_PROGESS,
+        navigator.geolocation.getCurrentPosition(async function (
+          position,
+          values,
+        ) {
+          console.log("response+++Login", res);
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          let params = {
+            latitude: latitude.toString(),
+            longitude: longitude.toString(),
+          };
+          console.log("response+++", params);
+          let result = await httpServices.put(
+            constants.LOCATION + res.data.id + "/",
+            params,
+          );
+          console.log("location_resultLogin", result);
+        }),
+      );
     }
   } catch (error) {
     dispatch({ type: authTypes.LOGIN_FAIL });
@@ -44,7 +66,28 @@ export const onSignup = (values, history) => async (dispatch) => {
     const res = await httpServices.post(constants.REGISTER, values);
     dispatch({ type: authTypes.SIGNUP_FINISH, payload: values });
     Cookies.set("sheToken", res.data.token);
-    history.push(routingConstants.MY_PROGESS);
+    history.push(
+      routingConstants.MY_PROGESS,
+      navigator.geolocation.getCurrentPosition(async function (
+        position,
+        values,
+      ) {
+        console.log("response+++77", res);
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        let params = {
+          latitude: latitude.toString(),
+          longitude: longitude.toString(),
+        };
+        console.log("response+++", params);
+        let result = await httpServices.put(
+          constants.LOCATION + res.data.id + "/",
+          params,
+        );
+        console.log("location_resultRegister", result);
+      }),
+    );
   } catch (error) {
     dispatch({ type: authTypes.SIGNUP_FAIL });
     if (error?.status === 400) {
@@ -58,16 +101,48 @@ export const onSignup = (values, history) => async (dispatch) => {
 export const registerWithGoogle =
   (value, history, redirect) => async (dispatch) => {
     try {
-      const res = await httpServices.post(constants.REGISTER_WITH_GOOGLE, value);
+      const res = await httpServices.post(
+        constants.REGISTER_WITH_GOOGLE,
+        value,
+        navigator.geolocation.getCurrentPosition(function (position) {
+          console.log("Latitude is :", position.coords.latitude);
+          console.log("Longitude is :", position.coords.longitude);
+        }),
+      );
       dispatch({
         type: authTypes.LOGIN_FINISH,
         payload: { name: res.data.username, email: res.data.email },
       });
       Cookies.set("sheToken", res.data.tokens.access);
+      console.log("response+++73", res);
       if (redirect) {
         history.push(redirect);
       } else {
-        history.push(routingConstants.MY_PROGESS);
+        history.push(
+          routingConstants.MY_PROGESS,
+          navigator.geolocation.getCurrentPosition(async function (
+            position,
+            value,
+          ) {
+            console.log("response+++77", res);
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            let params = {
+              latitude: latitude.toString(),
+              longitude: longitude.toString(),
+            };
+            console.log("response+++", params);
+            let result = await httpServices.put(
+              constants.LOCATION + res.data.id + "/",
+              params,
+            );
+
+            console.log("location_result", result);
+            console.log("location_api", result, value);
+          }),
+        );
       }
     } catch (err) {
       toast.error(i18njs.t("error.login.1"), toasterConfig);
@@ -93,10 +168,7 @@ export const contactVerify = (value) => async (dispatch) => {
 export const requestRestEmail = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.EMAIL_VERIFY_REQUEST });
-    const res = await httpServices.post(
-      constants.REQUEST_RESET_EMAIL,
-      values,
-    );
+    const res = await httpServices.post(constants.REQUEST_RESET_EMAIL, values);
     dispatch({ type: authTypes.EMAIL_VERIFY_FINISH });
     history.push(routingConstants.LOGIN);
     toast.success(res.data.success, toasterConfig);
@@ -109,10 +181,7 @@ export const requestRestEmail = (values, history) => async (dispatch) => {
 export const changePassword = (values, history) => async (dispatch) => {
   try {
     dispatch({ type: authTypes.RESET_PASSWORD_REQUEST });
-    const res = await httpServices.post(
-      constants.CHANGE_PASSWORD,
-      values,
-    );
+    const res = await httpServices.post(constants.CHANGE_PASSWORD, values);
     dispatch({ type: authTypes.RESET_PASSWORD_FINISH });
     Cookies.remove("sheToken");
     history.push(routingConstants.LOGIN);
@@ -145,9 +214,7 @@ export const getUserProfile = () => async (dispatch) => {
             ? `+91 ${res?.data?.contact}`
             : res?.data?.contact
           : null,
-        profile_pic: res?.data?.profile_pic
-          ? res?.data?.profile_pic
-          : null,
+        profile_pic: res?.data?.profile_pic ? res?.data?.profile_pic : null,
         dob: res?.data?.dob
           ? moment(res?.data?.dob).format("DD-MM-YYYY")
           : null,
@@ -164,7 +231,6 @@ export const getUserProfile = () => async (dispatch) => {
 };
 
 export const updateProfile = (id, values) => async (dispatch) => {
-
   try {
     if (values.id) {
       delete values.id;
@@ -203,26 +269,28 @@ export const updateProfile = (id, values) => async (dispatch) => {
   }
 };
 
-
-export const contactUs = (values) => async(dispatch) => {
-  try{
-    dispatch({type:authTypes.CONTACT_US_REQUEST})
-    await httpServices.post('/authentication/contact-us/',values);
-    toast.success("Sent Successfully", toasterConfig)
-  }catch(err) {
-    dispatch({type:authTypes.CONTACT_VERIFY_FAIL});
+export const contactUs = (values) => async (dispatch) => {
+  try {
+    dispatch({ type: authTypes.CONTACT_US_REQUEST });
+    await httpServices.post("/authentication/contact-us/", values);
+    toast.success("Sent Successfully", toasterConfig);
+  } catch (err) {
+    dispatch({ type: authTypes.CONTACT_VERIFY_FAIL });
   }
-}
+};
 
 export const forgotPassword = (value) => async (dispatch) => {
-  try{
-    dispatch({type: authTypes.FORGOT_PASSWORD_REQUEST})
-    const res = await httpServices.post('/authentication/forget-password/',value);
-    dispatch({type:authTypes.FORGOT_PASSWORD_FINISH})
-    toast.success(res.data,toasterConfig);
-    return res
-  }catch(err){
-    dispatch({type:authTypes.FORGOT_PASSWORD_FAIL});
+  try {
+    dispatch({ type: authTypes.FORGOT_PASSWORD_REQUEST });
+    const res = await httpServices.post(
+      "/authentication/forget-password/",
+      value,
+    );
+    dispatch({ type: authTypes.FORGOT_PASSWORD_FINISH });
+    toast.success(res.data, toasterConfig);
+    return res;
+  } catch (err) {
+    dispatch({ type: authTypes.FORGOT_PASSWORD_FAIL });
     toast.error(err?.data?.errors?.error[0]);
   }
-}
+};

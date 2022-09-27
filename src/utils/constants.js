@@ -46,7 +46,9 @@ const routingConstants = {
   TOP_SCHOOL: "/top-school/",
   MORE_BLOG:  "/more-blog/",
   MORE_EVENT: "/more-event/",
-  MORE_MAGAZINE:"/more-magazine/",
+  // MORE_MAGAZINE:"/more-magazine/",
+  FAQ:"/faq/",
+  MAGZINE:"/magzine/"
 };
 
 const apiConstants = {
@@ -59,6 +61,7 @@ const apiConstants = {
     USER_PROFILE : "/authentication/user-profile/",
     USER_PROFILE_UPDATE : "/authentication/user-profile-update/",
     USER_SEND_OTP : "authentication/user-send-otp/",
+    LOCATION:"authentication/location_api/"
   },
   CAREER: {
     GOVERNMENT_SCHEMES: "career/government-exam/",
@@ -96,7 +99,14 @@ const apiConstants = {
   },
   MY_PROGRESS : {
     USER_PROGRESS : "course/user-progress/",
+  },
+  FAQ : {
+    FAQ : "/more/faqs/",
+  },
+  ALL_MAGZINES:{
+    ALL_MAGZINES:"/more/magazines"
   }
 };
+
 
 export { carouselConstant, routingConstants, apiConstants };
