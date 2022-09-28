@@ -19,7 +19,17 @@ import Search from "../../assets/icons/search1.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import test from "../../assets/images/test.jpg"
+import logo from "../../assets/icons/filter.png"
 // import { Link,Route } from "react-router-dom";
+
+
+
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 const CareerPage = () => {
   // const [loading, setLoading] = useState(false);
@@ -154,7 +164,8 @@ const CareerPage = () => {
 
           <Row>
             <Col md={4} xs={12}>
-              <AccordionComponent
+             <div className="desktop_view_city_selct">
+             <AccordionComponent
                 type='colleges'
                 //stream={STREAM}
                 stream={courseSector}
@@ -162,9 +173,45 @@ const CareerPage = () => {
                 state={STATE}
                 city={CITY}
               />
+             </div>
+
+
+               {/* mobile menu */}
+               <div className="mobile_view_city_selct">
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+         <img src={logo} alt='Image' className='filter_city_123'
+                       />
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          <div>
+             <AccordionComponent
+                type='colleges'
+                //stream={STREAM}
+                stream={courseSector}
+                ownership={OWNERSHIP}
+                state={STATE}
+                city={CITY}
+              />
+             </div>
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+     
+    
+    </div>
+
+
+            
+
             </Col>
 
-            <Col md={8} xs={12} className="top_collages_add_g">
+            <Col md={8} xs={12} className="top_collages_add_g top_collages_list_filter123">
               {topCollages?.collage_list?.length > 0 ? (
                 topCollages.collage_list.map(
                   (c, index) =>

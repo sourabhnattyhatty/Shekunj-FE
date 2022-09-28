@@ -345,6 +345,28 @@ margin-bottom: 30px;
   overflow: hidden;
 }
 
+
+// Sep 27
+
+
+.desktop_view_city_selct {
+  display: none;
+}
+.mobile_view_city_selct {
+  display: block !important;
+  margin-bottom: 30px;
+}
+.top_collages_list_filter123 {
+  overflow: hidden;
+}
+
+}
+
+
+// Sep 27
+
+.mobile_view_city_selct {
+  display: none;
 }
 
 
@@ -354,7 +376,8 @@ margin-bottom: 30px;
   border: none;
   padding: 0px 0px 0px 10px;
   overflow-y: scroll;
-  height: 237px;
+  // height: 237px;
+  min-height: 150px;
 }
 .ul_list_radio_filter  ul li {
   list-style-type: none;
@@ -392,3 +415,7 @@ margin-bottom: 30px;
 .kuldeep_pdf .iframe-divarea {
   overflow: hidden;
 }
+
+// Sep 27
+
+
