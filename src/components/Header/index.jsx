@@ -9,9 +9,11 @@ import { isAuthenticated } from "../../utils/utils";
 import ChangeLanguageButton from "../LanguageButton";
 import Logo from "../../assets/images/logo.svg";
 import close from "../../assets/icons/x.png";
+import BellIcon from 'react-bell-icon';
 
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
+import { pink } from "@mui/material/colors";
 
 const Header = ({ page, subPage }) => {
   const { t } = useTranslation();
@@ -132,6 +134,11 @@ const Header = ({ page, subPage }) => {
 
   const handleMoreMagazine = () => {
     history.push(routingConstants.MORE_MAGAZINE);
+    setAnchorEl3(null);
+  };
+
+  const handleMoreFAQ = () => {
+    history.push(routingConstants.FAQ);
     setAnchorEl3(null);
   };
 
@@ -540,6 +547,13 @@ const Header = ({ page, subPage }) => {
                       >
                         {t("headerComponent.menuItem.13")}
                       </MenuItem>
+                      <MenuItem
+                        onClick={handleMoreFAQ}
+                        className={subPage === "moreFAQ" && "active"}
+                      >
+                        {/* {t("headerComponent.menuItem.14")} */}
+                        FAQ
+                      </MenuItem>
                     </Menu>
                   </li>
 
@@ -553,6 +567,14 @@ const Header = ({ page, subPage }) => {
                       to={routingConstants.SUCCESS_STORIES}
                     >
                       {t("header.heading.8")}
+                    </Link>
+                  </li>
+                  <li>
+                  <Link
+                      className='nav-link'
+                      // to={routingConstants.SUCCESS_STORIES}
+                    >
+                    <BellIcon width='40' active={true} animate={true} color='#ec498a' />
                     </Link>
                   </li>
                 </ul>

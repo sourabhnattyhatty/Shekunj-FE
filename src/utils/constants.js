@@ -44,11 +44,16 @@ const routingConstants = {
   TOP_COLLEGES: "/top-colleges/",
   TOP_SCHOOLS: "/top-schools/",
   TOP_SCHOOL: "/top-school/",
-  MORE_BLOG:  "/more-blog/",
+  // MORE_BLOG:  "/more-blog/",
   MORE_EVENT: "/more-event/",
-  // MORE_MAGAZINE:"/more-magazine/",
-  FAQ:"/faq/",
-  MAGZINE:"/magzine/"
+  MORE_MAGAZINE:"/more-magazine/",
+  FAQ:"/more-faq/",
+  // FAQ:"/faq/",
+  // MAGZINE:"/magzine/",
+  // phase3 branch
+  MORE_BLOG:  "/blogs/",
+  // MORE_EVENT: "/events/",
+  // MORE_MAGAZINE:"/more-magazine/", 
 };
 
 const apiConstants = {
@@ -104,8 +109,15 @@ const apiConstants = {
     FAQ : "/more/faqs/",
   },
   ALL_MAGZINES:{
-    ALL_MAGZINES:"/more/magazines"
+    ALL_MAGZINES:"/more/magazines",
+  },
+  ALL_BLOGS : {
+    ALL_BLOGS : "more/blogs",
+  },
+  ALL_EVENTS : {
+    ALL_EVENTS : "more/events",
   }
+
 };
 
 
