@@ -13,6 +13,7 @@ import { magzinesReducer } from "./magzine";
 import {adsReducer} from "./ads";
 import {blogsReducer} from "./blogs";
 import { eventsReducer } from "./events";
+import { notificationsReducer } from "./notifications";
 
 export default combineReducers({
   authReducer,
@@ -27,4 +28,5 @@ export default combineReducers({
   magzinesReducer,
   blogsReducer,
   eventsReducer,
+  notificationsReducer,
 });

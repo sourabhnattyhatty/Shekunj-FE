@@ -1,0 +1,50 @@
+.navbar-custom {
+    background-color: #ec498a;
+    color: #ffffff !important;
+    justify-content: center;
+  }
+  
+  .navbar-custom h2 {
+    text-align: center !important;
+  }
+  .c-heading-6 {
+    font-family: Segoe UI, SegoeUI;
+    font-size: 20px;
+    color: #000000;
+    padding: 10px 0;
+    max-height: 3.6em;
+    // line-height: 1.1em;
+    display: inline-block;
+    word-wrap: break-word;
+    overflow: hidden;
+    -webkit-text-stroke-width: thin;
+    width: 83%;
+    height: 3.4em;
+    margin-bottom: -10px;
+  }
+  
+  .card-text {
+    margin: 0 0 10px 0;
+    font-family: Segoe UI, SegoeUI;
+    font-size: 14px;
+    font-weight: 300 !important;
+    color: #3d3c3c;
+  }
+  
+  .text-muted {
+    font-family: Segoe UI, SegoeUI;
+  }
+  
+  .c-button {
+    font-family: Segoe UI, SegoeUI;
+    max-width: 80% !important;
+    width: 10%;
+    height: 38px;
+    color: white;
+    background-color: #ec498a;
+    // background-color: #0078d4;
+    padding: 0 10px 0 5px;
+    text-align: center;
+    padding-top: 5px;
+    font-weight: bold;
+  }

@@ -328,3 +328,13 @@ header {
   width: 40px !important;
   border-radius: 50%;
 }
+.notificationButton{
+  border: none !important;
+  // color: #fff;
+}
+.notificationButton:hover {
+  background: #fff !important;
+}
+.nav-link{
+  color: #e83e8c;
+}

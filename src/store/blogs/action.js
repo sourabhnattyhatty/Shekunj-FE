@@ -27,6 +27,24 @@ export const getAllBlogs = () => async (dispatch) => {
   }
 };
 
+export const singleBlogDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: blogsTypes.FETCH_BLOGS_REQUEST });
+    const res = await httpServices.get("more/blog" + "/" + id);
+    dispatch({
+      type: blogsTypes.FETCH_BLOGS_FINISH,
+      // payload: {
+      //   ...res?.data,
+      //   image: res?.data.image ? res?.data?.image : httpServices.noImage,
+      // },
+      payload: { ...res?.data, is_collapse: false },
+    });
+    console.log("resSingleBlog",res)
+  } catch (error) {
+    dispatch({ type: blogsTypes.FETCH_BLOGS_FAIL });
+  }
+};
+
 export const setCollapseBlogs = (id, action) => (dispatch, getState) => {
   const { blogsReducer } = getState();
 

@@ -3,32 +3,43 @@ import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Divider, Drawer, List, Menu, MenuItem } from "@mui/material";
+import { getAllNotifications } from "../../store/notifications";
+
+import Button from "@mui/material/Button";
 
 import { getUserProfile, logOut, refreshPage } from "../../store/auth/action";
 import { isAuthenticated } from "../../utils/utils";
 import ChangeLanguageButton from "../LanguageButton";
 import Logo from "../../assets/images/logo.svg";
 import close from "../../assets/icons/x.png";
-import BellIcon from 'react-bell-icon';
+import BellIcon from "react-bell-icon";
 
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { pink } from "@mui/material/colors";
 
 const Header = ({ page, subPage }) => {
+  const { notifications } = useSelector((state) => state.notificationsReducer);
+  console.log("notificationsHHHHHHH", notifications["Notifications "]);
+
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
   const { lan } = useSelector((state) => state.languageReducer);
   const dispatch = useDispatch();
   const history = useHistory();
+  useEffect(() => {
+    dispatch(getAllNotifications());
+  }, [dispatch, lan]);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl77, setAnchorEl77] = React.useState(null);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [anchorEl3, setAnchorEl3] = React.useState(null);
   const [showmenu, setShowmenu] = React.useState(false);
 
   const open = Boolean(anchorEl);
+  const open77 = Boolean(anchorEl77);
   const open1 = Boolean(anchorEl1);
   const open2 = Boolean(anchorEl2);
   const open3 = Boolean(anchorEl3);
@@ -40,6 +51,13 @@ const Header = ({ page, subPage }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleClick77 = (event) => {
+    setAnchorEl77(event.currentTarget);
+  };
+
+  const handleClose77 = () => {
+    setAnchorEl77(null);
+  };
 
   const handleClick1 = (event) => {
     setAnchorEl1(event.currentTarget);
@@ -50,7 +68,6 @@ const Header = ({ page, subPage }) => {
   };
 
   const handleClick2 = (event) => {
-  
     setAnchorEl2(event.currentTarget);
   };
 
@@ -76,6 +93,23 @@ const Header = ({ page, subPage }) => {
   const handleLogout = () => {
     dispatch(logOut(history));
     setAnchorEl(null);
+  };
+
+  const handleNotification1 = () => {
+    // history.push(routingConstants.MY_PROFILE);
+    setAnchorEl(null);
+  };
+  const handleNotification2 = () => {
+    // history.push(routingConstants.MY_PROFILE);
+    setAnchorEl(null);
+  };
+  const handleNotification3 = () => {
+    // history.push(routingConstants.MY_PROFILE);
+    setAnchorEl(null);
+  };
+  const handleNotificationAll = () => {
+    history.push(routingConstants.ALL_NOTIFICATION);
+    setAnchorEl77(null);
   };
 
   const handleProfile = () => {
@@ -142,7 +176,6 @@ const Header = ({ page, subPage }) => {
     setAnchorEl3(null);
   };
 
-
   const toggleDrawer = (event) => {
     if (
       event.type === "keydown" &&
@@ -198,8 +231,8 @@ const Header = ({ page, subPage }) => {
                         aria-expanded={open ? "true" : undefined}
                         onClick={handleClick}
                       >
-                        {user?.name  || t("common.n/a")}&nbsp;
-                        {user &&  user?.last_name}
+                        {user?.name || t("common.n/a")}&nbsp;
+                        {user && user?.last_name}
                       </span>
                       <Menu
                         id='basic-menu'
@@ -263,14 +296,48 @@ const Header = ({ page, subPage }) => {
               >
                 <span className='navbar-toggler-icon'></span>
               </button>
-              <Drawer anchor="left" open={showmenu} className='toggleDrawer' onBackdropClick={toggleDrawer} >
-                  <Divider />
-                  <List>
-                  <img src={close} alt='' style={{float:"right",marginRight:"10px"}} onClick={toggleDrawer}/><br/><br/>
-                      <div >
-                        <Link to='/about' style={{color:"#EC498A",fontSize:"20px",marginLeft:"25px", marginTop:"20px" }}>About</Link><br/>
-                        <Link to='/courses' style={{color:"#EC498A",fontSize:"20px",marginLeft:"25px", marginTop:"20px"}} >Courses</Link><br/>
-                        <button
+              <Drawer
+                anchor='left'
+                open={showmenu}
+                className='toggleDrawer'
+                onBackdropClick={toggleDrawer}
+              >
+                <Divider />
+                <List>
+                  <img
+                    src={close}
+                    alt=''
+                    style={{ float: "right", marginRight: "10px" }}
+                    onClick={toggleDrawer}
+                  />
+                  <br />
+                  <br />
+                  <div>
+                    <Link
+                      to='/about'
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "25px",
+                        marginTop: "20px",
+                      }}
+                    >
+                      About
+                    </Link>
+                    <br />
+                    <Link
+                      to='/courses'
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "25px",
+                        marginTop: "20px",
+                      }}
+                    >
+                      Courses
+                    </Link>
+                    <br />
+                    <button
                       className='nav-link guidence_button'
                       id='basic-button2'
                       aria-controls='basic-menu2'
@@ -278,7 +345,15 @@ const Header = ({ page, subPage }) => {
                       aria-expanded={open2 ? "true" : undefined}
                       onClick={handleClick2}
                     >
-                     <span style={{color:"#EC498A",fontSize:"20px",marginLeft:"8px", }} >{t("header.heading.3")}</span>
+                      <span
+                        style={{
+                          color: "#EC498A",
+                          fontSize: "20px",
+                          marginLeft: "8px",
+                        }}
+                      >
+                        {t("header.heading.3")}
+                      </span>
                     </button>
                     <Menu
                       id='basic-menu2'
@@ -308,8 +383,20 @@ const Header = ({ page, subPage }) => {
                         {t("headerComponent.menuItem.7")}
                       </MenuItem>
                     </Menu>
-                      <a href='https://octahire.com/Resume_maker' style={{color:"#EC498A",fontSize:"20px",marginLeft:"25px", marginTop:"20px",textDecorationLine:"none"}}>Resume Builder</a><br/>
-                      <button
+                    <a
+                      href='https://octahire.com/Resume_maker'
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "25px",
+                        marginTop: "20px",
+                        textDecorationLine: "none",
+                      }}
+                    >
+                      Resume Builder
+                    </a>
+                    <br />
+                    <button
                       className='nav-link guidence_button'
                       id='basic-button1'
                       aria-controls='basic-menu1'
@@ -317,7 +404,17 @@ const Header = ({ page, subPage }) => {
                       aria-expanded={open1 ? "true" : undefined}
                       onClick={handleClick1}
                     >
-                     <span style={{color:"#EC498A",fontSize:"20px",marginLeft:"8px",textDecorationLine:"none" }}> {t("header.heading.5")}</span>
+                      <span
+                        style={{
+                          color: "#EC498A",
+                          fontSize: "20px",
+                          marginLeft: "8px",
+                          textDecorationLine: "none",
+                        }}
+                      >
+                        {" "}
+                        {t("header.heading.5")}
+                      </span>
                     </button>
                     <Menu
                       id='basic-menu1'
@@ -347,12 +444,48 @@ const Header = ({ page, subPage }) => {
                         {t("headerComponent.menuItem.10")}
                       </MenuItem>
                     </Menu>
-                        <a href='https://octahire.com/Home/candidate_register' style={{color:"#EC498A",fontSize:"20px",marginLeft:"25px", marginTop:"30px",textDecorationLine:"none"}} >Jobs</a><br/>
-                        <a href='http://www.thehrnotes.com' style={{color:"#EC498A",fontSize:"20px",marginLeft:"25px", marginTop:"20px",textDecorationLine:"none"}} >Blogs</a><br/>
-                        <Link to='/success-stories' style={{color:"#EC498A",fontSize:"20px",marginLeft:"23px", marginTop:"20px",textDecorationLine:"none"}} >Success story</Link><br/>
-                      </div>
-                  </List>
-                  <Divider />
+                    <a
+                      href='https://octahire.com/Home/candidate_register'
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "25px",
+                        marginTop: "30px",
+                        textDecorationLine: "none",
+                      }}
+                    >
+                      Jobs
+                    </a>
+                    <br />
+                    <a
+                      href='http://www.thehrnotes.com'
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "25px",
+                        marginTop: "20px",
+                        textDecorationLine: "none",
+                      }}
+                    >
+                      Blogs
+                    </a>
+                    <br />
+                    <Link
+                      to='/success-stories'
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "23px",
+                        marginTop: "20px",
+                        textDecorationLine: "none",
+                      }}
+                    >
+                      Success story
+                    </Link>
+                    <br />
+                  </div>
+                </List>
+                <Divider />
               </Drawer>
               <div className='collapse navbar-collapse' id='collapsibleNavbar'>
                 <button
@@ -498,9 +631,7 @@ const Header = ({ page, subPage }) => {
                   </li>
 
                   <li
-                    className={
-                      page === "more" ? "nav-item active" : "nav-item"
-                    }
+                    className={page === "more" ? "nav-item active" : "nav-item"}
                   >
                     {/* <a
                       className='nav-link'
@@ -510,7 +641,7 @@ const Header = ({ page, subPage }) => {
                     >
                       {t("header.heading.7")}
                     </a> */}
-                     <button
+                    <button
                       className='nav-link guidence_button'
                       id='basic-button3'
                       aria-controls='basic-menu3'
@@ -569,13 +700,119 @@ const Header = ({ page, subPage }) => {
                       {t("header.heading.8")}
                     </Link>
                   </li>
+
                   <li>
-                  <Link
+                    <Button
+                      //  className='nav-link guidence_button'
+                      id='basic-button77'
+                      aria-controls='basic-menu77'
+                      //  onClick={handleClick3}
+                      className='notificationButton'
+                      variant='text'
+                      style={{
+                        top: 13,
+                        left: 0,
+                        // transform: "translateY(0) rotate(0)"
+                      }}
+                      // aria-controls={
+                      //   open77 ? "demo-positioned-menu" : undefined
+                      // }
+                      aria-haspopup='true'
+                      aria-expanded={open77 ? "true" : undefined}
+                      onClick={handleClick77}
+                    >
+                      <span
+                        className='nav-link'
+                        // to={routingConstants.SUCCESS_STORIES}
+                      >
+                        <BellIcon
+                          width='40'
+                          active={true}
+                          animate={true}
+                          color='#ec498a'
+                        />
+                      </span>
+                    </Button>
+
+                    <Menu
+                      id='basic-menu77'
+                      //  anchorEl={anchorEl1}
+                      //  open={open1}
+                      //  onClose={handleClose1}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button77",
+                      }}
+                      // id='demo-positioned-menu'
+                      aria-labelledby='text'
+                      anchorEl={anchorEl77}
+                      open={open77}
+                      onClose={handleClose77}
+                      transformOrigin={{
+                        horizontal: "left",
+                        vertical: "top",
+                      }}
+                      anchorOrigin={{
+                        horizontal: "right",
+                        vertical: "top",
+                      }}
+                    >
+                      {notifications["Notifications "]?.length > 0 ? (
+                        notifications["Notifications "]?.map((c) => {
+                          console.log("c", c);
+                          return (
+                            <>
+                              <MenuItem onClick={handleNotification1}>
+                                <a
+                                  className='nav-link'
+                                  rel='noreferrer'
+                                  target='_blank'
+                                  href={c?.url}
+                             
+                                >
+                                  {c?.title}
+                                </a>
+                              </MenuItem>
+                              {/* <MenuItem onClick={handleNotification2}>
+                                <a
+                                  className='nav-link'
+                                  rel='noreferrer'
+                                  target='_blank'
+                                  href={c?.url}
+                                >
+                                  {c?.title}
+                                </a>
+                              </MenuItem> */}
+                              <Divider />
+                             
+                            </>
+                          );
+                        })
+                        
+                      ) : (
+                        <MenuItem>No Data Found</MenuItem>
+                      )}
+                       <MenuItem
+                                onClick={handleNotificationAll}
+                                style={{color:"#e83e8c", textAlign:"center"}}
+                                class="center"
+                                className={
+                                  page === "more"
+                                    ? "nav-item active"
+                                    : "nav-item"
+                                }
+                                // className={subPage === "AllNotification" && "active"}
+                              >
+                                <strong>View ALL</strong>
+                              </MenuItem>
+                      
+                    </Menu>
+
+                    {/* <Link
                       className='nav-link'
                       // to={routingConstants.SUCCESS_STORIES}
                     >
                     <BellIcon width='40' active={true} animate={true} color='#ec498a' />
-                    </Link>
+                    </Link> */}
                   </li>
                 </ul>
               </div>

@@ -1,28 +1,27 @@
-import { blogsTypes } from ".";
+import { notificationsTypes } from ".";
 
 const initialState = {
   isLoading: false,
   error: null,
-  blogs: [],
+  notifications: {},
 };
 
-export const blogsReducer = (state = initialState, action) => {
+export const notificationsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case blogsTypes.FETCH_BLOGS_REQUEST:
+    case notificationsTypes.FETCH_NOTIFICATIONS_REQUEST:
       return {
         ...state,
         isLoading: true,
         error: null,
       };
-    case blogsTypes.FETCH_BLOGS_FINISH:
+    case notificationsTypes.FETCH_NOTIFICATIONS_FINISH:
       return {
         ...state,
-        
-        blogs: action.payload,
-        error: null,
         isLoading: false,
+        notifications: action.payload,
+        error: null,
       };
-    case blogsTypes.FETCH_BLOGS_FAIL:
+    case notificationsTypes.FETCH_NOTIFICATIONS_FAIL:
       return {
         ...state,
         isLoading: false,

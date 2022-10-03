@@ -48,12 +48,9 @@ const routingConstants = {
   MORE_EVENT: "/more-event/",
   MORE_MAGAZINE:"/more-magazine/",
   FAQ:"/more-faq/",
-  // FAQ:"/faq/",
-  // MAGZINE:"/magzine/",
-  // phase3 branch
   MORE_BLOG:  "/blogs/",
-  // MORE_EVENT: "/events/",
-  // MORE_MAGAZINE:"/more-magazine/", 
+  DETAILS_BLOG:"/blog/",
+  ALL_NOTIFICATION:"/all-notifications/"
 };
 
 const apiConstants = {
@@ -116,6 +113,9 @@ const apiConstants = {
   },
   ALL_EVENTS : {
     ALL_EVENTS : "more/events",
+  },
+  ALL_NOTIFICATION: {
+    ALL_NOTIFICATION : "/more/notifications/",
   }
 
 };

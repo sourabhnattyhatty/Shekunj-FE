@@ -12,7 +12,9 @@ const HomePage = React.lazy(() => import("./pages/HomePage"));
 const About = React.lazy(() => import("./pages/About"));
 const Career = React.lazy(() => import("./pages/Career"));
 const BlogPage = React.lazy(() => import("./pages/More/BlogPage"));
+const BlogDetails = React.lazy(() => import("./pages/BlogDetails"));
 const EventPage = React.lazy(() => import("./pages/More/EventPage"));
+const EventDetails = React.lazy(() => import("./pages/EventDetails"));
 const MagazinePage = React.lazy(() => import("./pages/More/MagazinePage"));
 const CareerDetails = React.lazy(() => import("./pages/CareerDetails"));
 const Career1Details = React.lazy(() => import("./pages/Career1Details"));
@@ -47,6 +49,8 @@ const ForgetPassword = React.lazy(() => import("./pages/ForgetPassword"));
 const CertificateDetail = React.lazy(() =>
   import("./pages/Certificates/CertificatesDetail"),
 );
+const Notifications = React.lazy(() => import("./pages/Notifications"));
+const NotificationDetails = React.lazy(() => import("./pages/NotificationDetails"));
 const EmailPage = React.lazy(() => import("./pages/EmailPage"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const SuccessCareerOption2 = React.lazy(() =>
@@ -86,6 +90,7 @@ function App() {
         <Route exact path={routingConstants.MORE_BLOG} component={BlogPage} />
         <Route exact path={routingConstants.MORE_EVENT} component={EventPage} />
         <Route exact path={routingConstants.MORE_MAGAZINE} component={MagazinePage} />
+        <Route exact path={routingConstants.ALL_NOTIFICATION} component={Notifications} />
         
         <Route exact path={routingConstants.FAQ} component={FaqPage} />
         {/* <Route exact path={routingConstants.MAGZINE} component={Magzine} /> */}
@@ -130,6 +135,21 @@ function App() {
           exact
           path={routingConstants.ALL_CERTIFICATE_PAGE}
           component={AllCertificatePage}
+        />
+          <PrivateRoute
+          exact
+          path={`${routingConstants.MORE_EVENT}:id`}
+          component={EventDetails}
+        />
+          <PrivateRoute
+          exact
+          path={`${routingConstants.MORE_BLOG}:id`}
+          component={BlogDetails}
+        />
+          <PrivateRoute
+          exact
+          path={`${routingConstants.ALL_NOTIFICATION}:id`}
+          component={NotificationDetails}
         />
         <PrivateRoute
           exact

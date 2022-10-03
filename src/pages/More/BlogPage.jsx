@@ -7,11 +7,13 @@ import {
   Nav,
   NavDropdown,
   Navbar,
+  Button,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
+import { routingConstants } from "../../utils/constants";
 
 import {
   setCollapseBlogs,
@@ -111,7 +113,9 @@ function BlogPage() {
           blogs?.blog_list
             ?.slice(0)
             .reverse()
-            .map((s, idx) => (
+            .map((s, idx) => {
+              console.log("s", s)
+              return(
               <>
                 <div className='suc_box' key={s?.id}>
                   <Row>
@@ -152,9 +156,15 @@ function BlogPage() {
                                 }}
                               />
                             )}
+                                 <Link to={"/blogs/"+s.id}
+                                  className="BlogReadMore"
+                                    key={s?.id}>    
+                                    
+                                    Read More
+                                    </Link>
                           </p>
 
-                          {s?.about_blog?.length >= 300 && (
+                          {/* {s?.about_blog?.length >= 300 && (
                             <div className='suc_btn'>
                               <hr />
 
@@ -176,7 +186,7 @@ function BlogPage() {
                               </button>
                               <hr />
                             </div>
-                          )}
+                          )} */}
                         </Col>
 
                         <Col md={4} xs={12}>
@@ -203,7 +213,7 @@ function BlogPage() {
                             </Moment>
                           </h6>
 
-                          <p className='noselect'>
+                          <p className='noselect' key={s?.id}>
                             {/* {(s?.is_collapse
                               ? paragraph(s?.description)
                               : sliceString(s?.description)) || t("common.n/a")} */}
@@ -213,6 +223,7 @@ function BlogPage() {
                                   __html: `<div>${s.about_blog}</div>`,
                                 }}
                               />
+                              
                             ) : (
                               <div
                                 style={{
@@ -222,11 +233,19 @@ function BlogPage() {
                                 dangerouslySetInnerHTML={{
                                   __html: `<div>${s.about_blog}</div>`,
                                 }}
+                                key={s?.id} 
                               />
+                              
                             )}
+                             <Link to={routingConstants.MORE_BLOG+s.id}
+                                  className="BlogReadMore"
+                                    key={s?.id}>    
+                                    
+                                    Read More
+                                    </Link>
                           </p>
 
-                          {s?.about_blog?.length >= 300 && (
+                          {/* {s?.about_blog?.length >= 300 && (
                             <div className='suc_btn'>
                               <hr />
                               <button
@@ -242,7 +261,7 @@ function BlogPage() {
                               </button>
                               <hr />
                             </div>
-                          )}
+                          )} */}
                         </Col>
                       </>
                     )}
@@ -263,7 +282,7 @@ function BlogPage() {
                   )}
                 </div>
               </>
-            ))}
+            )})}
         {blogs?.blog_list?.length === 0 && (
           <div className='text-center mt-5'>{t("common.noDataFound")}</div>
         )}
