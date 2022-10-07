@@ -457,7 +457,7 @@ const Header = ({ page, subPage }) => {
                       Jobs
                     </a>
                     <br />
-                    <a
+                    {/* <a
                       href='http://www.thehrnotes.com'
                       style={{
                         color: "#EC498A",
@@ -467,8 +467,161 @@ const Header = ({ page, subPage }) => {
                         textDecorationLine: "none",
                       }}
                     >
-                      Blogs
-                    </a>
+                      Blog
+                    </a> */}
+              
+                    {/* <a
+                      className='nav-link'
+                      rel='noreferrer'
+                      target='_blank'
+                      href={routingConstants.BLOGS}
+                    >
+                      {t("header.heading.7")}
+                    </a> */}
+                    <button
+                      className='nav-link guidence_button'
+                      id='basic-button3'
+                      aria-controls='basic-menu3'
+                      aria-haspopup='true'
+                      aria-expanded={open3 ? "true" : undefined}
+                      onClick={handleClick3}
+                    >
+                      <span
+                        style={{
+                          color: "#EC498A",
+                          fontSize: "20px",
+                          marginLeft: "8px",
+                          textDecorationLine: "none",
+                        }}
+                      >
+                        {" "}
+                        {t("header.heading.7")} 
+                      </span>
+                    </button>
+                    <Menu
+                      id='basic-menu3'
+                      anchorEl={anchorEl3}
+                      open={open3}
+                      onClose={handleClose3}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button3",
+                      }}
+                    >
+                      <MenuItem
+                        onClick={handleMoreEvent}
+                        className={subPage === "moreEvent" && "active"}
+                      >
+                        {t("headerComponent.menuItem.11")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleMoreMagazine}
+                        className={subPage === "moreMagazine" && "active"}
+                      >
+                        {t("headerComponent.menuItem.12")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleMoreBlogs}
+                        className={subPage === "moreblog" && "active"}
+                      >
+                        {t("headerComponent.menuItem.13")}
+                      </MenuItem>
+                      <MenuItem
+                        onClick={handleMoreFAQ}
+                        className={subPage === "moreFAQ" && "active"}
+                      >
+                        {/* {t("headerComponent.menuItem.14")} */}
+                        FAQ
+                      </MenuItem>
+                    </Menu>
+
+                    {/* <br /> */}
+                   
+                    <Button
+                      id='basic-button77'
+                      aria-controls='basic-menu77'
+                      className='notificationButton'
+                      variant='text'
+                      style={{
+                        // top: 13,
+                        left: 8,
+                      }}
+                      aria-haspopup='true'
+                      aria-expanded={open77 ? "true" : undefined}
+                      onClick={handleClick77}
+                    >
+                      <span
+                        // style={{
+                        //   color: "#EC498A",
+                        //   fontSize: "20px",
+                        //   marginLeft: "8px",
+                        //   textDecorationLine: "none",
+                        // }}
+                        // className='nav-link'
+                      >
+                        <BellIcon
+                          width='30'
+                          active={true}
+                          animate={true}
+                          color='#ec498a'
+                        />
+                        {/* Notification */}
+                      </span>
+                    </Button>
+
+                    <Menu
+                      id='basic-menu77'
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button77",
+                      }}
+                      aria-labelledby='text'
+                      anchorEl={anchorEl77}
+                      open={open77}
+                      onClose={handleClose77}
+                      transformOrigin={{
+                        horizontal: "left",
+                        vertical: "top",
+                      }}
+                      anchorOrigin={{
+                        horizontal: "right",
+                        vertical: "top",
+                      }}
+                    >
+                      {notifications["Notifications "]?.length > 0 ? (
+                        notifications["Notifications "]?.map((c) => {
+                          return (
+                            <>
+                              <MenuItem onClick={handleNotification1}>
+                                <a
+                                  className='nav-link'
+                                  href= {c?.url}             
+                                >
+                                  {c?.title}
+                                </a>
+                              </MenuItem>
+                              <Divider />
+                             
+                            </>
+                          );
+                        })
+                        
+                      ) : (
+                        <MenuItem>No Data Found</MenuItem>
+                      )}
+                       <MenuItem
+                                onClick={handleNotificationAll}
+                                style={{color:"#e83e8c", textAlign:"center"}}
+                                class="center"
+                                className={
+                                  page === "more"
+                                    ? "nav-item active"
+                                    : "nav-item"
+                                }
+                              >
+                                <strong>View ALL</strong>
+                              </MenuItem>
+                      
+                    </Menu>
+
                     <br />
                     <Link
                       to='/success-stories'
@@ -758,16 +911,16 @@ const Header = ({ page, subPage }) => {
                     >
                       {notifications["Notifications "]?.length > 0 ? (
                         notifications["Notifications "]?.map((c) => {
-                          console.log("c", c);
+                          // console.log("c", c.id);
+                          // console.log("c.notification.url",c.url)
                           return (
                             <>
                               <MenuItem onClick={handleNotification1}>
                                 <a
                                   className='nav-link'
-                                  rel='noreferrer'
-                                  target='_blank'
-                                  href={c?.url}
-                             
+                                  // rel='noreferrer'
+                                  // target='_blank'
+                                  href= {c?.url}             
                                 >
                                   {c?.title}
                                 </a>

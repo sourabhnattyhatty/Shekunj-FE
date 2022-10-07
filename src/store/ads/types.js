@@ -2,4 +2,7 @@ export const adsTypes = {
   ADS_REQUEST: "ADS_REQUEST",
   ADS_FINISH: "ADS_FINISH",
   ADS_FAIL: "ADS_FAIL",
+  // ADDS_REQUEST: "ADDS_REQUEST",
+  // ADDS_FINISH: "ADDS_FINISH",
+  // ADDS_FAIL: "ADDS_FAIL",
 };

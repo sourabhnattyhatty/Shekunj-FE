@@ -16,6 +16,7 @@ const Footer = ({ loginPage }) => {
   const dispatch = useDispatch();
   const [adsFooter1, setAdsFooter1] = useState([]);
   const [adsFooter2, setAdsFooter2] = useState([]);
+  const [adds,setAdds] = useState([]);
 
 	useEffect(() => {
 		axios.get('/private_adds/private_add?image_type=footer_1')
@@ -29,8 +30,17 @@ const Footer = ({ loginPage }) => {
 				setAdsFooter2(response.data.results);
 			});
 	}, [])
-  
 
+    // useEffect(() => {
+    //   axios.post('/private_adds/click_add/',{
+    //     add_email:`${adds[0]?.add_email}`
+    //   })
+    //     .then((response) => {
+    //       setAdds(response.data.results);
+    //     });
+    // }, [])
+  
+  
   return (
     <div className="noselect">
 
@@ -42,6 +52,10 @@ const Footer = ({ loginPage }) => {
             <a href={adsFooter1[0]?.url_adds}  target='_blank'>
             <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' />
             </a>
+            {/* <a href={adds[0]?.add_email}  target='_blank'>
+            <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' />
+            </a> */}
+       
             </div>
           </div>
         </div>
@@ -107,6 +121,12 @@ const Footer = ({ loginPage }) => {
                     <a href={adsFooter2[0]?.url_adds}  target='_blank'>
                     <img src={adsFooter2[0]?.image} alt='Image' className='footer_ads_bottom' />
                     </a>
+                    <a href={adds[0]?.add_email}  target='_blank'>
+            <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' />
+            </a>
+            {/* <a href={adds[0]?.add_email}  target='_blank'>
+            <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' />
+            </a> */}
                     </div>
                     </div>
                   </div>

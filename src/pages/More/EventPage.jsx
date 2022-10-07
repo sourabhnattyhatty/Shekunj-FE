@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { routingConstants } from "../../utils/constants";
 import {
   setCollapseSuccessStory,
   successStories as fetchSuccessStories,
@@ -69,7 +70,7 @@ function EventPage() {
         </nav>
       </div>
       <div className='Home'>
-        <div className='filters'>
+        {/* <div className='filters'>
           <span className='title'>Filter</span>
           <span>
             <Form.Check
@@ -81,24 +82,35 @@ function EventPage() {
             />
           </span>
           <Button variant='light'>Clear Filters</Button>
-        </div>
+        </div> */}
         <div className='EventsContainer'>
           {events?.event_list?.length > 0 ? (
-            events?.event_list?.map((c) => {
+            events?.event_list?.map((c)=>{
               console.log("c", c);
               return (
                 <>
-                  <Col sm={6}>
-                    <Card key={c?.id} >
+              {/* // (c, index) =>
+              // c &&
+              // c.name && (
+              //   <> */}
+                  <Col md={4}>
+                    <Card key={c?.id} style={{ width: '30rem',height:"34rem" }}>
                       <Card.Body className='eventCards' key={c?.id}>
                         <img
                           src={c && c.image}
                           class='card-img-top'
                           alt='...'
+                          width="150px"
+                          height="200px"
                         ></img>
-                        <Card.Title class="icon_favorite">
+                        <Card.Title class="icon_favorite"  key={c?.id} >
                           <h3 class="c-heading-6">
-                          {c && c.title}
+                          <Link
+                                    to={routingConstants.MORE_EVENT+ c.id}
+                                    className=''
+                                    key={c?.id} >
+                                    {c && c.title}
+                                  </Link>
                           </h3>
                         </Card.Title>
                         
@@ -110,22 +122,32 @@ function EventPage() {
                         <Card.Text>
                           <p class='card-text'>
                             <div
+                              style={{
+                                maxHeight: "150px",
+                                overflow: "hidden",
+                              }}
                               dangerouslySetInnerHTML={{
                                 __html: `<div>${c && c.about_event}</div>`,
                               }}
                             />
                           </p>
                         </Card.Text>
-                        <Button href={c && c.form_link} className="c-button" variant='primary'>
+                        <Button href={c && c.form_link} className="c-button" color="#ec498a" variant='primary'>
                           Registration and details
                         </Button>
+                     
                       </Card.Body>
                     </Card>
                   </Col>
                 </>
               );
             })
-          ) : (
+          ) 
+          //  {/* </>
+          //           ),
+          //       )
+          //     )  */}
+          : (
             <div className='text-center'>{t("common.noDataFound")}</div>
           )}
         </div>

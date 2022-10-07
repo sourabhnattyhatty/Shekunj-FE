@@ -12,7 +12,7 @@ export const getAllMagzines = () => async (dispatch) => {
     const url = constants.ALL_MAGZINES;
 
     dispatch({ type:  magzinesTypes.FETCH_MAGZINES_REQUEST });
-    const res = await ApiService.get(url);
+    const res = await httpServices.get(url);
     console.log("resss", res);
     dispatch({
       type:  magzinesTypes.FETCH_MAGZINES_FINISH,

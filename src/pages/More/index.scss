@@ -334,6 +334,7 @@ button.want_btn {
   margin: 16px 32px;
   background-color: #d45d93;
   box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+ 
 }
 
 .card-title {
@@ -428,26 +429,26 @@ button.want_btn {
 
 .EventsContainer {
   display: flex;
-  width: 78%;
+  width: 100%;
   padding: 20px;
-  // flex-wrap: wrap;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.filters {
-  background-color: #fad0c4;
-  color: #000000;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  margin: 10px;
-  height: 86vh;
-}
+// .filters {
+//   background-color: #fad0c4;
+//   color: #000000;
+//   padding: 20px;
+//   display: flex;
+//   flex-direction: column;
+//   width: 20%;
+//   margin: 10px;
+//   height: 86vh;
+// }
 
-.filters>span {
-  padding-bottom: 20px;
-}
+// .filters>span {
+//   padding-bottom: 20px;
+// }
 
 .title {
   font-size: 30px;
@@ -513,6 +514,12 @@ button.want_btn {
 .magzinePdf{
   text-align: center !important;
  color: #a63d67 !important;
+}
+.embed:focus {
+  outline: none;
+}
+.embed:focus{
+ user-select: none;
  }
  .magzineCardBody{
    text-align: center;
@@ -595,4 +602,138 @@ text-align: center;
 //   background: url("src\assets\icons\down1.png.svg");
 
 // }
+.iframe{
+width: 100%;
+height: 100%;
+border: none;
+}
 
+// #target {
+//   width: 400px;
+//   height: 300px;
+//   overflow-y: auto;
+//   overflow-x: auto;
+//   resize: both;
+//   position: relative;
+//   z-index: 2;
+// }
+
+// #wrap {
+//   width: 750px;
+//   height: 1500px;
+//   padding: 0;
+//   overflow: hidden;
+// }
+
+// #scaled-frame {
+//   width: 1000px;
+//   height: 2000px;
+//   border: 0px;
+// }
+
+
+// #scaled-frame {
+//   zoom: 0.75;
+//   -moz-transform: scale(0.75);
+//   -moz-transform-origin: 0 0;
+//   -o-transform: scale(0.75);
+//   -o-transform-origin: 0 0;
+//   -webkit-transform: scale(0.75);
+//   -webkit-transform-origin: 0 0;
+// }
+
+// .embed:focus{
+//   user-select: none;
+// }
+
+// .modal{
+//   width: 800px;
+//   user-select: none;
+//   height: 800px !important;
+//   resize: both;
+//   overflow: auto;
+//   cursor: pointer;
+//   top: 200px;
+//   left:460px;
+
+//   // z-index: 10;
+// }
+.iframe{
+  width: 800px;
+  user-select: none;
+  height: 800px !important;
+  resize: both;
+  overflow: auto;
+  cursor: pointer;
+}
+// .modal-body {
+//   max-height: calc(100vh - 180px); // to adjust you can change 180px
+//   overflow-y: auto;
+//   }
+  .modal-footer {
+    // max-height: calc(100vh - 180px); // to adjust you can change 180px
+    overflow-y: auto;
+    // resize: both;
+    // overflow: auto;
+    cursor: pointer;
+    // position: relative;
+  // display: table;
+    }
+
+  //   .modal-dialog{
+  //     position: relative;
+  //     // display: table; /* <-- This makes the trick */
+  //     overflow-y: auto;    
+  //     overflow-x: auto;
+  //     resize: both;
+  //     cursor: pointer;
+  //     width: auto;
+  //     min-width: 300px; 
+  //     // max-height: calc(100vh - 180px); // to adjust you can change 180px  
+  // }
+
+  .modal-dialog{
+     max-height: calc(500vh - 180px); // to adjust you can change 180px
+      // display: table; /* <-- This makes the trick */
+      max-width: calc(200vh - 180px);
+     overflow-y: auto;
+     resize: both;
+    //  overflow: auto;
+     cursor: pointer;
+     position: relative;
+  }
+  .modal-body{
+  //    max-height: calc(500vh - 500px); // to adjust you can change 180px
+  //     // display: table; /* <-- This makes the trick */
+  //     max-width: calc(500vh - 500px);
+     overflow-y: auto;
+     resize: both;
+     overflow: auto;
+     cursor: pointer;
+     position: relative;
+     user-select: none;
+     overflow-y: scroll;
+    //  pointer-events: none; 
+  }
+  .modal-content{
+    cursor: pointer;
+    position: relative;
+    overflow-y: auto;
+    resize: both;
+    user-select: none;
+    
+  }
+
+  iframe {  
+    // pointer-events: none; 
+    max-width: calc(200vh - 180px);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-y: scroll;
+  }
+  
+  

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
+import ReactModal from "react-modal-resizable-draggable";
+
 import {
   Container,
   Row,
@@ -8,6 +11,8 @@ import {
   Nav,
   NavDropdown,
   Navbar,
+  Modal,
+  Button,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -25,11 +30,30 @@ import double_quote from "../../assets/icons/double_quote.png";
 import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
+// import { Document, Page,pdfjs } from 'react-pdf';
 
 import axios from "axios";
 import { color } from "@mui/system";
 
-function MagzinePage() {
+function MagzinePage(props) {
+  //  const oncontextmenu=(e)=>{
+  //    e.preventDefault
+  //     return false;
+  // };
+    // const Buttons = [{text:"Read Pdf"}]
+  const [show, setShow] = useState(false);
+  const [disabled, setdisabled] = useState([]);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // const [numPages, setNumPages] = useState(null);
+  // const [pageNumber, setPageNumber] = useState(1);
+
+  // function onDocumentLoadSuccess({ numPages }) {
+
+  //   setNumPages(numPages);
+  // }
   const history = useHistory();
   const { magzines } = useSelector((state) => {
     console.log("state", state);
@@ -57,6 +81,7 @@ function MagzinePage() {
 
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
+ 
 
   useEffect(() => {
     axios
@@ -73,17 +98,39 @@ function MagzinePage() {
       });
   }, []);
 
-const showPdf=(c)=>{
+  // window.onload = function () {
+  //   const iframe = document.getElementById("iframe");
+  //   const body = iframe.contentWindow.document.body;
+
+  //   body.style.pointerEvents = "none";
+  //   body.style.userSelect = "none";
+  // };
+
+  const showPdf = (m) => {
     // let url ="https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
-    try{
-    let url = `${c?.pdf}`
-    console.log("urllll",url)
-     let win = window.open(url, "myWindow");
-      win.focus();
-    }catch(error){
-      console.log("error",error)
-    } 
-}
+    // try{
+    // let url = `${c?.pdf}`
+    // console.log("urllll",url)
+    //  let win = window.open(url, "myWindow");
+    //  let win = window.open(url,"user-select=none","_self","resizable=yes","scrollbars=yes","height=600,height=600");
+    //   win.focus();
+    // }catch(error){
+    //   console.log("error",error)
+    // <embed class="noselect" width="500" height="200" src={c?.pdf} type="application/pdf"/>
+    // }
+    // <Document   options={{ cMapUrl: 'cmaps/', cMapPacked: true }} file={c?.pdf} onLoadSuccess={onDocumentLoadSuccess}>
+    // {[...Array(c?.pdf?.total_pages)]?.map((page, index) => {
+    //   return (
+    //     <Page pageNumber={index + 1} />
+    //   )
+    // }
+    // )}
+    // </Document>
+  };
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreblog' />
@@ -123,47 +170,94 @@ const showPdf=(c)=>{
       </Container>
 
       <Container>
-        {magzines?.magazine_list?.length > 0 ? (
-          magzines?.magazine_list.map(
-            (c, index) =>
-              c && (
-                <>
-                  <div className='MagzineCard'>
-                    <Card style={{ width: "67rem" }} key={c?.id}>
-                      <Card.Body className='magzineCardBody'>
-                        {/* <Card.Text className="createdText">Created_at: {c?.created_at} </Card.Text> */}
-                        <Card.Text className='createdText'>
-                          Created_at:
-                          <Moment format='D MMM YYYY' withTitle>
-                            {c?.created_at}
-                          </Moment>
-                        </Card.Text>
+        {magzines["magazine_list"]?.length > 0 ? (
+          magzines["magazine_list"]?.map((m, index) => {
+            console.log("magM", m.id);
+            console.log("magMpdf", m.pdf);
+            return (
+              <>
+                <div className='MagzineCard'>
+                  <Card style={{ width: "67rem" }} key={m?.id}>
+                    <Card.Body className='magzineCardBody'>
+                      {/* <Card.Text className="createdText">Created_at: {c?.created_at} </Card.Text> */}
+                      <Card.Text className='createdText'>
+                        Created_at:
+                        <Moment format='D MMM YYYY' withTitle>
+                          {m?.created_at}
+                        </Moment>
+                      </Card.Text>
 
-                        <Card.Title>{c.title}</Card.Title>
-                        <Card.Subtitle className='mb-2 text-muted'>
-                          {" "}
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: `<div>${c.about_magazine}</div>`,
-                            }}
-                          />
-                        </Card.Subtitle>
-                        <Card.Link href={c?.pdf} className='magzinePdf' >
-                        <button onClick={()=>showPdf(c)} style={{backgroundColor:"#fad0c4",width:"100px",marginTop:"10px"}}>Read</button>
+                      <Card.Title>{m.title}</Card.Title>
+                      <Card.Subtitle className='mb-2 text-muted'>
+                        {" "}
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: `<div>${m.about_magazine}</div>`,
+                          }}
+                        />
+                      </Card.Subtitle>
+                      {/* <Card.Link class="react-pdf__Page__textContent"
+                        //  href={c?.pdf}
+                          className='magzinePdf' id="wrap" > */}
+                      {/* <button 
+                        onClick={()=>
+                        showPdf(c)}
+                       
+                         style={{backgroundColor:"#fad0c4",width:"100px",marginTop:"10px"}}>Read</button> */}
 
-                        </Card.Link>
-                        <Card.Text className='updatedText'>
-                          Updated_at :
-                          <Moment format='D MMM YYYY' withTitle>
-                            {c?.updated_at}
-                          </Moment>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
-                  </div>
-                </>
-              ),
-          )
+                      {/* <embed class="noselect" width="500" height="200" src={c?.pdf} type="application/pdf"/> */}
+                      {/* <iframe src={c.pdf} id="target"  width="500" height="200"></iframe> */}
+                      {/* <iframe src={c.pdf} id="scaled-frame"  width="500" height="200"></iframe> */}
+
+                      <Button
+                        key={m?.id}
+                        style={{ backgroundColor: "#a63d67" }}
+                        // disabled={disabled.includes(index)}
+                        onClick={handleShow}
+                      >
+                        Read Pdf
+                      </Button>
+
+                      <Modal
+                        key={m?.id}
+                        class='modal-dialog'
+                        show={show}
+                        onHide={handleClose}
+                      >
+                        <Modal.Header closeButton>
+                          {/* <Modal.Title>Pdf</Modal.Title> */}
+                          <Button variant='secondary' onClick={handleClose}>
+                            Close
+                          </Button>
+                        </Modal.Header>
+                        <Modal.Body key={m?.id} style={{ userSelect: "none" }}>
+                          <iframe
+                            id='iframe'
+                            // key={m?.id}
+                            // oncontextmenu={(e)=>oncontextmenu()}
+                            src={m?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}
+                            frameBorder='0'
+                            scrolling='auto'
+                            height='100%'
+                            width='100%'
+                          ></iframe>
+                          <Modal.Footer></Modal.Footer>
+                        </Modal.Body>
+                      </Modal>
+
+                      {/* </Card.Link> */}
+                      <Card.Text className='updatedText'>
+                        Updated_at :
+                        <Moment format='D MMM YYYY' withTitle>
+                          {m?.updated_at}
+                        </Moment>
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </div>
+              </>
+            );
+          })
         ) : (
           <div className='text-center'>{t("common.noDataFound")}</div>
         )}

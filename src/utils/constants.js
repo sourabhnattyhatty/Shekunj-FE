@@ -116,7 +116,10 @@ const apiConstants = {
   },
   ALL_NOTIFICATION: {
     ALL_NOTIFICATION : "/more/notifications/",
-  }
+  },
+  // ADD:{
+  //   ADD:"/private_adds/click_add/"
+  // }
 
 };
 

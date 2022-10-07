@@ -22,7 +22,7 @@ const CareerDetails = () => {
 
     const { id } = useParams();
     const { topCollages } = useSelector((state) => state.careerReducer);
-
+     console.log("topCollagesssss",topCollages)
     const dispatch = useDispatch();
     const { lan } = useSelector((state) => state.languageReducer);
     const { t } = useTranslation();
