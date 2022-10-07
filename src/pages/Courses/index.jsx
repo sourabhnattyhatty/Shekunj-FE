@@ -24,6 +24,16 @@ import { routingConstants } from "../../utils/constants";
 import Pagination from "../../components/Pagination";
 import axios from "axios";
 
+// accordion
+
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+
+
 
 const Courses = () => {
   const { t } = useTranslation();
@@ -317,6 +327,26 @@ const Courses = () => {
 
             <div className='col-md-4 col-sm-4'>
               <h5><b>{t("coursesPage.accordion.1.heading")}</b></h5>
+
+              <div>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Categories</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      
+      
+    </div>
+
               <SimpleAccordion
                 isSubSelected={(val) => {
                   setIsSubSelected(val);
@@ -331,6 +361,7 @@ const Courses = () => {
                   setCategoryPageCount(0);
                 }}
               />
+
 
               {/* google add */}
               <div className='row'>
