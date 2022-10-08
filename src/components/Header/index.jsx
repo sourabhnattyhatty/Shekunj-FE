@@ -489,21 +489,25 @@ const Header = ({ page, subPage }) => {
                       {t("header.heading.6")}
                     </a>
                   </li>
-
+{/* 
                   <li
                     className={
                       page === "more" ? "nav-item active" : "nav-item"
                     }
+                  > */}
+                    <li
+                    className={page === "Blog" ? "nav-item active" : "nav-item"}
                   >
-                    {/* <a
+                    <a
                       className='nav-link'
                       rel='noreferrer'
                       target='_blank'
                       href={routingConstants.BLOGS}
                     >
                       {t("header.heading.7")}
-                    </a> */}
-                     <button
+                    </a>
+                    </li>
+                     {/* <button
                       className='nav-link guidence_button'
                       id='basic-button3'
                       aria-controls='basic-menu3'
@@ -541,7 +545,7 @@ const Header = ({ page, subPage }) => {
                         {t("headerComponent.menuItem.13")}
                       </MenuItem>
                     </Menu>
-                  </li>
+                  </li> */}
 
                   <li
                     className={
