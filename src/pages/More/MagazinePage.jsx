@@ -36,24 +36,17 @@ import axios from "axios";
 import { color } from "@mui/system";
 
 function MagzinePage(props) {
-  //  const oncontextmenu=(e)=>{
-  //    e.preventDefault
-  //     return false;
-  // };
-    // const Buttons = [{text:"Read Pdf"}]
+
   const [show, setShow] = useState(false);
-  const [disabled, setdisabled] = useState([]);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
-  // const [numPages, setNumPages] = useState(null);
-  // const [pageNumber, setPageNumber] = useState(1);
+  const handleClose = (index) => {
+    setShow(false)
+  };
+  const handleShow = (index) => { 
+    setShow(index)
+   };
 
-  // function onDocumentLoadSuccess({ numPages }) {
-
-  //   setNumPages(numPages);
-  // }
   const history = useHistory();
   const { magzines } = useSelector((state) => {
     console.log("state", state);
@@ -98,35 +91,6 @@ function MagzinePage(props) {
       });
   }, []);
 
-  // window.onload = function () {
-  //   const iframe = document.getElementById("iframe");
-  //   const body = iframe.contentWindow.document.body;
-
-  //   body.style.pointerEvents = "none";
-  //   body.style.userSelect = "none";
-  // };
-
-  const showPdf = (m) => {
-    // let url ="https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
-    // try{
-    // let url = `${c?.pdf}`
-    // console.log("urllll",url)
-    //  let win = window.open(url, "myWindow");
-    //  let win = window.open(url,"user-select=none","_self","resizable=yes","scrollbars=yes","height=600,height=600");
-    //   win.focus();
-    // }catch(error){
-    //   console.log("error",error)
-    // <embed class="noselect" width="500" height="200" src={c?.pdf} type="application/pdf"/>
-    // }
-    // <Document   options={{ cMapUrl: 'cmaps/', cMapPacked: true }} file={c?.pdf} onLoadSuccess={onDocumentLoadSuccess}>
-    // {[...Array(c?.pdf?.total_pages)]?.map((page, index) => {
-    //   return (
-    //     <Page pageNumber={index + 1} />
-    //   )
-    // }
-    // )}
-    // </Document>
-  };
   document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
   });
@@ -179,7 +143,6 @@ function MagzinePage(props) {
                 <div className='MagzineCard'>
                   <Card style={{ width: "67rem" }} key={m?.id}>
                     <Card.Body className='magzineCardBody'>
-                      {/* <Card.Text className="createdText">Created_at: {c?.created_at} </Card.Text> */}
                       <Card.Text className='createdText'>
                         Created_at:
                         <Moment format='D MMM YYYY' withTitle>
@@ -196,36 +159,22 @@ function MagzinePage(props) {
                           }}
                         />
                       </Card.Subtitle>
-                      {/* <Card.Link class="react-pdf__Page__textContent"
-                        //  href={c?.pdf}
-                          className='magzinePdf' id="wrap" > */}
-                      {/* <button 
-                        onClick={()=>
-                        showPdf(c)}
-                       
-                         style={{backgroundColor:"#fad0c4",width:"100px",marginTop:"10px"}}>Read</button> */}
-
-                      {/* <embed class="noselect" width="500" height="200" src={c?.pdf} type="application/pdf"/> */}
-                      {/* <iframe src={c.pdf} id="target"  width="500" height="200"></iframe> */}
-                      {/* <iframe src={c.pdf} id="scaled-frame"  width="500" height="200"></iframe> */}
 
                       <Button
                         key={m?.id}
+                        onClick={() => handleShow(index)}
                         style={{ backgroundColor: "#a63d67" }}
-                        // disabled={disabled.includes(index)}
-                        onClick={handleShow}
                       >
                         Read Pdf
                       </Button>
 
                       <Modal
-                        key={m?.id}
+                        key={index}
                         class='modal-dialog'
-                        show={show}
-                        onHide={handleClose}
+                        show={show=== index}
+                        toggle={handleClose}
                       >
                         <Modal.Header closeButton>
-                          {/* <Modal.Title>Pdf</Modal.Title> */}
                           <Button variant='secondary' onClick={handleClose}>
                             Close
                           </Button>
@@ -233,8 +182,6 @@ function MagzinePage(props) {
                         <Modal.Body key={m?.id} style={{ userSelect: "none" }}>
                           <iframe
                             id='iframe'
-                            // key={m?.id}
-                            // oncontextmenu={(e)=>oncontextmenu()}
                             src={m?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}
                             frameBorder='0'
                             scrolling='auto'
@@ -244,8 +191,7 @@ function MagzinePage(props) {
                           <Modal.Footer></Modal.Footer>
                         </Modal.Body>
                       </Modal>
-
-                      {/* </Card.Link> */}
+                      
                       <Card.Text className='updatedText'>
                         Updated_at :
                         <Moment format='D MMM YYYY' withTitle>
