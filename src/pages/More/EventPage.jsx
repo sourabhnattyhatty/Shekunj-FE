@@ -83,7 +83,7 @@ function EventPage() {
           </span>
           <Button variant='light'>Clear Filters</Button>
         </div> */}
-        <div className='EventsContainer'>
+        <div className='EventsContainer moreevent-box23'>
           {events?.event_list?.length > 0 ? (
             events?.event_list?.map((c)=>{
               console.log("c", c);
@@ -98,7 +98,7 @@ function EventPage() {
                       <Card.Body className='eventCards' key={c?.id}>
                         <img
                           src={c && c.image}
-                          class='card-img-top'
+                          class='card-img-top event-img-more12'
                           alt='...'
                           width="150px"
                           height="200px"

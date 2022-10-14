@@ -176,7 +176,7 @@ function MagzinePage(props) {
             console.log("magMpdf", m.pdf);
             return (
               <>
-                <div className='MagzineCard'>
+                <div className='MagzineCard more-magzine-pdf123'>
                   <Card style={{ width: "67rem" }} key={m?.id}>
                     <Card.Body className='magzineCardBody'>
                       {/* <Card.Text className="createdText">Created_at: {c?.created_at} </Card.Text> */}

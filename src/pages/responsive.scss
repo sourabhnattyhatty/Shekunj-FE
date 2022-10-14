@@ -345,8 +345,86 @@ margin-bottom: 30px;
   overflow: hidden;
 }
 
+
+// Sep 27
+
+
+.desktop_view_city_selct {
+  display: none;
+}
+.mobile_view_city_selct {
+  display: block !important;
+  margin-bottom: 30px;
+}
+.top_collages_list_filter123 {
+  overflow: hidden;
 }
 
+// 12 Oct
+
+.moreevent-box23 .card {
+  width: 100% !important;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.moreevent-box23  .text-muted.card-subtitle.h6 {
+  margin-top: 10px;
+}
+.more-magzine-pdf123 .card {
+  width: 100% !important;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+// Oct 14
+
+.suggestions {
+  background: #fff !important;
+}
+.que_status {
+  display: block !important;
+}
+.college_ads_box{
+  margin-left: 0 !important;
+}
+.google_add_college {
+  width: 100% !important;
+  height: 46px !important;
+}
+.top_col_content a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+.career_box h3 {
+  margin-left: 0 !important;
+}
+.ads_succ_story {
+  height: 46px !important;
+  width: 100% !important;
+}
+.career_tit p {
+  display: block !important;
+}
+
+
+
+}
+
+
+// Sep 27
+
+.mobile_view_city_selct {
+  display: none;
+}
+// 12 Oct
+
+.event-img-more12 {
+  object-fit: cover;
+}
+header.other_head ul li svg {
+  width: 22px;
+}
 
 
 
@@ -354,7 +432,8 @@ margin-bottom: 30px;
   border: none;
   padding: 0px 0px 0px 10px;
   overflow-y: scroll;
-  height: 237px;
+  // height: 237px;
+  min-height: 150px;
 }
 .ul_list_radio_filter  ul li {
   list-style-type: none;
@@ -392,3 +471,12 @@ margin-bottom: 30px;
 .kuldeep_pdf .iframe-divarea {
   overflow: hidden;
 }
+
+// Oct 14
+
+
+.footer_ads_bottom_parent a:last-child {
+  display: none;
+}
+
+

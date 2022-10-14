@@ -13,11 +13,19 @@ import "./index.scss";
 
 import { useTranslation } from "react-i18next";
 import TopSchool from "../../assets/images/Career/scl.jpg";
+import logo from "../../assets/icons/filter.png"
 import Cross from "../../assets/icons/cross.png";
 import Search from "../../assets/icons/search1.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ContentLoader, { Facebook } from 'react-content-loader';
+
+
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const CareerPage1 = () => {
   // const [loading, setLoading] = useState(false);
@@ -135,6 +143,7 @@ const CareerPage1 = () => {
           </div>
           <Row>
             <Col md={4} xs={12}>
+              <div className="desktop_view_city_selct">
               <AccordionComponent
                 type='schools'
                 states={{
@@ -159,6 +168,50 @@ const CareerPage1 = () => {
                 }}
               />
               {console.log("citiessss",topSchools?.city_list)}
+              </div>
+
+<div className="mobile_view_city_selct">
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+           <img src={logo} alt='Image' className='filter_city_123'
+                       />
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          <AccordionComponent
+                type='schools'
+                states={{
+                  name: t("careerTopSchools.listItems.1"),
+                  rows: topSchools?.state_list,
+                }}
+                cities={{
+                  name: t("careerTopSchools.listItems.3"),
+                  rows: topSchools?.city_list,
+                }}
+                ownership={{
+                  name: t("careerTopSchools.listItems.5"),
+                  rows: topSchools?.school_type,
+                }}
+                educationBoard={{
+                  name: t("careerTopSchools.listItems.2"),
+                  rows: topSchools?.board_list || [],
+                }}
+                category={{
+                  name: t("careerTopSchools.listItems.4"),
+                  rows: topSchools?.gender_intech,
+                }}
+              />
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+     
+ 
+    </div>
+
             </Col>
 
             <Col md={8} xs={12}>
