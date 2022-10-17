@@ -96,7 +96,7 @@ function EventPage() {
           </span>
           <Button variant='light'>Clear Filters</Button>
         </div> */}
-        <div className='EventsContainer d-flex justify-content-evenly'>
+        <div className='EventsContainer d-flex justify-content-evenly moreevent-box23'>
           {events?.event_list?.length > 0 ? (
             events?.event_list?.map((c)=>{
               console.log("c", c);
@@ -111,7 +111,7 @@ function EventPage() {
                       <Card.Body className='eventCards d-flex flex-column' key={c?.id}>
                         <img 
                           src={c && c.image}
-                          class='card-img card-img-top'
+                          class='card-img card-img-top event-img-more12'
                           alt='...'
                           width="100%"
                           height="100%"

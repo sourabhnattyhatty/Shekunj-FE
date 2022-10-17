@@ -27,6 +27,16 @@ import {
   adsList
 } from "../../store/ads";
 
+// accordion
+
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+
+
 
 const Courses = () => {
   const { t } = useTranslation();
@@ -433,7 +443,20 @@ const Courses = () => {
 
             <div className='col-md-4 col-sm-4'>
               <h5><b>{t("coursesPage.accordion.1.heading")}</b></h5>
-              <SimpleAccordion
+
+              <div className="mobile_view_city_selct">
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Categories</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            
+          <SimpleAccordion
                 isSubSelected={(val) => {
                   setIsSubSelected(val);
                 }}
@@ -447,6 +470,46 @@ const Courses = () => {
                   setCategoryPageCount(0);
                 }}
               />
+
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      
+      
+    </div>
+
+    <div className="desktop_view_city_selct">
+
+    <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Categories</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            
+          <SimpleAccordion
+                isSubSelected={(val) => {
+                  setIsSubSelected(val);
+                }}
+                isResetPressed={resetState}
+                changeResetAgain={(val) => {
+                  setResetState(val);
+                }}
+                categoryId={(val) => {
+                  setCategoryId(val);
+                  setPageCount(0);
+                  setCategoryPageCount(0);
+                }}
+              />
+
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+</div>
 
               {/* google add */}
               <div className='row'>
