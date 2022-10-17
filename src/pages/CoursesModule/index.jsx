@@ -30,6 +30,9 @@ import { useRef } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import axios from "axios";
 import ContentLoader, { Facebook } from 'react-content-loader';
+import {
+  adsList
+} from "../../store/ads";
 
 const Accordion = styled(props => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -336,6 +339,7 @@ const CourseModule = () => {
   const [adsCourseModule, setAdsCourseModule] = useState([]);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const [image,setImage]=useState("NA")
 
 
   function onDocumentLoadSuccess({ numPages }) {
@@ -343,12 +347,79 @@ const CourseModule = () => {
     setNumPages(numPages);
   }
 
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=courses_module')
+  //     .then((response) => {
+  //       setAdsCourseModule(response.data.results);
+  //     });
+  // }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "courses_module"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setAdsCourseModule(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
+
+  const addEmail =(email)=>{
+    console.log("addEmail",email)
+       axios.post('/private_adds/click_add/'
+   ,{
+     // add_email:`${adds[0]?.add_email}`
+     add_email:email
+   }
+   )
+     .then((response) => {
+       // setAdds(response.data.results);
+       console.log("addEmailresponse",response)
+     });
+   
+}
+
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=courses_module')
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
       .then((response) => {
-        setAdsCourseModule(response.data.results);
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "courses_module"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setAdsCourseModule(filterArray)
+            }
       });
-  }, [])
+    })
+    dispatch(adsList());
+}, [])
+
+
 
   const keys = [...Array().keys(course?.total_pages)];
 
@@ -360,11 +431,13 @@ const CourseModule = () => {
         <Container>
           <Row>
             <div className='col-md-12'>
-              <div className='ads_course_mod_cover'>
+              {adsCourseModule.length > 0 && 
+              <div  className="ads_course_mod_cover" onClick={()=>addEmail(adsCourseModule[0]?.add_email)}>
                 <a href={adsCourseModule[0]?.url_adds}  target='_blank'>
                   <img src={adsCourseModule[0]?.image} alt='Image' className='ads_Course_module' />
                 </a>
               </div>
+}
             </div>
           </Row>
         </Container>

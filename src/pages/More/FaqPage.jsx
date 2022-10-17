@@ -120,9 +120,9 @@ function FaqPage() {
           <Navbar.Brand className="NavHeading">Frequently Asked Question</Navbar.Brand>
           <img
               src="/static/media/logo.de3c6070.svg"
-              width="90"
-              height="50"
-              className="d-inline-block align-top"
+              width="30"
+              height="30"
+              // className="d-inline-block align-top"
               alt="logo"
             />
         </Container>

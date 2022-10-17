@@ -99,14 +99,6 @@ const Header = ({ page, subPage }) => {
     // history.push(routingConstants.MY_PROFILE);
     setAnchorEl(null);
   };
-  const handleNotification2 = () => {
-    // history.push(routingConstants.MY_PROFILE);
-    setAnchorEl(null);
-  };
-  const handleNotification3 = () => {
-    // history.push(routingConstants.MY_PROFILE);
-    setAnchorEl(null);
-  };
   const handleNotificationAll = () => {
     history.push(routingConstants.ALL_NOTIFICATION);
     setAnchorEl77(null);
@@ -881,7 +873,7 @@ const Header = ({ page, subPage }) => {
                         <BellIcon
                           width='40'
                           active={true}
-                          animate={true}
+                          // animate={true}
                           color='#ec498a'
                         />
                       </span>
@@ -902,11 +894,13 @@ const Header = ({ page, subPage }) => {
                       onClose={handleClose77}
                       transformOrigin={{
                         horizontal: "left",
+                        // horizontal: "center",
                         vertical: "top",
                       }}
                       anchorOrigin={{
                         horizontal: "right",
                         vertical: "top",
+                        // vertical: "bottom",
                       }}
                     >
                       {notifications["Notifications "]?.length > 0 ? (
@@ -915,15 +909,18 @@ const Header = ({ page, subPage }) => {
                           // console.log("c.notification.url",c.url)
                           return (
                             <>
-                              <MenuItem onClick={handleNotification1}>
-                                <a
+                              <MenuItem onClick={handleNotification1} className='nav-link '>
+                                {/* <a
                                   className='nav-link'
-                                  // rel='noreferrer'
-                                  // target='_blank'
-                                  href= {c?.url}             
-                                >
-                                  {c?.title}
-                                </a>
+                                  rel='noreferrer'
+                                  target='_blank'
+                                  href= {`${c?.url}`}           
+                                > */}
+                                <Link className="limited-text" to={`/${c?.url}`} style={{color:"#e83e8c"}}  replace >
+
+                                 {c?.title}
+                                  </Link>
+                                {/* </a> */}
                               </MenuItem>
                               {/* <MenuItem onClick={handleNotification2}>
                                 <a

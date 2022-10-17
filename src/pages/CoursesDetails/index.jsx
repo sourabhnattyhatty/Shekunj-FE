@@ -20,6 +20,9 @@ import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import {
+  adsList
+} from "../../store/ads";
 
 const CourseDetails = () => {
   const dispatch = useDispatch();
@@ -40,13 +43,81 @@ const CourseDetails = () => {
   }, [dispatch, course?.category_id, lan]);
  
   const [courseDetailAds, setCourseDetailAds] = useState([]);
+  const [image,setImage]=useState("NA")
 
-	useEffect(() => {
-		axios.get('/private_adds/private_add?image_type=home_position_1')
-			.then((response) => {
-				setCourseDetailAds(response.data.results);
-			});
-	}, [])
+	// useEffect(() => {
+	// 	axios.get('/private_adds/private_add?image_type=home_position_1')
+	// 		.then((response) => {
+	// 			setCourseDetailAds(response.data.results);
+	// 		});
+	// }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "course_detail"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setCourseDetailAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
+
+  const addEmail =(email)=>{
+    console.log("addEmail",email)
+       axios.post('/private_adds/click_add/'
+   ,{
+     // add_email:`${adds[0]?.add_email}`
+     add_email:email
+   }
+   )
+     .then((response) => {
+       // setAdds(response.data.results);
+       console.log("addEmailresponse",response)
+     });
+   
+}
+
+  useEffect(() => {
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
+      .then((response) => {
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "course_detail"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setCourseDetailAds(filterArray)
+            }
+      });
+    })
+    dispatch(adsList());
+}, [])
+
+
 
   return (
     <div>
@@ -130,11 +201,13 @@ const CourseDetails = () => {
 
             <Container>
               <Row>
-                <div className='col-md-12 ads_course_detail_cover'>
+                {courseDetailAds.length > 0 &&
+                <div  className="col-md-12 ads_course_detail_cover" onClick={()=>addEmail(courseDetailAds[0]?.add_email)}>
                 <a href={courseDetailAds[0]?.url_adds}  target='_blank'>
                   <img src={courseDetailAds[0]?.image} alt='Image' className='ads_course_detail' />
                   </a>
                 </div>
+}
               </Row>
             </Container>
 

@@ -181,9 +181,9 @@ export default function AccordionComponent({
 
   const hasMoreSchoolOwnershipFunction = (data) => {
     return data?.map(
-      (c) =>
+      (c,index) =>
         c?.name && (
-          <li key={c?.id}>
+          <li key={index}>
             <FormControlLabel
               value={c?.name}
               control={
@@ -426,7 +426,7 @@ export default function AccordionComponent({
 
             <AccordionDetails>
               <ul className='pl-0'>
-                <FormGroup name='radio-buttons-group'>
+                <FormGroup>
                   {remainingCollegeOwnership
                     ? hasMoreCollegeOwnerShipFunction(ownership?.rows)
                     // : hasMoreCollegeOwnerShipFunction(ownership?.rows?.slice(0, 3))}
@@ -642,12 +642,12 @@ export default function AccordionComponent({
 
             <AccordionDetails>
               <ul className='pl-0'>
-                <RadioGroup name='radio-buttons-group'>
+                <FormGroup>
                   {Array.isArray(ownership?.rows) && (remainingSchoolsOwnership
                     ? hasMoreSchoolOwnershipFunction(ownership?.rows)
                     : hasMoreSchoolOwnershipFunction(ownership?.rows?.slice(0, 3),
                     ))}
-                </RadioGroup>
+                </FormGroup>
 
               </ul>
               {/* {hasMoreCount(ownership?.rows, 3) > 0 && (

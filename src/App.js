@@ -15,6 +15,7 @@ const BlogPage = React.lazy(() => import("./pages/More/BlogPage"));
 const BlogDetails = React.lazy(() => import("./pages/BlogDetails"));
 const EventPage = React.lazy(() => import("./pages/More/EventPage"));
 const EventDetails = React.lazy(() => import("./pages/EventDetails"));
+const MagzineDetails = React.lazy(() => import("./pages/MagzineDetails"));
 const MagazinePage = React.lazy(() => import("./pages/More/MagazinePage"));
 const CareerDetails = React.lazy(() => import("./pages/CareerDetails"));
 const Career1Details = React.lazy(() => import("./pages/Career1Details"));
@@ -91,6 +92,7 @@ function App() {
         <Route exact path={routingConstants.MORE_EVENT} component={EventPage} />
         <Route exact path={routingConstants.MORE_MAGAZINE} component={MagazinePage} />
         <Route exact path={routingConstants.ALL_NOTIFICATION} component={Notifications} />
+        <Route exact path={routingConstants.DETAILS_MAGZINE} component={MagzineDetails} />
         
         <Route exact path={routingConstants.FAQ} component={FaqPage} />
         {/* <Route exact path={routingConstants.MAGZINE} component={Magzine} /> */}

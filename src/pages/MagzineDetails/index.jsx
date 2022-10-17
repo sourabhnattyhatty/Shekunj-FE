@@ -18,7 +18,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { routingConstants } from "../../utils/constants";
 import Moment from "react-moment";
 import { getAllMagzines } from "../../store/magzine";
 import {
@@ -26,26 +25,25 @@ import {
   getAllMagzines as fetchMagzines,
 } from "../../store/magzine/action";
 import { Header, Footer } from "../../components";
-import img1 from "../../assets/images/shekunj_magzine.jpg"
 import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
 import double_quote from "../../assets/icons/double_quote.png";
 import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
-// import { Document, Page,pdfjs } from 'react-pdf';
-
+import { routingConstants } from "../../utils/constants";
+import "./index.scss";
 import axios from "axios";
-import { color } from "@mui/system";
 
-function MagzinePage(m) {
-  // const url = 
-  // `https://cors-anywhere.herokuapp.com/${m?.pdf}`
+function MagzineDetails(m) {
 
-  // pdfjs.GlobalWorkerOptions.workerSrc = 
-  // `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  //  const [numPages, setNumPages] = useState(null);
-  //   const [pageNumber, setPageNumber] = useState(1);
+    const url = 
+  `https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/dummy_MWXkNXX.pdf`
+
+  pdfjs.GlobalWorkerOptions.workerSrc = 
+  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+   const [numPages, setNumPages] = useState(null);
+    const [pageNumber, setPageNumber] = useState(1);
 
     
   //   function onDocumentLoadSuccess({ numPages }) {
@@ -53,82 +51,79 @@ function MagzinePage(m) {
   //     setPageNumber(1);
   //   }
 
-  //   function onDocumentLoadSuccess({ numPages }) {
-  //     setNumPages(numPages);
-  //     setPageNumber(1);
-  //   }
+    function onDocumentLoadSuccess({ numPages }) {
+      setNumPages(numPages);
+      setPageNumber(1);
+    }
     
-  //   function changePage(offset) {
-  //     setPageNumber(prevPageNumber => prevPageNumber + offset);
-  //   }
+    function changePage(offset) {
+      setPageNumber(prevPageNumber => prevPageNumber + offset);
+    }
     
-  //   function previousPage() {
-  //     changePage(-1);
-  //   }
+    function previousPage() {
+      changePage(-1);
+    }
     
-  //   function nextPage() {
-  //     changePage(1);
-  //   }
+    function nextPage() {
+      changePage(1);
+    }
 
   const [show, setShow] = useState(false);
 
 
-  const handleClose = () => {
+  const handleClose = (index) => {
     setShow(false)
   };
   const handleShow = (index) => { 
     setShow(index)
    };
 
-  const history = useHistory();
-  const { magzines } = useSelector((state) => {
-    console.log("state", state);
-    return state.magzinesReducer;
-  });
-  const dispatch = useDispatch();
 
-  console.log("magzinesssss", magzines);
-  const { lan } = useSelector((state) => state.languageReducer);
-  console.log("langggggg", lan);
-  const { t } = useTranslation();
+const history = useHistory();
+const { magzines } = useSelector((state) => {
+  console.log("state", state);
+  return state.magzinesReducer;
+});
+const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    dispatch(fetchMagzines());
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [dispatch, lan]);
+console.log("magzinesssss", magzines);
+const { lan } = useSelector((state) => state.languageReducer);
+console.log("langggggg", lan);
+const { t } = useTranslation();
 
-  useEffect(() => {
-    dispatch(getAllMagzines());
-  }, [dispatch, lan]);
+React.useEffect(() => {
+  dispatch(fetchMagzines());
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+}, [dispatch, lan]);
 
-  const handleSetCollapse = (id, is_collapse) => {
-    dispatch(setCollapseMagzines(id, is_collapse ? false : true));
-  };
+useEffect(() => {
+  dispatch(getAllMagzines());
+}, [dispatch, lan]);
 
-  const [storiesBannerAds, setStoriesBannerAds] = useState([]);
-  const [storiesBoxAds, setStoriesBoxAds] = useState([]);
- 
+const handleSetCollapse = (id, is_collapse) => {
+  dispatch(setCollapseMagzines(id, is_collapse ? false : true));
+};
 
-  useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_banner")
-      .then((response) => {
-        setStoriesBannerAds(response.data.results);
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_box")
-      .then((response) => {
-        setStoriesBoxAds(response.data.results);
-      });
-  }, []);
+const [storiesBannerAds, setStoriesBannerAds] = useState([]);
+const [storiesBoxAds, setStoriesBoxAds] = useState([]);
 
-  document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-  });
 
-  return (
+useEffect(() => {
+  axios
+    .get("/private_adds/private_add?image_type=success_stories_banner")
+    .then((response) => {
+      setStoriesBannerAds(response.data.results);
+    });
+}, []);
+useEffect(() => {
+  axios
+    .get("/private_adds/private_add?image_type=success_stories_box")
+    .then((response) => {
+      setStoriesBoxAds(response.data.results);
+    });
+}, []);
+
+return (
     <div>
       <Header loginPage={true} page='more' subPage='moreblog' />
       <div className='SuccStory_banner'>
@@ -167,16 +162,14 @@ function MagzinePage(m) {
       </Container>
 
       <Container>
-        {magzines["magazine_list"]?.length > 0 ? (
+      {magzines["magazine_list"]?.length > 0 ? (
           magzines["magazine_list"]?.map((m, index) => {
             console.log("magM", m.id);
             console.log("magMpdf", m.pdf);
             return (
               <>
-                <div className='Magzine'>
-                <Col sm={3} md={12}>
-                  <Card style={{ width: "300px",height:"510px" }} className="MagzineCard" key={m?.id}>
-                  <Card.Img className="magzineImage" variant="top" src={m?.image} alt='' srcSet=''/>
+                <div className='MagzineCard'>
+                  {/* <Card style={{ width: "67rem" }} key={m?.id}>
                     <Card.Body className='magzineCardBody'>
                       <Card.Text className='createdText'>
                         Created_at:
@@ -193,50 +186,118 @@ function MagzinePage(m) {
                             __html: `<div>${m.about_magazine}</div>`,
                           }}
                         />
-                      </Card.Subtitle>
+                      </Card.Subtitle> */}
+                      <div class="reader__canvas-container">
+                      <div className="pdfDetails">
+                        <canvas class="document-canvas">
+                      
+                     <Document class="center" 
+                          
+                          key={m?.id}
+        file={url}
+        onLoadSuccess={onDocumentLoadSuccess}
+      >
+        <Page pageNumber={pageNumber} />
+      </Document>
+      <div className="pagec">
+          Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
+        </div>
+        <div className="buttonc">
+        <button
+          type="button"
+          disabled={pageNumber <= 1}
+          onClick={previousPage}
+          className="Pre"
+            
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          disabled={pageNumber >= numPages}
+          onClick={nextPage}
+           
+        >
+          Next
+        </button>
+        </div>
+                            
+ 
 
-                       <Button
+                        </canvas>
+                      </div>
+                      </div>
+                      {/* <Button
                         key={m?.id}
                         onClick={() => handleShow(index)}
                         style={{ backgroundColor: "#a63d67" }}
                       >
                         Read Pdf
-                      </Button> 
+                      </Button>
+
                       <Modal
                         key={index}
                         class='modal-dialog'
                         show={show=== index}
                         toggle={handleClose}
                       >
-                        <Modal.Header>
+                        <Modal.Header closeButton>
                           <Button variant='secondary' onClick={handleClose}>
                             Close
                           </Button>
                         </Modal.Header>
                         <Modal.Body key={m?.id} style={{ userSelect: "none" }}>
-                          
-                          <iframe
+                           */}
+                          {/* <iframe
                             id='iframe'
                             src={m?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}
                             frameBorder='0'
                             scrolling='auto'
                             height='100%'
                             width='100%'
-                          ></iframe>
-     <Modal.Footer></Modal.Footer>
+                          ></iframe> */}
+                          {/* <Document class="center" 
+                          
+                          key={m?.id}
+        file={m?.pdf}
+        onLoadSuccess={onDocumentLoadSuccess}
+      >
+        <Page pageNumber={pageNumber} />
+      </Document>
+        <div className="pagec">
+          Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
+        </div>
+        <div className="buttonc">
+        <button
+          type="button"
+          disabled={pageNumber <= 1}
+          onClick={previousPage}
+          className="Pre"
+            
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          disabled={pageNumber >= numPages}
+          onClick={nextPage}
+           
+        >
+          Next
+        </button>
+        </div> */}
+                          {/* <Modal.Footer></Modal.Footer>
                         </Modal.Body>
-                      </Modal>
-
-                        {/* <Card.Link style={{color:"#a63d67 "}} href={routingConstants.MORE_MAGAZINE+ m.id}>Read Pdf</Card.Link>  */}
-                      <Card.Text className='updatedText'>
+                      </Modal> */}
+                      
+                      {/* <Card.Text className='updatedText'>
                         Updated_at :
                         <Moment format='D MMM YYYY' withTitle>
                           {m?.updated_at}
                         </Moment>
                       </Card.Text>
                     </Card.Body>
-                  </Card>
-                  </Col>
+                  </Card> */}
                 </div>
               </>
             );
@@ -245,19 +306,19 @@ function MagzinePage(m) {
           <div className='text-center'>{t("common.noDataFound")}</div>
         )}
       </Container>
+    
+<div className='want'>
+  <Container>
+    <h2>{t("successStoriesPage.content.2")}</h2>
+    <button onClick={() => history.push("/courses")} className='want_btn'>
+      {t("successStoriesPage.button.2")}
+    </button>
+  </Container>
+</div>
 
-      <div className='want'>
-        <Container>
-          <h2>{t("successStoriesPage.content.2")}</h2>
-          <button onClick={() => history.push("/courses")} className='want_btn'>
-            {t("successStoriesPage.button.2")}
-          </button>
-        </Container>
-      </div>
-
-      <Footer loginPage={false} />
-    </div>
-  );
+<Footer loginPage={false} />
+</div>
+);
 }
 
-export default MagzinePage;
+export default MagzineDetails;

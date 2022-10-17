@@ -63,12 +63,25 @@ function EventPage() {
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreEvent' />
-      <div className='text-center'>
+      <div className='SuccStory_banner'>
         {" "}
-        <nav class='navbar navbar-custom'>
-          <h2>All Events</h2>
-        </nav>
+        <Container>
+          <Row>
+          <Col md={1}>
+              <div className='global_img'>
+                <img src={global} alt='' className='vert-move' />
+              </div>
+              </Col>
+              <Col md={6} data-aos='slide-up'>
+              <h2> {t("Shekunj Events..")}</h2>
+              <p> Have a look how SheKunj has played an important role</p>
+              </Col>      
+                  </Row>
+            </Container>
       </div>
+      {/* <nav class='navbar navbar-custom'>
+          <h2>All Events</h2>
+        </nav> */}
       <div className='Home'>
         {/* <div className='filters'>
           <span className='title'>Filter</span>
@@ -83,7 +96,7 @@ function EventPage() {
           </span>
           <Button variant='light'>Clear Filters</Button>
         </div> */}
-        <div className='EventsContainer'>
+        <div className='EventsContainer d-flex justify-content-evenly'>
           {events?.event_list?.length > 0 ? (
             events?.event_list?.map((c)=>{
               console.log("c", c);
@@ -94,14 +107,14 @@ function EventPage() {
               // c.name && (
               //   <> */}
                   <Col md={4}>
-                    <Card key={c?.id} style={{ width: '30rem',height:"34rem" }}>
-                      <Card.Body className='eventCards' key={c?.id}>
-                        <img
+                    <Card key={c?.id} className="mainEventCard" style={{ width: '30rem',height:"34rem" }}>
+                      <Card.Body className='eventCards d-flex flex-column' key={c?.id}>
+                        <img 
                           src={c && c.image}
-                          class='card-img-top'
+                          class='card-img card-img-top'
                           alt='...'
-                          width="150px"
-                          height="200px"
+                          width="100%"
+                          height="100%"
                         ></img>
                         <Card.Title class="icon_favorite"  key={c?.id} >
                           <h3 class="c-heading-6">
@@ -123,7 +136,7 @@ function EventPage() {
                           <p class='card-text'>
                             <div
                               style={{
-                                maxHeight: "150px",
+                                maxHeight: "100px",
                                 overflow: "hidden",
                               }}
                               dangerouslySetInnerHTML={{
@@ -132,7 +145,7 @@ function EventPage() {
                             />
                           </p>
                         </Card.Text>
-                        <Button href={c && c.form_link} className="c-button" color="#ec498a" variant='primary'>
+                        <Button href={c && c.form_link} className="c-button mt-auto btn center"  color="#ec498a" variant='primary'>
                           Registration and details
                         </Button>
                      
@@ -150,8 +163,19 @@ function EventPage() {
           : (
             <div className='text-center'>{t("common.noDataFound")}</div>
           )}
+          
         </div>
       </div>
+      <div className='want'>
+        <Container>
+          <h2>{t("successStoriesPage.content.2")}</h2>
+          <button onClick={() => history.push("/courses")} className='want_btn'>
+            {t("successStoriesPage.button.2")}
+          </button>
+        </Container>
+      </div>
+
+      <Footer loginPage={false} />
     </div>
   );
 }

@@ -25,7 +25,27 @@ export const getGovernmentExams =
           }
         }
         dispatch({ type: coursesTypes.GOVERNMENT_EXAM_REQUEST });
-        const res = await httpServices.get(url);
+        const res = await httpServices.get(url
+        //   , navigator.geolocation.getCurrentPosition(async function (
+        //   position,
+        //   values,
+        // ) {
+        //   console.log("response+++77", res);
+        //   const latitude = position.coords.latitude;
+        //   const longitude = position.coords.longitude;
+  
+        //   let params = {
+        //     latitude: latitude.toString(),
+        //     longitude: longitude.toString(),
+        //   };
+        //   console.log("response+++", params);
+        //   // let result = await httpServices.put(
+        //   //   constants.LOCATION + res.data.id + "/",
+        //   //   params,
+        //   // );
+        //   // console.log("location_resultRegister", result);
+        // }),
+      );
         let updatedResponse = res?.data;
         const { govt_category } = res?.data;
         if (govt_category?.length > 0) {
@@ -97,6 +117,15 @@ const handleTopSchoolsFilter = (topSchools, courseSector,ownership) => {
           .map((r) => r?.name)
           .join(",")}`;
       }
+      console.log("schoolIdString",schoolIdString)
+
+      // const collageList = ownership?.rows?.filter((r) => r?.isChecked);
+      // let collageIdString = undefined;
+      // if (collageList?.length > 0) {
+      //   collageIdString = `collage_type__in=${collageList
+      //     .map((r) => r?.name)
+      //     .join(",")}`;
+      // }
 
   if (stateIdString && !cityIdString && !categoryIdString && !boardIdString && !schoolIdString) {
     return `${url}?${stateIdString}`;
@@ -191,16 +220,38 @@ const handleTopSchoolsFilter = (topSchools, courseSector,ownership) => {
 };
 
 export const getTopSchools =
-  (filter = null) =>
+  (filter = null,lat=null,long=null) =>
     async (dispatch, getState) => {
       try {
-        const url = constants.TOP_SCHOOL_LIST;
+        console.log("response+++TopSchool", lat,long);
+
+        const url = constants.TOP_SCHOOL_LIST+`?latitude=${lat}&longitude=${long}`;
+
         const { topSchools, courseSector,ownership } = getState().careerReducer;
         dispatch({ type: coursesTypes.TOP_SCHOOL_REQUEST });
         const res = await httpServices.get(
-          filter === true ? handleTopSchoolsFilter(topSchools, courseSector)
-            : filter ? url + filter : url,
-        );
+          filter === true ? handleTopSchoolsFilter(topSchools, courseSector, ownership)
+            : filter ? url + filter : url
+            // , navigator.geolocation.getCurrentPosition(async function (
+            //   position,
+            //   values,
+            // ) {
+            //   console.log("response+++topSchool", res);
+            //   const latitude = position.coords.latitude;
+            //   const longitude = position.coords.longitude;
+      
+            //   let params = {
+            //     latitude: latitude.toString(),
+            //     longitude: longitude.toString(),
+            //   };
+            //   console.log("response+++TopSchool", params);
+            //   // let result = await httpServices.put(
+            //   //   constants.LOCATION + res.data.id + "/",
+            //   //   params,
+            //   // );
+            //   // console.log("location_resultRegister", result);
+            // }),
+          );
         let updatedPayload = res?.data;
         let updatedResponse = res?.data;
         updatedResponse.state_list = updatedResponse?.state_list?.map(
@@ -435,10 +486,13 @@ const handleTopCollagesFilter = (topCollages, courseSector,ownership) => {
 };
 
 export const getTopCollages =
-  (filter = null) =>
+  (filter = null,lat=null,long=null) =>
     async (dispatch, getState) => {
+
       try {
-        const url = constants.TOP_COLLEGE_LIST;
+        console.log("response+++TopCollege", lat,long);
+
+        const url = constants.TOP_COLLEGE_LIST+`?latitude=${lat}&longitude=${long}`;
 
         const { courseSector, topCollages,ownership } = getState().careerReducer;
         dispatch({ type: coursesTypes.TOP_COLLAGE_REQUEST });
@@ -446,9 +500,10 @@ export const getTopCollages =
         console.log("filter", filter)
 
         const res = await httpServices.get(
-          filter === true ? handleTopCollagesFilter(topCollages, courseSector)
-            : filter ? url + filter : url,
-        );
+          filter === true ? handleTopCollagesFilter(topCollages, courseSector,ownership)
+            : filter ? url + filter : url
+            
+          );
 
         let updatedPayload = res?.data;
         let updatedResponse = res?.data;

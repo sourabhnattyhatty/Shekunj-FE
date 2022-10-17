@@ -49,7 +49,11 @@ import g18 from "../../assets/images/18.png";
 import g19 from "../../assets/images/19.png";
 import g20 from "../../assets/images/20.png";
 import { Box, Modal, Typography } from "@mui/material";
+// import { useDispatch, useSelector } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  adsList
+} from "../../store/ads";
 
 const style = {
   position: "absolute",
@@ -64,6 +68,7 @@ const style = {
 };
 
 function HomePage() {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -126,6 +131,7 @@ function HomePage() {
   const [adsPosition1, setAdsPosition1] = useState([]);
   const [adsPosition2, setAdsPosition2] = useState([]);
   const [adsPosition3, setAdsPosition3] = useState([]);
+  const [image,setImage]=useState("NA")
 //   const [lat, setLat] = useState(null);
 //   const [lng, setLng] = useState(null);
 //   const [status, setStatus] = useState(null);
@@ -154,24 +160,192 @@ function HomePage() {
 //     }
 // }, [lat, lng]);
 
-	useEffect(() => {
-		axios.get('/private_adds/private_add?image_type=home_position_1')
-			.then((response) => {
-				setAdsPosition1(response.data.results);
-			});
-	}, [])
+	// useEffect(() => {
+	// 	axios.get('/private_adds/private_add?image_type=home_position_1')
+	// 		.then((response) => {
+	// 			setAdsPosition1(response.data.results);
+	// 		});
+	// }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "home_position_1"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setAdsPosition1(filterArray)
+  //           }
+	// 		});     
+	// }, [])
+
   useEffect(() => {
-		axios.get('/private_adds/private_add?image_type=home_position_2')
-			.then((response) => {
-				setAdsPosition2(response.data.results);
-			});
-	}, [])
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
+      .then((response) => {
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "home_position_1"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setAdsPosition1(filterArray)
+            }
+      });
+    })
+    dispatch(adsList());
+}, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add?image_type=home_position_2')
+	// 		.then((response) => {
+	// 			setAdsPosition2(response.data.results);
+	// 		});
+	// }, [])
+
   useEffect(() => {
-		axios.get('/private_adds/private_add?image_type=home_position_3')
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
+      .then((response) => {
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "home_position_2"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setAdsPosition2(filterArray)
+            }
+      });
+    })
+    dispatch(adsList());
+}, [])
+
+
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "home_position_2"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setAdsPosition2(filterArray)
+  //           }
+	// 		});     
+	// }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add?image_type=home_position_3')
+	// 		.then((response) => {
+	// 			setAdsPosition3(response.data.results);
+	// 		});
+	// }, [])
+
+  useEffect(() => {
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
+      .then((response) => {
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "home_position_3"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setAdsPosition3(filterArray)
+            }
+      });
+    })
+    dispatch(adsList());
+}, [])
+
+
+  useEffect(() => {
+		axios.get('/private_adds/private_add')
 			.then((response) => {
-				setAdsPosition3(response.data.results);
-			});
+				
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "home_position_3"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setAdsPosition3(filterArray)
+            }
+			});     
 	}, [])
+
+  const addEmail =(email)=>{
+    console.log("addEmail",email)
+       axios.post('/private_adds/click_add/'
+   ,{
+     // add_email:`${adds[0]?.add_email}`
+     add_email:email
+   }
+   )
+     .then((response) => {
+       // setAdds(response.data.results);
+       console.log("addEmailresponse",response)
+     });
+   
+}
+
 
   return (
     <div>
@@ -309,11 +483,14 @@ function HomePage() {
       <section>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-12 ads_home_cover'>
+          {adsPosition1.length > 0 && 
+            // <div className='col-md-12 ads_home_cover'>
+            <div  className='col-md-12 ads_home_cover' onClick={()=>addEmail(adsPosition1[0]?.add_email)}>
               <a href={adsPosition1[0]?.url_adds}  target='_blank'>
               <img src={adsPosition1[0]?.image} alt='Image' className='google_ads_home' />
               </a>
             </div>
+}
           </div>
         </div>
       </section>
@@ -365,11 +542,13 @@ function HomePage() {
       <section>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-12 ads_home_cover'>
+          {adsPosition2.length > 0 && 
+                 <div  className='col-md-12 ads_home_cover' onClick={()=>addEmail(adsPosition2[0]?.add_email)}>
             <a href={adsPosition2[0]?.url_adds}  target='_blank'>
               <img src={adsPosition2[0]?.image} alt='Image' className='google_ads_home' />
               </a>
             </div>
+}
           </div>
         </div>
       </section>
@@ -426,11 +605,14 @@ function HomePage() {
       <section>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-12 ads_home_cover'>
+          {adsPosition3.length > 0 && 
+            // <div className='col-md-12 ads_home_cover'>
+            <div  className='col-md-12 ads_home_cover' onClick={()=>addEmail(adsPosition3[0]?.add_email)}>
             <a href={adsPosition3[0]?.url_adds}  target='_blank'>
               <img src={adsPosition3[0]?.image} alt='Image' className='google_ads_home' />
               </a>
             </div>
+}
           </div>
         </div>
       </section>

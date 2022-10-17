@@ -117,14 +117,14 @@ function BlogPage() {
               console.log("s", s)
               return(
               <>
-                <div className='suc_box' key={s?.id}>
+                <div className='suc_box_blog' key={s?.id}>
                   <Row>
                     {idx % 2 === 0 ? (
                       <>
                         <Col md={8} xs={12}>
                           <h2>
                             <img
-                              className='quote_img'
+                              className='quote_img_blog'
                               src={double_quote}
                               alt=''
                             />
@@ -201,7 +201,7 @@ function BlogPage() {
                         <Col md={8} xs={12}>
                           <h2>
                             <img
-                              className='quote_img'
+                              className='quote_img_blog'
                               src={double_quote}
                               alt=''
                             />

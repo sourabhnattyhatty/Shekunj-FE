@@ -20,6 +20,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import test from "../../assets/images/test.jpg"
 // import { Link,Route } from "react-router-dom";
+import {
+  adsList
+} from "../../store/ads";
 
 const CareerPage = () => {
   // const [loading, setLoading] = useState(false);
@@ -41,7 +44,21 @@ const CareerPage = () => {
 
   useEffect(() => {
     dispatch(reSetFilterValue());
-    dispatch(getTopCollages());
+   
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      dispatch(getTopCollages(false,latitude,longitude));
+    })
   }, [dispatch, lan]);
 
   // const transformPrice = (price) => {
@@ -81,19 +98,140 @@ const CareerPage = () => {
 
   const [collegeBannerAds, setCollegeBannerAds] = useState([]);
   const [collegeBoxAds, setCollegeBoxAds] = useState([]);
+  const [image,setImage]=useState("NA")
+
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=top_college_banner')
+  //     .then((response) => {
+  //       setCollegeBannerAds(response.data.results);
+  //     });
+  // }, [])
+
+  const addEmail =(email)=>{
+    console.log("addEmail",email)
+       axios.post('/private_adds/click_add/'
+   ,{
+     // add_email:`${adds[0]?.add_email}`
+     add_email:email
+   }
+   )
+     .then((response) => {
+       // setAdds(response.data.results);
+       console.log("addEmailresponse",response)
+     });
+   
+}
+
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "top_college_banner"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setCollegeBannerAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
 
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=top_college_banner')
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
       .then((response) => {
-        setCollegeBannerAds(response.data.results);
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "top_college_banner"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setCollegeBannerAds(filterArray)
+            }
       });
-  }, [])
+    })
+    dispatch(adsList());
+}, [])
+
+
+
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=top_college_box')
+  //     .then((response) => {
+  //       setCollegeBoxAds(response.data.results);
+  //     });
+  // }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "top_college_box"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setCollegeBoxAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
+
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=top_college_box')
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
       .then((response) => {
-        setCollegeBoxAds(response.data.results);
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "top_college_box"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setCollegeBoxAds(filterArray)
+            }
       });
-  }, [])
+    })
+    dispatch(adsList());
+}, [])
+
 
   const [searchInput, setSearchInput] = useState('');
   const SearchFilterHandle = (e) => {
@@ -113,11 +251,13 @@ const CareerPage = () => {
       <Container>
         <Row>
           <div className='col-md-12'>
-            <div className="add_college_cover">
+          {collegeBannerAds.length > 0 && 
+               <div  className="add_college_cover" onClick={()=>addEmail(collegeBannerAds[0]?.add_email)}>
               <a href={collegeBannerAds[0]?.url_adds} target='_blank'>
                 <img src={collegeBannerAds[0]?.image} alt='Image' className=' google_add_college' />
               </a>
             </div>
+          }
           </div>
         </Row>
       </Container>
@@ -296,13 +436,15 @@ const CareerPage = () => {
                           </Row>
                         </div>
 
-                        <div className="top_clg_add_img">
+                        {collegeBoxAds.length > 0 && 
+                             <div  className="top_clg_add_img" onClick={()=>addEmail(collegeBoxAds[0]?.add_email)}>
                           {(index % 4 == 3) ? <>
                             <a href={collegeBoxAds[0]?.url_adds} target='_blank'>
                               <img src={collegeBoxAds[0]?.image} alt='Image'
                                 className='college_ads_box' />
                             </a> </> : ''}
                         </div>
+}
                       </>
                     ),
                 )

@@ -23,6 +23,9 @@ import SimpleAccordion from "./Accordian";
 import { routingConstants } from "../../utils/constants";
 import Pagination from "../../components/Pagination";
 import axios from "axios";
+import {
+  adsList
+} from "../../store/ads";
 
 
 const Courses = () => {
@@ -95,12 +98,15 @@ const Courses = () => {
             <>
               <div className='col-md-6'>
                 <div className='google_add_box box_hov'>
+                  {coursesBoxAds.length > 0 &&
                   <div className='slide-img'>
                     <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
                       <img src={coursesBoxAds[0]?.image} alt='Image' className='google_add_box_img' />
                     </a>
                     <div className='overlay'></div>
+                  
                   </div>
+    }
                 </div>
               </div>
             </>
@@ -151,20 +157,120 @@ const Courses = () => {
 
   const [coursesBoxAds, setCoursesBoxAds] = useState([]);
   const [coursesSideAds, setCoursesSideAds] = useState([]);
+  const [image,setImage]=useState("NA")
+
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=courses_box')
+  //     .then((response) => {
+  //       setCoursesBoxAds(response.data.results);
+
+  //     });
+  // }, [])
 
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=courses_box')
-      .then((response) => {
-        setCoursesBoxAds(response.data.results);
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
-      });
-  }, [])
-  useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=courses_side_ads')
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
       .then((response) => {
-        setCoursesSideAds(response.data.results);
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "courses_box"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setCoursesBoxAds(filterArray)
+            }
       });
-  }, [])
+    })
+    dispatch(adsList());
+}, [])
+
+
+  const addEmail =(email)=>{
+    console.log("addEmail",email)
+       axios.post('/private_adds/click_add/'
+   ,{
+     // add_email:`${adds[0]?.add_email}`
+     add_email:email
+   }
+   )
+     .then((response) => {
+       // setAdds(response.data.results);
+       console.log("addEmailresponse",response)
+     });
+   
+}
+
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=courses_side_ads')
+  //     .then((response) => {
+  //       setCoursesSideAds(response.data.results);
+  //     });
+  // }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "courses_side_ads"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setCoursesSideAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
+
+  useEffect(() => {
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
+      .then((response) => {
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "courses_side_ads"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setCoursesSideAds(filterArray)
+            }
+      });
+    })
+    dispatch(adsList());
+}, [])
 
 
 
@@ -182,6 +288,8 @@ const Courses = () => {
   }
 
   const [suggestion, setSuggestion] = useState([]);
+  const [disabled, setDisabled] = useState(false);
+
   useEffect(() => {
     if (searchInput === "") {
       setSuggestion([]);
@@ -208,6 +316,9 @@ const Courses = () => {
     console.log("dhiv", suggestion)
     setSearchInput(suggestion)
   }
+
+
+
 
   return (
     <div>
@@ -286,9 +397,13 @@ const Courses = () => {
                               name="searchInput" class="form-control searchInput" 
                               placeholder="What do you want to learn ?" />
                             {hasSuggestion && (
+                              
                               <div className="suggestions">
-                                {suggestion.map((item) => (
+                                {/* {suggestion.map((item) => (
                                   <div onClick={() => suggestionClicked(item)} className="suggList">{item}</div>
+                                ))} */}
+                                {suggestion.map((item) => (
+                                  <button type="submit" style={{border:"none"}} onClick={() => suggestionClicked(item)} className="suggList">{item}</button>
                                 ))}
                               </div>
                             )}
@@ -296,7 +411,8 @@ const Courses = () => {
                             <div className="d-flex">
                               <button type="submit" className="searchBtn1">
                                 <img src={Search} alt='Image' className='searchIcon'
-                                /></button>
+                                />
+                                </button>
                               <img src={Cross} alt='Image' className='searchclose'
                                 onClick={() => handleResetSearch()} />
                             </div>
@@ -334,12 +450,15 @@ const Courses = () => {
 
               {/* google add */}
               <div className='row'>
-                <div className='col-md-12'>
+                {coursesSideAds.length >0 && 
+                // <div className='col-md-12'>
+                <div  className='col-md-12' onClick={()=>addEmail(coursesSideAds[0]?.add_email)}>
                   <a href={coursesSideAds[0]?.url_adds} target='_blank'>
                     <img src={coursesSideAds[0]?.image} alt='Image' className='google_add_courses' />
                   </a>
 
                 </div>
+}
               </div>
 
             </div>

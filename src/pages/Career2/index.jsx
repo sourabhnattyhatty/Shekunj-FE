@@ -11,7 +11,9 @@ import {
   toggleCollapseValue,
 } from "../../store/career";
 import { noImage } from "../../utils/ApiServices";
-
+import {
+  adsList
+} from "../../store/ads";
 import "../HomePage/index.scss";
 import "./index.scss";
 import { Link } from "react-router-dom";
@@ -47,18 +49,139 @@ const CareerPage2 = () => {
 
   const [govBannerAds, setGovBannerAds] = useState([]);
   const [govBoxAds, setGovBoxAds] = useState([]);
+  const [image,setImage]=useState("NA")
+
+
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=govt_scm_cover')
+  //     .then((response) => {
+  //       setGovBannerAds(response.data.results);
+  //     });
+  // }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "govt_scm_cover"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setGovBannerAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=govt_scm_cover')
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
       .then((response) => {
-        setGovBannerAds(response.data.results);
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "govt_scm_cover"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setGovBannerAds(filterArray)
+            }
       });
-  }, [])
+    })
+    dispatch(adsList());
+}, [])
+
+const addEmail =(email)=>{
+  console.log("addEmail",email)
+     axios.post('/private_adds/click_add/'
+ ,{
+   // add_email:`${adds[0]?.add_email}`
+   add_email:email
+ }
+ )
+   .then((response) => {
+     // setAdds(response.data.results);
+     console.log("addEmailresponse",response)
+   });
+ 
+}
+
+
+
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=govt_scm_box')
+  //     .then((response) => {
+  //       setGovBoxAds(response.data.results);
+  //     });
+  // }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "govt_scm_box"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setGovBoxAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
+
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=govt_scm_box')
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
       .then((response) => {
-        setGovBoxAds(response.data.results);
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "govt_scm_box"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setGovBoxAds(filterArray)
+            }
       });
-  }, [])
+    })
+    dispatch(adsList());
+}, [])
+
 
   return (
     <div>
@@ -66,11 +189,13 @@ const CareerPage2 = () => {
       <Header loginPage={true} page='career' subPage='govExams' />
       <Container>
         <Row>
-          <div className='col-md-12 ads_gov_cover'>
+          {govBannerAds.length > 0 && 
+              <div  className="col-md-12 ads_gov_cover" onClick={()=>addEmail(govBannerAds[0]?.add_email)}>
             <a href={govBannerAds[0]?.url_adds} target='_blank'>
               <img src={govBannerAds[0]?.image} alt='Image' className='ads_gov' />
             </a>
           </div>
+}
         </Row>
       </Container>
 
@@ -186,11 +311,15 @@ const CareerPage2 = () => {
                           </Row>
                         </div>
                         <Row>
-                          {(index % 4 == 3) ? <> <div className='career_box_add'>
+                          {(index % 4 == 3) ? <>
+                           <div  className="career_box_add" onClick={()=>addEmail(govBoxAds[0]?.add_email)}>
+                            {govBoxAds.length > 0 && 
                             <a href={govBoxAds[0]?.url_adds} target='_blank'>
                               <img src={govBoxAds[0]?.image} alt='Image'
                                 className='ads_gov_box' />
-                            </a> </div></> : ''}
+                            </a>
+                             }
+                              </div></> : ''}
                         </Row>
                       </>
                     ),

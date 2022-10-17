@@ -5,13 +5,13 @@ const initialOwnership = {
   rows: [
     {
       id: 1,
-      name: "Private",
+      name: "private",
       isChecked: false,
       value: "private",
     },
     {
       id: 2,
-      name: "Government",
+      name: "government",
       isChecked: false,
       value: "government",
     },
@@ -476,13 +476,13 @@ export const careerReducer = (state = initialState, action) => {
             isChecked: false,
           })),
         },
-        ownership: {
-          ...initialOwnership,
-          rows: initialOwnership.rows.map((r) => ({
-            ...r,
-            isChecked: false,
-          })),
-        },
+        // ownership: {
+        //   ...initialOwnership,
+        //   rows: initialOwnership.rows.map((r) => ({
+        //     ...r,
+        //     isChecked: false,
+        //   })),
+        // },
       };
 
     default:

@@ -18,6 +18,9 @@ import Search from "../../assets/icons/search1.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ContentLoader, { Facebook } from 'react-content-loader';
+import {
+  adsList
+} from "../../store/ads";
 
 const CareerPage1 = () => {
   // const [loading, setLoading] = useState(false);
@@ -29,7 +32,7 @@ const CareerPage1 = () => {
   //   }, 4000);
   // }, []);
   const dispatch = useDispatch();
-  const { topSchools, courseSector } = useSelector(
+  const { topSchools, courseSector,ownership } = useSelector(
     (state) => state.careerReducer,
   );
 
@@ -40,7 +43,20 @@ const CareerPage1 = () => {
 
   useEffect(() => {
     dispatch(reSetFilterValue());
-    dispatch(getTopSchools());
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      dispatch(getTopSchools(false,latitude,longitude));
+    })
   }, [dispatch, lan]);
 
   const transformImg = (image) => {
@@ -53,19 +69,138 @@ const CareerPage1 = () => {
 
   const [schoolBannerAds, setSchoolBannerAds] = useState([]);
   const [schoolBoxAds, setSchoolBoxAds] = useState([]);
+  const [image,setImage]=useState("NA")
+
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=top_school_banner')
+  //     .then((response) => {
+  //       setSchoolBannerAds(response.data.results);
+  //     });
+  // }, [])
+
+  const addEmail =(email)=>{
+    console.log("addEmail",email)
+       axios.post('/private_adds/click_add/'
+   ,{
+     // add_email:`${adds[0]?.add_email}`
+     add_email:email
+   }
+   )
+     .then((response) => {
+       // setAdds(response.data.results);
+       console.log("addEmailresponse",response)
+     });
+   
+}
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "top_school_banner"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setSchoolBannerAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
 
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=top_school_banner')
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
       .then((response) => {
-        setSchoolBannerAds(response.data.results);
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "top_school_banner"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setSchoolBannerAds(filterArray)
+            }
       });
-  }, [])
+    })
+    dispatch(adsList());
+}, [])
+
+
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=top_school_box')
+  //     .then((response) => {
+  //       setSchoolBoxAds(response.data.results);
+  //     });
+  // }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "top_school_box"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setSchoolBoxAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
+
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=top_school_box')
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
       .then((response) => {
-        setSchoolBoxAds(response.data.results);
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "top_school_box"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setSchoolBoxAds(filterArray)
+            }
       });
-  }, [])
+    })
+    dispatch(adsList());
+}, [])
+
 
   const [searchInput, setSearchInput] = useState('');
   const SearchFilterHandle = (e) => {
@@ -85,11 +220,13 @@ const CareerPage1 = () => {
       <Container>
         <Row>
           <div className='col-md-12'>
-            <div className="ads_school_cover">
+            {schoolBannerAds.length > 0 &&
+                 <div  className="ads_school_cover" onClick={()=>addEmail(schoolBannerAds[0]?.add_email)}>
               <a href={schoolBannerAds[0]?.url_adds} target='_blank'>
                 <img src={schoolBannerAds[0]?.image} alt='Image' className='ads_school' />
               </a>
             </div>
+            }
           </div>
         </Row>
       </Container>
@@ -145,10 +282,11 @@ const CareerPage1 = () => {
                   name: t("careerTopSchools.listItems.3"),
                   rows: topSchools?.city_list || [],
                 }}
-                ownership={{
-                  name: t("careerTopSchools.listItems.5"),
-                  rows: topSchools?.school_type,
-                }}
+                // ownership={{
+                //   name: t("careerTopSchools.listItems.5"),
+                //   rows: topSchools?.school_type || [],
+                // }}
+                ownership={ownership}
                 educationBoard={{
                   name: t("careerTopSchools.listItems.2"),
                   rows: topSchools?.board_list || [],
@@ -269,11 +407,18 @@ const CareerPage1 = () => {
                           </Row>
                         </div>
                         <Row>
-                          {(index % 4 == 3) ? <> <div>
+                       
+                          {(index % 4 == 3) ? <>
+                            {schoolBoxAds.length > 0 && 
+                               <div onClick={()=>addEmail(schoolBoxAds[0]?.add_email)}>
                             <a href={schoolBoxAds[0]?.url_adds} target='_blank'>
                               <img src={schoolBoxAds[0]?.image} alt='Image'
                                 className='ads_school_box' />
-                            </a> </div></> : ''}
+                            </a>
+                             </div>
+                          }
+                             </> : ''}
+                            
                         </Row>
                       </>
 

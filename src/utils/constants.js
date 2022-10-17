@@ -50,6 +50,7 @@ const routingConstants = {
   FAQ:"/more-faq/",
   MORE_BLOG:  "/blogs/",
   DETAILS_BLOG:"/blog/",
+  DETAILS_MAGZINE:"/magzine/",
   ALL_NOTIFICATION:"/all-notifications/"
 };
 
@@ -117,9 +118,9 @@ const apiConstants = {
   ALL_NOTIFICATION: {
     ALL_NOTIFICATION : "/more/notifications/",
   },
-  // ADD:{
-  //   ADD:"/private_adds/click_add/"
-  // }
+  ADD:{
+    ADD:"/private_adds/click_add/"
+  }
 
 };
 

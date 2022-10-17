@@ -15,6 +15,9 @@ import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import {
+  adsList
+} from "../../store/ads";
 
 function SuccessStory() {
   const history = useHistory();
@@ -36,19 +39,138 @@ function SuccessStory() {
 
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
+  const [image,setImage]=useState("NA")
+
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=success_stories_banner')
+  //     .then((response) => {
+  //       setStoriesBannerAds(response.data.results);
+  //     });
+  // }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "success_stories_banner"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setStoriesBannerAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
 
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=success_stories_banner')
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
       .then((response) => {
-        setStoriesBannerAds(response.data.results);
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "success_stories_banner"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setStoriesBannerAds(filterArray)
+            }
       });
-  }, [])
+    })
+    dispatch(adsList());
+}, [])
+
+const addEmail =(email)=>{
+  console.log("addEmail",email)
+     axios.post('/private_adds/click_add/'
+ ,{
+   // add_email:`${adds[0]?.add_email}`
+   add_email:email
+ }
+ )
+   .then((response) => {
+     // setAdds(response.data.results);
+     console.log("addEmailresponse",response)
+   });
+ 
+}
+
+  // useEffect(() => {
+  //   axios.get('/private_adds/private_add?image_type=success_stories_box')
+  //     .then((response) => {
+  //       setStoriesBoxAds(response.data.results);
+  //     });
+  // }, [])
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "success_stories_box"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setStoriesBoxAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
+
   useEffect(() => {
-    axios.get('/private_adds/private_add?image_type=success_stories_box')
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
       .then((response) => {
-        setStoriesBoxAds(response.data.results);
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "success_stories_box"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setStoriesBoxAds(filterArray)
+            }
       });
-  }, [])
+    })
+    dispatch(adsList());
+}, [])
+
+
 
   return (
     <div>
@@ -73,11 +195,14 @@ function SuccessStory() {
       <Container>
         <Row>
           <div className='col-md-12'>
-            <div className="ads_story_cover">
+            {storiesBannerAds.length > 0 &&
+            // <div className="ads_story_cover">
+            <div  className='ads_story_cover' onClick={()=>addEmail(storiesBannerAds[0]?.add_email)}>
             <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
               <img src={storiesBannerAds[0]?.image} alt='Image' className='ads_story_cover_img' />
             </a>
             </div>
+}
           </div>
         </Row>
       </Container>
@@ -179,9 +304,13 @@ function SuccessStory() {
                   </Row>
 
                   {(idx % 2 == 1) ? <a href={storiesBoxAds[0]?.url_adds} target='_blank'>
-                    <div className="ads_story_cover">
-                      <img src={storiesBoxAds[1]?.image} alt='Image' className='ads_succ_story' />
+                    {storiesBoxAds.length > 0 && 
+                    // <div className="ads_story_cover">
+                    <div  className='ads_story_cover' onClick={()=>addEmail(storiesBoxAds[0]?.add_email)}>
+                      
+                      <img src={storiesBoxAds[0]?.image} alt='Image' className='ads_succ_story' />
                     </div>
+}
                   </a> : ''}
                 </div>
               </>

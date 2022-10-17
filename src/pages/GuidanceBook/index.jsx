@@ -29,6 +29,9 @@ import moment from "moment";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import add2 from "../../assets/images/add2.jpg";
+import {
+  adsList
+} from "../../store/ads";
 
 function range(start, end) {
   return Array(end - start + 1)
@@ -113,13 +116,82 @@ const GuidancePage = () => {
   }, []);
 
   const [bookCounsellorAds, setBookCounsellorAds] = useState([]);
+  const [image,setImage]=useState("NA")
 
-	useEffect(() => {
-		axios.get('/private_adds/private_add?image_type=book_counsellor')
-			.then((response) => {
-				setBookCounsellorAds(response.data.results);
-			});
-	}, [])
+	// useEffect(() => {
+	// 	axios.get('/private_adds/private_add?image_type=book_counsellor')
+	// 		.then((response) => {
+	// 			setBookCounsellorAds(response.data.results);
+	// 		});
+	// }, [])
+
+  const addEmail =(email)=>{
+    console.log("addEmail",email)
+       axios.post('/private_adds/click_add/'
+   ,{
+     // add_email:`${adds[0]?.add_email}`
+     add_email:email
+   }
+   )
+     .then((response) => {
+       // setAdds(response.data.results);
+       console.log("addEmailresponse",response)
+     });
+   
+}
+
+
+  // useEffect(() => {
+	// 	axios.get('/private_adds/private_add')
+	// 		.then((response) => {
+				
+  //       if(response.data.results.length > 0)
+       
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "book_counsellor"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setBookCounsellorAds(filterArray)
+  //           }
+	// 		});
+      
+	// }, [])
+  
+  useEffect(() => {
+	
+    navigator.geolocation.getCurrentPosition(async function (
+      position,
+      values,
+    ) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
+      .then((response) => {
+        
+        if(response.data.results.length > 0)
+       
+        {
+         let filterArray = response.data.results.filter((item,index)=>{
+            return item.image_type == "book_counsellor"
+          })
+          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+          setImage(findImage)
+          setBookCounsellorAds(filterArray)
+            }
+      });
+    })
+    dispatch(adsList());
+}, [])
+
+
 
   return (
     <div>
@@ -351,11 +423,15 @@ const GuidancePage = () => {
 
             <Col md={2} xs={12}>
               <Container>
+                {bookCounsellorAds.length > 0 &&
                 <Row>
+                       <div onClick={()=>addEmail(bookCounsellorAds[0]?.add_email)}>
                 <a href={bookCounsellorAds[0]?.url_adds} className="addimage098" target='_blank'>
                   <img src={bookCounsellorAds[0]?.image} alt='Image' className='ads_guidence' />
                   </a>
+                  </div>
                 </Row>
+}
               </Container>
             </Col>
           </Row>

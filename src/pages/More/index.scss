@@ -457,18 +457,40 @@ button.want_btn {
 .Home {
   display: flex;
   flex-direction: row;
-  background-color: #fad0c4
+  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
+  backdrop-filter: blur(10px);
+  justify-content:space-evenly;
+  padding-left: 30px;
+  background-image: url("../../assets/images/EventsBackGround.jpg");
+  background-repeat: no-repeat;
+background-size: cover;
 }
 
 .EventsContainer button {
   margin-right: 10px;
 }
-
+.mainEventCard{
+  background-color: linear-gradient(#fad0c4,#fff,#fad0c4);
+  // transform: scale(1.02);
+  // transition: transform 200ms ease-in-out;
+}
+.mainEventCard:hover{
+  transform: scale(1.07);
+  transition: transform 200ms ease-in-out;
+}
 .eventCards {
   padding-bottom: 20px;
-  background-color: #fff;
-  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
+  background-color: radial-gradient(#fad0c4,#fff,#fad0c4) !important 
 
+}
+.eventCards :hover{
+  box-shadow: 5px 10px 20px 1 rgba(0,0,0,0.253) !important;
+}
+
+.card-img{
+  height:200px;
+  width:430px;
+  margin: 5px;
 }
 
 .c-heading-6 {
@@ -510,28 +532,25 @@ button.want_btn {
   text-align: center;
   padding-top: 5px;
   font-weight: bold;
+  margin-bottom: 15px;
+  margin-left: 40px;
 }
 .magzinePdf{
   text-align: center !important;
  color: #a63d67 !important;
 }
-.embed:focus {
-  outline: none;
-}
-.embed:focus{
- user-select: none;
- }
  .magzineCardBody{
    text-align: center;
-   background-image: linear-gradient(180deg,#fad0c4, white);
+   background-image: linear-gradient(rgb(251, 224, 228), white);
    transition: ease-in-out;
  }
  .createdText{
-   text-align: start !important;
+   text-align: center !important;
    color: #6c757d !important;
  }
  .updatedText{
-   text-align: end !important;
+   padding: 10px;
+   text-align: center !important;
    color: #6c757d !important;
  }
 //   .iframe {
@@ -585,10 +604,14 @@ button.want_btn {
 }
 .FaqContainer{
  padding: 10px;
- margin:10px;
+//  margin:10px;
 }
 .NavHeading{
 text-align: center;
+}
+.FaqContainer img{
+height: 100px;
+width:100px;
 }
 
 .iframe{
@@ -598,17 +621,19 @@ border: none;
 }
 
 .iframe{
-  width: 800px;
+  width: 1000px;
   user-select: none;
   height: 800px !important;
   resize: both;
   overflow: auto;
   cursor: pointer;
+  touch-action: pan-y;
 }
 
   .modal-footer {
     overflow-y: auto;
     cursor: pointer;
+    resize: both;
     }
 
   .modal-dialog{
@@ -618,7 +643,8 @@ border: none;
      resize: both;
      cursor: pointer;
      position: relative;
-     height:800px;
+     height:1000px !important;
+     touch-action: pan-y;
   }
   .modal-body{
      overflow-y: auto;
@@ -627,18 +653,19 @@ border: none;
      cursor: pointer;
      position: relative;
      user-select: none;
-     overflow-y: scroll;
+    //  overflow-y: scroll;
      height:700px;
     //  pointer-events: none; 
+    touch-action: pan-y;
   }
   .modal-content{
     cursor: pointer;
     position: relative;
     overflow-y: auto;
     resize: both;
+    touch-action: pan-y;
     user-select: none;
-    
-  }
+     }
 
   iframe {  
     // pointer-events: none; 
@@ -649,7 +676,114 @@ border: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    overflow-y: scroll;
+    // overflow-y: scroll;
+    touch-action: pan-y;
   }
-  
-  
+  .react-pdf__Document canvas{
+   margin-left: 500px;
+  width: 600px !important;
+  height: 600px !important;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+.main-page-container {
+  margin: 0 auto;
+}
+.magzineImage {
+    width: 300px;
+    height: 280px;
+    background-size: cover;
+    }
+
+.MagzineCard{
+display: flex;
+flex-wrap: wrap; 
+flex-direction: row;
+}
+.Magzine{
+  display: inline-block;
+}
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Blog Css>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.suc_box_blog {
+  margin-top: 30px;
+}
+
+.suc_box_blog h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 120%;
+  color: #d62c79;
+}
+
+.suc_box_blog h3 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 140%;
+  color: #333333;
+}
+
+.suc_box_blog p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  color: #828282;
+}
+
+.suc_btn button {
+  background: #ffe2ec;
+  border: 1px solid #ffe2ec;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 7.5px 20px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  color: #ec498a;
+}
+
+.suc_btn hr {
+  width: 226px;
+  border: 1px solid #e3e4eb;
+}
+
+.suc_btn {
+  display: flex;
+  gap: 1rem;
+}
+
+.suc_box_blog img.quote_img_blog {
+  max-width: 20%;
+  vertical-align: bottom;
+  margin-right: 10px;
+}
+
+.suc_box_blog img {
+  max-width: 100%;
+}
+
+.suc_box_blog ul {
+  padding: 0;
+}
+
+.suc_box_blog ul li {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 18px;
+  padding-bottom: 20px;
+  list-style: none;
+  color: #333333;
+}
