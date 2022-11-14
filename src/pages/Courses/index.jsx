@@ -211,7 +211,21 @@ const Courses = () => {
 
   return (
     <div>
-      <SEO title='Sheकुंज - Courses' />
+      <SEO 
+      title={`Best Free Online Courses
+      & Certifications in India - Shekunj.
+        com`}
+
+  description={`Advance your career with the free Online
+  Professional development courses and
+  certifications with the most in-demand skills
+  specially curated for women.`}
+  keywords={`free online courses in india
+  best online certificate programs
+  free online courses for girls in india
+  online certification courses in india
+  free online courses for women`}
+  />
       <Header loginPage={true} page='courses' />
       <section className='Cors_sec noselect'>
         <div className='container'>
