@@ -183,12 +183,11 @@ function EventPage() {
                             </Link>
                           </Typography>
 
-                          <Typography
+                          {/* <Typography
                             className='eventtimings'
                             variant='body2'
                             color='text.secondary'
                           >
-                            {/* <img src="EventImage"></img> */}
                             <CardMedia
                               component='img'
                               alt='green iguana'
@@ -203,7 +202,7 @@ function EventPage() {
                             >
                               {c && c.created_at}
                             </Moment>
-                          </Typography>
+                          </Typography> */}
 
 
                         <CardContent class='d-flex flex-column'>
@@ -238,6 +237,7 @@ function EventPage() {
                           variant="outlined"
                             size='medium'
                             className='eventButtonAction'
+                            style={{color:"pink",backgroundColor:"white"}}
                             href={c && c.form_link}
                           >
                              <Link

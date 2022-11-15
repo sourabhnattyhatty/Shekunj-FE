@@ -861,17 +861,17 @@ img {
 
 .EventOptionCard {
   width: 24rem;
-  height: 38rem;
+  // height: 38rem;
   margin-top: 30px;
   box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
 }
 
 .guidanceEventImage {
-  height: 200px;
+  height: 350px;
   // height: 100%;
   // width: 100%;
-  // object-fit: contain;
-  object-fit: cover;
+  object-fit: fill;
+  // object-fit: cover;
   margin-bottom: 20px !important;
   margin-top: 20px !important;
   text-align: center;
@@ -891,7 +891,7 @@ img {
 .d-flex{
   margin-left: 7%;
   padding: 1%;
-  margin-top: 20%;
+  margin-top: 5%;
 }
 
 .event_mode{
@@ -954,20 +954,27 @@ img {
   margin-top: 1%;
   padding: 2%;
  margin-left: 20%;
+ margin-bottom: 10%;
  border-color: #d45d93;
+ color: #d45d93 !important;
 }
 
 a {
-  color: #333333;
+  color: #d45d93 !important ;
 }
 
 .eventButtonAction {
-  color: #333333;
+  color: #d45d93 !important;
 }
 
 .eventButtonAction:hover {
   color: white !important;
-  background-color: #d45d93;
+  background-color: #d45d93 !important;
+}
+.eventButtonAction a:hover {
+  color: white !important;
+  border-bottom: none !important;
+  // background-color: #d45d93 !important;
 }
 
 @media screen and (min-device-width: 50px) and (max-device-width: 767px){
