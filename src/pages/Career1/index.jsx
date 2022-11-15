@@ -213,7 +213,18 @@ const CareerPage1 = () => {
 
   return (
     <div>
-      <SEO title='Sheकुंज - Career' />
+      <SEO  title={`Find Top Schools in India
+& Apply - Shekunj.com`}
+
+  description={`Give high-quality education to your children.
+  Find the list of best schools in India and their
+  detailed information.`}
+  keywords={`top schools in india
+  list of best schools
+  best boys schools
+  top schools in mp
+  boys schools in india
+  girls schools in india`} />
       <Header loginPage={true} page='career' subPage='schools' />
 
       <Container>

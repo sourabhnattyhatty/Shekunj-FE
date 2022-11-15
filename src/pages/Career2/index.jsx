@@ -213,7 +213,17 @@ const CareerPage2 = () => {
 
   return (
     <div>
-      <SEO title='Sheकुंज - Career' />
+      <SEO  title={`List of Government
+Schemes in India -
+Benefits - Shekunj.com`}
+
+  description={`List of Government Schemes: Women
+  Empowerment Schemes, Beti Bachao Beti
+  Padhao, Start Up India Scheme, Bima
+  Yojana, women helpline scheme.`}
+  keywords={`government policies and Schemes in india government
+  schemes and programs new government schemes in india
+  central government schemes`} />
       <Header loginPage={true} page='career' subPage='govExams' />
       <Container>
         <Row>

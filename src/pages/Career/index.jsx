@@ -244,7 +244,17 @@ const CareerPage = () => {
 
   return (
     <div>
-      <SEO title='Sheकुंज - Career' />
+      <SEO   title={`List of Top Colleges in
+India & Apply - Shekunj.com`}
+
+  description={` Find list of top Colleges and Universities in
+  India along with the courses offered and
+  detailed information.`}
+  keywords={`top colleges in india
+  top educational institutions in india
+  top colleges in madhya pradesh
+  best universities in india
+  top women colleges in india`}/>
       <Header loginPage={true} page='career' subPage='colleges' />
 
       <Container>

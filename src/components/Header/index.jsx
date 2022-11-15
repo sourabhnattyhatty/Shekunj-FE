@@ -778,7 +778,8 @@ const Header = ({ page, subPage }) => {
                       href={routingConstants.BLOGS}
                     >
                       {t("header.heading.7")}
-                    </a> */}
+                    </a>  */}
+                    
                     <button
                       className='nav-link guidence_button'
                       id='basic-button3'
@@ -787,7 +788,8 @@ const Header = ({ page, subPage }) => {
                       aria-expanded={open3 ? "true" : undefined}
                       onClick={handleClick3}
                     >
-                      {t("header.heading.7")}
+                      {/* {t("header.heading.7")} */}
+                      More
                     </button>
                     <Menu
                       id='basic-menu3'
@@ -824,7 +826,7 @@ const Header = ({ page, subPage }) => {
                         FAQ
                       </MenuItem>
                     </Menu>
-                  </li>
+                  </li> 
 
                   <li
                     className={
