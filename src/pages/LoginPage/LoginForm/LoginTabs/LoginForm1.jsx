@@ -1,6 +1,11 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -17,10 +22,22 @@ import Error from "../../../../components/Error";
 import { onLogin } from "../../../../store/auth/action";
 
 function LoginForm1() {
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
   const { isLoading } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const history = useHistory();
   const { t } = useTranslation();
+
+  const handleToggle = () => {
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeOff);
+      setType("password");
+    }
+  };
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -78,23 +95,28 @@ function LoginForm1() {
         </div>
 
         <div className='form-group'>
-          <TextField
-            name='password'
-            type='password'
-            className='form-control'
-            onChange={handleChange}
-            value={values.password}
-            onBlur={handleBlur}
-            autoComplete='off'
-            placeholder={t("common.placeHolders.password")}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position='start'>
-                  <img src={Lock} alt='...' />
-                </InputAdornment>
-              ),
-            }}
-          />
+          <div>
+            <TextField
+              name='password'
+              type='password'
+              className='form-control'
+              onChange={handleChange}
+              value={values.password}
+              onBlur={handleBlur}
+              autoComplete='off'
+              placeholder={t("common.placeHolders.password")}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position='start'>
+                    <img src={Lock} alt='...' />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <span onClick={handleToggle} className='eyesOffIcon'>
+              <Icon icon={eyeOff} size={20} />
+            </span>
+          </div>
           <Error error={errors.password} touched={touched.password} />
         </div>
 

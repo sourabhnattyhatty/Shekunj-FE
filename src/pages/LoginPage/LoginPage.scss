@@ -4,6 +4,7 @@
   display: block;
   // height: 100%;
   padding: 15px 22px;
+  margin: 20px;
 }
 
 .login_form h2 {
@@ -32,6 +33,7 @@ a.fer_pass {
   display: block;
   text-align: right;
   text-transform: capitalize;
+  // margin-top: 5px;
 }
 .login_form p .register,
 .login_form p .register:hover {
@@ -41,4 +43,39 @@ a.fer_pass {
 .login_form .form-group {
   margin-bottom: 5px;
   position: relative;
+}
+.form-group-password{
+  // width: 300px;
+  display: inline;
+}
+.eyesOffIcon{
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 5px;
+  padding-right: 8px;
+  background-color: #ffffff;
+  border: hidden;
+}
+.form-control-password{
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #e6e5eb;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 60%;
+  height: 36px;
+  // margin-bottom: 20px;
+}
+.err{
+  margin-top: 10px !important;
+}
+p.eye {
+  cursor: pointer;
+  position: absolute;
+  top: 10%;
+  right: 3%;
+}
+p.eye svg {
+  color: #bdbdbd;
+  margin-top: 0px;
 }

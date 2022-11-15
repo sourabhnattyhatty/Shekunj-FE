@@ -22,21 +22,17 @@ import "../../pages/HomePage/index.scss";
 import SimpleAccordion from "./Accordian";
 import { routingConstants } from "../../utils/constants";
 import Pagination from "../../components/Pagination";
+
 import axios from "axios";
-import {
-  adsList
-} from "../../store/ads";
+import { adsList } from "../../store/ads";
 
 // accordion
 
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-
-
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const Courses = () => {
   const { t } = useTranslation();
@@ -101,30 +97,33 @@ const Courses = () => {
                 <h6>{obj?.name}</h6>
               </div>
             </div>
-
           </Link>
-          {(index % 5 == 4)
-            ?
+          {index % 5 == 4 ? (
             <>
               <div className='col-md-6'>
                 <div className='google_add_box box_hov'>
-                  {coursesBoxAds.length > 0 &&
-                  <div className='slide-img'>
-                    <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
-                      <img src={coursesBoxAds[0]?.image} alt='Image' className='google_add_box_img' />
-                    </a>
-                    <div className='overlay'></div>
-                  
-                  </div>
-    }
+                  {/* {coursesBoxAds.length > 0 && */}
+                  {Math.floor(Math.random() * coursesBoxAds.length) > 0 && (
+                    // {coursesBoxAds.length > 0 &&
+                    <div className='slide-img'>
+                      <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
+                        <img
+                          src={coursesBoxAds[0]?.image}
+                          alt='Image'
+                          className='google_add_box_img'
+                        />
+                      </a>
+                      <div className='overlay'></div>
+                    </div>
+                  )}
                 </div>
               </div>
             </>
-            : ''
-          }
-
+          ) : (
+            ""
+          )}
         </>
-      )
+      );
     });
   };
 
@@ -133,7 +132,8 @@ const Courses = () => {
       setCategoryPageCount(categoryPageCount - pageLimit);
       dispatch(
         allCourses(
-          `?category_id=${categoryId}&limit=${pageLimit}&offset=${categoryPageCount - pageLimit
+          `?category_id=${categoryId}&limit=${pageLimit}&offset=${
+            categoryPageCount - pageLimit
           }`,
         ),
       );
@@ -144,14 +144,14 @@ const Courses = () => {
       );
     }
     window.scrollTo(0, 1000);
-
   };
   const paginationNext = () => {
     if (categoryId) {
       setCategoryPageCount(categoryPageCount + pageLimit);
       dispatch(
         allCourses(
-          `?category_id=${categoryId}&limit=${pageLimit}&offset=${categoryPageCount + pageLimit
+          `?category_id=${categoryId}&limit=${pageLimit}&offset=${
+            categoryPageCount + pageLimit
           }`,
         ),
       );
@@ -164,10 +164,9 @@ const Courses = () => {
     window.scrollTo(0, 1000);
   };
 
-
   const [coursesBoxAds, setCoursesBoxAds] = useState([]);
   const [coursesSideAds, setCoursesSideAds] = useState([]);
-  const [image,setImage]=useState("NA")
+  const [image, setImage] = useState("NA");
 
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=courses_box')
@@ -178,12 +177,7 @@ const Courses = () => {
   // }, [])
 
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -191,39 +185,48 @@ const Courses = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "courses_box"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setCoursesBoxAds(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "courses_box";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setCoursesBoxAds(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
+  }, []);
 
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
-  const addEmail =(email)=>{
-    console.log("addEmail",email)
-       axios.post('/private_adds/click_add/'
-   ,{
-     // add_email:`${adds[0]?.add_email}`
-     add_email:email
-   }
-   )
-     .then((response) => {
-       // setAdds(response.data.results);
-       console.log("addEmailresponse",response)
-     });
-   
-}
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=courses_side_ads')
@@ -233,11 +236,11 @@ const Courses = () => {
   // }, [])
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "courses_side_ads"
@@ -246,17 +249,12 @@ const Courses = () => {
   //         setImage(findImage)
   //         setCoursesSideAds(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
+  // 		});
+
+  // }, [])
 
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -264,54 +262,53 @@ const Courses = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "courses_side_ads"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setCoursesSideAds(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "courses_side_ads";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setCoursesSideAds(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
-
-
+  }, []);
 
   const [searchInput, setSearchInput] = useState("");
 
-  console.log("mjjjjjjj", searchInput)
+  console.log("mjjjjjjj", searchInput);
 
   const SearchFilterHandle = (e) => {
     e.preventDefault();
     dispatch(allCourses(`?search=${searchInput}`));
-  }
+  };
   const handleResetSearch = () => {
     dispatch(allCourses());
-    setSearchInput('');
-  }
+    setSearchInput("");
+  };
 
   const [suggestion, setSuggestion] = useState([]);
   const [disabled, setDisabled] = useState(false);
+  const [hasSuggestion, setHasSuggestion] = useState([suggestion].length > 0);
 
   useEffect(() => {
     if (searchInput === "") {
       setSuggestion([]);
     } else {
-      axios.get('/course/suggested_course')
-        .then((response) => {
-          setSuggestion(response.data.suggested_course);
-        });
+      axios.get("/course/suggested_course").then((response) => {
+        setSuggestion(response.data.suggested_course);
+      });
     }
   }, [searchInput]);
 
-  const hasSuggestion = suggestion.length > 0;
+  // const hasSuggestion = suggestion.length > 0;
 
   const searchFieldChanged = (e) => {
     const value = e.target.value;
@@ -319,16 +316,13 @@ const Courses = () => {
       setSearchInput([]);
     }
     setSearchInput(value);
-  }
+  };
 
   const suggestionClicked = (suggestion) => {
-
-    console.log("dhiv", suggestion)
-    setSearchInput(suggestion)
-  }
-
-
-
+    console.log("dhiv", suggestion);
+    setSearchInput(suggestion);
+    setHasSuggestion(null);
+  };
 
   return (
     <div>
@@ -341,7 +335,7 @@ const Courses = () => {
               <div className='cors_con'>
                 <h2>{t("coursesPage.banner.heading")}</h2>
                 <div className='cour_box'>
-                  <ul className="num">
+                  <ul className='num'>
                     <li>
                       <img src={one} alt='' srcSet='' />
                     </li>
@@ -357,8 +351,11 @@ const Courses = () => {
                       <li>
                         <img src={img1} alt='' />
                       </li>
-                      <li> {t("coursesPage.banner.1")} <br /> {t("coursesPage.banner.4")}</li>
-
+                      <li>
+                        {" "}
+                        {t("coursesPage.banner.1")} <br />{" "}
+                        {t("coursesPage.banner.4")}
+                      </li>
                     </ul>
 
                     <ul className='ulcont'>
@@ -376,7 +373,10 @@ const Courses = () => {
                       <li>
                         <img src={img3} alt='' />
                       </li>
-                      <li style={{ marginTop: '-25px' }}> {t("coursesPage.banner.3")}</li>
+                      <li style={{ marginTop: "-25px" }}>
+                        {" "}
+                        {t("coursesPage.banner.3")}
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -386,144 +386,159 @@ const Courses = () => {
         </div>
       </section>
 
-
       <section className='Srch_sec mb-5 noselect'>
         <div className='container'>
           <Row>
             <Col md={12} xs={12}>
-              <div className="course_para">
+              <div className='course_para'>
                 <h1>{t("coursesPage.heading.1")}</h1>
-                <p className='courses_para mb-3'>{t("coursesPage.heading.2")}</p>
-                <Row className="search_box_row">
+                <p className='courses_para mb-3'>
+                  {t("coursesPage.heading.2")}
+                </p>
+                <Row className='search_box_row'>
                   <Col md={6} xs={12}>
-                    <Link className="shekunj_a" to="/login">{t("coursesPage.heading.3")}</Link>
+                    <Link className='shekunj_a' to='/login'>
+                      {t("coursesPage.heading.3")}
+                    </Link>
                   </Col>
 
                   <Col md={6} xs={12}>
-                  <form onSubmit={SearchFilterHandle}>
-                          <div className="d-flex">
-                          <div className="wraper ">
-                            <input type="text" onChange={searchFieldChanged} value={searchInput}
-                              name="searchInput" class="form-control searchInput" 
-                              placeholder="What do you want to learn ?" />
-                            {hasSuggestion && (
-                              
-                              <div className="suggestions">
-                                {/* {suggestion.map((item) => (
+                    <form onSubmit={SearchFilterHandle}>
+                      <div className='d-flex'>
+                        <div className='wraper '>
+                          <input
+                            type='text'
+                            onChange={searchFieldChanged}
+                            value={searchInput}
+                            name='searchInput'
+                            class='form-control searchInput'
+                            placeholder='What do you want to learn ?'
+                          />
+                          {hasSuggestion && (
+                            <div className='suggestions'>
+                              {/* {suggestion.map((item) => (
                                   <div onClick={() => suggestionClicked(item)} className="suggList">{item}</div>
                                 ))} */}
-                                {suggestion.map((item) => (
-                                  <button type="submit" style={{border:"none"}} onClick={() => suggestionClicked(item)} className="suggList">{item}</button>
-                                ))}
-                              </div>
-                            )}
-                            </div>
-                            <div className="d-flex">
-                              <button type="submit" className="searchBtn1">
-                                <img src={Search} alt='Image' className='searchIcon'
-                                />
+                              {suggestion.map((item) => (
+                                <button
+                                  type='submit'
+                                  style={{ border: "none" }}
+                                  onClick={() => suggestionClicked(item)}
+                                  className='suggList'
+                                >
+                                  {item}
                                 </button>
-                              <img src={Cross} alt='Image' className='searchclose'
-                                onClick={() => handleResetSearch()} />
+                              ))}
                             </div>
-                          </div>
-                      </form>
+                          )}
+                        </div>
+                        <div className='d-flex'>
+                          <button type='submit' className='searchBtn1'>
+                            <img
+                              src={Search}
+                              alt='Image'
+                              className='searchIcon'
+                            />
+                          </button>
+                          <img
+                            src={Cross}
+                            alt='Image'
+                            className='searchclose'
+                            onClick={() => handleResetSearch()}
+                          />
+                        </div>
+                      </div>
+                    </form>
                   </Col>
-
-
-
-
-
                 </Row>
               </div>
             </Col>
           </Row>
 
           <div className='row'>
-
             <div className='col-md-4 col-sm-4'>
-              <h5><b>{t("coursesPage.accordion.1.heading")}</b></h5>
+              <h5>
+                <b>{t("coursesPage.accordion.1.heading")}</b>
+              </h5>
 
-              <div className="mobile_view_city_selct">
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>Categories</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            
-          <SimpleAccordion
-                isSubSelected={(val) => {
-                  setIsSubSelected(val);
-                }}
-                isResetPressed={resetState}
-                changeResetAgain={(val) => {
-                  setResetState(val);
-                }}
-                categoryId={(val) => {
-                  setCategoryId(val);
-                  setPageCount(0);
-                  setCategoryPageCount(0);
-                }}
-              />
+              <div className='mobile_view_city_selct'>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls='panel1a-content'
+                    id='panel1a-header'
+                  >
+                    <Typography>Categories</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      <SimpleAccordion
+                        isSubSelected={(val) => {
+                          setIsSubSelected(val);
+                        }}
+                        isResetPressed={resetState}
+                        changeResetAgain={(val) => {
+                          setResetState(val);
+                        }}
+                        categoryId={(val) => {
+                          setCategoryId(val);
+                          setPageCount(0);
+                          setCategoryPageCount(0);
+                        }}
+                      />
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
 
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      
-      
-    </div>
-
-    <div className="desktop_view_city_selct">
-
-    <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>Categories</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            
-          <SimpleAccordion
-                isSubSelected={(val) => {
-                  setIsSubSelected(val);
-                }}
-                isResetPressed={resetState}
-                changeResetAgain={(val) => {
-                  setResetState(val);
-                }}
-                categoryId={(val) => {
-                  setCategoryId(val);
-                  setPageCount(0);
-                  setCategoryPageCount(0);
-                }}
-              />
-
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-</div>
+              <div className='desktop_view_city_selct'>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls='panel1a-content'
+                    id='panel1a-header'
+                  >
+                    <Typography>Categories</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      <SimpleAccordion
+                        isSubSelected={(val) => {
+                          setIsSubSelected(val);
+                        }}
+                        isResetPressed={resetState}
+                        changeResetAgain={(val) => {
+                          setResetState(val);
+                        }}
+                        categoryId={(val) => {
+                          setCategoryId(val);
+                          setPageCount(0);
+                          setCategoryPageCount(0);
+                        }}
+                      />
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
 
               {/* google add */}
               <div className='row'>
-                {coursesSideAds.length >0 && 
-                // <div className='col-md-12'>
-                <div  className='col-md-12' onClick={()=>addEmail(coursesSideAds[0]?.add_email)}>
-                  <a href={coursesSideAds[0]?.url_adds} target='_blank'>
-                    <img src={coursesSideAds[0]?.image} alt='Image' className='google_add_courses' />
-                  </a>
-
-                </div>
-}
+                {coursesSideAds.length > 0 && (
+                  // <div className='col-md-12'>
+                  <div
+                    className='col-md-12'
+                    onClick={() => addEmail(coursesSideAds[0]?.add_email)}
+                  >
+                    <a href={coursesSideAds[0]?.url_adds} target='_blank'>
+                      <img
+                        src={coursesSideAds[0]?.image}
+                        alt='Image'
+                        className='google_add_courses'
+                      />
+                    </a>
+                  </div>
+                )}
               </div>
-
             </div>
             <div className='col-md-8 col-sm-8'>
               <div className='content_right'>
@@ -574,7 +589,6 @@ const Courses = () => {
                 <div className='row'>
                   {state?.allCourses?.results?.length > 0 ? (
                     checkFunction()
-
                   ) : (
                     <div className='text-center mt-2'>
                       {t("common.noDataFound")}

@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-
+import { StyledEngineProvider } from "@mui/material/styles";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import GuidanceSelect from "./Select";
+import DatePicker from "react-datepicker";
+import Form from "react-bootstrap/Form";
+// import "react/datepicker/dist/react-datepicker.css"
+import dayjs from "dayjs";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import Book_img from "../../assets/images/Guidance/Book_img.png";
 import Polygon1 from "../../assets/images/Guidance/Polygon1.png";
@@ -22,16 +29,16 @@ import "animate.css";
 import Aos from "aos";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { withFormik } from "formik";
 import { Error } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { bookCounseller } from "../../store/guidance/action";
 import moment from "moment";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import add2 from "../../assets/images/add2.jpg";
-import {
-  adsList
-} from "../../store/ads";
+import { adsList } from "../../store/ads";
 
 function range(start, end) {
   return Array(end - start + 1)
@@ -39,25 +46,35 @@ function range(start, end) {
     .map((_, idx) => start + idx);
 }
 
+// const today = new Date();
+
 const days = range(1, 31);
 const years = range(1970, 2021);
 const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
-const courseLookingFor = ["Java", "Python", "JavaScript", ".Net"];
-
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+const GenderCategory = ["male", "female"];
+const GuidancePurpose = [
+  "Career Guidance",
+  "Business Support",
+  "Medical Guidance",
+  "Personal issues",
+  "other",
 ];
+// const courseLookingFor = ["Java", "Python", "JavaScript", ".Net"];
+
+// const months = [
+//   "January",
+//   "February",
+//   "March",
+//   "April",
+//   "May",
+//   "June",
+//   "July",
+//   "August",
+//   "September",
+//   "October",
+//   "November",
+//   "December",
+// ];
 
 const GuidancePage = () => {
   const { isLoading } = useSelector((state) => state.guidanceReducer);
@@ -67,6 +84,7 @@ const GuidancePage = () => {
   const validationSchema = Yup.object({
     first_name: Yup.string().required(t("login.form1.firstNameError.required")),
     last_name: Yup.string().required(t("login.form1.lastNameError.required")),
+    // City: Yup.string().required(t("login.form1.CityError.required")),
     email_address: Yup.string()
       .required(t("login.form1.emailError.required"))
       .email(t("login.form1.emailError.invalid")),
@@ -82,30 +100,41 @@ const GuidancePage = () => {
     errors,
     touched,
     setFieldValue,
+    setFieldTouched,
   } = useFormik({
     initialValues: {
       first_name: "",
       last_name: "",
       email_address: "",
       mobile_number: "",
-      day: "",
-      month: "",
-      year: "",
+      city: "",
+      // day: "",
+      // month: "",
+      // year: "",
       date_of_birth: "",
       qualifications: "",
-      course_looking_for: "",
+      gender: "",
+      guidance_purpose: "",
+      // course_looking_for: "",
       message: "",
+      // date:"",
+      // value:""
     },
     validationSchema,
     onSubmit(values) {
-      const dateOfBirth = moment(
-        `${values?.year}-${values.month}-${values?.day}`,
-      ).format("YYYY-MM-DD");
+      // const dateOfBirth = moment(
+      //   `${values?.year}-${values.month}-${values?.day}`,
+      // ).format("YYYY-MM-DD");
+      // const date_of_birth = moment(values.date_of_birth, 'DD-MM-YYYY').format('YYYY-MM-DD')
+      const date_of_birth = moment(`${values.date_of_birth}`).format(
+        "YYYY-MM-DD",
+      );
       values = {
         ...values,
-        date_of_birth: dateOfBirth,
+        // date_of_birth: dateOfBirth,
+        date_of_birth: date_of_birth,
         qualifications: values?.qualifications,
-        course_looking_for: values?.course_looking_for,
+        gender: values?.gender,
       };
       dispatch(bookCounseller(values));
     },
@@ -115,38 +144,67 @@ const GuidancePage = () => {
     Aos.init({ duration: 2000 });
   }, []);
 
+  const ValidatedForm = withFormik({
+    mapPropsToValues: () => ({
+      date: null,
+    }),
+
+    validate: (values) => {
+      const errors = {};
+
+      if (!values.date) {
+        errors.date = "please select a date";
+      }
+      return errors;
+    },
+  });
+
   const [bookCounsellorAds, setBookCounsellorAds] = useState([]);
-  const [image,setImage]=useState("NA")
+  const [image, setImage] = useState("NA");
+  // const [value,setValue]= React.useState(null);
+  const [value, setValue] = React.useState(dayjs("2014-08-18T21:11:54"));
 
-	// useEffect(() => {
-	// 	axios.get('/private_adds/private_add?image_type=book_counsellor')
-	// 		.then((response) => {
-	// 			setBookCounsellorAds(response.data.results);
-	// 		});
-	// }, [])
-
-  const addEmail =(email)=>{
-    console.log("addEmail",email)
-       axios.post('/private_adds/click_add/'
-   ,{
-     // add_email:`${adds[0]?.add_email}`
-     add_email:email
-   }
-   )
-     .then((response) => {
-       // setAdds(response.data.results);
-       console.log("addEmailresponse",response)
-     });
-   
-}
-
+  // const handleChange = (newValue) => {
+  //   setValue(newValue);
+  // };
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add?image_type=book_counsellor')
+  // 		.then((response) => {
+  // 			setBookCounsellorAds(response.data.results);
+  // 		});
+  // }, [])
+
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
+
+  // useEffect(() => {
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "book_counsellor"
@@ -155,17 +213,12 @@ const GuidancePage = () => {
   //         setImage(findImage)
   //         setBookCounsellorAds(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
-  
+  // 		});
+
+  // }, [])
+
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -173,25 +226,24 @@ const GuidancePage = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "book_counsellor"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setBookCounsellorAds(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "book_counsellor";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setBookCounsellorAds(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
-
-
+  }, []);
 
   return (
     <div>
@@ -203,9 +255,7 @@ const GuidancePage = () => {
               <div className='guidance_con'>
                 <div className='book_sec_content mob_hide'>
                   <h2 data-aos='slide-up'>{t("guidanceBookPage.heading.1")}</h2>
-                  <p data-aos='slide-up'>
-                    {t("guidanceBookPage.heading.2")}
-                  </p>
+                  <p data-aos='slide-up'>{t("guidanceBookPage.heading.2")}</p>
                 </div>
 
                 <div className='book_sec_imgs'>
@@ -281,7 +331,6 @@ const GuidancePage = () => {
                     </Col>
                   </Row>
 
-
                   <div className='form-group'>
                     <TextField
                       name='email_address'
@@ -328,7 +377,7 @@ const GuidancePage = () => {
                     />
                   </div>
 
-                  <Row>
+                  {/* <Row>
                     <Col md={4} xs={12}>
                       <div className='form-group mzero'>
                         <GuidanceSelect
@@ -364,24 +413,95 @@ const GuidancePage = () => {
                         />
                       </div>
                     </Col>
+                  </Row> */}
+
+                  <Row>
+                    <Col md={12} xs={12}>
+                      <div className='form-group Calendar'>
+                        <Form.Group controlId='validationFormik03'>
+                          {/* <Form.Label>Select-Date</Form.Label> */}
+
+                          <DatePicker
+                            selected={values.date_of_birth}
+                            name='date_of_birth'
+                            onChange={(e) => {
+                              setFieldValue("date_of_birth", e);
+                              setFieldTouched("date_of_birth");
+                            }}
+                            className='form-control'
+                            placeholderText='date_of_birth'
+                            // minDate={today}
+                            customInput={
+                              <input
+                                type='text'
+                                id='date_of_birth'
+                                placeholder='date_of_birth'
+                              />
+                            }
+                          />
+                          {console.log(
+                            "values.date_of_birth",
+                            values.date_of_birth,
+                          )}
+                          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+ <DateTimePicker
+          label="Date-Of-Birth"
+          value={value}
+          DisableTime={true}
+          // onChange={handleChange}
+          onChange={(newValue) => {
+            setValue(newValue);
+          }}
+          renderInput={(params) => <TextField {...params} />}
+        />
+        </LocalizationProvider> */}
+
+                          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DatePicker
+        label="Basic example"
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        renderInput={(params) => <TextField {...params} />}
+      />
+    </LocalizationProvider> */}
+                          {touched.date_of_birth &&
+                            !!errors.date_of_birth &&
+                            errors.date_of_birth}
+                        </Form.Group>
+                      </div>
+                    </Col>
                   </Row>
 
                   <Row>
-
                     <Col md={6} xs={12}>
                       <div className='form-group mzero'>
-                        <GuidanceSelect
-                          title={t("common.formHeadings.qualification")}
+                        <Form.Group controlId='validationFormik04'>
+                          {/* <Form.Label>Select-Gender</Form.Label> */}
+                          {/* <GuidanceSelect
+                          title="Gender"
                           icon={true}
-                          listItem={highEducation}
+                          listItem={GenderCategory}
                           defaultValue=''
                           updateValues={(value) =>
-                            setFieldValue("qualifications", value)
+                            setFieldValue("gender", value)
                           }
-                        />
+                        /> */}
+
+                          <GuidanceSelect
+                            title={t("common.formHeadings.gender")}
+                            icon={true}
+                            listItem={["female", "male"]}
+                            defaultValue=''
+                            updateValues={(value) =>
+                              setFieldValue("gender", value)
+                            }
+                          />
+                        </Form.Group>
                       </div>
                     </Col>
-                    <Col md={6} xs={12}>
+                    {/* <Col md={6} xs={12}>
                       <div className='form-group mzero'>
                         <GuidanceSelect
                           title={t("common.formHeadings.coursesLooking")}
@@ -392,6 +512,63 @@ const GuidancePage = () => {
                             setFieldValue("course_looking_for", value)
                           }
                         />
+                      </div>
+                    </Col> */}
+
+                    <Col md={6} xs={12}>
+                      <div className='form-group'>
+                        <TextField
+                          name='city'
+                          type='text'
+                          placeholder={"City"}
+                          autoComplete='off'
+                          onChange={handleChange}
+                          value={values.city}
+                          onBlur={handleBlur}
+                          // InputProps={{
+                          //   startAdornment: (
+                          //     <InputAdornment position='start'>
+                          //       <img src={User3} alt='...' />
+                          //     </InputAdornment>
+                          //   ),
+                          // }}
+                        />
+                        <Error error={errors.city} touched={touched.city} />
+                      </div>
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col md={6} xs={12}>
+                      <div className='form-group mzero'>
+                        <Form.Group controlId='validationFormik04'>
+                          <GuidanceSelect
+                            title={t("common.formHeadings.qualification")}
+                            icon={true}
+                            listItem={highEducation}
+                            defaultValue=''
+                            updateValues={(value) =>
+                              setFieldValue("qualifications", value)
+                            }
+                          />
+                        </Form.Group>
+                      </div>
+                    </Col>
+
+                    <Col md={6} xs={12}>
+                      <div className='form-group mzero'>
+                        <Form.Group controlId='validationFormik04'>
+                          {/* <Form.Label>Select-Gender</Form.Label> */}
+                          <GuidanceSelect
+                            title='Guidance Purpose'
+                            icon={true}
+                            listItem={GuidancePurpose}
+                            defaultValue=''
+                            updateValues={(value) =>
+                              setFieldValue("guidance_purpose", value)
+                            }
+                          />
+                        </Form.Group>
                       </div>
                     </Col>
                   </Row>
@@ -423,15 +600,25 @@ const GuidancePage = () => {
 
             <Col md={2} xs={12}>
               <Container>
-                {bookCounsellorAds.length > 0 &&
-                <Row>
-                       <div onClick={()=>addEmail(bookCounsellorAds[0]?.add_email)}>
-                <a href={bookCounsellorAds[0]?.url_adds} className="addimage098" target='_blank'>
-                  <img src={bookCounsellorAds[0]?.image} alt='Image' className='ads_guidence' />
-                  </a>
-                  </div>
-                </Row>
-}
+                {bookCounsellorAds.length > 0 && (
+                  <Row>
+                    <div
+                      onClick={() => addEmail(bookCounsellorAds[0]?.add_email)}
+                    >
+                      <a
+                        href={bookCounsellorAds[0]?.url_adds}
+                        className='addimage098'
+                        target='_blank'
+                      >
+                        <img
+                          src={bookCounsellorAds[0]?.image}
+                          alt='Image'
+                          className='ads_guidence'
+                        />
+                      </a>
+                    </div>
+                  </Row>
+                )}
               </Container>
             </Col>
           </Row>

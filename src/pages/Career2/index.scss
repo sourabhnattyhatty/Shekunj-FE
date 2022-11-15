@@ -223,7 +223,8 @@
     height: 46px !important;
     width: 100% !important;
   }
-  .ads_gov_box{
+
+  .ads_gov_box {
     height: 47px !important;
     // margin-left: 15px !important;
     margin-bottom: 20px !important;
@@ -258,8 +259,20 @@
 .ads_gov_cover {
   text-align: center;
 }
-.ads_gov_box{
+
+.ads_gov_box {
   height: 92px;
   width: 100%;
   object-fit: cover;
+}
+
+// .loader{
+//   margin-top: 15%;
+//   margin-left: 50%;
+//   color:#ec498a
+// }
+
+.google_add_courses {
+  width: 100%;
+  padding-top: 40px;
 }

@@ -1,6 +1,10 @@
 import React from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -16,10 +20,22 @@ import { useTranslation } from "react-i18next";
 import { routingConstants } from "../../../../utils/constants";
 
 function LoginForm2() {
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
   const { isLoading } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const history = useHistory();
   const { t } = useTranslation();
+
+  const handleToggle = () => {
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeOff);
+      setType("password");
+    }
+  };
 
   const validationSchema = Yup.object({
     contact: Yup.number().required(t("login.form2.contactError")),
@@ -77,28 +93,38 @@ function LoginForm2() {
           <Error error={errors.contact} touched={touched.contact} />
         </div>
 
-        <div className='form-group'>
+        <div className='form-group-password'>
           <label>
             {t("common.formHeadings.password")} <span>*</span>
           </label>
-          <TextField
-            name='password'
-            type='password'
-            className='form-control'
-            onChange={handleChange}
-            value={values.password}
-            onBlur={handleBlur}
-            autoComplete='off'
-            placeholder={t("common.placeHolders.password")}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position='start'>
-                  <img src={Lock} alt='...' />
-                </InputAdornment>
-              ),
-            }}
+          <div>
+            <TextField
+              name='password'
+              type={type}
+              className='form-control-password'
+              onChange={handleChange}
+              value={values.password}
+              onBlur={handleBlur}
+              autoComplete='off'
+              placeholder={t("common.placeHolders.password")}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position='start'>
+                    <img src={Lock} alt='...' />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <span onClick={handleToggle} className='eyesOffIcon'>
+              <Icon icon={eyeOff} size={20} />
+            </span>
+          </div>
+          <Error
+            style={{ paddingTop: "10px" }}
+            className='password-err'
+            error={errors.password}
+            touched={touched.password}
           />
-          <Error error={errors.password} touched={touched.password} />
         </div>
 
         <Link to={routingConstants.FORGOT_PASSWORD} className='fer_pass'>

@@ -64,7 +64,7 @@ function AllNotification() {
           <h2>All Notifications</h2>
         </nav>
       </div>
-      <div className='NotificationContainer'>
+      <div className='NotificationContainerIndex'>
         {notifications["Notifications "]?.length > 0 ? (
           notifications["Notifications "]?.map((c)=>{
             console.log("c", c)

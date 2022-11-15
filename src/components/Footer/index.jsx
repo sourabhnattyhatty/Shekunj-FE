@@ -9,9 +9,7 @@ import { routingConstants } from "../../utils/constants";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import {
-  adsList
-} from "../../store/ads";
+import { adsList } from "../../store/ads";
 
 const Footer = ({ loginPage }) => {
   const { t } = useTranslation();
@@ -19,47 +17,43 @@ const Footer = ({ loginPage }) => {
   const dispatch = useDispatch();
   const [adsFooter1, setAdsFooter1] = useState([]);
   const [adsFooter2, setAdsFooter2] = useState([]);
-  const [image,setImage]=useState("NA")
-  const [adds,setAdds] = useState([]);
+  const [image, setImage] = useState("NA");
+  const [adds, setAdds] = useState([]);
 
-	useEffect(() => {
-	
-      navigator.geolocation.getCurrentPosition(async function (
-        position,
-        values,
-      ) {
-        
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-  
-        let params = {
-          latitude: latitude.toString(),
-          longitude: longitude.toString(),
-        };
-        axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
         .then((response) => {
-          
-          if(response.data.results.length > 0)
-         
-          {
-           let filterArray = response.data.results.filter((item,index)=>{
-              return item.image_type == "footer_1"
-            })
-            let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-            setImage(findImage)
-            setAdsFooter1(filterArray)
-              }
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "footer_1";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setAdsFooter1(filterArray);
+          }
         });
-      })
-      dispatch(adsList());
-	}, [])
+    });
+    dispatch(adsList());
+  }, []);
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "footer_1"
@@ -68,86 +62,125 @@ const Footer = ({ loginPage }) => {
   //         setImage(findImage)
   //         setAdsFooter1(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
+  // 		});
+
+  // }, [])
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add?image_type=footer_2')
-	// 		.then((response) => {
-	// 			setAdsFooter2(response.data.results);
-	// 		});
-	// }, [])
+  // 	axios.get('/private_adds/private_add?image_type=footer_2')
+  // 		.then((response) => {
+  // 			setAdsFooter2(response.data.results);
+  // 		});
+  // }, [])
+
+  // useEffect(() => {
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
+  //       if(response.data.results.length > 0)
+
+  //       {
+  //        let filterArray = response.data.results.filter((item,index)=>{
+  //           return item.image_type == "footer_2"
+  //         })
+  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
+  //         setImage(findImage)
+  //         setAdsFooter2(filterArray)
+  //           }
+  // 		});
+
+  // }, [])
 
   useEffect(() => {
-		axios.get('/private_adds/private_add')
-			.then((response) => {
-				
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "footer_2"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setAdsFooter2(filterArray)
-            }
-			});
-      
-	}, [])
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
-  const addEmail =(email)=>{
-       console.log("addEmail",email)
-          axios.post('/private_adds/click_add/'
-      ,{
-        // add_email:`${adds[0]?.add_email}`
-        add_email:email
-      }
-      )
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray2 = response.data.results.filter((item, index) => {
+              return item.image_type == "footer_2";
+            });
+            let findImage2 =
+              filterArray2.length > 0 ? filterArray2[0].image : "NA";
+            setImage(findImage2);
+            setAdsFooter2(filterArray2);
+          }
+        });
+    });
+    dispatch(adsList());
+  }, []);
+
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
         .then((response) => {
           // setAdds(response.data.results);
-          console.log("addEmailresponse",response)
+          console.log("addEmailresponse", response);
         });
-      
-  }
+    });
+  };
 
-    // useEffect(() => {
-    //   axios.post('/private_adds/click_add/'
-    //   ,{
-    //     add_email:`${adds[0]?.add_email}`
-    //     // add_email:{add_email}
-    //   }
-    //   )
-    //     .then((response) => {
-    //       setAdds(response.data.results);
-    //     });
-    // }, [])
-  
-  
+  // useEffect(() => {
+  //   axios.post('/private_adds/click_add/'
+  //   ,{
+  //     add_email:`${adds[0]?.add_email}`
+  //     // add_email:{add_email}
+  //   }
+  //   )
+  //     .then((response) => {
+  //       setAdds(response.data.results);
+  //     });
+  // }, [])
+
   return (
-    <div className="noselect">
-
+    <div className='noselect'>
       {/* google add */}
       <section>
         <div className='container'>
           <div className='row'>
-            {adsFooter1.length > 0 && 
-            <div  className='col-md-12 ads_footer_cover' onClick={()=>addEmail(adsFooter1[0]?.add_email)}>
-              
-            <a href={adsFooter1[0]?.url_adds}  target='_blank'>
-              
-            <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' />
-            </a>
+            {adsFooter1.length > 0 && (
+              <div
+                className='col-md-12 ads_footer_cover'
+                onClick={() => addEmail(adsFooter1[0]?.add_email)}
+              >
+                <a href={adsFooter1[0]?.url_adds} target='_blank'>
+                  <img
+                    src={adsFooter1[0]?.image}
+                    alt='Image'
+                    className='google_ads_footer'
+                  />
+                </a>
 
-            {console.log("footer-image",adsFooter1[0]?.image)}
+                {console.log("footer-image", adsFooter1[0]?.image)}
 
-            <a href={adds[0]?.add_email}  target='_blank'>
-            {/* <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' /> */}
-            </a>
-       
-            </div>
-}
+                <a href={adds[0]?.add_email} target='_blank'>
+                  {/* <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' /> */}
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -195,12 +228,14 @@ const Footer = ({ loginPage }) => {
                     </li>
                     <li>
                       {/* <Link to={routingConstants.HELP_AND_SUPPORT}>{t("footer.links.col2.3")}</Link> */}
-                      <Link to={routingConstants.CONTACT_US}>{t("footer.links.col2.3")}</Link>
+                      <Link to={routingConstants.CONTACT_US}>
+                        {t("footer.links.col2.3")}
+                      </Link>
                     </li>
                     <li>
-                    <div className='set_language'>
-                    <ChangeLanguageButton />
-                  </div>
+                      <div className='set_language'>
+                        <ChangeLanguageButton />
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -208,20 +243,31 @@ const Footer = ({ loginPage }) => {
                 <div className='col-md-9 col-sm-12'>
                   <div className='row'>
                     <div className='col-md-12'>
-                      {adsFooter2.length > 0 && 
-                      // <div className="footer_ads_bottom_parent">
-                         <div  className="footer_ads_bottom_parent" onClick={()=>addEmail(adsFooter2[0]?.add_email)}>
-                    <a href={adsFooter2[0]?.url_adds}  target='_blank'>
-                    <img src={adsFooter2[0]?.image} alt='Image' className='footer_ads_bottom' />
-                    </a>
-                    {/* <a href={adds[0]?.add_email}  target='_blank'>
+                      {adsFooter2.length > 0 && (
+                        // {/* // <div className="footer_ads_bottom_parent"> */}
+
+                        <div
+                          className='footer_ads_bottom_parent'
+                          onClick={() => addEmail(adsFooter2[0]?.add_email)}
+                        >
+                          <a href={adsFooter2[0]?.url_adds} target='_blank'>
+                            <img
+                              src={adsFooter2[0]?.image}
+                              alt='Image'
+                              className='footer_ads_bottom'
+                            />
+                          </a>
+                          {/* <a href={adds[0]?.add_email}  target='_blank'>
             <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' />
             </a> */}
-             {/* <a href={adds[0]?.add_email}  target='_blank'>
-             <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' />
-             </a> */}
-                    </div>
-          }
+                          <a href={adds[0]?.add_email} target='_blank'>
+                            {/* <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' /> */}
+                          </a>
+                          {/* <a href={adsFooter2[0]?.url_adds}  target='_blank'>
+                    <img src={adsFooter2[0]?.image} alt='Image' className='footer_ads_bottom' />
+                    </a> */}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -1,97 +1,93 @@
-import React, { useEffect, useState } from 'react';
-import AddsPopup from '../AddsPopup/AddsPopup'
-import { Container } from 'react-bootstrap';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { styled } from '@mui/material/styles';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import MuiAccordion from '@mui/material/Accordion';
-import MuiAccordionSummary from '@mui/material/AccordionSummary';
-import MuiAccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import Slider from '@mui/material/Slider';
-import { Header, Footer, ScrollToTop } from '../../components';
-import Rightcheck from '../../assets/images/Courses/right.png';
-import Stack from '@mui/material/Stack';
-import close from '../../assets/images/Courses/close.png';
-import toggle from '../../assets/images/Courses/toggle.png';
-import './index.scss';
-import { Skeleton } from '@mui/material';
-import { useHistory, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getSingleCourseModule, startCourse } from '../../store/courses/action';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
-import { routingConstants } from '../../utils/constants';
-import { useTranslation } from 'react-i18next';
-import { subModule } from '../../store/courses';
-import { coursesTypes } from '../../store/courses/types';
-import { useRef } from 'react';
+import React, { useEffect, useState } from "react";
+import AddsPopup from "../AddsPopup/AddsPopup";
+import { Container } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { styled } from "@mui/material/styles";
+import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import MuiAccordion from "@mui/material/Accordion";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import Slider from "@mui/material/Slider";
+import { Header, Footer, ScrollToTop } from "../../components";
+import Rightcheck from "../../assets/images/Courses/right.png";
+import Stack from "@mui/material/Stack";
+import close from "../../assets/images/Courses/close.png";
+import toggle from "../../assets/images/Courses/toggle.png";
+import "./index.scss";
+import { Skeleton } from "@mui/material";
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getSingleCourseModule, startCourse } from "../../store/courses/action";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
+import { routingConstants } from "../../utils/constants";
+import { useTranslation } from "react-i18next";
+import { subModule } from "../../store/courses";
+import { coursesTypes } from "../../store/courses/types";
+import { useRef } from "react";
 // import { Document, Page } from 'react-pdf';
-import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
+import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import axios from "axios";
-import ContentLoader, { Facebook } from 'react-content-loader';
-import {
-  adsList
-} from "../../store/ads";
+import ContentLoader, { Facebook } from "react-content-loader";
+import { adsList } from "../../store/ads";
 
-const Accordion = styled(props => (
+const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
-  '&:not(:last-child)': {
+  "&:not(:last-child)": {
     borderBottom: 0,
   },
-  '&:before': {
-    display: 'none',
+  "&:before": {
+    display: "none",
   },
 }));
 
-const AccordionSummary = styled(props => (
+const AccordionSummary = styled((props) => (
   <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
     {...props}
   />
 ))(({ theme }) => ({
   backgroundColor:
-    theme.palette.mode === 'dark'
-      ? 'rgba(255, 255, 255, .05)'
-      : 'rgba(0, 0, 0, .03)',
-  flexDirection: 'row-reverse',
-  '& .MuiAccordionSummary-expandIconWrapper': {
-    transform: 'rotate(90deg)',
+    theme.palette.mode === "dark"
+      ? "rgba(255, 255, 255, .05)"
+      : "rgba(0, 0, 0, .03)",
+  flexDirection: "row-reverse",
+  "& .MuiAccordionSummary-expandIconWrapper": {
+    transform: "rotate(90deg)",
   },
-  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-    transform: 'rotate(270deg)',
+  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+    transform: "rotate(270deg)",
   },
-  '& .MuiAccordionSummary-content': {
+  "& .MuiAccordionSummary-content": {
     marginLeft: theme.spacing(1),
   },
 }));
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
-  borderTop: '1px solid rgba(0, 0, 0, .125)',
+  borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
 const IOSSlider = styled(Slider)(({ theme }) => ({
-  color: theme.palette.mode === 'dark' ? '#3880ff' : '#3880ff',
+  color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
   height: 10,
-  padding: '15px 0',
-  '& .MuiSlider-valueLabel': {
+  padding: "15px 0",
+  "& .MuiSlider-valueLabel": {
     fontSize: 12,
-    fontWeight: 'normal',
+    fontWeight: "normal",
     top: -6,
-    backgroundColor: 'unset',
+    backgroundColor: "unset",
     color: theme.palette.text.primary,
-    '&:before': {
-      display: 'none',
+    "&:before": {
+      display: "none",
     },
   },
 }));
 
 const CourseModule = () => {
-
-
   const [addPopup, setAddPopup] = useState(false);
   const handleClose = () => setAddPopup(false);
   const handleShow = () => setAddPopup(true);
@@ -105,31 +101,27 @@ const CourseModule = () => {
   // }, []);
 
   useEffect(() => {
-    handleShow()
+    handleShow();
   }, []);
 
   const [show, setShow] = React.useState(true);
-  const [showSubActive, setShowsubActive] = React.useState('1.1');
-  const [expanded, setExpanded] = React.useState('panel1');
+  const [showSubActive, setShowsubActive] = React.useState("1.1");
+  const [expanded, setExpanded] = React.useState("panel1");
   const [currentProgress, setCurrentProgress] = React.useState();
   const [arr, setArray] = React.useState();
-  const {
-    courseModulesList,
-    course,
-    isLoading,
-    moduleprogress,
-    currentModal,
-  } = useSelector(state => state.coursesReducer);
+  const { courseModulesList, course, isLoading, moduleprogress, currentModal } =
+    useSelector((state) => state.coursesReducer);
+  console.log("course", course);
 
-  const lastSelectedIndexOne = useRef()
-  const lastSelectedObject = useRef()
-  const lastSelectedIndex = useRef()
+  const lastSelectedIndexOne = useRef();
+  const lastSelectedObject = useRef();
+  const lastSelectedIndex = useRef();
 
   useEffect(() => {
     handleCurrentModule(currentModal);
   }, [currentModal]);
 
-  const { lan } = useSelector(state => state.languageReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
   const { id } = useParams();
@@ -137,7 +129,7 @@ const CourseModule = () => {
   const { t } = useTranslation();
   const fun = () => {
     const p = [];
-    courseModulesList?.forEach(obj => {
+    courseModulesList?.forEach((obj) => {
       obj?.sub_task?.forEach((item, ind) => {
         p.push(ind);
       });
@@ -165,62 +157,68 @@ const CourseModule = () => {
     // }
   }, [history, detect.isMobile, t]);
 
-
   React.useEffect(() => {
     dispatch(startCourse(id, currentModal, currentProgress, true));
     dispatch(getSingleCourseModule(id));
   }, [dispatch, id, lan]);
 
-  const handleChange = panel => (event, newExpanded) => {
+  const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
   const handleAccordian = () => {
-    setShow(prev => !prev);
-    const ratio = (course?.pdf_height > course?.pdf_width ? (course?.pdf_height / course?.pdf_width) : (course?.pdf_width / course?.pdf_height))
-    const width = (course?.pdf_width * 1.333) - testRef.current?.offsetWidth;
-    const result = width * ratio
-    setIframe((course?.pdf_height * 1.333) - result)
+    setShow((prev) => !prev);
+    const ratio =
+      course?.pdf_height > course?.pdf_width
+        ? course?.pdf_height / course?.pdf_width
+        : course?.pdf_width / course?.pdf_height;
+    const width = course?.pdf_width * 1.333 - testRef.current?.offsetWidth;
+    const result = width * ratio;
+    setIframe(course?.pdf_height * 1.333 - result);
 
     if (lastSelectedIndexOne.current && lastSelectedIndex.current) {
-      manageClick(lastSelectedIndexOne.current, lastSelectedObject.current, lastSelectedIndex.current);
+      manageClick(
+        lastSelectedIndexOne.current,
+        lastSelectedObject.current,
+        lastSelectedIndex.current,
+      );
     }
     handleCurrentModule(false);
   };
 
-  const handlePrevModule = page => {
-    const splitedArr = arr[page - 1].split('.');
-    const value = parseInt(splitedArr[0])
-    if (Math.round(arr[page]) - (Math.round(arr[page - 1])) === 1) {
-      setExpanded(`panel${value}`)
+  const handlePrevModule = (page) => {
+    const splitedArr = arr[page - 1].split(".");
+    const value = parseInt(splitedArr[0]);
+    if (Math.round(arr[page]) - Math.round(arr[page - 1]) === 1) {
+      setExpanded(`panel${value}`);
     }
-    const p = (page) * progress;
+    const p = page * progress;
     setShowsubActive(arr[page - 1]);
     dispatch(startCourse(id, page, p === 0 ? progress : p, true));
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
-  const handleNextModule = page => {
-    const splitedArr = arr[page - 1].split('.');
-    const value = parseInt(splitedArr[0])
-    const valueOne = parseInt(splitedArr[1])
+  const handleNextModule = (page) => {
+    const splitedArr = arr[page - 1].split(".");
+    const value = parseInt(splitedArr[0]);
+    const valueOne = parseInt(splitedArr[1]);
     if (valueOne === 1) {
-      setExpanded(`panel${value}`)
+      setExpanded(`panel${value}`);
     }
-    const p = (page) * progress;
+    const p = page * progress;
     setShowsubActive(arr[page - 1]);
     dispatch(startCourse(id, page, p > 100 ? 100 : p, true));
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const handleCurrentModule = (page, scrollTop = true) => {
     const p = currentModal * progress;
     dispatch(startCourse(id, page, p > 100 ? 100 : p, true));
-    setCurrentProgress(p > 100 ? 100 : p)
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    setCurrentProgress(p > 100 ? 100 : p);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
-  const openSubModule = obj1 => {
+  const openSubModule = (obj1) => {
     dispatch(subModule(obj1?.id));
   };
 
@@ -234,18 +232,18 @@ const CourseModule = () => {
     return handleCurrentModule(currentModal);
   };
 
-  const [iframeWidth, setIframe] = React.useState("100%")
+  const [iframeWidth, setIframe] = React.useState("100%");
   const renderProgress = (count = 0) => {
     return (
       <IOSSlider
         aria-label='ios slider'
         className={
-          (count <= 33 && 'red1-progress') ||
-          (count <= 60 && 'yellow1-progress') ||
-          (count <= 100 && 'green1-progress')
+          (count <= 33 && "red1-progress") ||
+          (count <= 60 && "yellow1-progress") ||
+          (count <= 100 && "green1-progress")
         }
         value={count}
-        valueLabelFormat={value => <div>{value}%</div>}
+        valueLabelFormat={(value) => <div>{value}%</div>}
         valueLabelDisplay='on'
         disabled
       />
@@ -254,15 +252,14 @@ const CourseModule = () => {
 
   const handleFinish = () => {
     history.push(routingConstants.COURSES_TEST + id);
-
   };
 
   const embededLink = (link = null) => {
     if (link) {
-      const a = link?.split('=');
+      const a = link?.split("=");
       return a[1];
     }
-    return '';
+    return "";
   };
 
   const testRef = useRef();
@@ -270,9 +267,7 @@ const CourseModule = () => {
   const manageContent = () => {
     if (course?.is_pdf && course.description !== null) {
       return (
-        <div
-          onContextMenu={e => e.preventDefault()}
-        >
+        <div onContextMenu={(e) => e.preventDefault()}>
           {/* <iframe
             id='idIframe'
             ref={testRef}
@@ -298,23 +293,20 @@ const CourseModule = () => {
             }}
             scrolling='no'
           /> */}
-          <Document   options={{ cMapUrl: 'cmaps/', cMapPacked: true }} file={course?.description} onLoadSuccess={onDocumentLoadSuccess}>
-      {[...Array(course?.total_pages)]?.map((page, index) => {
-
-        return (
-          <Page pageNumber={index + 1} />
-
-        )
-
-      }
-      )}
-      </Document>
-
+          <Document
+            options={{ cMapUrl: "cmaps/", cMapPacked: true }}
+            file={course?.description}
+            onLoadSuccess={onDocumentLoadSuccess}
+          >
+            {[...Array(course?.total_pages)]?.map((page, index) => {
+              return <Page pageNumber={index + 1} />;
+            })}
+          </Document>
         </div>
       );
     } else if (course.description === null) {
-      return <div>{t('coursesPage.pdfSize.heading')}</div>;
-    } else  {
+      return <div>{t("coursesPage.pdfSize.heading")}</div>;
+    } else {
       return (
         <div
           className='imgSet innerhtmlcontainer'
@@ -330,20 +322,18 @@ const CourseModule = () => {
     const data = [];
     courseModulesList.forEach((obj, ind) => {
       obj.sub_task.forEach((obj1, ind1) => {
-        data.push(`${ind + 1}.${ind1 + 1}`)
-      })
-    })
+        data.push(`${ind + 1}.${ind1 + 1}`);
+      });
+    });
     setArray(data);
-  }, [courseModulesList.length])
+  }, [courseModulesList.length]);
 
   const [adsCourseModule, setAdsCourseModule] = useState([]);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const [image,setImage]=useState("NA")
-
+  const [image, setImage] = useState("NA");
 
   function onDocumentLoadSuccess({ numPages }) {
-
     setNumPages(numPages);
   }
 
@@ -355,11 +345,11 @@ const CourseModule = () => {
   // }, [])
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "courses_module"
@@ -368,32 +358,13 @@ const CourseModule = () => {
   //         setImage(findImage)
   //         setAdsCourseModule(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
+  // 		});
 
-  const addEmail =(email)=>{
-    console.log("addEmail",email)
-       axios.post('/private_adds/click_add/'
-   ,{
-     // add_email:`${adds[0]?.add_email}`
-     add_email:email
-   }
-   )
-     .then((response) => {
-       // setAdds(response.data.results);
-       console.log("addEmailresponse",response)
-     });
-   
-}
+  // }, [])
 
-  useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -401,25 +372,47 @@ const CourseModule = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "courses_module"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setAdsCourseModule(filterArray)
-            }
-      });
-    })
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "courses_module";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setAdsCourseModule(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
-
-
+  }, []);
 
   const keys = [...Array().keys(course?.total_pages)];
 
@@ -427,17 +420,23 @@ const CourseModule = () => {
     <div>
       <Header loginPage={true} page='courses' />
       <div className='course_module mt-md-0 mb-md-0 mt-4 mb-4 noselect kuldeep_pdf'>
-
         <Container>
           <Row>
             <div className='col-md-12'>
-              {adsCourseModule.length > 0 && 
-              <div  className="ads_course_mod_cover" onClick={()=>addEmail(adsCourseModule[0]?.add_email)}>
-                <a href={adsCourseModule[0]?.url_adds}  target='_blank'>
-                  <img src={adsCourseModule[0]?.image} alt='Image' className='ads_Course_module' />
-                </a>
-              </div>
-}
+              {adsCourseModule.length > 0 && (
+                <div
+                  className='ads_course_mod_cover'
+                  onClick={() => addEmail(adsCourseModule[0]?.add_email)}
+                >
+                  <a href={adsCourseModule[0]?.url_adds} target='_blank'>
+                    <img
+                      src={adsCourseModule[0]?.image}
+                      alt='Image'
+                      className='ads_Course_module'
+                    />
+                  </a>
+                </div>
+              )}
             </div>
           </Row>
         </Container>
@@ -452,7 +451,7 @@ const CourseModule = () => {
             <Col md={12} xs={12} className='text-left mb-5'>
               <div className='circular_progress_module'>
                 <Stack spacing={2} direction='row'>
-                  <h2>{t('coursesPage.coursesModulePage.heading.1')}</h2>
+                  <h2>{t("coursesPage.coursesModulePage.heading.1")}</h2>
                 </Stack>
                 {renderProgress(moduleprogress)}
               </div>
@@ -467,8 +466,8 @@ const CourseModule = () => {
                       key={obj?.id}
                       className={
                         Number(course?.current_module) > obj?.id
-                          ? 'active-accordiantext'
-                          : ''
+                          ? "active-accordiantext"
+                          : ""
                       }
                     >
                       <div className='number-bgbox'>{ind + 1}</div>
@@ -482,12 +481,12 @@ const CourseModule = () => {
                                     key={obj?.id}
                                     className={
                                       Number(course?.id) === obj?.id
-                                        ? 'active-accordiantext'
-                                        : ''
+                                        ? "active-accordiantext"
+                                        : ""
                                     }
                                     style={{
-                                      cursor: 'pointer',
-                                      marginLeft: '-40px',
+                                      cursor: "pointer",
+                                      marginLeft: "-40px",
                                     }}
                                   >
                                     {Number(course?.id) === obj?.id && (
@@ -498,14 +497,16 @@ const CourseModule = () => {
                                       />
                                     )}
                                     <span
-                                      onClick={() => manageClick(ind1, obj1, ind)}
-
+                                      onClick={() =>
+                                        manageClick(ind1, obj1, ind)
+                                      }
                                       style={{
                                         color:
-                                          showSubActive === `${ind + 1}.${ind1 + 1}`
-                                            ? 'pink'
-                                            : 'black',
-                                        cursor: 'pointer',
+                                          showSubActive ===
+                                          `${ind + 1}.${ind1 + 1}`
+                                            ? "pink"
+                                            : "black",
+                                        cursor: "pointer",
                                       }}
                                     >
                                       {ind + 1}.{ind1 + 1}
@@ -524,11 +525,11 @@ const CourseModule = () => {
               <Col md={4} xs={12}>
                 <div className='accordion_box'>
                   <div className='close_btn'>
-                    <h4>{t('coursesPage.coursesModulePage.heading.2')}</h4>
+                    <h4>{t("coursesPage.coursesModulePage.heading.2")}</h4>
                     <img
                       src={close}
                       alt='...'
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: "pointer" }}
                       onClick={handleAccordian}
                     />
                   </div>
@@ -546,9 +547,7 @@ const CourseModule = () => {
                           >
                             <Typography>
                               <div className='number-bgbox'>{ind + 1}</div>
-                              <span>
-                                {obj?.heading}
-                              </span>
+                              <span>{obj?.heading}</span>
                             </Typography>
                           </AccordionSummary>
                           {obj?.sub_task &&
@@ -561,8 +560,8 @@ const CourseModule = () => {
                                         key={obj?.id}
                                         className={
                                           Number(course?.id) === obj?.id
-                                            ? 'active-accordiantext'
-                                            : ''
+                                            ? "active-accordiantext"
+                                            : ""
                                         }
                                       >
                                         {Number(course?.id) === obj?.id && (
@@ -579,10 +578,11 @@ const CourseModule = () => {
                                           }
                                           style={{
                                             color:
-                                              showSubActive === `${ind + 1}.${ind1 + 1}`
-                                                ? 'pink'
-                                                : 'black',
-                                            cursor: 'pointer',
+                                              showSubActive ===
+                                              `${ind + 1}.${ind1 + 1}`
+                                                ? "pink"
+                                                : "black",
+                                            cursor: "pointer",
                                           }}
                                         >
                                           <>&nbsp;</> {obj1?.title}
@@ -599,12 +599,11 @@ const CourseModule = () => {
               </Col>
             )}
             <Col md={show ? 8 : 11} xs={12}>
-
               <div>
                 <div>
                   {isLoading ? (
                     <>
-                      {[1, 2].map(a => (
+                      {[1, 2].map((a) => (
                         <div className='mb-5' key={a}>
                           <Skeleton
                             variant='rectangular'
@@ -620,7 +619,7 @@ const CourseModule = () => {
                             animation='wave'
                             style={{ marginBottom: 15 }}
                           />
-                          {[1, 2, 3, 4, 5].map(a => (
+                          {[1, 2, 3, 4, 5].map((a) => (
                             <Skeleton
                               key={a}
                               variant='rectangular'
@@ -634,10 +633,7 @@ const CourseModule = () => {
                       ))}
                     </>
                   ) : (
-
-
                     <div class='iframe-divarea'>
-
                       {manageContent()}
 
                       {course?.file_link && (
@@ -662,7 +658,7 @@ const CourseModule = () => {
                   )}
                   <div className='prev_next_btn'>
                     <Row>
-                      <Col md={6} xs={6}>
+                      {/* <Col md={6} xs={6}>
                         <button
                           className='back_button'
                           onClick={() => handlePrevModule(course?.prev_module)}
@@ -673,6 +669,24 @@ const CourseModule = () => {
                         >
                           {t('coursesPage.coursesModulePage.button.1')}
                         </button>
+                      </Col> */}
+                      <Col md={6} xs={6}>
+                        {course?.current_module > "1" ? (
+                          <button
+                            className='back_button'
+                            onClick={() =>
+                              handlePrevModule(course?.prev_module)
+                            }
+                            disabled={
+                              course?.current_module === "1" ||
+                              course?.current_module === null
+                            }
+                          >
+                            {t("coursesPage.coursesModulePage.button.1")}
+                          </button>
+                        ) : (
+                          " "
+                        )}
                       </Col>
                       <Col md={6} xs={6} className='text-right'>
                         {course?.next_module === null ? (
@@ -680,7 +694,7 @@ const CourseModule = () => {
                             className='next_button'
                             onClick={() => handleFinish()}
                           >
-                            {t('coursesPage.coursesModulePage.button.2')}
+                            {t("coursesPage.coursesModulePage.button.2")}
                           </button>
                         ) : (
                           <button
@@ -689,7 +703,7 @@ const CourseModule = () => {
                               handleNextModule(course?.next_module)
                             }
                           >
-                            {t('coursesPage.coursesModulePage.button.3')}
+                            {t("coursesPage.coursesModulePage.button.3")}
                           </button>
                         )}
                       </Col>
@@ -699,8 +713,7 @@ const CourseModule = () => {
               </div>
             </Col>
           </Row>
-          <AddsPopup popupShow={addPopup}
-            popupClose={handleClose} />
+          <AddsPopup popupShow={addPopup} popupClose={handleClose} />
         </Container>
         {/* )} */}
       </div>

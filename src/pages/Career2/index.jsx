@@ -3,6 +3,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { routingConstants } from "../../utils/constants";
+import Ankita from "../../assets/images/Ankita-Sharma.png";
+// import {ClipLoader} from "react-spinners";
 
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import {
@@ -11,9 +13,7 @@ import {
   toggleCollapseValue,
 } from "../../store/career";
 import { noImage } from "../../utils/ApiServices";
-import {
-  adsList
-} from "../../store/ads";
+import { adsList } from "../../store/ads";
 import "../HomePage/index.scss";
 import "./index.scss";
 import { Link } from "react-router-dom";
@@ -22,7 +22,9 @@ import axios from "axios";
 const CareerPage2 = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { governmentExams } = useSelector((state) => state.careerReducer);
+  const { governmentExams, isLoading } = useSelector(
+    (state) => state.careerReducer,
+  );
   const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
@@ -49,8 +51,8 @@ const CareerPage2 = () => {
 
   const [govBannerAds, setGovBannerAds] = useState([]);
   const [govBoxAds, setGovBoxAds] = useState([]);
-  const [image,setImage]=useState("NA")
-
+  const [govtScmSideAdds, setGovtScmSideAdds] = useState([]);
+  const [image, setImage] = useState("NA");
 
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=govt_scm_cover')
@@ -60,11 +62,11 @@ const CareerPage2 = () => {
   // }, [])
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "govt_scm_cover"
@@ -73,16 +75,11 @@ const CareerPage2 = () => {
   //         setImage(findImage)
   //         setGovBannerAds(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
+  // 		});
+
+  // }, [])
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -90,40 +87,76 @@ const CareerPage2 = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "govt_scm_cover"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setGovBannerAds(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "govt_scm_cover";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setGovBannerAds(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
+  }, []);
 
-const addEmail =(email)=>{
-  console.log("addEmail",email)
-     axios.post('/private_adds/click_add/'
- ,{
-   // add_email:`${adds[0]?.add_email}`
-   add_email:email
- }
- )
-   .then((response) => {
-     // setAdds(response.data.results);
-     console.log("addEmailresponse",response)
-   });
- 
-}
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "govt_scm_side_ads";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setGovtScmSideAdds(filterArray);
+          }
+        });
+    });
+    dispatch(adsList());
+  }, []);
 
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=govt_scm_box')
@@ -133,11 +166,11 @@ const addEmail =(email)=>{
   // }, [])
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "govt_scm_box"
@@ -146,17 +179,12 @@ const addEmail =(email)=>{
   //         setImage(findImage)
   //         setGovBoxAds(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
+  // 		});
+
+  // }, [])
 
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -164,24 +192,24 @@ const addEmail =(email)=>{
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "govt_scm_box"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setGovBoxAds(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "govt_scm_box";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setGovBoxAds(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
-
+  }, []);
 
   return (
     <div>
@@ -189,13 +217,20 @@ const addEmail =(email)=>{
       <Header loginPage={true} page='career' subPage='govExams' />
       <Container>
         <Row>
-          {govBannerAds.length > 0 && 
-              <div  className="col-md-12 ads_gov_cover" onClick={()=>addEmail(govBannerAds[0]?.add_email)}>
-            <a href={govBannerAds[0]?.url_adds} target='_blank'>
-              <img src={govBannerAds[0]?.image} alt='Image' className='ads_gov' />
-            </a>
-          </div>
-}
+          {govBannerAds.length > 0 && (
+            <div
+              className='col-md-12 ads_gov_cover'
+              onClick={() => addEmail(govBannerAds[0]?.add_email)}
+            >
+              <a href={govBannerAds[0]?.url_adds} target='_blank'>
+                <img
+                  src={govBannerAds[0]?.image}
+                  alt='Image'
+                  className='ads_gov'
+                />
+              </a>
+            </div>
+          )}
         </Row>
       </Container>
 
@@ -213,10 +248,31 @@ const addEmail =(email)=>{
                   rows: governmentExams?.govt_category || [],
                 }}
               />
+              <div className='row'>
+                {/* {govtScmSideAdds.length >0 && 
+           
+                <div  className='col-md-12' onClick={()=>addEmail(govtScmSideAdds[0]?.add_email)}>
+                  <a href={govtScmSideAdds[0]?.url_adds} target='_blank'>
+                    <img 
+                    src={govtScmSideAdds[0]?.image} alt='Image' className='google_add_courses'
+                     />
+                  </a>
+
+                </div>
+} */}
+                <div className='row'>
+                  <div className='col-md-12'>
+                    <img
+                      src={govtScmSideAdds[0]?.image}
+                      alt='Image'
+                      className='google_add_courses'
+                    />
+                  </div>
+                </div>
+              </div>
             </Col>
 
             <Col md={8} xs={12}>
-
               {governmentExams?.govt_list?.length > 0 ? (
                 governmentExams?.govt_list?.map(
                   (c, index) =>
@@ -230,12 +286,18 @@ const addEmail =(email)=>{
                             <Col md={3} xs={12}>
                               <div className='gov_logo_box'>
                                 <Link
-                                  to={routingConstants.GOVERNMENT_SCHEMES + c.id}
+                                  to={
+                                    routingConstants.GOVERNMENT_SCHEMES + c.id
+                                  }
                                   className='col-md-6'
                                   key={c?.id}
                                 >
-                                  <div className="career_logo_box">
-                                    <img srcSet={transformImg(c?.logo)} alt='...' className='career_logo_img' />
+                                  <div className='career_logo_box'>
+                                    <img
+                                      srcSet={transformImg(c?.logo)}
+                                      alt='...'
+                                      className='career_logo_img'
+                                    />
                                   </div>
                                 </Link>
                               </div>
@@ -244,38 +306,37 @@ const addEmail =(email)=>{
                               <div className='top_col_content'>
                                 <h3>
                                   <Link
-                                    to={routingConstants.GOVERNMENT_SCHEMES + c.id}
+                                    to={
+                                      routingConstants.GOVERNMENT_SCHEMES + c.id
+                                    }
                                     className=''
                                     key={c?.id}
                                   >
                                     {c && c.name}
-                                  </Link></h3>
+                                  </Link>
+                                </h3>
 
-                                <ul class="list-inline list-unstyled">
+                                <ul class='list-inline list-unstyled'>
                                   {c.state && (
                                     <li>
-                                      <span>{t("careerGovExams.other.8")}</span> : {" "}
-                                      {c && c.state}
+                                      <span>{t("careerGovExams.other.8")}</span>{" "}
+                                      : {c && c.state}
                                     </li>
                                   )}
-                                  {c.state && (
-                                    <li>|</li>
-                                  )}
+                                  {c.state && <li>|</li>}
                                   {c.scheme_level && (
                                     <li>
-                                      <span>{t("careerGovExams.other.4")}</span> : {" "}
-                                      {c && c.scheme_level}
+                                      <span>{t("careerGovExams.other.4")}</span>{" "}
+                                      : {c && c.scheme_level}
                                     </li>
                                   )}
 
-                                  {c.scheme_level && (
-                                    <li>|</li>
-                                  )}
+                                  {c.scheme_level && <li>|</li>}
 
                                   {c.age_criteria && (
                                     <li>
-                                      <span>{t("careerGovExams.other.6")}</span> : {" "}
-                                      {c && c.age_criteria}
+                                      <span>{t("careerGovExams.other.6")}</span>{" "}
+                                      : {c && c.age_criteria}
                                     </li>
                                   )}
                                 </ul>
@@ -283,49 +344,78 @@ const addEmail =(email)=>{
                                 <Row>
                                   {c.whom_this_scheme_for && (
                                     <Col md={12} xs={12}>
-                                      <span className="gov_scm_heading">{t("careerGovExams.other.5")}</span> : {" "}
-                                      {c && c.whom_this_scheme_for}
+                                      <span className='gov_scm_heading'>
+                                        {t("careerGovExams.other.5")}
+                                      </span>{" "}
+                                      : {c && c.whom_this_scheme_for}
                                     </Col>
                                   )}
                                   {c.benefits && (
                                     <Col md={12} xs={12}>
-                                      <span className="gov_scm_heading">{t("careerGovExams.other.7")}</span> : {" "}
-                                      {c && c.benefits}
+                                      <span className='gov_scm_heading'>
+                                        {t("careerGovExams.other.7")}
+                                      </span>{" "}
+                                      : {c && c.benefits}
                                     </Col>
                                   )}
                                   {c.official_link && (
                                     <Col md={12} xs={12}>
-                                      <span className="gov_scm_heading">{t("careerGovExams.other.9")}</span> : {" "}
+                                      <span className='gov_scm_heading'>
+                                        {t("careerGovExams.other.9")}
+                                      </span>{" "}
+                                      :{" "}
                                       <Link
                                         to={{ pathname: c?.official_link }}
                                         target='_blank'
-                                        rel='noreferrer'>
+                                        rel='noreferrer'
+                                      >
                                         {c && c.official_link}
                                       </Link>
                                     </Col>
                                   )}
                                 </Row>
-
                               </div>
                             </Col>
                           </Row>
                         </div>
                         <Row>
-                          {(index % 4 == 3) ? <>
-                           <div  className="career_box_add" onClick={()=>addEmail(govBoxAds[0]?.add_email)}>
-                            {govBoxAds.length > 0 && 
-                            <a href={govBoxAds[0]?.url_adds} target='_blank'>
-                              <img src={govBoxAds[0]?.image} alt='Image'
-                                className='ads_gov_box' />
-                            </a>
-                             }
-                              </div></> : ''}
+                          {index % 4 == 3 ? (
+                            <>
+                              <div
+                                className='career_box_add'
+                                onClick={() =>
+                                  addEmail(govBoxAds[0]?.add_email)
+                                }
+                              >
+                                {govBoxAds.length > 0 && (
+                                  <a
+                                    href={govBoxAds[0]?.url_adds}
+                                    target='_blank'
+                                  >
+                                    <img
+                                      src={govBoxAds[0]?.image}
+                                      alt='Image'
+                                      className='ads_gov_box'
+                                    />
+                                  </a>
+                                )}
+                              </div>
+                            </>
+                          ) : (
+                            ""
+                          )}
                         </Row>
                       </>
                     ),
                 )
               ) : (
                 <div className='text-center'>{t("common.noDataFound")}</div>
+
+                //  isLoading ? (
+                // <ClipLoader className="loader" color="#ec498a" />
+                // ):(
+                //   <div className='text-center'>{t("common.noDataFound")}</div>
+                // )
               )}
             </Col>
           </Row>

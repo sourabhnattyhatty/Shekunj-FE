@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 // import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import ReactModal from "react-modal-resizable-draggable";
-import { Document, Page,pdfjs } from 'react-pdf';
+import { Document, Page, pdfjs } from "react-pdf";
+import "./index.scss";
+import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
+// import {file} from "./pdf-sample.pdf"
 
 import {
   Container,
@@ -22,8 +25,9 @@ import Moment from "react-moment";
 import { getAllMagzines } from "../../store/magzine";
 import {
   setCollapseMagzines,
-  getAllMagzines as fetchMagzines,
+  getAllMagzines as fetchMagzines
 } from "../../store/magzine/action";
+import { singleMagzineDetails } from "../../store/magzine/action";
 import { Header, Footer } from "../../components";
 import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
@@ -34,96 +38,160 @@ import { useTranslation } from "react-i18next";
 import { routingConstants } from "../../utils/constants";
 import "./index.scss";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import HTMLFlipBook from "react-pageflip";
+import { adsList } from "../../store/ads";
+
+const url = "https://cors-anywhere.herokuapp.com/http://www.pdf995.com/samples/pdf.pdf";
 
 function MagzineDetails(m) {
+  const { id } = useParams();
+  const history = useHistory();
+  const { magzines } = useSelector((state) => state.magzinesReducer);
+  const dispatch = useDispatch();
+  console.log("magzineIdddd", id);
 
-    const url = 
-  `https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/dummy_MWXkNXX.pdf`
+  console.log("magzinesssssDetail", magzines);
+  const { lan } = useSelector((state) => state.languageReducer);
+  console.log("langgggggDetail", lan);
+  const { t } = useTranslation();
 
-  pdfjs.GlobalWorkerOptions.workerSrc = 
-  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-   const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
+  // const url = `https://cors-anywhere.herokuapp.com/${magzines?.pdf}`;
+    // const url = "https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
 
-    
-  //   function onDocumentLoadSuccess({ numPages }) {
-  //     setNumPages(numPages);
-  //     setPageNumber(1);
-  //   }
-
-    function onDocumentLoadSuccess({ numPages }) {
-      setNumPages(numPages);
-      setPageNumber(1);
-    }
-    
-    function changePage(offset) {
-      setPageNumber(prevPageNumber => prevPageNumber + offset);
-    }
-    
-    function previousPage() {
-      changePage(-1);
-    }
-    
-    function nextPage() {
-      changePage(1);
-    }
-
-  const [show, setShow] = useState(false);
+    pdfjs.GlobalWorkerOptions.workerSrc = 
+    `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
 
 
-  const handleClose = (index) => {
-    setShow(false)
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+    setPageNumber(1);
+  }
+
+  function changePage(offset) {
+    setPageNumber((prevPageNumber) => prevPageNumber + offset);
+  }
+
+  function previousPage() {
+    changePage(-1);
+  }
+
+  function nextPage() {
+    changePage(1);
+  }
+
+    /*To Prevent right click on screen*/
+    document.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+    });
+
+  // const [show, setShow] = useState(false);
+
+  // const handleClose = (index) => {
+  //   setShow(false);
+  // };
+  // const handleShow = (index) => {
+  //   setShow(index);
+  // };
+
+  // React.useEffect(() => {
+  //   dispatch(fetchMagzines());
+  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  // }, [dispatch, lan]);
+
+  // useEffect(() => {
+  //   dispatch(getAllMagzines());
+  // }, [dispatch, lan]);
+
+  useEffect(() => {
+    dispatch(singleMagzineDetails(id));
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [dispatch, id, lan]);
+
+  // const singleMagzineDetails = (id) =>{
+  //   dispatch(singleMagzineDetails(id));
+  // }
+
+  // const handleSetCollapse = (id, is_collapse) => {
+  //   dispatch(setCollapseMagzines(id, is_collapse ? false : true));
+  // };
+
+  const [storiesBannerAds, setStoriesBannerAds] = useState([]);
+  const [storiesBoxAds, setStoriesBoxAds] = useState([]);
+  const [image, setImage] = useState("NA");
+  const [adds, setAdds] = useState([]);
+  const [magzineDetailsBoxAds, setMagzinetDetailsBoxAds] = useState([]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/private_adds/private_add?image_type=success_stories_banner")
+  //     .then((response) => {
+  //       setStoriesBannerAds(response.data.results);
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/private_adds/private_add?image_type=success_stories_box")
+  //     .then((response) => {
+  //       setStoriesBoxAds(response.data.results);
+  //     });
+  // }, []);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "magazine_detail";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setMagzinetDetailsBoxAds(filterArray);
+          }
+        });
+    });
+    dispatch(adsList());
+  }, []);
+
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
   };
-  const handleShow = (index) => { 
-    setShow(index)
-   };
 
-
-const history = useHistory();
-const { magzines } = useSelector((state) => {
-  console.log("state", state);
-  return state.magzinesReducer;
-});
-const dispatch = useDispatch();
-
-console.log("magzinesssss", magzines);
-const { lan } = useSelector((state) => state.languageReducer);
-console.log("langggggg", lan);
-const { t } = useTranslation();
-
-React.useEffect(() => {
-  dispatch(fetchMagzines());
-  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-}, [dispatch, lan]);
-
-useEffect(() => {
-  dispatch(getAllMagzines());
-}, [dispatch, lan]);
-
-const handleSetCollapse = (id, is_collapse) => {
-  dispatch(setCollapseMagzines(id, is_collapse ? false : true));
-};
-
-const [storiesBannerAds, setStoriesBannerAds] = useState([]);
-const [storiesBoxAds, setStoriesBoxAds] = useState([]);
-
-
-useEffect(() => {
-  axios
-    .get("/private_adds/private_add?image_type=success_stories_banner")
-    .then((response) => {
-      setStoriesBannerAds(response.data.results);
-    });
-}, []);
-useEffect(() => {
-  axios
-    .get("/private_adds/private_add?image_type=success_stories_box")
-    .then((response) => {
-      setStoriesBoxAds(response.data.results);
-    });
-}, []);
-
-return (
+  return (
     <div>
       <Header loginPage={true} page='more' subPage='moreblog' />
       <div className='SuccStory_banner'>
@@ -148,10 +216,13 @@ return (
       <Container>
         <Row>
           <div className='col-md-12'>
-            <div className='ads_story_cover'>
-              <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
+            <div
+              className='ads_story_cover'
+              onClick={() => addEmail(magzineDetailsBoxAds[0]?.add_email)}
+            >
+              <a href={magzineDetailsBoxAds[0]?.url_adds} target='_blank'>
                 <img
-                  src={storiesBannerAds[0]?.image}
+                  src={magzineDetailsBoxAds[0]?.image}
                   alt='Image'
                   className='ads_story_cover_img'
                 />
@@ -161,74 +232,54 @@ return (
         </Row>
       </Container>
 
+      {console.log("magzinesPdf", magzines?.pdf)}
       <Container>
-      {magzines["magazine_list"]?.length > 0 ? (
-          magzines["magazine_list"]?.map((m, index) => {
-            console.log("magM", m.id);
-            console.log("magMpdf", m.pdf);
-            return (
-              <>
-                <div className='MagzineCard'>
-                  {/* <Card style={{ width: "67rem" }} key={m?.id}>
+        {/* {magzines["magazine_list"]?.length > 0 ? (
+          magzines["magazine_list"]?.map((magzines, index) => {
+            console.log("magMDetailPage", magzines.id);
+            console.log("magMpdfmagMDetailPage", magzines.pdf);
+            return ( */}
+        <>
+          <div style={{ backgroundColor: "pink" }} key={magzines?.id}>
+            <HTMLFlipBook width={300} height={500}>
+              <div className='demoPage'>{pageNumber}</div>
+              <div className='demoPage'>{pageNumber}</div>
+              <div className='demoPage'>
+                <Document
+                  class='center'
+                  key={magzines?.id}
+                  file={url}
+                  onLoadSuccess={onDocumentLoadSuccess}
+                ></Document>
+              </div>
+
+              <div className='demoPage'>Page 4</div>
+            </HTMLFlipBook>
+          </div>
+
+          {/* <div className='MagzineCard' key={magzines?.id}> */}
+            {/* <Card  key={magzines?.id}>
                     <Card.Body className='magzineCardBody'>
                       <Card.Text className='createdText'>
                         Created_at:
                         <Moment format='D MMM YYYY' withTitle>
-                          {m?.created_at}
+                          {magzines?.created_at}
                         </Moment>
                       </Card.Text>
 
-                      <Card.Title>{m.title}</Card.Title>
+                      <Card.Title>{magzines && magzines?.title}</Card.Title>
                       <Card.Subtitle className='mb-2 text-muted'>
                         {" "}
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: `<div>${m.about_magazine}</div>`,
+                            __html: `<div>${magzines?.about_magazine}</div>`,
                           }}
                         />
                       </Card.Subtitle> */}
-                      <div class="reader__canvas-container">
-                      <div className="pdfDetails">
-                        <canvas class="document-canvas">
-                      
-                     <Document class="center" 
-                          
-                          key={m?.id}
-        file={url}
-        onLoadSuccess={onDocumentLoadSuccess}
-      >
-        <Page pageNumber={pageNumber} />
-      </Document>
-      <div className="pagec">
-          Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
-        </div>
-        <div className="buttonc">
-        <button
-          type="button"
-          disabled={pageNumber <= 1}
-          onClick={previousPage}
-          className="Pre"
-            
-        >
-          Previous
-        </button>
-        <button
-          type="button"
-          disabled={pageNumber >= numPages}
-          onClick={nextPage}
-           
-        >
-          Next
-        </button>
-        </div>
-                            
- 
 
-                        </canvas>
-                      </div>
-                      </div>
-                      {/* <Button
-                        key={m?.id}
+{/* 
+            <Button
+                        key={magzines?.id}
                         onClick={() => handleShow(index)}
                         style={{ backgroundColor: "#a63d67" }}
                       >
@@ -246,24 +297,33 @@ return (
                             Close
                           </Button>
                         </Modal.Header>
-                        <Modal.Body key={m?.id} style={{ userSelect: "none" }}>
-                           */}
-                          {/* <iframe
+                        <Modal.Body key={magzines?.id} style={{ userSelect: "none" }}> */}
+                          
+            {/* <iframe
                             id='iframe'
-                            src={m?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}
+                            src={magzines?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}
                             frameBorder='0'
                             scrolling='auto'
                             height='100%'
                             width='100%'
-                          ></iframe> */}
-                          {/* <Document class="center" 
-                          
-                          key={m?.id}
-        file={m?.pdf}
+                          ></iframe>  */}
+
+            {/* <Document
+              class='center'
+              key={magzines?.id}
+              file={magzines?.pdf}
+              onLoadSuccess={onDocumentLoadSuccess}
+            >
+              <Page pageNumber={pageNumber} />
+            </Document> */}
+            <div className="main">
+      <Document
+        file={url}
         onLoadSuccess={onDocumentLoadSuccess}
       >
         <Page pageNumber={pageNumber} />
       </Document>
+      <div>
         <div className="pagec">
           Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
         </div>
@@ -285,40 +345,43 @@ return (
         >
           Next
         </button>
-        </div> */}
-                          {/* <Modal.Footer></Modal.Footer>
+        </div>
+      </div>
+      </div>
+            {/* <Modal.Footer></Modal.Footer>
                         </Modal.Body>
-                      </Modal> */}
-                      
-                      {/* <Card.Text className='updatedText'>
+                      </Modal> 
+
+            <Card.Text className='updatedText'>
                         Updated_at :
                         <Moment format='D MMM YYYY' withTitle>
-                          {m?.updated_at}
+                          {magzines?.updated_at}
                         </Moment>
                       </Card.Text>
                     </Card.Body>
                   </Card> */}
-                </div>
-              </>
-            );
-          })
+          {/* </div> */}
+        </>
+       {/* );
+            })
         ) : (
           <div className='text-center'>{t("common.noDataFound")}</div>
-        )}
-      </Container>
-    
-<div className='want'>
-  <Container>
-    <h2>{t("successStoriesPage.content.2")}</h2>
-    <button onClick={() => history.push("/courses")} className='want_btn'>
-      {t("successStoriesPage.button.2")}
-    </button>
-  </Container>
-</div>
+       )}    */}
 
-<Footer loginPage={false} />
-</div>
-);
+      </Container>
+
+      <div className='want'>
+        <Container>
+          <h2>{t("successStoriesPage.content.2")}</h2>
+          <button onClick={() => history.push("/courses")} className='want_btn'>
+            {t("successStoriesPage.button.2")}
+          </button>
+        </Container>
+      </div>
+
+      <Footer loginPage={false} />
+    </div>
+  );
 }
 
 export default MagzineDetails;

@@ -3,17 +3,17 @@
   padding: 80px 0;
 }
 
-.guidance_book_form {
+.Event_book_form {
   background-color: #fff;
   border-radius: 5px;
   padding: 55px 40px;
 }
 
-.guidance_book_form em {
+.Event_book_form em {
   font-style: inherit;
 }
 
-.guidance_con h2 {
+.event_con h2 {
   font-family: 'SegoeUI_medium';
   font-style: normal;
   font-weight: 800;
@@ -22,7 +22,7 @@
   color: rgb(96 96 96);
 }
 
-.guidance_con p {
+.event_con p {
   font-family: 'SegoeUI_bold';
   text-transform: capitalize;
   font-style: normal;
@@ -32,25 +32,25 @@
   color: rgb(0 0 0);
 }
 
-.guidance_con img {
+.event_con img {
   max-width: 100%;
-  margin-top: 30px;
+  // margin-top: 30px;
 }
 
-.guidance_book_form span.MuiTabs-indicator {
+.Event_book_form span.MuiTabs-indicator {
   border-bottom: none !important;
 }
 
-.guidance_book_form .MuiTabs-flexContainer {
+.Event_book_form .MuiTabs-flexContainer {
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.guidance_book_form .MuiTabPanel-root {
+.Event_book_form .MuiTabPanel-root {
   padding: 24px 0 !important;
 }
 
-.guidance_book_form .MuiTabs-indicator {
+.Event_book_form .MuiTabs-indicator {
   position: absolute;
   height: 2px;
   bottom: 0;
@@ -60,7 +60,7 @@
   background-color: transparent;
 }
 
-.guidance_book_form .MuiTab-root.Mui-selected {
+.Event_book_form .MuiTab-root.Mui-selected {
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
@@ -76,7 +76,7 @@
   height: 42px;
 }
 
-.guidance_book_form .MuiFormControl-root.MuiTextField-root {
+.Event_book_form .MuiFormControl-root.MuiTextField-root {
   background: #fcfcfd;
   border: 1px solid #e6e5eb;
   box-sizing: border-box;
@@ -85,7 +85,7 @@
   height: 50px;
 }
 
-.guidance_book_form .MuiButtonBase-root.MuiTab-root {
+.Event_book_form .MuiButtonBase-root.MuiTab-root {
   font-family: "SegoeUI_medium";
   font-style: normal;
   font-weight: 500;
@@ -95,20 +95,20 @@
   padding: 0;
 }
 
-.guidance_book_form .MuiOutlinedInput-root {
+.Event_book_form .MuiOutlinedInput-root {
   height: 50px;
   // padding: 0px 0 0px 6px;
 }
 
-.guidance_book_form .MuiOutlinedInput-notchedOutline {
+.Event_book_form .MuiOutlinedInput-notchedOutline {
   border: none;
 }
 
-.guidance_book_form .MuiSelect-select.MuiSelect-outlined img {
+.Event_book_form .MuiSelect-select.MuiSelect-outlined img {
   margin-right: 9px;
 }
 
-.guidance_book_form select {
+.Event_book_form select {
   background: #fcfcfd;
   border: 1px solid #e6e5eb;
   box-sizing: border-box;
@@ -117,7 +117,7 @@
   height: 50px;
 }
 
-.guidance_book_form .MuiFormControl-root {
+.Event_book_form .MuiFormControl-root {
   width: 100%;
   background-color: #fcfcfd;
   border: 1px solid #e6e5eb;
@@ -127,11 +127,11 @@
   height: 50px;
 }
 
-.guidance_book_form .form-group.mzero .MuiFormControl-root {
+.Event_book_form .form-group.mzero .MuiFormControl-root {
   margin: 0;
 }
 
-.guidance_book_form textarea.textarea_set {
+.Event_book_form textarea.textarea_set {
   width: 100%;
   background: #fcfcfd;
   border: 1px solid #cfd0d7;
@@ -140,11 +140,11 @@
   padding: 15px 12px;
 }
 
-.guidance_book_form textarea.textarea_set:focus {
+.Event_book_form textarea.textarea_set:focus {
   outline: none;
 }
 
-.guidance_book_form .MuiSelect-select.MuiSelect-outlined {
+.Event_book_form .MuiSelect-select.MuiSelect-outlined {
   font-family: SegoeUI_medium;
   font-style: normal;
   font-weight: normal;
@@ -153,28 +153,28 @@
   color: #5f6377;
 }
 
-.guidance_book_form svg.MuiSvgIcon-root {
+.Event_book_form svg.MuiSvgIcon-root {
   background-image: url("../../assets/icons/down.png") !important;
   background-repeat: no-repeat;
   color: #fff !important;
 }
 
-.guidance_book_form svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-1636szt {
+.Event_book_form svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-1636szt {
   right: 5px !important;
   top: calc(50% - 0.15em) !important;
 }
 
-.guidance_book_form svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.MuiSelect-iconOpen.css-1yhq19e {
+.Event_book_form svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.MuiSelect-iconOpen.css-1yhq19e {
   right: 15px !important;
   top: calc(50% - 1em) !important;
 }
 
-.guidance_book_form .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+.Event_book_form .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
   color: #fff;
   top: calc(50% - 5px);
 }
 
-.guidance_book_form .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
+.Event_book_form .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
   color: #fff;
   right: 18px;
   top: calc(50% - 0.9em);
@@ -230,88 +230,6 @@ button.book_sess_btn:hover {
   font-size: 16px;
   line-height: 140%;
   color: #828282;
-}
-
-@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
-  .guidance_book_form {
-    padding: 30px;
-  }
-
-  .guidance_book {
-    padding: 30px 0;
-  }
-
-  .guidance_book .col-md-5.col-12 {
-    order: 2;
-  }
-
-  .book_sec_content.mob_show {
-    display: block;
-  }
-
-  .guidance_book .col-md-7.col-12 {
-    order: 1;
-  }
-
-  .book_sec_content.mob_hide {
-    display: none;
-  }
-
-  .other_head .MuiButton-text.MuiButton-root {
-    display: none;
-  }
-
-  .ads_guidence {
-    margin-top: 20px;
-    height: 400px !important;
-  }
-}
-
-.ads_guidence {
-  width: 100%;
-  height: 614px;
-  padding-top: 0px;
-}
-
-
-// KC 30-08-2022
-
-@media screen and (max-width:767px) {
-
-  .addimage098 {
-    width: 100%;
-  }
-
-  .addimage098 img {
-    width: 100%;
-    object-fit: contain;
-  }
-
-  .career_box h3 {
-    white-space: unset;
-    /* text-overflow: ellipsis; */
-  }
-
-  .college_ads_box {
-    height: 92px;
-    margin-left: 0;
-  }
-
-  .college_ads_box {
-    width: 79%;
-    object-fit: cover;
-    margin: auto;
-    text-align: center;
-    display: block;
-  }
-
-  .career_box h3 {
-    white-space: unset;
-  }
-
-
-
-
 }
 
 .form-group Calendar {

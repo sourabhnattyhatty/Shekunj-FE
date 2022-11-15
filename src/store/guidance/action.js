@@ -17,7 +17,7 @@ export const bookCounseller = (value) => async (dispatch) => {
     dispatch({ type: guidanceTypes.BOOK_SESSION_FAIL });
     if (error.data.errors.date_of_birth) {
       toast.error(i18njs.t("login.form1.dob.required"), toasterConfig);
-    }  else if (error.data.errors.qualifications) {
+    } else if (error.data.errors.qualifications) {
       toast.error(
         i18njs.t("login.form1.qualification.required"),
         toasterConfig,
@@ -50,11 +50,13 @@ export const getCareerOption = () => async (dispatch) => {
   }
 };
 
-export const getGuidanceCategory = () => async (dispatch) => {
+export const getGuidanceCategory = (id) => async (dispatch) => {
+  let newId = id == undefined ? "" : id;
   try {
-    const url = apiConstants.GUIDANCE.CAREER_TEST_CATEGORY;
+    const url = apiConstants.GUIDANCE.CAREER_TEST_CATEGORY + newId;
     dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
     const res = await httpServices.get(url);
+    console.log("onlycategory", res.data);
     dispatch({
       type: guidanceTypes.GUIDANCE_CATEGORY_FINISH_PRIVATE,
       payload: res?.data || [],
@@ -73,9 +75,11 @@ export const getGuidanceCategory = () => async (dispatch) => {
 };
 
 export const getGuidanceCategoryDetail = (id) => async (dispatch) => {
+  let newId = id == undefined ? "" : id;
   try {
     dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_DETAIL_REQUEST });
-    const res = await httpServices.get(constants.GUIDANCE_CATEGORY + id);
+    const res = await httpServices.get(constants.GUIDANCE_CATEGORY + newId);
+    console.log("res.dataGuidance", res.data);
     dispatch({
       type: guidanceTypes.GUIDANCE_CATEGORY_DETAIL_FINISH,
       payload: res.data || null,
@@ -148,6 +152,7 @@ export const fetchUserCareerTestCount = (id) => async (dispatch) => {
       type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_REQUEST,
     });
     const res = await httpServices.get(constants.USER_CAREER_COUNT + id);
+    // const res = await httpServices.get("mock-test" + "/" + id);
     dispatch({
       type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_SUCCESS,
       payload: res?.data,

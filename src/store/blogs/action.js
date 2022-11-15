@@ -7,9 +7,9 @@ import { handleErrorMessage } from "../../utils/utils";
 
 const constants = apiConstants.ALL_BLOGS;
 
-export const getAllBlogs = () => async (dispatch) => {
+export const getAllBlogs = (lat="19.8508544",long="75.3762304") => async (dispatch) => {
   try {
-    const url = constants.ALL_BLOGS;
+    const url = constants.ALL_BLOGS+`?latitude=${lat}&longitude=${long}`;
 
     dispatch({ type: blogsTypes.FETCH_BLOGS_REQUEST });
     const res = await ApiService.get(url);
@@ -27,10 +27,10 @@ export const getAllBlogs = () => async (dispatch) => {
   }
 };
 
-export const singleBlogDetails = (id) => async (dispatch) => {
+export const singleBlogDetails = (id,lat="19.8508544",long="75.3762304") => async (dispatch) => {
   try {
     dispatch({ type: blogsTypes.FETCH_BLOGS_REQUEST });
-    const res = await httpServices.get("more/blog" + "/" + id);
+    const res = await httpServices.get("more/blog" + "/" + id+`?latitude=${lat}&longitude=${long}`);
     dispatch({
       type: blogsTypes.FETCH_BLOGS_FINISH,
       // payload: {

@@ -28,6 +28,7 @@ import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { adsList } from "../../store/ads";
 
 function BlogPage() {
   const history = useHistory();
@@ -53,22 +54,76 @@ function BlogPage() {
   };
 
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
-  const [storiesBoxAds, setStoriesBoxAds] = useState([]);
+  const [image, setImage] = useState("NA");
+  const [blogBoxAdds, setBlogBoxAdds] = useState([]);
+  const [adds, setAdds] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_banner")
-      .then((response) => {
-        setStoriesBannerAds(response.data.results);
-      });
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "blog_index";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setBlogBoxAdds(filterArray);
+          }
+        });
+    });
+    dispatch(adsList());
   }, []);
-  useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_box")
-      .then((response) => {
-        setStoriesBoxAds(response.data.results);
-      });
-  }, []);
+
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/private_adds/private_add?image_type=success_stories_banner")
+  //     .then((response) => {
+  //       setStoriesBannerAds(response.data.results);
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/private_adds/private_add?image_type=success_stories_box")
+  //     .then((response) => {
+  //       setStoriesBoxAds(response.data.results);
+  //     });
+  // }, []);
 
   return (
     <div>
@@ -95,12 +150,15 @@ function BlogPage() {
       <Container>
         <Row>
           <div className='col-md-12'>
-            <div className='ads_story_cover'>
-              <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
+            <div
+              className='ads_story_cover'
+              onClick={() => addEmail(blogBoxAdds[0]?.add_email)}
+            >
+              <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
                 <img
-                  src={storiesBannerAds[0]?.image}
+                  src={blogBoxAdds[0]?.image}
                   alt='Image'
-                  className='ads_story_cover_img'
+                  className='ads_story_cover_img_blog'
                 />
               </a>
             </div>
@@ -114,57 +172,58 @@ function BlogPage() {
             ?.slice(0)
             .reverse()
             .map((s, idx) => {
-              console.log("s", s)
-              return(
-              <>
-                <div className='suc_box_blog' key={s?.id}>
-                  <Row>
-                    {idx % 2 === 0 ? (
-                      <>
-                        <Col md={8} xs={12}>
-                          <h2>
-                            <img
-                              className='quote_img_blog'
-                              src={double_quote}
-                              alt=''
-                            />
-                            {s?.title || t("common.n/a")}{" "}
-                          </h2>
-                          <h6 class='card-subtitle mb-2 text-muted'>
-                            <Moment format='D MMM YYYY' withTitle>
-                              {s?.created_at}
-                            </Moment>
-                          </h6>
-                          <p className='noselect'>
-                            {/* {(s?.is_collapse
+              console.log("s", s);
+              return (
+                <>
+                  <div className='suc_box_blog' key={s?.id}>
+                    <Row>
+                      {idx % 2 === 0 ? (
+                        <>
+                          <Col md={8} xs={12}>
+                            <h2>
+                              <img
+                                className='quote_img_blog'
+                                src={double_quote}
+                                alt=''
+                              />
+                              {s?.title || t("common.n/a")}{" "}
+                            </h2>
+                            <h6 class='card-subtitle mb-2 text-muted'>
+                              <Moment format='D MMM YYYY' withTitle>
+                                {s?.created_at}
+                              </Moment>
+                            </h6>
+                            <p className='noselect'>
+                              {/* {(s?.is_collapse
                               ? paragraph(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))
                               : sliceString(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))) || t("common.n/a")} */}
-                            {s?.is_collapse === true ? (
-                              <div
-                                dangerouslySetInnerHTML={{
-                                  __html: `<div>${s.about_blog}</div>`,
-                                }}
-                              />
-                            ) : (
-                              <div
-                                style={{
-                                  maxHeight: "120px",
-                                  overflow: "hidden",
-                                }}
-                                dangerouslySetInnerHTML={{
-                                  __html: `<div>${s.about_blog}</div>`,
-                                }}
-                              />
-                            )}
-                                 <Link to={"/blogs/"+s.id}
-                                  className="BlogReadMore"
-                                    key={s?.id}>    
-                                    
-                                    Read More
-                                    </Link>
-                          </p>
+                              {s?.is_collapse === true ? (
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: `<div>${s.about_blog}</div>`,
+                                  }}
+                                />
+                              ) : (
+                                <div
+                                  style={{
+                                    maxHeight: "120px",
+                                    overflow: "hidden",
+                                  }}
+                                  dangerouslySetInnerHTML={{
+                                    __html: `<div>${s.about_blog}</div>`,
+                                  }}
+                                />
+                              )}
+                              <Link
+                                to={"/blogs/" + s.id}
+                                className='BlogReadMore'
+                                key={s?.id}
+                              >
+                                Read More
+                              </Link>
+                            </p>
 
-                          {/* {s?.about_blog?.length >= 300 && (
+                            {/* {s?.about_blog?.length >= 300 && (
                             <div className='suc_btn'>
                               <hr />
 
@@ -187,65 +246,64 @@ function BlogPage() {
                               <hr />
                             </div>
                           )} */}
-                        </Col>
+                          </Col>
 
-                        <Col md={4} xs={12}>
-                          <img src={s?.image} alt='' />
-                        </Col>
-                      </>
-                    ) : (
-                      <>
-                        <Col md={4} xs={12}>
-                          <img src={s?.image} alt='' />
-                        </Col>
-                        <Col md={8} xs={12}>
-                          <h2>
-                            <img
-                              className='quote_img_blog'
-                              src={double_quote}
-                              alt=''
-                            />
-                            {s?.title || t("common.n/a")}{" "}
-                          </h2>
-                          <h6 class='card-subtitle mb-2 text-muted'>
-                            <Moment format='D MMM YYYY' withTitle>
-                              {s?.created_at}
-                            </Moment>
-                          </h6>
+                          <Col md={4} xs={12}>
+                            <img src={s?.image} alt='' />
+                          </Col>
+                        </>
+                      ) : (
+                        <>
+                          <Col md={4} xs={12}>
+                            <img src={s?.image} alt='' />
+                          </Col>
+                          <Col md={8} xs={12}>
+                            <h2>
+                              <img
+                                className='quote_img_blog'
+                                src={double_quote}
+                                alt=''
+                              />
+                              {s?.title || t("common.n/a")}{" "}
+                            </h2>
+                            <h6 class='card-subtitle mb-2 text-muted'>
+                              <Moment format='D MMM YYYY' withTitle>
+                                {s?.created_at}
+                              </Moment>
+                            </h6>
 
-                          <p className='noselect' key={s?.id}>
-                            {/* {(s?.is_collapse
+                            <p className='noselect' key={s?.id}>
+                              {/* {(s?.is_collapse
                               ? paragraph(s?.description)
                               : sliceString(s?.description)) || t("common.n/a")} */}
-                            {s?.is_collapse === true ? (
-                              <div
-                                dangerouslySetInnerHTML={{
-                                  __html: `<div>${s.about_blog}</div>`,
-                                }}
-                              />
-                              
-                            ) : (
-                              <div
-                                style={{
-                                  maxHeight: "120px",
-                                  overflow: "hidden",
-                                }}
-                                dangerouslySetInnerHTML={{
-                                  __html: `<div>${s.about_blog}</div>`,
-                                }}
-                                key={s?.id} 
-                              />
-                              
-                            )}
-                             <Link to={routingConstants.MORE_BLOG+s.id}
-                                  className="BlogReadMore"
-                                    key={s?.id}>    
-                                    
-                                    Read More
-                                    </Link>
-                          </p>
+                              {s?.is_collapse === true ? (
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: `<div>${s.about_blog}</div>`,
+                                  }}
+                                />
+                              ) : (
+                                <div
+                                  style={{
+                                    maxHeight: "120px",
+                                    overflow: "hidden",
+                                  }}
+                                  dangerouslySetInnerHTML={{
+                                    __html: `<div>${s.about_blog}</div>`,
+                                  }}
+                                  key={s?.id}
+                                />
+                              )}
+                              <Link
+                                to={routingConstants.MORE_BLOG + s.id}
+                                className='BlogReadMore'
+                                key={s?.id}
+                              >
+                                Read More
+                              </Link>
+                            </p>
 
-                          {/* {s?.about_blog?.length >= 300 && (
+                            {/* {s?.about_blog?.length >= 300 && (
                             <div className='suc_btn'>
                               <hr />
                               <button
@@ -262,27 +320,28 @@ function BlogPage() {
                               <hr />
                             </div>
                           )} */}
-                        </Col>
-                      </>
-                    )}
-                  </Row>
+                          </Col>
+                        </>
+                      )}
+                    </Row>
 
-                  {idx % 2 == 1 ? (
-                    <a href={storiesBoxAds[0]?.url_adds} target='_blank'>
-                      <div className='ads_story_cover'>
-                        <img
-                          src={storiesBoxAds[1]?.image}
-                          alt='Image'
-                          className='ads_succ_story'
-                        />
-                      </div>
-                    </a>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </>
-            )})}
+                    {idx % 2 == 1 ? (
+                      <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
+                        <div className='ads_story_cover'>
+                          <img
+                            src={blogBoxAdds[1]?.image}
+                            alt='Image'
+                            className='ads_succ_story'
+                          />
+                        </div>
+                      </a>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </>
+              );
+            })}
         {blogs?.blog_list?.length === 0 && (
           <div className='text-center mt-5'>{t("common.noDataFound")}</div>
         )}

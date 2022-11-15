@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "@mui/styles";
 import { HelmetProvider } from "react-helmet-async";
-
+import "react-datepicker/dist/react-datepicker.css"
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./store";

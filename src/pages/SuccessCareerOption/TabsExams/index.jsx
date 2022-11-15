@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useParams } from "react-router-dom";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+// import Nikita from "../../../assets/images/Nikita-Sharma.png";
 
 import {
   getGuidanceCategory,
@@ -18,6 +19,8 @@ import backButtonImg from "../../../assets/images/Guidance/back-arrow.png";
 // import Bookmark from "../../../assets/images/Guidance/bookmark-button.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
+import { adsList } from "../../../store/ads";
+import axios from "axios";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -56,13 +59,72 @@ export default function VerticalTabs() {
   const dispatch = useDispatch();
   const [value, setValue] = useState(0);
   const [tabValue, setTabValue] = useState(0);
-  const [categoryDetail, setCategoryDetail] = useState(false);
+  const [categoryDetail, setCategoryDetail] = useState({
+    isVisible: false,
+    id: null,
+  });
   const [showGovtExams, setShowGovtExams] = useState(false);
   const { careerOptions, guidanceCategoryDetail, isLoading } = useSelector(
     (state) => state.guidanceReducer,
   );
+  const [careerOptionBoxAds, setCareerOptionBoxAds] = useState([]);
+  const [image, setImage] = useState("NA");
+  const [adds, setAdds] = useState([]);
   const { t } = useTranslation();
 
+  const { id } = useParams();
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "career_option";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setCareerOptionBoxAds(filterArray);
+          }
+        });
+    });
+    dispatch(adsList());
+  }, []);
+
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
@@ -75,6 +137,11 @@ export default function VerticalTabs() {
     dispatch(getGuidanceCategory());
   };
 
+  useEffect(() => {
+    dispatch(getGuidanceCategoryDetail(id));
+    // window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [dispatch, id]);
+
   const handleExamChange = (obj, id) => {
     setShowGovtExams(true);
     setCategoryDetail(false);
@@ -84,9 +151,9 @@ export default function VerticalTabs() {
     dispatch(getGuidanceCategoryDetail(id));
   };
 
-  const handleFullView = () => {
+  const handleFullView = (id) => {
     setShowGovtExams(false);
-    setCategoryDetail(true);
+    setCategoryDetail({ isVisible: true, id: id });
   };
 
   const onBackChange = (obj, id) => {
@@ -148,59 +215,136 @@ export default function VerticalTabs() {
           <Col md={8} xs={12}>
             <TabPanel value={value} index={0}>
               <Row>
-                {showGovtExams && careerOptions && (
-                  <Col md={6} xs={12}>
-                    <div className='tabs_box'>
-                      <h2>{guidanceCategoryDetail?.category_name}</h2>
-                      <p style={{ wordWrap: "break-word" }}>
+                {/* {showGovtExams && careerOptions && ( */}
+                {showGovtExams &&
+                  careerOptions &&
+                  guidanceCategoryDetail?.length > 0 &&
+                  guidanceCategoryDetail?.map(
+                    (guidanceCategoryDetail, index) => {
+                      console.log(
+                        "guidanceCategoryCatelogList",
+                        guidanceCategoryDetail,
+                      );
+                      return (
+                        <Col md={6} xs={12}>
+                          <div
+                            className='tabs_box'
+                            key={guidanceCategoryDetail?.id}
+                          >
+                            <h2>{guidanceCategoryDetail?.name}</h2>
+                            <img
+                              src={guidanceCategoryDetail?.image}
+                              className='GuidanceOptionCard'
+                            ></img>
+                            {/* <p style={{ wordWrap: "break-word" }}>
+                      <div dangerouslySetInnerHTML={{__html:`<div>${guidanceCategoryDetail?.description.slice(0,40)}</div>`}}/>
+                      </p> */}
+                            {/* <p style={{ wordWrap: "break-word" }}>
                         {`${careerOptions[tabValue].short_description.slice(
                           0,
                           100,
                         )}...`}
-                      </p>
-                      <button onClick={() => handleFullView()}>
-                        {t("successCareerOption.button.1")}
-                      </button>
-                    </div>
-                    <br />
-                  </Col>
-                )}
+                      </p> */}
+                            <br />
+                            <button
+                              onClick={() =>
+                                handleFullView(guidanceCategoryDetail?.id)
+                              }
+                            >
+                              {t("successCareerOption.button.1")}
+                            </button>
+                          </div>
+                          
+                          <br />
+                        </Col>
+                      );
+                    },
+                  )}
+
+                {/* )} */}
               </Row>
+              {/* {index % 2 == 1? ( */}
+                            <>
+                              {/* <div className="row"> */}
+                                <div
+                                  // className='google_add_box box_hov'
+                                  className='col-md-12 ads_home_cover_careerOption'
+                                  onClick={() =>
+                                    addEmail(careerOptionBoxAds[0]?.add_email)
+                                  }
+                                >
+                                  {careerOptionBoxAds.length > 0 && (
+                                    <div className='slide-img'>
+                                      <a
+                                        href={careerOptionBoxAds[0]?.url_adds}
+                                        target='_blank'
+                                      >
+                                        <img
+                                          src={careerOptionBoxAds[0]?.image}
+                                          alt='Image'
+                                          className='google_ads_home_careerOption'
+                                        />
+                                      </a>
+                                      <div className='overlay'></div>
+                                    </div>
+                                  )}
+                                </div>
+                              {/* </div> */}
+                            </>
+                          {/* ) : (
+                            ""
+                          )} */}
+
             </TabPanel>
 
-            {categoryDetail && (
-              <TabPanel>
-                <div className='banking-exampage'>
-                  <div>
-                    <span
-                      className='back_button'
-                      onClick={() => onBackChange()}
-                    >
-                      <img src={backButtonImg} alt='' />
-                      {t("successCareerOption.other.2")}
-                    </span>
-                  </div>
-                  <div className='banking-examheader'>
-                    <h2>{guidanceCategoryDetail?.category_name}</h2>
-                  </div>
-                  {guidanceCategoryDetail?.description ? (
-                    <div
-                      className='locationdiv'
-                      dangerouslySetInnerHTML={{
-                        __html: guidanceCategoryDetail?.description,
-                      }}
-                    ></div>
-                  ) : (
-                    <div className='text-center'>
-                      {isLoading
-                        ? t("common.loading")
-                        : t("common.noDataFound")}
-                    </div>
-                  )}
-                  <hr className='border-colorbottom'></hr>
-                </div>
-              </TabPanel>
-            )}
+            {categoryDetail.isVisible &&
+              guidanceCategoryDetail?.length > 0 &&
+              guidanceCategoryDetail?.map((guidanceCategoryDetail) => {
+                console.log(
+                  "guidanceCategory",
+                  guidanceCategoryDetail,
+                  categoryDetail,
+                );
+                if (categoryDetail.id == guidanceCategoryDetail.id) {
+                  return (
+                    <TabPanel>
+                      {/* {categoryDetail && guidanceCategoryDetail && ( */}
+
+                      {/* // <TabPanel key={guidanceCategoryDetail?.id}> */}
+
+                      <div className='banking-exampage'>
+                        <div>
+                          <span
+                            className='back_button'
+                            onClick={() => onBackChange()}
+                          >
+                            <img src={backButtonImg} alt='' />
+                            {t("successCareerOption.other.2")}
+                          </span>
+                        </div>
+                        <div className='banking-examheader'>
+                          <h2>{guidanceCategoryDetail?.category_name}</h2>
+                        </div>
+                        {guidanceCategoryDetail?.description ? (
+                          <div
+                            className='locationdiv'
+                            dangerouslySetInnerHTML={{
+                              __html: guidanceCategoryDetail?.description,
+                            }}
+                          ></div>
+                        ) : (
+                          <div className='text-center'>
+                            {isLoading
+                              ? t("common.loading")
+                              : t("common.noDataFound")}
+                          </div>
+                        )}
+                        <hr className='border-colorbottom'></hr>
+                      </div>
+                    </TabPanel>
+                  );
+                }
+              })}
           </Col>
         </Row>
       </Box>

@@ -2,30 +2,57 @@ import { toast } from "react-toastify";
 import httpServices from "../../utils/ApiServices";
 import { magzinesTypes } from ".";
 import { toasterConfig, ApiService } from "../../utils";
-import { apiConstants,routingConstants } from "../../utils/constants";
+import { apiConstants, routingConstants } from "../../utils/constants";
 import { handleErrorMessage } from "../../utils/utils";
 
 const constants = apiConstants.ALL_MAGZINES;
 
-export const getAllMagzines = () => async (dispatch) => {
-  try {
-    const url = constants.ALL_MAGZINES;
+export const getAllMagzines =
+  (lat = "19.8508544", long = "75.3762304") =>
+  async (dispatch) => {
+    try {
+      const url = constants.ALL_MAGZINES;
 
-    dispatch({ type:  magzinesTypes.FETCH_MAGZINES_REQUEST });
-    const res = await httpServices.get(url);
-    console.log("resss", res);
-    dispatch({
-      type:  magzinesTypes.FETCH_MAGZINES_FINISH,
-      payload: { ...res?.data, is_collapse: false },
-    });
-  } catch (error) {
-    dispatch({
-      type:  magzinesTypes.FETCH_MAGZINES_FAIL,
-      payload: error?.data,
-    });
-    toast.error(handleErrorMessage(error), toasterConfig);
-  }
-};
+      dispatch({
+        type:
+          magzinesTypes.FETCH_MAGZINES_REQUEST +
+          `?latitude=${lat}&longitude=${long}`,
+      });
+      const res = await ApiService.get(url);
+      console.log("resss", res);
+      dispatch({
+        type: magzinesTypes.FETCH_MAGZINES_FINISH,
+        payload: { ...res?.data, is_collapse: false },
+      });
+    } catch (error) {
+      dispatch({
+        type: magzinesTypes.FETCH_MAGZINES_FAIL,
+        payload: error?.data,
+      });
+      toast.error(handleErrorMessage(error), toasterConfig);
+    }
+  };
+
+export const singleMagzineDetails =
+  (id, lat = "19.8508544", long = "75.3762304") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: magzinesTypes.FETCH_MAGZINES_REQUEST });
+      const res = await httpServices.get(
+        "more/magazines" + "/" + id + `?latitude=${lat}&longitude=${long}`,
+      );
+      dispatch({
+        type: magzinesTypes.FETCH_MAGZINES_FINISH,
+        // payload: {
+        //   ...res?.data,
+        //   image: res?.data.image ? res?.data?.image : httpServices.noImage,
+        // },
+        payload: res?.data || []
+      });
+    } catch (error) {
+      dispatch({ type: magzinesTypes.FETCH_MAGZINES_FAIL });
+    }
+  };
 
 export const setCollapseMagzines = (id, action) => (dispatch, getState) => {
   const { magzinesReducer } = getState();

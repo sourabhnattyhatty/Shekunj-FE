@@ -139,7 +139,8 @@ const Header = ({ page, subPage }) => {
   };
 
   const handleGuidance2 = () => {
-    history.push(routingConstants.SUCCESS_CAREER_TEST);
+    // history.push(routingConstants.SUCCESS_CAREER_TEST);
+    history.push(routingConstants.MOCKTEST);
     setAnchorEl2(null);
   };
 
@@ -158,10 +159,10 @@ const Header = ({ page, subPage }) => {
     setAnchorEl3(null);
   };
 
-  const handleMoreMagazine = () => {
-    history.push(routingConstants.MORE_MAGAZINE);
-    setAnchorEl3(null);
-  };
+  // const handleMoreMagazine = () => {
+  //   history.push(routingConstants.MORE_MAGAZINE);
+  //   setAnchorEl3(null);
+  // };
 
   const handleMoreFAQ = () => {
     history.push(routingConstants.FAQ);
@@ -461,7 +462,7 @@ const Header = ({ page, subPage }) => {
                     >
                       Blog
                     </a> */}
-              
+
                     {/* <a
                       className='nav-link'
                       rel='noreferrer'
@@ -487,7 +488,7 @@ const Header = ({ page, subPage }) => {
                         }}
                       >
                         {" "}
-                        {t("header.heading.7")} 
+                        {t("header.heading.7")}
                       </span>
                     </button>
                     <Menu
@@ -505,12 +506,12 @@ const Header = ({ page, subPage }) => {
                       >
                         {t("headerComponent.menuItem.11")}
                       </MenuItem>
-                      <MenuItem
+                      {/* <MenuItem
                         onClick={handleMoreMagazine}
                         className={subPage === "moreMagazine" && "active"}
                       >
                         {t("headerComponent.menuItem.12")}
-                      </MenuItem>
+                      </MenuItem> */}
                       <MenuItem
                         onClick={handleMoreBlogs}
                         className={subPage === "moreblog" && "active"}
@@ -527,7 +528,7 @@ const Header = ({ page, subPage }) => {
                     </Menu>
 
                     {/* <br /> */}
-                   
+
                     <Button
                       id='basic-button77'
                       aria-controls='basic-menu77'
@@ -542,13 +543,13 @@ const Header = ({ page, subPage }) => {
                       onClick={handleClick77}
                     >
                       <span
-                        // style={{
-                        //   color: "#EC498A",
-                        //   fontSize: "20px",
-                        //   marginLeft: "8px",
-                        //   textDecorationLine: "none",
-                        // }}
-                        // className='nav-link'
+                      // style={{
+                      //   color: "#EC498A",
+                      //   fontSize: "20px",
+                      //   marginLeft: "8px",
+                      //   textDecorationLine: "none",
+                      // }}
+                      // className='nav-link'
                       >
                         <BellIcon
                           width='30'
@@ -583,35 +584,27 @@ const Header = ({ page, subPage }) => {
                           return (
                             <>
                               <MenuItem onClick={handleNotification1}>
-                                <a
-                                  className='nav-link'
-                                  href= {c?.url}             
-                                >
+                                <a className='nav-link' href={c?.url}>
                                   {c?.title}
                                 </a>
                               </MenuItem>
                               <Divider />
-                             
                             </>
                           );
                         })
-                        
                       ) : (
                         <MenuItem>No Data Found</MenuItem>
                       )}
-                       <MenuItem
-                                onClick={handleNotificationAll}
-                                style={{color:"#e83e8c", textAlign:"center"}}
-                                class="center"
-                                className={
-                                  page === "more"
-                                    ? "nav-item active"
-                                    : "nav-item"
-                                }
-                              >
-                                <strong>View ALL</strong>
-                              </MenuItem>
-                      
+                      <MenuItem
+                        onClick={handleNotificationAll}
+                        style={{ color: "#e83e8c", textAlign: "center" }}
+                        class='center'
+                        className={
+                          page === "more" ? "nav-item active" : "nav-item"
+                        }
+                      >
+                        <strong>View ALL</strong>
+                      </MenuItem>
                     </Menu>
 
                     <br />
@@ -811,12 +804,12 @@ const Header = ({ page, subPage }) => {
                       >
                         {t("headerComponent.menuItem.11")}
                       </MenuItem>
-                      <MenuItem
+                      {/* <MenuItem
                         onClick={handleMoreMagazine}
                         className={subPage === "moreMagazine" && "active"}
                       >
                         {t("headerComponent.menuItem.12")}
-                      </MenuItem>
+                      </MenuItem> */}
                       <MenuItem
                         onClick={handleMoreBlogs}
                         className={subPage === "moreblog" && "active"}
@@ -904,25 +897,34 @@ const Header = ({ page, subPage }) => {
                       }}
                     >
                       {notifications["Notifications "]?.length > 0 ? (
-                        notifications["Notifications "]?.map((c) => {
-                          // console.log("c", c.id);
-                          // console.log("c.notification.url",c.url)
-                          return (
-                            <>
-                              <MenuItem onClick={handleNotification1} className='nav-link '>
-                                {/* <a
+                        notifications["Notifications "]
+                          ?.slice(0, 5)
+                          ?.map((c) => {
+                            // console.log("c", c.id);
+                            // console.log("c.notification.url",c.url)
+                            return (
+                              <>
+                                <MenuItem
+                                  onClick={handleNotification1}
+                                  className='nav-link '
+                                >
+                                  {/* <a
                                   className='nav-link'
                                   rel='noreferrer'
                                   target='_blank'
                                   href= {`${c?.url}`}           
                                 > */}
-                                <Link className="limited-text" to={`/${c?.url}`} style={{color:"#e83e8c"}}  replace >
-
-                                 {c?.title}
+                                  <Link
+                                    className='limited-text'
+                                    to={`/${c?.url}`}
+                                    style={{ color: "#e83e8c" }}
+                                    replace
+                                  >
+                                    {c?.title}
                                   </Link>
-                                {/* </a> */}
-                              </MenuItem>
-                              {/* <MenuItem onClick={handleNotification2}>
+                                  {/* </a> */}
+                                </MenuItem>
+                                {/* <MenuItem onClick={handleNotification2}>
                                 <a
                                   className='nav-link'
                                   rel='noreferrer'
@@ -932,29 +934,28 @@ const Header = ({ page, subPage }) => {
                                   {c?.title}
                                 </a>
                               </MenuItem> */}
-                              <Divider />
-                             
-                            </>
-                          );
-                        })
-                        
+                                <Divider />
+                              </>
+                            );
+                          })
                       ) : (
                         <MenuItem>No Data Found</MenuItem>
                       )}
-                       <MenuItem
-                                onClick={handleNotificationAll}
-                                style={{color:"#e83e8c", textAlign:"center"}}
-                                class="center"
-                                className={
-                                  page === "more"
-                                    ? "nav-item active"
-                                    : "nav-item"
-                                }
-                                // className={subPage === "AllNotification" && "active"}
-                              >
-                                <strong>View ALL</strong>
-                              </MenuItem>
-                      
+                      <MenuItem
+                        onClick={handleNotificationAll}
+                        style={{
+                          color: "#e83e8c",
+                          textAlign: "center",
+                          cursor: "pointer",
+                        }}
+                        class='center'
+                        className={
+                          page === "more" ? "nav-item active" : "nav-item"
+                        }
+                        // className={subPage === "AllNotification" && "active"}
+                      >
+                        <strong>View ALL</strong>
+                      </MenuItem>
                     </Menu>
 
                     {/* <Link

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Timer from "react-compound-timer";
 import useExitPrompt from "../../hooks/useExitPromt";
@@ -10,16 +10,26 @@ import useExitPrompt from "../../hooks/useExitPromt";
 import {
   Autocomplete,
   Container,
+  Card,
   FormControlLabel,
   Radio,
   RadioGroup,
   Skeleton,
   TextField,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+  Grid,
 } from "@mui/material";
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import FormControl from "@mui/material/FormControl";
+import img1 from "../../assets/images/shekunj_magzine.jpg";
+import global from "../../assets/images/Success/global.png";
+import axios from "axios";
 
 import { routingConstants } from "../../utils/constants";
 import { Header, Footer } from "../../components";
@@ -35,6 +45,7 @@ import timeIcon from "../../assets/images/Courses/time.png";
 
 import "./index.scss";
 import "../CoursesModule/index.scss";
+import { adsList } from "../../store/ads";
 
 const IOSSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#3880ff" : "#3880ff",
@@ -54,7 +65,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
   },
 }));
 
-function CourseTest() {
+function MockTest() {
   const [showExitPrompt, setShowExitPrompt] = useExitPrompt(false);
   const [questionNumber, setQuestionNumber] = React.useState(1);
   const [answer, setAnswer] = React.useState();
@@ -70,6 +81,9 @@ function CourseTest() {
   const [selectedCourseCategory, setSelectedCourseCategory] = useState(null);
   const [selectedCourseCategoryValue, setSelectedCourseCategoryValue] =
     useState(null);
+  const [mockTestBoxAds, setMockTestBoxAds] = useState([]);
+  const [image, setImage] = useState("NA");
+  const [adds, setAdds] = useState([]);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -78,7 +92,7 @@ function CourseTest() {
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
     (state) => state?.guidanceReducer,
   );
-  console.log("testDataMockTest", testData);
+
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
 
   const { t } = useTranslation();
@@ -87,6 +101,58 @@ function CourseTest() {
   // useEffect(()=> {
   //   setQuestionNumber(countData?.user_career_test_count + 1)
   // },[countData])
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "mock_test";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setMockTestBoxAds(filterArray);
+          }
+        });
+    });
+    dispatch(adsList());
+  }, []);
+
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
   useEffect(() => {
     const nv = localStorage.getItem("selectedCourseCategoryValue");
@@ -240,25 +306,25 @@ function CourseTest() {
     dispatch(getGuidanceCategory());
   }, [dispatch, lan]);
 
-  const handleStartCourse = async () => {
-    setShowExitPrompt(true);
-    localStorage.setItem("isCarrerTestStarted", true);
-    if (!selectedCourseCategoryValue) {
-      return;
-    }
-    const res = await dispatch(
-      fetchStartUserCareerTest(selectedCourseCategoryValue?.id, history),
-    );
-    if (res?.status_code === 200) {
-      const counts = await dispatch(
-        fetchUserCareerTestCount(selectedCourseCategoryValue?.id),
-      );
-      if (counts.status_code === 200 && counts.data.career_time) {
-        setIsTestStarted(true);
-        setTestTime((parseInt(counts?.data.career_time, 10) || 0) * 60000);
-      }
-    }
-  };
+  // const handleStartCourse = async () => {
+  //   setShowExitPrompt(true);
+  //   localStorage.setItem("isCarrerTestStarted", true);
+  //   if (!selectedCourseCategoryValue) {
+  //     return;
+  //   }
+  //   const res = await dispatch(
+  //     fetchStartUserCareerTest(selectedCourseCategoryValue?.id, history),
+  //   );
+  //   if (res?.status_code === 200) {
+  //     const counts = await dispatch(
+  //       fetchUserCareerTestCount(selectedCourseCategoryValue?.id),
+  //     );
+  //     if (counts.status_code === 200 && counts.data.career_time) {
+  //       setIsTestStarted(true);
+  //       setTestTime((parseInt(counts?.data.career_time, 10) || 0) * 60000);
+  //     }
+  //   }
+  // };
 
   const handleTestFinished = () => {
     dispatch(endTest(selectedCourseCategoryValue?.id));
@@ -387,259 +453,124 @@ function CourseTest() {
   return (
     <div>
       <Header loginPage={true} page='guidance' subPage='careerTest' />
+      <div className='SuccStory_banner'>
+        {" "}
+        <Container>
+          <Row>
+            <Col md={1}>
+              <div className='global_img'>
+                <img src={global} alt='' className='vert-move' />
+              </div>
+            </Col>
+            <Col md={6} data-aos='slide-up'>
+              <h2> {t("Shekunj Online Test..")}</h2>
+              <p> Have a look how SheKunj has played an important role</p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
       <Container>
-        <div className='maindiv_prog setmain noselect'>
-          <div className='select_test'>
-            <h2>{t("successCareerTestPage.heading.1")}</h2>
-            <Row>
-              <Col md={9} xs={12}>
-                <FormControl sx={{ m: 1 }}>
-                  <Autocomplete
-                    className='auto-complete'
-                    {...{
-                      options: guidanceCategory,
-                      getOptionLabel: (option) => option.name,
-                    }}
-                    onChange={(_, newValue) => {
-                      setSelectedCourseCategoryValue(newValue);
-                      localStorage.setItem(
-                        "selectedCourseCategoryValue",
-                        newValue?.id,
-                      );
-                    }}
-                    onInputChange={(_, newInputValue) =>
-                      setSelectedCourseCategory(newInputValue)
-                    }
-                    disabled={isTestStarted}
-                    inputValue={String(selectedCourseCategory)}
-                    id='disable-clearable'
-                    disableClearable
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        color='primary'
-                        label={t("successCareerTestPage.other.1")}
-                        variant='standard'
+        {console.log("guidanceCategory", guidanceCategory)}
+        {guidanceCategory?.length > 0 &&
+          guidanceCategory?.map((gb, index) => {
+            console.log("gb", gb);
+            return (
+              <>
+              <Grid Container spacing={2} className='gridContainer flex'>
+                {/* <div className='guidanceCategory' key={gb?.id}> */}
+
+                {/* <Col sm={1} md={12}> */}
+                <Col md={1} xl={12}>
+                  {/* <Grid item xs={12} sm={4} md={2} > */}
+                  <Card className='GuidanceOptionCard '>
+                    <CardContent>
+                      <CardMedia
+                        className='guidanceOptionImage'
+                        component='img'
+                        image={gb?.image}
+                        alt='green iguana'
                       />
-                    )}
-                  />
-                  {/* <Select
-                    displayEmpty
-                    value={selectedCourseCategory}
-                    onChange={handleCategoryChange}
-                    input={<OutlinedInput />}
-                    disabled={isTestStarted}
-                    renderValue={(selected) => {
-                      if (selected?.length === 0) {
-                        return (
-                          <>
-                            <em>{t("successCareerTestPage.other.1")}</em>
-                          </>
-                        );
-                      }
-                      return selected;
-                    }}
-                    inputProps={{ "aria-label": "Without label" }}
-                  >
-                    {guidanceCategory?.map((item) => {
-                      return (
-                        <MenuItem key={item?.id} value={item}>
-                          {item?.name}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select> */}
-                </FormControl>
-              </Col>
-
-              <Col md={3} xs={12} className='mt-1'>
-                <button
-                  onClick={() => handleStartCourse()}
-                  disabled={isTestStarted}
-                >
-                  {isTestStarted
-                    ? t("successCareerTestPage.button.1")
-                    : t("successCareerTestPage.button.2")}
-                </button>
-              </Col>
-            </Row>
-          </div>
-
-          {isTestStarted && (
-            <Row className='pt-md-5 pb-md-5'>
-              <Col md={12} xs={12} className='text-left'>
-                <div className='circular_progress_module'>
-                  <Stack
-                    className='d-flex justify-content-between'
-                    spacing={2}
-                    direction='row'
-                  >
-                    <h3>{selectedCourseCategory}</h3>
-                    <button onClick={() => handleFinishQuestion()}>
-                      {t("coursesPage.coursesModulePage.button.2")}
-                    </button>
-                  </Stack>
-                  {renderProgress(testData?.progress)}
-                </div>
-              </Col>
-            </Row>
-          )}
-        </div>
-
-        {isTestStarted && (
-          <>
-            <div className='time_set noselect'>
-              <p>
-                <img src={timeIcon} alt='timeIcon' /> {t("common.time.5") + " "}
-                {showTimer && renderTimmer(testTime)}
-              </p>
-            </div>
-
-            <Row>
-              <Col md={8} xs={12}>
-                <div className='que_box noselect'>
-                  <h2>{t("allCertificatePage.other.5")}</h2>
-                  {isLoading ? (
-                    <Skeleton></Skeleton>
-                  ) : (
-                    <p>
-                      {questionNumber}. {testData?.question}
-                    </p>
-                  )}
-                  {testData && (
-                    <RadioGroup aria-label='gender' name='radio-buttons-group'>
-                      {testData?.optionA &&
-                        (isLoading ? (
-                          <Skeleton />
-                        ) : (
-                          <FormControlLabel
-                            value='1'
-                            control={
-                              <Radio
-                                checked={check1}
-                                onChange={(e) => handleAnswerCheck(e, "A")}
-                              />
-                            }
-                            label={testData?.optionA}
-                          />
-                        ))}
-                      {testData?.optionB &&
-                        (isLoading ? (
-                          <Skeleton />
-                        ) : (
-                          <FormControlLabel
-                            value='2'
-                            control={
-                              <Radio
-                                checked={check2}
-                                onChange={(e) => handleAnswerCheck(e, "B")}
-                              />
-                            }
-                            label={testData?.optionB}
-                          />
-                        ))}
-                      {testData?.optionC &&
-                        (isLoading ? (
-                          <Skeleton />
-                        ) : (
-                          <FormControlLabel
-                            value='3'
-                            control={
-                              <Radio
-                                checked={check3}
-                                onChange={(e) => handleAnswerCheck(e, "C")}
-                              />
-                            }
-                            label={testData?.optionC}
-                          />
-                        ))}
-                      {testData?.optionD &&
-                        (isLoading ? (
-                          <Skeleton />
-                        ) : (
-                          <FormControlLabel
-                            value='4'
-                            control={
-                              <Radio
-                                checked={check4}
-                                onChange={(e) => handleAnswerCheck(e, "D")}
-                              />
-                            }
-                            label={testData?.optionD}
-                          />
-                        ))}
-                    </RadioGroup>
-                  )}
-                </div>{" "}
-                <div className='prev_next_btn noselect'>
-                  <Row>
-                    <Col md={6} xs={6}>
-                      <button
-                        className='back_button'
-                        onClick={() => handlePrevQuestion()}
-                        disabled={!testData?.prev_module}
+                      <Typography
+                        variant='h6'
+                        className='guidanceOptionTitle'
+                        fullWidth
                       >
-                        {t("coursesPage.coursesModulePage.button.1")}
-                      </button>
-                    </Col>
-
-                    <Col md={6} xs={6} className='text-right'>
-                      {countData?.total_career_que === questionNumber ? (
-                        <button
-                          className='next_button'
-                          onClick={() => handleFinishQuestion()}
-                        >
-                          {t("coursesPage.coursesModulePage.button.2")}
-                        </button>
-                      ) : (
-                        <button
-                          className='next_button'
-                          onClick={() => handleNextQuestion()}
-                        >
-                          {t("coursesPage.coursesModulePage.button.3")}
-                        </button>
-                      )}
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-              <Col md={4} xs={12}>
-                <div className='que_status noselect'>
-                  <h2>{t("successCareerTestPage.heading.2")}</h2>
-                  <div className='que_num'>
-                    {[...Array(countData?.total_career_que).keys()].map((i) => (
-                      <p
-                        id={
-                          i + 1 <= countData?.user_career_test_count
-                            ? "col_gre"
-                            : "col_grey"
-                        }
+                        {gb?.name}
+                      </Typography>
+                    </CardContent>
+                    <Typography
+                      sx={{ mb: 1.5 }}
+                      className='guidanceOptionTitle2'
+                      color='text.secondary'
+                      fullWidth
+                    >
+                      Total Time: {gb?.career_test_time}
+                    </Typography>
+                    <CardActions className='actions'>
+                      <Link
+                        to={routingConstants.MOCKTEST + gb?.id}
+                        className=''
+                        key={gb?.id}
                       >
-                        {i + 1}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-                <div className='ans_not noselect'>
-                  <ul>
-                    <li>
-                      <span className='dotte1'></span>{" "}
-                      {t("successCareerTestPage.other.2")}
-                    </li>
-                    <li>
-                      <span className='dotte2'></span>{" "}
-                      {t("successCareerTestPage.other.3")}
-                    </li>
-                  </ul>
-                </div>
-              </Col>
-            </Row>
-          </>
-        )}
+                        <Button
+                          size='small'
+                          variant='contained'
+                          //  onClick={() => handleStartCourse()}disabled={isTestStarted}
+                        >
+                          Start Test
+                        </Button>
+                      </Link>
+                    </CardActions>
+                  </Card>
+                  {/* </Grid> */}
+                </Col>
+                </Grid>
+
+                {index % 4 == 3 ? (
+                  <>
+                    {/* <div className='Row'>
+                      <Col md={1} xl={12}> */}
+                       <Grid Container spacing={2} className='gridContainer flex'>
+
+                <Col md={1} xl={12}>
+                  <Card className='GuidanceOptionCard '>
+                        {mockTestBoxAds.length > 0 && (
+                          <div
+                            className='slide-img-test'
+                            onClick={() =>
+                              addEmail(mockTestBoxAds[0]?.add_email)
+                            }
+                          >
+                            <a
+                              href={mockTestBoxAds[0]?.url_adds}
+                              target='_blank'
+                            >
+                              <img
+                                src={mockTestBoxAds[0]?.image}
+                                alt='Image'
+                                className='GuidanceOptionCardAdd'
+                              />
+                            </a>
+                            <div className='overlay'></div>
+                          </div>
+                        )}
+                        </Card>
+                        </Col>
+                         </Grid>
+                      {/* </Col>
+                    </div> */}
+                  </>
+                ) : (
+                  ""
+                )}
+              {/* </Grid> */}
+              </>
+            );
+          })}
       </Container>
       <Footer loginPage={false} />
     </div>
   );
 }
 
-export default CourseTest;
+export default MockTest;

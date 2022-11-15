@@ -3,7 +3,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { routingConstants } from "../../utils/constants";
-import ContentLoader, { Facebook } from 'react-content-loader';
+// import ContentLoader, { Facebook } from 'react-content-loader';
+import { ClipLoader } from "react-spinners";
 import { AccordionComponent, Footer, Header, SEO } from "../../components";
 import {
   getTopCollages,
@@ -11,28 +12,23 @@ import {
   toggleCollapseValue,
   allTopcollegeBySearch,
 } from "../../store/career";
-import TopCollage from "../../assets/images/Career/clg.jpg"
+import TopCollage from "../../assets/images/Career/clg.jpg";
 import "../HomePage/index.scss";
 import "./index.scss";
 import Cross from "../../assets/icons/cross.png";
 import Search from "../../assets/icons/search1.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import test from "../../assets/images/test.jpg"
-import logo from "../../assets/icons/filter.png"
+import test from "../../assets/images/test.jpg";
+import logo from "../../assets/icons/filter.png";
 // import { Link,Route } from "react-router-dom";
-import {
-  adsList
-} from "../../store/ads";
+import { adsList } from "../../store/ads";
 
-
-
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const CareerPage = () => {
   // const [loading, setLoading] = useState(false);
@@ -45,7 +41,7 @@ const CareerPage = () => {
   // }, []);
 
   const dispatch = useDispatch();
-  const { topCollages, courseSector,ownership } = useSelector(
+  const { topCollages, courseSector, ownership, isLoading } = useSelector(
     (state) => state.careerReducer,
   );
 
@@ -54,12 +50,8 @@ const CareerPage = () => {
 
   useEffect(() => {
     dispatch(reSetFilterValue());
-   
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -67,8 +59,8 @@ const CareerPage = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      dispatch(getTopCollages(false,latitude,longitude));
-    })
+      dispatch(getTopCollages(false, latitude, longitude));
+    });
   }, [dispatch, lan]);
 
   // const transformPrice = (price) => {
@@ -101,14 +93,14 @@ const CareerPage = () => {
   //   rows: topCollages?.college_type || [],
   // };
 
-//  const ownership={
-//   name: t("careerTopColleges.listItems.4"),
-//   rows: topCollages?.state_list || [],
-//  }
+  //  const ownership={
+  //   name: t("careerTopColleges.listItems.4"),
+  //   rows: topCollages?.state_list || [],
+  //  }
 
   const [collegeBannerAds, setCollegeBannerAds] = useState([]);
   const [collegeBoxAds, setCollegeBoxAds] = useState([]);
-  const [image,setImage]=useState("NA")
+  const [image, setImage] = useState("NA");
 
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=top_college_banner')
@@ -117,28 +109,36 @@ const CareerPage = () => {
   //     });
   // }, [])
 
-  const addEmail =(email)=>{
-    console.log("addEmail",email)
-       axios.post('/private_adds/click_add/'
-   ,{
-     // add_email:`${adds[0]?.add_email}`
-     add_email:email
-   }
-   )
-     .then((response) => {
-       // setAdds(response.data.results);
-       console.log("addEmailresponse",response)
-     });
-   
-}
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "top_college_banner"
@@ -147,17 +147,12 @@ const CareerPage = () => {
   //         setImage(findImage)
   //         setCollegeBannerAds(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
+  // 		});
+
+  // }, [])
 
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -165,25 +160,24 @@ const CareerPage = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "top_college_banner"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setCollegeBannerAds(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "top_college_banner";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setCollegeBannerAds(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
-
-
+  }, []);
 
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=top_college_box')
@@ -193,11 +187,11 @@ const CareerPage = () => {
   // }, [])
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "top_college_box"
@@ -206,17 +200,12 @@ const CareerPage = () => {
   //         setImage(findImage)
   //         setCollegeBoxAds(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
+  // 		});
+
+  // }, [])
 
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -224,34 +213,34 @@ const CareerPage = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "top_college_box"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setCollegeBoxAds(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "top_college_box";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setCollegeBoxAds(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
+  }, []);
 
-
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
   const SearchFilterHandle = (e) => {
     e.preventDefault();
     dispatch(getTopCollages(`?search=${searchInput}`));
-  }
+  };
   const handleResetSearch = () => {
     dispatch(getTopCollages());
-    setSearchInput('');
-  }
+    setSearchInput("");
+  };
 
   return (
     <div>
@@ -261,13 +250,20 @@ const CareerPage = () => {
       <Container>
         <Row>
           <div className='col-md-12'>
-          {collegeBannerAds.length > 0 && 
-               <div  className="add_college_cover" onClick={()=>addEmail(collegeBannerAds[0]?.add_email)}>
-              <a href={collegeBannerAds[0]?.url_adds} target='_blank'>
-                <img src={collegeBannerAds[0]?.image} alt='Image' className=' google_add_college' />
-              </a>
-            </div>
-          }
+            {collegeBannerAds.length > 0 && (
+              <div
+                className='add_college_cover'
+                onClick={() => addEmail(collegeBannerAds[0]?.add_email)}
+              >
+                <a href={collegeBannerAds[0]?.url_adds} target='_blank'>
+                  <img
+                    src={collegeBannerAds[0]?.image}
+                    alt='Image'
+                    className=' google_add_college'
+                  />
+                </a>
+              </div>
+            )}
           </div>
         </Row>
       </Container>
@@ -285,79 +281,87 @@ const CareerPage = () => {
                 </p>
               </Col>
               <Col md={6} xs={12}>
-                <div className="input-group searchSection">
+                <div className='input-group searchSection'>
                   <form onSubmit={SearchFilterHandle}>
-                    <div className="d-flex">
-                      <div className="wraper ">
-                        <input type="text" onChange={e => setSearchInput(e.target.value)} value={searchInput}
-                          name="searchInput" class="form-control searchInput"
-                          placeholder="Search here..." />
+                    <div className='d-flex'>
+                      <div className='wraper '>
+                        <input
+                          type='text'
+                          onChange={(e) => setSearchInput(e.target.value)}
+                          value={searchInput}
+                          name='searchInput'
+                          class='form-control searchInput'
+                          placeholder='Search here...'
+                        />
                       </div>
-                      <div className="d-flex">
-                        <button type="submit" className="searchBtn1">
-                          <img src={Search} alt='Image' className='searchIcon'
-                          /></button>
-                        <img src={Cross} alt='Image' className='searchclose'
-                          onClick={() => handleResetSearch()} />
+                      <div className='d-flex'>
+                        <button type='submit' className='searchBtn1'>
+                          <img
+                            src={Search}
+                            alt='Image'
+                            className='searchIcon'
+                          />
+                        </button>
+                        <img
+                          src={Cross}
+                          alt='Image'
+                          className='searchclose'
+                          onClick={() => handleResetSearch()}
+                        />
                       </div>
                     </div>
                   </form>
                 </div>
               </Col>
             </Row>
-
           </div>
 
           <Row>
             <Col md={4} xs={12}>
-             <div className="desktop_view_city_selct">
-             <AccordionComponent
-                type='colleges'
-                //stream={STREAM}
-                stream={courseSector}
-                ownership={ownership}
-                state={STATE}
-                city={CITY}
-              />
-             </div>
+              <div className='desktop_view_city_selct'>
+                <AccordionComponent
+                  type='colleges'
+                  //stream={STREAM}
+                  stream={courseSector}
+                  ownership={ownership}
+                  state={STATE}
+                  city={CITY}
+                />
+              </div>
 
-
-               {/* mobile menu */}
-               <div className="mobile_view_city_selct">
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-         <img src={logo} alt='Image' className='filter_city_123'
-                       />
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-          <div>
-             <AccordionComponent
-                type='colleges'
-                //stream={STREAM}
-                stream={courseSector}
-                ownership={ownership}
-                state={STATE}
-                city={CITY}
-              />
-             </div>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-     
-    
-    </div>
-
-
-            
-
+              {/* mobile menu */}
+              <div className='mobile_view_city_selct'>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls='panel1a-content'
+                    id='panel1a-header'
+                  >
+                    <img src={logo} alt='Image' className='filter_city_123' />
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      <div>
+                        <AccordionComponent
+                          type='colleges'
+                          //stream={STREAM}
+                          stream={courseSector}
+                          ownership={ownership}
+                          state={STATE}
+                          city={CITY}
+                        />
+                      </div>
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
             </Col>
 
-            <Col md={8} xs={12} className="top_collages_add_g top_collages_list_filter123">
+            <Col
+              md={8}
+              xs={12}
+              className='top_collages_add_g top_collages_list_filter123'
+            >
               {topCollages?.collage_list?.length > 0 ? (
                 topCollages.collage_list.map(
                   (c, index) =>
@@ -371,17 +375,25 @@ const CareerPage = () => {
                       </div>
                       ) : ( */}
 
-                        <div className='career_box noselect'
-                          style={{ height: "auto" }} key={c?.id} >
+                        <div
+                          className='career_box noselect'
+                          style={{ height: "auto" }}
+                          key={c?.id}
+                        >
                           <Row>
                             <Col md={3} xs={12}>
                               <div className='college_logo_box'>
                                 <Link
                                   to={routingConstants.TOP_COLLEGES + c.id}
                                   className='col-md-6'
-                                  key={c?.id}>
-                                  <div className=" career_logo_box">
-                                    <img src={transformImg(c?.logo)} alt='...' className='career_logo_img' />
+                                  key={c?.id}
+                                >
+                                  <div className=' career_logo_box'>
+                                    <img
+                                      src={transformImg(c?.logo)}
+                                      alt='...'
+                                      className='career_logo_img'
+                                    />
                                   </div>
                                 </Link>
                               </div>
@@ -393,72 +405,70 @@ const CareerPage = () => {
                                   <Link
                                     to={routingConstants.TOP_COLLEGES + c.id}
                                     className=''
-                                    key={c?.id} >
+                                    key={c?.id}
+                                  >
                                     {c && c.name}
                                   </Link>
                                 </h3>
-                                <ul class="list-inline list-unstyled">
+                                <ul class='list-inline list-unstyled'>
                                   {c.collage_type && (
                                     <li>
-                                      <span style={{ textTransform: "capitalize" }}>
+                                      <span
+                                        style={{ textTransform: "capitalize" }}
+                                      >
                                         {c && c.collage_type}
                                       </span>
                                     </li>
                                   )}
 
-                                  {c.collage_type && (
-                                    <li>|</li>
-                                  )}
+                                  {c.collage_type && <li>|</li>}
 
                                   {c.established_year && (
-                                    <li><span>
-                                      {t("careerTopColleges.other.10")}
-                                    </span>{" "}
-                                      :{" "}
-                                      {c && c.established_year}
+                                    <li>
+                                      <span>
+                                        {t("careerTopColleges.other.10")}
+                                      </span>{" "}
+                                      : {c && c.established_year}
                                     </li>
                                   )}
 
-                                  {c.established_year && (
-                                    <li>|</li>
-                                  )}
+                                  {c.established_year && <li>|</li>}
                                   {c.gender_intech && (
                                     <li>
                                       <span>
                                         {t("careerTopColleges.other.12")}
                                       </span>{" "}
-                                      :{" "}
-                                      {c && c.gender_intech}
+                                      : {c && c.gender_intech}
                                     </li>
                                   )}
                                 </ul>
 
                                 <ul>
-
                                   <li>
                                     <span>
-                                      {c && c.city}{" "}
-                                      {c && c.state}
+                                      {c && c.city} {c && c.state}
                                     </span>
                                   </li>
-
-
                                 </ul>
 
-                                <ul className="mt-1">
+                                <ul className='mt-1'>
                                   {c.contact_no && (
                                     <li>
                                       <p>
-                                        <span>{t("careerTopColleges.other.4")}</span>{" "}
-                                        :
-                                        {c && c.contact_no}
+                                        <span>
+                                          {t("careerTopColleges.other.4")}
+                                        </span>{" "}
+                                        :{c && c.contact_no}
                                       </p>
                                     </li>
                                   )}
 
                                   {c.website && (
                                     <li>
-                                      <span>{t("careerTopColleges.other.5")}</span>:{" "}
+                                      <span>
+                                        {t("careerTopColleges.other.5")}
+                                      </span>
+                                      :{" "}
                                       {/* <Link
                                         to={{ pathname: c?.website }}
                                         target='_blank'
@@ -473,50 +483,67 @@ const CareerPage = () => {
                                         {c && c?.website}
                                       </a>
                                     </li>
-
                                   )}
                                 </ul>
                               </div>
-
                             </Col>
-
                           </Row>
                         </div>
 
-                        {collegeBoxAds.length > 0 && 
-                             <div  className="top_clg_add_img" onClick={()=>addEmail(collegeBoxAds[0]?.add_email)}>
-                          {(index % 4 == 3) ? <>
-                            <a href={collegeBoxAds[0]?.url_adds} target='_blank'>
-                              <img src={collegeBoxAds[0]?.image} alt='Image'
-                                className='college_ads_box' />
-                            </a> </> : ''}
-                        </div>
-}
+                        {collegeBoxAds.length > 0 && (
+                          <div
+                            className='top_clg_add_img'
+                            onClick={() =>
+                              addEmail(collegeBoxAds[0]?.add_email)
+                            }
+                          >
+                            {index % 4 == 3 ? (
+                              <>
+                                <a
+                                  href={collegeBoxAds[0]?.url_adds}
+                                  target='_blank'
+                                >
+                                  <img
+                                    src={collegeBoxAds[0]?.image}
+                                    alt='Image'
+                                    className='college_ads_box'
+                                  />
+                                </a>{" "}
+                              </>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        )}
                       </>
                     ),
                 )
-              ) :
-                //  (
-                //   <div className='text-center'>{t("common.noDataFound")}</div>
-                // )
-                //  (
-                //   <div className="loader-container">
-                //     <div className="spinner"></div>
-                //   </div>
-                // ) 
+              ) : //  (
+              //   <div className='text-center'>{t("common.noDataFound")}</div>
+              // )
+              //  (
+              //   <div className="loader-container">
+              //     <div className="spinner"></div>
+              //   </div>
+              // )
 
-                (
-                  <ContentLoader viewBox="0 0 380 70">
-                    {/* Only SVG shapes */}
-                    <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
-                    <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
-                    <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
-                  </ContentLoader>
-                )
-              }
-
+              // (
+              //   <ContentLoader viewBox="0 0 380 70">
+              //     {/* Only SVG shapes */}
+              //     <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
+              //     <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
+              //     <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
+              //   </ContentLoader>
+              // )
+              isLoading ? (
+                <div>
+                  <h4>Loading...</h4>
+                  <ClipLoader className='loader' color='#ec498a' />
+                </div>
+              ) : (
+                <div className='text-center'>{t("common.noDataFound")}</div>
+              )}
             </Col>
-
           </Row>
         </Container>
       </div>

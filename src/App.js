@@ -34,6 +34,8 @@ const CourseResult = React.lazy(() => import("./pages/CourseResult"));
 const CareerTestResult = React.lazy(() => import("./pages/CareerTestResult"));
 const CourseCertificate = React.lazy(() => import("./pages/CourseCertificate"));
 const FaqPage = React.lazy(() => import("./pages/More/FaqPage"));
+const MockTest = React.lazy(() => import("./pages/MockTest"));
+const MockTestDetail = React.lazy(() => import("./pages/MockTestDetail"));
 // const Magzine = React.lazy(() => import("./pages/Magzine"));
 const CertificateFullView = React.lazy(() =>
   import("./pages/CertificateFullView"),
@@ -92,7 +94,9 @@ function App() {
         <Route exact path={routingConstants.MORE_EVENT} component={EventPage} />
         <Route exact path={routingConstants.MORE_MAGAZINE} component={MagazinePage} />
         <Route exact path={routingConstants.ALL_NOTIFICATION} component={Notifications} />
-        <Route exact path={routingConstants.DETAILS_MAGZINE} component={MagzineDetails} />
+        <Route exact path={`${routingConstants.MORE_MAGAZINE}:id`} component={MagzineDetails} />
+        <Route exact path={routingConstants.MOCKTEST} component={MockTest} />
+        <Route exact path={`${routingConstants.MOCKTEST}:id`} component={MockTestDetail} />
         
         <Route exact path={routingConstants.FAQ} component={FaqPage} />
         {/* <Route exact path={routingConstants.MAGZINE} component={Magzine} /> */}

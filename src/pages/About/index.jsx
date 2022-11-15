@@ -6,6 +6,7 @@ import { Header, Footer, SEO } from "../../components";
 import half_star from "../../assets/images/half_star.svg";
 import img1 from "../../assets/images/About/img1.png";
 import Nikita from "../../assets/images/Nikita-Sharma.png";
+import Ankita from "../../assets/images/Ankita-Sharma.png";
 import star from "../../assets/images/Star 2.png";
 import mob_banner from "../../assets/images/About/mob_banner.png";
 
@@ -71,7 +72,7 @@ const AboutusPage = () => {
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
-                      <img src={Nikita} alt='' />
+                      <img className='NikitaSharmaImage' src={Nikita} alt='' />
                       <p>"{t("aboutPage.review.1")}"</p>
                       <ul className='star'>
                         <li>
@@ -127,7 +128,7 @@ const AboutusPage = () => {
 
                   <div data-aos='slide-left'>
                     <div className='tes_box heg_cha'>
-                      <img src={Nikita} alt='' />
+                      <img className='AnkitaSharmaImage' src={Ankita} alt='' />
                       <p>“{t("aboutPage.review.3")}"</p>
                       <ul className='star'>
                         <li>

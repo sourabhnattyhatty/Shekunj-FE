@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -6,7 +6,7 @@ import {
   getSimilarCourses,
   singleCourseDetails,
 } from "../../store/courses/action";
-import {Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Check from "../../assets/icons/check1.png";
 import monitor from "../../assets/icons/monitor.png";
 import lifetime1 from "../../assets/icons/lifetime1.png";
@@ -20,15 +20,13 @@ import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
-import {
-  adsList
-} from "../../store/ads";
+import { adsList } from "../../store/ads";
 
 const CourseDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { course } = useSelector((state) => state.coursesReducer);
-  const { lan } = useSelector(state => state.languageReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
 
   const { t } = useTranslation();
   useEffect(() => {
@@ -41,23 +39,23 @@ const CourseDetails = () => {
       dispatch(getSimilarCourses(course?.category_id));
     }
   }, [dispatch, course?.category_id, lan]);
- 
-  const [courseDetailAds, setCourseDetailAds] = useState([]);
-  const [image,setImage]=useState("NA")
 
-	// useEffect(() => {
-	// 	axios.get('/private_adds/private_add?image_type=home_position_1')
-	// 		.then((response) => {
-	// 			setCourseDetailAds(response.data.results);
-	// 		});
-	// }, [])
+  const [courseDetailAds, setCourseDetailAds] = useState([]);
+  const [image, setImage] = useState("NA");
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add?image_type=home_position_1')
+  // 		.then((response) => {
+  // 			setCourseDetailAds(response.data.results);
+  // 		});
+  // }, [])
+
+  // useEffect(() => {
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "course_detail"
@@ -66,32 +64,13 @@ const CourseDetails = () => {
   //         setImage(findImage)
   //         setCourseDetailAds(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
+  // 		});
 
-  const addEmail =(email)=>{
-    console.log("addEmail",email)
-       axios.post('/private_adds/click_add/'
-   ,{
-     // add_email:`${adds[0]?.add_email}`
-     add_email:email
-   }
-   )
-     .then((response) => {
-       // setAdds(response.data.results);
-       console.log("addEmailresponse",response)
-     });
-   
-}
+  // }, [])
 
-  useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -99,25 +78,47 @@ const CourseDetails = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "course_detail"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setCourseDetailAds(filterArray)
-            }
-      });
-    })
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "course_detail";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setCourseDetailAds(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
-
-
+  }, []);
 
   return (
     <div>
@@ -154,10 +155,11 @@ const CourseDetails = () => {
               <div className='sec1_des'>
                 <h2>{t("coursesPage.coursesDetailsPage.heading.2")}</h2>
                 {/* <p>{course?.description}</p> */}
-                <div dangerouslySetInnerHTML={{ __html: course?.description }} />
+                <div
+                  dangerouslySetInnerHTML={{ __html: course?.description }}
+                />
               </div>
-              <div className='mt-2 mb-2'>
-              </div>
+              <div className='mt-2 mb-2'></div>
               <div className='sec1_con2 con_setSec1'>
                 <h2>{t("coursesPage.coursesDetailsPage.heading.3")}</h2>
                 <Row>
@@ -201,129 +203,140 @@ const CourseDetails = () => {
 
             <Container>
               <Row>
-                {courseDetailAds.length > 0 &&
-                <div  className="col-md-12 ads_course_detail_cover" onClick={()=>addEmail(courseDetailAds[0]?.add_email)}>
-                <a href={courseDetailAds[0]?.url_adds}  target='_blank'>
-                  <img src={courseDetailAds[0]?.image} alt='Image' className='ads_course_detail' />
-                  </a>
-                </div>
-}
+                {courseDetailAds.length > 0 && (
+                  <div
+                    className='col-md-12 ads_course_detail_cover'
+                    onClick={() => addEmail(courseDetailAds[0]?.add_email)}
+                  >
+                    <a href={courseDetailAds[0]?.url_adds} target='_blank'>
+                      <img
+                        src={courseDetailAds[0]?.image}
+                        alt='Image'
+                        className='ads_course_detail'
+                      />
+                    </a>
+                  </div>
+                )}
               </Row>
             </Container>
 
             <Container>
-            <Row>
-              <Col lg={7} md={12}>
-                <div className='sec1_con2'>
-                  <h2>{t("coursesPage.coursesDetailsPage.heading.4")}</h2>
+              <Row>
+                <Col lg={7} md={12}>
+                  <div className='sec1_con2'>
+                    <h2>{t("coursesPage.coursesDetailsPage.heading.4")}</h2>
 
-                  <Row>
-                    <Col md={6} xs={12}>
-                      <div className='features_box'>
-                        <div>
-                          <img src={monitor} alt='' srcSet='' />
+                    <Row>
+                      <Col md={6} xs={12}>
+                        <div className='features_box'>
+                          <div>
+                            <img src={monitor} alt='' srcSet='' />
+                          </div>
+                          <div>
+                            <h6>
+                              {t(
+                                "coursesPage.coursesDetailsPage.heading.features.1",
+                              )}
+                            </h6>
+                            <p>
+                              We offer 100% online courses which you can access
+                              from anywhere at your own comfort!
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h6>
-                            {t(
-                              "coursesPage.coursesDetailsPage.heading.features.1",
-                            )}
-                          </h6>
-                          <p>
-                            We offer 100% online courses which you can access from anywhere at your own comfort!
-                          </p>
+                        <div className='features_box'>
+                          <div>
+                            <img src={lifetime1} alt='' srcSet='' />
+                          </div>
+                          <div>
+                            <h6>
+                              {t(
+                                "coursesPage.coursesDetailsPage.heading.features.2",
+                              )}
+                            </h6>
+                            <p>
+                              Get the access to courses for lifetime and learn
+                              from anywhere and anytime.
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div className='features_box'>
-                        <div>
-                          <img src={lifetime1} alt='' srcSet='' />
+                        <div className='features_box'>
+                          <div>
+                            <img src={certificate1} alt='' srcSet='' />
+                          </div>
+                          <div>
+                            <h6>
+                              {t(
+                                "coursesPage.coursesDetailsPage.heading.features.3",
+                              )}
+                            </h6>
+                            <p>
+                              Earn industry recognized certificate after the
+                              completion of course.
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h6>
-                            {t(
-                              "coursesPage.coursesDetailsPage.heading.features.2",
-                            )}
-                          </h6>
-                          <p>
-                            Get the access to courses for lifetime and learn from anywhere and anytime.
-                          </p>
-                        </div>
-                      </div>
-                      <div className='features_box'>
-                        <div>
-                          <img src={certificate1} alt='' srcSet='' />
-                        </div>
-                        <div>
-                          <h6>
-                            {t(
-                              "coursesPage.coursesDetailsPage.heading.features.3",
-                            )}
-                          </h6>
-                          <p>
-                            Earn industry recognized certificate after the completion of course.
-                          </p>
-                        </div>
-                      </div>
-                    </Col>
+                      </Col>
 
-                    <Col md={6} xs={12}>
-                      <div className='features_box'>
-                        <div>
-                          <img src={clipboard} alt='' srcSet='' />
+                      <Col md={6} xs={12}>
+                        <div className='features_box'>
+                          <div>
+                            <img src={clipboard} alt='' srcSet='' />
+                          </div>
+                          <div>
+                            <h6>
+                              {t(
+                                "coursesPage.coursesDetailsPage.heading.features.4",
+                              )}
+                            </h6>
+                            <p>
+                              Join SheKunj, a community forum that believes
+                              women education and empowerment is in the
+                              mainstream.
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h6>
-                            {t(
-                              "coursesPage.coursesDetailsPage.heading.features.4",
-                            )}
-                          </h6>
-                          <p>
-                            Join SheKunj, a community forum that believes women education and empowerment is in the mainstream.
-                          </p>
-                        </div>
-                      </div>
 
-                      <div className='features_box'>
-                        <div>
-                          <img src={flexible1} alt='' srcSet='' />
+                        <div className='features_box'>
+                          <div>
+                            <img src={flexible1} alt='' srcSet='' />
+                          </div>
+                          <div>
+                            <h6>
+                              {t(
+                                "coursesPage.coursesDetailsPage.heading.features.5",
+                              )}
+                            </h6>
+                            <p>
+                              Learn and keep a practical approach towards your
+                              courses by flexible timings and deadlines.
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h6>
-                            {t(
-                              "coursesPage.coursesDetailsPage.heading.features.5",
-                            )}
-                          </h6>
-                          <p>
-                            Learn and keep a practical approach towards your courses by flexible timings and deadlines.
-                          </p>
-                        </div>
-                      </div>
 
-                      <div className='features_box'>
-                        <div>
-                          <img src={Language1} alt='' srcSet='' />
+                        <div className='features_box'>
+                          <div>
+                            <img src={Language1} alt='' srcSet='' />
+                          </div>
+                          <div>
+                            <h6>
+                              {t(
+                                "coursesPage.coursesDetailsPage.heading.features.6.heading",
+                              )}
+                            </h6>
+                            <p>
+                              {t(
+                                "coursesPage.coursesDetailsPage.heading.features.6.data",
+                              )}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h6>
-                            {t(
-                              "coursesPage.coursesDetailsPage.heading.features.6.heading",
-                            )}
-                          </h6>
-                          <p>
-                            {t(
-                              "coursesPage.coursesDetailsPage.heading.features.6.data",
-                            )}
-                          </p>
-
-                        </div>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-            </Row>
+                      </Col>
+                    </Row>
+                  </div>
+                </Col>
+              </Row>
             </Container>
-
           </div>
         </div>
       </section>

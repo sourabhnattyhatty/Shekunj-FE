@@ -1,16 +1,19 @@
 .CompExams .MuiTabs-flexContainer {
   align-items: baseline;
 }
+
 .CompExams .MuiTabs-scroller {
   width: 100%;
   text-align: left;
 }
+
 .CompExams button {
   padding: 0;
   text-align: left !important;
   margin: 0;
   align-items: end;
 }
+
 .CompExams button {
   padding: 0;
   text-align: left !important;
@@ -21,28 +24,32 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 23px;
-  color: #000000;
+  color: #000000 !important;
   text-transform: capitalize;
 }
+
 .Com_title h2 {
   font-family: Source Sans Pro;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
-  color: #000000;
+  color: #000000 !important;
 }
+
 .CompExams .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-  color: #000000;
+  color: #000000 !important;
   font-weight: bold;
 }
 
 .CompExams a {
   text-decoration: none;
 }
+
 div#vertical-tabpanel-0 {
   width: 100%;
 }
+
 .tabs_box {
   background: #ffffff;
   border: 1px solid #e3e4eb;
@@ -51,11 +58,23 @@ div#vertical-tabpanel-0 {
   padding: 17px 25px;
   transition-duration: 1s;
 }
+.ads_home_cover_careerOption {
+  text-align: center;
+}
+
+.google_ads_home_careerOption {
+  margin: 5px 0px;
+  height: 120px;
+  width: 84%;
+  object-fit: cover;
+}
+
 .tabs_box:hover {
   border-color: #ec498a;
   cursor: pointer;
   transition: 1s;
 }
+
 .tabs_box h2 {
   font-family: Source Sans Pro;
   font-style: normal;
@@ -64,6 +83,7 @@ div#vertical-tabpanel-0 {
   line-height: 25px;
   color: #000000;
 }
+
 .tabs_box p {
   font-family: Source Sans Pro;
   font-style: normal;
@@ -72,6 +92,7 @@ div#vertical-tabpanel-0 {
   line-height: 18px;
   color: #4f4f4f;
 }
+
 .tabs_box button {
   font-family: Source Sans Pro;
   font-style: normal;
@@ -82,22 +103,40 @@ div#vertical-tabpanel-0 {
   border: none;
   background: transparent;
 }
+
+.CompExams button {
+  color: #000000 !important;
+  font-weight: bold;
+  // text-emphasis-color: black !important;
+}
+
+.CompExams button:hover {
+  background-color: #ec498a !important;
+  color: #ffffff !important;
+  border-radius: 20px;
+  padding: 10px;
+  // margin: 10px;
+}
+
 .CompExams .MuiTabs-root.MuiTabs-vertical {
   height: 875px;
   overflow-y: scroll;
   display: block;
   margin-bottom: 100px;
 }
+
 .CompExams span.MuiTabs-indicator {
   display: none;
 }
+
 .CompExams .MuiBox-root {
   padding: 0;
 }
-.CompExams
-  .css-1ehaqqx-MuiButtonBase-root-MuiTabScrollButton-root.Mui-disabled {
+
+.CompExams .css-1ehaqqx-MuiButtonBase-root-MuiTabScrollButton-root.Mui-disabled {
   display: none;
 }
+
 .banking-exampage {
   background: #ffffff;
   border: 1px solid #e3e4eb;
@@ -106,6 +145,7 @@ div#vertical-tabpanel-0 {
   height: 100%;
   padding: 30px;
 }
+
 .banking-exampage .back_button {
   font-style: normal;
   font-weight: 600;
@@ -115,9 +155,11 @@ div#vertical-tabpanel-0 {
   text-transform: capitalize;
   cursor: pointer;
 }
+
 .banking-exampage .back_button img {
   margin: -1px 14px 0px 0px;
 }
+
 .banking-exampage .banking-examheader h2 {
   font-style: normal;
   font-weight: bold;
@@ -127,16 +169,19 @@ div#vertical-tabpanel-0 {
   display: inline-block;
   font-family: Source Sans Pro;
 }
+
 .banking-exampage .banking-examheader {
   padding: 28px 0 0px;
   width: 100%;
   display: inline-block;
 }
+
 .banking-exampage .banking-examheader ul {
   display: inline-block;
   float: right;
   margin: 0;
 }
+
 .banking-exampage .banking-examheader ul li {
   font-style: normal;
   // font-weight: 600;
@@ -147,12 +192,15 @@ div#vertical-tabpanel-0 {
   margin-right: 23px;
   // font-family: Source Sans Pro;
 }
+
 .banking-exampage .locationdiv {
   padding-top: 38px;
 }
+
 .locationdiv img {
   max-width: 100%;
 }
+
 .banking-exampage .locationdiv p {
   font-style: normal;
   font-weight: normal;
@@ -161,12 +209,15 @@ div#vertical-tabpanel-0 {
   color: #000000;
   font-family: Source Sans Pro;
 }
+
 .border-colorbottom {
   border-color: #e3e4eb;
 }
+
 .border-colorbottommargin {
   margin: 50px 0px 35px 0px;
 }
+
 .banking-exampage .inner-content h3 {
   font-family: Source Sans Pro;
   font-style: normal;
@@ -176,9 +227,11 @@ div#vertical-tabpanel-0 {
   color: #323232;
   width: 100px;
 }
+
 .banking-exampage .inner-content ul {
   padding: 0px 0px 22px 28px;
 }
+
 .banking-exampage .inner-content li {
   font-family: Source Sans Pro;
   font-style: normal;
@@ -186,4 +239,17 @@ div#vertical-tabpanel-0 {
   font-size: 16px;
   line-height: 20px;
   color: #000000;
+}
+
+.GuidanceOptionCard {
+  height: 200px;
+  width: 300px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.google_add_box_img {
+  width: 100% !important;
+  height: 320px !important;
+  padding-top: 20px;
 }

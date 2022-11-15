@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { routingConstants } from "../../utils/constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PublicIcon from '@mui/icons-material/Public';
 import {
   setCollapseSuccessStory,
   successStories as fetchSuccessStories,
@@ -11,13 +13,26 @@ import {
 import { Header, Footer } from "../../components";
 import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
-import double_quote from "../../assets/icons/double_quote.png";
+import EventImage from "../../assets/images/fita-png-rosa.png";
 import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { getAllEvents } from "../../store/events";
 import Moment from "react-moment";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { adsList } from "../../store/ads";
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
+import GroupTwoToneIcon from '@mui/icons-material/GroupTwoTone';
+import AlarmOnOutlinedIcon from '@mui/icons-material/AlarmOnOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
 function EventPage() {
   const history = useHistory();
@@ -44,21 +59,75 @@ function EventPage() {
 
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
+  const [image, setImage] = useState("NA");
+  const [adds, setAdds] = useState([]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/private_adds/private_add?image_type=success_stories_banner")
+  //     .then((response) => {
+  //       setStoriesBannerAds(response.data.results);
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/private_adds/private_add?image_type=success_stories_box")
+  //     .then((response) => {
+  //       setStoriesBoxAds(response.data.results);
+  //     });
+  // }, []);
 
   useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_banner")
-      .then((response) => {
-        setStoriesBannerAds(response.data.results);
-      });
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "event_index";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setStoriesBoxAds(filterArray);
+          }
+        });
+    });
+    dispatch(adsList());
   }, []);
-  useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_box")
-      .then((response) => {
-        setStoriesBoxAds(response.data.results);
-      });
-  }, []);
+
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
   return (
     <div>
@@ -67,113 +136,176 @@ function EventPage() {
         {" "}
         <Container>
           <Row>
-          <Col md={1}>
+            <Col md={1}>
               <div className='global_img'>
                 <img src={global} alt='' className='vert-move' />
               </div>
-              </Col>
-              <Col md={6} data-aos='slide-up'>
+            </Col>
+            <Col md={6} data-aos='slide-up'>
               <h2> {t("Shekunj Events..")}</h2>
               <p> Have a look how SheKunj has played an important role</p>
-              </Col>      
-                  </Row>
-            </Container>
+            </Col>
+          </Row>
+        </Container>
       </div>
-      {/* <nav class='navbar navbar-custom'>
-          <h2>All Events</h2>
-        </nav> */}
-      <div className='Home'>
-        {/* <div className='filters'>
-          <span className='title'>Filter</span>
-          <span>
-            <Form.Check
-              inline
-              label='Faveroite'
-              name='group1'
-              type='checkbox'
-              id={`inline-1`}
-            />
-          </span>
-          <Button variant='light'>Clear Filters</Button>
-        </div> */}
-        <div className='EventsContainer d-flex justify-content-evenly moreevent-box23'>
+      {/* <div className='Home'> */}
+        <Container className="eventContainer">
           {events?.event_list?.length > 0 ? (
-            events?.event_list?.map((c)=>{
+            events?.event_list?.map((c, index) => {
               console.log("c", c);
               return (
                 <>
-              {/* // (c, index) =>
-              // c &&
-              // c.name && (
-              //   <> */}
-                  <Col md={4}>
-                    <Card key={c?.id} className="mainEventCard" style={{ width: '30rem',height:"34rem" }}>
-                      <Card.Body className='eventCards d-flex flex-column' key={c?.id}>
-                        <img 
-                          src={c && c.image}
-                          class='card-img card-img-top event-img-more12'
-                          alt='...'
-                          width="100%"
-                          height="100%"
-                        ></img>
-                        <Card.Title class="icon_favorite"  key={c?.id} >
-                          <h3 class="c-heading-6">
-                          <Link
-                                    to={routingConstants.MORE_EVENT+ c.id}
-                                    className=''
-                                    key={c?.id} >
-                                    {c && c.title}
-                                  </Link>
-                          </h3>
-                        </Card.Title>
-                        
-                        <Card.Subtitle className='mb-2 text-muted'>
-                          <Moment format='D MMM YYYY' withTitle>
-                            {c && c.created_at}
-                          </Moment>
-                        </Card.Subtitle>
-                        <Card.Text>
-                          <p class='card-text'>
-                            <div
-                              style={{
-                                maxHeight: "100px",
-                                overflow: "hidden",
-                              }}
-                              dangerouslySetInnerHTML={{
-                                __html: `<div>${c && c.about_event}</div>`,
-                              }}
+                
+                  <Grid spacing={1} className='gridContainerEvent'>
+                  {/* <Grid spacing={1} className='gridContainerEvent flex'> */}
+                    <Col md={1} xl={12}>
+                      <Card className='EventOptionCard '>
+                        <CardMedia
+                          component='img'
+                          alt='green iguana'
+                          // height='200'
+                          image={c && c.image}
+                          className='guidanceEventImage'
+                        />
+
+                       <Typography
+                            gutterBottom
+                            variant='h6'
+                            component='div'
+                            className='limited-text'
+                          >
+                            <Link
+                              to={routingConstants.MORE_EVENT + c.id}
+                              className=''
+                              key={c?.id}
+                            >
+                              {c && c.title}
+                            </Link>
+                          </Typography>
+
+                          <Typography
+                            className='eventtimings'
+                            variant='body2'
+                            color='text.secondary'
+                          >
+                            {/* <img src="EventImage"></img> */}
+                            <CardMedia
+                              component='img'
+                              alt='green iguana'
+                              // height="10"
+                              image={EventImage}
+                              className='EventDateImage'
                             />
-                          </p>
-                        </Card.Text>
-                        <Button href={c && c.form_link} className="c-button mt-auto btn center"  color="#ec498a" variant='primary'>
-                          Registration and details
-                        </Button>
-                     
-                      </Card.Body>
-                    </Card>
-                  </Col>
+                            <Moment
+                              format='D MMM YYYY'
+                              withTitle
+                              className='date'
+                            >
+                              {c && c.created_at}
+                            </Moment>
+                          </Typography>
+
+
+                        <CardContent class='d-flex flex-column'>
+                         
+                          <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
+                          <PublicIcon />{" "}{c && c?.type_1}
+                          </Typography>
+                          <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
+                          <LocalLibraryTwoToneIcon />{" "}{c && c?.type_2}
+                          </Typography>
+                          <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
+                          <GroupTwoToneIcon/>{" "}{c && c?.mode_of_event}
+                          </Typography>
+                          <Typography className="Date-Time">
+                            <Typography>
+                            {/* <CalendarMonthOutlinedIcon /> */}
+                              Start Date & Time : {" "}
+                            {c && c?.start_date}{" "}-{" "}
+                           {/* <AlarmOnOutlinedIcon /> */}
+                            {c && c?.start_time}
+                            </Typography>
+                            <Typography
+                             >
+                            End Date & Time : {" "}
+                            {c && c?.end_date}{" "}-{" "}
+                            {c && c?.end_time}
+                            </Typography>
+                          </Typography>
+                        </CardContent>
+                                               <CardActions>
+                          <Button
+                          variant="outlined"
+                            size='medium'
+                            className='eventButtonAction'
+                            href={c && c.form_link}
+                          >
+                             <Link
+                              to={routingConstants.MORE_EVENT + c.id}
+                              className=''
+                              key={c?.id}
+                            >
+                            Registration and details
+                            </Link>
+                            {/* <ArrowRightAltIcon /> */}
+                          </Button>
+                        </CardActions>
+                      </Card>
+                    </Col>
+                  </Grid>
+                  {index % 4 == 3 ? (
+                    <>
+                      {/* <div className='Row'> */}
+                      <Grid spacing={1} className='gridContainerEvent flex'>
+                        {/*  */}
+                        <Col md={1} xl={12}>
+                          {/* <Card className='EventOptionCardAdd'> */}
+                          <Card className='EventOptionCard'>
+                          {storiesBoxAds.length > 0 && (
+                            <div
+                              className='slide-imgAdd'
+                              onClick={() =>
+                                addEmail(storiesBoxAds[0]?.add_email)
+                              }
+                            >
+                              <a
+                                href={storiesBoxAds[0]?.url_adds}
+                                target='_blank'
+                              >
+                                <img
+                                  src={storiesBoxAds[0]?.image}
+                                  alt='Image'
+                                  className='google_add_box_img'
+                                />
+                              </a>
+                              <div className='overlay'></div>
+                            </div>
+                          )}
+                          </Card>
+                        </Col>
+                      </Grid>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  
                 </>
               );
             })
-          ) 
-          //  {/* </>
-          //           ),
-          //       )
-          //     )  */}
-          : (
+          ) : (
+      
             <div className='text-center'>{t("common.noDataFound")}</div>
           )}
-          
-        </div>
-      </div>
-      <div className='want'>
+        </Container>
+      {/* </div> */}
+      {/* <div className='want'>
         <Container>
           <h2>{t("successStoriesPage.content.2")}</h2>
           <button onClick={() => history.push("/courses")} className='want_btn'>
             {t("successStoriesPage.button.2")}
           </button>
         </Container>
-      </div>
+      </div> */}
 
       <Footer loginPage={false} />
     </div>

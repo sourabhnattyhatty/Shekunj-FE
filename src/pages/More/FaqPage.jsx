@@ -23,18 +23,20 @@ import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
-import { getFaq  as fetchFaq}  from "../../store/faq/action";
+import { getFaq as fetchFaq } from "../../store/faq/action";
+import { adsList } from "../../store/ads";
+import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 
 
 function FaqPage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const { faq } = useSelector((state) => {
-    console.log("state",state)
-    return state.faqReducer;  
+    console.log("state", state);
+    return state.faqReducer;
   });
-  console.log("faq",faq)
- 
+  console.log("faq", faq);
+
   const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
 
@@ -43,7 +45,6 @@ function FaqPage() {
   //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   // }, [dispatch, lan]);
 
-  
   useEffect(() => {
     dispatch(fetchFaq());
   }, [dispatch]);
@@ -58,22 +59,76 @@ function FaqPage() {
   };
 
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
-  const [storiesBoxAds, setStoriesBoxAds] = useState([]);
+  const [image, setImage] = useState("NA");
+  const [faqBoxAdds, setFaqBoxAdds] = useState([]);
+  const [adds, setAdds] = useState([]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/private_adds/private_add?image_type=success_stories_banner")
+  //     .then((response) => {
+  //       setStoriesBannerAds(response.data.results);
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/private_adds/private_add?image_type=success_stories_box")
+  //     .then((response) => {
+  //       setStoriesBoxAds(response.data.results);
+  //     });
+  // }, []);
 
   useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_banner")
-      .then((response) => {
-        setStoriesBannerAds(response.data.results);
-      });
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "Faq_index";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setFaqBoxAdds(filterArray);
+          }
+        });
+    });
+    dispatch(adsList());
   }, []);
-  useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_box")
-      .then((response) => {
-        setStoriesBoxAds(response.data.results);
-      });
-  }, []);
+
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
   return (
     <div>
@@ -100,10 +155,13 @@ function FaqPage() {
       <Container>
         <Row>
           <div className='col-md-12'>
-            <div className='ads_story_cover'>
-              <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
+            <div
+              className='ads_story_cover'
+              onClick={() => addEmail(faqBoxAdds[0]?.add_email)}
+            >
+              <a href={faqBoxAdds[0]?.url_adds} target='_blank'>
                 <img
-                  src={storiesBannerAds[0]?.image}
+                  src={faqBoxAdds[0]?.image}
                   alt='Image'
                   className='ads_story_cover_img'
                 />
@@ -115,92 +173,65 @@ function FaqPage() {
 
       <div className='FaqContainer'>
         <Container>
-        <Navbar expand="lg" variant="light" bg="light">
-        <Container>
-          <Navbar.Brand className="NavHeading">Frequently Asked Question</Navbar.Brand>
-          <img
-              src="/static/media/logo.de3c6070.svg"
-              width="30"
-              height="30"
-              // className="d-inline-block align-top"
-              alt="logo"
-            />
-        </Container>
-      </Navbar>
+          <Navbar expand='lg' variant='light' bg='light'>
+            <Container>
+              <Navbar.Brand className='NavHeading'>
+                Frequently Asked Question
+              </Navbar.Brand>
+              <img
+                src='/static/media/logo.de3c6070.svg'
+                width='30'
+                height='30'
+                // className="d-inline-block align-top"
+                alt='logo'
+              />
+            </Container>
+          </Navbar>
           <Row>
             <Col md={12}>
               {faq?.Faqs_list?.length > 0 ? (
                 faq?.Faqs_list?.map(
-                  (c,index) =>
-                  c&&
-                    (
+                  (c, index) =>
+                    c && (
                       <>
-              <div className='FaqAccordion'>
-                <Accordion flush>
-                  <Accordion.Item eventKey='0'>
-                    <Accordion.Header>
-                      {/* Accordion ques */}
-                      {c.question}
-                      
-                     {/* <img src="src\assets\icons\down1.png"/>
-                      <img src="src\assets\icons\up.png"/> */}
-                    </Accordion.Header>
-                    <Accordion.Body className='Faq_Accordion_body'>
-                      {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum. */}
-                      
-                      <div dangerouslySetInnerHTML={{__html:`<div>${c.answer}</div>`}}/>
-
-                    </Accordion.Body>
-                  </Accordion.Item>
-                  {/* <Accordion.Item eventKey='1'>
-                    <Accordion.Header>
-                      Accordion ques
-                      <i class='arrow'></i>
-                    </Accordion.Header>
-                    <Accordion.Body className='Faq_Accordion_body'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum.
-                    </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey='2'>
-                    <Accordion.Header>
-                      Accordion ques
-                      <i class='arrow'></i>
-                    </Accordion.Header>
-                    <Accordion.Body className='Faq_Accordion_body'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum.
-                    </Accordion.Body>
-                  </Accordion.Item>*/}
-                </Accordion> 
-              </div>
-              </>
-                    )
+                        <div className='FaqAccordion'>
+                          <Accordion flush>
+                            <Accordion.Item eventKey='0'>
+                              <Accordion.Header>
+                                {c.question}
+                              </Accordion.Header>
+                              {/* <OpenInFullIcon /> */}
+                              <Accordion.Body className='Faq_Accordion_body'>
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: `<div>${c.answer}</div>`,
+                                  }}
+                                />
+                              </Accordion.Body>
+                            </Accordion.Item>
+                                                      </Accordion>
+                        </div>
+                      </>
+                    ),
                 )
               ) : (
                 <div className='text-center'>{t("common.noDataFound")}</div>
               )}
             </Col>
           </Row>
+          {/* {idx % 2 == 1 ? (
+                    <a href={faqBoxAdds[0]?.url_adds} target='_blank'>
+                      <div className='ads_story_cover'>
+                        <img
+                          src={faqBoxAdds[1]?.image}
+                          alt='Image'
+                          className='ads_succ_story'
+                        />
+                      </div>
+                    </a>
+                  ) : (
+                    ""
+                  )} */}
         </Container>
       </div>
       <div className='want'>
@@ -213,7 +244,6 @@ function FaqPage() {
       </div>
 
       <Footer loginPage={false} />
-
     </div>
   );
 }

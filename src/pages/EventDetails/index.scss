@@ -1,377 +1,685 @@
 .career_tit {
-    margin-bottom: 50px;
-  }
-  
-  .career_tit h2 {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 52px;
-    color: #323232;
-  }
-  
-  .career_tit p {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    color: #828282;
-  }
-  
-  .career_box {
-    background: #ffffff;
-    width: 100%;
-    height: 268px;
-    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
-    border-radius: 5px;
-    padding: 15px;
-    align-items: center;
-    display: grid;
-    margin-bottom: 30px;
-  }
-  
-  .career_box_add {
-    background: #ffffff;
-    width: 100%;
-    //height: 268px;
-    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
-    border-radius: 10px;
-    padding: 30px;
-    margin: 15px;
-    align-items: center;
-    display: grid;
-    margin-bottom: 30px;
-  }
-  
-  .career_img img {
-    max-width: 100%;
-    border-radius: 5px;
-    border: 1px solid #d1d1d1;
-  }
-  
-  .css-ztrqiq-MuiImageListItemBar-root {
-    border-radius: 15px;
-  }
-  
-  .career_img {
-    width: 191px;
-    height: 144px;
-    float: left;
-    display: inline-flex;
-    overflow: hidden;
-    padding: 10px;
-    margin-top: 200px;
-  }
-  
-  .career_box h3 {
-    font-family: Poppins;
-  
-    text-transform: capitalize;
-  
-    color: #323232;
-  
-  
-    font-size: .875rem;
-    line-height: 1.3125rem;
-    margin-top: 0;
-    margin-bottom: 0;
-    max-width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  
-  .career_box h3 {
-    font-size: .875rem;
-    line-height: 1.3125rem;
-    margin-top: 0;
-    margin-bottom: 5px;
-    max-width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  
-  }
-  
-  .career_box p {
-    font-family: Poppins;
-    font-style: normal;
-    color: #828282;
-    position: relative;
-    font-size: 14px;
-  }
-  
-  .career_box p span {
-    color: #4f4f4f;
-  }
-  
-  .career_box ul {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0;
-    list-style: none;
-    max-width: 100%;
-    margin: 0;
-    // margin-bottom: 30px;
-  }
-  
-  .career_box ul li {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 2;
-    color: #828282;
-    margin-bottom: 19px;
-  }
-  
-  .career_box ul li span {
-    color: #4f4f4f;
-  }
-  
-  .career_box button {
+  margin-bottom: 50px;
+}
+
+.career_tit h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 52px;
+  color: #323232;
+}
+
+.career_tit p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #828282;
+}
+
+.career_box {
+  background: #ffffff;
+  width: 100%;
+  height: 268px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+  border-radius: 5px;
+  padding: 15px;
+  align-items: center;
+  display: grid;
+  margin-bottom: 30px;
+}
+
+.career_box_add {
+  background: #ffffff;
+  width: 100%;
+  //height: 268px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 15px;
+  align-items: center;
+  display: grid;
+  margin-bottom: 30px;
+}
+
+.career_img img {
+  max-width: 100%;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+}
+
+.css-ztrqiq-MuiImageListItemBar-root {
+  border-radius: 15px;
+}
+
+.career_img {
+  width: 191px;
+  height: 144px;
+  float: left;
+  display: inline-flex;
+  overflow: hidden;
+  padding: 10px;
+  margin-top: 200px;
+}
+
+.career_box h3 {
+  font-family: Poppins;
+
+  text-transform: capitalize;
+
+  color: #323232;
+
+
+  font-size: .875rem;
+  line-height: 1.3125rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.career_box h3 {
+  font-size: .875rem;
+  line-height: 1.3125rem;
+  margin-top: 0;
+  margin-bottom: 5px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+
+.career_box p {
+  font-family: Poppins;
+  font-style: normal;
+  color: #828282;
+  position: relative;
+  font-size: 14px;
+}
+
+.career_box p span {
+  color: #4f4f4f;
+}
+
+.career_box ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style: none;
+  max-width: 100%;
+  margin: 0;
+  // margin-bottom: 30px;
+}
+
+.career_box ul li {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 2;
+  color: #828282;
+  margin-bottom: 19px;
+}
+
+.career_box ul li span {
+  color: #4f4f4f;
+}
+
+.career_box button {
+  background: #ec498a;
+  border: 1px solid #ec498a;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #ffffff;
+  padding: 13px 31px;
+  // margin-top: 20px;
+}
+
+.css-1lizpae-MuiImageListItemBar-titleWrap {
+  padding: 65px 16px;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 163px;
+  text-align: center;
+  display: none;
+}
+
+.MuiImageListItemBar-title.css-dasnyc-MuiImageListItemBar-title,
+.MuiImageListItemBar-subtitle.css-hk6gwf-MuiImageListItemBar-subtitle {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+}
+
+@media screen and (max-device-width: 667px) {
+
+
+  button.book_event_btn {
     background: #ec498a;
     border: 1px solid #ec498a;
     box-sizing: border-box;
     border-radius: 2px;
-    font-family: Poppins;
+    font-family: "SegoeUI_medium";
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
-    line-height: 21px;
+    line-height: 19px;
     text-align: center;
     text-transform: capitalize;
     color: #ffffff;
-    padding: 13px 31px;
-    // margin-top: 20px;
+    width: 190px;
+    padding: 14px;
+    transition-duration: 1s;
+    margin-left: 15% !important;
   }
   
-  .css-1lizpae-MuiImageListItemBar-titleWrap {
-    padding: 65px 16px;
-    color: #fff;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 163px;
-    text-align: center;
-    display: none;
+  button.book_event_btn:hover {
+    border: 1px solid #ec498a;
+    color: #ec498a;
+    background-color: transparent;
   }
-  
-  .MuiImageListItemBar-title.css-dasnyc-MuiImageListItemBar-title,
-  .MuiImageListItemBar-subtitle.css-hk6gwf-MuiImageListItemBar-subtitle {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
-    color: #ffffff;
+  .career_box {
+    height: auto;
+    box-shadow: none;
+    padding: 0;
   }
-  
-  @media screen and (max-device-width: 667px) {
-  
-    .career_box {
-      height: auto;
-      box-shadow: none;
-      padding: 0;
-    }
-  
-    .deatil_box_right {
-      margin-top: 20px;
-    }
-  
-    .career_tit h2 {
-      font-size: 24px;
-    }
-  
-    .career_box h3 {
-      padding-top: 15px;
-    }
-  
-    .top_col_content {
-      border-bottom: 1px solid #e3e4eb;
-      padding-bottom: 30px;
-    }
-  
-    .career_box p {
-      font-size: 14px;
-    }
-  
-    .career_box ul li {
-      font-size: 14px;
-    }
-  
-    .career_img img {
-      border-radius: 5px;
-      border: 1px solid #d1d1d1;
-    }
-  
-    .career_tit p {
-      display: none;
-    }
-  
-    .accordion_box_all {
-      display: none;
-    }
-  
-    .career_tit {
-      margin-bottom: 25px;
-    }
-  
-    .DetailMainDiv_career {
-      padding: 15px 0;
-      margin-top: 80px;
-      user-select: none;
-    }
-  
-    .career_box .col-md-7.col-12 .career_img {
-      order: 1;
-    }
-  
-    .career_box .col-md-7.col-12 {
-      order: 2;
-    }
-  
-    .filter_side .accordion_box_all {
-      display: block;
-    }
-  
-    .filter_side {
-      display: block !important;
-    }
-  
-    .accordion_box_all ul li .MuiFormControlLabel-label {
-      font-family: Poppins;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 18px;
-      color: #323232;
-    }
-  }
-  
-  
-  .filter_side {
-    display: none;
-  }
-  
-  .filter_side {
-    background: #ffffff;
-    border: 1px solid #e3e4eb;
-    padding: 67px 30px;
-    border-radius: 0px;
-    height: 100%;
-    width: 90%;
-    margin-left: auto;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 9999999999;
-  }
-  
-  .filter_side img {
-    position: absolute;
-    right: 5%;
-    top: 4%;
-  }
-  
-  .filter_side p.more {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 18px;
-    color: #323232;
-    margin: 0;
-  }
-  
-  .filter_side ul {
-    margin: 0;
-  }
-  
-  .google_add {
-    width: 100%;
-    padding-top: 60px;
-  }
-  
-  .google_add_right {
-    width: 100%;
-  }
-  
-  .deatil_box {
-    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
-    padding: 25px;
-    user-select: none;
-  }
-  
-  .deatil_box h5 {
-    background: #fff;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #DFDFDF;
-    margin: 0px;
-    display: block;
-  }
-  
+
   .deatil_box_right {
-    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
-    padding: 18px;
+    margin-top: 20px;
   }
-  
-  .deatil_box_right h5 {
-    background: #fff;
-    padding-bottom: 18px;
-    border-bottom: 1px solid #DFDFDF;
-    margin: 0px;
-    display: block;
+
+  .career_tit h2 {
+    font-size: 24px;
   }
-  
-  .right_gallery {
-    width: 100%;
-    padding-bottom: 15px;
+
+  .career_box h3 {
+    padding-top: 15px;
   }
-  
-  .responsive-iframe {
-    width: 100%;
-    height: 100%;
+
+  .top_col_content {
+    border-bottom: 1px solid #e3e4eb;
+    padding-bottom: 30px;
   }
-  .DetailMainDiv_career {
-    padding: 20px 0;
+
+  .career_box p {
+    font-size: 14px;
   }
-  
-  .college_logo {
-    height: 175px;
-    float: left;
-    display: inline-flex;
-    overflow: hidden;
-    padding: 10px;
-    margin-top: -87px;
-    margin-left: 30px;
+
+  .career_box ul li {
+    font-size: 14px;
   }
-  .college_logo_img{
-    max-width: 100%;
-    padding: 10px;
+
+  .career_img img {
     border-radius: 5px;
     border: 1px solid #d1d1d1;
   }
-  .coverMainSecCollege{
-    padding-top: 60px;
+
+  .career_tit p {
+    display: none;
   }
-  .college_detail_cover {
-    width: 1366;
-    height: 200px;
+
+  .accordion_box_all {
+    display: none;
+  }
+
+  .career_tit {
+    margin-bottom: 25px;
+  }
+
+  .DetailMainDiv_career {
+    padding: 15px 0;
+    margin-top: 80px;
+    user-select: none;
+  }
+
+  .career_box .col-md-7.col-12 .career_img {
+    order: 1;
+  }
+
+  .career_box .col-md-7.col-12 {
+    order: 2;
+  }
+
+  .filter_side .accordion_box_all {
     display: block;
   }
-  .college_detail_cover_img{
-    width: 100%;
-    background-size: cover;
-    height: 100%;
+
+  .filter_side {
+    display: block !important;
   }
-  .card-img-top{
-    margin-bottom: 15px;
+
+  .accordion_box_all ul li .MuiFormControlLabel-label {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #323232;
   }
-  
+}
+
+
+.filter_side {
+  display: none;
+}
+
+.filter_side {
+  background: #ffffff;
+  border: 1px solid #e3e4eb;
+  padding: 67px 30px;
+  border-radius: 0px;
+  height: 100%;
+  width: 90%;
+  margin-left: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9999999999;
+}
+
+.filter_side img {
+  position: absolute;
+  right: 5%;
+  top: 4%;
+}
+
+.filter_side p.more {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: #323232;
+  margin: 0;
+}
+
+.filter_side ul {
+  margin: 0;
+}
+
+.google_add {
+  width: 100%;
+  padding-top: 60px;
+}
+
+.google_add_right {
+  width: 100%;
+}
+
+.deatil_box {
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+  padding: 25px;
+  user-select: none;
+}
+
+.deatil_box h5 {
+  background: #fff;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #DFDFDF;
+  margin: 0px;
+  display: block;
+}
+
+.deatil_box_right {
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+  padding: 18px;
+}
+
+.deatil_box_right h5 {
+  background: #fff;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #DFDFDF;
+  margin: 0px;
+  display: block;
+}
+
+.right_gallery {
+  width: 100%;
+  padding-bottom: 15px;
+}
+
+.responsive-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.DetailMainDiv_career {
+  padding: 20px 0;
+}
+
+.college_logo {
+  height: 175px;
+  float: left;
+  display: inline-flex;
+  overflow: hidden;
+  padding: 10px;
+  margin-top: -87px;
+  margin-left: 30px;
+}
+
+.college_logo_img {
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+}
+
+.coverMainSecCollege {
+  padding-top: 60px;
+}
+
+.college_detail_cover {
+  width: 1366;
+  height: 200px;
+  display: block;
+}
+
+.college_detail_cover_img {
+  width: 100%;
+  background-size: cover;
+  height: 100%;
+}
+
+.card-img-top {
+  margin-bottom: 15px;
+}
+
+.Event_book_form {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 30px 40px;
+}
+
+.Event_book_form em {
+  font-style: inherit;
+}
+
+.event_con h2 {
+  font-family: 'SegoeUI_medium';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 40px;
+  color: rgb(96 96 96);
+}
+
+.event_con p {
+  font-family: 'SegoeUI_bold';
+  text-transform: capitalize;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 31px;
+  line-height: 30px;
+  color: rgb(0 0 0);
+}
+
+.event_con img {
+  max-width: 100%;
+  margin-bottom: 1px;
+}
+
+.Event_book_form span.MuiTabs-indicator {
+  border-bottom: none !important;
+}
+
+.Event_book_form .MuiTabs-flexContainer {
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.Event_book_form .MuiTabPanel-root {
+  padding: 24px 0 !important;
+}
+
+.Event_book_form .MuiTabs-indicator {
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  width: 100%;
+  -webkit-transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: transparent;
+}
+
+.Event_book_form .MuiTab-root.Mui-selected {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 30px;
+  color: #425466;
+  padding: 0;
+  background: #ffffff;
+  border: 1px solid #d62c79;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 48%;
+  height: 42px;
+}
+
+.Event_book_form .MuiFormControl-root.MuiTextField-root {
+  background: #fcfcfd;
+  border: 1px solid #e6e5eb;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+}
+
+.Event_book_form .MuiButtonBase-root.MuiTab-root {
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 30px;
+  color: #425466;
+  padding: 0;
+}
+
+.Event_book_form .MuiOutlinedInput-root {
+  height: 50px;
+  // padding: 0px 0 0px 6px;
+}
+
+.Event_book_form .MuiOutlinedInput-notchedOutline {
+  border: none;
+}
+
+.Event_book_form .MuiSelect-select.MuiSelect-outlined img {
+  margin-right: 9px;
+}
+
+.Event_book_form select {
+  background: #fcfcfd;
+  border: 1px solid #e6e5eb;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+}
+
+.Event_book_form .MuiFormControl-root {
+  width: 100%;
+  background-color: #fcfcfd;
+  border: 1px solid #e6e5eb;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+}
+
+.Event_book_form .form-group.mzero .MuiFormControl-root {
+  margin: 0;
+}
+
+.Event_book_form textarea.textarea_set {
+  width: 100%;
+  background: #fcfcfd;
+  border: 1px solid #cfd0d7;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 15px 12px;
+}
+
+.Event_book_form textarea.textarea_set:focus {
+  outline: none;
+}
+
+.Event_book_form .MuiSelect-select.MuiSelect-outlined {
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #5f6377;
+}
+
+.Event_book_form svg.MuiSvgIcon-root {
+  background-image: url("../../assets/icons/down.png") !important;
+  background-repeat: no-repeat;
+  color: #fff !important;
+}
+
+.Event_book_form svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-1636szt {
+  right: 5px !important;
+  top: calc(50% - 0.15em) !important;
+}
+
+.Event_book_form svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.MuiSelect-iconOpen.css-1yhq19e {
+  right: 15px !important;
+  top: calc(50% - 1em) !important;
+}
+
+.Event_book_form .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+  color: #fff;
+  top: calc(50% - 5px);
+}
+
+.Event_book_form .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
+  color: #fff;
+  right: 18px;
+  top: calc(50% - 0.9em);
+}
+
+button.book_event_btn {
+  background: #ec498a;
+  border: 1px solid #ec498a;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #ffffff;
+  width: 190px;
+  padding: 14px;
+  transition-duration: 1s;
+  margin-left: 30%;
+}
+
+button.book_event_btn:hover {
+  border: 1px solid #ec498a;
+  color: #ec498a;
+  background-color: transparent;
+}
+
+.g_book_img {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book_sec_content.mob_show {
+  display: none;
+}
+
+.book_sec_content.mob_show h2 {
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 52px;
+  color: #323232;
+  margin: 0;
+}
+
+.book_sec_content.mob_show p {
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+  color: #828282;
+}
+
+.event_con {
+  background-color: #edebeb;
+  // height: 650px;
+}
+
+.Event_book_form {
+  background-color: #edebeb;
+}
+
+.event-form-title {
+  padding-top: 20px;
+  padding-left: 40px;
+  color: #d62c79 !important;
+}
+
+.google_add_box_img_Add {
+  width: 50% !important;
+  height: 100px !important;
+  padding-top: 20px;
+}
+
+.google_add_box_Add {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition-duration: 1s;
+}
+.slide-img {
+  height: 100px;
+  position: relative;
+}
+
+.slide-img img {
+  max-width: 100%;
+  width: auto;
+  display: inline-block;
+  object-fit: contain;
+}
+// .detail-box,
+// .slide-img-add img {
+//   width: 100%;
+//   box-sizing: border-box;
+// }

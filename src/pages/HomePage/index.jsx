@@ -51,9 +51,7 @@ import g20 from "../../assets/images/20.png";
 import { Box, Modal, Typography } from "@mui/material";
 // import { useDispatch, useSelector } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  adsList
-} from "../../store/ads";
+import { adsList } from "../../store/ads";
 
 const style = {
   position: "absolute",
@@ -131,48 +129,48 @@ function HomePage() {
   const [adsPosition1, setAdsPosition1] = useState([]);
   const [adsPosition2, setAdsPosition2] = useState([]);
   const [adsPosition3, setAdsPosition3] = useState([]);
-  const [image,setImage]=useState("NA")
-//   const [lat, setLat] = useState(null);
-//   const [lng, setLng] = useState(null);
-//   const [status, setStatus] = useState(null);
+  const [image, setImage] = useState("NA");
+  //   const [lat, setLat] = useState(null);
+  //   const [lng, setLng] = useState(null);
+  //   const [status, setStatus] = useState(null);
 
-//   const getLocation = () => {
-//     if (!navigator.geolocation) {
-//         setStatus('Geolocation is not supported by your browser');
-//     } else {
-//         setStatus('Locating...');
-//         navigator.geolocation.getCurrentPosition((position) => {
-//             setStatus(null);
-//             setLat(position.coords.latitude);
-//             setLng(position.coords.longitude);
-//         });
-//     }   
-// }
-// console.log('longlat',lng,lat)
-
-// useEffect(() => {
-//     getLocation();
-//     if (lat && lng !== null) {
-//         axios.post(`/location?latitude=${lat}&longitude=${lng}`)
-//             .then((response) => {
-//                 console.log(response)
-//             });
-//     }
-// }, [lat, lng]);
-
-	// useEffect(() => {
-	// 	axios.get('/private_adds/private_add?image_type=home_position_1')
-	// 		.then((response) => {
-	// 			setAdsPosition1(response.data.results);
-	// 		});
-	// }, [])
+  //   const getLocation = () => {
+  //     if (!navigator.geolocation) {
+  //         setStatus('Geolocation is not supported by your browser');
+  //     } else {
+  //         setStatus('Locating...');
+  //         navigator.geolocation.getCurrentPosition((position) => {
+  //             setStatus(null);
+  //             setLat(position.coords.latitude);
+  //             setLng(position.coords.longitude);
+  //         });
+  //     }
+  // }
+  // console.log('longlat',lng,lat)
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  //     getLocation();
+  //     if (lat && lng !== null) {
+  //         axios.post(`/location?latitude=${lat}&longitude=${lng}`)
+  //             .then((response) => {
+  //                 console.log(response)
+  //             });
+  //     }
+  // }, [lat, lng]);
+
+  // useEffect(() => {
+  // 	axios.get('/private_adds/private_add?image_type=home_position_1')
+  // 		.then((response) => {
+  // 			setAdsPosition1(response.data.results);
+  // 		});
+  // }, [])
+
+  // useEffect(() => {
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "home_position_1"
@@ -181,16 +179,11 @@ function HomePage() {
   //         setImage(findImage)
   //         setAdsPosition1(filterArray)
   //           }
-	// 		});     
-	// }, [])
+  // 		});
+  // }, [])
 
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -198,38 +191,34 @@ function HomePage() {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "home_position_1"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setAdsPosition1(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "home_position_1";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setAdsPosition1(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
+  }, []);
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add?image_type=home_position_2')
-	// 		.then((response) => {
-	// 			setAdsPosition2(response.data.results);
-	// 		});
-	// }, [])
+  // 	axios.get('/private_adds/private_add?image_type=home_position_2')
+  // 		.then((response) => {
+  // 			setAdsPosition2(response.data.results);
+  // 		});
+  // }, [])
 
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -237,32 +226,31 @@ function HomePage() {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "home_position_2"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setAdsPosition2(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "home_position_2";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setAdsPosition2(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
-
-
+  }, []);
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "home_position_2"
@@ -271,23 +259,18 @@ function HomePage() {
   //         setImage(findImage)
   //         setAdsPosition2(filterArray)
   //           }
-	// 		});     
-	// }, [])
+  // 		});
+  // }, [])
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add?image_type=home_position_3')
-	// 		.then((response) => {
-	// 			setAdsPosition3(response.data.results);
-	// 		});
-	// }, [])
+  // 	axios.get('/private_adds/private_add?image_type=home_position_3')
+  // 		.then((response) => {
+  // 			setAdsPosition3(response.data.results);
+  // 		});
+  // }, [])
 
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -295,57 +278,61 @@ function HomePage() {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "home_position_3"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setAdsPosition3(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "home_position_3";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setAdsPosition3(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
-
+  }, []);
 
   useEffect(() => {
-		axios.get('/private_adds/private_add')
-			.then((response) => {
-				
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "home_position_3"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setAdsPosition3(filterArray)
-            }
-			});     
-	}, [])
+    axios.get("/private_adds/private_add").then((response) => {
+      if (response.data.results.length > 0) {
+        let filterArray = response.data.results.filter((item, index) => {
+          return item.image_type == "home_position_3";
+        });
+        let findImage = filterArray.length > 0 ? filterArray[0].image : "NA";
+        setImage(findImage);
+        setAdsPosition3(filterArray);
+      }
+    });
+  }, []);
 
-  const addEmail =(email)=>{
-    console.log("addEmail",email)
-       axios.post('/private_adds/click_add/'
-   ,{
-     // add_email:`${adds[0]?.add_email}`
-     add_email:email
-   }
-   )
-     .then((response) => {
-       // setAdds(response.data.results);
-       console.log("addEmailresponse",response)
-     });
-   
-}
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
   return (
     <div>
@@ -473,8 +460,12 @@ function HomePage() {
       </span>
       </Link> */}
 
-      <div className="courses">
-        <Link to="/courses" style={{ textDecoration: "none" }} className="view_test_cate">
+      <div className='courses'>
+        <Link
+          to='/courses'
+          style={{ textDecoration: "none" }}
+          className='view_test_cate'
+        >
           {t("homePage.mainSlider.button.7")}
         </Link>
       </div>
@@ -483,14 +474,21 @@ function HomePage() {
       <section>
         <div className='container'>
           <div className='row'>
-          {adsPosition1.length > 0 && 
-            // <div className='col-md-12 ads_home_cover'>
-            <div  className='col-md-12 ads_home_cover' onClick={()=>addEmail(adsPosition1[0]?.add_email)}>
-              <a href={adsPosition1[0]?.url_adds}  target='_blank'>
-              <img src={adsPosition1[0]?.image} alt='Image' className='google_ads_home' />
-              </a>
-            </div>
-}
+            {adsPosition1.length > 0 && (
+              // <div className='col-md-12 ads_home_cover'>
+              <div
+                className='col-md-12 ads_home_cover'
+                onClick={() => addEmail(adsPosition1[0]?.add_email)}
+              >
+                <a href={adsPosition1[0]?.url_adds} target='_blank'>
+                  <img
+                    src={adsPosition1[0]?.image}
+                    alt='Image'
+                    className='google_ads_home'
+                  />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -526,11 +524,14 @@ function HomePage() {
         title2={t("homePage.carousel2.heading.2")}
         type={constants.carouselConstant.TEST}
       />
-      <div className="courses">
-        <Link to="/success-career-test" style={{ textDecoration: "none" }} className="view_test_cate  noselect">
+      <div className='courses'>
+        <Link
+          to='/success-career-test'
+          style={{ textDecoration: "none" }}
+          className='view_test_cate  noselect'
+        >
           {t("homePage.mainSlider.button.3")}
         </Link>
-
       </div>
       {/* <Link to='/success-career-test' style={{ textDecoration: "none" }}>
         <button className='view_test_cate noselect'>
@@ -542,13 +543,20 @@ function HomePage() {
       <section>
         <div className='container'>
           <div className='row'>
-          {adsPosition2.length > 0 && 
-                 <div  className='col-md-12 ads_home_cover' onClick={()=>addEmail(adsPosition2[0]?.add_email)}>
-            <a href={adsPosition2[0]?.url_adds}  target='_blank'>
-              <img src={adsPosition2[0]?.image} alt='Image' className='google_ads_home' />
-              </a>
-            </div>
-}
+            {adsPosition2.length > 0 && (
+              <div
+                className='col-md-12 ads_home_cover'
+                onClick={() => addEmail(adsPosition2[0]?.add_email)}
+              >
+                <a href={adsPosition2[0]?.url_adds} target='_blank'>
+                  <img
+                    src={adsPosition2[0]?.image}
+                    alt='Image'
+                    className='google_ads_home'
+                  />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -585,8 +593,6 @@ function HomePage() {
         </div>
       </section>
 
-
-
       <Carousel
         items={5}
         page='homePage'
@@ -594,9 +600,12 @@ function HomePage() {
         title2={t("homePage.carousel3.heading.2")}
         type={constants.carouselConstant.GOVERNMENT_SCHEMES}
       />
-      <div className="courses">
-        <Link to="/government-schemes" style={{ textDecoration: "none" }} className="view_test_cate">
-
+      <div className='courses'>
+        <Link
+          to='/government-schemes'
+          style={{ textDecoration: "none" }}
+          className='view_test_cate'
+        >
           {t("homePage.mainSlider.button.2")}
         </Link>
       </div>
@@ -605,18 +614,24 @@ function HomePage() {
       <section>
         <div className='container'>
           <div className='row'>
-          {adsPosition3.length > 0 && 
-            // <div className='col-md-12 ads_home_cover'>
-            <div  className='col-md-12 ads_home_cover' onClick={()=>addEmail(adsPosition3[0]?.add_email)}>
-            <a href={adsPosition3[0]?.url_adds}  target='_blank'>
-              <img src={adsPosition3[0]?.image} alt='Image' className='google_ads_home' />
-              </a>
-            </div>
-}
+            {adsPosition3.length > 0 && (
+              // <div className='col-md-12 ads_home_cover'>
+              <div
+                className='col-md-12 ads_home_cover'
+                onClick={() => addEmail(adsPosition3[0]?.add_email)}
+              >
+                <a href={adsPosition3[0]?.url_adds} target='_blank'>
+                  <img
+                    src={adsPosition3[0]?.image}
+                    alt='Image'
+                    className='google_ads_home'
+                  />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </section>
-
 
       {/* <Link to='/government-exams' style={{ textDecoration: "none" }}>
         <button
@@ -967,10 +982,10 @@ function HomePage() {
           />
           <img src={desktop} alt='...' />
           <Typography id='modal-modal-title' variant='h6' component='h2'>
-            {t('deskTopView.heading')}
+            {t("deskTopView.heading")}
           </Typography>
           <button className='btn btn-info' onClick={() => handleClose()}>
-            {t('deskTopView.button')}
+            {t("deskTopView.button")}
           </button>
         </Box>
       </Modal>

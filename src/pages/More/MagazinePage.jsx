@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 // import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import ReactModal from "react-modal-resizable-draggable";
-import { Document, Page,pdfjs } from 'react-pdf';
+import { Document, Page, pdfjs } from "react-pdf";
+// import {PDFtoIMG} from 'react-pdf-to-image';
+// import {file} from "./pdf-sample.pdf"
+import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
+import HTMLFlipBook from "react-pageflip";
 
 import {
   Container,
@@ -26,7 +30,7 @@ import {
   getAllMagzines as fetchMagzines,
 } from "../../store/magzine/action";
 import { Header, Footer } from "../../components";
-import img1 from "../../assets/images/shekunj_magzine.jpg"
+import img1 from "../../assets/images/shekunj_magzine.jpg";
 import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
 import double_quote from "../../assets/icons/double_quote.png";
@@ -36,49 +40,108 @@ import { useTranslation } from "react-i18next";
 // import { Document, Page,pdfjs } from 'react-pdf';
 
 import axios from "axios";
+import { adsList } from "../../store/ads";
 import { color } from "@mui/system";
+// import { DocViewerRenderers } from "react-doc-viewer";
 
 function MagzinePage(m) {
-  // const url = 
-  // `https://cors-anywhere.herokuapp.com/${m?.pdf}`
+  // const [numPages, setNumPages] = useState(null);
+  // const [pageNumber, setPageNumber] = useState(1);
+  const [image, setImage] = useState("NA");
+  const [magzineBoxAdds, setMagzineBoxAdds] = useState([]);
+  const [adds, setAdds] = useState([]);
 
-  // pdfjs.GlobalWorkerOptions.workerSrc = 
-  // `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  //  const [numPages, setNumPages] = useState(null);
-  //   const [pageNumber, setPageNumber] = useState(1);
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+  const url = `https://cors-anywhere.herokuapp.com/${m?.pdf}`;
 
-    
-  //   function onDocumentLoadSuccess({ numPages }) {
-  //     setNumPages(numPages);
-  //     setPageNumber(1);
-  //   }
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
 
-  //   function onDocumentLoadSuccess({ numPages }) {
-  //     setNumPages(numPages);
-  //     setPageNumber(1);
-  //   }
-    
-  //   function changePage(offset) {
-  //     setPageNumber(prevPageNumber => prevPageNumber + offset);
-  //   }
-    
-  //   function previousPage() {
-  //     changePage(-1);
-  //   }
-    
-  //   function nextPage() {
-  //     changePage(1);
-  //   }
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+    setPageNumber(1);
+  }
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+    setPageNumber(1);
+  }
+
+  function changePage(offset) {
+    setPageNumber((prevPageNumber) => prevPageNumber + offset);
+  }
+
+  function previousPage() {
+    changePage(-1);
+  }
+
+  function nextPage() {
+    changePage(1);
+  }
 
   const [show, setShow] = useState(false);
+  const [docs, setDocs] = useState([]);
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "magazine_index";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setMagzineBoxAdds(filterArray);
+          }
+        });
+    });
+    dispatch(adsList());
+  }, []);
+
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
   const handleClose = () => {
-    setShow(false)
+    setShow(false);
   };
-  const handleShow = (index) => { 
-    setShow(index)
-   };
+  const handleShow = (index) => {
+    setShow(index);
+  };
 
   const history = useHistory();
   const { magzines } = useSelector((state) => {
@@ -107,22 +170,21 @@ function MagzinePage(m) {
 
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
- 
 
-  useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_banner")
-      .then((response) => {
-        setStoriesBannerAds(response.data.results);
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_box")
-      .then((response) => {
-        setStoriesBoxAds(response.data.results);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/private_adds/private_add?image_type=success_stories_banner")
+  //     .then((response) => {
+  //       setStoriesBannerAds(response.data.results);
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/private_adds/private_add?image_type=success_stories_box")
+  //     .then((response) => {
+  //       setStoriesBoxAds(response.data.results);
+  //     });
+  // }, []);
 
   document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
@@ -151,19 +213,22 @@ function MagzinePage(m) {
       </div>
       {/* google add */}
       <Container>
-        <Row>
+        {/* <Row>
           <div className='col-md-12'>
-            <div className='ads_story_cover'>
-              <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
+            <div
+              className='ads_story_cover'
+              onClick={() => addEmail(magzineBoxAdds[0]?.add_email)}
+            >
+              <a href={magzineBoxAdds[0]?.url_adds} target='_blank'>
                 <img
-                  src={storiesBannerAds[0]?.image}
+                  src={magzineBoxAdds[0]?.image}
                   alt='Image'
                   className='ads_story_cover_img'
                 />
               </a>
             </div>
           </div>
-        </Row>
+        </Row> */}
       </Container>
 
       <Container>
@@ -173,36 +238,62 @@ function MagzinePage(m) {
             console.log("magMpdf", m.pdf);
             return (
               <>
-                <div className='Magzine'>
-                <Col sm={3} md={12}>
-                  <Card style={{ width: "300px",height:"510px" }} className="MagzineCard" key={m?.id}>
-                  <Card.Img className="magzineImage" variant="top" src={m?.image} alt='' srcSet=''/>
-                    <Card.Body className='magzineCardBody'>
-                      <Card.Text className='createdText'>
-                        Created_at:
-                        <Moment format='D MMM YYYY' withTitle>
-                          {m?.created_at}
-                        </Moment>
-                      </Card.Text>
-
-                      <Card.Title>{m.title}</Card.Title>
-                      <Card.Subtitle className='mb-2 text-muted'>
-                        {" "}
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: `<div>${m.about_magazine}</div>`,
-                          }}
-                        />
-                      </Card.Subtitle>
-
-                       <Button
+                <div className='Magzine' key={m.id}>
+                  <Row>
+                  {/* <Col sm={3} md={12}> */}
+                  <Col>
+                    <Card.Link
+                      style={{ color: "#a63d67 " }}
+                      href={routingConstants.MORE_MAGAZINE + m.id}
+                    >
+                      <Card
+                        // style={{ width: "300px", height: "500px" }}
+                        className='MagzineCard'
                         key={m?.id}
-                        onClick={() => handleShow(index)}
+                      >
+                        {/* <Link 
+                  to={routingConstants.MORE_MAGAZINE + m.id}  key={m?.id}> */}
+                        <Card.Img
+                          className='magzineImage'
+                          variant='top'
+                          src={m?.image}
+                          alt=''
+                          srcSet=''
+                        />
+                        <Card.Body className='magzineCardBody'>
+                          <Card.Text className='createdText'>
+                            Created_at:
+                            <Moment format='D MMM YYYY' withTitle>
+                              {m?.created_at}
+                            </Moment>
+                          </Card.Text>
+
+                          <Card.Title>{m.title}</Card.Title>
+                          <Card.Subtitle className='mb-2 text-muted'>
+                            {" "}
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: `<div>${m.about_magazine}</div>`,
+                              }}
+                            />
+                          </Card.Subtitle>
+                          {/* <Button
+                        key={m?.id}
+                        onClick={() => handleShow(m?.pdf)}
                         style={{ backgroundColor: "#a63d67" }}
                       >
                         Read Pdf
-                      </Button> 
-                      <Modal
+                      </Button> */}
+
+                          {/* <Button
+                        key={m?.id}
+                        onClick={(m) => handleShow(index)}
+                        style={{ backgroundColor: "#a63d67" }}
+                      >
+                        Read Pdf
+                      </Button>  */}
+
+                          {/* <Modal
                         key={index}
                         class='modal-dialog'
                         show={show=== index}
@@ -214,29 +305,126 @@ function MagzinePage(m) {
                           </Button>
                         </Modal.Header>
                         <Modal.Body key={m?.id} style={{ userSelect: "none" }}>
-                          
-                          <iframe
+                           */}
+                          {/* <iframe
                             id='iframe'
                             src={m?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}
                             frameBorder='0'
                             scrolling='auto'
                             height='100%'
                             width='100%'
-                          ></iframe>
-     <Modal.Footer></Modal.Footer>
-                        </Modal.Body>
-                      </Modal>
+                          ></iframe> */}
 
-                        {/* <Card.Link style={{color:"#a63d67 "}} href={routingConstants.MORE_MAGAZINE+ m.id}>Read Pdf</Card.Link>  */}
-                      <Card.Text className='updatedText'>
-                        Updated_at :
-                        <Moment format='D MMM YYYY' withTitle>
-                          {m?.updated_at}
-                        </Moment>
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
+                          {/* <HTMLFlipBook width={300} height={500}>
+      <div className="demoPage"><Document   options={{ cMapUrl: 'cmaps/', cMapPacked: true }} file={m?.pdf} onLoadSuccess={onDocumentLoadSuccess}>
+      {[...Array(m?.pdf?.total_pages)]?.map((page, index) => {
+
+        return (
+          <Page pageNumber={index + 1} />
+
+        )
+
+      }
+      )}
+      </Document></div>
+
+    </HTMLFlipBook> */}
+                          {/* <Document class="center" 
+                          
+                          key={m?.id}
+        file={m?.pdf}
+        onLoadSuccess={onDocumentLoadSuccess}
+      >
+        <Page pageNumber={pageNumber} />
+      </Document>
+        <div className="pagec">
+          Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
+        </div>
+        <div className="buttonc">
+        <button
+          type="button"
+          disabled={pageNumber <= 1}
+          onClick={previousPage}
+          className="Pre"
+            
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          disabled={pageNumber >= numPages}
+          onClick={nextPage}
+           
+        >
+          Next
+        </button>
+        </div> */}
+
+                          {/* <Modal.Footer></Modal.Footer>
+                        </Modal.Body>
+                      </Modal> */}
+
+                          {/* Read Pdf */}
+
+                          {/* </Card.Link>  */}
+
+                          {/* <PDFtoIMG file={ m?.pdf }>
+            {({pages}) => {
+                if (!pages.length) return 'Loading...';
+                return pages.map((page, index)=>
+                    <img key={index} src={page}/>
+                );
+            }}
+        </PDFtoIMG> */}
+
+                          <Card.Text className='updatedText'>
+                            Updated_at :
+                            <Moment format='D MMM YYYY' withTitle>
+                              {m?.updated_at}
+                            </Moment>
+                          </Card.Text>
+                        </Card.Body>
+                        {/* </Link> */}
+                      </Card>
+                    </Card.Link>
                   </Col>
+
+                  {(index % 2 == 1)
+            ?
+<>
+                        <Col>
+                          <Card className='MagzineCardAdd'>
+                          {/* <Card > */}
+                          {magzineBoxAdds.length > 0 && (
+                            <div
+                              // className='slide-img-mag-add'
+                              className='slide-imgAdd'
+                              onClick={() =>
+                                addEmail(magzineBoxAdds[0]?.add_email)
+                              }
+                            >
+                              <a
+                                href={magzineBoxAdds[0]?.url_adds}
+                                target='_blank'
+                              >
+                                <img
+                                  src={magzineBoxAdds[0]?.image}
+                                  alt='Image'
+                                  // className='google_add_box_img_mag'
+                                  className='magzineImageAdd'
+                                />
+                              </a>
+                              <div className='overlay'></div>
+                            </div>
+                          )}
+                          </Card>
+                   
+                        </Col>
+                        </>
+            : ''
+           
+          }
+                </Row>
                 </div>
               </>
             );
@@ -244,6 +432,13 @@ function MagzinePage(m) {
         ) : (
           <div className='text-center'>{t("common.noDataFound")}</div>
         )}
+
+        <DocViewer
+          documents={docs}
+          pluginRenderers={DocViewerRenderers}
+          sandboxed='allow-scripts'
+        />
+        
       </Container>
 
       <div className='want'>

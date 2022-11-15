@@ -15,9 +15,7 @@ import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
-import {
-  adsList
-} from "../../store/ads";
+import { adsList } from "../../store/ads";
 
 function SuccessStory() {
   const history = useHistory();
@@ -39,7 +37,7 @@ function SuccessStory() {
 
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
-  const [image,setImage]=useState("NA")
+  const [image, setImage] = useState("NA");
 
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=success_stories_banner')
@@ -49,11 +47,11 @@ function SuccessStory() {
   // }, [])
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "success_stories_banner"
@@ -62,17 +60,12 @@ function SuccessStory() {
   //         setImage(findImage)
   //         setStoriesBannerAds(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
+  // 		});
+
+  // }, [])
 
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -80,38 +73,48 @@ function SuccessStory() {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "success_stories_banner"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setStoriesBannerAds(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "success_stories_banner";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setStoriesBannerAds(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
+  }, []);
 
-const addEmail =(email)=>{
-  console.log("addEmail",email)
-     axios.post('/private_adds/click_add/'
- ,{
-   // add_email:`${adds[0]?.add_email}`
-   add_email:email
- }
- )
-   .then((response) => {
-     // setAdds(response.data.results);
-     console.log("addEmailresponse",response)
-   });
- 
-}
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=success_stories_box')
@@ -121,11 +124,11 @@ const addEmail =(email)=>{
   // }, [])
 
   // useEffect(() => {
-	// 	axios.get('/private_adds/private_add')
-	// 		.then((response) => {
-				
+  // 	axios.get('/private_adds/private_add')
+  // 		.then((response) => {
+
   //       if(response.data.results.length > 0)
-       
+
   //       {
   //        let filterArray = response.data.results.filter((item,index)=>{
   //           return item.image_type == "success_stories_box"
@@ -134,17 +137,12 @@ const addEmail =(email)=>{
   //         setImage(findImage)
   //         setStoriesBoxAds(filterArray)
   //           }
-	// 		});
-      
-	// }, [])
+  // 		});
+
+  // }, [])
 
   useEffect(() => {
-	
-    navigator.geolocation.getCurrentPosition(async function (
-      position,
-      values,
-    ) {
-      
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
@@ -152,25 +150,24 @@ const addEmail =(email)=>{
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      axios.get(`/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`)
-      .then((response) => {
-        
-        if(response.data.results.length > 0)
-       
-        {
-         let filterArray = response.data.results.filter((item,index)=>{
-            return item.image_type == "success_stories_box"
-          })
-          let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-          setImage(findImage)
-          setStoriesBoxAds(filterArray)
-            }
-      });
-    })
+      axios
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response.data.results.length > 0) {
+            let filterArray = response.data.results.filter((item, index) => {
+              return item.image_type == "success_stories_box";
+            });
+            let findImage =
+              filterArray.length > 0 ? filterArray[0].image : "NA";
+            setImage(findImage);
+            setStoriesBoxAds(filterArray);
+          }
+        });
+    });
     dispatch(adsList());
-}, [])
-
-
+  }, []);
 
   return (
     <div>
@@ -185,7 +182,9 @@ const addEmail =(email)=>{
             </Col>
             <Col md={6} data-aos='slide-up'>
               <h2> {t("successStoriesPage.heading.1")}</h2>
-              <p className="sucess_first_p">{t("successStoriesPage.content.1")}</p>
+              <p className='sucess_first_p'>
+                {t("successStoriesPage.content.1")}
+              </p>
               <p>{t("successStoriesPage.content.4")}</p>
             </Col>
           </Row>
@@ -195,14 +194,21 @@ const addEmail =(email)=>{
       <Container>
         <Row>
           <div className='col-md-12'>
-            {storiesBannerAds.length > 0 &&
-            // <div className="ads_story_cover">
-            <div  className='ads_story_cover' onClick={()=>addEmail(storiesBannerAds[0]?.add_email)}>
-            <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
-              <img src={storiesBannerAds[0]?.image} alt='Image' className='ads_story_cover_img' />
-            </a>
-            </div>
-}
+            {storiesBannerAds.length > 0 && (
+              // <div className="ads_story_cover">
+              <div
+                className='ads_story_cover'
+                onClick={() => addEmail(storiesBannerAds[0]?.add_email)}
+              >
+                <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
+                  <img
+                    src={storiesBannerAds[0]?.image}
+                    alt='Image'
+                    className='ads_story_cover_img'
+                  />
+                </a>
+              </div>
+            )}
           </div>
         </Row>
       </Container>
@@ -227,13 +233,27 @@ const addEmail =(email)=>{
                             />
                             {s?.name || t("common.n/a")}{" "}
                           </h2>
-                          <p className="noselect">
-
+                          <p className='noselect'>
                             {/* {(s?.is_collapse
                               ? paragraph(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))
                               : sliceString(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))) || t("common.n/a")} */}
-                            {(s?.is_collapse === true ?
-                              <div dangerouslySetInnerHTML={{ __html: `<div>${s.description}</div>` }} /> : <div style={{ maxHeight: "120px", overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: `<div>${s.description}</div>` }} />)}
+                            {s?.is_collapse === true ? (
+                              <div
+                                dangerouslySetInnerHTML={{
+                                  __html: `<div>${s.description}</div>`,
+                                }}
+                              />
+                            ) : (
+                              <div
+                                style={{
+                                  maxHeight: "120px",
+                                  overflow: "hidden",
+                                }}
+                                dangerouslySetInnerHTML={{
+                                  __html: `<div>${s.description}</div>`,
+                                }}
+                              />
+                            )}
                           </p>
 
                           {s?.description?.length >= 300 && (
@@ -256,13 +276,13 @@ const addEmail =(email)=>{
                         </Col>
 
                         <Col md={4} xs={12}>
-                          <img className="story_image" src={s?.image} alt='' />
+                          <img className='story_image' src={s?.image} alt='' />
                         </Col>
                       </>
                     ) : (
                       <>
                         <Col md={4} xs={12}>
-                          <img className="story_image" src={s?.image} alt='' />
+                          <img className='story_image' src={s?.image} alt='' />
                         </Col>
                         <Col md={8} xs={12}>
                           <h2>
@@ -274,11 +294,27 @@ const addEmail =(email)=>{
                             {s?.name || t("common.n/a")}{" "}
                           </h2>
 
-                          <p className="noselect">
+                          <p className='noselect'>
                             {/* {(s?.is_collapse
                               ? paragraph(s?.description)
                               : sliceString(s?.description)) || t("common.n/a")} */}
-                            {(s?.is_collapse === true ? <div dangerouslySetInnerHTML={{ __html: `<div>${s.description}</div>` }} /> : <div style={{ maxHeight: "120px", overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: `<div>${s.description}</div>` }} />)}
+                            {s?.is_collapse === true ? (
+                              <div
+                                dangerouslySetInnerHTML={{
+                                  __html: `<div>${s.description}</div>`,
+                                }}
+                              />
+                            ) : (
+                              <div
+                                style={{
+                                  maxHeight: "120px",
+                                  overflow: "hidden",
+                                }}
+                                dangerouslySetInnerHTML={{
+                                  __html: `<div>${s.description}</div>`,
+                                }}
+                              />
+                            )}
                           </p>
 
                           {s?.description?.length >= 300 && (
@@ -303,15 +339,25 @@ const addEmail =(email)=>{
                     )}
                   </Row>
 
-                  {(idx % 2 == 1) ? <a href={storiesBoxAds[0]?.url_adds} target='_blank'>
-                    {storiesBoxAds.length > 0 && 
-                    // <div className="ads_story_cover">
-                    <div  className='ads_story_cover' onClick={()=>addEmail(storiesBoxAds[0]?.add_email)}>
-                      
-                      <img src={storiesBoxAds[0]?.image} alt='Image' className='ads_succ_story' />
-                    </div>
-}
-                  </a> : ''}
+                  {idx % 2 == 1 ? (
+                    <a href={storiesBoxAds[0]?.url_adds} target='_blank'>
+                      {storiesBoxAds.length > 0 && (
+                        // <div className="ads_story_cover">
+                        <div
+                          className='ads_story_cover'
+                          onClick={() => addEmail(storiesBoxAds[0]?.add_email)}
+                        >
+                          <img
+                            src={storiesBoxAds[0]?.image}
+                            alt='Image'
+                            className='ads_succ_story'
+                          />
+                        </div>
+                      )}
+                    </a>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </>
             ))}

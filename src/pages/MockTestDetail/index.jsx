@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Timer from "react-compound-timer";
 import useExitPrompt from "../../hooks/useExitPromt";
@@ -10,16 +11,25 @@ import useExitPrompt from "../../hooks/useExitPromt";
 import {
   Autocomplete,
   Container,
+  Card,
   FormControlLabel,
   Radio,
   RadioGroup,
   Skeleton,
   TextField,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+  Grid,
 } from "@mui/material";
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import FormControl from "@mui/material/FormControl";
+import img1 from "../../assets/images/shekunj_magzine.jpg";
+import global from "../../assets/images/Success/global.png";
 
 import { routingConstants } from "../../utils/constants";
 import { Header, Footer } from "../../components";
@@ -54,7 +64,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
   },
 }));
 
-function CourseTest() {
+function MockTestDetail() {
   const [showExitPrompt, setShowExitPrompt] = useExitPrompt(false);
   const [questionNumber, setQuestionNumber] = React.useState(1);
   const [answer, setAnswer] = React.useState();
@@ -71,6 +81,8 @@ function CourseTest() {
   const [selectedCourseCategoryValue, setSelectedCourseCategoryValue] =
     useState(null);
 
+  const { id } = useParams();
+  console.log("MockTestIdddd", id);
   const history = useHistory();
   const dispatch = useDispatch();
   const detect = useDeviceDetect();
@@ -78,7 +90,7 @@ function CourseTest() {
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
     (state) => state?.guidanceReducer,
   );
-  console.log("testDataMockTest", testData);
+  // console.log("testDataMockTest",testData)
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
 
   const { t } = useTranslation();
@@ -99,6 +111,11 @@ function CourseTest() {
     }
   }, []);
 
+  useEffect(() => {
+    dispatch(fetchUserCareerTestCount(id));
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [dispatch, id, lan]);
+
   // useEffect(() => {
   //   if (detect.isMobile) {
   //     history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
@@ -107,7 +124,8 @@ function CourseTest() {
 
   useEffect(() => {
     return () => {
-      const nv = localStorage.getItem("selectedCourseCategoryValue");
+      // const nv = localStorage.getItem("selectedCourseCategoryValue");
+      const nv = localStorage.getItem("guidanceCategory?.id");
       if (nv) {
         dispatch(endTest(nv, history));
       }
@@ -210,7 +228,8 @@ function CourseTest() {
     };
     if (answer) {
       dispatch(
-        postAnswer(data, history, selectedCourseCategoryValue?.id, true),
+        // postAnswer(data, history, selectedCourseCategoryValue?.id, true),
+        postAnswer(data, history, fetchUserCareerTestCount?.id, true),
       );
       setAnswer("");
     } else {
@@ -221,12 +240,15 @@ function CourseTest() {
   };
 
   React.useEffect(() => {
-    if (selectedCourseCategoryValue?.id) {
+    // if (selectedCourseCategoryValue?.id) {
+    if (fetchUserCareerTestCount?.id) {
       dispatch(
-        fetchUserCareerTestCount(selectedCourseCategoryValue?.id, history),
+        // fetchUserCareerTestCount(selectedCourseCategoryValue?.id, history),
+        fetchUserCareerTestCount(fetchUserCareerTestCount?.id, history),
       );
     }
-  }, [dispatch, toggle, history, selectedCourseCategoryValue?.id]);
+    //   }, [dispatch, toggle, history, selectedCourseCategoryValue?.id]);
+  }, [dispatch, toggle, history, fetchUserCareerTestCount?.id]);
 
   React.useEffect(() => {
     if (countData && countData?.career_time > 0) {
@@ -237,21 +259,28 @@ function CourseTest() {
   }, [countData, countData?.career_time]);
 
   useEffect(() => {
-    dispatch(getGuidanceCategory());
+    dispatch(getGuidanceCategory(id));
   }, [dispatch, lan]);
+
+  // useEffect(() => {
+  //   dispatch(fetchStartUserCareerTest(id));
+  // }, [dispatch, lan]);
 
   const handleStartCourse = async () => {
     setShowExitPrompt(true);
     localStorage.setItem("isCarrerTestStarted", true);
-    if (!selectedCourseCategoryValue) {
+    // if (!selectedCourseCategoryValue)
+    if (!guidanceCategory?.id) {
       return;
     }
     const res = await dispatch(
-      fetchStartUserCareerTest(selectedCourseCategoryValue?.id, history),
+      // fetchStartUserCareerTest(selectedCourseCategoryValue?.id, history),
+      fetchStartUserCareerTest(guidanceCategory?.id, history),
     );
     if (res?.status_code === 200) {
       const counts = await dispatch(
-        fetchUserCareerTestCount(selectedCourseCategoryValue?.id),
+        // fetchUserCareerTestCount(selectedCourseCategoryValue?.id),
+        fetchUserCareerTestCount(guidanceCategory?.id),
       );
       if (counts.status_code === 200 && counts.data.career_time) {
         setIsTestStarted(true);
@@ -261,10 +290,12 @@ function CourseTest() {
   };
 
   const handleTestFinished = () => {
-    dispatch(endTest(selectedCourseCategoryValue?.id));
+    // dispatch(endTest(selectedCourseCategoryValue?.id));
+    dispatch(endTest(guidanceCategory?.id));
     toast.error(t("error.other.2"));
     history.push(
-      routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id,
+      //   routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id,
+      routingConstants.CAREER_TEST_RESULT + guidanceCategory?.id,
     );
   };
 
@@ -272,7 +303,8 @@ function CourseTest() {
     if (questionNumber > 1) setQuestionNumber((prev) => prev - 1);
     dispatch(
       fetchStartUserCareerTest(
-        selectedCourseCategoryValue?.id,
+        // selectedCourseCategoryValue?.id,
+        guidanceCategory?.id,
         history,
         testData?.prev_module,
         0,
@@ -290,13 +322,16 @@ function CourseTest() {
     if (answer) {
       setQuestionNumber((prev) => prev + 1);
       dispatch(
-        postAnswer(data, history, selectedCourseCategoryValue?.id, false),
+        // postAnswer(data, history, selectedCourseCategoryValue?.id, false),
+        // postAnswer(data, history, fetchUserCareerTestCount?.id, false),
+        postAnswer(data, history, guidanceCategory?.id, false),
       );
       setAnswer("");
       if (testData?.answer) {
         dispatch(
           fetchStartUserCareerTest(
-            selectedCourseCategoryValue?.id,
+            // selectedCourseCategoryValue?.id,
+            guidanceCategory?.id,
             history,
             testData?.next_module,
           ),
@@ -304,7 +339,8 @@ function CourseTest() {
       } else {
         dispatch(
           fetchStartUserCareerTest(
-            selectedCourseCategoryValue?.id,
+            // selectedCourseCategoryValue?.id,
+            guidanceCategory?.id,
             history,
             testData?.next_module,
             newProgress,
@@ -384,74 +420,56 @@ function CourseTest() {
     }
   };
 
+  console.log("guidanceCategoryDetail", guidanceCategory);
   return (
     <div>
       <Header loginPage={true} page='guidance' subPage='careerTest' />
       <Container>
         <div className='maindiv_prog setmain noselect'>
-          <div className='select_test'>
-            <h2>{t("successCareerTestPage.heading.1")}</h2>
-            <Row>
-              <Col md={9} xs={12}>
-                <FormControl sx={{ m: 1 }}>
-                  <Autocomplete
-                    className='auto-complete'
-                    {...{
-                      options: guidanceCategory,
-                      getOptionLabel: (option) => option.name,
-                    }}
-                    onChange={(_, newValue) => {
-                      setSelectedCourseCategoryValue(newValue);
-                      localStorage.setItem(
-                        "selectedCourseCategoryValue",
-                        newValue?.id,
-                      );
-                    }}
-                    onInputChange={(_, newInputValue) =>
-                      setSelectedCourseCategory(newInputValue)
-                    }
-                    disabled={isTestStarted}
-                    inputValue={String(selectedCourseCategory)}
-                    id='disable-clearable'
-                    disableClearable
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        color='primary'
-                        label={t("successCareerTestPage.other.1")}
-                        variant='standard'
-                      />
-                    )}
-                  />
-                  {/* <Select
-                    displayEmpty
-                    value={selectedCourseCategory}
-                    onChange={handleCategoryChange}
-                    input={<OutlinedInput />}
-                    disabled={isTestStarted}
-                    renderValue={(selected) => {
-                      if (selected?.length === 0) {
-                        return (
-                          <>
-                            <em>{t("successCareerTestPage.other.1")}</em>
-                          </>
-                        );
-                      }
-                      return selected;
-                    }}
-                    inputProps={{ "aria-label": "Without label" }}
-                  >
-                    {guidanceCategory?.map((item) => {
-                      return (
-                        <MenuItem key={item?.id} value={item}>
-                          {item?.name}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select> */}
-                </FormControl>
-              </Col>
+          <div className='select_test' key={guidanceCategory?.id}>
+            <h2>Test Started</h2>
 
+            <Row>
+              <Col md={8} xs={12}>
+                <div className='deatil_box'>
+                  <img
+                    src={guidanceCategory && guidanceCategory?.image}
+                    class='card-img-top'
+                    alt='...'
+                  ></img>
+                  <h4 className='mb-3'>
+                    {guidanceCategory && guidanceCategory?.name}
+                  </h4>
+                  <Row>
+                    {guidanceCategory && (
+                      <Col md={6} xs={12} className='mb-3'>
+                        <span>career_test_time</span> :{" "}
+                        {guidanceCategory && guidanceCategory?.career_test_time}
+                      </Col>
+                    )}
+                  </Row>
+                  <Row>
+                    {guidanceCategory?.no_of_questions && (
+                      <Col md={6} xs={12}>
+                        <h6>
+                          <span>no_of_questions</span> :{" "}
+                          {guidanceCategory &&
+                            guidanceCategory?.no_of_questions}
+                        </h6>
+                      </Col>
+                    )}
+                    {guidanceCategory && (
+                      <Col md={6} xs={12}>
+                        <span>total_score</span> :{" "}
+                        {guidanceCategory && guidanceCategory?.total_score}
+                      </Col>
+                    )}
+                  </Row>
+                </div>
+              </Col>
+            </Row>
+
+            <Row>
               <Col md={3} xs={12} className='mt-1'>
                 <button
                   onClick={() => handleStartCourse()}
@@ -474,10 +492,10 @@ function CourseTest() {
                     spacing={2}
                     direction='row'
                   >
-                    <h3>{selectedCourseCategory}</h3>
-                    <button onClick={() => handleFinishQuestion()}>
-                      {t("coursesPage.coursesModulePage.button.2")}
-                    </button>
+                    <h3>{guidanceCategory?.name}</h3>
+                    {/* <button onClick={() => handleFinishQuestion()}>
+                    {t("coursesPage.coursesModulePage.button.2")}
+                  </button> */}
                   </Stack>
                   {renderProgress(testData?.progress)}
                 </div>
@@ -574,13 +592,17 @@ function CourseTest() {
                 <div className='prev_next_btn noselect'>
                   <Row>
                     <Col md={6} xs={6}>
-                      <button
-                        className='back_button'
-                        onClick={() => handlePrevQuestion()}
-                        disabled={!testData?.prev_module}
-                      >
-                        {t("coursesPage.coursesModulePage.button.1")}
-                      </button>
+                      {questionNumber > "1" ? (
+                        <button
+                          className='back_button'
+                          onClick={() => handlePrevQuestion()}
+                          disabled={!testData?.prev_module}
+                        >
+                          {t("coursesPage.coursesModulePage.button.1")}
+                        </button>
+                      ) : (
+                        " "
+                      )}
                     </Col>
 
                     <Col md={6} xs={6} className='text-right'>
@@ -642,4 +664,4 @@ function CourseTest() {
   );
 }
 
-export default CourseTest;
+export default MockTestDetail;
