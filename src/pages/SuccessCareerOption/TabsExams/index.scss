@@ -2,6 +2,10 @@
   align-items: baseline;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .CompExams .MuiTabs-scroller {
   width: 100%;
   text-align: left;
@@ -277,6 +281,10 @@ div#vertical-tabpanel-0 {
     // padding: 17px 25px;
     transition-duration: 1s;
     margin-bottom: 10px;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .google_add_courses {
