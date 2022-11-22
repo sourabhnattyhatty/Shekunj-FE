@@ -63,16 +63,7 @@ const PageNotFound = React.lazy(() => import("./pages/PageNotFound"));
 const DataNotFound = React.lazy(() => import("./pages/DataNotFound"));
 
 function App() {
-
-  const clearCacheData = () => {
-    caches.keys().then((names) => {
-      names.forEach((name) => {
-        caches.delete(name);
-      });
-    });
-  };
-  clearCacheData()
-
+  
   return (
     <>
       <Switch>
