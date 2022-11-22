@@ -1,3 +1,12 @@
+.SuccStory_banner {
+  background-image: url("../../assets/images/Success/sus_banner.jpg");
+  background-repeat: no-repeat;
+  width: 100% !important;
+  height: 620px !important;
+  // height:698px !important;
+  background-size: cover;
+}
+
 .que_box {
   border: 1px solid #e3e4eb;
   padding: 37px 58px;
@@ -540,11 +549,11 @@ p#col_grey {
     text-decoration: #ec498a !important;
   }
 
-  .SuccStory_banner {
-    background-image: url("../../assets/images/Success/mob_suc_banner.png");
-    height: 698px !important;
-    margin-right: 20px !important;
-  }
+  // .SuccStory_banner {
+  //   background-image: url("../../assets/images/Success/mob_suc_banner.png");
+  //   height: 698px !important;
+  //   margin-right: 20px !important;
+  // }
 
   .global_img {
     margin-top: 43px;
@@ -631,9 +640,9 @@ p#col_grey {
     margin: 25px 0;
   }
 
-  .select_test {
-    // display: none;
-  }
+  // .select_test {
+  //   // display: none;
+  // }
 
   .circular_progress_module h3 {
     font-size: 18px;
@@ -652,15 +661,6 @@ p#col_grey {
     font-size: 18px;
     line-height: 45px;
   }
-}
-
-.SuccStory_banner {
-  background-image: url("../../assets/images/Success/sus_banner.jpg");
-  background-repeat: no-repeat;
-  width: 100% !important;
-  // height: 620px;
-  height:698px;
-  background-size: cover;
 }
 
 .SuccStory_banner h2 {

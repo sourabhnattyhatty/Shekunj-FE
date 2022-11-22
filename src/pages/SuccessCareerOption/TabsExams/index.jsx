@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Tabs from "@mui/material/Tabs";
@@ -269,6 +269,7 @@ export default function VerticalTabs() {
           <Col md={8} xs={12}>
             <TabPanel value={value} index={0}>
               <Row>
+              <Container>
                 {/* {showGovtExams && careerOptions && ( */}
                 {showGovtExams &&
                   careerOptions &&
@@ -280,9 +281,11 @@ export default function VerticalTabs() {
                         guidanceCategoryDetail,
                       );
                       return (
-                        <Col md={6} xs={12}>
+                        <Row>
+                        {/* <Col md={6} xs={12}> */}
                           <div
-                            className='tabs_box'
+                             style={{marginTop:"20px"}}
+                            className='col-md-6 tabs_box'
                             key={guidanceCategoryDetail?.id}
                           >
                             <h2>{guidanceCategoryDetail?.name}</h2>
@@ -290,15 +293,6 @@ export default function VerticalTabs() {
                               src={guidanceCategoryDetail?.image}
                               className='GuidanceOptionCardImage'
                             ></img>
-                            {/* <p style={{ wordWrap: "break-word" }}>
-                      <div dangerouslySetInnerHTML={{__html:`<div>${guidanceCategoryDetail?.description.slice(0,40)}</div>`}}/>
-                      </p> */}
-                            {/* <p style={{ wordWrap: "break-word" }}>
-                        {`${careerOptions[tabValue].short_description.slice(
-                          0,
-                          100,
-                        )}...`}
-                      </p> */}
                             <br />
                             <button
                               onClick={() =>
@@ -307,21 +301,47 @@ export default function VerticalTabs() {
                             >
                               {t("successCareerOption.button.1")}
                             </button>
+
+                            
                           </div>
-                          
                           <br />
-                        </Col>
+                          <div>
+                          {index  == 0 ? (
+                            <div>
+                          {careerOptionBoxAds.length > 0 && (
+                  // <div className='col-md-12'>
+                  <div
+                    className='col-md-6 tabs-box'
+                    onClick={() => addEmail(careerOptionBoxAds[0]?.add_email)}
+                  >
+                    <a href={careerOptionBoxAds[0]?.url_adds} target='_blank'>
+                      <img
+                        src={careerOptionBoxAds[0]?.image}
+                        alt='Image'
+                        className='GuidanceOptionCardImageAdd'
+                      />
+                    </a>
+                  </div>
+                )}
+                </div>
+                            ):(
+                             ""
+                           )} 
+  </div>
+                          <br />
+                        {/* </Col> */}
+                        </Row>
                       );
                     },
                   )}
 
                 {/* )} */}
+              {/* </Row> */}
+              </Container>
               </Row>
-              {/* {index % 2 == 1? ( */}
-                            <>
-                              {/* <div className="row"> */}
+                            {/* <>
                                 <div
-                                  // className='google_add_box box_hov'
+
                                   className='col-md-12 ads_home_cover_careerOption'
                                   onClick={() =>
                                     addEmail(careerOptionBoxAds[0]?.add_email)
@@ -343,11 +363,24 @@ export default function VerticalTabs() {
                                     </div>
                                   )}
                                 </div>
-                              {/* </div> */}
-                            </>
-                          {/* ) : (
-                            ""
-                          )} */}
+
+                            </> */}
+                             {/* {careerOptionBoxAds.length > 0 && (
+                  // <div className='col-md-12'>
+                  <div
+                    className='col-md-12'
+                    onClick={() => addEmail(careerOptionBoxAds[0]?.add_email)}
+                  >
+                    <a href={careerOptionBoxAds[0]?.url_adds} target='_blank'>
+                      <img
+                        src={careerOptionBoxAds[0]?.image}
+                        alt='Image'
+                        className='google_add_courses'
+                      />
+                    </a>
+                  </div>
+                )}
+     */}
 
             </TabPanel>
 

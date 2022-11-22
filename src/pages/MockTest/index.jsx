@@ -534,7 +534,7 @@ useEffect(() => {
                         {mockTestBoxAds.length > 0 && (
                           <div
                             // className='slide-img-test'
-                            className='GuidanceOptionCard'
+                            // className='GuidanceOptionCard'
                             onClick={() =>
                               addEmail(mockTestBoxAds[0]?.add_email)
                             }

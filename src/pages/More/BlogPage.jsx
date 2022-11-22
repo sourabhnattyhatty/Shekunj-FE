@@ -192,7 +192,8 @@ function BlogPage() {
       {/* google add */}
       <Container>
         <Row>
-          <div className='col-md-12'>
+         <div className='col-md-12'>
+            {blogBoxAdds.length > 0 && (
             <div
               className='ads_story_cover'
               onClick={() => addEmail(blogBoxAdds[0]?.add_email)}
@@ -205,6 +206,7 @@ function BlogPage() {
                 />
               </a>
             </div>
+        )}
           </div>
         </Row>
       </Container>
@@ -370,16 +372,7 @@ function BlogPage() {
                       )}
                     </Row>
 
-                    {idx % 2 == 1 ? (
-                      // <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
-                      //   <div className='ads_story_cover'>
-                      //     <img
-                      //       src={blogBoxAdds[0]?.image}
-                      //       alt='Image'
-                      //       className='ads_succ_story'
-                      //     />
-                      //   </div>
-                      // </a>
+                    {/* {idx % 2 == 1 ? (
                       <>
                       {blogBoxAdds[0].length > 0 && (
                         <div
@@ -405,7 +398,7 @@ function BlogPage() {
                       </>
                     ) : (
                       ""
-                    )}
+                    )} */}
                   </div>
                 </>
               );

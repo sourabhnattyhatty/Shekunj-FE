@@ -246,12 +246,25 @@ div#vertical-tabpanel-0 {
   width: 300px;
   margin-top: 30px;
   margin-bottom: 30px;
+  margin-left:13px;
+}
+.GuidanceOptionCardImageAdd {
+  height: 300px;
+  width: 330px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 20px;
 }
 
 .google_add_box_img {
   width: 100% !important;
   height: 320px !important;
   padding-top: 20px;
+}
+
+.google_add_courses {
+  width: 100%;
+  padding-top: 40px;
 }
 
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
@@ -264,6 +277,26 @@ div#vertical-tabpanel-0 {
     // padding: 17px 25px;
     transition-duration: 1s;
     margin-bottom: 10px;
+}
+
+.google_add_courses {
+  width: 100%;
+  padding: 0px !important;
+}
+
+.GuidanceOptionCardImage {
+  height: 200px;
+  width: 300px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left:29px !important;
+}
+.GuidanceOptionCardImageAdd {
+  height: 300px;
+  width: 350px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 16px;
 }
 
 .tabs_box img{
