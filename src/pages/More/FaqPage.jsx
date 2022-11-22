@@ -185,6 +185,7 @@ function FaqPage() {
       <Container>
         <Row>
           <div className='col-md-12'>
+          {faqBoxAdds.length > 0 && (
             <div
               className='ads_story_cover'
               onClick={() => addEmail(faqBoxAdds[0]?.add_email)}
@@ -197,6 +198,7 @@ function FaqPage() {
                 />
               </a>
             </div>
+        )} 
           </div>
         </Row>
       </Container>
@@ -263,6 +265,35 @@ function FaqPage() {
                   ) : (
                     ""
                   )} */}
+                  
+                     {/* {index % 2 == 1 ? (
+                      <>
+                      
+                      {faqBoxAdds[0].length > 0 && (
+                        <div
+                          // className='slide-img-test'
+                          className='ads_story_cover'
+                          onClick={() =>
+                            addEmail(faqBoxAdds[0]?.add_email)
+                          }
+                        >
+                          <a
+                            href={faqBoxAdds[0]?.url_adds}
+                            target='_blank'
+                          >
+                            <img
+                              src={faqBoxAdds[0]?.image}
+                              alt='Image'
+                              className='ads_succ_story'
+                            />
+                          </a>
+                          <div className='overlay'></div>
+                        </div>
+                      )}
+                      </>
+                    ) : (
+                      ""
+                    )}  */}
         </Container>
       </div>
       <div className='want'>

@@ -328,7 +328,7 @@ export default function VerticalTabs() {
                                   }
                                 >
                                   {careerOptionBoxAds.length > 0 && (
-                                    <div className='slide-img'>
+                                    <div >
                                       <a
                                         href={careerOptionBoxAds[0]?.url_adds}
                                         target='_blank'

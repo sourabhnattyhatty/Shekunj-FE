@@ -7,7 +7,7 @@ import { routingConstants } from "../../utils/constants";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PublicIcon from '@mui/icons-material/Public';
 import { Header, Footer } from "../../components";
-// import global from "../../assets/images/Success/global.png";
+import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -158,7 +158,7 @@ function EventPage() {
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreEvent' />
-      {/* <div className='SuccStory_banner'>
+      <div className='SuccStory_banner'>
         {" "}
         <Container>
           <Row>
@@ -173,7 +173,7 @@ function EventPage() {
             </Col>
           </Row>
         </Container>
-      </div> */}
+      </div>
       {/* <div className='Home'> */}
         <Container className="eventContainer">
           {events?.event_list?.length > 0 ? (
@@ -262,7 +262,7 @@ function EventPage() {
                           <Card className='EventOptionCard'>
                           {eventBoxAds.length > 0 && (
                             <div
-                              className='slide-imgAdd'
+                              className='EventOptionCard'
                               onClick={() =>
                                 addEmail(eventBoxAds[0]?.add_email)
                               }
@@ -274,7 +274,7 @@ function EventPage() {
                                 <img
                                   src={eventBoxAds[0]?.image}
                                   alt='Image'
-                                  className='google_add_box_img'
+                                  className='EventOptionCardAddImage'
                                 />
                               </a>
                               <div className='overlay'></div>

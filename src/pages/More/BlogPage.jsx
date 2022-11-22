@@ -371,15 +371,38 @@ function BlogPage() {
                     </Row>
 
                     {idx % 2 == 1 ? (
-                      <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
-                        <div className='ads_story_cover'>
-                          <img
-                            src={blogBoxAdds[0]?.image}
-                            alt='Image'
-                            className='ads_succ_story'
-                          />
+                      // <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
+                      //   <div className='ads_story_cover'>
+                      //     <img
+                      //       src={blogBoxAdds[0]?.image}
+                      //       alt='Image'
+                      //       className='ads_succ_story'
+                      //     />
+                      //   </div>
+                      // </a>
+                      <>
+                      {blogBoxAdds[0].length > 0 && (
+                        <div
+                          // className='slide-img-test'
+                          className='ads_story_cover'
+                          onClick={() =>
+                            addEmail(blogBoxAdds[0]?.add_email)
+                          }
+                        >
+                          <a
+                            href={blogBoxAdds[0]?.url_adds}
+                            target='_blank'
+                          >
+                            <img
+                              src={blogBoxAdds[0]?.image}
+                              alt='Image'
+                              className='ads_succ_story'
+                            />
+                          </a>
+                          <div className='overlay'></div>
                         </div>
-                      </a>
+                      )}
+                      </>
                     ) : (
                       ""
                     )}

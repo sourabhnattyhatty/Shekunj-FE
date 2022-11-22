@@ -443,18 +443,12 @@ p#col_grey {
     box-shadow: 0 7px 30px -10px rgba(25, 23, 23, 0.5);
     // margin-left: 12px;
   }
-  .GuidanceOptionCardAdd {
-    width: 22rem !important;
-    // height: 25rem;
-    margin-top: 5px;
-    box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
-    // margin-left: 12px;
-  }
+
   .GuidanceOptionCardAdd img {
     // width: 18rem;
-    // height: 26rem;
+    height: 26rem;
     // margin-top: 30px !important;
-    object-fit: cover;
+    object-fit: cover !important;
   }
   .slide-img-test {
     // height: 100px;
@@ -480,16 +474,16 @@ p#col_grey {
     margin: 0 auto;
     justify-content: center;
   }
-  .guidanceOptionImageAdd {
-    height: 600px;
-    // width:300px;
-    object-fit: fill;
-    // margin-bottom: 30px !important;
-    margin-top: 0px !important;
-    text-align: center;
-    margin: 0 auto;
-    justify-content: center;
-  }
+  // .guidanceOptionImageAdd {
+  //   height: 600px;
+  //   // width:300px;
+  //   object-fit: fill;
+  //   // margin-bottom: 30px !important;
+  //   margin-top: 0px !important;
+  //   text-align: center;
+  //   margin: 0 auto;
+  //   justify-content: center;
+  // }
   
   .guidanceOptionTitle {
     padding: 5px;
@@ -734,15 +728,10 @@ p.sucess_first_p {
 .GuidanceOptionCard {
   width: 18rem;
   // height: 25rem;
-  margin-top: 30px;
-  box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
-}
-.GuidanceOptionCardAdd {
-  width: 18rem;
-  // height: 25rem;
   // margin-top: 30px;
   box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
 }
+
 .GuidanceOptionCardAdd img {
   // width: 18rem;
   // height: 26rem;
