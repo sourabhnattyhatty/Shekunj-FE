@@ -337,31 +337,6 @@ const CourseModule = () => {
     setNumPages(numPages);
   }
 
-  // useEffect(() => {
-  //   axios.get('/private_adds/private_add?image_type=courses_module')
-  //     .then((response) => {
-  //       setAdsCourseModule(response.data.results);
-  //     });
-  // }, [])
-
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
-
-  //       if(response.data.results.length > 0)
-
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "courses_module"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setAdsCourseModule(filterArray)
-  //           }
-  // 		});
-
-  // }, [])
-
   const addEmail = (email) => {
     console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -385,34 +360,85 @@ const CourseModule = () => {
         });
     });
   };
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
 
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "courses_module";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setAdsCourseModule(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>code latest Below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "courses_module";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setAdsCourseModule(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "courses_module";
+  
+          });
+          setAdsCourseModule(filterArray1);
+          // console.log("filterArray1courses_module",filterArray1)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "courses_module";
+          });
+          setAdsCourseModule(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1) 
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+ 
 
   const keys = [...Array().keys(course?.total_pages)];
 

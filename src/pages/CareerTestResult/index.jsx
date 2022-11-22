@@ -130,7 +130,8 @@ function CourseTest() {
                   </Col>
                 </Row>
               </div>
-              <Link to={routingConstants.SUCCESS_CAREER_TEST}>
+              {/* <Link to={routingConstants.SUCCESS_CAREER_TEST}> */}
+              <Link to={routingConstants.MOCKTEST}>
                 <button className='get_certif'>
                   {t("coursesPage.coursesResultPage.button.3")}
                 </button>

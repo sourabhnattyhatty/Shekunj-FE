@@ -9,6 +9,7 @@ import Nikita from "../../assets/images/Nikita-Sharma.png";
 import Ankita from "../../assets/images/Ankita-Sharma.png";
 import star from "../../assets/images/Star 2.png";
 import mob_banner from "../../assets/images/About/mob_banner.png";
+import axios from "axios"
 
 import "../HomePage/index.scss";
 import "./index.scss";
@@ -22,6 +23,108 @@ const AboutusPage = () => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+
+  // useEffect(() => {
+  //   dispatch(adsList())
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     } 
+  //     axios
+  //     .get(
+  //       `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //     )
+  //     .then((response) => {
+  //       if (response.data.results.length > 0) {
+  //         let filterArray = response.data.results.filter((item, index) => {
+  //           return  item.image_type == "home_position_1"||item.image_type == "home_position_2" || item.image_type == "home_position_3";
+  //         });
+  //         console.log('asdjsdss',filterArray[0])
+  //           if (filterArray[0].image_type == "home_position_3") {
+  //             let findImage =
+  //           filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setAdsPosition3(filterArray);
+  //             }else if(filterArray[0].image_type == "home_position_1"){
+  //               let findImage =
+  //               filterArray.length > 0 ? filterArray[0].image : "NA";
+  //               setImage(findImage);
+  //               setAdsPosition1(filterArray);
+  //             }else if (filterArray[0].image_type == "home_position_2") {
+  //               let findImage =
+  //               filterArray.length > 0 ? filterArray[0].image : "NA";
+  //               setImage(findImage);
+  //               setAdsPosition2(filterArray);
+  //             }
+  //           }
+  //         })
+     
+  //   } ,
+  //   function(error) {
+  //     console.error("Error Code = " + error.code + " - " + error.message);
+  //     // alert("Your location is blocked")    
+  //   axios
+  //   .get(
+  //     `/private_adds/private_add`,
+  //   )
+  //   .then((response) => {
+  //     if (response.data.results.length > 0) {
+  //       let filterArray = response.data.results.filter((item, index) => {
+  //         return  item.image_type == "home_position_1"||item.image_type == "home_position_2" || item.image_type == "home_position_3";
+  //       });
+  //       console.log('asdjsdss',filterArray[0])
+  //         if (filterArray[0].image_type == "home_position_3") {
+  //           let findImage =
+  //         filterArray.length > 0 ? filterArray[0].image : "NA";
+  //         setImage(findImage);
+  //         setAdsPosition3(filterArray);
+  //           }else if(filterArray[0].image_type == "home_position_1"){
+  //             let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //             setImage(findImage);
+  //             setAdsPosition1(filterArray);
+  //           }else if (filterArray[0].image_type == "home_position_2") {
+  //             let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //             setImage(findImage);
+  //             setAdsPosition2(filterArray);
+  //           }
+  //         }
+  //       })
+  //     }
+
+  //   )
+   
+  // },[])
+  
+
+  const addEmail = (email) => {
+    console.log("addEmail", email);
+    navigator.geolocation.getCurrentPosition(async function (position, values) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      let params = {
+        latitude: latitude.toString(),
+        longitude: longitude.toString(),
+      };
+      axios
+        .post("/private_adds/click_add/", {
+          // add_email:`${adds[0]?.add_email}`
+          add_email: email,
+          latitude: params.latitude.toString(),
+          longitude: params.longitude.toString(),
+        })
+        .then((response) => {
+          // setAdds(response.data.results);
+          console.log("addEmailresponse", response);
+        });
+    });
+  };
 
   return (
     <div className='noselect'>

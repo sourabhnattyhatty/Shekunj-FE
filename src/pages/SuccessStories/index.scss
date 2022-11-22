@@ -102,15 +102,10 @@ p.sucess_first_p {
 }
 
 .suc_box img.quote_img {
-  max-width: 100%;
+  // max-width: 100%;
   vertical-align: bottom;
   margin-right: 10px;
 }
-
-.suc_box img {
-  max-width: 100%;
-}
-
 .suc_box ul {
   padding: 0;
 }
@@ -171,6 +166,9 @@ button.want_btn {
 
   .global_img {
     margin-top: 43px;
+  }
+  .global_img img {
+    max-width: 40%;
   }
 
   .SuccStory_banner h2 {

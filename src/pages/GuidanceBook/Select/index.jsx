@@ -43,10 +43,10 @@ function GuidanceSelect(props) {
               return (
                 <>
                   {props.icon && props.title === "User" && (
-                    <img src={User2} alt='...' />
+                    <img src={User2}  alt='...' />
                   )}
                   {props.icon && props.title === "Qualifications" && (
-                    <img src={Qualifications} alt='...' />
+                    <img src={Qualifications} style={{height:"30px",width:"30px"}} alt='...' />
                   )}
                   {props.icon && props.title === "Course Looking For" && (
                     <img src={Course} alt='...' />

@@ -50,18 +50,24 @@ const CareerPage = () => {
 
   useEffect(() => {
     dispatch(reSetFilterValue());
-
+    
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
+      
 
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
       dispatch(getTopCollages(false, latitude, longitude));
-    });
-  }, [dispatch, lan]);
+    },
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      dispatch(getTopCollages(false));
+    }
+    )    
+  }, []);
 
   // const transformPrice = (price) => {
   //   let nf = new Intl.NumberFormat("en-US");
@@ -102,13 +108,6 @@ const CareerPage = () => {
   const [collegeBoxAds, setCollegeBoxAds] = useState([]);
   const [image, setImage] = useState("NA");
 
-  // useEffect(() => {
-  //   axios.get('/private_adds/private_add?image_type=top_college_banner')
-  //     .then((response) => {
-  //       setCollegeBannerAds(response.data.results);
-  //     });
-  // }, [])
-
   const addEmail = (email) => {
     console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -133,105 +132,136 @@ const CareerPage = () => {
     });
   };
 
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
-
-  //       if(response.data.results.length > 0)
-
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "top_college_banner"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setCollegeBannerAds(filterArray)
-  //           }
-  // 		});
-
-  // }, [])
+  // >>>>>>>>>>>>>>>>>>latest code change>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "top_college_banner";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setCollegeBannerAds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "top_college_box";
+  
+          });
+          setCollegeBoxAds(filterArray1);
+          // console.log("filterArray1top_college_box",filterArray1)
+
+          let filterArray2 = response.data.results.filter((item, index) => {
+            
+            return item.image_type == "top_college_banner";
+           
+          });
+          setCollegeBannerAds(filterArray2);
+          console.log("filterArray1top_college_banner",filterArray2)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "top_college_box";
+          });
+          setCollegeBoxAds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1)
+          let filterArray2 = response.data.results.filter((item, index) => {
+            return item.image_type == "top_college_banner"; 
+          });
+          setCollegeBannerAds(filterArray2);
+          console.log("filterArray1coursebox",filterArray2)  
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+ 
 
-  // useEffect(() => {
-  //   axios.get('/private_adds/private_add?image_type=top_college_box')
-  //     .then((response) => {
-  //       setCollegeBoxAds(response.data.results);
-  //     });
-  // }, [])
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// useEffect(() => {
+//   dispatch(adsList())
+//   navigator.geolocation.getCurrentPosition(async function (position, values) {
+//     const latitude = position.coords.latitude;
+//     const longitude = position.coords.longitude;
 
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
+//     let params = {
+//       latitude: latitude.toString(),
+//       longitude: longitude.toString(),
+//     } 
+//     axios
+//     .get(
+//       `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+//     )
+//     .then((response) => {
+//       if (response.data.results.length > 0) {
+//         let filterArray = response.data.results.filter((item, index) => {
+//           return  item.image_type == "top_college_box"||item.image_type ="top_college_banner";
+//         });
+//         console.log('asdjsdss',filterArray[0])
+//           if (filterArray[0].image_type == "top_college_box") {
+//             let findImage =
+//           filterArray.length > 0 ? filterArray[0].image : "NA";
+//           setImage(findImage);
+//           setCollegeBoxAds(filterArray);
+//             }else if(filterArray[0].image_type == "top_college_banner"){
+//               let findImage =
+//               filterArray.length > 0 ? filterArray[0].image : "NA";
+//               setImage(findImage);
+//               setCollegeBannerAds(filterArray);
+//             }
+//           }
+//         })
+   
+//   } ,
+//   function(error) {
+//     console.error("Error Code = " + error.code + " - " + error.message);
+//     // alert("Your location is blocked")    
+//   axios
+//   .get(
+//     `/private_adds/private_add`,
+//   )
+//   .then((response) => {
+//     if (response.data.results.length > 0) {
+//       let filterArray = response.data.results.filter((item, index) => {
+//         return  item.image_type == "top_college_box"||item.image_type == "top_college_banner";
+//       });
+//       console.log('asdjsdss',filterArray[0])
+//         if (filterArray[0].image_type == "top_college_box") {
+//           let findImage =
+//         filterArray.length > 0 ? filterArray[0].image : "NA";
+//         setImage(findImage);
+//         setCollegeBoxAds(filterArray);
+//           }else if(filterArray[0].image_type == "top_college_banner"){
+//             let findImage =
+//             filterArray.length > 0 ? filterArray[0].image : "NA";
+//             setImage(findImage);
+//             setCollegeBannerAds(filterArray);
+//           }
+//         }
+//       })
+//  }
+// )
+// },[])
 
-  //       if(response.data.results.length > 0)
 
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "top_college_box"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setCollegeBoxAds(filterArray)
-  //           }
-  // 		});
-
-  // }, [])
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      };
-      axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "top_college_box";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setCollegeBoxAds(filterArray);
-          }
-        });
-    });
-    dispatch(adsList());
-  }, []);
-
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const [searchInput, setSearchInput] = useState("");
   const SearchFilterHandle = (e) => {
     e.preventDefault();
@@ -310,6 +340,7 @@ India & Apply - Shekunj.com`}
                             src={Search}
                             alt='Image'
                             className='searchIcon'
+                            style={{height:20,width:30}}
                           />
                         </button>
                         <img

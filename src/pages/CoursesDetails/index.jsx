@@ -43,31 +43,6 @@ const CourseDetails = () => {
   const [courseDetailAds, setCourseDetailAds] = useState([]);
   const [image, setImage] = useState("NA");
 
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add?image_type=home_position_1')
-  // 		.then((response) => {
-  // 			setCourseDetailAds(response.data.results);
-  // 		});
-  // }, [])
-
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
-
-  //       if(response.data.results.length > 0)
-
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "course_detail"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setCourseDetailAds(filterArray)
-  //           }
-  // 		});
-
-  // }, [])
-
   const addEmail = (email) => {
     console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -91,35 +66,85 @@ const CourseDetails = () => {
         });
     });
   };
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
 
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "course_detail";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setCourseDetailAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code Below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "course_detail";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setCourseDetailAds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "course_detail";
+  
+          });
+          setCourseDetailAds(filterArray1);
+          // console.log("filterArray1course_detail",filterArray1)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "course_detail";
+          });
+          setCourseDetailAds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1) 
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
-
+        })
+   }
+  )
+  },[])
+ 
   return (
     <div>
       <SEO title='Sheकुंज - Course Detail' />

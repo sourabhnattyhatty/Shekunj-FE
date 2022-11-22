@@ -20,24 +20,28 @@ import { CircularProgress } from "@mui/material";
 
 import Error from "../../../../components/Error";
 import { onLogin } from "../../../../store/auth/action";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 function LoginForm1() {
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
+  const [visible, setVisible] = useState(false);
+
   const { isLoading } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const history = useHistory();
   const { t } = useTranslation();
 
-  const handleToggle = () => {
-    if (type === "password") {
-      setIcon(eye);
-      setType("text");
-    } else {
-      setIcon(eyeOff);
-      setType("password");
-    }
-  };
+  // const handleToggle = () => {
+  //   if (type === "password") {
+  //     setIcon(eye);
+  //     setType("text");
+  //   } else {
+  //     setIcon(eyeOff);
+  //     setType("password");
+  //   }
+  // };
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -94,7 +98,7 @@ function LoginForm1() {
           <Error error={errors.email} touched={touched.email} />
         </div>
 
-        <div className='form-group'>
+        {/* <div className='form-group'>
           <div>
             <TextField
               name='password'
@@ -116,9 +120,30 @@ function LoginForm1() {
             <span onClick={handleToggle} className='eyesOffIcon'>
               <Icon icon={eyeOff} size={20} />
             </span>
+          </div> */}
+          <div className='form-group mb-4'>
+            <TextField
+              name='password'
+              type={visible ? "text" : "password"}
+              className='form-control'
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder={t("common.placeHolders.password")}
+              autoComplete='off'
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position='start'>
+                    <img src={Lock} alt='...' />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <p className='eye' onClick={(e) => setVisible(!visible)}>
+              {visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
+            </p>
+
+            <Error error={errors.password} touched={touched.password} />
           </div>
-          <Error error={errors.password} touched={touched.password} />
-        </div>
 
         <button type='submit' className='btn btn_login w-100'>
           {isLoading ? (

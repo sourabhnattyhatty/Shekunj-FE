@@ -74,33 +74,87 @@ export default function VerticalTabs() {
 
   const { id } = useParams();
 
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "career_option";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setCareerOptionBoxAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>
+
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "career_option";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setCareerOptionBoxAds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "career_option";
+  
+          });
+          setCareerOptionBoxAds(filterArray1);
+          // console.log("filterArray1career_option",filterArray1)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "career_option";
+          });
+          setCareerOptionBoxAds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1) 
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -234,7 +288,7 @@ export default function VerticalTabs() {
                             <h2>{guidanceCategoryDetail?.name}</h2>
                             <img
                               src={guidanceCategoryDetail?.image}
-                              className='GuidanceOptionCard'
+                              className='GuidanceOptionCardImage'
                             ></img>
                             {/* <p style={{ wordWrap: "break-word" }}>
                       <div dangerouslySetInnerHTML={{__html:`<div>${guidanceCategoryDetail?.description.slice(0,40)}</div>`}}/>

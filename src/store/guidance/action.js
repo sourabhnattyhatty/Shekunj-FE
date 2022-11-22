@@ -135,7 +135,8 @@ export const fetchStartUserCareerTest =
     } catch (error) {
       if (error.status === 401) {
         history?.push(
-          `/login?redirect=${routingConstants.SUCCESS_CAREER_TEST}`,
+          // `/login?redirect=${routingConstants.SUCCESS_CAREER_TEST}`,
+          `/login?redirect=${routingConstants.MOCKTEST}`,
         );
       }
       dispatch({
@@ -146,7 +147,7 @@ export const fetchStartUserCareerTest =
     }
   };
 
-export const fetchUserCareerTestCount = (id) => async (dispatch) => {
+export const fetchUserCareerTestCount = (id,history) => async (dispatch) => {
   try {
     dispatch({
       type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_REQUEST,
@@ -159,6 +160,11 @@ export const fetchUserCareerTestCount = (id) => async (dispatch) => {
     });
     return res;
   } catch (error) {
+    if (error.status === 401) {
+      history?.push(
+        `/login?redirect=${routingConstants.MOCKTEST}`,
+      );
+    }
     dispatch({
       type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_FAIL,
       payload: error?.data,

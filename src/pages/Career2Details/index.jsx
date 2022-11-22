@@ -94,7 +94,7 @@ const Career2Details = () => {
                                     {governmentExams.benefits && (
                                         <Col md={6} xs={12}>
                                             <span>{t("careerGovExams.other.7")}</span> : {" "}
-                                            {governmentExams?.benefits}
+                                            <div dangerouslySetInnerHTML={{ __html: `<div>${governmentExams?.benefits}</div>` }} />
                                         </Col>
                                     )}
                                     {governmentExams.official_link && (

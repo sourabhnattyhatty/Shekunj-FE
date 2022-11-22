@@ -12,6 +12,7 @@ import {
 import "../HomePage/index.scss";
 import "./index.scss";
 
+
 import { useTranslation } from "react-i18next";
 import TopSchool from "../../assets/images/Career/scl.jpg";
 import logo from "../../assets/icons/filter.png";
@@ -55,8 +56,13 @@ const CareerPage1 = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-      dispatch(getTopSchools(false, latitude, longitude));
-    });
+    dispatch(getTopSchools(false, latitude, longitude));
+  },
+  function(error) {
+    console.error("Error Code = " + error.code + " - " + error.message);
+    dispatch(getTopSchools(false));
+  }
+  ) 
   }, [dispatch, lan]);
 
   const transformImg = (image) => {
@@ -101,105 +107,137 @@ const CareerPage1 = () => {
         });
     });
   };
+// >>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
 
-  //       if(response.data.results.length > 0)
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "top_school_banner";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setSchoolBannerAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+      
+  //   }) ;
+  //   dispatch(adsList());
+   
+  // }, [dispatch]);
 
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "top_school_banner"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setSchoolBannerAds(filterArray)
-  //           }
-  // 		});
 
-  // }, [])
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "top_school_box";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setSchoolBoxAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code below >>>>>>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "top_school_banner";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setSchoolBannerAds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "top_school_box";
+  
+          });
+          setSchoolBoxAds(filterArray1);
+          // console.log("filterArray1top_school_box",filterArray1)
+
+          let filterArray2 = response.data.results.filter((item, index) => {
+            
+            return item.image_type == "top_school_banner";
+           
+          });
+          setSchoolBannerAds(filterArray2);
+          console.log("filterArray1top_school_banner",filterArray2)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "top_school_box";
+          });
+          setSchoolBoxAds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1)
+          let filterArray2 = response.data.results.filter((item, index) => {
+            return item.image_type == "top_school_banner"; 
+          });
+          setSchoolBannerAds(filterArray2);
+          console.log("filterArray1coursebox",filterArray2)  
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
-
-  // useEffect(() => {
-  //   axios.get('/private_adds/private_add?image_type=top_school_box')
-  //     .then((response) => {
-  //       setSchoolBoxAds(response.data.results);
-  //     });
-  // }, [])
-
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
-
-  //       if(response.data.results.length > 0)
-
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "top_school_box"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setSchoolBoxAds(filterArray)
-  //           }
-  // 		});
-
-  // }, [])
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      };
-      axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "top_school_box";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setSchoolBoxAds(filterArray);
-          }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+ 
+ 
+  
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   const [searchInput, setSearchInput] = useState("");
   const SearchFilterHandle = (e) => {
@@ -285,6 +323,7 @@ const CareerPage1 = () => {
                             src={Search}
                             alt='Image'
                             className='searchIcon'
+                            style={{height:20,width:30}}
                           />
                         </button>
                         <img

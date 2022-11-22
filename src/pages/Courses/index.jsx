@@ -102,8 +102,8 @@ const Courses = () => {
             <>
               <div className='col-md-6'>
                 <div className='google_add_box box_hov'>
-                  {/* {coursesBoxAds.length > 0 && */}
-                  {Math.floor(Math.random() * coursesBoxAds.length) > 0 && (
+                  {coursesBoxAds.length > 0 &&(
+                  // {Math.floor(Math.random() * coursesBoxAds.length) > 0 && (
                     // {coursesBoxAds.length > 0 &&
                     <div className='slide-img'>
                       <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
@@ -167,6 +167,7 @@ const Courses = () => {
   const [coursesBoxAds, setCoursesBoxAds] = useState([]);
   const [coursesSideAds, setCoursesSideAds] = useState([]);
   const [image, setImage] = useState("NA");
+  const [image1, setImage1] = useState("NA");
 
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=courses_box')
@@ -176,33 +177,36 @@ const Courses = () => {
   //     });
   // }, [])
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
 
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      };
-      axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "courses_box";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setCoursesBoxAds(filterArray);
-          }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "courses_box";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setCoursesBoxAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -229,57 +233,97 @@ const Courses = () => {
   };
 
   // useEffect(() => {
-  //   axios.get('/private_adds/private_add?image_type=courses_side_ads')
-  //     .then((response) => {
-  //       setCoursesSideAds(response.data.results);
-  //     });
-  // }, [])
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
 
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "courses_side_ads";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setCoursesSideAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
 
-  //       if(response.data.results.length > 0)
-
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "courses_side_ads"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setCoursesSideAds(filterArray)
-  //           }
-  // 		});
-
-  // }, [])
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code >>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "courses_side_ads";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setCoursesSideAds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "courses_box";
+  
+          });
+          setCoursesBoxAds(filterArray1);
+          // console.log("filterArray1courses_box",filterArray1)
+
+          let filterArray2 = response.data.results.filter((item, index) => {
+            
+            return item.image_type == "courses_side_ads";
+           
+          });
+          setCoursesSideAds(filterArray2);
+          console.log("filterArray1courses_side_ads",filterArray2)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "courses_box";
+          });
+          setCoursesBoxAds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1)
+          let filterArray2 = response.data.results.filter((item, index) => {
+            return item.image_type == "courses_side_ads"; 
+          });
+          setCoursesSideAds(filterArray2);
+          console.log("filterArray1coursebox",filterArray2)  
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+  
 
   const [searchInput, setSearchInput] = useState("");
 
@@ -429,7 +473,7 @@ const Courses = () => {
                             placeholder='What do you want to learn ?'
                           />
                           {hasSuggestion && (
-                            <div className='suggestions'>
+                            <div className='suggestions' >
                               {/* {suggestion.map((item) => (
                                   <div onClick={() => suggestionClicked(item)} className="suggList">{item}</div>
                                 ))} */}
@@ -452,6 +496,7 @@ const Courses = () => {
                               src={Search}
                               alt='Image'
                               className='searchIcon'
+                              style={{height:20,width:30}}
                             />
                           </button>
                           <img
@@ -591,7 +636,7 @@ const Courses = () => {
                     <div className='reset_content pt-2'>
                       {state?.allCourses && (
                         <p onClick={() => handleResetFilter()}>
-                          <img src={Reset} className='mr-2' alt='...' />{" "}
+                          <img src={Reset} className='mr-2' style={{width:20,height:20}} alt='...' />{" "}
                           {t("coursesPage.other.2")}
                         </p>
                       )}

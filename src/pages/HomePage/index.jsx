@@ -23,8 +23,10 @@ import desktop from "../../assets/icons/desktop.png";
 import Resume from "../../assets/images/resume.png";
 import Girl from "../../assets/images/job1.png";
 import Community from "../../assets/images/community.png";
-import Nikita from "../../assets/images/testimonial/1.png";
-import Priya from "../../assets/images/testimonial/2.png";
+// import Nikita from "../../assets/images/testimonial/1.png";
+// import Priya from "../../assets/images/testimonial/2.png";
+import Nikita from "../../assets/images/Nikita-Sharma.png";
+import Ankita from "../../assets/images/Ankita-Sharma.png";
 import star from "../../assets/images/Star 2.png";
 import half_star from "../../assets/images/half_star.svg";
 import certif from "../../assets/images/mob_certif.jpg";
@@ -130,6 +132,7 @@ function HomePage() {
   const [adsPosition2, setAdsPosition2] = useState([]);
   const [adsPosition3, setAdsPosition3] = useState([]);
   const [image, setImage] = useState("NA");
+  const [newImage, setNewImage] = useState([]);
   //   const [lat, setLat] = useState(null);
   //   const [lng, setLng] = useState(null);
   //   const [status, setStatus] = useState(null);
@@ -181,134 +184,85 @@ function HomePage() {
   //           }
   // 		});
   // }, [])
-
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest Code>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "home_position_1";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setAdsPosition1(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "home_position_1";
+  
+          });
+          setAdsPosition1(filterArray1);
+          // console.log("filterArray1home_position_1",filterArray1)
+
+          let filterArray2 = response.data.results.filter((item, index) => {
+            
+            return item.image_type == "home_position_2";
+           
+          });
+          setAdsPosition2(filterArray2);
+          console.log("filterArray1home_position_2",filterArray2)
+
+          let filterArray3 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "home_position_3";
+  
+          });
+          setAdsPosition3(filterArray3);
+          // console.log("filterArray1home_position_3",filterArray1)
+
+
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "home_position_1";
+          });
+          setAdsPosition1(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1)
+          let filterArray2 = response.data.results.filter((item, index) => {
+            return item.image_type == "home_position_2"; 
+          });
+          setAdsPosition2(filterArray2);
+          console.log("filterArray1coursebox",filterArray2)
+          
+          let filterArray3 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "home_position_3";
+  
+          });
+          setAdsPosition3(filterArray3);
+          // console.log("filterArray1home_position_3",filterArray3)
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
-
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add?image_type=home_position_2')
-  // 		.then((response) => {
-  // 			setAdsPosition2(response.data.results);
-  // 		});
-  // }, [])
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      };
-      axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "home_position_2";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setAdsPosition2(filterArray);
-          }
-        });
-    });
-    dispatch(adsList());
-  }, []);
-
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
-
-  //       if(response.data.results.length > 0)
-
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "home_position_2"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setAdsPosition2(filterArray)
-  //           }
-  // 		});
-  // }, [])
-
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add?image_type=home_position_3')
-  // 		.then((response) => {
-  // 			setAdsPosition3(response.data.results);
-  // 		});
-  // }, [])
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      };
-      axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "home_position_3";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setAdsPosition3(filterArray);
-          }
-        });
-    });
-    dispatch(adsList());
-  }, []);
-
-  useEffect(() => {
-    axios.get("/private_adds/private_add").then((response) => {
-      if (response.data.results.length > 0) {
-        let filterArray = response.data.results.filter((item, index) => {
-          return item.image_type == "home_position_3";
-        });
-        let findImage = filterArray.length > 0 ? filterArray[0].image : "NA";
-        setImage(findImage);
-        setAdsPosition3(filterArray);
-      }
-    });
-  }, []);
+        })
+   }
+  )
+  },[])
+ 
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -618,11 +572,11 @@ function HomePage() {
               // <div className='col-md-12 ads_home_cover'>
               <div
                 className='col-md-12 ads_home_cover'
-                onClick={() => addEmail(adsPosition3[0]?.add_email)}
+                onClick={() => addEmail(adsPosition3[2]?.add_email)}
               >
-                <a href={adsPosition3[0]?.url_adds} target='_blank'>
+                <a href={adsPosition3[2]?.url_adds} target='_blank'>
                   <img
-                    src={adsPosition3[0]?.image}
+                    src={adsPosition3[2]?.image}
                     alt='Image'
                     className='google_ads_home'
                   />
@@ -869,7 +823,7 @@ function HomePage() {
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
-                      <img src={Nikita} alt='' />
+                      <img className="NikitaSharmaImage" src={Nikita} alt='' />
                       <p>{t("aboutPage.review.1")}</p>
                       <ul className='star'>
                         <li>
@@ -925,7 +879,7 @@ function HomePage() {
 
                   <div data-aos='slide-left'>
                     <div className='tes_box heg_cha'>
-                      <img src={Priya} alt='' />
+                      <img className='AnkitaSharmaImage'src={Ankita} alt='' />
                       <p>{t("aboutPage.review.3")}</p>
                       <ul className='star'>
                         <li>

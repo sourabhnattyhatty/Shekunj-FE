@@ -58,33 +58,89 @@ function BlogPage() {
   const [blogBoxAdds, setBlogBoxAdds] = useState([]);
   const [adds, setAdds] = useState([]);
 
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "blog_index";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setBlogBoxAdds(filterArray);
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   // dispatch(adsList());
+  // }, [dispatch]);
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>
+
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "blog_index";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setBlogBoxAdds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "blog_index";
+  
+          });
+          setBlogBoxAdds(filterArray1);
+          // console.log("filterArray1blog_index",filterArray1)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "blog_index";
+          });
+          setBlogBoxAdds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1) 
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+  
+
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -106,25 +162,12 @@ function BlogPage() {
         .then((response) => {
           // setAdds(response.data.results);
           console.log("addEmailresponse", response);
-        });
+        }).catch((error) => {
+          // setMessage("No data found");
+          console.log(error);
+      })
     });
   };
-
-  // useEffect(() => {
-  //   axios
-  //     .get("/private_adds/private_add?image_type=success_stories_banner")
-  //     .then((response) => {
-  //       setStoriesBannerAds(response.data.results);
-  //     });
-  // }, []);
-  // useEffect(() => {
-  //   axios
-  //     .get("/private_adds/private_add?image_type=success_stories_box")
-  //     .then((response) => {
-  //       setStoriesBoxAds(response.data.results);
-  //     });
-  // }, []);
-
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreblog' />
@@ -184,6 +227,7 @@ function BlogPage() {
                               <img
                                 className='quote_img_blog'
                                 src={double_quote}
+                                style={{width:20,height:20}}
                                 alt=''
                               />
                               {s?.title || t("common.n/a")}{" "}
@@ -262,6 +306,7 @@ function BlogPage() {
                               <img
                                 className='quote_img_blog'
                                 src={double_quote}
+                                style={{width:20,height:20}}
                                 alt=''
                               />
                               {s?.title || t("common.n/a")}{" "}
@@ -329,7 +374,7 @@ function BlogPage() {
                       <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
                         <div className='ads_story_cover'>
                           <img
-                            src={blogBoxAdds[1]?.image}
+                            src={blogBoxAdds[0]?.image}
                             alt='Image'
                             className='ads_succ_story'
                           />

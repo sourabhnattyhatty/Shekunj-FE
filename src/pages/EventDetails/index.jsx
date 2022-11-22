@@ -24,6 +24,7 @@ import User3 from "../../assets/icons/user3.png";
 import mail2 from "../../assets/icons/mail2.png";
 import phone from "../../assets/icons/phone2.png";
 import { getAllEvents, singleEventDetails } from "../../store/events/action";
+import { getUserProfile } from "../../store/auth/action";
 import "../HomePage/index.scss";
 import "./index.scss";
 import noImageIcon from "../../assets/images/no-image.jpeg";
@@ -34,6 +35,8 @@ const EventDetails = () => {
   // console.log("EventIdddd",events.extra_info)
   const history = useHistory();
   const { events } = useSelector((state) => state.eventsReducer);
+  const { user } = useSelector((state) => state.authReducer);
+  console.log("user",user)
   const dispatch = useDispatch();
 
   console.log("Eventsssssss", events);
@@ -61,12 +64,13 @@ const EventDetails = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required(t("login.form1.firstNameError.required")),
     last_name: Yup.string().required(t("login.form1.lastNameError.required")),
-    // City: Yup.string().required(t("login.form1.CityError.required")),
+    city: Yup.string().required(("city is required")),
     email: Yup.string()
       .required(t("login.form1.emailError.required"))
       .email(t("login.form1.emailError.invalid")),
-    contact: Yup.number().positive(),
-    // message: Yup.string().required(t("login.form1.message.required")),
+    contact: Yup.number().positive().required("contact number is required"),
+    // gender: Yup.string().required("gender is required"),
+    // extra_info_reg:Yup.mixed().required("please enter value")
   });
 
   const {
@@ -86,6 +90,7 @@ const EventDetails = () => {
       contact: "",
       city: "",
       gender: "",
+      // extra_info_reg:""
     },
     validationSchema,
     onSubmit(values) {
@@ -110,33 +115,87 @@ const EventDetails = () => {
     },
   });
 
-  useEffect(() => {
+  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "event_detail";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setEventDetailsBoxAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
+
+   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "event_detail";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setEventDetailsBoxAds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "event_detail";
+  
+          });
+          setEventDetailsBoxAds(filterArray1);
+          // console.log("filterArray1event_detail",filterArray1)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "event_detail";
+          });
+          setEventDetailsBoxAds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1) 
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+ 
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -165,6 +224,13 @@ const EventDetails = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [dispatch, id, lan]);
 
+  useEffect(() => {
+    dispatch(getUserProfile(id));
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [dispatch, id, lan]);
+
+  
+
   let evalData = eval(events.extra_info);
 
   return (
@@ -189,28 +255,6 @@ const EventDetails = () => {
                   alt='...'
                 ></img>
                 <h4 className='mb-3'>{events && events.title}</h4>
-
-                <Row>
-                  {events.created_at && (
-                    <Col md={6} xs={12}>
-                      <h6>
-                        <span>created_at</span> :{" "}
-                        <Moment format='D MMM YYYY' withTitle>
-                          {events.created_at}
-                        </Moment>
-                      </h6>
-                    </Col>
-                  )}
-                  {events.updated_at && (
-                    <Col md={6} xs={12}>
-                      <span>updated_at</span> :{" "}
-                      <Moment format='D MMM YYYY' withTitle>
-                        {events.updated_at}
-                      </Moment>
-                    </Col>
-                  )}
-                </Row>
-
                 <Row>
                   {events.url && (
                     <Col md={6} xs={12}>
@@ -251,7 +295,7 @@ const EventDetails = () => {
                           <TextField
                             name='name'
                             type='text'
-                            placeholder={t("common.placeHolders.fname")}
+                            placeholder={user?.name}
                             autoComplete='off'
                             onChange={handleChange}
                             value={values.name}
@@ -273,7 +317,7 @@ const EventDetails = () => {
                           <TextField
                             name='last_name'
                             type='text'
-                            placeholder={t("common.placeHolders.lname")}
+                            placeholder={user?.last_name}
                             autoComplete='off'
                             onChange={handleChange}
                             value={values.last_name}
@@ -298,7 +342,7 @@ const EventDetails = () => {
                       <TextField
                         name='email'
                         type='email'
-                        placeholder={t("common.placeHolders.email")}
+                        placeholder={user?.email}
                         autoComplete='off'
                         onChange={handleChange}
                         value={values.email}
@@ -318,7 +362,7 @@ const EventDetails = () => {
                       <TextField
                         name='contact'
                         type='number'
-                        placeholder={t("common.placeHolders.mobile")}
+                        placeholder={("contact")}
                         autoComplete='off'
                         value={values.contact}
                         onChange={handleChange}
@@ -338,7 +382,7 @@ const EventDetails = () => {
                         <div className='form-group mzero'>
                           <Form.Group controlId='validationFormik04'>
                             <GuidanceSelect
-                              title={t("common.formHeadings.gender")}
+                              title={("gender")}
                               icon={true}
                               listItem={["female", "male"]}
                               defaultValue=''

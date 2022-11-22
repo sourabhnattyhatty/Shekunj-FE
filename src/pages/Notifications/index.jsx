@@ -3,17 +3,17 @@ import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAllNotifications } from "../../store/notifications";
-import {
-  setCollapseSuccessStory,
-  successStories as fetchSuccessStories,
-} from "../../store/courses/action";
+// import {
+//   setCollapseSuccessStory,
+//   successStories as fetchSuccessStories,
+// } from "../../store/courses/action";
 import { Header, Footer } from "../../components";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { ListItem,List,Divider } from "@mui/material";
 
 // import Moment from "react-moment";
-
 function AllNotification() {
   const history = useHistory();
   const { notifications } = useSelector((state) => state.notificationsReducer);
@@ -28,32 +28,9 @@ function AllNotification() {
     dispatch(getAllNotifications());
   }, [dispatch, lan]);
 
-  React.useEffect(() => {
-    dispatch(fetchSuccessStories());
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [dispatch, lan]);
-
-  const handleSetCollapse = (id, is_collapse) => {
-    dispatch(setCollapseSuccessStory(id, is_collapse ? false : true));
-  };
-
-  const [storiesBannerAds, setStoriesBannerAds] = useState([]);
-  const [storiesBoxAds, setStoriesBoxAds] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_banner")
-      .then((response) => {
-        setStoriesBannerAds(response.data.results);
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("/private_adds/private_add?image_type=success_stories_box")
-      .then((response) => {
-        setStoriesBoxAds(response.data.results);
-      });
-  }, []);
+  // const handleSetCollapse = (id, is_collapse) => {
+  //   dispatch(setCollapseSuccessStory(id, is_collapse ? false : true));
+  // };
 
   return (
     <div>
@@ -70,12 +47,14 @@ function AllNotification() {
             console.log("c", c)
             return (
               <>
-               <div>
+               {/* <div>
                   <Card key={c?.id}>
                   {console.log("c", c)}
-                    <Card.Body key={c?.id}>
-                      <Card.Title class='icon_favorite' key={c?.id}>
+                    <Card.Body key={c?.id} >
+                      <Card.Title key={c?.id} style={{height:"100%"}}>
+                        <span>
                         <h3 class='c-heading-6'>{c && c.title}</h3>
+                        </span>
                       </Card.Title>
                       <Button
                         href={c && c.url}
@@ -87,6 +66,24 @@ function AllNotification() {
                       </Button>
                     </Card.Body>
                   </Card>
+                  </div> */}
+                  <div>
+                    <List key={c?.id}>
+                      <ListItem>
+                      {/* <span> */}
+                        <h3 class='c-heading-6'>{c && c.title}</h3>
+                        {/* </span> */}
+                      </ListItem>  
+                      <Button
+                        href={c && c.url}
+                        className='c-button'
+                        variant='primary'
+                        key={c?.id}
+                      >
+                        Visit Link
+                      </Button>
+                      <Divider/>
+                    </List>
                   </div>
               </>
             );

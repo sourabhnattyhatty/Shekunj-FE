@@ -62,8 +62,10 @@ export const allCourses =
 
 export const allTests = () => async (dispatch) => {
   try {
+    const url = constants.MOCKTEST;
     dispatch({ type: coursesTypes.TESTS_REQUEST });
     const res = await httpServices.get(constants.ONLINE_TEST_CATEGORY_LIST);
+    // const res = await httpServices.get(url);
     dispatch({ type: coursesTypes.TESTS_FINISH, payload: res.data });
   } catch (error) {
     dispatch({ type: coursesTypes.TESTS_FAIL });

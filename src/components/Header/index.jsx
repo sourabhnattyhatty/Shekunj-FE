@@ -33,6 +33,7 @@ const Header = ({ page, subPage }) => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl77, setAnchorEl77] = React.useState(null);
+  const [anchorEl777, setAnchorEl777] = React.useState(null);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [anchorEl3, setAnchorEl3] = React.useState(null);
@@ -40,6 +41,7 @@ const Header = ({ page, subPage }) => {
 
   const open = Boolean(anchorEl);
   const open77 = Boolean(anchorEl77);
+  const open777 = Boolean(anchorEl777);
   const open1 = Boolean(anchorEl1);
   const open2 = Boolean(anchorEl2);
   const open3 = Boolean(anchorEl3);
@@ -57,6 +59,13 @@ const Header = ({ page, subPage }) => {
 
   const handleClose77 = () => {
     setAnchorEl77(null);
+  };
+  const handleClick777= (event) => {
+    setAnchorEl777(event.currentTarget);
+  };
+
+  const handleClose777 = () => {
+    setAnchorEl777(null);
   };
 
   const handleClick1 = (event) => {
@@ -300,7 +309,7 @@ const Header = ({ page, subPage }) => {
                   <img
                     src={close}
                     alt=''
-                    style={{ float: "right", marginRight: "10px" }}
+                    style={{ float: "right", marginRight: "10px",height:"30px",width:"30px"}}
                     onClick={toggleDrawer}
                   />
                   <br />
@@ -365,7 +374,7 @@ const Header = ({ page, subPage }) => {
                       </MenuItem>
                       <MenuItem
                         onClick={handleGuidance2}
-                        className={subPage === "careerTest" && "active"}
+                        className={subPage === "mockTest" && "active"}
                       >
                         {t("headerComponent.menuItem.6")}
                       </MenuItem>
@@ -528,10 +537,9 @@ const Header = ({ page, subPage }) => {
                     </Menu>
 
                     {/* <br /> */}
-
                     <Button
-                      id='basic-button77'
-                      aria-controls='basic-menu77'
+                      id='basic-button777'
+                      aria-controls='basic-menu777'
                       className='notificationButton'
                       variant='text'
                       style={{
@@ -539,8 +547,8 @@ const Header = ({ page, subPage }) => {
                         left: 8,
                       }}
                       aria-haspopup='true'
-                      aria-expanded={open77 ? "true" : undefined}
-                      onClick={handleClick77}
+                      aria-expanded={open777 ? "true" : undefined}
+                      onClick={handleClick777}
                     >
                       <span
                       // style={{
@@ -551,25 +559,27 @@ const Header = ({ page, subPage }) => {
                       // }}
                       // className='nav-link'
                       >
+                        
                         <BellIcon
                           width='30'
                           active={true}
                           animate={true}
                           color='#ec498a'
                         />
+                        
                         {/* Notification */}
                       </span>
                     </Button>
 
                     <Menu
-                      id='basic-menu77'
+                      id='basic-menu777'
                       MenuListProps={{
                         "aria-labelledby": "basic-button77",
                       }}
                       aria-labelledby='text'
-                      anchorEl={anchorEl77}
-                      open={open77}
-                      onClose={handleClose77}
+                      anchorEl={anchorEl777}
+                      open={open777}
+                      onClose={handleClose777}
                       transformOrigin={{
                         horizontal: "left",
                         vertical: "top",
@@ -584,9 +594,14 @@ const Header = ({ page, subPage }) => {
                           return (
                             <>
                               <MenuItem onClick={handleNotification1}>
-                                <a className='nav-link' href={c?.url}>
-                                  {c?.title}
-                                </a>
+                                <Link
+                                    className='limited-text'
+                                    to={`/${c?.url}`}
+                                    style={{ color: "#e83e8c" }}
+                                    replace
+                                  >
+                                    {c?.title}
+                                  </Link>
                               </MenuItem>
                               <Divider />
                             </>
@@ -685,7 +700,7 @@ const Header = ({ page, subPage }) => {
                       </MenuItem>
                       <MenuItem
                         onClick={handleGuidance2}
-                        className={subPage === "careerTest" && "active"}
+                        className={subPage === "mockTest" && "active"}
                       >
                         {t("headerComponent.menuItem.6")}
                       </MenuItem>
@@ -788,8 +803,8 @@ const Header = ({ page, subPage }) => {
                       aria-expanded={open3 ? "true" : undefined}
                       onClick={handleClick3}
                     >
-                      {/* {t("header.heading.7")} */}
-                      More
+                      {t("header.heading.7")}
+                      {/* More */}
                     </button>
                     <Menu
                       id='basic-menu3'
@@ -868,7 +883,7 @@ const Header = ({ page, subPage }) => {
                         <BellIcon
                           width='40'
                           active={true}
-                          // animate={true}
+                          animate={true}
                           color='#ec498a'
                         />
                       </span>

@@ -53,7 +53,7 @@ const CertificateDetail = React.lazy(() =>
   import("./pages/Certificates/CertificatesDetail"),
 );
 const Notifications = React.lazy(() => import("./pages/Notifications"));
-const NotificationDetails = React.lazy(() => import("./pages/NotificationDetails"));
+// const NotificationDetails = React.lazy(() => import("./pages/NotificationDetails"));
 const EmailPage = React.lazy(() => import("./pages/EmailPage"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const SuccessCareerOption2 = React.lazy(() =>
@@ -63,6 +63,16 @@ const PageNotFound = React.lazy(() => import("./pages/PageNotFound"));
 const DataNotFound = React.lazy(() => import("./pages/DataNotFound"));
 
 function App() {
+
+  const clearCacheData = () => {
+    caches.keys().then((names) => {
+      names.forEach((name) => {
+        caches.delete(name);
+      });
+    });
+  };
+  clearCacheData()
+
   return (
     <>
       <Switch>
@@ -94,12 +104,8 @@ function App() {
         <Route exact path={routingConstants.MORE_EVENT} component={EventPage} />
         <Route exact path={routingConstants.MORE_MAGAZINE} component={MagazinePage} />
         <Route exact path={routingConstants.ALL_NOTIFICATION} component={Notifications} />
-        <Route exact path={`${routingConstants.MORE_MAGAZINE}:id`} component={MagzineDetails} />
-        <Route exact path={routingConstants.MOCKTEST} component={MockTest} />
-        <Route exact path={`${routingConstants.MOCKTEST}:id`} component={MockTestDetail} />
-        
+        <Route exact path={routingConstants.MOCKTEST} component={MockTest} /> 
         <Route exact path={routingConstants.FAQ} component={FaqPage} />
-        {/* <Route exact path={routingConstants.MAGZINE} component={Magzine} /> */}
         <Route
           exact
           path={routingConstants.GOVERNMENT_SCHEMES}
@@ -149,14 +155,24 @@ function App() {
         />
           <PrivateRoute
           exact
-          path={`${routingConstants.MORE_BLOG}:id`}
-          component={BlogDetails}
+          path={`${routingConstants.MORE_MAGAZINE}:id`}
+          component={MagzineDetails}
         />
           <PrivateRoute
           exact
+          path={`${routingConstants.MOCKTEST}:id`}
+          component={MockTestDetail}
+        />
+          <PrivateRoute
+          exact
+          path={`${routingConstants.MORE_BLOG}:id`}
+          component={BlogDetails}
+        />
+          {/* <PrivateRoute
+          exact
           path={`${routingConstants.ALL_NOTIFICATION}:id`}
           component={NotificationDetails}
-        />
+        /> */}
         <PrivateRoute
           exact
           path={`${routingConstants.ALL_CERTIFICATE_DETAIL}:id/:isDownload?`}

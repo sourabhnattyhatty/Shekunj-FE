@@ -3,8 +3,10 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Icon } from "react-icons-kit";
-import { eyeOff } from "react-icons-kit/feather/eyeOff";
-import { eye } from "react-icons-kit/feather/eye";
+// import { eyeOff } from "react-icons-kit/feather/eyeOff";
+// import { eye } from "react-icons-kit/feather/eye";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -21,21 +23,22 @@ import { routingConstants } from "../../../../utils/constants";
 
 function LoginForm2() {
   const [type, setType] = useState("password");
-  const [icon, setIcon] = useState(eyeOff);
+  // const [icon, setIcon] = useState(eyeOff);
+  const [visible, setVisible] = useState(false);
   const { isLoading } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const history = useHistory();
   const { t } = useTranslation();
 
-  const handleToggle = () => {
-    if (type === "password") {
-      setIcon(eye);
-      setType("text");
-    } else {
-      setIcon(eyeOff);
-      setType("password");
-    }
-  };
+  // const handleToggle = () => {
+  //   if (type === "password") {
+  //     setIcon(eye);
+  //     setType("text");
+  //   } else {
+  //     setIcon(eyeOff);
+  //     setType("password");
+  //   }
+  // };
 
   const validationSchema = Yup.object({
     contact: Yup.number().required(t("login.form2.contactError")),
@@ -93,7 +96,7 @@ function LoginForm2() {
           <Error error={errors.contact} touched={touched.contact} />
         </div>
 
-        <div className='form-group-password'>
+        {/* <div className='form-group-password'>
           <label>
             {t("common.formHeadings.password")} <span>*</span>
           </label>
@@ -125,7 +128,32 @@ function LoginForm2() {
             error={errors.password}
             touched={touched.password}
           />
-        </div>
+        </div> */}
+
+<div className='form-group mb-4'>
+            <TextField
+              name='password'
+              type={visible ? "text" : "password"}
+              className='form-control'
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder={t("common.placeHolders.password")}
+              autoComplete='off'
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position='start'>
+                    <img src={Lock} alt='...' />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <p className='eye' onClick={(e) => setVisible(!visible)}>
+              {visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
+            </p>
+
+            <Error error={errors.password} touched={touched.password} />
+          </div>
+
 
         <Link to={routingConstants.FORGOT_PASSWORD} className='fer_pass'>
           forgot password?

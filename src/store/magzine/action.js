@@ -34,7 +34,7 @@ export const getAllMagzines =
   };
 
 export const singleMagzineDetails =
-  (id, lat = "19.8508544", long = "75.3762304") =>
+  (id,history, lat = "19.8508544", long = "75.3762304") =>
   async (dispatch) => {
     try {
       dispatch({ type: magzinesTypes.FETCH_MAGZINES_REQUEST });
@@ -49,7 +49,12 @@ export const singleMagzineDetails =
         // },
         payload: res?.data || []
       });
-    } catch (error) {
+    }  catch (error) {
+      if (error.status === 401) {
+        history?.push(
+          `/login?redirect=${routingConstants.MORE_MAGAZINE}`,
+        );
+      }
       dispatch({ type: magzinesTypes.FETCH_MAGZINES_FAIL });
     }
   };

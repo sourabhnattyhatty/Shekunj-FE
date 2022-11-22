@@ -1,5 +1,5 @@
 .mainDiv_gov {
-  margin-top: 0px;
+  margin-top: 50px;
 }
 
 .career_tit {
@@ -167,6 +167,27 @@
     align-items: center;
     display: grid;
     margin-bottom: 30px;
+  }
+
+  .career_logo_img {
+    height: 100% !important; 
+    width: 100% !important;   
+  }
+
+  .career_logo_box {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #d1d1d1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+  }
+  .gov_logo_box {
+    margin-left: -15px;
+    height: 100px;
+    width: 100px;
   }
 
   .career_tit h2 {

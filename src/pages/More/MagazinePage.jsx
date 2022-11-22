@@ -85,33 +85,87 @@ function MagzinePage(m) {
   const [show, setShow] = useState(false);
   const [docs, setDocs] = useState([]);
 
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "magazine_index";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setMagzineBoxAdds(filterArray);
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //     })
+  //   });
+  //   // dispatch(adsList());
+  // }, []);
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "magazine_index";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setMagzineBoxAdds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "magazine_index";
+  
+          });
+          setMagzineBoxAdds(filterArray1);
+          // console.log("filterArray1magazine_index",filterArray1)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "magazine_index";
+          });
+          setMagzineBoxAdds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1) 
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+ 
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -132,7 +186,10 @@ function MagzinePage(m) {
         })
         .then((response) => {
           console.log("addEmailresponse", response);
-        });
+        })
+        .catch((error) => {
+          console.log(error);
+      })
     });
   };
 
@@ -170,21 +227,6 @@ function MagzinePage(m) {
 
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("/private_adds/private_add?image_type=success_stories_banner")
-  //     .then((response) => {
-  //       setStoriesBannerAds(response.data.results);
-  //     });
-  // }, []);
-  // useEffect(() => {
-  //   axios
-  //     .get("/private_adds/private_add?image_type=success_stories_box")
-  //     .then((response) => {
-  //       setStoriesBoxAds(response.data.results);
-  //     });
-  // }, []);
 
   document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
@@ -244,15 +286,17 @@ function MagzinePage(m) {
                   <Col>
                     <Card.Link
                       style={{ color: "#a63d67 " }}
-                      href={routingConstants.MORE_MAGAZINE + m.id}
+                      // href={routingConstants.MORE_MAGAZINE + m.id}
+                      // href={m && m?.form_link}
                     >
                       <Card
                         // style={{ width: "300px", height: "500px" }}
                         className='MagzineCard'
                         key={m?.id}
+                        href={m && m.form_link}
                       >
-                        {/* <Link 
-                  to={routingConstants.MORE_MAGAZINE + m.id}  key={m?.id}> */}
+                        <Link 
+                  to={routingConstants.MORE_MAGAZINE + m?.id}  key={m?.id}>
                         <Card.Img
                           className='magzineImage'
                           variant='top'
@@ -384,7 +428,7 @@ function MagzinePage(m) {
                             </Moment>
                           </Card.Text>
                         </Card.Body>
-                        {/* </Link> */}
+                        </Link>
                       </Card>
                     </Card.Link>
                   </Col>

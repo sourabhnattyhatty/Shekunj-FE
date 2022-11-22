@@ -226,12 +226,13 @@ export const getTopSchools =
         console.log("response+++TopSchool", lat,long);
 
         const url = constants.TOP_SCHOOL_LIST+`?latitude=${lat}&longitude=${long}`;
+        const url1 = constants.TOP_SCHOOL_LIST;
 
         const { topSchools, courseSector,ownership } = getState().careerReducer;
         dispatch({ type: coursesTypes.TOP_SCHOOL_REQUEST });
         const res = await httpServices.get(
           filter === true ? handleTopSchoolsFilter(topSchools, courseSector, ownership)
-            : filter ? url + filter : url
+            : filter ? url1 + filter : url1
             // , navigator.geolocation.getCurrentPosition(async function (
             //   position,
             //   values,
@@ -493,6 +494,7 @@ export const getTopCollages =
         console.log("response+++TopCollege", lat,long);
 
         const url = constants.TOP_COLLEGE_LIST+`?latitude=${lat}&longitude=${long}`;
+        // const url1 = constants.TOP_COLLEGE_LIST;
 
         const { courseSector, topCollages,ownership } = getState().careerReducer;
         dispatch({ type: coursesTypes.TOP_COLLAGE_REQUEST });

@@ -48,14 +48,26 @@ a.fer_pass {
   // width: 300px;
   display: inline;
 }
-.eyesOffIcon{
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 5px;
-  padding-right: 8px;
-  background-color: #ffffff;
-  border: hidden;
+// .eyesOffIcon{
+//   display: flex;
+//   justify-content: flex-end;
+//   padding-top: 5px;
+//   padding-right: 8px;
+//   background-color: #ffffff;
+//   border: hidden;
+// }
+
+p.eye {
+  cursor: pointer;
+  position: absolute;
+  top: 10%;
+  right: 3%;
 }
+p.eye svg {
+  color: #bdbdbd;
+  margin-top: 0px;
+}
+
 .form-control-password{
   position: absolute;
   background: #ffffff;

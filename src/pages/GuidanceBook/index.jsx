@@ -198,52 +198,86 @@ const GuidancePage = () => {
         });
     });
   };
-
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
 
-  //       if(response.data.results.length > 0)
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "book_counsellor";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setBookCounsellorAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
 
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "book_counsellor"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setBookCounsellorAds(filterArray)
-  //           }
-  // 		});
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  // }, [])
+useEffect(() => {
+  dispatch(adsList())
+  navigator.geolocation.getCurrentPosition(async function (position, values) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
+    let params = {
+      latitude: latitude.toString(),
+      longitude: longitude.toString(),
+    } 
+    axios
+    .get(
+      `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+        let filterArray1 = response.data.results.filter((item, index) => {
+         
+          return item.image_type == "book_counsellor";
 
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      };
-      axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "book_counsellor";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setBookCounsellorAds(filterArray);
-          }
         });
-    });
-    dispatch(adsList());
-  }, []);
+        setBookCounsellorAds(filterArray1);
+        // console.log("filterArray1book_counsellor",filterArray1)
+          }
+        })   
+  } ,
+  function(error) {
+    console.error("Error Code = " + error.code + " - " + error.message);
+    // alert("Your location is blocked")    
+  axios
+  .get(
+    `/private_adds/private_add`,
+  )
+  .then((response) => {
+    if (response && response.data.results.length > 0) {
+        let filterArray1 = response.data.results.filter((item, index) => {   
+          return item.image_type == "book_counsellor";
+        });
+        setBookCounsellorAds(filterArray1);
+        // console.log("filterArray1coursebox",filterArray1) 
+        }
+      })
+ }
+)
+},[])
+
 
   return (
     <div>
@@ -443,29 +477,7 @@ const GuidancePage = () => {
                             "values.date_of_birth",
                             values.date_of_birth,
                           )}
-                          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
- <DateTimePicker
-          label="Date-Of-Birth"
-          value={value}
-          DisableTime={true}
-          // onChange={handleChange}
-          onChange={(newValue) => {
-            setValue(newValue);
-          }}
-          renderInput={(params) => <TextField {...params} />}
-        />
-        </LocalizationProvider> */}
-
-                          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DatePicker
-        label="Basic example"
-        value={value}
-        onChange={(newValue) => {
-          setValue(newValue);
-        }}
-        renderInput={(params) => <TextField {...params} />}
-      />
-    </LocalizationProvider> */}
+                         
                           {touched.date_of_birth &&
                             !!errors.date_of_birth &&
                             errors.date_of_birth}
@@ -478,16 +490,7 @@ const GuidancePage = () => {
                     <Col md={6} xs={12}>
                       <div className='form-group mzero'>
                         <Form.Group controlId='validationFormik04'>
-                          {/* <Form.Label>Select-Gender</Form.Label> */}
-                          {/* <GuidanceSelect
-                          title="Gender"
-                          icon={true}
-                          listItem={GenderCategory}
-                          defaultValue=''
-                          updateValues={(value) =>
-                            setFieldValue("gender", value)
-                          }
-                        /> */}
+
 
                           <GuidanceSelect
                             title={t("common.formHeadings.gender")}

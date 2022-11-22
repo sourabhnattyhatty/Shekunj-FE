@@ -517,6 +517,9 @@ hr.line {
   color: #d62c79;
   cursor: pointer;
 }
+// .Srch_sec .reset_content img {
+//    height:20px;
+// }
 
 .filter_right_content a {
   list-style: none;
@@ -638,12 +641,14 @@ hr.line {
 }
 
 .suggestions {
-  width: 320px;
+  // width: 320px;
   max-height: 300px;
   box-shadow: 3px 3px 5px #999;
   padding: 5px 0px;
   position: absolute;
   z-index: 999;
+  display: flex;
+  flex-direction: column;
 }
 
 .wraper {
@@ -655,6 +660,7 @@ hr.line {
   padding-top: 3px;
   padding-bottom: 2px;
   padding-left: 10px;
+  text-align: left;
 }
 
 .suggList:hover {

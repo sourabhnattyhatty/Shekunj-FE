@@ -3,7 +3,8 @@ import httpServices from "../../utils/ApiServices";
 import { apiConstants, routingConstants } from "../../utils/constants";
 
 export const adsList =
-  (lat = "19.8508544", long = "75.3762304") =>
+  // (lat = "19.8508544", long = "75.3762304") =>
+  (lat = "", long = "") =>
   async (dispatch) => {
     try {
       console.log("response+++TopSchool", lat, long);

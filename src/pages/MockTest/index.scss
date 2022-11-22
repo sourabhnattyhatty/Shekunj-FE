@@ -334,6 +334,301 @@ p#col_grey {
 }
 
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+
+  .SuccStory_banner {
+    background-image: url("../../assets/images/Success/mob_suc_banner.png");
+    height: 698px !important;
+    margin-right: 20px !important;
+  }
+
+  .global_img {
+    margin-top: 43px !important;
+  }
+  .global_img img {
+    max-width: 40% !important;
+  }
+
+  .SuccStory_banner h2 {
+    margin: 0;
+    font-size: 24px !important;
+    margin-top: 15px !important;
+  }
+
+  .SuccStory_banner p {
+    font-size: 16px !important;
+    margin-top: 15px !important;
+  }
+
+  .suc_box {
+    margin-top: 40px !important;
+  }
+
+  .suc_btn hr {
+    width: 80px !important;
+  }
+
+  .suc_btn {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .suc_box h2 {
+    font-size: 16px;
+    padding-top: 20px;
+  }
+
+  .suc_box h3 {
+    font-size: 16px;
+  }
+
+  .suc_box p {
+    font-size: 16px;
+  }
+
+  .want h2 {
+    font-size: 24px;
+  }
+
+  button.want_btn {
+    border-radius: 2px;
+  }
+
+  .want {
+    height: 260px;
+    margin-top: 30px;
+  }
+
+  .suc_box .col-md-8.col-12 {
+    order: 2;
+  }
+
+  .suc_box .col-md-4.col-12 {
+    order: 1;
+  }
+  .ads_story_cover_img {
+    margin: 10px 0px !important;
+    height: 46px !important;
+    width: 100% !important;
+  }
+  .ads_succ_story{
+    height: 47px !important;
+  }
+
+
+  .gridContainer {
+    display: inline-block;
+    align-items: center;
+    justify-items: center;
+    margin-left: 1px !important;
+    padding: 0px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .limited-text-mock-test {
+    // white-space: nowrap;
+    // white-space: pre-wrap;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    margin-top: 1%;
+    height: 70px;
+  }
+
+  .GuidanceOptionCard {
+    width: 22rem !important;
+    // height: 25rem;
+    margin-top: 5px;
+    box-shadow: 0 7px 30px -10px rgba(25, 23, 23, 0.5);
+    // margin-left: 12px;
+  }
+  .GuidanceOptionCardAdd {
+    width: 22rem !important;
+    // height: 25rem;
+    margin-top: 5px;
+    box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
+    // margin-left: 12px;
+  }
+  .GuidanceOptionCardAdd img {
+    // width: 18rem;
+    // height: 26rem;
+    // margin-top: 30px !important;
+    object-fit: cover;
+  }
+  .slide-img-test {
+    // height: 100px;
+    position: relative;
+  }
+  
+  .slide-img-test img {
+    margin-top: 13px;
+    max-width: 100%;
+    width: 22rem !important;
+
+    display: inline-block;
+    object-fit: contain;
+  }
+  
+  .guidanceOptionImage {
+    height: 200px;
+    // width:300px;
+    object-fit: fill;
+    // margin-bottom: 30px !important;
+    margin-top: 0px !important;
+    text-align: center;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .guidanceOptionImageAdd {
+    height: 600px;
+    // width:300px;
+    object-fit: fill;
+    // margin-bottom: 30px !important;
+    margin-top: 0px !important;
+    text-align: center;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  
+  .guidanceOptionTitle {
+    padding: 5px;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+  
+  .guidanceOptionTitle2 {
+  
+    padding-left: 10px;
+    margin-left: 10px;
+    width: 200px;
+  }
+  
+  .css-1oqqzyl-MuiContainer-root {
+  
+    justify-items: flex-start;
+  }
+  
+  .actions {
+    margin-bottom: 1em;
+    padding-left: 10px;
+    margin-left: 10px;
+  }
+  
+  .root {
+    min-width: 400;
+  }
+  
+  .actions Button {
+    background-color: #e3e4eb;
+    color: #ec498a;
+    text-align: center;
+    text-decoration: #ec498a;
+  }
+  
+  a {
+    text-decoration: none !important;
+  }
+  
+  .css-11qr2p8-MuiButtonBase-root-MuiButton-root:hover {
+    // border-color: #e3e4eb !important;
+    cursor: pointer;
+    background-color: #ec498a !important;
+    border-bottom: none !important;
+    font-weight: bold;
+    color: #e3e4eb;
+    text-align: center;
+    text-decoration: #ec498a !important;
+  }
+
+  .SuccStory_banner {
+    background-image: url("../../assets/images/Success/mob_suc_banner.png");
+    height: 698px !important;
+    margin-right: 20px !important;
+  }
+
+  .global_img {
+    margin-top: 43px;
+  }
+
+  .global_img img {
+    max-width: 40%;
+  }
+
+  .SuccStory_banner h2 {
+    margin: 0;
+    font-size: 24px !important;
+    margin-top: 15px !important;
+  }
+
+  .SuccStory_banner p {
+    font-size: 16px !important;
+    margin-top: 15px !important;
+  }
+
+  .suc_box {
+    margin-top: 40px;
+  }
+
+  .suc_btn hr {
+    width: 80px;
+  }
+
+  .suc_btn {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .suc_box h2 {
+    font-size: 16px;
+    padding-top: 20px;
+  }
+
+  .suc_box h3 {
+    font-size: 16px;
+  }
+
+  .suc_box p {
+    font-size: 16px;
+  }
+
+  .want h2 {
+    font-size: 24px;
+  }
+
+  button.want_btn {
+    border-radius: 2px;
+  }
+
+  .want {
+    height: 260px;
+    margin-top: 30px;
+  }
+
+  .suc_box .col-md-8.col-12 {
+    order: 2;
+  }
+
+  .suc_box .col-md-4.col-12 {
+    order: 1;
+  }
+
+  .ads_story_cover_img {
+    margin: 10px 0px !important;
+    height: 46px !important;
+    width: 100% !important;
+  }
+
+  .ads_succ_story {
+    height: 47px !important;
+    width: 100% !important;
+  }
+
   .que_box {
     padding: 30px 16px;
   }
@@ -368,8 +663,9 @@ p#col_grey {
 .SuccStory_banner {
   background-image: url("../../assets/images/Success/sus_banner.jpg");
   background-repeat: no-repeat;
-  width: 100%;
-  height: 620px;
+  width: 100% !important;
+  // height: 620px;
+  height:698px;
   background-size: cover;
 }
 
@@ -420,17 +716,37 @@ p.sucess_first_p {
   justify-items: center;
   padding: 10px;
   margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.limited-text-mock-test {
+  // white-space: nowrap;
+  // white-space: pre-wrap;
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  margin-top: 1%;
+  height: 70px;
 }
 
 .GuidanceOptionCard {
   width: 18rem;
-  height: 26rem;
+  // height: 25rem;
   margin-top: 30px;
+  box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
+}
+.GuidanceOptionCardAdd {
+  width: 18rem;
+  // height: 25rem;
+  // margin-top: 30px;
+  box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
 }
 .GuidanceOptionCardAdd img {
   // width: 18rem;
   // height: 26rem;
-  margin-top: 30px !important;
+  // margin-top: 30px !important;
   object-fit: cover;
 }
 .slide-img-test {
@@ -447,11 +763,11 @@ p.sucess_first_p {
 }
 
 .guidanceOptionImage {
-  height: 150px;
+  height: 200px;
   // width:300px;
-  object-fit: contain;
-  margin-bottom: 30px !important;
-  margin-top: 30px !important;
+  object-fit: fill;
+  // margin-bottom: 30px !important;
+  margin-top: 0px !important;
   text-align: center;
   margin: 0 auto;
   justify-content: center;
@@ -481,7 +797,7 @@ p.sucess_first_p {
 }
 
 .actions {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   padding-left: 10px;
   margin-left: 10px;
 }

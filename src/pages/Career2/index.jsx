@@ -101,10 +101,13 @@ const CareerPage2 = () => {
             setImage(findImage);
             setGovBannerAds(filterArray);
           }
-        });
+        })   .catch((error) => {
+          // setMessage("No data found");
+          console.log(error);
+      })
     });
     dispatch(adsList());
-  }, []);
+  }, [dispatch]);
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -130,86 +133,134 @@ const CareerPage2 = () => {
     });
   };
 
-  useEffect(() => {
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "govt_scm_side_ads";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setGovtScmSideAdds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "govt_scm_box";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setGovBoxAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code below >>>>>>>>>>>>>>>>>>>>>>>>
+
+   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "govt_scm_side_ads";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setGovtScmSideAdds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "govt_scm_box";
+  
+          });
+          setGovBoxAds(filterArray1);
+          // console.log("filterArray1govt_scm_box",filterArray1)
+
+          let filterArray2 = response.data.results.filter((item, index) => {
+            
+            return item.image_type == "govt_scm_side_ads";
+           
+          });
+          setGovtScmSideAdds(filterArray2);
+          console.log("filterArray1govt_scm_side_ads",filterArray2)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "govt_scm_box";
+          });
+          setGovBoxAds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1)
+          let filterArray2 = response.data.results.filter((item, index) => {
+            return item.image_type == "govt_scm_side_ads"; 
+          });
+          setGovtScmSideAdds(filterArray2);
+          console.log("filterArray1coursebox",filterArray2)  
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+ 
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  // useEffect(() => {
-  //   axios.get('/private_adds/private_add?image_type=govt_scm_box')
-  //     .then((response) => {
-  //       setGovBoxAds(response.data.results);
-  //     });
-  // }, [])
-
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
-
-  //       if(response.data.results.length > 0)
-
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "govt_scm_box"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setGovBoxAds(filterArray)
-  //           }
-  // 		});
-
-  // }, [])
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      };
-      axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "govt_scm_box";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setGovBoxAds(filterArray);
-          }
-        });
-    });
-    dispatch(adsList());
-  }, []);
 
   return (
     <div>
@@ -259,7 +310,7 @@ Benefits - Shekunj.com`}
                 }}
               />
               <div className='row'>
-                {/* {govtScmSideAdds.length >0 && 
+                {govtScmSideAdds.length >0 && 
            
                 <div  className='col-md-12' onClick={()=>addEmail(govtScmSideAdds[0]?.add_email)}>
                   <a href={govtScmSideAdds[0]?.url_adds} target='_blank'>
@@ -269,8 +320,8 @@ Benefits - Shekunj.com`}
                   </a>
 
                 </div>
-} */}
-                <div className='row'>
+}
+                {/* <div className='row'>
                   <div className='col-md-12'>
                     <img
                       src={govtScmSideAdds[0]?.image}
@@ -278,7 +329,7 @@ Benefits - Shekunj.com`}
                       className='google_add_courses'
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
             </Col>
 
@@ -365,7 +416,14 @@ Benefits - Shekunj.com`}
                                       <span className='gov_scm_heading'>
                                         {t("careerGovExams.other.7")}
                                       </span>{" "}
-                                      : {c && c.benefits}
+                                      {/* : {c && c.benefits} */}
+                                      <p style={{ textAlign: "justify" }}>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: `<div>${c && c.benefits}</div>`,
+                      }}
+                    />
+                  </p>
                                     </Col>
                                   )}
                                   {c.official_link && (

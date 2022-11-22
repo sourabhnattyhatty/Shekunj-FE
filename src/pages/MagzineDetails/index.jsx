@@ -122,50 +122,88 @@ function MagzineDetails(m) {
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
-  const [magzineDetailsBoxAds, setMagzinetDetailsBoxAds] = useState([]);
+  const [magzineDetailsBoxAds, setMagzineDetailsBoxAds] = useState([]);
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
-  //   axios
-  //     .get("/private_adds/private_add?image_type=success_stories_banner")
-  //     .then((response) => {
-  //       setStoriesBannerAds(response.data.results);
-  //     });
-  // }, []);
-  // useEffect(() => {
-  //   axios
-  //     .get("/private_adds/private_add?image_type=success_stories_box")
-  //     .then((response) => {
-  //       setStoriesBoxAds(response.data.results);
-  //     });
-  // }, []);
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "magazine_detail";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setMagzinetDetailsBoxAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "magazine_detail";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setMagzinetDetailsBoxAds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "magazine_detail";
+  
+          });
+          setMagzineDetailsBoxAds(filterArray1);
+          // console.log("filterArray1magazine_detail",filterArray1)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "magazine_detail";
+          });
+          setMagzineDetailsBoxAds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1) 
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
 
   const addEmail = (email) => {
     console.log("addEmail", email);

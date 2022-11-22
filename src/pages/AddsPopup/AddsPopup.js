@@ -57,7 +57,11 @@ const AddsPopup = (props) => {
         .then((response) => {
           // setAdds(response.data.results);
           console.log("addEmailresponse", response);
-        });
+        })
+        .catch((error) => {
+          // setMessage("No data found");
+          console.log(error);
+      })
     });
   };
 
@@ -84,10 +88,14 @@ const AddsPopup = (props) => {
             setImage(findImage);
             setPopupAds(filterArray);
           }
-        });
+        })
+        .catch((error) => {
+          // setMessage("No data found");
+          console.log(error);
+      })
     });
     dispatch(adsList());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>

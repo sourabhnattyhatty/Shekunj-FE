@@ -39,20 +39,9 @@ function FaqPage() {
 
   const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
-
-  // React.useEffect(() => {
-  //   dispatch(fetchSuccessStories());
-  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  // }, [dispatch, lan]);
-
   useEffect(() => {
     dispatch(fetchFaq());
   }, [dispatch]);
-
-  // React.useEffect(() => {
-  //   dispatch(fetchFaq());
-  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  // }, [dispatch, lan]);
 
   const handleSetCollapse = (id, is_collapse) => {
     dispatch(setCollapseSuccessStory(id, is_collapse ? false : true));
@@ -63,48 +52,87 @@ function FaqPage() {
   const [faqBoxAdds, setFaqBoxAdds] = useState([]);
   const [adds, setAdds] = useState([]);
 
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code bellow>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
   // useEffect(() => {
-  //   axios
-  //     .get("/private_adds/private_add?image_type=success_stories_banner")
-  //     .then((response) => {
-  //       setStoriesBannerAds(response.data.results);
-  //     });
-  // }, []);
-  // useEffect(() => {
-  //   axios
-  //     .get("/private_adds/private_add?image_type=success_stories_box")
-  //     .then((response) => {
-  //       setStoriesBoxAds(response.data.results);
-  //     });
-  // }, []);
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "Faq_index";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setFaqBoxAdds(filterArray);
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //     })
+  //   });
+  //   // dispatch(adsList());
+  // }, [dispatch]);
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "Faq_index";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setFaqBoxAdds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "Faq_index";
+  
+          });
+          setFaqBoxAdds(filterArray1);
+          // console.log("filterArray1Faq_index",filterArray1)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "Faq_index";
+          });
+          setFaqBoxAdds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1) 
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+  
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -124,9 +152,11 @@ function FaqPage() {
           longitude: params.longitude.toString(),
         })
         .then((response) => {
-          // setAdds(response.data.results);
           console.log("addEmailresponse", response);
-        });
+        })
+        .catch((error) => {
+          console.log(error);
+      })
     });
   };
 
@@ -183,6 +213,7 @@ function FaqPage() {
                 width='30'
                 height='30'
                 // className="d-inline-block align-top"
+                className="faq-shekunj-logo"
                 alt='logo'
               />
             </Container>

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import Timer from "react-compound-timer";
 import useExitPrompt from "../../hooks/useExitPromt";
 
+
 import {
   Autocomplete,
   Container,
@@ -102,33 +103,86 @@ function MockTest() {
   //   setQuestionNumber(countData?.user_career_test_count + 1)
   // },[countData])
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      };
-      axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "mock_test";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setMockTestBoxAds(filterArray);
-          }
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "mock_test";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setMockTestBoxAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>
+
+useEffect(() => {
+  dispatch(adsList())
+  navigator.geolocation.getCurrentPosition(async function (position, values) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    let params = {
+      latitude: latitude.toString(),
+      longitude: longitude.toString(),
+    } 
+    axios
+    .get(
+      `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+        let filterArray1 = response.data.results.filter((item, index) => {
+         
+          return item.image_type == "mock_test";
+
         });
-    });
-    dispatch(adsList());
-  }, []);
+        setMockTestBoxAds(filterArray1);
+        // console.log("filterArray1mock_test",filterArray1)
+          }
+        })   
+  } ,
+  function(error) {
+    console.error("Error Code = " + error.code + " - " + error.message);
+    // alert("Your location is blocked")    
+  axios
+  .get(
+    `/private_adds/private_add`,
+  )
+  .then((response) => {
+    if (response && response.data.results.length > 0) {
+        let filterArray1 = response.data.results.filter((item, index) => {   
+          return item.image_type == "mock_test";
+        });
+        setMockTestBoxAds(filterArray1);
+        // console.log("filterArray1coursebox",filterArray1) 
+        }
+      })
+ }
+)
+},[])
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -186,47 +240,7 @@ function MockTest() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   window.addEventListener("keydown", (e) => {
-  //     if (localStorage.getItem("isCarrerTestStarted")) {
-  //       if (
-  //         (e.which || e.keyCode) === 116 ||
-  //         ((e.which || e.keyCode) === 82 && e.ctrlKey)
-  //       ) {
-  //         const a = window.confirm(
-  //           "Are you sure you want to refresh the page, if you click on Ok button you will be redirect on result page",
-  //         );
-  //         if (a) {
-  //           const nv = localStorage.getItem("selectedCourseCategoryValue");
-  //           localStorage.removeItem("isCarrerTestStarted");
-  //           // localStorage.removeItem("selectedCourseCategoryValue");
-  //           history.push(
-  //             routingConstants.CAREER_TEST_RESULT +
-  //               selectedCourseCategoryValue?.id,
-  //           );
-  //           e.preventDefault();
-  //           if (nv) {
-  //             dispatch(endTest(nv, history));
-  //           }
-  //         } else {
-  //           e.preventDefault();
-  //         }
-  //       }
-  //     }
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   const unloadCallback = (event) => {
-  //     var r = window.confirm("Successful Message!");
-  //     if (r == true){
-  //       window.location.reload();
-  //     }
-  //   };
-  //   window.addEventListener("beforeunload", unloadCallback);
-  //   return () => window.removeEventListener("beforeunload", unloadCallback);
-  // }, []);
-
+ 
   useEffect(() => {
     if (testData) {
       if (testData?.answer === "A") {
@@ -305,26 +319,6 @@ function MockTest() {
   useEffect(() => {
     dispatch(getGuidanceCategory());
   }, [dispatch, lan]);
-
-  // const handleStartCourse = async () => {
-  //   setShowExitPrompt(true);
-  //   localStorage.setItem("isCarrerTestStarted", true);
-  //   if (!selectedCourseCategoryValue) {
-  //     return;
-  //   }
-  //   const res = await dispatch(
-  //     fetchStartUserCareerTest(selectedCourseCategoryValue?.id, history),
-  //   );
-  //   if (res?.status_code === 200) {
-  //     const counts = await dispatch(
-  //       fetchUserCareerTestCount(selectedCourseCategoryValue?.id),
-  //     );
-  //     if (counts.status_code === 200 && counts.data.career_time) {
-  //       setIsTestStarted(true);
-  //       setTestTime((parseInt(counts?.data.career_time, 10) || 0) * 60000);
-  //     }
-  //   }
-  // };
 
   const handleTestFinished = () => {
     dispatch(endTest(selectedCourseCategoryValue?.id));
@@ -452,7 +446,7 @@ function MockTest() {
 
   return (
     <div>
-      <Header loginPage={true} page='guidance' subPage='careerTest' />
+      <Header loginPage={true} page='MockTest' subPage='mockTest' />
       <div className='SuccStory_banner'>
         {" "}
         <Container>
@@ -482,17 +476,18 @@ function MockTest() {
                 {/* <Col sm={1} md={12}> */}
                 <Col md={1} xl={12}>
                   {/* <Grid item xs={12} sm={4} md={2} > */}
-                  <Card className='GuidanceOptionCard '>
-                    <CardContent>
-                      <CardMedia
+                  <Card className='GuidanceOptionCard'>
+                  <CardMedia
                         className='guidanceOptionImage'
                         component='img'
                         image={gb?.image}
-                        alt='green iguana'
+                        alt='image'
                       />
+                    <CardContent >
+                      
                       <Typography
                         variant='h6'
-                        className='guidanceOptionTitle'
+                        className='guidanceOptionTitle limited-text-mock-test'
                         fullWidth
                       >
                         {gb?.name}
@@ -507,19 +502,21 @@ function MockTest() {
                       Total Time: {gb?.career_test_time}
                     </Typography>
                     <CardActions className='actions'>
-                      <Link
-                        to={routingConstants.MOCKTEST + gb?.id}
-                        className=''
-                        key={gb?.id}
-                      >
+                   
                         <Button
                           size='small'
                           variant='contained'
-                          //  onClick={() => handleStartCourse()}disabled={isTestStarted}
-                        >
+                          href={gb && gb.form_link}
+                        > 
+                          <Link
+                        to={routingConstants.MOCKTEST+gb?.id}
+                        className=''
+                        key={gb?.id}
+                      >
                           Start Test
+                          </Link>
                         </Button>
-                      </Link>
+                     
                     </CardActions>
                   </Card>
                   {/* </Grid> */}
@@ -536,7 +533,8 @@ function MockTest() {
                   <Card className='GuidanceOptionCard '>
                         {mockTestBoxAds.length > 0 && (
                           <div
-                            className='slide-img-test'
+                            // className='slide-img-test'
+                            className='GuidanceOptionCard'
                             onClick={() =>
                               addEmail(mockTestBoxAds[0]?.add_email)
                             }
@@ -548,7 +546,7 @@ function MockTest() {
                               <img
                                 src={mockTestBoxAds[0]?.image}
                                 alt='Image'
-                                className='GuidanceOptionCardAdd'
+                                className='guidanceOptionImageAdd'
                               />
                             </a>
                             <div className='overlay'></div>

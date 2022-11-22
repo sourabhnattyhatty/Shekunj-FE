@@ -39,58 +39,87 @@ function SuccessStory() {
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
   const [image, setImage] = useState("NA");
 
-  // useEffect(() => {
-  //   axios.get('/private_adds/private_add?image_type=success_stories_banner')
-  //     .then((response) => {
-  //       setStoriesBannerAds(response.data.results);
-  //     });
-  // }, [])
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
+  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
 
-  //       if(response.data.results.length > 0)
+  //     let params = {
+  //       latitude: latitude.toString(),
+  //       longitude: longitude.toString(),
+  //     };
+  //     axios
+  //       .get(
+  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+  //       )
+  //       .then((response) => {
+  //         if (response.data.results.length > 0) {
+  //           let filterArray = response.data.results.filter((item, index) => {
+  //             return item.image_type == "success_stories_banner";
+  //           });
+  //           let findImage =
+  //             filterArray.length > 0 ? filterArray[0].image : "NA";
+  //           setImage(findImage);
+  //           setStoriesBannerAds(filterArray);
+  //         }
+  //       })   .catch((error) => {
+  //         // setMessage("No data found");
+  //         console.log(error);
+  //     })
+  //   });
+  //   dispatch(adsList());
+  // }, [dispatch]);
 
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "success_stories_banner"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setStoriesBannerAds(filterArray)
-  //           }
-  // 		});
-
-  // }, [])
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
+    dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      };
+      } 
       axios
-        .get(
-          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-        )
-        .then((response) => {
-          if (response.data.results.length > 0) {
-            let filterArray = response.data.results.filter((item, index) => {
-              return item.image_type == "success_stories_banner";
-            });
-            let findImage =
-              filterArray.length > 0 ? filterArray[0].image : "NA";
-            setImage(findImage);
-            setStoriesBannerAds(filterArray);
+      .get(
+        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+      )
+      .then((response) => {
+        if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {
+           
+            return item.image_type == "success_stories_banner";
+  
+          });
+          setStoriesBannerAds(filterArray1);
+          // console.log("filterArray1success_stories_banner",filterArray1)
+            }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
+    )
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "success_stories_banner";
+          });
+          setStoriesBannerAds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1) 
           }
-        });
-    });
-    dispatch(adsList());
-  }, []);
+        })
+   }
+  )
+  },[])
+
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -115,32 +144,6 @@ function SuccessStory() {
         });
     });
   };
-
-  // useEffect(() => {
-  //   axios.get('/private_adds/private_add?image_type=success_stories_box')
-  //     .then((response) => {
-  //       setStoriesBoxAds(response.data.results);
-  //     });
-  // }, [])
-
-  // useEffect(() => {
-  // 	axios.get('/private_adds/private_add')
-  // 		.then((response) => {
-
-  //       if(response.data.results.length > 0)
-
-  //       {
-  //        let filterArray = response.data.results.filter((item,index)=>{
-  //           return item.image_type == "success_stories_box"
-  //         })
-  //         let findImage = filterArray.length>0 ? filterArray[0].image : "NA"
-  //         setImage(findImage)
-  //         setStoriesBoxAds(filterArray)
-  //           }
-  // 		});
-
-  // }, [])
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
@@ -164,10 +167,13 @@ function SuccessStory() {
             setImage(findImage);
             setStoriesBoxAds(filterArray);
           }
-        });
+        })   .catch((error) => {
+          // setMessage("No data found");
+          console.log(error);
+      })
     });
     dispatch(adsList());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -229,6 +235,7 @@ function SuccessStory() {
                             <img
                               className='quote_img'
                               src={double_quote}
+                              style={{width:100,height:40}}
                               alt=''
                             />
                             {s?.name || t("common.n/a")}{" "}
@@ -268,7 +275,7 @@ function SuccessStory() {
                                 {s?.is_collapse
                                   ? t("common.less1")
                                   : t("common.more1")}{" "}
-                                <img src={s?.is_collapse ? up : down1} alt='' />
+                                <img src={s?.is_collapse ? up : down1} style={{width:10,height:10}} alt='' />
                               </button>
                               <hr />
                             </div>
@@ -289,6 +296,7 @@ function SuccessStory() {
                             <img
                               className='quote_img'
                               src={double_quote}
+                              style={{width:100,height:40}}
                               alt=''
                             />
                             {s?.name || t("common.n/a")}{" "}
@@ -329,7 +337,7 @@ function SuccessStory() {
                                 {s?.is_collapse
                                   ? t("common.less1")
                                   : t("common.more1")}{" "}
-                                <img src={s?.is_collapse ? up : down1} alt='' />
+                                <img src={s?.is_collapse ? up : down1} style={{width:10,height:10}} alt='' />
                               </button>
                               <hr />
                             </div>

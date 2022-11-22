@@ -45,7 +45,7 @@ function GoogleLoginComponent({ showOr }) {
                 onClick={() => renderProps.onClick()}
                 disabled={renderProps.disabled}
               >
-                <img src={Google} alt='...' className='mr-2' /> {t("googleLoginComponent.button.1")}
+                <img src={Google} alt='...' className='mr-2' style={{width:20,height:20}} /> {t("googleLoginComponent.button.1")}
               </button>
               {showOr && (
                 <div className='or'>
