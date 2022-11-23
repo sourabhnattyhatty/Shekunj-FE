@@ -445,7 +445,7 @@ useEffect(() => {
   };
 
   return (
-    <div>
+    <div className="noselect">
       <Header loginPage={true} page='MockTest' subPage='mockTest' />
       <div className='SuccStory_banner'>
         {" "}
@@ -476,7 +476,7 @@ useEffect(() => {
                 {/* <Col sm={1} md={12}> */}
                 <Col md={1} xl={12}>
                   {/* <Grid item xs={12} sm={4} md={2} > */}
-                  <Card className='GuidanceOptionCard'>
+                  <Card className='GuidanceOptionCard noselect'>
                   <CardMedia
                         className='guidanceOptionImage'
                         component='img'

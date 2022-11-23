@@ -178,7 +178,7 @@ function SuccessStory() {
   return (
     <div>
       <Header loginPage={true} page='story' />
-      <div className='SuccStory_banner'>
+      <div className='SuccStory_banner noselect'>
         <Container>
           <Row>
             <Col md={1}>
@@ -231,7 +231,7 @@ function SuccessStory() {
                     {idx % 2 === 0 ? (
                       <>
                         <Col md={8} xs={12}>
-                          <h2>
+                          <h2 className="noselect">
                             <img
                               className='quote_img'
                               src={double_quote}
@@ -292,7 +292,7 @@ function SuccessStory() {
                           <img className='story_image' src={s?.image} alt='' />
                         </Col>
                         <Col md={8} xs={12}>
-                          <h2>
+                          <h2 className="noselect">
                             <img
                               className='quote_img'
                               src={double_quote}

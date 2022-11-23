@@ -489,6 +489,7 @@ useEffect(() => {
                         {/* <div className='form-group'> */}
                 {/* <label htmlFor=''>{t('common.formHeadings.dob')}</label> */}
                 <div className='form-group mzero'>
+                <Form.Group controlId='validationFormik03'>
                   <img className='calendar_icon_guidance' src={Calendar} alt='...' />
                   <DatePicker
                     selected={
@@ -514,6 +515,7 @@ useEffect(() => {
                     dropdownMode='select'
                   />
                   <Error error={errors.date_of_birth} touched={touched.date_of_birth} />
+                  </Form.Group>
                 </div>
               {/* </div> */}
                     </Col>
@@ -611,10 +613,10 @@ useEffect(() => {
                   </Row>
 
                   <div className='form-group mzero'>
-                  <img className='edit_icon_guidance' src={Edit} alt='...' />
+                  {/* <img className='edit_icon_guidance' src={Edit} alt='...' /> */}
                     <TextareaAutosize
                       name='message'
-                      icon={true}
+                      icon={false}
                       className='textarea_set'
                       aria-label='minimum height'
                       minRows={3}

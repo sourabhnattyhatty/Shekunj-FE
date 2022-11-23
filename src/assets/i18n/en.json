@@ -35,7 +35,7 @@
       "dob": "Select DOB",
       "mobile": "Enter Mobile Number",
       "alternateMobile": "Enter Alternate Number",
-      "message": "       Enter Your Message",
+      "message": "Enter Your Message",
       "otp": "Enter OTP"
     },
     "greeting": {

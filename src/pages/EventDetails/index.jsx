@@ -244,7 +244,7 @@ const EventDetails = () => {
               console.log("c", c);
               return (
                   <> */}
-      <div className='DetailMainDiv_career'>
+      <div className='DetailMainDiv_career noselect'>
         <Container>
           <Row>
             <Col md={6} xs={12}>

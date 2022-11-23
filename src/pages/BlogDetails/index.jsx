@@ -186,7 +186,7 @@ const BlogDetails = () => {
               console.log("blogs", blogs);
               return (
                   <> */}
-      <div className='DetailMainDiv_career'>
+      <div className='DetailMainDiv_career noselect'>
         <Container>
           <Row>
             <Col md={9} xs={12}>

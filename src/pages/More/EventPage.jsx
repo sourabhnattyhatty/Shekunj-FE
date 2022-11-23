@@ -158,7 +158,7 @@ function EventPage() {
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreEvent' />
-      <div className='SuccStory_banner'>
+      <div className='SuccStory_banner noselect'>
         {" "}
         <Container>
           <Row>
@@ -185,7 +185,7 @@ function EventPage() {
                   <Grid spacing={1} className='gridContainerEvent'>
                   {/* <Grid spacing={1} className='gridContainerEvent flex'> */}
                     <Col md={1} xl={12}>
-                      <Card className='EventOptionCard '>
+                      <Card className='EventOptionCard noselect'>
                         <CardMedia
                           component='img'
                           alt='image'

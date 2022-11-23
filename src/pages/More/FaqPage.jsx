@@ -163,7 +163,7 @@ function FaqPage() {
   return (
     <div>
       <Header loginPage={true} page='story' />
-      <div className='SuccStory_banner'>
+      <div className='SuccStory_banner noselect'>
         <Container>
           <Row>
             <Col md={1}>
@@ -203,7 +203,7 @@ function FaqPage() {
         </Row>
       </Container>
 
-      <div className='FaqContainer'>
+      <div className='FaqContainer noselect'>
         <Container>
           <Navbar expand='lg' variant='light' bg='light'>
             <Container>

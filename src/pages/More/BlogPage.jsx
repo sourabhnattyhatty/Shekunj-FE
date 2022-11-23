@@ -171,7 +171,7 @@ function BlogPage() {
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreblog' />
-      <div className='SuccStory_banner'>
+      <div className='SuccStory_banner noselect'>
         <Container>
           <Row>
             <Col md={1}>

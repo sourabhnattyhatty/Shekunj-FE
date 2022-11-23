@@ -71,7 +71,7 @@ function AllNotification() {
                     <List key={c?.id}>
                       <ListItem>
                       {/* <span> */}
-                        <h3 class='c-heading-6'>{c && c.title}</h3>
+                        <h3 class='c-heading-6 noselect'>{c && c.title}</h3>
                         {/* </span> */}
                       </ListItem>  
                       <Button

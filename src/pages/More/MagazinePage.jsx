@@ -235,7 +235,7 @@ function MagzinePage(m) {
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreblog' />
-      <div className='SuccStory_banner'>
+      <div className='SuccStory_banner noselect'>
         <Container>
           <Row>
             <Col md={1}>
@@ -280,7 +280,7 @@ function MagzinePage(m) {
             console.log("magMpdf", m.pdf);
             return (
               <>
-                <div className='Magzine' key={m.id}>
+                <div className='Magzine noselect' key={m.id}>
                   <Row>
                   {/* <Col sm={3} md={12}> */}
                   <Col>
