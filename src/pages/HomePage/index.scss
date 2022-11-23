@@ -516,11 +516,32 @@ body {
   border-radius: 10px;
   text-align: center;
   width: 100%;
-  height: 286px;
+  height: 286px !important;
   position: relative;
+}
+.tes_box_ankita {
+  background: #ffffff;
+  padding: 11px 25px;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  height: 269px !important;
+  position: relative;
+  margin-top: 20px;
 }
 
 .tes_box p {
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: capitalize;
+  // color: #bdbdbd;
+}
+.tes_box_ankita p {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: 600;
@@ -540,8 +561,26 @@ body {
   text-align: center;
   color: #25243f;
 }
+.tes_box_ankita h2 {
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
+  text-align: center;
+  color: #25243f;
+}
 
 .tes_box h6 {
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  color: #3e414e;
+}
+.tes_box_ankita h6 {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: normal;
@@ -615,6 +654,17 @@ body {
   bottom: -20px;
   z-index: -1;
 }
+.tes_box_ankita.heg_cha::before {
+  content: "";
+  width: 55px;
+  height: 55px;
+  background: #edc988;
+  border-radius: 50%;
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+}
 
 .tes_box3 h2 {
   font-family: SegoeUI_bold;
@@ -652,6 +702,10 @@ ul.star {
 }
 
 .tes_box.heg_cha {
+  margin-top: 22px;
+  height: 253px;
+}
+.tes_box_ankita.heg_cha {
   margin-top: 22px;
   height: 253px;
 }
@@ -966,6 +1020,9 @@ ul.star {
   .tes_box.heg_cha::before {
     right: -15px;
   }
+  .tes_box_ankita.heg_cha::before {
+    right: -15px;
+  }
 
   section.highlight_student.same_padding {
     overflow: hidden;
@@ -1206,6 +1263,10 @@ ul.star {
     margin-top: 22px;
     height: auto;
   }
+  .tes_box_ankita.heg_cha {
+    margin-top: 22px;
+    height: auto !important;
+  }
 
   .tes_box2 {
     width: 100%;
@@ -1232,8 +1293,15 @@ ul.star {
     right: -50px;
     bottom: -20px;
   }
+  .tes_box_ankita.heg_cha::before {
+    right: -50px;
+    bottom: -20px;
+  }
 
   .tes_box.heg_cha::before {
+    right: -15px;
+  }
+  .tes_box_ankita.heg_cha::before {
     right: -15px;
   }
 

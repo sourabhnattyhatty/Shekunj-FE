@@ -3,12 +3,16 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
+import Gender from "../../../assets/icons/gender.png";
 import User2 from "../../../assets/icons/user2.png";
 import Qualifications from "../../../assets/icons/Qualifications.png";
 import Course from "../../../assets/icons/Course.png";
 import Education from "../../../assets/images/MyProfile/education.png";
 import Stream from "../../../assets/images/MyProfile/Stream.png";
+// import City from "../../../assets/icons/city.png";
+import Edit from "../../../assets/icons/edit.png";
+import Guide from "../../../assets/icons/guide.png";
+import Calendar from "../../../assets/icons/calendar.png";
 
 const names = ["Engineering", "Medical", "Arts", "Science", "Pharmacy","Commerce"];
 
@@ -56,6 +60,21 @@ function GuidanceSelect(props) {
                   )}
                   {props.icon && props.title === "Stream" && (
                     <img src={Stream} alt='...' />
+                  )}
+                  {props.icon && props.title === "Gender" && (
+                    <img src={Gender} alt='...' />
+                  )}
+                  {/* {props.icon && props.title === "date_of_birth" && (
+                    <img src={Calendar} alt='...' />
+                  )} */}
+                  {/* {props.icon && props.title === "message" && (
+                    <img src={Edit} alt='...' />
+                  )}
+                  {props.icon && props.title === "City" && (
+                    <img src={City} alt='...' />
+                  )} */}
+                  {props.icon && props.title === "Guidance Purpose" && (
+                    <img src={Guide} alt='...' />
                   )}
                   <em>{props?.title}</em>
                 </>

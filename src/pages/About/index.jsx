@@ -230,7 +230,7 @@ const AboutusPage = () => {
                   </div>
 
                   <div data-aos='slide-left'>
-                    <div className='tes_box heg_cha'>
+                    <div className='tes_box_ankita heg_cha'>
                       <img className='AnkitaSharmaImage' src={Ankita} alt='' />
                       <p>“{t("aboutPage.review.3")}"</p>
                       <ul className='star'>

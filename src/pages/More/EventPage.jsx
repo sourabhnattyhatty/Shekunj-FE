@@ -222,15 +222,13 @@ function EventPage() {
                           </Typography>
                           <Typography className="Date-Time">
                             <Typography>
-                              Start Date & Time : {" "}
-                            {c && c?.start_date}{" "}-{" "}
-                            {c && c?.start_time}
+                               Date : {" "}
+                            {c && c?.date}
                             </Typography>
                             <Typography
                              >
-                            End Date & Time : {" "}
-                            {c && c?.end_date}{" "}-{" "}
-                            {c && c?.end_time}
+                               Time : {" "}
+                            {c && c?.time}
                             </Typography>
                           </Typography>
                         </CardContent>

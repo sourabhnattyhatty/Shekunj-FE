@@ -10,6 +10,8 @@ import Form from "react-bootstrap/Form";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import Calendar from '../../assets/images/MyProfile/calendar.png';
+// import Gender from "../../assets/icons/gender.png";
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import Book_img from "../../assets/images/Guidance/Book_img.png";
@@ -39,7 +41,9 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import add2 from "../../assets/images/add2.jpg";
 import { adsList } from "../../store/ads";
-
+import City from "../../assets/icons/city.png";
+import Edit from "../../assets/icons/edit.png";
+// import Calendar from "../../../assets/icons/calendar.png";
 function range(start, end) {
   return Array(end - start + 1)
     .fill()
@@ -451,26 +455,25 @@ useEffect(() => {
 
                   <Row>
                     <Col md={12} xs={12}>
-                      <div className='form-group Calendar'>
+                      {/* <div className='form-group Calendar'>
                         <Form.Group controlId='validationFormik03'>
-                          {/* <Form.Label>Select-Date</Form.Label> */}
-
                           <DatePicker
                             selected={values.date_of_birth}
-                            name='date_of_birth'
+                            title='date_of_birth'
                             onChange={(e) => {
                               setFieldValue("date_of_birth", e);
                               setFieldTouched("date_of_birth");
                             }}
+                            icon={true}
                             className='form-control'
                             placeholderText='date_of_birth'
-                            // minDate={today}
                             customInput={
                               <input
                                 type='text'
                                 id='date_of_birth'
                                 placeholder='date_of_birth'
                               />
+                              
                             }
                           />
                           {console.log(
@@ -482,7 +485,37 @@ useEffect(() => {
                             !!errors.date_of_birth &&
                             errors.date_of_birth}
                         </Form.Group>
-                      </div>
+                      </div> */}
+                        {/* <div className='form-group'> */}
+                {/* <label htmlFor=''>{t('common.formHeadings.dob')}</label> */}
+                <div className='form-group mzero'>
+                  <img className='calendar_icon_guidance' src={Calendar} alt='...' />
+                  <DatePicker
+                    selected={
+                      values?.date_of_birth && typeof values?.date_of_birth !== 'undefined'
+                        ? new Date(values.date_of_birth)
+                        : null
+                    }
+                    placeholderText={('Enter DOB')}
+                    title="date_of_birth"
+                    icon={true}
+                    className='form-control'
+                    maxDate={new Date()}
+                    dateFormat='dd-MM-yyyy'
+                    onChange={date =>
+                      setFieldValue(
+                        'date_of_birth',
+                        moment(date, 'DD-MM-YYYY').format('YYYY-MM-DD'),
+                      )
+                    }
+                    peekNextMonth
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode='select'
+                  />
+                  <Error error={errors.date_of_birth} touched={touched.date_of_birth} />
+                </div>
+              {/* </div> */}
                     </Col>
                   </Row>
 
@@ -491,7 +524,7 @@ useEffect(() => {
                       <div className='form-group mzero'>
                         <Form.Group controlId='validationFormik04'>
 
-
+                        {/* <img className='calendar_icon' src={Gender} alt='...' /> */}
                           <GuidanceSelect
                             title={t("common.formHeadings.gender")}
                             icon={true}
@@ -523,18 +556,19 @@ useEffect(() => {
                         <TextField
                           name='city'
                           type='text'
+                          icon={true}
                           placeholder={"City"}
                           autoComplete='off'
                           onChange={handleChange}
                           value={values.city}
                           onBlur={handleBlur}
-                          // InputProps={{
-                          //   startAdornment: (
-                          //     <InputAdornment position='start'>
-                          //       <img src={User3} alt='...' />
-                          //     </InputAdornment>
-                          //   ),
-                          // }}
+                          InputProps={{
+                            startAdornment: (
+                              <InputAdornment position='start'>
+                                <img src={City} alt='...' />
+                              </InputAdornment>
+                            ),
+                          }}
                         />
                         <Error error={errors.city} touched={touched.city} />
                       </div>
@@ -577,8 +611,10 @@ useEffect(() => {
                   </Row>
 
                   <div className='form-group mzero'>
+                  <img className='edit_icon_guidance' src={Edit} alt='...' />
                     <TextareaAutosize
                       name='message'
+                      icon={true}
                       className='textarea_set'
                       aria-label='minimum height'
                       minRows={3}
@@ -586,6 +622,13 @@ useEffect(() => {
                       value={values.message}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      // InputProps={{
+                      //   startAdornment: (
+                      //     <InputAdornment position='start'>
+                      //       <img src={Edit} alt='...' />
+                      //     </InputAdornment>
+                      //   ),
+                      // }}
                     />
                     <Error error={errors.message} touched={touched.message} />
                   </div>
