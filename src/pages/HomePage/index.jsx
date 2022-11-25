@@ -823,7 +823,7 @@ function HomePage() {
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
-                      <img className="NikitaSharmaImage" src={Nikita} alt='' />
+                      <img className="NikitaSharmaImage img-responsive" src={Nikita} alt='' />
                       <p>{t("aboutPage.review.1")}</p>
                       <ul className='star'>
                         <li>
@@ -879,7 +879,7 @@ function HomePage() {
 
                   <div data-aos='slide-left'>
                     <div className='tes_box_ankita heg_cha'>
-                      <img className='AnkitaSharmaImage'src={Ankita} alt='' />
+                      <img className='AnkitaSharmaImage img-responsive'src={Ankita} alt='' />
                       <p>{t("aboutPage.review.3")}</p>
                       <ul className='star'>
                         <li>

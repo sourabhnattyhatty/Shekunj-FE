@@ -516,7 +516,7 @@ body {
   border-radius: 10px;
   text-align: center;
   width: 100%;
-  height: 286px !important;
+  height: 299px !important;
   position: relative;
 }
 .tes_box_ankita {
@@ -529,16 +529,18 @@ body {
   height: 269px !important;
   position: relative;
   margin-top: 20px;
+  padding-top: 10px;
 }
 
 .tes_box p {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: 600;
-  font-size: 13px;
-  line-height: 19px;
+  font-size: 13px !important;
+  line-height: 19px !important;
   text-align: center;
   text-transform: capitalize;
+  padding-top: 10px;
   // color: #bdbdbd;
 }
 .tes_box_ankita p {
@@ -549,6 +551,7 @@ body {
   line-height: 19px;
   text-align: center;
   text-transform: capitalize;
+  padding-top: 10px;
   // color: #bdbdbd;
 }
 
@@ -556,8 +559,8 @@ body {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: 600;
-  font-size: 13px;
-  line-height: 19px;
+  font-size: 13px !important;
+  line-height: 19px !important;
   text-align: center;
   color: #25243f;
 }
@@ -575,8 +578,8 @@ body {
   font-family: SegoeUI_bold;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 12px !important;
+  line-height: 16px !important;
   text-align: center;
   color: #3e414e;
 }
@@ -703,11 +706,11 @@ ul.star {
 
 .tes_box.heg_cha {
   margin-top: 22px;
-  height: 253px;
+  height: 280px !important;
 }
 .tes_box_ankita.heg_cha {
   margin-top: 22px;
-  height: 253px;
+  height: 280px !important;
 }
 
 .set {
@@ -1000,6 +1003,12 @@ ul.star {
     overflow-x: hidden;
   }
 
+  .tes_box_ankita p {
+    font-size: 10px !important;
+    line-height: 11px !important;
+    margin: 0;
+  }
+
   .mob_comunity_img {
     display: block;
   }
@@ -1268,6 +1277,13 @@ ul.star {
     height: auto !important;
   }
 
+  .tes_box_ankita p {
+    font-size: 10px !important;
+    line-height: 11px !important;
+    margin: 0;
+  }
+
+
   .tes_box2 {
     width: 100%;
   }
@@ -1285,8 +1301,8 @@ ul.star {
   }
 
   .tes_box h6 {
-    font-size: 10px;
-    line-height: 16px;
+    font-size: 10px !important;
+    line-height: 16px !important;
   }
 
   .tes_box.heg_cha::before {

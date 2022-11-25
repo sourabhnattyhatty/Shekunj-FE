@@ -135,7 +135,7 @@ const AboutusPage = () => {
           <div className='row'>
             <div className='col-lg-0 col-md-0'>
               <div className='mob_abo_banner'>
-                <img src={mob_banner} alt='' />
+                <img src={mob_banner} class="img-responsive" alt='' />
               </div>
             </div>
             <div className='col-lg-6 col-md-7'>
@@ -153,7 +153,7 @@ const AboutusPage = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>
-              <img src={img1} alt='' srcSet='' />
+              <img src={img1} class="img-responsive" alt='' srcSet='' />
             </div>
 
             <div className='col-md-6'>
@@ -175,7 +175,7 @@ const AboutusPage = () => {
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
-                      <img className='NikitaSharmaImage' src={Nikita} alt='' />
+                      <img className='NikitaSharmaImage img-responsive' src={Nikita} alt='' />
                       <p>"{t("aboutPage.review.1")}"</p>
                       <ul className='star'>
                         <li>
@@ -231,7 +231,7 @@ const AboutusPage = () => {
 
                   <div data-aos='slide-left'>
                     <div className='tes_box_ankita heg_cha'>
-                      <img className='AnkitaSharmaImage' src={Ankita} alt='' />
+                      <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' />
                       <p>“{t("aboutPage.review.3")}"</p>
                       <ul className='star'>
                         <li>

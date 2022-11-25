@@ -10,10 +10,10 @@ import Moment from "react-moment";
 import axios from "axios";
 import { Error } from "../../components";
 import TextField from "@mui/material/TextField";
-import { useFormik } from "formik";
+import { useFormik, } from "formik";
 import Form from "react-bootstrap/Form";
 import GuidanceSelect from "./Select";
-import { withFormik } from "formik";
+// import { withFormik } from "formik";
 import { routingConstants } from "../../utils/constants";
 import { CircularProgress, TextareaAutosize } from "@mui/material";
 import { bookEvent } from "../../store/events/action";
@@ -36,7 +36,8 @@ const EventDetails = () => {
   const history = useHistory();
   const { events } = useSelector((state) => state.eventsReducer);
   const { user } = useSelector((state) => state.authReducer);
-  console.log("user",user)
+  console.log("usertype", typeof user);
+  console.log("userdata ---->", user);
   const dispatch = useDispatch();
 
   console.log("Eventsssssss", events);
@@ -49,6 +50,7 @@ const EventDetails = () => {
   const [adds, setAdds] = useState([]);
   const [eventDetailsBoxAds, setEventDetailsBoxAds] = useState([]);
   const [extraInfo, setExtraInfo] = useState([]);
+  const [name, setName] = useState([]);
   console.log("EventExtraInfo", events?.extra_info);
 
   const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
@@ -64,7 +66,7 @@ const EventDetails = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required(t("login.form1.firstNameError.required")),
     last_name: Yup.string().required(t("login.form1.lastNameError.required")),
-    city: Yup.string().required(("city is required")),
+    city: Yup.string().required("city is required"),
     email: Yup.string()
       .required(t("login.form1.emailError.required"))
       .email(t("login.form1.emailError.invalid")),
@@ -73,20 +75,36 @@ const EventDetails = () => {
     // extra_info_reg:Yup.mixed().required("please enter value")
   });
 
+// let myName = user?.name;
+// let myNameLast = user?.last_name;
+// let myEmail= user?.email;
+
+//   let valueObj = {
+//     firstName: myName,
+//     lastName: myNameLast,
+//     email: myEmail,
+//   };
+
+//   console.log("valueObj",valueObj)
+ 
+//   let myArray= Object.values(valueObj)
+//   console.log("ObjectDynamic",myArray[0])
+
   const {
-    handleSubmit,
-    handleChange,
-    handleBlur,
     values,
     errors,
     touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
     setFieldValue,
     setFieldTouched,
+    initialValues,
   } = useFormik({
     initialValues: {
-      name: "",
-      last_name: "",
-      email: "",
+      name: user?.name || "",
+      last_name: user?.last_name || "" ,
+      email: user?.email || "",
       contact: "",
       city: "",
       gender: "",
@@ -98,11 +116,11 @@ const EventDetails = () => {
         "YYYY-MM-DD",
       );
       console.log("extra_info_regetlfsd", extraInfo);
-      let finalObj={}
-      for(let i = 0; i < extraInfo.length; i++ ) {
+      let finalObj = {};
+      for (let i = 0; i < extraInfo.length; i++) {
         Object.assign(finalObj, extraInfo[i]);
       }
-      console.log("onChange Event",finalObj );
+      console.log("onChange Event", finalObj);
       values = {
         ...values,
         // date_of_birth: dateOfBirth,
@@ -110,10 +128,15 @@ const EventDetails = () => {
         qualifications: values?.qualifications,
         gender: values?.gender,
         extra_info_reg: finalObj,
+        // obj1:myArray[0].toString(),
+        // obj2:myArray[1].toString(),
+        // obj3:myArray[2].toString(),
       };
       dispatch(bookEvent(values));
     },
   });
+
+  console.log("initialFormValue",initialValues)
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -148,54 +171,49 @@ const EventDetails = () => {
   //   dispatch(adsList());
   // }, [dispatch]);
 
-   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-   useEffect(() => {
-    dispatch(adsList())
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-  
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      } 
-      axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "event_detail";
-  
-          });
-          setEventDetailsBoxAds(filterArray1);
-          // console.log("filterArray1event_detail",filterArray1)
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  useEffect(() => {
+    dispatch(adsList());
+    navigator.geolocation.getCurrentPosition(
+      async function (position, values) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        let params = {
+          latitude: latitude.toString(),
+          longitude: longitude.toString(),
+        };
+        axios
+          .get(
+            `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "event_detail";
+              });
+              setEventDetailsBoxAds(filterArray1);
+              // console.log("filterArray1event_detail",filterArray1)
             }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "event_detail";
           });
-          setEventDetailsBoxAds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1) 
+      },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")
+        axios.get(`/private_adds/private_add`).then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+              return item.image_type == "event_detail";
+            });
+            setEventDetailsBoxAds(filterArray1);
+            // console.log("filterArray1coursebox",filterArray1)
           }
-        })
-   }
-  )
-  },[])
- 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        });
+      },
+    );
+  }, []);
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -229,8 +247,6 @@ const EventDetails = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [dispatch, id, lan]);
 
-  
-
   let evalData = eval(events.extra_info);
 
   return (
@@ -260,10 +276,7 @@ const EventDetails = () => {
                     <Col md={6} xs={12}>
                       <h6>
                         visit link:
-                        <Link
-                          to={events?.url}
-                          target='_blank'
-                        >
+                        <Link to={events?.url} target='_blank'>
                           {events && events.url}
                         </Link>
                       </h6>
@@ -298,6 +311,7 @@ const EventDetails = () => {
                             placeholder={user?.name}
                             autoComplete='off'
                             onChange={handleChange}
+                            // value={values.name}
                             value={values.name}
                             onBlur={handleBlur}
                             InputProps={{
@@ -362,7 +376,7 @@ const EventDetails = () => {
                       <TextField
                         name='contact'
                         type='number'
-                        placeholder={("contact")}
+                        placeholder={"Contact"}
                         autoComplete='off'
                         value={values.contact}
                         onChange={handleChange}
@@ -382,7 +396,7 @@ const EventDetails = () => {
                         <div className='form-group mzero'>
                           <Form.Group controlId='validationFormik04'>
                             <GuidanceSelect
-                              title={("gender")}
+                              title={"Gender"}
                               icon={true}
                               listItem={["female", "male"]}
                               defaultValue=''
@@ -420,49 +434,50 @@ const EventDetails = () => {
                           <div>
                             {/* <Row>
                             <Col md={6} xs={12}> */}
-                              <div className='form-group'>
-                                <TextField
-                                  name='extra_info_reg'
-                                  type='text'
-                                  placeholder={key[0]}
-                                  autoComplete='off'
-                                  onChange={(e) => {
-                                    if (extraInfo.length < 0) {
+                            <div className='form-group'>
+                              <TextField
+                                name='extra_info_reg'
+                                type='text'
+                                placeholder={key[0]}
+                                autoComplete='off'
+                                onChange={(e) => {
+                                  if (extraInfo.length < 0) {
+                                    extraInfo.push({
+                                      [key[0]]: e.target.value,
+                                    });
+                                  } else {
+                                    console.log(
+                                      "Object.keys(extraInfo",
+                                      extraInfo,
+                                    );
+                                    let newIndex = extraInfo.findIndex(
+                                      (item) => {
+                                        console.log(
+                                          "item00000",
+                                          Object.keys(item),
+                                        );
+                                        return Object.keys(item)[0] == key[0];
+                                      },
+                                    );
+                                    console.log("index0000", newIndex);
+                                    if (newIndex != -1) {
+                                      extraInfo[newIndex][key[0]] =
+                                        e.target.value;
+                                    } else {
                                       extraInfo.push({
                                         [key[0]]: e.target.value,
                                       });
-                                    } else {
-                                      console.log(
-                                        "Object.keys(extraInfo",
-                                        extraInfo,
-                                      );
-                                      let newIndex = extraInfo.findIndex(
-                                        (item) => {
-                                          console.log(
-                                            "item00000",
-                                            Object.keys(item),
-                                          );
-                                          return Object.keys(item)[0] == key[0];
-                                        },
-                                      );
-                                      console.log("index0000", newIndex);
-                                      if (newIndex != -1) {
-                                        extraInfo[newIndex][key[0]] = e.target.value;
-                                      } else {
-                                        extraInfo.push({
-                                          [key[0]]: e.target.value,
-                                        });
-                                      }
                                     }
-                                    setExtraInfo([...extraInfo]);
-                                  }}
-                                  onBlur={handleBlur}
-                                />
-                                {/* <Error
+                                  }
+                                  setExtraInfo([...extraInfo]);
+                                }}
+                                onBlur={handleBlur}
+                              />
+                              {/* <Error
                           error={errors.extra_info_reg}
                           touched={touched.extra_info_reg}
                         /> */}
-                              </div>
+                            </div>
                             {/* </Col>
                             </Row> */}
                           </div>
@@ -478,27 +493,26 @@ const EventDetails = () => {
             </Col>
 
             <hr />
-
           </Row>
 
           <>
             <div className='Row'>
               {/* <Col md={1} xl={12}> */}
-                {eventDetailsBoxAds.length > 0 && (
-                  <div
-                    className='slide-img'
-                    onClick={() => addEmail(eventDetailsBoxAds[0]?.add_email)}
-                  >
-                    <a href={eventDetailsBoxAds[0]?.url_adds} target='_blank'>
-                      <img
-                        src={eventDetailsBoxAds[0]?.image}
-                        alt='Image'
-                        className='google_add_box_img_Add'
-                      />
-                    </a>
-                    <div className='overlay'></div>
-                  </div>
-                )}
+              {eventDetailsBoxAds.length > 0 && (
+                <div
+                  className='slide-img'
+                  onClick={() => addEmail(eventDetailsBoxAds[0]?.add_email)}
+                >
+                  <a href={eventDetailsBoxAds[0]?.url_adds} target='_blank'>
+                    <img
+                      src={eventDetailsBoxAds[0]?.image}
+                      alt='Image'
+                      className='google_add_box_img_Add'
+                    />
+                  </a>
+                  <div className='overlay'></div>
+                </div>
+              )}
               {/* </Col> */}
             </div>
           </>

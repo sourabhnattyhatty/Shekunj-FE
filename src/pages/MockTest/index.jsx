@@ -6,6 +6,8 @@ import { useHistory, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Timer from "react-compound-timer";
 import useExitPrompt from "../../hooks/useExitPromt";
+import Cross from "../../assets/icons/cross.png";
+import Search from "../../assets/icons/search1.png";
 
 
 import {
@@ -85,6 +87,16 @@ function MockTest() {
   const [mockTestBoxAds, setMockTestBoxAds] = useState([]);
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  
+  const SearchFilterHandle = (e) => {
+    e.preventDefault();
+    dispatch(getGuidanceCategory(`?search=${searchInput}`));
+  };
+  const handleResetSearch = () => {
+    dispatch(getGuidanceCategory());
+    setSearchInput("");
+  };
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -462,6 +474,55 @@ useEffect(() => {
             </Col>
           </Row>
         </Container>
+      </div>
+      <div className='Div_Mock_Title'>
+        <Container>
+       <div className='mock_test_tit noselect'>
+            <Row>
+              <Col md={6} xs={12}>
+                <h2>Mock-Test List</h2>
+                {/* <p>
+                  {t("careerTopColleges.other.2")}{" "}
+                  {topCollages?.collage_list?.length || 0}{" "}
+                  {t("careerTopColleges.other.3")}
+                </p> */}
+              </Col>
+              <Col md={6} xs={12}>
+                <div className='input-group searchSection_mock'>
+                  <form onSubmit={SearchFilterHandle}>
+                    <div className='d-flex'>
+                      <div className='wraper '>
+                        <input
+                          type='text'
+                          onChange={(e) => setSearchInput(e.target.value)}
+                          value={searchInput}
+                          name='searchInput'
+                          class='form-control searchInput_mock'
+                          placeholder='Search here...'
+                        />
+                      </div>
+                      <div className='d-flex'>
+                        <button type='submit' className='searchBtn1_mock'>
+                          <img
+                            src={Search}
+                            alt='Image'
+                            className='searchIcon_mock'
+                          />
+                        </button>
+                        <img
+                          src={Cross}
+                          alt='Image'
+                          className='searchclose_mock'
+                          onClick={() => handleResetSearch()}
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </Col>
+            </Row>
+          </div>
+          </Container>
       </div>
       <Container>
         {console.log("guidanceCategory", guidanceCategory)}

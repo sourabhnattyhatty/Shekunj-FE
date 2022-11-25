@@ -50,10 +50,12 @@ export const getCareerOption = () => async (dispatch) => {
   }
 };
 
-export const getGuidanceCategory = (id) => async (dispatch) => {
+// export const getGuidanceCategory = (id) => async (dispatch) => {
+export const getGuidanceCategory = (id) =>
+async (dispatch) => {
   let newId = id == undefined ? "" : id;
   try {
-    const url = apiConstants.GUIDANCE.CAREER_TEST_CATEGORY + newId;
+    const url = apiConstants.GUIDANCE.CAREER_TEST_CATEGORY+ newId;
     dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
     const res = await httpServices.get(url);
     console.log("onlycategory", res.data);

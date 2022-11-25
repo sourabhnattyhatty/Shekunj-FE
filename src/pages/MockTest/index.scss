@@ -342,6 +342,43 @@ p#col_grey {
   box-shadow: 0px 0px 10px rgb(236 124 211) !important;
 }
 
+.Div_Mock_Title {
+  margin-top: 50px;
+}
+
+.mock_test_tit {
+  margin-bottom: 10px;
+}
+
+.mock_test_tit h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 52px;
+  color: #323232;
+  margin-left: 45px;
+}
+
+.mock_test_tit p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #828282;
+}
+
+.searchSection_mock {
+  margin-left: 75px;
+  margin-top: 15px;
+}
+
+.searchInput_mock {
+  width: 340px !important;
+}
+
+
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
 
   .SuccStory_banner {
@@ -430,8 +467,12 @@ p#col_grey {
     justify-items: center;
     margin-left: 1px !important;
     padding: 0px !important;
-    margin-bottom: 10px !important;
+    // margin-bottom: 20px !important;
+    margin-top: 30px !important;
   }
+  .css-1oqqzyl-MuiContainer-root {
+    justify-items: flex-start;
+ }
   
   .limited-text-mock-test {
     // white-space: nowrap;
@@ -661,6 +702,62 @@ p#col_grey {
     font-size: 18px;
     line-height: 45px;
   }
+
+  .searchSectionCollege {
+    width: 180px !important;
+  }
+
+  .searchSection_mock {
+    margin-left: 0px !important;
+  }
+
+  .searchInput_mock {
+    width: 240px !important;
+  }
+  .mock_test_tit h2 {
+    font-size: 24px;
+  }
+  
+  .mock_test_tit p {
+    display: none;
+  }
+  .mock_test_tit {
+    margin-bottom: 25px;
+  }
+  
+.mock_test_tit h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 52px;
+  color: #323232;
+  margin-left: 0px;
+}
+
+}
+
+
+.searchBtn1_mock {
+  border: none;
+  width: 55px;
+  height: 39px;
+  margin-top: -1px;
+  background-color: #ec498a;
+}
+.searchIcon_mock {
+  cursor: pointer;
+  width: 50%;
+}
+.searchclose_mock{
+  width: 40px;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 12px;
+}
+.searchSection_mock {
+  margin-left: 20px;
+  margin-top: 15px;
 }
 
 .SuccStory_banner h2 {
@@ -710,7 +807,7 @@ p.sucess_first_p {
   justify-items: center;
   padding: 10px;
   margin-left: 20px;
-  margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .limited-text-mock-test {
@@ -781,8 +878,7 @@ p.sucess_first_p {
 }
 
 .css-1oqqzyl-MuiContainer-root {
-
-  justify-items: flex-start;
+   justify-items: flex-start;
 }
 
 .actions {

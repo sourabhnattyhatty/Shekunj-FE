@@ -117,6 +117,12 @@
   height: 50px;
 }
 
+.form-control{
+  border-color:#e6e5eb !important;
+  background: #fcfcfd !important;
+  color: #5f6377 !important;
+}
+
 .guidance_book_form .MuiFormControl-root {
   width: 100%;
   background-color: #fcfcfd;
@@ -237,6 +243,7 @@ img.calendar_icon_guidance {
   right: 26px !important;
   top: 5px !important;
   z-index: 15 !important;
+  color: #fff !important;;
 }
 img.edit_icon_guidance {
   position: absolute;
@@ -249,6 +256,12 @@ img.edit_icon_guidance {
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
   .guidance_book_form {
     padding: 30px;
+  }
+
+  .form-control{
+    border-color:#e6e5eb !important;
+    background: #fcfcfd !important;
+    color: #5f6377 !important;
   }
 
   .guidance_book {
@@ -336,8 +349,6 @@ img.edit_icon_guidance {
   margin-top: 13px !important;
   // z-index: 15 !important;
 }
-
-
 }
 
 .form-group Calendar {

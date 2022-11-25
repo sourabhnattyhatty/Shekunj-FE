@@ -340,7 +340,6 @@ India & Apply - Shekunj.com`}
                             src={Search}
                             alt='Image'
                             className='searchIcon'
-                            style={{height:20,width:30}}
                           />
                         </button>
                         <img
