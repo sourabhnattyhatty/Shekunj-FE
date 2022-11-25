@@ -524,7 +524,7 @@ useEffect(() => {
           </div>
           </Container>
       </div>
-      <Container>
+      <Container class="event_responsive13">
         {console.log("guidanceCategory", guidanceCategory)}
         {guidanceCategory?.length > 0 &&
           guidanceCategory?.map((gb, index) => {

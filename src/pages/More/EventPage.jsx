@@ -175,7 +175,7 @@ function EventPage() {
         </Container>
       </div>
       {/* <div className='Home'> */}
-        <Container className="eventContainer">
+        <Container className="eventContainer event_responsive12">
           {events?.event_list?.length > 0 ? (
             events?.event_list?.map((c, index) => {
               console.log("c", c);

@@ -266,7 +266,7 @@ export default function VerticalTabs() {
               {t("successCareerOption.other.1")}
             </div>
           )}
-          <Col md={8} xs={12}>
+          <Col md={8} xs={12} >
             <TabPanel value={value} index={0}>
               <Row>
               <Container>
@@ -285,7 +285,7 @@ export default function VerticalTabs() {
                         {/* <Col md={6} xs={12}> */}
                           <div
                              style={{marginTop:"20px"}}
-                            className='col-md-6 tabs_box'
+                            className='col-md-6 tabs_box success_test_responsive'
                             key={guidanceCategoryDetail?.id}
                           >
                             <h2>{guidanceCategoryDetail?.name}</h2>
