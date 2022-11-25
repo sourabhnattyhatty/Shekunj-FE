@@ -572,11 +572,11 @@ function HomePage() {
               // <div className='col-md-12 ads_home_cover'>
               <div
                 className='col-md-12 ads_home_cover'
-                onClick={() => addEmail(adsPosition3[2]?.add_email)}
+                onClick={() => addEmail(adsPosition3[0]?.add_email)}
               >
-                <a href={adsPosition3[2]?.url_adds} target='_blank'>
+                <a href={adsPosition3[0]?.url_adds} target='_blank'>
                   <img
-                    src={adsPosition3[2]?.image}
+                    src={adsPosition3[0]?.image}
                     alt='Image'
                     className='google_ads_home'
                   />

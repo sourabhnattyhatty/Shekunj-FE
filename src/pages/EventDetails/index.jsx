@@ -29,6 +29,7 @@ import "../HomePage/index.scss";
 import "./index.scss";
 import noImageIcon from "../../assets/images/no-image.jpeg";
 import { adsList } from "../../store/ads";
+import City from "../../assets/icons/city.png";
 
 const EventDetails = () => {
   const { id } = useParams();
@@ -75,21 +76,6 @@ const EventDetails = () => {
     // extra_info_reg:Yup.mixed().required("please enter value")
   });
 
-// let myName = user?.name;
-// let myNameLast = user?.last_name;
-// let myEmail= user?.email;
-
-//   let valueObj = {
-//     firstName: myName,
-//     lastName: myNameLast,
-//     email: myEmail,
-//   };
-
-//   console.log("valueObj",valueObj)
- 
-//   let myArray= Object.values(valueObj)
-//   console.log("ObjectDynamic",myArray[0])
-
   const {
     values,
     errors,
@@ -128,9 +114,6 @@ const EventDetails = () => {
         qualifications: values?.qualifications,
         gender: values?.gender,
         extra_info_reg: finalObj,
-        // obj1:myArray[0].toString(),
-        // obj2:myArray[1].toString(),
-        // obj3:myArray[2].toString(),
       };
       dispatch(bookEvent(values));
     },
@@ -398,7 +381,7 @@ const EventDetails = () => {
                             <GuidanceSelect
                               title={"Gender"}
                               icon={true}
-                              listItem={["female", "male"]}
+                              listItem={["Female", "Male"]}
                               defaultValue=''
                               updateValues={(value) =>
                                 setFieldValue("gender", value)
@@ -418,6 +401,13 @@ const EventDetails = () => {
                             onChange={handleChange}
                             value={values.city}
                             onBlur={handleBlur}
+                            InputProps={{
+                              startAdornment: (
+                                <InputAdornment position='start'>
+                                  <img src={City} alt='...' />
+                                </InputAdornment>
+                              ),
+                            }}
                           />
                           <Error error={errors.city} touched={touched.city} />
                         </div>

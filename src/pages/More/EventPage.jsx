@@ -202,7 +202,7 @@ function EventPage() {
                           >
                             <Link
                               to={routingConstants.MORE_EVENT + c.id}
-                              className='event-title-link'
+                              className='event-title-link center'
                               key={c?.id}
                             >
                               {c && c.title}
@@ -214,9 +214,9 @@ function EventPage() {
                           <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
                           <PublicIcon />{" "}{c && c?.type_1}
                           </Typography>
-                          <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
+                          {/* <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
                           <LocalLibraryTwoToneIcon />{" "}{c && c?.type_2}
-                          </Typography>
+                          </Typography> */}
                           <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
                           <GroupTwoToneIcon/>{" "}{c && c?.mode_of_event}
                           </Typography>

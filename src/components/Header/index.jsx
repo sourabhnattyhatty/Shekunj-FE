@@ -597,7 +597,7 @@ const Header = ({ page, subPage }) => {
                                 <Link
                                     className='limited-text'
                                     to={`/${c?.url}`}
-                                    style={{ color: "#e83e8c" }}
+                                    style={{ color: "#757575" }}
                                     replace
                                   >
                                     {c?.title}
@@ -612,7 +612,7 @@ const Header = ({ page, subPage }) => {
                       )}
                       <MenuItem
                         onClick={handleNotificationAll}
-                        style={{ color: "#e83e8c", textAlign: "center" }}
+                        style={{ color: "#757575", textAlign: "center" }}
                         class='center'
                         className={
                           page === "more" ? "nav-item active" : "nav-item"
@@ -934,7 +934,7 @@ const Header = ({ page, subPage }) => {
                                   <Link
                                     className='limited-text'
                                     to={`/${c?.url}`}
-                                    style={{ color: "#e83e8c" }}
+                                    style={{ color: "#757575" }}
                                     replace
                                   >
                                     {c?.title}
@@ -961,7 +961,7 @@ const Header = ({ page, subPage }) => {
                       <MenuItem
                         onClick={handleNotificationAll}
                         style={{
-                          color: "#e83e8c",
+                          color: "#757575",
                           textAlign: "center",
                           cursor: "pointer",
                         }}

@@ -9,6 +9,7 @@ import Qualifications from "../../../assets/icons/Qualifications.png";
 import Course from "../../../assets/icons/Course.png";
 import Education from "../../../assets/images/MyProfile/education.png";
 import Stream from "../../../assets/images/MyProfile/Stream.png";
+import Gender from "../../../assets/icons/gender.png";
 
 const names = [
   "Engineering",
@@ -63,6 +64,9 @@ function GuidanceSelect(props) {
                   )}
                   {props.icon && props.title === "Stream" && (
                     <img src={Stream} alt='...' />
+                  )}
+                   {props.icon && props.title === "Gender" && (
+                    <img src={Gender} alt='...' />
                   )}
                   <em>{props?.title}</em>
                 </>
