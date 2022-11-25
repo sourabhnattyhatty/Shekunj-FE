@@ -524,7 +524,9 @@ useEffect(() => {
           </div>
           </Container>
       </div>
-      <Container class="event_responsive13">
+      {/* <Container class="event_responsive13"> */}
+      <Container>
+        <div class="event_responsive13">
         {console.log("guidanceCategory", guidanceCategory)}
         {guidanceCategory?.length > 0 &&
           guidanceCategory?.map((gb, index) => {
@@ -626,6 +628,7 @@ useEffect(() => {
               </>
             );
           })}
+          </div>
       </Container>
       <Footer loginPage={false} />
     </div>
