@@ -52,7 +52,7 @@ export const singleMagzineDetails =
     }  catch (error) {
       if (error.status === 401) {
         history?.push(
-          `/login?redirect=${routingConstants.MORE_MAGAZINE}`,
+          `/sign-up?redirect=${routingConstants.MORE_MAGAZINE}`,
         );
       }
       dispatch({ type: magzinesTypes.FETCH_MAGZINES_FAIL });

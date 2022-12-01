@@ -13,7 +13,7 @@ function PrivateRoute({ component: Component, ...rest }) {
           <Component {...props} {...rest} />
         ) : (
           <Redirect
-            to={`${constants.routingConstants.LOGIN}?redirect=${window.location.pathname}`}
+            to={`${constants.routingConstants.SIGN_UP}?redirect=${window.location.pathname}`}
           />
         )
       }

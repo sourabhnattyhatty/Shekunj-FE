@@ -138,7 +138,7 @@ export const fetchStartUserCareerTest =
       if (error.status === 401) {
         history?.push(
           // `/login?redirect=${routingConstants.SUCCESS_CAREER_TEST}`,
-          `/login?redirect=${routingConstants.MOCKTEST}`,
+          `/sign-up?redirect=${routingConstants.MOCKTEST}`,
         );
       }
       dispatch({
@@ -164,7 +164,7 @@ export const fetchUserCareerTestCount = (id,history) => async (dispatch) => {
   } catch (error) {
     if (error.status === 401) {
       history?.push(
-        `/login?redirect=${routingConstants.MOCKTEST}`,
+        `/sign-up?redirect=${routingConstants.MOCKTEST}`,
       );
     }
     dispatch({
