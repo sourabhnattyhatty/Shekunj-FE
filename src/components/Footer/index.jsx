@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Logo from "../../assets/images/whitelogo.svg";
 import LogoBlack from "../../assets/images/whitelogo.svg";
+// import twitter from "../../assets/images/twitter.jpeg";
+import twitter1 from "../../assets/images/twitter1.png";
+import facebook from "../../assets/images/facebook.png";
+import youTube from "../../assets/images/youTube.png";
+import linkedinlogo from "../../assets/images/linkedinlogo.png";
+import instagram from "../../assets/images/instagram.png";
 import ChangeLanguageButton from "../LanguageButton";
 import { routingConstants } from "../../utils/constants";
 import { useState, useEffect } from "react";
@@ -20,7 +26,7 @@ const Footer = ({ loginPage }) => {
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -65,64 +71,57 @@ const Footer = ({ loginPage }) => {
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
-    dispatch(adsList())
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-  
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      } 
-      axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "footer_1";
-  
-          });
-          setAdsFooter1(filterArray1);
-          // console.log("filterArray1footer_1",filterArray1)
+    dispatch(adsList());
+    navigator.geolocation.getCurrentPosition(
+      async function (position, values) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
 
-          let filterArray2 = response.data.results.filter((item, index) => {
-            
-            return item.image_type == "footer_2";
-           
-          });
-          setAdsFooter2(filterArray2);
-          console.log("filterArray1footer_2",filterArray2)
+        let params = {
+          latitude: latitude.toString(),
+          longitude: longitude.toString(),
+        };
+        axios
+          .get(
+            `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "footer_1";
+              });
+              setAdsFooter1(filterArray1);
+              // console.log("filterArray1footer_1",filterArray1)
+
+              let filterArray2 = response.data.results.filter((item, index) => {
+                return item.image_type == "footer_2";
+              });
+              setAdsFooter2(filterArray2);
+              console.log("filterArray1footer_2", filterArray2);
             }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "footer_1";
           });
-          setAdsFooter1(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1)
-          let filterArray2 = response.data.results.filter((item, index) => {
-            return item.image_type == "footer_2"; 
-          });
-          setAdsFooter2(filterArray2);
-          console.log("filterArray1coursebox",filterArray2)  
+      },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")
+        axios.get(`/private_adds/private_add`).then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+              return item.image_type == "footer_1";
+            });
+            setAdsFooter1(filterArray1);
+            // console.log("filterArray1coursebox",filterArray1)
+            let filterArray2 = response.data.results.filter((item, index) => {
+              return item.image_type == "footer_2";
+            });
+            setAdsFooter2(filterArray2);
+            console.log("filterArray1coursebox", filterArray2);
           }
-        })
-   }
-  )
-  },[])
-  
+        });
+      },
+    );
+  }, []);
+
   const addEmail = (email) => {
     console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -143,11 +142,11 @@ const Footer = ({ loginPage }) => {
         .then((response) => {
           // setAdds(response.data.results);
           console.log("addEmailresponse", response);
-        }) 
-           .catch((error) => {
+        })
+        .catch((error) => {
           // setMessage("No data found");
           console.log(error);
-      })
+        });
     });
   };
   return (
@@ -252,8 +251,7 @@ const Footer = ({ loginPage }) => {
                               className='footer_ads_bottom'
                             />
                           </a>
-                          <a href={adds[0]?.add_email} target='_blank'>
-                          </a>
+                          <a href={adds[0]?.add_email} target='_blank'></a>
                         </div>
                       )}
                     </div>
@@ -273,6 +271,67 @@ const Footer = ({ loginPage }) => {
 
               <div className='col-lg-3 col-md-4 col-6 text-left'>
                 <p className='mt-lg-4 mt-md-3'>&copy; 2021 SheKunj.Inc.</p>
+              </div>
+              <div className='social-media'>
+                <div class='social area'>
+                  <h2>Stay connected</h2>
+                  <p class='sub-head'>
+                    Join us on social media and stay in the loop.
+                  </p>
+                  <div class='social-links clearfix'>
+                    <a
+                      href='https://www.facebook.com/Shekunj-105073495386436'
+                      rel='nofollow'
+                      target='_blank'
+                    >
+                      <img
+                        src={facebook}
+                        //  style={{height:"50px",width:"55px"}}
+                      ></img>{" "}
+                    </a>
+                    <a
+                      href='https://twitter.com/SheKunj'
+                      rel='nofollow'
+                      target='_blank'
+                    >
+                      <img
+                        src={twitter1}
+                        // style={{height:"50px",width:"55px"}}
+                      ></img>{" "}
+                    </a>
+                    <a
+                      class='pinterest'
+                      href='https://in.linkedin.com/showcase/shekunjedu'
+                      rel='nofollow'
+                      target='_blank'
+                    >
+                      <img
+                        src={linkedinlogo}
+                        //  style={{height:"50px",width:"55px"}}
+                      ></img>{" "}
+                    </a>
+                    <a
+                      href='https://www.instagram.com/shekunj_edu/'
+                      rel='nofollow'
+                      target='_blank'
+                    >
+                      <img
+                        src={instagram}
+                        // style={{height:"50px",width:"55px"}}
+                      ></img>{" "}
+                    </a>
+                    <a
+                      href='https://www.youtube.com/@shekunj643'
+                      rel='nofollow'
+                      target='_blank'
+                    >
+                      <img
+                        src={youTube}
+                        // style={{height:"50px",width:"55px"}}
+                      ></img>{" "}
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

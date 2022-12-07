@@ -230,6 +230,47 @@ header {
     box-shadow: none;
   }
 
+//   .other_head .MuiButton-text.MuiButton-root:hover {
+//   background: #ec498a;
+//   color: #fff !important;
+//   border: none !important;
+//   transition: 1s;
+// }
+
+// .toggleDrawerOptions a:hover{
+//   background-color: #ec498a !important;
+//   color: #ffffff !important;
+//   box-sizing: border-box;
+//   // padding: 10px;
+//   cursor: pointer;
+//   text-decoration: none !important;
+// }
+// .toggleDrawerOptions .options:hover{
+//   background-color: #dddadb !important;
+//   color: #2a2828 !important;
+//   box-sizing: border-box;
+//   padding: 5px;
+//   cursor: pointer;
+//   text-decoration: none !important;
+// }
+// .toggleDrawerOptions .options link:hover{
+//   background-color: #dddadb !important;
+//   color: #2a2828 !important;
+//   box-sizing: border-box;
+//   padding: 5px;
+//   cursor: pointer;
+//   text-decoration: none !important;
+// }
+// .toggleDrawerOptions button:hover{
+//   background-color: #ec498a !important;
+//   color: #ffffff !important;
+//   border-radius: 5px;
+//   box-sizing: border-box;
+//   // padding: 10px;
+//   cursor: pointer;
+//   text-decoration: none !important;
+// }
+
   .navbar-collapse {
     overflow: hidden;
     top: 68px;
@@ -314,6 +355,7 @@ header {
       text-align: left;
 
   }
+  
 }
 @media screen and (max-width: 1080px) {
   .navbar-nav {
@@ -335,8 +377,9 @@ header {
 .notificationButton:hover {
   background: #fff !important;
 }
-.nav-link{
+.nav-link:hover{
   color: #e83e8c;
+  text-decoration: none !important;
 }
 
 .limited-text{
@@ -349,4 +392,8 @@ header {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   white-space: normal; 
+}
+
+a.limited-text:hover{
+  text-decoration: none !important;
 }

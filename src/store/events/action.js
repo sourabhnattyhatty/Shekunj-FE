@@ -35,7 +35,7 @@ export const singleEventDetails =
     try {
       dispatch({ type: eventsTypes.FETCH_EVENTS_REQUEST });
       const res = await httpServices.get(
-        "more/event" + "/" + id + `?latitude=${lat}&longitude=${long}`,
+        "more/event" + "/" + id,
       );
       dispatch({
         type: eventsTypes.FETCH_EVENTS_FINISH,

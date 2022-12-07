@@ -1,10 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { Avatar, Divider, Drawer, List, Menu, MenuItem } from "@mui/material";
+import {
+  Avatar,
+  Divider,
+  Drawer,
+  List,
+  Menu,
+  MenuItem,
+  Badge,
+} from "@mui/material";
 import { getAllNotifications } from "../../store/notifications";
-
+import moment from "moment";
 import Button from "@mui/material/Button";
 
 import { getUserProfile, logOut, refreshPage } from "../../store/auth/action";
@@ -38,6 +46,13 @@ const Header = ({ page, subPage }) => {
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [anchorEl3, setAnchorEl3] = React.useState(null);
   const [showmenu, setShowmenu] = React.useState(false);
+  const [isAlertVisible, setIsAlertVisible] = React.useState(false);
+  
+  // useEffect(() => {
+  //   const interval = setInterval(() => getTime(deadline), 1000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const open = Boolean(anchorEl);
   const open77 = Boolean(anchorEl77);
@@ -60,7 +75,7 @@ const Header = ({ page, subPage }) => {
   const handleClose77 = () => {
     setAnchorEl77(null);
   };
-  const handleClick777= (event) => {
+  const handleClick777 = (event) => {
     setAnchorEl777(event.currentTarget);
   };
 
@@ -309,13 +324,19 @@ const Header = ({ page, subPage }) => {
                   <img
                     src={close}
                     alt=''
-                    style={{ float: "right", marginRight: "10px",height:"30px",width:"30px"}}
+                    style={{
+                      float: "right",
+                      marginRight: "10px",
+                      height: "30px",
+                      width: "30px",
+                    }}
                     onClick={toggleDrawer}
                   />
                   <br />
                   <br />
-                  <div>
+                  <div className='toggleDrawerOptions'>
                     <Link
+                      // className="options"
                       to='/about'
                       style={{
                         color: "#EC498A",
@@ -328,6 +349,7 @@ const Header = ({ page, subPage }) => {
                     </Link>
                     <br />
                     <Link
+                      // className="options"
                       to='/courses'
                       style={{
                         color: "#EC498A",
@@ -341,6 +363,7 @@ const Header = ({ page, subPage }) => {
                     <br />
                     <button
                       className='nav-link guidence_button'
+                      // className='nav-link guidence_button options'
                       id='basic-button2'
                       aria-controls='basic-menu2'
                       aria-haspopup='true'
@@ -386,6 +409,7 @@ const Header = ({ page, subPage }) => {
                       </MenuItem>
                     </Menu>
                     <a
+                      //  className="options"
                       href='https://octahire.com/Resume_maker'
                       style={{
                         color: "#EC498A",
@@ -400,6 +424,7 @@ const Header = ({ page, subPage }) => {
                     <br />
                     <button
                       className='nav-link guidence_button'
+                      // className='nav-link guidence_button options'
                       id='basic-button1'
                       aria-controls='basic-menu1'
                       aria-haspopup='true'
@@ -448,6 +473,7 @@ const Header = ({ page, subPage }) => {
                     </Menu>
                     <a
                       href='https://octahire.com/Home/candidate_register'
+                      // className="options"
                       style={{
                         color: "#EC498A",
                         fontSize: "20px",
@@ -481,6 +507,7 @@ const Header = ({ page, subPage }) => {
                       {t("header.heading.7")}
                     </a> */}
                     <button
+                      // className='nav-link guidence_button options'
                       className='nav-link guidence_button'
                       id='basic-button3'
                       aria-controls='basic-menu3'
@@ -559,14 +586,13 @@ const Header = ({ page, subPage }) => {
                       // }}
                       // className='nav-link'
                       >
-                        
                         <BellIcon
                           width='30'
                           active={true}
                           animate={true}
                           color='#ec498a'
                         />
-                        
+
                         {/* Notification */}
                       </span>
                     </Button>
@@ -595,13 +621,14 @@ const Header = ({ page, subPage }) => {
                             <>
                               <MenuItem onClick={handleNotification1}>
                                 <Link
-                                    className='limited-text'
-                                    to={`/${c?.url}`}
-                                    style={{ color: "#757575" }}
-                                    replace
-                                  >
-                                    {c?.title}
-                                  </Link>
+                                  className='limited-text'
+                                  to={`/${c?.url}`}
+                                  // style={{ color: "#757575" }}
+                                  style={{ color: "#121212" }}
+                                  replace
+                                >
+                                  {c?.title}
+                                </Link>
                               </MenuItem>
                               <Divider />
                             </>
@@ -612,7 +639,11 @@ const Header = ({ page, subPage }) => {
                       )}
                       <MenuItem
                         onClick={handleNotificationAll}
-                        style={{ color: "#757575", textAlign: "center" }}
+                        style={{
+                          // color: "#757575"
+                          color: "#121212",
+                          textAlign: "center",
+                        }}
                         class='center'
                         className={
                           page === "more" ? "nav-item active" : "nav-item"
@@ -625,6 +656,7 @@ const Header = ({ page, subPage }) => {
                     <br />
                     <Link
                       to='/success-stories'
+                      // className="options"
                       style={{
                         color: "#EC498A",
                         fontSize: "20px",
@@ -794,7 +826,7 @@ const Header = ({ page, subPage }) => {
                     >
                       {t("header.heading.7")}
                     </a>  */}
-                    
+
                     <button
                       className='nav-link guidence_button'
                       id='basic-button3'
@@ -841,7 +873,7 @@ const Header = ({ page, subPage }) => {
                         FAQ
                       </MenuItem>
                     </Menu>
-                  </li> 
+                  </li>
 
                   <li
                     className={
@@ -880,15 +912,46 @@ const Header = ({ page, subPage }) => {
                         className='nav-link'
                         // to={routingConstants.SUCCESS_STORIES}
                       >
-                        <BellIcon
-                          width='40'
-                          active={true}
-                          animate={true}
-                          color='#ec498a'
-                        />
+                        {moment(
+                          notifications["Notifications "]?.[0].updated_at,
+                        ).format("MM/DD/YYYY") ==
+                        moment(Date.now()).format("MM/DD/YYYY") ? (
+                          <>
+                            <Badge
+                              badgeContent='New'
+                              style={{ color: "#e83e8c" }}
+                              anchorOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                              }}
+                            >
+                              <BellIcon
+                                width='40'
+                                active={true}
+                                animate={true}
+                                color='#ec498a'
+                              />
+                            </Badge>
+                          </>
+                        ) : (
+                          <>
+                            <BellIcon
+                              width='40'
+                              active={true}
+                              animate={true}
+                              color='#ec498a'
+                            />
+                          </>
+                        )}
                       </span>
                     </Button>
-
+                    {console.log(
+                      "notifications.updated_at",
+                      moment(
+                        notifications["Notifications "]?.[0].updated_at,
+                      ).format("MM/DD/YYYY"),
+                      moment(Date.now()).format("MM/DD/YYYY"),
+                    )}
                     <Menu
                       id='basic-menu77'
                       //  anchorEl={anchorEl1}
@@ -934,7 +997,8 @@ const Header = ({ page, subPage }) => {
                                   <Link
                                     className='limited-text'
                                     to={`/${c?.url}`}
-                                    style={{ color: "#757575" }}
+                                    style={{ color: "#121212" }}
+                                    // style={{ color: "#757575" }}
                                     replace
                                   >
                                     {c?.title}
@@ -961,7 +1025,8 @@ const Header = ({ page, subPage }) => {
                       <MenuItem
                         onClick={handleNotificationAll}
                         style={{
-                          color: "#757575",
+                          // color: "#757575",
+                          color: "#121212",
                           textAlign: "center",
                           cursor: "pointer",
                         }}

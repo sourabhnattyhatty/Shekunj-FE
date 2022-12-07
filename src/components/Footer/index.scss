@@ -78,6 +78,7 @@ footer .set_language .MuiButton-text.MuiButton-textPrimary {
     height: 55px !important;
     width: 100% !important;
   }
+
   .footer_ads_bottom {
     height: 55px !important;
     margin-top: 30px !important;
@@ -105,10 +106,53 @@ footer .set_language .MuiButton-text.MuiButton-textPrimary {
   height: 79px;
   margin-top: 30px;
   width: 100%;
-  object-fit: cover;
+  object-fit: conatin;
 }
 
 .logo img {
-   height: 50% !important;
-   width:50% !important;
+  height: 50% !important;
+  width: 50% !important;
+}
+
+// ....................................................
+.social h2 {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.social {
+  width: 100%;
+  margin-bottom: 20%;
+}
+
+.social p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  color: #8f8f9f;
+  font-size: 14px;
+}
+
+.social-links a {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  margin-right: 15px;
+  background-size: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  text-decoration: none;
+  color: #3aa4ff;
+  margin-right: 30px;
+}
+
+.social-links img {
+  width: 55px;
+  height: 50px;
 }

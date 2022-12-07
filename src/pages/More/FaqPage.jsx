@@ -25,8 +25,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { getFaq as fetchFaq } from "../../store/faq/action";
 import { adsList } from "../../store/ads";
-import OpenInFullIcon from '@mui/icons-material/OpenInFull';
-
+import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 
 function FaqPage() {
   const history = useHistory();
@@ -52,7 +51,7 @@ function FaqPage() {
   const [faqBoxAdds, setFaqBoxAdds] = useState([]);
   const [adds, setAdds] = useState([]);
 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code bellow>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code bellow>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -88,51 +87,45 @@ function FaqPage() {
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
-    dispatch(adsList())
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-  
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      } 
-      axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "Faq_index";
-  
-          });
-          setFaqBoxAdds(filterArray1);
-          // console.log("filterArray1Faq_index",filterArray1)
+    dispatch(adsList());
+    navigator.geolocation.getCurrentPosition(
+      async function (position, values) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        let params = {
+          latitude: latitude.toString(),
+          longitude: longitude.toString(),
+        };
+        axios
+          .get(
+            `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "Faq_index";
+              });
+              setFaqBoxAdds(filterArray1);
+              // console.log("filterArray1Faq_index",filterArray1)
             }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "Faq_index";
           });
-          setFaqBoxAdds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1) 
+      },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")
+        axios.get(`/private_adds/private_add`).then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+              return item.image_type == "Faq_index";
+            });
+            setFaqBoxAdds(filterArray1);
+            // console.log("filterArray1coursebox",filterArray1)
           }
-        })
-   }
-  )
-  },[])
-  
+        });
+      },
+    );
+  }, []);
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -156,13 +149,13 @@ function FaqPage() {
         })
         .catch((error) => {
           console.log(error);
-      })
+        });
     });
   };
 
   return (
     <div>
-      <Header loginPage={true} page='story' />
+      <Header loginPage={true} page='more' subPage='moreFAQ' />
       <div className='SuccStory_banner noselect'>
         <Container>
           <Row>
@@ -185,20 +178,20 @@ function FaqPage() {
       <Container>
         <Row>
           <div className='col-md-12'>
-          {faqBoxAdds.length > 0 && (
-            <div
-              className='ads_story_cover'
-              onClick={() => addEmail(faqBoxAdds[0]?.add_email)}
-            >
-              <a href={faqBoxAdds[0]?.url_adds} target='_blank'>
-                <img
-                  src={faqBoxAdds[0]?.image}
-                  alt='Image'
-                  className='ads_story_cover_img'
-                />
-              </a>
-            </div>
-        )} 
+            {faqBoxAdds.length > 0 && (
+              <div
+                className='ads_story_cover'
+                onClick={() => addEmail(faqBoxAdds[0]?.add_email)}
+              >
+                <a href={faqBoxAdds[0]?.url_adds} target='_blank'>
+                  <img
+                    src={faqBoxAdds[0]?.image}
+                    alt='Image'
+                    className='ads_story_cover_img'
+                  />
+                </a>
+              </div>
+            )}
           </div>
         </Row>
       </Container>
@@ -215,7 +208,7 @@ function FaqPage() {
                 width='30'
                 height='30'
                 // className="d-inline-block align-top"
-                className="faq-shekunj-logo"
+                className='faq-shekunj-logo'
                 alt='logo'
               />
             </Container>
@@ -230,9 +223,7 @@ function FaqPage() {
                         <div className='FaqAccordion'>
                           <Accordion flush>
                             <Accordion.Item eventKey='0'>
-                              <Accordion.Header>
-                                {c.question}
-                              </Accordion.Header>
+                              <Accordion.Header>{c.question}</Accordion.Header>
                               {/* <OpenInFullIcon /> */}
                               <Accordion.Body className='Faq_Accordion_body'>
                                 <div
@@ -242,7 +233,7 @@ function FaqPage() {
                                 />
                               </Accordion.Body>
                             </Accordion.Item>
-                                                      </Accordion>
+                          </Accordion>
                         </div>
                       </>
                     ),
@@ -265,8 +256,8 @@ function FaqPage() {
                   ) : (
                     ""
                   )} */}
-                  
-                     {/* {index % 2 == 1 ? (
+
+          {/* {index % 2 == 1 ? (
                       <>
                       
                       {faqBoxAdds[0].length > 0 && (

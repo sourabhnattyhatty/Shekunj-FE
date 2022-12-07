@@ -7,6 +7,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { useRef } from "react";
 // import Nikita from "../../../assets/images/Nikita-Sharma.png";
 
 import {
@@ -59,6 +60,7 @@ export default function VerticalTabs() {
   const dispatch = useDispatch();
   const [value, setValue] = useState(0);
   const [tabValue, setTabValue] = useState(0);
+  const ref = useRef(null);
   const [categoryDetail, setCategoryDetail] = useState({
     isVisible: false,
     id: null,
@@ -203,6 +205,7 @@ export default function VerticalTabs() {
     setTabValue(obj);
     dispatch(resetCategoryDetail());
     dispatch(getGuidanceCategoryDetail(id));
+    ref.current?.scrollIntoView({behavior: 'smooth'});
   };
 
   const handleFullView = (id) => {
@@ -218,11 +221,11 @@ export default function VerticalTabs() {
   function renderExamTypes() {
     return (
       <Col md={4} xs={12}>
-        <Tab
+        {/* <Tab
           label={t("successCareerOption.heading.3")}
           onClick={() => handleChangeGovtExam(true)}
           {...a11yProps(0)}
-        />
+        /> */}
         <Tabs
           orientation='vertical'
           variant='scrollable'
@@ -284,6 +287,7 @@ export default function VerticalTabs() {
                         <Row>
                         {/* <Col md={6} xs={12}> */}
                           <div
+                             ref={ref}
                              style={{marginTop:"20px"}}
                             className='col-md-6 tabs_box success_test_responsive'
                             key={guidanceCategoryDetail?.id}

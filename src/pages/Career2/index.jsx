@@ -101,10 +101,11 @@ const CareerPage2 = () => {
             setImage(findImage);
             setGovBannerAds(filterArray);
           }
-        })   .catch((error) => {
+        })
+        .catch((error) => {
           // setMessage("No data found");
           console.log(error);
-      })
+        });
     });
     dispatch(adsList());
   }, [dispatch]);
@@ -198,83 +199,76 @@ const CareerPage2 = () => {
   // }, [dispatch]);
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code below >>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code below >>>>>>>>>>>>>>>>>>>>>>>>
 
-   useEffect(() => {
-    dispatch(adsList())
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-  
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      } 
-      axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "govt_scm_box";
-  
-          });
-          setGovBoxAds(filterArray1);
-          // console.log("filterArray1govt_scm_box",filterArray1)
+  useEffect(() => {
+    dispatch(adsList());
+    navigator.geolocation.getCurrentPosition(
+      async function (position, values) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
 
-          let filterArray2 = response.data.results.filter((item, index) => {
-            
-            return item.image_type == "govt_scm_side_ads";
-           
-          });
-          setGovtScmSideAdds(filterArray2);
-          console.log("filterArray1govt_scm_side_ads",filterArray2)
+        let params = {
+          latitude: latitude.toString(),
+          longitude: longitude.toString(),
+        };
+        axios
+          .get(
+            `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "govt_scm_box";
+              });
+              setGovBoxAds(filterArray1);
+              // console.log("filterArray1govt_scm_box",filterArray1)
+
+              let filterArray2 = response.data.results.filter((item, index) => {
+                return item.image_type == "govt_scm_side_ads";
+              });
+              setGovtScmSideAdds(filterArray2);
+              console.log("filterArray1govt_scm_side_ads", filterArray2);
             }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "govt_scm_box";
           });
-          setGovBoxAds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1)
-          let filterArray2 = response.data.results.filter((item, index) => {
-            return item.image_type == "govt_scm_side_ads"; 
-          });
-          setGovtScmSideAdds(filterArray2);
-          console.log("filterArray1coursebox",filterArray2)  
+      },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")
+        axios.get(`/private_adds/private_add`).then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+              return item.image_type == "govt_scm_box";
+            });
+            setGovBoxAds(filterArray1);
+            // console.log("filterArray1coursebox",filterArray1)
+            let filterArray2 = response.data.results.filter((item, index) => {
+              return item.image_type == "govt_scm_side_ads";
+            });
+            setGovtScmSideAdds(filterArray2);
+            console.log("filterArray1coursebox", filterArray2);
           }
-        })
-   }
-  )
-  },[])
- 
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        });
+      },
+    );
+  }, []);
 
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <div>
-      <SEO  title={`List of Government
+      <SEO
+        title={`List of Government
 Schemes in India -
 Benefits - Shekunj.com`}
-
-  description={`List of Government Schemes: Women
+        description={`List of Government Schemes: Women
   Empowerment Schemes, Beti Bachao Beti
   Padhao, Start Up India Scheme, Bima
   Yojana, women helpline scheme.`}
-  keywords={`government policies and Schemes in india government
+        keywords={`government policies and Schemes in india government
   schemes and programs new government schemes in india
-  central government schemes`} />
+  central government schemes`}
+      />
       <Header loginPage={true} page='career' subPage='govExams' />
       <Container>
         <Row>
@@ -310,17 +304,20 @@ Benefits - Shekunj.com`}
                 }}
               />
               <div className='row'>
-                {govtScmSideAdds.length >0 && 
-           
-                <div  className='col-md-12' onClick={()=>addEmail(govtScmSideAdds[0]?.add_email)}>
-                  <a href={govtScmSideAdds[0]?.url_adds} target='_blank'>
-                    <img 
-                    src={govtScmSideAdds[0]?.image} alt='Image' className='google_add_courses'
-                     />
-                  </a>
-
-                </div>
-}
+                {govtScmSideAdds.length > 0 && (
+                  <div
+                    className='col-md-12'
+                    onClick={() => addEmail(govtScmSideAdds[0]?.add_email)}
+                  >
+                    <a href={govtScmSideAdds[0]?.url_adds} target='_blank'>
+                      <img
+                        src={govtScmSideAdds[0]?.image}
+                        alt='Image'
+                        className='google_add_courses'
+                      />
+                    </a>
+                  </div>
+                )}
                 {/* <div className='row'>
                   <div className='col-md-12'>
                     <img
@@ -357,7 +354,7 @@ Benefits - Shekunj.com`}
                                     <img
                                       srcSet={transformImg(c?.logo)}
                                       alt='...'
-                                      className='career_logo_img'
+                                      className='career_logo_img img-responsive'
                                     />
                                   </div>
                                 </Link>
@@ -368,7 +365,8 @@ Benefits - Shekunj.com`}
                                 <h3>
                                   <Link
                                     to={
-                                      routingConstants.GOVERNMENT_SCHEMES + c.id
+                                      routingConstants.GOVERNMENT_SCHEMES +
+                                      c.name.split(" ").join("_")
                                     }
                                     className=''
                                     key={c?.id}
@@ -418,12 +416,14 @@ Benefits - Shekunj.com`}
                                       </span>{" "}
                                       {/* : {c && c.benefits} */}
                                       <p style={{ textAlign: "justify" }}>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: `<div>${c && c.benefits}</div>`,
-                      }}
-                    />
-                  </p>
+                                        <div
+                                          dangerouslySetInnerHTML={{
+                                            __html: `<div>${
+                                              c && c.benefits
+                                            }</div>`,
+                                          }}
+                                        />
+                                      </p>
                                     </Col>
                                   )}
                                   {c.official_link && (

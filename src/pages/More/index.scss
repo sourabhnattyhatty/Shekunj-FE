@@ -26,6 +26,7 @@ body {
   color: #fff;
   font-size: 55px;
 }
+
 .global_img {
   margin-top: 100px;
 }
@@ -254,6 +255,7 @@ button.want_btn {
     height: 47px !important;
     width: 100% !important;
   }
+
   .ads_story_cover_img_blog {
     margin-top: 40px;
     height: 50px !important;
@@ -298,24 +300,25 @@ button.want_btn {
     height: 39px !important;
     width: 80% !important;
   }
+
   .ads_story_cover {
     text-align: center;
   }
-  
+
   // .ads_story_cover_img {
   //   margin: 40px 0px;
   //   height: 120px;
   //   width: 84%;
   //   object-fit: cover;
   // }
-  
+
   .ads_succ_story {
     margin: 30px 0px;
     height: 120px;
     width: 84%;
     object-fit: cover;
   }
-  
+
 }
 
 .ads_story_cover {
@@ -328,6 +331,7 @@ button.want_btn {
   // width: 84%;
   object-fit: cover;
 }
+
 .ads_story_cover_img {
   margin: 40px 0px;
   height: 100px !important;
@@ -621,8 +625,9 @@ button.want_btn {
 
   border-top: 0px solid rgb(223, 225, 229);
 }
-.faq-shekunj-logo{
-  height:30px;
+
+.faq-shekunj-logo {
+  height: 30px;
   width: 30px;
 }
 
@@ -755,6 +760,7 @@ button.want_btn {
   height: 280px;
   background-size: cover;
 }
+
 .magzineImageAdd {
   // width: 300px;
   height: 500px;
@@ -769,7 +775,7 @@ button.want_btn {
   height: 500px;
 }
 
-.MagzineCardAdd{
+.MagzineCardAdd {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -896,14 +902,17 @@ button.want_btn {
   // margin-top: 30px;
   box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
 }
+
 .EventOptionCardAddImage {
   width: 24rem !important;
-  height:41rem !important;
+  // height:41rem !important;
   object-fit: cover !important;
+  box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
+  // margin-bottom: 5px;
 }
 
 .guidanceEventImage {
-  height: 350px;
+  height: 300px;
   object-fit: fill;
   // object-fit: cover;
   margin-bottom: 20px !important;
@@ -917,15 +926,16 @@ button.want_btn {
   left: -24px !important;
 
 }
-.flex-column{
+
+.flex-column {
   margin-left: 3%;
   padding: 1%;
   margin-top: 1%;
 }
 
-.event_mode{
-    padding-left: 5%;
-    font-weight: bold;
+.event_mode {
+  padding-left: 5%;
+  font-weight: bold;
 }
 
 .date {
@@ -946,11 +956,11 @@ button.want_btn {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   white-space: normal;
-  margin-top: 1%; 
-  text-align: center; 
+  margin-top: 1%;
+  text-align: center;
 }
 
-.limited-text a:hover{
+.limited-text a:hover {
   color: black;
   border-bottom: none !important;
 }
@@ -965,7 +975,7 @@ button.want_btn {
   text-align: start;
 }
 
-.Date-Time{
+.Date-Time {
   margin-left: 3%;
   padding: 0 3%;
 }
@@ -973,14 +983,32 @@ button.want_btn {
 .eventButtonAction {
   margin-top: 1%;
   padding: 2%;
- margin-left: 20%;
- margin-bottom: 5%;
- border-color: #d45d93;
- color: #d45d93 !important;
+  margin-left: 21%;
+  margin-bottom: 5%;
+  //  border-color: #d45d93;
+  //  color: #d45d93 !important;
+  background: #ec498a;
+  border: 1px solid #ec498a;
+  box-sizing: border-box;
+  border-radius: 2px;
+  color: #ffffff !important;
 }
 
 .event-title-link {
-  color: #d45d93 !important ;
+  color: #d45d93 !important;
+}
+
+.event-title-link a:hover {
+  color: #d45d93 !important;
+}
+
+.event-button-link {
+  color: #ffffff;
+}
+
+.event-button-link:hover {
+  text-decoration: none !important;
+  color: #ffffff !important;
 }
 
 // .eventButtonAction {
@@ -988,36 +1016,38 @@ button.want_btn {
 // }
 
 .eventButtonAction:hover {
-  color: white !important;
-  background-color:#ec498a !important;
+  background: #ec498a !important;
+  border: 1px solid #ec498a !important;
+  color: #ffffff !important;
 }
-.eventButtonAction a:hover {
-  color: white !important;
-  border-bottom: none !important;
-  // background-color: #d45d93 !important;
-}
+
+// .eventButtonAction a:hover {
+//   color: #ffffff !important;
+//   text-decoration: none !important;
+//   background: #ec498a !important;
+// }
 
 .slide-imgAdd {
   position: relative;
-  
+
 }
 
 .slide-imgAdd img {
   object-fit: contain;
 }
 
-.EventOptionCardAdd{
+.EventOptionCardAdd {
   width: 24rem;
-  height:37rem;
+  height: 37rem;
   // margin-top: 15%;
   box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
 }
 
-.google_add_box_img{
+.google_add_box_img {
   object-fit: contain;
 }
 
-.eventContainer{
+.eventContainer {
   flex-direction: row;
   max-width: 1400px !important;
   justify-content: space-evenly;
@@ -1034,19 +1064,19 @@ button.want_btn {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   white-space: normal;
-  margin-top: 1%; 
-  text-align: center; 
+  margin-top: 1%;
+  text-align: center;
   margin-left: 22px;
   color: #ec498a;
 }
 
-.slide-img-mag-add img{
-height: 500px;
-width: 500px;
+.slide-img-mag-add img {
+  height: 500px;
+  width: 500px;
 }
 
 
-@media screen and (max-device-width: 767px){
+@media screen and (max-device-width: 767px) {
 
   .gridContainerEvent {
     display: inline-block;
@@ -1055,8 +1085,8 @@ width: 500px;
     padding: 5px 0;
     margin-bottom: 15px;
   }
-  
-  .eventContainer{
+
+  .eventContainer {
     flex-direction: row;
     max-width: 1400px !important;
     justify-content: space-evenly;
@@ -1070,34 +1100,35 @@ width: 500px;
     // margin-top: 10px;
     box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
   }
+
   .EventOptionCardAddImage {
     width: 24rem !important;
-    height:41rem !important;
+    // height:41rem !important;
     object-fit: cover !important;
   }
-  
+
   .guidanceEventImage {
     height: 320px !important;
     object-fit: cover;
     margin-bottom: 20px !important;
     text-align: center;
   }
-  
-  .flex column{
+
+  .flex column {
     margin-left: 7%;
     padding: 1%;
     margin-top: 25%;
   }
-  
+
   .date {
     text-align: center !important;
     margin-left: 34%;
     margin-top: 4%;
     font-size: medium;
-    font-weight: bold; 
+    font-weight: bold;
     position: absolute;
   }
-  
+
   .limited-text {
     margin-left: 30px;
     overflow: hidden;
@@ -1107,14 +1138,14 @@ width: 500px;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     white-space: normal;
-    margin-top: 1%;  
+    margin-top: 1%;
   }
-  
-  .limited-text a:hover{
+
+  .limited-text a:hover {
     color: black;
     border-bottom: none !important;
   }
-  
+
   .EventDateImage {
     height: 50px;
     width: 101%;
@@ -1124,47 +1155,46 @@ width: 500px;
     padding-left: 0;
     text-align: start;
   }
-  
-  .Date-Time{
+
+  .Date-Time {
     margin-left: 3%;
     padding: 0 3%;
-    font-weight:bolder;
+    font-weight: bolder;
   }
-  
+
   .eventButtonAction {
     margin-top: 1%;
     padding: 2%;
-   margin-left: 15%;
-   border-color: #d45d93;
-  }
-  
-  a {
-    color: #333333;
-  }
-  
-  .eventButtonAction {
-    color: #333333;
-  }
-  
-  .eventButtonAction:hover {
-    color: white !important;
-    background-color: #d45d93;
+    margin-left: 21%;
+    //  border-color: #d45d93;
   }
 
-  .faq-shekunj-logo{
-    height:10px;
+  // a {
+  //   color: #333333;
+  // }
+
+  // .eventButtonAction {
+  //   color: #333333;
+  // }
+
+  // .eventButtonAction:hover {
+  //   color: white !important;
+  //   background-color: #d45d93;
+  // }
+
+  .faq-shekunj-logo {
+    height: 10px;
     width: 10px;
   }
+
   .FaqContainer img {
     height: 70px;
     width: 70px;
   }
+
   .NavHeading {
-    font-size:medium;
+    font-size: medium;
     // font-weight:600;
   }
-  
+
 }
-
-
-

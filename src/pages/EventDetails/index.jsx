@@ -10,7 +10,7 @@ import Moment from "react-moment";
 import axios from "axios";
 import { Error } from "../../components";
 import TextField from "@mui/material/TextField";
-import { useFormik, } from "formik";
+import { useFormik } from "formik";
 import Form from "react-bootstrap/Form";
 import GuidanceSelect from "./Select";
 // import { withFormik } from "formik";
@@ -72,8 +72,8 @@ const EventDetails = () => {
       .required(t("login.form1.emailError.required"))
       .email(t("login.form1.emailError.invalid")),
     contact: Yup.number().positive().required("contact number is required"),
-    // gender: Yup.string().required("gender is required"),
-    // extra_info_reg:Yup.mixed().required("please enter value")
+    gender: Yup.string().required("Select Gender").oneOf(["Male", "Female"]),
+    // extra_info_reg:Yup.string().required("enter the value")
   });
 
   const {
@@ -89,7 +89,7 @@ const EventDetails = () => {
   } = useFormik({
     initialValues: {
       name: user?.name || "",
-      last_name: user?.last_name || "" ,
+      last_name: user?.last_name || "",
       email: user?.email || "",
       contact: "",
       city: "",
@@ -107,6 +107,7 @@ const EventDetails = () => {
         Object.assign(finalObj, extraInfo[i]);
       }
       console.log("onChange Event", finalObj);
+
       values = {
         ...values,
         // date_of_birth: dateOfBirth,
@@ -119,7 +120,7 @@ const EventDetails = () => {
     },
   });
 
-  console.log("initialFormValue",initialValues)
+  console.log("initialFormValue", initialValues);
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -234,8 +235,8 @@ const EventDetails = () => {
 
   return (
     <div>
-      <SEO title='Sheकुंज - Career' />
-      <Header loginPage={true} page='career' subPage='colleges' />
+      {/* <SEO title='Sheकुंज - Career' /> */}
+      <Header loginPage={true} page='More' />
 
       {console.log("eventss---Detail", events)}
       {/* {events?.event_list?.length > 0 ? (
@@ -387,6 +388,10 @@ const EventDetails = () => {
                                 setFieldValue("gender", value)
                               }
                             />
+                            <Error
+                              error={errors.gender}
+                              touched={touched.gender}
+                            />
                           </Form.Group>
                         </div>
                       </Col>
@@ -463,10 +468,10 @@ const EventDetails = () => {
                                 }}
                                 onBlur={handleBlur}
                               />
-                              {/* <Error
-                          error={errors.extra_info_reg}
-                          touched={touched.extra_info_reg}
-                        /> */}
+                              <Error
+                                error={errors.extra_info_reg}
+                                touched={touched.extra_info_reg}
+                              />
                             </div>
                             {/* </Col>
                             </Row> */}

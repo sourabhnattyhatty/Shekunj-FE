@@ -65,7 +65,7 @@ function GuidanceSelect(props) {
                   {props.icon && props.title === "Stream" && (
                     <img src={Stream} alt='...' />
                   )}
-                   {props.icon && props.title === "Gender" && (
+                  {props.icon && props.title === "Gender" && (
                     <img src={Gender} alt='...' />
                   )}
                   <em>{props?.title}</em>

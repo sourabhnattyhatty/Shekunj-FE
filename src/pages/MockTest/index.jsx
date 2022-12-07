@@ -9,7 +9,6 @@ import useExitPrompt from "../../hooks/useExitPromt";
 import Cross from "../../assets/icons/cross.png";
 import Search from "../../assets/icons/search1.png";
 
-
 import {
   Autocomplete,
   Container,
@@ -88,7 +87,7 @@ function MockTest() {
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  
+
   const SearchFilterHandle = (e) => {
     e.preventDefault();
     dispatch(getGuidanceCategory(`?search=${searchInput}`));
@@ -115,7 +114,7 @@ function MockTest() {
   //   setQuestionNumber(countData?.user_career_test_count + 1)
   // },[countData])
 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -148,53 +147,48 @@ function MockTest() {
   //   dispatch(adsList());
   // }, [dispatch]);
 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>
 
-useEffect(() => {
-  dispatch(adsList())
-  navigator.geolocation.getCurrentPosition(async function (position, values) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+  useEffect(() => {
+    dispatch(adsList());
+    navigator.geolocation.getCurrentPosition(
+      async function (position, values) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
 
-    let params = {
-      latitude: latitude.toString(),
-      longitude: longitude.toString(),
-    } 
-    axios
-    .get(
-      `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-        let filterArray1 = response.data.results.filter((item, index) => {
-         
-          return item.image_type == "mock_test";
-
-        });
-        setMockTestBoxAds(filterArray1);
-        // console.log("filterArray1mock_test",filterArray1)
+        let params = {
+          latitude: latitude.toString(),
+          longitude: longitude.toString(),
+        };
+        axios
+          .get(
+            `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "mock_test";
+              });
+              setMockTestBoxAds(filterArray1);
+              // console.log("filterArray1mock_test",filterArray1)
+            }
+          });
+      },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")
+        axios.get(`/private_adds/private_add`).then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+              return item.image_type == "mock_test";
+            });
+            setMockTestBoxAds(filterArray1);
+            // console.log("filterArray1coursebox",filterArray1)
           }
-        })   
-  } ,
-  function(error) {
-    console.error("Error Code = " + error.code + " - " + error.message);
-    // alert("Your location is blocked")    
-  axios
-  .get(
-    `/private_adds/private_add`,
-  )
-  .then((response) => {
-    if (response && response.data.results.length > 0) {
-        let filterArray1 = response.data.results.filter((item, index) => {   
-          return item.image_type == "mock_test";
         });
-        setMockTestBoxAds(filterArray1);
-        // console.log("filterArray1coursebox",filterArray1) 
-        }
-      })
- }
-)
-},[])
+      },
+    );
+  }, []);
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -252,7 +246,6 @@ useEffect(() => {
     };
   }, []);
 
- 
   useEffect(() => {
     if (testData) {
       if (testData?.answer === "A") {
@@ -457,8 +450,8 @@ useEffect(() => {
   };
 
   return (
-    <div className="noselect">
-      <Header loginPage={true} page='MockTest' subPage='mockTest' />
+    <div className='noselect'>
+      <Header loginPage={true} page='guidance' subPage='mockTest' />
       <div className='SuccStory_banner'>
         {" "}
         <Container>
@@ -477,7 +470,7 @@ useEffect(() => {
       </div>
       <div className='Div_Mock_Title'>
         <Container>
-       <div className='mock_test_tit noselect'>
+          <div className='mock_test_tit noselect'>
             <Row>
               <Col md={6} xs={12}>
                 <h2>Mock-Test List</h2>
@@ -522,113 +515,146 @@ useEffect(() => {
               </Col>
             </Row>
           </div>
-          </Container>
+        </Container>
       </div>
       {/* <Container class="event_responsive13"> */}
       <Container>
-        <div class="event_responsive13">
-        {console.log("guidanceCategory", guidanceCategory)}
-        {guidanceCategory?.length > 0 &&
-          guidanceCategory?.map((gb, index) => {
-            console.log("gb", gb);
-            return (
-              <>
-              <Grid Container spacing={2} className='gridContainer flex'>
-                {/* <div className='guidanceCategory' key={gb?.id}> */}
+        <div class='event_responsive13'>
+          {console.log("guidanceCategory", guidanceCategory)}
+          {guidanceCategory?.length > 0 &&
+            guidanceCategory?.map((gb, index) => {
+              console.log("gb", gb);
+              return (
+                <>
+                  <Grid Container spacing={2} className='gridContainer flex'>
+                    {/* <div className='guidanceCategory' key={gb?.id}> */}
 
-                {/* <Col sm={1} md={12}> */}
-                <Col md={1} xl={12}>
-                  {/* <Grid item xs={12} sm={4} md={2} > */}
-                  <Card className='GuidanceOptionCard noselect'>
-                  <CardMedia
-                        className='guidanceOptionImage'
-                        component='img'
-                        image={gb?.image}
-                        alt='image'
-                      />
-                    <CardContent >
-                      
-                      <Typography
-                        variant='h6'
-                        className='guidanceOptionTitle limited-text-mock-test'
-                        fullWidth
-                      >
-                        {gb?.name}
-                      </Typography>
-                    </CardContent>
-                    <Typography
-                      sx={{ mb: 1.5 }}
-                      className='guidanceOptionTitle2'
-                      color='text.secondary'
-                      fullWidth
-                    >
-                      Total Time: {gb?.career_test_time}
-                    </Typography>
-                    <CardActions className='actions'>
-                   
-                        <Button
-                          size='small'
-                          variant='contained'
-                          href={gb && gb.form_link}
-                        > 
-                          <Link
-                        to={routingConstants.MOCKTEST+gb?.id}
-                        className=''
-                        key={gb?.id}
-                      >
-                          Start Test
-                          </Link>
-                        </Button>
-                     
-                    </CardActions>
-                  </Card>
-                  {/* </Grid> */}
-                </Col>
-                </Grid>
-
-                {index % 4 == 3 ? (
-                  <>
-                    {/* <div className='Row'>
-                      <Col md={1} xl={12}> */}
-                       <Grid Container spacing={2} className='gridContainer flex'>
-
-                <Col md={1} xl={12}>
-                  <Card className='GuidanceOptionCard '>
-                        {mockTestBoxAds.length > 0 && (
-                          <div
-                            // className='slide-img-test'
-                            // className='GuidanceOptionCard'
-                            onClick={() =>
-                              addEmail(mockTestBoxAds[0]?.add_email)
-                            }
+                    {/* <Col sm={1} md={12}> */}
+                    <Col md={1} xl={12}>
+                      {/* <Grid item xs={12} sm={4} md={2} > */}
+                      <Card className='GuidanceOptionCard noselect'>
+                        <CardMedia
+                          className='guidanceOptionImage'
+                          component='img'
+                          image={gb?.image}
+                          alt='image'
+                        />
+                        <CardContent>
+                          <Typography
+                            variant='h6'
+                            className='guidanceOptionTitle limited-text-mock-test'
+                            fullWidth
                           >
-                            <a
-                              href={mockTestBoxAds[0]?.url_adds}
-                              target='_blank'
+                            {gb?.name}
+                          </Typography>
+                        </CardContent>
+                        <Typography
+                          sx={{ mb: 1.5 }}
+                          className='guidanceOptionTitle2'
+                          color='text.secondary'
+                          fullWidth
+                        >
+                          Total Time: {gb?.career_test_time}
+                        </Typography>
+                        <CardActions className='actions'>
+                          <Button
+                            size='small'
+                            variant='contained'
+                            href={gb && gb.form_link}
+                          >
+                            <Link
+                              to={routingConstants.MOCKTEST + gb?.id}
+                              className=''
+                              key={gb?.id}
                             >
-                              <img
-                                src={mockTestBoxAds[0]?.image}
-                                alt='Image'
-                                className='guidanceOptionImageAdd'
-                              />
-                            </a>
-                            <div className='overlay'></div>
-                          </div>
-                        )}
-                        </Card>
+                              Start Test
+                            </Link>
+                          </Button>
+                        </CardActions>
+                      </Card>
+                      {/* </Grid> */}
+                    </Col>
+                  </Grid>
+
+                  {/* {index % 4 == 3 ? ( */}
+                  {/* {Math.floor(Math.random()*(12-0)+ 0) == index && ( */}
+
+                  {Math.floor(Math.random() * (12 - 0) + 0) == index ? (
+                    <>
+                      {/* <div className='Row'>
+                      <Col md={1} xl={12}> */}
+                      <Grid
+                        Container
+                        spacing={2}
+                        className='gridContainer flex'
+                      >
+                        <Col md={1} xl={12}>
+                          <Card className='GuidanceOptionCard '>
+                            {mockTestBoxAds.length > 0 && (
+                              <div
+                                onClick={() =>
+                                  addEmail(mockTestBoxAds[0]?.add_email)
+                                }
+                              >
+                                <a
+                                  href={mockTestBoxAds[0]?.url_adds}
+                                  target='_blank'
+                                >
+                                  <img
+                                    src={mockTestBoxAds[0]?.image}
+                                    alt='Image'
+                                    className='guidanceOptionImageAdd'
+                                  />
+                                </a>
+                                <div className='overlay'></div>
+                              </div>
+                            )}
+                          </Card>
                         </Col>
-                         </Grid>
-                      {/* </Col>
-                    </div> */}
-                  </>
-                ) : (
-                  ""
-                )}
-              {/* </Grid> */}
-              </>
-            );
-          })}
-          </div>
+                      </Grid>
+                    </>
+                  ) : (
+                    <>
+                      { index == 10 && (
+                        <>
+                          <Grid
+                            Container
+                            spacing={2}
+                            className='gridContainer flex'
+                          >
+                            <Col md={1} xl={12}>
+                              <Card className='GuidanceOptionCard '>
+                                {mockTestBoxAds.length > 0 && (
+                                  <div
+                                    onClick={() =>
+                                      addEmail(mockTestBoxAds[0]?.add_email)
+                                    }
+                                  >
+                                    <a
+                                      href={mockTestBoxAds[0]?.url_adds}
+                                      target='_blank'
+                                    >
+                                      <img
+                                        src={mockTestBoxAds[0]?.image}
+                                        alt='Image'
+                                        className='guidanceOptionImageAdd'
+                                      />
+                                    </a>
+                                    <div className='overlay'></div>
+                                  </div>
+                                )}
+                              </Card>
+                            </Col>
+                          </Grid>
+                        </>
+                      )}
+                    </>
+                  )}
+                  {/* </Grid> */}
+                </>
+              );
+            })}
+        </div>
       </Container>
       <Footer loginPage={false} />
     </div>

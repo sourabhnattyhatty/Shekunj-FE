@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { routingConstants } from "../../utils/constants";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import PublicIcon from '@mui/icons-material/Public';
+import PublicIcon from "@mui/icons-material/Public";
 import { Header, Footer } from "../../components";
 import global from "../../assets/images/Success/global.png";
 import "./index.scss";
@@ -22,8 +22,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { adsList } from "../../store/ads";
 // import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
-import GroupTwoToneIcon from '@mui/icons-material/GroupTwoTone';
+import LocalLibraryTwoToneIcon from "@mui/icons-material/LocalLibraryTwoTone";
+import GroupTwoToneIcon from "@mui/icons-material/GroupTwoTone";
 // import AlarmOnOutlinedIcon from '@mui/icons-material/AlarmOnOutlined';
 // import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
@@ -82,51 +82,45 @@ function EventPage() {
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
-    dispatch(adsList())
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-  
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      } 
-      axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "event_index";
-  
-          });
-          setEventBoxAds(filterArray1);
-          // console.log("filterArray1event_index",filterArray1)
-            }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "event_index";
-          });
-          setEventBoxAds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1) 
-          }
-        })
-   }
-  )
-  },[])
+    dispatch(adsList());
+    navigator.geolocation.getCurrentPosition(
+      async function (position, values) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
 
+        let params = {
+          latitude: latitude.toString(),
+          longitude: longitude.toString(),
+        };
+        axios
+          .get(
+            `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "event_index";
+              });
+              setEventBoxAds(filterArray1);
+              // console.log("filterArray1event_index",filterArray1)
+            }
+          });
+      },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")
+        axios.get(`/private_adds/private_add`).then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+              return item.image_type == "event_index";
+            });
+            setEventBoxAds(filterArray1);
+            // console.log("filterArray1coursebox",filterArray1)
+          }
+        });
+      },
+    );
+  }, []);
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -148,10 +142,11 @@ function EventPage() {
         .then((response) => {
           // setAdds(response.data.results);
           console.log("addEmailresponse", response);
-        }).catch((error) => {
+        })
+        .catch((error) => {
           // setMessage("No data found");
           console.log(error);
-      })
+        });
     });
   };
 
@@ -169,95 +164,106 @@ function EventPage() {
             </Col>
             <Col md={6} data-aos='slide-up'>
               <h2> {t("Shekunj Events..")}</h2>
-              <p> Have a look how SheKunj has played an important role</p>
+              <p>
+                Excel your Career with Shekunj Events Whether you’re a student,
+                fresher, professional, educator, or business owner, we have
+                plenty of Shekunj Events specifically created for your growth in
+                mind. Explore special events and learning opportunities created
+                to help you expand your expertise, learn new skills and getting
+                self-reliant.
+              </p>
             </Col>
           </Row>
         </Container>
       </div>
       {/* <div className='Home'> */}
-        <Container className="eventContainer event_responsive12">
-          {events?.event_list?.length > 0 ? (
-            events?.event_list?.map((c, index) => {
-              console.log("c", c);
-              return (
-                <>
-                
-                  <Grid spacing={1} className='gridContainerEvent'>
+      <Container className='eventContainer event_responsive12'>
+        {events?.event_list?.length > 0 ? (
+          events?.event_list?.map((c, index) => {
+            console.log("c", c);
+            return (
+              <>
+                <Grid spacing={1} className='gridContainerEvent'>
                   {/* <Grid spacing={1} className='gridContainerEvent flex'> */}
-                    <Col md={1} xl={12}>
-                      <Card className='EventOptionCard noselect'>
-                        <CardMedia
-                          component='img'
-                          alt='image'
-                          // height='200'
-                          image={c && c.image}
-                          className='guidanceEventImage'
-                        />
+                  <Col md={1} xl={12}>
+                    <Card className='EventOptionCard noselect'>
+                      <CardMedia
+                        component='img'
+                        alt='image'
+                        // height='200'
+                        image={c && c.image}
+                        className='guidanceEventImage'
+                      />
 
-                       <Typography
-                            gutterBottom
-                            variant='h6'
-                            component='div'
-                            className='limited-text-event'
-                          >
-                            <Link
-                              to={routingConstants.MORE_EVENT + c.id}
-                              className='event-title-link center'
-                              key={c?.id}
-                            >
-                              {c && c.title}
-                            </Link>
-                          </Typography>
+                      <Typography
+                        gutterBottom
+                        variant='h6'
+                        component='div'
+                        className='limited-text-event'
+                      >
+                        <Link
+                          to={routingConstants.MORE_EVENT + c.id}
+                          className='event-title-link center'
+                          key={c?.id}
+                        >
+                          {c && c.title}
+                        </Link>
+                      </Typography>
 
-                        <CardContent class='d-flex flex-column'>
-                         
-                          <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
-                          <PublicIcon />{" "}{c && c?.type_1}
-                          </Typography>
-                          {/* <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
+                      <CardContent class='d-flex flex-column'>
+                        <Typography
+                          className='event_mode'
+                          sx={{ mb: 1.5 }}
+                          fullWidth
+                        >
+                          <PublicIcon /> {c && c?.type_1}
+                        </Typography>
+                        {/* <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
                           <LocalLibraryTwoToneIcon />{" "}{c && c?.type_2}
                           </Typography> */}
-                          <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
-                          <GroupTwoToneIcon/>{" "}{c && c?.mode_of_event}
+                        <Typography
+                          className='event_mode'
+                          sx={{ mb: 1.5 }}
+                          fullWidth
+                        >
+                          <GroupTwoToneIcon /> {c && c?.mode_of_event}
+                        </Typography>
+                        <Typography className='Date-Time'>
+                          <Typography style={{ marginBottom: "10px" }}>
+                            Date : {c && c?.date}
                           </Typography>
-                          <Typography className="Date-Time">
-                            <Typography>
-                               Date : {" "}
-                            {c && c?.date}
-                            </Typography>
-                            <Typography
-                             >
-                               Time : {" "}
-                            {c && c?.time}
-                            </Typography>
+                          <Typography style={{ marginBottom: "10px" }}>
+                            Time : {c && c?.time}
                           </Typography>
-                        </CardContent>
-                                               <CardActions>
-                          <Button
-                          variant="outlined"
-                            size='medium'
-                            className='eventButtonAction'
-                            style={{color:"pink",backgroundColor:"white"}}
-                            href={c && c.form_link}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          variant='outlined'
+                          size='medium'
+                          className='eventButtonAction'
+                          href={c && c.form_link}
+                        >
+                          <Link
+                            to={routingConstants.MORE_EVENT + c.id}
+                            className='event-button-link'
+                            key={c?.id}
                           >
-                             <Link
-                              to={routingConstants.MORE_EVENT + c.id}
-                              className='event-title-link'
-                              key={c?.id}
-                            >
                             Registration and details
-                            </Link>
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </Col>
-                  </Grid>
-                  {index % 2 == 1 ? (
-                    <>
-                      <Grid spacing={1} className='gridContainerEvent flex'>
-                        {/*  */}
-                        <Col md={1} xl={12}>
-                          <Card className='EventOptionCard'>
+                          </Link>
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Col>
+                </Grid>
+                {/* {index % 2 == 1 ? ( */}
+
+                {Math.floor(Math.random() * (3 - 0) + 0) == index ? (
+                  <>
+                    <Grid spacing={1} className='gridContainerEvent flex'>
+                      {/*  */}
+                      <Col md={1} xl={12}>
+                        <Card className='EventOptionCard'>
                           {eventBoxAds.length > 0 && (
                             <div
                               className='EventOptionCard'
@@ -278,22 +284,20 @@ function EventPage() {
                               <div className='overlay'></div>
                             </div>
                           )}
-                          </Card>
-                        </Col>
-                      </Grid>
-                    </>
-                  ) : (
-                    ""
-                  )}
-                  
-                </>
-              );
-            })
-          ) : (
-      
-            <div className='text-center'>{t("common.noDataFound")}</div>
-          )}
-        </Container>
+                        </Card>
+                      </Col>
+                    </Grid>
+                  </>
+                ) : (
+                  ""
+                )}
+              </>
+            );
+          })
+        ) : (
+          <div className='text-center'>{t("common.noDataFound")}</div>
+        )}
+      </Container>
       {/* </div> */}
       {/* <div className='want'>
         <Container>

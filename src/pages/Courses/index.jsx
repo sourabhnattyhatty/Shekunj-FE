@@ -79,10 +79,84 @@ const Courses = () => {
 
   const checkFunction = () => {
     return state?.allCourses?.results?.map((obj, index) => {
+      console.log(
+        "course shuffle",
+        Math.floor(Math.random() * (4 - 0) + 0),
+        index,
+        coursesBoxAds,
+      );
       return (
         <>
+          {/* {Math.floor(Math.random()*(4-0)+ 0) == index && ( */}
+
+          {Math.floor(Math.random() * (4 - 0) + 0) == index ? (
+            <>
+              <div className='col-md-6'>
+                <div className='google_add_box box_hov'>
+                  {coursesBoxAds.length > 0 && (
+                    <div className='slide-img'>
+                      <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
+                        <img
+                          src={coursesBoxAds[0]?.image}
+                          alt='Image'
+                          className='google_add_box_img'
+                        />
+                      </a>
+                      <div className='overlay'></div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {index == 4 && (
+                <>
+                  <div className='col-md-6'>
+                    <div className='google_add_box box_hov'>
+                      {coursesBoxAds.length > 0 && (
+                        <div className='slide-img'>
+                          <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
+                            <img
+                              src={coursesBoxAds[0]?.image}
+                              alt='Image'
+                              className='google_add_box_img'
+                            />
+                          </a>
+                          <div className='overlay'></div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
+            </>
+          )}
+          {index == 5 && (
+            <>
+              <div className='col-md-6'>
+                <div className='google_add_box box_hov'>
+                  {coursesBoxAds.length > 0 && (
+                    <div className='slide-img'>
+                      <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
+                        <img
+                          src={coursesBoxAds[0]?.image}
+                          alt='Image'
+                          className='google_add_box_img'
+                        />
+                      </a>
+                      <div className='overlay'></div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+
           <Link
-            to={routingConstants.COURSE_DETAILS + obj.id}
+            to={
+              routingConstants.COURSE_DETAILS + obj?.name.split(" ").join("_")
+            }
             className='col-md-6'
             key={obj?.id}
           >
@@ -98,7 +172,9 @@ const Courses = () => {
               </div>
             </div>
           </Link>
-          {index % 5 == 4 ? (
+          {/* {index % 5 == 4 ? ( */}
+
+          {/* {Math.floor(Math.random()*(4-0)+ 0) == index ? (
             <>
               <div className='col-md-6'>
                 <div className='google_add_box box_hov'>
@@ -119,9 +195,11 @@ const Courses = () => {
                 </div>
               </div>
             </>
-          ) : (
+          )
+           : (
             ""
-          )}
+          )
+          } */}
         </>
       );
     });
@@ -266,64 +344,56 @@ const Courses = () => {
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code >>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
-    dispatch(adsList())
-    navigator.geolocation.getCurrentPosition(async function (position, values) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-  
-      let params = {
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-      } 
-      axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "courses_box";
-  
-          });
-          setCoursesBoxAds(filterArray1);
-          // console.log("filterArray1courses_box",filterArray1)
+    dispatch(adsList());
+    navigator.geolocation.getCurrentPosition(
+      async function (position, values) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
 
-          let filterArray2 = response.data.results.filter((item, index) => {
-            
-            return item.image_type == "courses_side_ads";
-           
-          });
-          setCoursesSideAds(filterArray2);
-          console.log("filterArray1courses_side_ads",filterArray2)
+        let params = {
+          latitude: latitude.toString(),
+          longitude: longitude.toString(),
+        };
+        axios
+          .get(
+            `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "courses_box";
+              });
+              setCoursesBoxAds(filterArray1);
+              // console.log("filterArray1courses_box",filterArray1)
+
+              let filterArray2 = response.data.results.filter((item, index) => {
+                return item.image_type == "courses_side_ads";
+              });
+              setCoursesSideAds(filterArray2);
+              console.log("filterArray1courses_side_ads", filterArray2);
             }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "courses_box";
           });
-          setCoursesBoxAds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1)
-          let filterArray2 = response.data.results.filter((item, index) => {
-            return item.image_type == "courses_side_ads"; 
-          });
-          setCoursesSideAds(filterArray2);
-          console.log("filterArray1coursebox",filterArray2)  
+      },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")
+        axios.get(`/private_adds/private_add`).then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+              return item.image_type == "courses_box";
+            });
+            setCoursesBoxAds(filterArray1);
+            // console.log("filterArray1coursebox",filterArray1)
+            let filterArray2 = response.data.results.filter((item, index) => {
+              return item.image_type == "courses_side_ads";
+            });
+            setCoursesSideAds(filterArray2);
+            console.log("filterArray1coursebox", filterArray2);
           }
-        })
-   }
-  )
-  },[])
-  
+        });
+      },
+    );
+  }, []);
 
   const [searchInput, setSearchInput] = useState("");
 
@@ -370,21 +440,20 @@ const Courses = () => {
 
   return (
     <div>
-      <SEO 
-      title={`Best Free Online Courses
+      <SEO
+        title={`Best Free Online Courses
       & Certifications in India - Shekunj.
         com`}
-
-  description={`Advance your career with the free Online
+        description={`Advance your career with the free Online
   Professional development courses and
   certifications with the most in-demand skills
   specially curated for women.`}
-  keywords={`free online courses in india
+        keywords={`free online courses in india
   best online certificate programs
   free online courses for girls in india
   online certification courses in india
   free online courses for women`}
-  />
+      />
       <Header loginPage={true} page='courses' />
       <section className='Cors_sec noselect'>
         <div className='container'>
@@ -473,7 +542,7 @@ const Courses = () => {
                             placeholder='What do you want to learn ?'
                           />
                           {hasSuggestion && (
-                            <div className='suggestions' >
+                            <div className='suggestions'>
                               {/* {suggestion.map((item) => (
                                   <div onClick={() => suggestionClicked(item)} className="suggList">{item}</div>
                                 ))} */}
@@ -635,7 +704,12 @@ const Courses = () => {
                     <div className='reset_content pt-2'>
                       {state?.allCourses && (
                         <p onClick={() => handleResetFilter()}>
-                          <img src={Reset} className='mr-2' style={{width:20,height:20}} alt='...' />{" "}
+                          <img
+                            src={Reset}
+                            className='mr-2'
+                            style={{ width: 20, height: 20 }}
+                            alt='...'
+                          />{" "}
                           {t("coursesPage.other.2")}
                         </p>
                       )}
