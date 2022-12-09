@@ -6,7 +6,7 @@
   margin-bottom: 10px;
 }
 
-.career_tit h2 {
+.career_tit h1 {
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
@@ -68,11 +68,11 @@
   border-radius: 15px;
 }
 
-.career_box h2 {
+.career_box h3 {
   font-family: Poppins;
   text-transform: capitalize;
   color: #323232;
-  font-size: 22px;
+  font-size: 16px;
   line-height: 1.3125rem;
   margin-top: 0;
   margin-bottom: 5px;
@@ -419,13 +419,13 @@
 
 @media screen and (max-width:767px) {
 
-  .top_col_content h2 {
+  .top_col_content h3 {
     margin-left: 0px !important;
   }
 
 }
 
-.top_col_content h2 {
+.top_col_content h3 {
   margin-left: 1px !important;
 }
 

@@ -253,7 +253,7 @@ export default function VerticalTabs() {
   return (
     <>
       <div className='Com_title'>
-        <h2>{t("successCareerOption.heading.2")}</h2>
+        <h1>{t("successCareerOption.heading.2")}</h1>
       </div>
 
       <Box
