@@ -156,7 +156,7 @@ function Carousel(props) {
                       <button className='btn btn-info'>
                         {obj?.category_name}
                       </button>
-                      <h2>{obj?.name}</h2>
+                      <h3>{obj?.name}</h3>
                     </div>
                   </div>
                 </Link>
@@ -178,7 +178,7 @@ function Carousel(props) {
                     </div>
                     <div className='tag_btn'>
                       <button className='btn btn-info'>{obj?.exam}</button>
-                      <h2>{obj?.name}</h2>
+                      <h3>{obj?.name}</h3>
                     </div>
                   </div>
                 </Link>
@@ -196,7 +196,7 @@ function Carousel(props) {
                         <div className='overlay'></div>
                       </div>
                       <div className='tag_btn'>
-                        <h2>{obj?.name}</h2>
+                        <h3>{obj?.name}</h3>
                       </div>
                     </div>
                   </div>

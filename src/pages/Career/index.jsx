@@ -441,7 +441,7 @@ India & Apply - Shekunj.com`}
 
                             <Col md={9} xs={12}>
                               <div className='top_col_content'>
-                                <h3>
+                                <h2>
                                   <Link
                                     to={routingConstants.TOP_COLLEGES + c.id}
                                     className=''
@@ -449,7 +449,7 @@ India & Apply - Shekunj.com`}
                                   >
                                     {c && c.name}
                                   </Link>
-                                </h3>
+                                </h2>
                                 <ul class='list-inline list-unstyled'>
                                   {c.collage_type && (
                                     <li>

@@ -462,7 +462,7 @@ function MockTest() {
               </div>
             </Col>
             <Col md={6} data-aos='slide-up'>
-              <h2> {t("Shekunj Online Test..")}</h2>
+              <h2> {t("Shekunj.com Mock Test and Career Test")}</h2>
               <p> Have a look how SheKunj has played an important role</p>
             </Col>
           </Row>

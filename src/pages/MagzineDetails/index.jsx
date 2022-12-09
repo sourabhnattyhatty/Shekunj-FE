@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import ReactModal from "react-modal-resizable-draggable";
 import { Document, Page, pdfjs } from "react-pdf";
 import "./index.scss";
 import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import Fullscreen from 'fullscreen-react';
+import ReactFullscreen from 'react-easyfullscreen';
+
 // import {file} from "./pdf-sample.pdf"
 
 import {
@@ -41,10 +45,20 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import HTMLFlipBook from "react-pageflip";
 import { adsList } from "../../store/ads";
-
+import { BiFullscreen } from 'react-icons/bi'
+import { BsZoomIn, BsZoomOut } from 'react-icons/bs'
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
+import Cookies from "js-cookie";
 const url = "https://cors-anywhere.herokuapp.com/http://www.pdf995.com/samples/pdf.pdf";
+// import ReactAudioPlayer from 'react-audio-player';
+
+
 
 function MagzineDetails(m) {
+  const [isEnter, setIsEnter] = useState(false);
+  const book = useRef();
+  const [magzineData, setMagzineData] = useState([]);
+  console.log(magzineData, '....................magzineData')
   const { id } = useParams();
   const history = useHistory();
   const { magzines } = useSelector((state) => state.magzinesReducer);
@@ -57,9 +71,9 @@ function MagzineDetails(m) {
   const { t } = useTranslation();
 
   // const url = `https://cors-anywhere.herokuapp.com/${magzines?.pdf}`;
-    // const url = "https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
-
-    pdfjs.GlobalWorkerOptions.workerSrc = 
+  // const url = "https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
+  const apiBaseUrl = 'https://admin.shekunj.com/';
+  pdfjs.GlobalWorkerOptions.workerSrc =
     `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -82,10 +96,10 @@ function MagzineDetails(m) {
     changePage(1);
   }
 
-    /*To Prevent right click on screen*/
-    document.addEventListener("contextmenu", (event) => {
-      event.preventDefault();
-    });
+  /*To Prevent right click on screen*/
+  document.addEventListener("contextmenu", (event) => {
+    event.preventDefault();
+  });
 
   // const [show, setShow] = useState(false);
 
@@ -124,7 +138,7 @@ function MagzineDetails(m) {
   const [adds, setAdds] = useState([]);
   const [magzineDetailsBoxAds, setMagzineDetailsBoxAds] = useState([]);
 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -164,46 +178,46 @@ function MagzineDetails(m) {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-  
+
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      } 
+      }
       axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "magazine_detail";
-  
-          });
-          setMagzineDetailsBoxAds(filterArray1);
-          // console.log("filterArray1magazine_detail",filterArray1)
-            }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "magazine_detail";
-          });
-          setMagzineDetailsBoxAds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1) 
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+
+              return item.image_type == "magazine_detail";
+
+            });
+            setMagzineDetailsBoxAds(filterArray1);
+            // console.log("filterArray1magazine_detail",filterArray1)
           }
         })
-   }
-  )
-  },[])
+    },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")    
+        axios
+          .get(
+            `/private_adds/private_add`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "magazine_detail";
+              });
+              setMagzineDetailsBoxAds(filterArray1);
+              // console.log("filterArray1coursebox",filterArray1) 
+            }
+          })
+      }
+    )
+  }, [])
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -228,6 +242,20 @@ function MagzineDetails(m) {
         });
     });
   };
+
+  useEffect(() => {
+
+    const token = Cookies.get("sheToken");
+    axios.get(`more/magazine/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => setMagzineData(response.data.data.magazine_images)
+      )
+
+  }, [])
+
+
+
 
   return (
     <div>
@@ -270,7 +298,6 @@ function MagzineDetails(m) {
         </Row>
       </Container>
 
-      {console.log("magzinesPdf", magzines?.pdf)}
       <Container>
         {/* {magzines["magazine_list"]?.length > 0 ? (
           magzines["magazine_list"]?.map((magzines, index) => {
@@ -278,25 +305,56 @@ function MagzineDetails(m) {
             console.log("magMpdfmagMDetailPage", magzines.pdf);
             return ( */}
         <>
-          <div style={{ backgroundColor: "pink" }} key={magzines?.id}>
-            <HTMLFlipBook width={300} height={500}>
-              <div className='demoPage'>{pageNumber}</div>
-              <div className='demoPage'>{pageNumber}</div>
-              <div className='demoPage'>
-                <Document
-                  class='center'
-                  key={magzines?.id}
-                  file={url}
-                  onLoadSuccess={onDocumentLoadSuccess}
-                ></Document>
-              </div>
+          {/* <div style={{ backgroundColor: 'black', padding: '4rem 9rem', margin: '50px 0px' }}>
 
-              <div className='demoPage'>Page 4</div>
-            </HTMLFlipBook>
-          </div>
+            <Fullscreen isEnter={isEnter} onChange={setIsEnter}>
+              <div>
+
+                <HTMLFlipBook
+
+                  style={{
+                    display: `${isEnter ? 'flex' : ''}`,
+                    justifyContent: `${isEnter ? 'center' : ''}`,
+                    marginTop: `${isEnter ? '5rem' : ''}`,
+                    marginLeft: `${isEnter ? '-10rem' : ''}`
+                  }}
+                  width={isEnter ? 500 : 400}
+                  height={isEnter ? 550 : 350}>
+                  {
+                    magzineData && magzineData.map(elem =>
+
+                      <div className='demoPage' key={elem.id}>
+                        <img
+                          src={elem.images}
+                          width={isEnter ? 500 : 400}
+                          height={isEnter ? 550 : 350}
+                        />
+                      </div>
+                    )
+                  }
+
+
+                </HTMLFlipBook>
+              </div>
+            </Fullscreen>
+
+            <BiFullscreen
+              target="_blank"
+              style={{
+                marginTop: '1.5rem',
+                color: '#FFF',
+                fontSize: '1.5rem',
+                cursor:'pointer'
+              }}
+              onClick={() => {
+                setIsEnter(true);
+              }} />
+          </div> */}
+
+         
 
           {/* <div className='MagzineCard' key={magzines?.id}> */}
-            {/* <Card  key={magzines?.id}>
+          {/* <Card  key={magzines?.id}>
                     <Card.Body className='magzineCardBody'>
                       <Card.Text className='createdText'>
                         Created_at:
@@ -315,7 +373,7 @@ function MagzineDetails(m) {
                         />
                       </Card.Subtitle> */}
 
-{/* 
+          {/* 
             <Button
                         key={magzines?.id}
                         onClick={() => handleShow(index)}
@@ -336,8 +394,8 @@ function MagzineDetails(m) {
                           </Button>
                         </Modal.Header>
                         <Modal.Body key={magzines?.id} style={{ userSelect: "none" }}> */}
-                          
-            {/* <iframe
+
+          {/* <iframe
                             id='iframe'
                             src={magzines?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}
                             frameBorder='0'
@@ -346,7 +404,7 @@ function MagzineDetails(m) {
                             width='100%'
                           ></iframe>  */}
 
-            {/* <Document
+          {/* <Document
               class='center'
               key={magzines?.id}
               file={magzines?.pdf}
@@ -354,39 +412,39 @@ function MagzineDetails(m) {
             >
               <Page pageNumber={pageNumber} />
             </Document> */}
-            <div className="main">
-      <Document
-        file={url}
-        onLoadSuccess={onDocumentLoadSuccess}
-      >
-        <Page pageNumber={pageNumber} />
-      </Document>
-      <div>
-        <div className="pagec">
-          Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
-        </div>
-        <div className="buttonc">
-        <button
-          type="button"
-          disabled={pageNumber <= 1}
-          onClick={previousPage}
-          className="Pre"
-            
-        >
-          Previous
-        </button>
-        <button
-          type="button"
-          disabled={pageNumber >= numPages}
-          onClick={nextPage}
-           
-        >
-          Next
-        </button>
-        </div>
-      </div>
-      </div>
-            {/* <Modal.Footer></Modal.Footer>
+          {/* <div className="main">
+            <Document
+              file={url}
+              onLoadSuccess={onDocumentLoadSuccess}
+            >
+              <Page pageNumber={pageNumber} />
+            </Document>
+            <div>
+              <div className="pagec">
+                Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
+              </div>
+              <div className="buttonc">
+                <button
+                  type="button"
+                  disabled={pageNumber <= 1}
+                  onClick={previousPage}
+                  className="Pre"
+
+                >
+                  Previous
+                </button>
+                <button
+                  type="button"
+                  disabled={pageNumber >= numPages}
+                  onClick={nextPage}
+
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div> */}
+          {/* <Modal.Footer></Modal.Footer>
                         </Modal.Body>
                       </Modal> 
 
@@ -400,7 +458,7 @@ function MagzineDetails(m) {
                   </Card> */}
           {/* </div> */}
         </>
-       {/* );
+        {/* );
             })
         ) : (
           <div className='text-center'>{t("common.noDataFound")}</div>
@@ -418,7 +476,7 @@ function MagzineDetails(m) {
       </div>
 
       <Footer loginPage={false} />
-    </div>
+    </div >
   );
 }
 

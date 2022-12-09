@@ -6,19 +6,23 @@
   height: 40vmin;
   pointer-events: none;
 }
+
 body {
   overflow-x: hidden;
 }
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
 .MuiSvgIcon-fontSizeMedium.back_to_top {
   width: 45px;
   height: 45px;
   border-radius: 50%;
 }
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -33,20 +37,34 @@ body {
 .App-link {
   color: #61dafb;
 }
+/* 
+.stf__parent {
+  margin-top: 10rem;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+} */
 
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
