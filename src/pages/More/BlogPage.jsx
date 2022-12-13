@@ -99,47 +99,47 @@ function BlogPage() {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-  
+
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      } 
+      }
       axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "blog_index";
-  
-          });
-          setBlogBoxAdds(filterArray1);
-          // console.log("filterArray1blog_index",filterArray1)
-            }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "blog_index";
-          });
-          setBlogBoxAdds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1) 
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+
+              return item.image_type == "blog_index";
+
+            });
+            setBlogBoxAdds(filterArray1);
+            // console.log("filterArray1blog_index",filterArray1)
           }
         })
-   }
-  )
-  },[])
-  
+    },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")    
+        axios
+          .get(
+            `/private_adds/private_add`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "blog_index";
+              });
+              setBlogBoxAdds(filterArray1);
+              // console.log("filterArray1coursebox",filterArray1) 
+            }
+          })
+      }
+    )
+  }, [])
+
 
 
   const addEmail = (email) => {
@@ -165,7 +165,7 @@ function BlogPage() {
         }).catch((error) => {
           // setMessage("No data found");
           console.log(error);
-      })
+        })
     });
   };
   return (
@@ -192,21 +192,21 @@ function BlogPage() {
       {/* google add */}
       <Container>
         <Row>
-         <div className='col-md-12'>
+          <div className='col-md-12'>
             {blogBoxAdds.length > 0 && (
-            <div
-              className='ads_story_cover'
-              onClick={() => addEmail(blogBoxAdds[0]?.add_email)}
-            >
-              <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
-                <img
-                  src={blogBoxAdds[0]?.image}
-                  alt='Image'
-                  className='ads_story_cover_img_blog'
-                />
-              </a>
-            </div>
-        )}
+              <div
+                className='ads_story_cover'
+                onClick={() => addEmail(blogBoxAdds[0]?.add_email)}
+              >
+                <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
+                  <img
+                    src={blogBoxAdds[0]?.image}
+                    alt='Image'
+                    className='ads_story_cover_img_blog'
+                  />
+                </a>
+              </div>
+            )}
           </div>
         </Row>
       </Container>
@@ -217,7 +217,6 @@ function BlogPage() {
             ?.slice(0)
             .reverse()
             .map((s, idx) => {
-              console.log("s", s);
               return (
                 <>
                   <div className='suc_box_blog' key={s?.id}>
@@ -229,16 +228,16 @@ function BlogPage() {
                               <img
                                 className='quote_img_blog'
                                 src={double_quote}
-                                style={{width:20,height:20}}
+                                style={{ width: 20, height: 20 }}
                                 alt=''
                               />
                               {s?.title || t("common.n/a")}{" "}
                             </h2>
-                            <h6 class='card-subtitle mb-2 text-muted'>
+                            {/* <h6 class='card-subtitle mb-2 text-muted'>
                               <Moment format='D MMM YYYY' withTitle>
                                 {s?.created_at}
                               </Moment>
-                            </h6>
+                            </h6> */}
                             <p className='noselect'>
                               {/* {(s?.is_collapse
                               ? paragraph(s?.description.replace(/<br\s*[\/]?>/gi,'\n').replace(/<p\s*[\/]?>/gi,'\n'))
@@ -260,13 +259,13 @@ function BlogPage() {
                                   }}
                                 />
                               )}
-                              <Link
+                              {/* <Link
                                 to={"/blogs/" + s.id}
                                 className='BlogReadMore'
                                 key={s?.id}
                               >
                                 Read More
-                              </Link>
+                              </Link> */}
                             </p>
 
                             {/* {s?.about_blog?.length >= 300 && (
@@ -308,16 +307,17 @@ function BlogPage() {
                               <img
                                 className='quote_img_blog'
                                 src={double_quote}
-                                style={{width:20,height:20}}
+                                style={{ width: 20, height: 20 }}
                                 alt=''
                               />
                               {s?.title || t("common.n/a")}{" "}
                             </h2>
-                            <h6 class='card-subtitle mb-2 text-muted'>
+                            {/* <h6 class='card-subtitle mb-2 text-muted'>
                               <Moment format='D MMM YYYY' withTitle>
                                 {s?.created_at}
                               </Moment>
-                            </h6>
+        
+                            </h6> */}
 
                             <p className='noselect' key={s?.id}>
                               {/* {(s?.is_collapse
