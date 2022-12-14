@@ -47,7 +47,7 @@ const Header = ({ page, subPage }) => {
   const [anchorEl3, setAnchorEl3] = React.useState(null);
   const [showmenu, setShowmenu] = React.useState(false);
   const [isAlertVisible, setIsAlertVisible] = React.useState(false);
-  
+
   // useEffect(() => {
   //   const interval = setInterval(() => getTime(deadline), 1000);
 
@@ -910,13 +910,14 @@ const Header = ({ page, subPage }) => {
                     >
                       <span
                         className='nav-link'
-                        // to={routingConstants.SUCCESS_STORIES}
+                      // to={routingConstants.SUCCESS_STORIES}
                       >
                         {moment(
-                          notifications["Notifications "]?.[0].updated_at,
+                          notifications["Notifications "]?.[0]?.updated_at,
                         ).format("MM/DD/YYYY") ==
-                        moment(Date.now()).format("MM/DD/YYYY") ? (
+                          moment(Date.now()).format("MM/DD/YYYY") ? (
                           <>
+
                             <Badge
                               badgeContent='New'
                               style={{ color: "#e83e8c" }}
@@ -945,13 +946,6 @@ const Header = ({ page, subPage }) => {
                         )}
                       </span>
                     </Button>
-                    {console.log(
-                      "notifications.updated_at",
-                      moment(
-                        notifications["Notifications "]?.[0].updated_at,
-                      ).format("MM/DD/YYYY"),
-                      moment(Date.now()).format("MM/DD/YYYY"),
-                    )}
                     <Menu
                       id='basic-menu77'
                       //  anchorEl={anchorEl1}
@@ -1034,7 +1028,7 @@ const Header = ({ page, subPage }) => {
                         className={
                           page === "more" ? "nav-item active" : "nav-item"
                         }
-                        // className={subPage === "AllNotification" && "active"}
+                      // className={subPage === "AllNotification" && "active"}
                       >
                         <strong>View ALL</strong>
                       </MenuItem>

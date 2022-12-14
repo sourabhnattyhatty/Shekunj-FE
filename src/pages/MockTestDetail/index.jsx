@@ -222,6 +222,10 @@ function MockTestDetail() {
   ]);
 
   const handleFinishQuestion = () => {
+
+    console.log('testDatatestData.........................', testData)
+    console.log('fetchUserCareerTestCount.........................', fetchUserCareerTestCount)
+    // return false;
     const data = {
       answer,
       career_test: testData?.id,
@@ -229,7 +233,7 @@ function MockTestDetail() {
     if (answer) {
       dispatch(
         // postAnswer(data, history, selectedCourseCategoryValue?.id, true),
-        postAnswer(data, history, fetchUserCareerTestCount?.id, true),
+        postAnswer(data, history,  id, true),
       );
       setAnswer("");
     } else {
@@ -294,7 +298,7 @@ function MockTestDetail() {
     dispatch(endTest(guidanceCategory?.id));
     toast.error(t("error.other.2"));
     history.push(
-      //   routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id,
+      //  routingConstants.CAREER_TEST_RESULT + selectedCourseCategoryValue?.id,
       routingConstants.CAREER_TEST_RESULT + guidanceCategory?.id,
     );
   };

@@ -1,14 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 // import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import ReactModal from "react-modal-resizable-draggable";
 import { Document, Page, pdfjs } from "react-pdf";
 import "./index.scss";
 import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import Fullscreen from 'fullscreen-react';
-import ReactFullscreen from 'react-easyfullscreen';
+// import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+// import Fullscreen from 'fullscreen-react';
+// import ReactFullscreen from 'react-easyfullscreen';
 
 // import {file} from "./pdf-sample.pdf"
+// import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai"
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import { BsFullscreen, BsFullscreenExit } from "react-icons/bs";
 
 import {
   Container,
@@ -47,7 +50,10 @@ import HTMLFlipBook from "react-pageflip";
 import { adsList } from "../../store/ads";
 import { BiFullscreen } from 'react-icons/bi'
 import { BsZoomIn, BsZoomOut } from 'react-icons/bs'
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineShareAlt } from 'react-icons/ai'
+import { IoMdShareAlt } from 'react-icons/io'
+import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
+import { RWebShare } from "react-web-share";
 import Cookies from "js-cookie";
 const url = "https://cors-anywhere.herokuapp.com/http://www.pdf995.com/samples/pdf.pdf";
 // import ReactAudioPlayer from 'react-audio-player';
@@ -56,20 +62,17 @@ const url = "https://cors-anywhere.herokuapp.com/http://www.pdf995.com/samples/p
 
 function MagzineDetails(m) {
   const [isEnter, setIsEnter] = useState(false);
-  const book = useRef();
+
   const [magzineData, setMagzineData] = useState([]);
-  console.log(magzineData, '....................magzineData')
   const { id } = useParams();
   const history = useHistory();
   const { magzines } = useSelector((state) => state.magzinesReducer);
   const dispatch = useDispatch();
-  console.log("magzineIdddd", id);
-
-  console.log("magzinesssssDetail", magzines);
   const { lan } = useSelector((state) => state.languageReducer);
-  console.log("langgggggDetail", lan);
   const { t } = useTranslation();
-
+  const book = useRef();
+  const screen1 = useFullScreenHandle();
+  const screen2 = useFullScreenHandle();
   // const url = `https://cors-anywhere.herokuapp.com/${magzines?.pdf}`;
   // const url = "https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
   const apiBaseUrl = 'https://admin.shekunj.com/';
@@ -77,7 +80,6 @@ function MagzineDetails(m) {
     `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -200,7 +202,6 @@ function MagzineDetails(m) {
         })
     },
       function (error) {
-        console.error("Error Code = " + error.code + " - " + error.message);
         // alert("Your location is blocked")    
         axios
           .get(
@@ -220,7 +221,6 @@ function MagzineDetails(m) {
   }, [])
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -238,10 +238,17 @@ function MagzineDetails(m) {
         })
         .then((response) => {
           // setAdds(response.data.results);
-          console.log("addEmailresponse", response);
         });
     });
   };
+  const reportChange = useCallback((state, handle) => {
+    if (handle === screen1) {
+      console.log('Screen 1 went to', state, handle);
+    }
+    if (handle === screen2) {
+      console.log('Screen 2 went to', state, handle);
+    }
+  }, [screen1, screen2]);
 
   useEffect(() => {
 
@@ -253,9 +260,6 @@ function MagzineDetails(m) {
       )
 
   }, [])
-
-
-
 
   return (
     <div>
@@ -299,62 +303,86 @@ function MagzineDetails(m) {
       </Container>
 
       <Container>
-        {/* {magzines["magazine_list"]?.length > 0 ? (
+        <div>
+          <div style={{
+            background: 'black',
+            width: '100%',
+            height: '500px',
+            padding: '45px',
+            margin: '50px 0px'
+          }}>
+            <FullScreen handle={screen1} onChange={reportChange}>
+              <HTMLFlipBook width={510} height={400}
+                ref={book}
+                style={{
+                  display: `${screen1.active ? 'flex' : ''}`,
+                  // justifyContent: `${screen1.active ? 'center' : ''}`,
+                  marginTop: `${screen1.active ? '10rem' : ''}`,
+                  marginLeft: `${screen1.active ? '12rem' : ''}`
+                }}
+              >
+                {
+                  magzineData && magzineData.map(elem => {
+                    return <div className="demoPage">
+                      <img src={elem.images} width="510px" height="400px" />
+                    </div>
+                  })
+                }
+              </HTMLFlipBook>
+              <div style={{
+                display: 'flex',
+                width: '250px',
+                paddingTop: '10px',
+                marginLeft: `${screen1.active ? '12rem' : ''}`,
+
+              }}>
+                <MdArrowBackIosNew onClick={() =>
+                  book.current.pageFlip().flipPrev()}
+                  style={{ color: 'white', cursor: 'pointer' }} />
+                <MdArrowForwardIos onClick={() =>
+                  book.current.pageFlip().flipNext()}
+                  style={{ color: 'white', marginLeft: '30px', cursor: 'pointer' }} />
+                {
+                  !screen1.active ?
+                    <BsFullscreen onClick={screen1.enter}
+                      style={{ color: 'white', marginLeft: '30px', cursor: 'pointer' }} />
+                    :
+                    <BsFullscreenExit onClick={screen1.exit}
+                      style={{ color: 'white', marginLeft: '30px', cursor: 'pointer' }} />
+
+                }
+                <div>
+                <RWebShare
+                  data={{
+                    // text: "Web Share - GfG",
+                    url: "http://localhost:3000",
+                    title: "Share",
+                  }}
+                  onClick={() => console.log("shared successfully!")}
+                >
+                  <AiOutlineShareAlt
+                    style={{
+                      color: 'white',
+                      fontSize: '21px',
+                      marginLeft: '30px',
+                      cursor: 'pointer'
+                    }} />
+                </RWebShare>
+
+                </div>
+              </div>
+            </FullScreen>
+          </div>
+          {/* {magzines["magazine_list"]?.length > 0 ? (
           magzines["magazine_list"]?.map((magzines, index) => {
             console.log("magMDetailPage", magzines.id);
             console.log("magMpdfmagMDetailPage", magzines.pdf);
             return ( */}
-        <>
-          {/* <div style={{ backgroundColor: 'black', padding: '4rem 9rem', margin: '50px 0px' }}>
+          <>
+            {/* <div style={{ backgroundColor: 'black', padding: '4rem 9rem', margin: '50px 0px' }}>
 
-            <Fullscreen isEnter={isEnter} onChange={setIsEnter}>
-              <div>
-
-                <HTMLFlipBook
-
-                  style={{
-                    display: `${isEnter ? 'flex' : ''}`,
-                    justifyContent: `${isEnter ? 'center' : ''}`,
-                    marginTop: `${isEnter ? '5rem' : ''}`,
-                    marginLeft: `${isEnter ? '-10rem' : ''}`
-                  }}
-                  width={isEnter ? 500 : 400}
-                  height={isEnter ? 550 : 350}>
-                  {
-                    magzineData && magzineData.map(elem =>
-
-                      <div className='demoPage' key={elem.id}>
-                        <img
-                          src={elem.images}
-                          width={isEnter ? 500 : 400}
-                          height={isEnter ? 550 : 350}
-                        />
-                      </div>
-                    )
-                  }
-
-
-                </HTMLFlipBook>
-              </div>
-            </Fullscreen>
-
-            <BiFullscreen
-              target="_blank"
-              style={{
-                marginTop: '1.5rem',
-                color: '#FFF',
-                fontSize: '1.5rem',
-                cursor:'pointer'
-              }}
-              onClick={() => {
-                setIsEnter(true);
-              }} />
-          </div> */}
-
-         
-
-          {/* <div className='MagzineCard' key={magzines?.id}> */}
-          {/* <Card  key={magzines?.id}>
+            {/* <div className='MagzineCard' key={magzines?.id}> */}
+            {/* <Card  key={magzines?.id}>
                     <Card.Body className='magzineCardBody'>
                       <Card.Text className='createdText'>
                         Created_at:
@@ -373,7 +401,7 @@ function MagzineDetails(m) {
                         />
                       </Card.Subtitle> */}
 
-          {/* 
+            {/* 
             <Button
                         key={magzines?.id}
                         onClick={() => handleShow(index)}
@@ -395,7 +423,7 @@ function MagzineDetails(m) {
                         </Modal.Header>
                         <Modal.Body key={magzines?.id} style={{ userSelect: "none" }}> */}
 
-          {/* <iframe
+            {/* <iframe
                             id='iframe'
                             src={magzines?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}
                             frameBorder='0'
@@ -404,7 +432,7 @@ function MagzineDetails(m) {
                             width='100%'
                           ></iframe>  */}
 
-          {/* <Document
+            {/* <Document
               class='center'
               key={magzines?.id}
               file={magzines?.pdf}
@@ -412,7 +440,7 @@ function MagzineDetails(m) {
             >
               <Page pageNumber={pageNumber} />
             </Document> */}
-          {/* <div className="main">
+            {/* <div className="main">
             <Document
               file={url}
               onLoadSuccess={onDocumentLoadSuccess}
@@ -444,7 +472,7 @@ function MagzineDetails(m) {
               </div>
             </div>
           </div> */}
-          {/* <Modal.Footer></Modal.Footer>
+            {/* <Modal.Footer></Modal.Footer>
                         </Modal.Body>
                       </Modal> 
 
@@ -456,14 +484,15 @@ function MagzineDetails(m) {
                       </Card.Text>
                     </Card.Body>
                   </Card> */}
-          {/* </div> */}
-        </>
-        {/* );
+            {/* </div> */}
+          </>
+          {/* );
             })
         ) : (
           <div className='text-center'>{t("common.noDataFound")}</div>
        )}    */}
 
+        </div>
       </Container>
 
       <div className='want'>
@@ -476,6 +505,8 @@ function MagzineDetails(m) {
       </div>
 
       <Footer loginPage={false} />
+
+
     </div >
   );
 }
