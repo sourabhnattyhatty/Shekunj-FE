@@ -89,48 +89,48 @@ const BlogDetails = () => {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-  
+
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      } 
+      }
       axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "blog_details";
-  
-          });
-          setBlogDetailsBoxAds(filterArray1);
-          // console.log("filterArray1blog_details",filterArray1)
-            }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "blog_details";
-          });
-          setBlogDetailsBoxAds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1) 
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+
+              return item.image_type == "blog_details";
+
+            });
+            setBlogDetailsBoxAds(filterArray1);
+            console.log("filterArray1blog_details", filterArray1)
           }
         })
-   }
-  )
-  },[])
- 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")    
+        axios
+          .get(
+            `/private_adds/private_add`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "blog_details";
+              });
+              setBlogDetailsBoxAds(filterArray1);
+              // console.log("filterArray1coursebox",filterArray1) 
+            }
+          })
+      }
+    )
+  }, [])
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
   const addEmail = (email) => {
@@ -195,11 +195,11 @@ const BlogDetails = () => {
                   src={blogs && blogs.image}
                   class='card-img-top'
                   alt='...'
-                ></img>
+                />
                 <h4 className='mb-3'>{blogs && blogs.title}</h4>
 
                 <Row>
-                  {blogs.created_at && (
+                  {/* {blogs.created_at && (
                     <Col md={6} xs={12}>
                       <h6>
                         <span>created_at</span> :{" "}
@@ -208,15 +208,15 @@ const BlogDetails = () => {
                         </Moment>
                       </h6>
                     </Col>
-                  )}
-                  {blogs.updated_at && (
+                  )} */}
+                  {/* {blogs.updated_at && (
                     <Col md={6} xs={12}>
                       <span>updated_at</span> :{" "}
                       <Moment format='D MMM YYYY' withTitle>
                         {blogs.updated_at}
                       </Moment>
                     </Col>
-                  )}
+                  )} */}
                 </Row>
 
                 {blogs.about_blog && (
@@ -229,7 +229,7 @@ const BlogDetails = () => {
                     />
                   </p>
                 )}
-                <Row>
+                {/* <Row>
                   {blogs.url && (
                     <Col md={10} xs={12}>
                       <h6>
@@ -245,7 +245,7 @@ const BlogDetails = () => {
                       </h6>
                     </Col>
                   )}
-                </Row>
+                </Row> */}
               </div>
             </Col>
 
@@ -265,7 +265,7 @@ const BlogDetails = () => {
                                         <img src={transformGalley(topSchools.image4)} alt='Image' className='right_gallery' />
                                     </Col>
                                 </Row>   */}
-                                <Col md={3} xs={12}>
+            <Col md={3} xs={12}>
               <Container>
                 {blogDetailsBoxAds.length > 0 && (
                   <Row>
