@@ -48,6 +48,7 @@ const Header = ({ page, subPage }) => {
   const [showmenu, setShowmenu] = React.useState(false);
   const [isAlertVisible, setIsAlertVisible] = React.useState(false);
 
+
   // useEffect(() => {
   //   const interval = setInterval(() => getTime(deadline), 1000);
 
@@ -912,12 +913,16 @@ const Header = ({ page, subPage }) => {
                         className='nav-link'
                       // to={routingConstants.SUCCESS_STORIES}
                       >
-                        {moment(
-                          notifications["Notifications "]?.[0]?.updated_at,
+                        {/* {moment(
+                          notifications["Notifications "]?.[0]?.updated_at
                         ).format("MM/DD/YYYY") ==
                           moment(Date.now()).format("MM/DD/YYYY") ? (
                           <>
+                            {console.log(notifications["Notifications "]?.[0]?.updated_at, moment(Date.now()).format("MM/DD/YYYY"), moment(
 
+                            ).format("MM/DD/YYYY")
+
+                              , '................date')}
                             <Badge
                               badgeContent='New'
                               style={{ color: "#e83e8c" }}
@@ -935,15 +940,15 @@ const Header = ({ page, subPage }) => {
                             </Badge>
                           </>
                         ) : (
-                          <>
+                          <> */}
                             <BellIcon
                               width='40'
                               active={true}
                               animate={true}
                               color='#ec498a'
                             />
-                          </>
-                        )}
+                          {/* </>
+                        )} */}
                       </span>
                     </Button>
                     <Menu
