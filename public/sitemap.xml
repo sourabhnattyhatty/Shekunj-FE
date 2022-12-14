@@ -5,12 +5,40 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-
 <url>
   <loc>https://www.shekunj.com/</loc>
   <lastmod>2022-12-01T13:22:14+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-
+<url>
+  <loc>https://www.shekunj.com/login</loc>
+  <lastmod>2022-12-01T13:22:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.shekunj.com/about</loc>
+  <lastmod>2022-12-01T13:22:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.shekunj.com/success-career-option/</loc>
+  <lastmod>2022-12-01T13:22:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.shekunj.com/success-career-test/</loc>
+  <lastmod>2022-12-01T13:22:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.shekunj.com/guidance-book/</loc>
+  <lastmod>2022-12-01T13:22:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.shekunj.com/success-stories/</loc>
+  <lastmod>2022-12-01T13:22:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 
 </urlset>
