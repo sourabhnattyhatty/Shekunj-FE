@@ -912,7 +912,7 @@ const Header = ({ page, subPage }) => {
                         className='nav-link'
                       // to={routingConstants.SUCCESS_STORIES}
                       >
-                        {moment(
+                        {/* {moment(
                           notifications["Notifications "]?.[0]?.updated_at,
                         ).format("MM/DD/YYYY") ==
                           moment(Date.now()).format("MM/DD/YYYY") ? (
@@ -934,7 +934,7 @@ const Header = ({ page, subPage }) => {
                               />
                             </Badge>
                           </>
-                        ) : (
+                        ) : ( */}
                           <>
                             <BellIcon
                               width='40'
@@ -943,7 +943,7 @@ const Header = ({ page, subPage }) => {
                               color='#ec498a'
                             />
                           </>
-                        )}
+                        {/* )} */}
                       </span>
                     </Button>
                     <Menu

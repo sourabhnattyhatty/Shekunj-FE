@@ -111,7 +111,7 @@ const CourseModule = () => {
   const [arr, setArray] = React.useState();
   const { courseModulesList, course, isLoading, moduleprogress, currentModal } =
     useSelector((state) => state.coursesReducer);
-  console.log("course", course);
+  console.log("course", courseModulesList, currentModal);
 
   const lastSelectedIndexOne = useRef();
   const lastSelectedObject = useRef();
