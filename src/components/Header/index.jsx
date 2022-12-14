@@ -48,6 +48,7 @@ const Header = ({ page, subPage }) => {
   const [showmenu, setShowmenu] = React.useState(false);
   const [isAlertVisible, setIsAlertVisible] = React.useState(false);
 
+
   // useEffect(() => {
   //   const interval = setInterval(() => getTime(deadline), 1000);
 
@@ -917,7 +918,11 @@ const Header = ({ page, subPage }) => {
                         ).format("MM/DD/YYYY") ==
                           moment(Date.now()).format("MM/DD/YYYY") ? (
                           <>
+                            {console.log(notifications["Notifications "]?.[0]?.updated_at, moment(Date.now()).format("MM/DD/YYYY"), moment(
 
+                            ).format("MM/DD/YYYY")
+
+                              , '................date')}
                             <Badge
                               badgeContent='New'
                               style={{ color: "#e83e8c" }}
