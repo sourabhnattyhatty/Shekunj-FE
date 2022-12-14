@@ -58,8 +58,6 @@ import Cookies from "js-cookie";
 const url = "https://cors-anywhere.herokuapp.com/http://www.pdf995.com/samples/pdf.pdf";
 // import ReactAudioPlayer from 'react-audio-player';
 
-
-
 function MagzineDetails(m) {
   const [isEnter, setIsEnter] = useState(false);
 
@@ -74,9 +72,9 @@ function MagzineDetails(m) {
   const screen1 = useFullScreenHandle();
   const screen2 = useFullScreenHandle();
   // const url = `https://cors-anywhere.herokuapp.com/${magzines?.pdf}`;
-  // const url = "https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
-  const apiBaseUrl = 'https://admin.shekunj.com/';
-  pdfjs.GlobalWorkerOptions.workerSrc =
+    // const url = "https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
+
+    pdfjs.GlobalWorkerOptions.workerSrc = 
     `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -98,10 +96,10 @@ function MagzineDetails(m) {
     changePage(1);
   }
 
-  /*To Prevent right click on screen*/
-  document.addEventListener("contextmenu", (event) => {
-    event.preventDefault();
-  });
+    /*To Prevent right click on screen*/
+    document.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+    });
 
   // const [show, setShow] = useState(false);
 
@@ -140,7 +138,7 @@ function MagzineDetails(m) {
   const [adds, setAdds] = useState([]);
   const [magzineDetailsBoxAds, setMagzineDetailsBoxAds] = useState([]);
 
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -180,11 +178,11 @@ function MagzineDetails(m) {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+  
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      }
+      } 
       axios
         .get(
           `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
@@ -215,10 +213,27 @@ function MagzineDetails(m) {
               setMagzineDetailsBoxAds(filterArray1);
               // console.log("filterArray1coursebox",filterArray1) 
             }
-          })
-      }
+          })   
+    } ,
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+      // alert("Your location is blocked")    
+    axios
+    .get(
+      `/private_adds/private_add`,
     )
-  }, [])
+    .then((response) => {
+      if (response && response.data.results.length > 0) {
+          let filterArray1 = response.data.results.filter((item, index) => {   
+            return item.image_type == "magazine_detail";
+          });
+          setMagzineDetailsBoxAds(filterArray1);
+          // console.log("filterArray1coursebox",filterArray1) 
+          }
+        })
+   }
+  )
+  },[])
 
   const addEmail = (email) => {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -273,7 +288,7 @@ function MagzineDetails(m) {
               </div>
             </Col>
             <Col md={6} data-aos='slide-up'>
-              <h2> {t("successStoriesPage.heading.1")}</h2>
+              {/* <h2> {t("successStoriesPage.heading.1")}</h2> */}
               <p className='sucess_first_p'>
                 {t("successStoriesPage.content.1")}
               </p>
@@ -302,6 +317,7 @@ function MagzineDetails(m) {
         </Row>
       </Container>
 
+      {console.log("magzinesPdf", magzines?.pdf)}
       <Container>
         <div>
           <div style={{
@@ -422,7 +438,6 @@ function MagzineDetails(m) {
                           </Button>
                         </Modal.Header>
                         <Modal.Body key={magzines?.id} style={{ userSelect: "none" }}> */}
-
             {/* <iframe
                             id='iframe'
                             src={magzines?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}

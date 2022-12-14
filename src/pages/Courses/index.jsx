@@ -168,8 +168,7 @@ const Courses = () => {
 
               <div className='tag_btn'>
                 <button className='btn btn-info'>{obj?.category_name}</button>
-                <h3>{obj?.name}</h3>
-                {/* <h6>{obj?.name}</h6> */}
+                <h6>{obj?.name}</h6>
               </div>
             </div>
           </Link>

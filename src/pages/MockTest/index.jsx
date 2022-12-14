@@ -462,7 +462,7 @@ function MockTest() {
               </div>
             </Col>
             <Col md={6} data-aos='slide-up'>
-              <h2> {t("Shekunj.com Mock Test and Career Test")}</h2>
+              <h2> {t("Shekunj Online Test..")}</h2>
               <p> Have a look how SheKunj has played an important role</p>
             </Col>
           </Row>
@@ -473,7 +473,7 @@ function MockTest() {
           <div className='mock_test_tit noselect'>
             <Row>
               <Col md={6} xs={12}>
-                <h2>Mock-Test List</h2>
+                <h2>Free Online Mock Test Series</h2>
                 {/* <p>
                   {t("careerTopColleges.other.2")}{" "}
                   {topCollages?.collage_list?.length || 0}{" "}

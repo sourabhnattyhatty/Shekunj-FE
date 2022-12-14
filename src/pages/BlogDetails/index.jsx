@@ -195,11 +195,11 @@ const BlogDetails = () => {
                   src={blogs && blogs.image}
                   class='card-img-top'
                   alt='...'
-                ></img>
+                />
                 <h4 className='mb-3'>{blogs && blogs.title}</h4>
 
                 <Row>
-                  {blogs.created_at && (
+                  {/* {blogs.created_at && (
                     <Col md={6} xs={12}>
                       <h6>
                         <span>created_at</span> :{" "}
@@ -216,7 +216,7 @@ const BlogDetails = () => {
                         {blogs && blogs?.updated_at}
                       </Moment>
                     </Col>
-                  )}
+                  )} */}
                 </Row>
 
                 {blogs.about_blog && (
@@ -229,7 +229,7 @@ const BlogDetails = () => {
                     />
                   </p>
                 )}
-                <Row>
+                {/* <Row>
                   {blogs.url && (
                     <Col md={10} xs={12}>
                       <h6>
@@ -245,7 +245,7 @@ const BlogDetails = () => {
                       </h6>
                     </Col>
                   )}
-                </Row>
+                </Row> */}
               </div>
             </Col>
 

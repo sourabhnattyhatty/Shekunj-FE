@@ -313,7 +313,7 @@ India & Apply - Shekunj.com`}
           <div className='career_tit noselect'>
             <Row>
               <Col md={6} xs={12}>
-                <h2>{t("careerTopColleges.heading.1")}</h2>
+                <h1>{t("careerTopColleges.heading.1")}</h1>
                 <p>
                   {t("careerTopColleges.other.2")}{" "}
                   {topCollages?.collage_list?.length || 0}{" "}
@@ -441,7 +441,7 @@ India & Apply - Shekunj.com`}
 
                             <Col md={9} xs={12}>
                               <div className='top_col_content'>
-                                <h2>
+                                <h3>
                                   <Link
                                     to={routingConstants.TOP_COLLEGES + c.id}
                                     className=''
@@ -449,7 +449,7 @@ India & Apply - Shekunj.com`}
                                   >
                                     {c && c.name}
                                   </Link>
-                                </h2>
+                                </h3>
                                 <ul class='list-inline list-unstyled'>
                                   {c.collage_type && (
                                     <li>
