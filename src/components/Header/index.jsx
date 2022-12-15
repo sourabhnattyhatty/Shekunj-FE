@@ -35,6 +35,7 @@ const Header = ({ page, subPage }) => {
   const { lan } = useSelector((state) => state.languageReducer);
   const dispatch = useDispatch();
   const history = useHistory();
+
   useEffect(() => {
     dispatch(getAllNotifications());
   }, [dispatch, lan]);

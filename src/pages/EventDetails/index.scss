@@ -683,3 +683,69 @@ button.book_event_btn:hover {
 //   width: 100%;
 //   box-sizing: border-box;
 // }
+
+.ModalBodyBoxEvent{
+  position: absolute;
+  width: 400;
+  background-color: #efefef;
+  // boxShadow: theme.shadows[5],
+  padding: 4px;
+  // outline: "none"
+  // margin-top: 50px;
+  // margin-bottom: 50px;
+  height: 60%;
+  width: 60%;
+  text-align: center;
+}
+.ModalBodyBoxEvent2{
+  position: absolute;
+  width: 400;
+  background-color: #efefef;
+  // boxShadow: theme.shadows[5],
+  padding: 4px;
+  // outline: "none"
+  // margin-top: 50px;
+  // margin-bottom: 50px;
+  height: 56%;
+  width: 60%;
+  text-align: center;
+}
+.ModalBoxEvent{
+  top:25%;
+  left:30%;
+  right:10%;
+}
+.ModalHeadEvent{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color:#d62c79;
+  color: white;
+  height: 50px;
+  padding-top: 10px;
+}
+.ModalBottomEvent{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color:#d62c79;
+  color: white;
+  height: 85px;
+  padding-top: 10px;
+}
+.ModalMiddleEvent{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.ModalButtonEvent{
+  color: white;
+  background-color:#d62c79;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.ModalLinkEvent a{
+  color:#d62c79 !important;
+  // text-decoration: none !important;
+}
+.ModalLinkEvent {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
