@@ -23,6 +23,8 @@
     "axios": "^0.24.0",
     "bootstrap": "^4.6.1",
     "chart.js": "^3.9.1",
+    "date-fns": "^2.29.3",
+    "dateformat": "^5.0.3",
     "dayjs": "^1.11.6",
     "dom-to-image": "^2.6.0",
     "env-cmd": "^10.1.0",

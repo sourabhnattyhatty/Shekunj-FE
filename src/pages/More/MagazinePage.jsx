@@ -125,47 +125,47 @@ function MagzinePage(m) {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-  
+
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      } 
+      }
       axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "magazine_index";
-  
-          });
-          setMagzineBoxAdds(filterArray1);
-          // console.log("filterArray1magazine_index",filterArray1)
-            }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "magazine_index";
-          });
-          setMagzineBoxAdds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1) 
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+
+              return item.image_type == "magazine_index";
+
+            });
+            setMagzineBoxAdds(filterArray1);
+            // console.log("filterArray1magazine_index",filterArray1)
           }
         })
-   }
-  )
-  },[])
- 
+    },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")    
+        axios
+          .get(
+            `/private_adds/private_add`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "magazine_index";
+              });
+              setMagzineBoxAdds(filterArray1);
+              // console.log("filterArray1coursebox",filterArray1) 
+            }
+          })
+      }
+    )
+  }, [])
+
 
   const addEmail = (email) => {
     console.log("addEmail", email);
@@ -189,7 +189,7 @@ function MagzinePage(m) {
         })
         .catch((error) => {
           console.log(error);
-      })
+        })
     });
   };
 
@@ -274,54 +274,52 @@ function MagzinePage(m) {
       </Container>
 
       <Container>
-        {magzines["magazine_list"]?.length > 0 ? (
-          magzines["magazine_list"]?.map((m, index) => {
-            console.log("magM", m.id);
-            console.log("magMpdf", m.pdf);
+        {magzines["magazine_list"] && magzines["magazine_list"]?.length > 0 ? (
+          magzines["magazine_list"] && magzines["magazine_list"]?.map((m, index) => {
             return (
               <>
                 <div className='Magzine noselect' key={m.id}>
                   <Row>
-                  {/* <Col sm={3} md={12}> */}
-                  <Col>
-                    <Card.Link
-                      style={{ color: "#a63d67 " }}
+                    {/* <Col sm={3} md={12}> */}
+                    <Col>
+                      <Card.Link
+                        style={{ color: "#a63d67 " }}
                       // href={routingConstants.MORE_MAGAZINE + m.id}
                       // href={m && m?.form_link}
-                    >
-                      <Card
-                        // style={{ width: "300px", height: "500px" }}
-                        className='MagzineCard'
-                        key={m?.id}
-                        href={m && m.form_link}
                       >
-                        <Link 
-                  to={routingConstants.MORE_MAGAZINE + m?.id}  key={m?.id}>
-                        <Card.Img
-                          className='magzineImage'
-                          variant='top'
-                          src={m?.image}
-                          alt=''
-                          srcSet=''
-                        />
-                        <Card.Body className='magzineCardBody'>
-                          <Card.Text className='createdText'>
-                            Created_at:
-                            <Moment format='D MMM YYYY' withTitle>
-                              {m?.created_at}
-                            </Moment>
-                          </Card.Text>
-
-                          <Card.Title>{m.title}</Card.Title>
-                          <Card.Subtitle className='mb-2 text-muted'>
-                            {" "}
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: `<div>${m.about_magazine}</div>`,
-                              }}
+                        <Card
+                          // style={{ width: "300px", height: "500px" }}
+                          className='MagzineCard'
+                          key={m && m?.id}
+                          href={m && m.form_link}
+                        >
+                          <Link
+                            to={routingConstants.MORE_MAGAZINE + m?.id} key={m && m?.id}>
+                            <Card.Img
+                              className='magzineImage'
+                              variant='top'
+                              src={m && m?.image}
+                              alt=''
+                              srcSet=''
                             />
-                          </Card.Subtitle>
-                          {/* <Button
+                            <Card.Body className='magzineCardBody'>
+                              <Card.Text className='createdText'>
+                                Created_at:
+                                <Moment format='D MMM YYYY' withTitle>
+                                  {m && m?.created_at}
+                                </Moment>
+                              </Card.Text>
+
+                              <Card.Title>{m.title}</Card.Title>
+                              <Card.Subtitle className='mb-2 text-muted'>
+                                {" "}
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: `<div>${m && m.about_magazine}</div>`,
+                                  }}
+                                />
+                              </Card.Subtitle>
+                              {/* <Button
                         key={m?.id}
                         onClick={() => handleShow(m?.pdf)}
                         style={{ backgroundColor: "#a63d67" }}
@@ -329,7 +327,7 @@ function MagzinePage(m) {
                         Read Pdf
                       </Button> */}
 
-                          {/* <Button
+                              {/* <Button
                         key={m?.id}
                         onClick={(m) => handleShow(index)}
                         style={{ backgroundColor: "#a63d67" }}
@@ -337,7 +335,7 @@ function MagzinePage(m) {
                         Read Pdf
                       </Button>  */}
 
-                          {/* <Modal
+                              {/* <Modal
                         key={index}
                         class='modal-dialog'
                         show={show=== index}
@@ -350,7 +348,7 @@ function MagzinePage(m) {
                         </Modal.Header>
                         <Modal.Body key={m?.id} style={{ userSelect: "none" }}>
                            */}
-                          {/* <iframe
+                              {/* <iframe
                             id='iframe'
                             src={m?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}
                             frameBorder='0'
@@ -359,7 +357,7 @@ function MagzinePage(m) {
                             width='100%'
                           ></iframe> */}
 
-                          {/* <HTMLFlipBook width={300} height={500}>
+                              {/* <HTMLFlipBook width={300} height={500}>
       <div className="demoPage"><Document   options={{ cMapUrl: 'cmaps/', cMapPacked: true }} file={m?.pdf} onLoadSuccess={onDocumentLoadSuccess}>
       {[...Array(m?.pdf?.total_pages)]?.map((page, index) => {
 
@@ -373,7 +371,7 @@ function MagzinePage(m) {
       </Document></div>
 
     </HTMLFlipBook> */}
-                          {/* <Document class="center" 
+                              {/* <Document class="center" 
                           
                           key={m?.id}
         file={m?.pdf}
@@ -404,15 +402,15 @@ function MagzinePage(m) {
         </button>
         </div> */}
 
-                          {/* <Modal.Footer></Modal.Footer>
+                              {/* <Modal.Footer></Modal.Footer>
                         </Modal.Body>
                       </Modal> */}
 
-                          {/* Read Pdf */}
+                              {/* Read Pdf */}
 
-                          {/* </Card.Link>  */}
+                              {/* </Card.Link>  */}
 
-                          {/* <PDFtoIMG file={ m?.pdf }>
+                              {/* <PDFtoIMG file={ m?.pdf }>
             {({pages}) => {
                 if (!pages.length) return 'Loading...';
                 return pages.map((page, index)=>
@@ -421,54 +419,54 @@ function MagzinePage(m) {
             }}
         </PDFtoIMG> */}
 
-                          <Card.Text className='updatedText'>
-                            Updated_at :
-                            <Moment format='D MMM YYYY' withTitle>
-                              {m?.updated_at}
-                            </Moment>
-                          </Card.Text>
-                        </Card.Body>
-                        </Link>
-                      </Card>
-                    </Card.Link>
-                  </Col>
+                              <Card.Text className='updatedText'>
+                                Updated_at :
+                                <Moment format='D MMM YYYY' withTitle>
+                                  {m && m?.updated_at}
+                                </Moment>
+                              </Card.Text>
+                            </Card.Body>
+                          </Link>
+                        </Card>
+                      </Card.Link>
+                    </Col>
 
-                  {(index % 2 == 1)
-            ?
-<>
+                    {(index % 2 == 1)
+                      ?
+                      <>
                         <Col>
                           <Card className='MagzineCardAdd'>
-                          {/* <Card > */}
-                          {magzineBoxAdds.length > 0 && (
-                            <div
-                              // className='slide-img-mag-add'
-                              className='slide-imgAdd'
-                              onClick={() =>
-                                addEmail(magzineBoxAdds[0]?.add_email)
-                              }
-                            >
-                              <a
-                                href={magzineBoxAdds[0]?.url_adds}
-                                target='_blank'
+                            {/* <Card > */}
+                            {magzineBoxAdds.length > 0 && (
+                              <div
+                                // className='slide-img-mag-add'
+                                className='slide-imgAdd'
+                                onClick={() =>
+                                  addEmail(magzineBoxAdds[0] && magzineBoxAdds[0]?.add_email)
+                                }
                               >
-                                <img
-                                  src={magzineBoxAdds[0]?.image}
-                                  alt='Image'
-                                  // className='google_add_box_img_mag'
-                                  className='magzineImageAdd'
-                                />
-                              </a>
-                              <div className='overlay'></div>
-                            </div>
-                          )}
+                                <a
+                                  href={magzineBoxAdds[0] && magzineBoxAdds[0]?.url_adds}
+                                  target='_blank'
+                                >
+                                  <img
+                                    src={magzineBoxAdds[0] && magzineBoxAdds[0]?.image}
+                                    alt='Image'
+                                    // className='google_add_box_img_mag'
+                                    className='magzineImageAdd'
+                                  />
+                                </a>
+                                <div className='overlay'></div>
+                              </div>
+                            )}
                           </Card>
-                   
+
                         </Col>
-                        </>
-            : ''
-           
-          }
-                </Row>
+                      </>
+                      : ''
+
+                    }
+                  </Row>
                 </div>
               </>
             );
@@ -482,7 +480,7 @@ function MagzinePage(m) {
           pluginRenderers={DocViewerRenderers}
           sandboxed='allow-scripts'
         />
-        
+
       </Container>
 
       <div className='want'>

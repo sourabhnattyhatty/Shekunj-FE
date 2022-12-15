@@ -21,15 +21,15 @@ import ChangeLanguageButton from "../LanguageButton";
 import Logo from "../../assets/images/logo.svg";
 import close from "../../assets/icons/x.png";
 import BellIcon from "react-bell-icon";
-
+import dateFormat, { masks } from "dateformat";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { pink } from "@mui/material/colors";
+import { compareAsc, format } from 'date-fns'
 
 const Header = ({ page, subPage }) => {
   const { notifications } = useSelector((state) => state.notificationsReducer);
-  console.log("notificationsHHHHHHH", notifications["Notifications "]);
-
+  console.log(dateFormat('12/15/2022', "mm/dd/yyyy"), '.........................notifications')
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
   const { lan } = useSelector((state) => state.languageReducer);
@@ -47,7 +47,7 @@ const Header = ({ page, subPage }) => {
   const [anchorEl3, setAnchorEl3] = React.useState(null);
   const [showmenu, setShowmenu] = React.useState(false);
   const [isAlertVisible, setIsAlertVisible] = React.useState(false);
-
+  const date = new Date()
   // useEffect(() => {
   //   const interval = setInterval(() => getTime(deadline), 1000);
 
@@ -203,6 +203,58 @@ const Header = ({ page, subPage }) => {
 
     setShowmenu(!showmenu);
   };
+
+  const notificationsFunction = (data) => {
+    if (data['Notifications '] == undefined) {
+      return (
+        <BellIcon
+          width='40'
+          active={true}
+          animate={true}
+          color='#ec498a'
+        />
+      )
+    }
+    else if (data['Notifications '].length == 0) {
+      return (<BellIcon
+        width='40'
+        active={true}
+        animate={true}
+        color='#ec498a'
+      />);
+    }
+    else {
+      if (moment(data['Notifications ']?.[0].updated_at).format('MM/DD/YYYY') == moment(Date.now()).format("MM/DD/YYYY")) {
+        return (
+          < Badge
+            badgeContent='New'
+            style={{ color: "#e83e8c" }}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <BellIcon
+              width='40'
+              active={true}
+              animate={true}
+              color='#ec498a'
+            />
+          </Badge>
+        )
+      }
+      else {
+        return (
+          <BellIcon
+            width='40'
+            active={true}
+            animate={true}
+            color='#ec498a'
+          />
+        )
+      }
+    }
+  }
 
   return (
     <div className='noselect'>
@@ -912,38 +964,7 @@ const Header = ({ page, subPage }) => {
                         className='nav-link'
                       // to={routingConstants.SUCCESS_STORIES}
                       >
-                        {moment(
-                          notifications["Notifications "]?.[0]?.updated_at,
-                        ).format("MM/DD/YYYY") ==
-                          moment(Date.now()).format("MM/DD/YYYY") ? (
-                          <>
-
-                            <Badge
-                              badgeContent='New'
-                              style={{ color: "#e83e8c" }}
-                              anchorOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                              }}
-                            >
-                              <BellIcon
-                                width='40'
-                                active={true}
-                                animate={true}
-                                color='#ec498a'
-                              />
-                            </Badge>
-                          </>
-                        ) : (
-                          <>
-                            <BellIcon
-                              width='40'
-                              active={true}
-                              animate={true}
-                              color='#ec498a'
-                            />
-                          </>
-                        )}
+                        {notificationsFunction(notifications)}
                       </span>
                     </Button>
                     <Menu
@@ -1045,9 +1066,9 @@ const Header = ({ page, subPage }) => {
               </div>
             </nav>
           </div>
-        </div>
-      </header>
-    </div>
+        </div >
+      </header >
+    </div >
   );
 };
 

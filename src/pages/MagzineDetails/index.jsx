@@ -12,7 +12,7 @@ import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
 // import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai"
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { BsFullscreen, BsFullscreenExit } from "react-icons/bs";
-
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import {
   Container,
   Row,
@@ -72,9 +72,9 @@ function MagzineDetails(m) {
   const screen1 = useFullScreenHandle();
   const screen2 = useFullScreenHandle();
   // const url = `https://cors-anywhere.herokuapp.com/${magzines?.pdf}`;
-    // const url = "https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
+  // const url = "https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
 
-    pdfjs.GlobalWorkerOptions.workerSrc = 
+  pdfjs.GlobalWorkerOptions.workerSrc =
     `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -96,93 +96,33 @@ function MagzineDetails(m) {
     changePage(1);
   }
 
-    /*To Prevent right click on screen*/
-    document.addEventListener("contextmenu", (event) => {
-      event.preventDefault();
-    });
-
-  // const [show, setShow] = useState(false);
-
-  // const handleClose = (index) => {
-  //   setShow(false);
-  // };
-  // const handleShow = (index) => {
-  //   setShow(index);
-  // };
-
-  // React.useEffect(() => {
-  //   dispatch(fetchMagzines());
-  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  // }, [dispatch, lan]);
-
-  // useEffect(() => {
-  //   dispatch(getAllMagzines());
-  // }, [dispatch, lan]);
+  /*To Prevent right click on screen*/
+  document.addEventListener("contextmenu", (event) => {
+    event.preventDefault();
+  });
 
   useEffect(() => {
     dispatch(singleMagzineDetails(id));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [dispatch, id, lan]);
 
-  // const singleMagzineDetails = (id) =>{
-  //   dispatch(singleMagzineDetails(id));
-  // }
-
-  // const handleSetCollapse = (id, is_collapse) => {
-  //   dispatch(setCollapseMagzines(id, is_collapse ? false : true));
-  // };
-
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
   const [magzineDetailsBoxAds, setMagzineDetailsBoxAds] = useState([]);
-
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
-  //     const latitude = position.coords.latitude;
-  //     const longitude = position.coords.longitude;
-
-  //     let params = {
-  //       latitude: latitude.toString(),
-  //       longitude: longitude.toString(),
-  //     };
-  //     axios
-  //       .get(
-  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-  //       )
-  //       .then((response) => {
-  //         if (response.data.results.length > 0) {
-  //           let filterArray = response.data.results.filter((item, index) => {
-  //             return item.image_type == "magazine_detail";
-  //           });
-  //           let findImage =
-  //             filterArray.length > 0 ? filterArray[0].image : "NA";
-  //           setImage(findImage);
-  //           setMagzinetDetailsBoxAds(filterArray);
-  //         }
-  //       })   .catch((error) => {
-  //         // setMessage("No data found");
-  //         console.log(error);
-  //     })
-  //   });
-  //   dispatch(adsList());
-  // }, [dispatch]);
-
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>
+  const [turnPageStop, setTurnPageStop] = useState(false);
 
   useEffect(() => {
     dispatch(adsList())
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-  
+
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      } 
+      }
       axios
         .get(
           `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
@@ -213,27 +153,27 @@ function MagzineDetails(m) {
               setMagzineDetailsBoxAds(filterArray1);
               // console.log("filterArray1coursebox",filterArray1) 
             }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
+          })
+      },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")    
+        axios
+          .get(
+            `/private_adds/private_add`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "magazine_detail";
+              });
+              setMagzineDetailsBoxAds(filterArray1);
+              // console.log("filterArray1coursebox",filterArray1) 
+            }
+          })
+      }
     )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "magazine_detail";
-          });
-          setMagzineDetailsBoxAds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1) 
-          }
-        })
-   }
-  )
-  },[])
+  }, [])
 
   const addEmail = (email) => {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -276,6 +216,15 @@ function MagzineDetails(m) {
 
   }, [])
 
+  const handlePrev = () => {
+    book.current.pageFlip().flipPrev()
+    setTurnPageStop(false)
+  }
+  const handleNxt = () => {
+    book.current.pageFlip().flipNext()
+    setTurnPageStop(false)
+  }
+
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreblog' />
@@ -317,198 +266,94 @@ function MagzineDetails(m) {
         </Row>
       </Container>
 
-      {console.log("magzinesPdf", magzines?.pdf)}
       <Container>
-        <div>
-          <div style={{
-            background: 'black',
-            width: '100%',
-            height: '500px',
-            padding: '45px',
-            margin: '50px 0px'
-          }}>
-            <FullScreen handle={screen1} onChange={reportChange}>
-              <HTMLFlipBook width={510} height={400}
-                ref={book}
-                style={{
-                  display: `${screen1.active ? 'flex' : ''}`,
-                  // justifyContent: `${screen1.active ? 'center' : ''}`,
-                  marginTop: `${screen1.active ? '10rem' : ''}`,
-                  marginLeft: `${screen1.active ? '12rem' : ''}`
-                }}
-              >
-                {
-                  magzineData && magzineData.map(elem => {
-                    return <div className="demoPage">
-                      <img src={elem.images} width="510px" height="400px" />
+        <div className="magazine_div"
+          style={{
+            width: `${screen1.active ? '90rem' : '59rem'}`,
+            height: `${screen1.active ? '70rem' : '36.7rem'}`,
+
+          }}
+        >
+          <FullScreen handle={screen1} onChange={reportChange}>
+            <TransformWrapper
+              initialScale={1}
+              maxScale={7}
+            >
+              {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+                <React.Fragment>
+                  <TransformComponent>
+                    <div className="zoom_div"
+                      style={{
+                        marginTop: `${screen1.active ? '12rem' : ''}`,
+                        marginLeft: `${screen1.active ? '22rem' : ''}`
+                      }}>
+
+                      <HTMLFlipBook width={320} height={485}
+                        ref={book}
+                      >
+                        {
+                          magzineData && magzineData.map(elem => {
+                            return <div className="demoPage">
+                              <img src={elem.images} width='320px' height="485px" />
+                            </div>
+
+                          })
+                        }
+                      </HTMLFlipBook>
+
                     </div>
-                  })
-                }
-              </HTMLFlipBook>
-              <div style={{
-                display: 'flex',
-                width: '250px',
-                paddingTop: '10px',
-                marginLeft: `${screen1.active ? '12rem' : ''}`,
-
-              }}>
-                <MdArrowBackIosNew onClick={() =>
-                  book.current.pageFlip().flipPrev()}
-                  style={{ color: 'white', cursor: 'pointer' }} />
-                <MdArrowForwardIos onClick={() =>
-                  book.current.pageFlip().flipNext()}
-                  style={{ color: 'white', marginLeft: '30px', cursor: 'pointer' }} />
-                {
-                  !screen1.active ?
-                    <BsFullscreen onClick={screen1.enter}
-                      style={{ color: 'white', marginLeft: '30px', cursor: 'pointer' }} />
-                    :
-                    <BsFullscreenExit onClick={screen1.exit}
-                      style={{ color: 'white', marginLeft: '30px', cursor: 'pointer' }} />
-
-                }
-                <div>
-                <RWebShare
-                  data={{
-                    // text: "Web Share - GfG",
-                    url: "http://localhost:3000",
-                    title: "Share",
-                  }}
-                  onClick={() => console.log("shared successfully!")}
-                >
-                  <AiOutlineShareAlt
+                  </TransformComponent>
+                  <div className="icons_div"
                     style={{
-                      color: 'white',
-                      fontSize: '21px',
-                      marginLeft: '30px',
-                      cursor: 'pointer'
-                    }} />
-                </RWebShare>
+                      width: `${screen1.active ? '95.8rem' : '59rem'}`,
+                      paddingTop: `${screen1.active ? '2rem' : '1rem'}`,
+                      // marginLeft: `${screen1.active ? '22rem' : ''}`
+                    }}>
 
-                </div>
-              </div>
-            </FullScreen>
-          </div>
-          {/* {magzines["magazine_list"]?.length > 0 ? (
-          magzines["magazine_list"]?.map((magzines, index) => {
-            console.log("magMDetailPage", magzines.id);
-            console.log("magMpdfmagMDetailPage", magzines.pdf);
-            return ( */}
-          <>
-            {/* <div style={{ backgroundColor: 'black', padding: '4rem 9rem', margin: '50px 0px' }}>
+                    <MdArrowBackIosNew
+                      onClick={() => { resetTransform(); handlePrev() }}
+                      className='icon_class' />
+                    <MdArrowForwardIos
+                      onClick={() => { resetTransform(); handleNxt() }}
+                      className='icon_class' />
+                    <BsZoomIn onClick={() => zoomIn(setTurnPageStop(true))}
+                      className='icon_class' />
+                    <BsZoomOut
+                      onClick={() => zoomOut(setTurnPageStop(true),)}
+                      className='icon_class' />
 
-            {/* <div className='MagzineCard' key={magzines?.id}> */}
-            {/* <Card  key={magzines?.id}>
-                    <Card.Body className='magzineCardBody'>
-                      <Card.Text className='createdText'>
-                        Created_at:
-                        <Moment format='D MMM YYYY' withTitle>
-                          {magzines?.created_at}
-                        </Moment>
-                      </Card.Text>
-
-                      <Card.Title>{magzines && magzines?.title}</Card.Title>
-                      <Card.Subtitle className='mb-2 text-muted'>
-                        {" "}
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: `<div>${magzines?.about_magazine}</div>`,
+                    {
+                      !screen1.active ?
+                        <BsFullscreen onClick={screen1.enter}
+                          className='icon_class' />
+                        :
+                        <BsFullscreenExit onClick={screen1.exit}
+                          className='icon_class' />
+                    }
+                    {
+                      !screen1.active ?
+                        <RWebShare
+                          data={{
+                            url: "http://localhost:3000",
+                            title: "Share",
                           }}
-                        />
-                      </Card.Subtitle> */}
+                          style={{ width: '19%' }}
+                          onClick={() => console.log("shared successfully!")}
+                        >
+                          <AiOutlineShareAlt style={{ color: 'white', cursor: 'pointer', fontSize: '22px' }} />
+                        </RWebShare>
+                        :
+                        ""
+                    }
 
-            {/* 
-            <Button
-                        key={magzines?.id}
-                        onClick={() => handleShow(index)}
-                        style={{ backgroundColor: "#a63d67" }}
-                      >
-                        Read Pdf
-                      </Button>
-
-                      <Modal
-                        key={index}
-                        class='modal-dialog'
-                        show={show=== index}
-                        toggle={handleClose}
-                      >
-                        <Modal.Header closeButton>
-                          <Button variant='secondary' onClick={handleClose}>
-                            Close
-                          </Button>
-                        </Modal.Header>
-                        <Modal.Body key={magzines?.id} style={{ userSelect: "none" }}> */}
-            {/* <iframe
-                            id='iframe'
-                            src={magzines?.pdf + "#toolbar=0&navpanes=0&scrollbar=0"}
-                            frameBorder='0'
-                            scrolling='auto'
-                            height='100%'
-                            width='100%'
-                          ></iframe>  */}
-
-            {/* <Document
-              class='center'
-              key={magzines?.id}
-              file={magzines?.pdf}
-              onLoadSuccess={onDocumentLoadSuccess}
-            >
-              <Page pageNumber={pageNumber} />
-            </Document> */}
-            {/* <div className="main">
-            <Document
-              file={url}
-              onLoadSuccess={onDocumentLoadSuccess}
-            >
-              <Page pageNumber={pageNumber} />
-            </Document>
-            <div>
-              <div className="pagec">
-                Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
-              </div>
-              <div className="buttonc">
-                <button
-                  type="button"
-                  disabled={pageNumber <= 1}
-                  onClick={previousPage}
-                  className="Pre"
-
-                >
-                  Previous
-                </button>
-                <button
-                  type="button"
-                  disabled={pageNumber >= numPages}
-                  onClick={nextPage}
-
-                >
-                  Next
-                </button>
-              </div>
-            </div>
-          </div> */}
-            {/* <Modal.Footer></Modal.Footer>
-                        </Modal.Body>
-                      </Modal> 
-
-            <Card.Text className='updatedText'>
-                        Updated_at :
-                        <Moment format='D MMM YYYY' withTitle>
-                          {magzines?.updated_at}
-                        </Moment>
-                      </Card.Text>
-                    </Card.Body>
-                  </Card> */}
-            {/* </div> */}
-          </>
-          {/* );
-            })
-        ) : (
-          <div className='text-center'>{t("common.noDataFound")}</div>
-       )}    */}
-
+                  </div>
+                </React.Fragment>
+              )}
+            </TransformWrapper>
+          </FullScreen>
         </div>
-      </Container>
+
+      </Container >
 
       <div className='want'>
         <Container>

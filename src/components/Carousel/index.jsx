@@ -188,7 +188,7 @@ function Carousel(props) {
           {props.type === carouselConstant.TEST && (
             <>
               {tests?.map((obj, ind) => (
-                <Link to='/success-career-test'>
+                <Link to='/mock-test'>
                   <div className='item' key={ind}>
                     <div className='box'>
                       <div className='slide-img'>
