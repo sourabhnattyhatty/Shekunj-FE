@@ -35,6 +35,7 @@ const Header = ({ page, subPage }) => {
   const { lan } = useSelector((state) => state.languageReducer);
   const dispatch = useDispatch();
   const history = useHistory();
+
   useEffect(() => {
     dispatch(getAllNotifications());
   }, [dispatch, lan]);
@@ -46,13 +47,6 @@ const Header = ({ page, subPage }) => {
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [anchorEl3, setAnchorEl3] = React.useState(null);
   const [showmenu, setShowmenu] = React.useState(false);
-  const [isAlertVisible, setIsAlertVisible] = React.useState(false);
-  
-  // useEffect(() => {
-  //   const interval = setInterval(() => getTime(deadline), 1000);
-
-  //   return () => clearInterval(interval);
-  // }, []);
 
   const open = Boolean(anchorEl);
   const open77 = Boolean(anchorEl77);
@@ -910,12 +904,8 @@ const Header = ({ page, subPage }) => {
                     >
                       <span
                         className='nav-link'
-                        // to={routingConstants.SUCCESS_STORIES}
                       >
-                        {moment(
-                          notifications["Notifications "]?.[0].updated_at,
-                        ).format("MM/DD/YYYY") ==
-                        moment(Date.now()).format("MM/DD/YYYY") ? (
+  {notifications["Notifications "]?.[0] && moment(notifications["Notifications "]?.[0].updated_at).format("MM/DD/YYYY") == moment(Date.now()).format("MM/DD/YYYY") ? (
                           <>
                             <Badge
                               badgeContent='New'
@@ -933,7 +923,7 @@ const Header = ({ page, subPage }) => {
                               />
                             </Badge>
                           </>
-                        ) : (
+                        ) : ( 
                           <>
                             <BellIcon
                               width='40'
@@ -942,16 +932,13 @@ const Header = ({ page, subPage }) => {
                               color='#ec498a'
                             />
                           </>
-                        )}
+                         )} 
                       </span>
                     </Button>
-                    {console.log(
+                     {/* {console.log(
                       "notifications.updated_at",
-                      moment(
-                        notifications["Notifications "]?.[0].updated_at,
-                      ).format("MM/DD/YYYY"),
-                      moment(Date.now()).format("MM/DD/YYYY"),
-                    )}
+                        notifications["Notifications "]?.[0]
+                    )}  */}
                     <Menu
                       id='basic-menu77'
                       //  anchorEl={anchorEl1}
