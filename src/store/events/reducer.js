@@ -4,6 +4,7 @@ const initialState = {
   isLoading: false,
   error: null,
   events: {},
+  bookEvents:0,
 };
 
 export const eventsReducer = (state = initialState, action) => {
@@ -18,6 +19,7 @@ export const eventsReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
+        bookEvents:action.payload.code,
         error: null,
       };
     case eventsTypes.BOOK_EVENT_FAIL:

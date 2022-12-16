@@ -30,29 +30,49 @@ import "./index.scss";
 import noImageIcon from "../../assets/images/no-image.jpeg";
 import { adsList } from "../../store/ads";
 import City from "../../assets/icons/city.png";
+import { Button, Typography, Modal } from "@mui/material";
 
 const EventDetails = () => {
   const { id } = useParams();
+  const [open, setOpen] = useState(false);
+  // getModalStyle is not a pure function, we roll the style only on the first render
+  // const [modalStyle] = useState(getModalStyle);
+  // const [modalData, setData] = useState();
+
   // console.log("EventIdddd",events.extra_info)
   const history = useHistory();
   const { events } = useSelector((state) => state.eventsReducer);
+  const { bookEvents } = useSelector((state) => state.eventsReducer);
   const { user } = useSelector((state) => state.authReducer);
-  console.log("usertype", typeof user);
+  // console.log("usertype", typeof user);
   console.log("userdata ---->", user);
+  console.log("bookEvent", bookEvents);
   const dispatch = useDispatch();
 
-  console.log("Eventsssssss", events);
+ 
   // const { isLoading } = useSelector((state) => state.eventReducer);
   const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
   const extraInfoCopy = events;
+
+  const handleOpen = (index) => {
+    console.log("bookEventsStatusCode", bookEvents);
+    if (bookEvents == 200) {
+      setOpen(true);
+    }
+    // setData(data[index]);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
   const [eventDetailsBoxAds, setEventDetailsBoxAds] = useState([]);
   const [extraInfo, setExtraInfo] = useState([]);
   const [name, setName] = useState([]);
-  console.log("EventExtraInfo", events?.extra_info);
+  // console.log("EventExtraInfo", events?.extra_info);
 
   const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
   const GenderCategory = ["male", "female"];
@@ -101,12 +121,12 @@ const EventDetails = () => {
       const date_of_birth = moment(`${values.date_of_birth}`).format(
         "YYYY-MM-DD",
       );
-      console.log("extra_info_regetlfsd", extraInfo);
+      // console.log("extra_info_regetlfsd", extraInfo);
       let finalObj = {};
       for (let i = 0; i < extraInfo.length; i++) {
         Object.assign(finalObj, extraInfo[i]);
       }
-      console.log("onChange Event", finalObj);
+      // console.log("onChange Event", finalObj);
 
       values = {
         ...values,
@@ -120,7 +140,8 @@ const EventDetails = () => {
     },
   });
 
-  console.log("initialFormValue", initialValues);
+
+  // console.log("whatsapp_group_link",events?.whatsapp_group_link?.whatsapp_link );
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -231,14 +252,19 @@ const EventDetails = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [dispatch, id, lan]);
 
+  useEffect(() => {
+    handleOpen();
+  }, [bookEvents]);
+
   let evalData = eval(events.extra_info);
 
+ 
   return (
     <div>
       {/* <SEO title='Sheकुंज - Career' /> */}
-      <Header loginPage={true} page='More' />
+      <Header loginPage={true} page='more' />
 
-      {console.log("eventss---Detail", events)}
+      {/* {console.log("eventss---Detail", events)} */}
       {/* {events?.event_list?.length > 0 ? (
             events?.event_list?.map((c)=>{
               console.log("c", c);
@@ -421,10 +447,10 @@ const EventDetails = () => {
 
                     {events.id &&
                       Object.entries(events.extra_info).map((key, index) => {
-                        console.log(
-                          "Object.entries",
-                          Object.entries(events?.extra_info),
-                        );
+                        // console.log(
+                        //   "Object.entries",
+                        //   Object.entries(events?.extra_info),
+                        // );
                         return (
                           <div>
                             {/* <Row>
@@ -447,14 +473,14 @@ const EventDetails = () => {
                                     );
                                     let newIndex = extraInfo.findIndex(
                                       (item) => {
-                                        console.log(
-                                          "item00000",
-                                          Object.keys(item),
-                                        );
+                                        // console.log(
+                                        //   "item00000",
+                                        //   Object.keys(item),
+                                        // );
                                         return Object.keys(item)[0] == key[0];
                                       },
                                     );
-                                    console.log("index0000", newIndex);
+                                    // console.log("index0000", newIndex);
                                     if (newIndex != -1) {
                                       extraInfo[newIndex][key[0]] =
                                         e.target.value;
@@ -478,8 +504,15 @@ const EventDetails = () => {
                           </div>
                         );
                       })}
-
-                    <button type='submit' className='book_event_btn'>
+                    <button
+                      type='submit'
+                      className='book_event_btn'
+                      onClick={() => {
+                        {
+                          bookEvents == 200 && handleOpen();
+                        }
+                      }}
+                    >
                       Register Here
                     </button>
                   </form>
@@ -513,6 +546,95 @@ const EventDetails = () => {
           </>
         </Container>
       </div>
+      {/* <Button
+            onClick={() => {
+              handleOpen();
+            }}
+          >
+            Open
+          </Button> */}
+
+      {events && events?.whatsapp_group_link?.join_group ? (
+        <Modal
+          aria-labelledby='simple-modal-title'
+          aria-describedby='simple-modal-description'
+          open={open}
+          onClose={handleClose}
+          className='ModalBoxEvent'
+        >
+          <div className='ModalBodyBoxEvent'>
+            <div className='ModalHeadEvent'>
+              <Typography variant='h6' id='modal-title'>
+                Congratulations... you have been registered!
+              </Typography>
+            </div>
+            <div className='ModalMiddleEvent'>
+              <Typography variant='h6' id='simple-modal-description'>
+                You can join our whatsapp group.
+              </Typography>
+              <a href='events?whatsapp_group_link?.whatsapp_link'>
+                <Button variant='contained' className='ModalButtonEvent'>
+                  JOIN WHATSAPP GROUP
+                </Button>
+              </a>
+              <divider />
+              <Typography variant='h4'>
+                Want to learn more? <br />
+                Checkout our other events
+              </Typography>
+              <div className='ModalLinkEvent'>
+                <Link to={routingConstants.MORE_EVENT}>
+                  <strong>Lets have a look... Shekunj Events!</strong>
+                </Link>
+              </div>
+            </div>
+            <div className='ModalBottomEvent'>
+              <Typography variant='h6' id='modal-title'>
+                are you excited to learn ? <br />
+                see you soon !
+              </Typography>
+            </div>
+          </div>
+        </Modal>
+      ) : (
+        <Modal
+          aria-labelledby='simple-modal-title'
+          aria-describedby='simple-modal-description'
+          open={open}
+          onClose={handleClose}
+          className='ModalBoxEvent'
+        >
+          <div className='ModalBodyBoxEvent2'>
+            <div className='ModalHeadEvent'>
+              <Typography variant='h6' id='modal-title'>
+                Congratulations... you have been registered!
+              </Typography>
+            </div>
+            <div className='ModalMiddleEvent'>
+              <Typography variant='h3' id='simple-modal-description'>
+                Thank You !
+              </Typography>
+              <br />
+              <divider />
+              <Typography variant='h4'>
+                Want to learn more? <br />
+                Checkout our other events
+              </Typography>
+              <div className='ModalLinkEvent'>
+                <Link to={routingConstants.MORE_EVENT}>
+                  <strong>Lets have a look... Shekunj Events!</strong>
+                </Link>
+              </div>
+            </div>
+            <div className='ModalBottomEvent'>
+              <Typography variant='h6' id='modal-title'>
+                are you excited to learn ? <br />
+                see you soon !
+              </Typography>
+            </div>
+          </div>
+        </Modal>
+      )}
 
       <Footer loginPage={false} />
     </div>

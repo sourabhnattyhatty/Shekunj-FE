@@ -56,7 +56,7 @@ export const bookEvent = (value) => async (dispatch) => {
     const res = await httpServices.post(constants.BOOK_EVENT, value);
     dispatch({
       type: eventsTypes.BOOK_EVENT_FINISH,
-      payload: { id: res.data.id },
+      payload: { id: res.data.id,code:res.status_code},
     });
     toast.success(res.message, toasterConfig);
   } catch (error) {
