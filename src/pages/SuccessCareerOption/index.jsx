@@ -11,6 +11,7 @@ import TabsExams from "./TabsExams/index";
 import { getCareerOption } from "../../store/guidance";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 function SuccessCareerOption() {
   const dispatch = useDispatch();
@@ -27,6 +28,19 @@ function SuccessCareerOption() {
       <Header loginPage={true} page='guidance' subPage='careerOption' />
 
       <div className='SucOption noselect'>
+
+      <Helmet>
+        <link rel="canonical" href="https://www.shekunj.com/career-option/" />
+        <title>Best Career Options and Occupations in India - Shekunj.com</title>
+        <meta name="description" content="Find out the list of Top Career Options in India;
+         Government Sector Finance Careers, 
+        Technology Careers, Marketing Careers, JEE, NEET, etc."/>
+        <meta name="keywords" content="Career Options in India,
+ future career options,
+ list of career choices,
+career opportunities,"/>
+      </Helmet>
+
         <Container>
           <h2 data-aos='slide-up'>
             {t("successCareerOption.other.3.1")}

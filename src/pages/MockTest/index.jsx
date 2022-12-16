@@ -8,7 +8,7 @@ import Timer from "react-compound-timer";
 import useExitPrompt from "../../hooks/useExitPromt";
 import Cross from "../../assets/icons/cross.png";
 import Search from "../../assets/icons/search1.png";
-
+import { Helmet } from "react-helmet-async";
 import {
   Autocomplete,
   Container,
@@ -451,6 +451,12 @@ function MockTest() {
 
   return (
     <div className='noselect'>
+
+
+<Helmet>
+<link rel="canonical" href="https://www.shekunj.com/mock-test/" />
+      </Helmet>
+
       <Header loginPage={true} page='guidance' subPage='mockTest' />
       <div className='SuccStory_banner'>
         {" "}

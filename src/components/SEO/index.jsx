@@ -13,6 +13,7 @@ const SEO = (props,{
   free online courses
   free career guidance`
 }) => {
+  debugger
   console.log('propsprops++',props)
   return (
     <>
@@ -26,8 +27,6 @@ const SEO = (props,{
         <meta property='og:url' content={image} />
         <meta property='og:keywords' content={props.keywords} />
         <meta name='keywords' content={props.keywords} />
-
-
       </Helmet>
     </>
   );

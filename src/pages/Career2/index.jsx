@@ -18,7 +18,7 @@ import "../HomePage/index.scss";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import { Helmet } from "react-helmet-async";
 const CareerPage2 = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -257,18 +257,27 @@ const CareerPage2 = () => {
 
   return (
     <div>
-      <SEO
-        title={`List of Government
+      {/* <SEO
+        title={``}
+        description={``}
+        keywords={``}
+      /> */}
+
+<Helmet>
+<link rel="canonical" href="https://www.shekunj.com/government-schemes-in-india/" />
+        <title>List of Government
 Schemes in India -
-Benefits - Shekunj.com`}
-        description={`List of Government Schemes: Women
+Benefits - Shekunj.com</title>
+        <meta name="description" content="List of Government Schemes: Women
   Empowerment Schemes, Beti Bachao Beti
   Padhao, Start Up India Scheme, Bima
-  Yojana, women helpline scheme.`}
-        keywords={`government policies and Schemes in india government
+  Yojana, women helpline scheme."/>
+        <meta name="keywords" content="government policies and Schemes in india government
   schemes and programs new government schemes in india
-  central government schemes`}
-      />
+  central government schemes"/>
+      </Helmet>
+
+
       <Header loginPage={true} page='career' subPage='govExams' />
       <Container>
         <Row>

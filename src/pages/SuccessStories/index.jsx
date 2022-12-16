@@ -16,7 +16,7 @@ import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { adsList } from "../../store/ads";
-
+import { Helmet } from "react-helmet-async";
 function SuccessStory() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -179,6 +179,19 @@ function SuccessStory() {
     <div>
       <Header loginPage={true} page='story' />
       <div className='SuccStory_banner noselect'>
+
+      <Helmet>
+      <link rel="canonical" href="https://www.shekunj.com/success-stories/" />
+        <title>Inspiring Success Stories of #SheTheChampion - Shekunj.com</title>
+        <meta name="description" content="Shekunj.com shares success stories of 
+        women across India who have made their dreams come true and achieved sky-high
+         success. Read our success stories."/>
+        <meta name="keywords" content="women empowerment organizations,
+success stories,
+free online courses,
+free career guidance,"/>
+      </Helmet>
+
         <Container>
           <Row>
             <Col md={1}>

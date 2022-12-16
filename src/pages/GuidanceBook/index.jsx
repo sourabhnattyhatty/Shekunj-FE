@@ -43,6 +43,8 @@ import add2 from "../../assets/images/add2.jpg";
 import { adsList } from "../../store/ads";
 import City from "../../assets/icons/city.png";
 import Edit from "../../assets/icons/edit.png";
+
+import { Helmet } from "react-helmet-async";
 // import Calendar from "../../../assets/icons/calendar.png";
 function range(start, end) {
   return Array(end - start + 1)
@@ -281,6 +283,16 @@ const GuidancePage = () => {
     <div>
       <Header loginPage={true} page='guidance' subPage='bookCounsller' />
       <div className='guidance_book noselect'>
+
+      <Helmet>
+        <title>Get Free Online Counselling For Women in India - Shekunj.com</title>
+        <meta name="description" content="Choose the right path for you to get free
+         online counselling by the best counsellors in India, career counselling, business
+          counselling, mental health counselling."/>
+        <meta name="keywords" content="free online counselling in India, online free career counselling,        
+ free business counselling, mental health counselling, medical counselling, best counsellors in Indore"/>
+      </Helmet>
+
         <Container>
           <Row>
             <Col md={4} xs={12}>

@@ -8,7 +8,7 @@ import Hinglish from "../../assets/images/login/3.png";
 import LoginForm from "../../pages/LoginPage/LoginForm";
 import SignupForm from "../../pages/SignupPage/SignupForm";
 import login from "../../assets/images/login.png";
-
+import { Helmet } from "react-helmet-async";
 import "./index.scss";
 
 const AuthContent = ({ loginPage }) => {
@@ -16,6 +16,21 @@ const AuthContent = ({ loginPage }) => {
 
   return (
     <div className='noselect'>
+
+<Helmet>
+        <title>Women Empowerment Organization in India - Login Shekunj.com</title>
+        <meta name="description" content="Choose the right path for you to get free
+         online counselling by the best counsellors in India, career counselling,
+          business counselling, mental health counselling."/>
+        <meta name="keywords" content="free online counselling in India,
+online free career counselling,        
+ free business counselling, 
+ mental health counselling, 
+ medical counselling,
+best counsellors in Indore"/>
+      </Helmet>
+
+
       <div
         className={
           loginPage ? "login_bg_main login_main mt-3" : "login_main mt-3"

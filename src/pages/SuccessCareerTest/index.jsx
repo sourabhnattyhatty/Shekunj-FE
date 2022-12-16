@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Timer from "react-compound-timer";
 import useExitPrompt from "../../hooks/useExitPromt";
-
+import { Helmet } from "react-helmet-async";
 import {
   Autocomplete,
   Container,
@@ -388,7 +388,20 @@ function CourseTest() {
     <div>
       <Header loginPage={true} page='guidance' subPage='careerTest' />
       <Container>
-        <div className='maindiv_prog setmain noselect'>
+        <div className='maindiv_prog setmain noselect 0000000'>
+
+        <Helmet>
+        <title>Free Online Career Mock Test Series - Shekunj.com</title>
+        <meta name="description" content="Practice Free Online Test Series
+         & Mock Tests for Banking, SSC, JEE, NEET, and other Government and
+          Non-Government Exams and score high marks!"/>
+        <meta name="keywords" content="free online mock test,
+online career test,
+online career assessment,
+test series,
+free online mock test series"/>
+      </Helmet>
+
           <div className='select_test'>
             <h2>{t("successCareerTestPage.heading.1")}</h2>
             <Row>

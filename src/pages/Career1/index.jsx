@@ -12,7 +12,7 @@ import {
 import "../HomePage/index.scss";
 import "./index.scss";
 
-
+import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import TopSchool from "../../assets/images/Career/scl.jpg";
 import logo from "../../assets/icons/filter.png";
@@ -251,18 +251,26 @@ const CareerPage1 = () => {
 
   return (
     <div>
-      <SEO  title={`Find Top Schools in India
-& Apply - Shekunj.com`}
+      {/* <SEO  title={``}
 
-  description={`Give high-quality education to your children.
+  description={``}
+  keywords={``} /> */}
+
+<Helmet>
+        <link rel="canonical" href="https://www.shekunj.com/career-option/" />
+        <title>Find Top Schools in India
+& Apply - Shekunj.com</title>
+        <meta name="description" content="Give high-quality education to your children.
   Find the list of best schools in India and their
-  detailed information.`}
-  keywords={`top schools in india
+  detailed information."/>
+        <meta name="keywords" content="top schools in india
   list of best schools
   best boys schools
   top schools in mp
   boys schools in india
-  girls schools in india`} />
+  girls schools in india"/>
+      </Helmet>
+
       <Header loginPage={true} page='career' subPage='schools' />
 
       <Container>

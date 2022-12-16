@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Aos from "aos";
 import { useTranslation } from "react-i18next";
 
-import { Header, Footer, SEO } from "../../components";
+import { Header, Footer, } from "../../components";
 import half_star from "../../assets/images/half_star.svg";
 import img1 from "../../assets/images/About/img1.png";
 import Nikita from "../../assets/images/Nikita-Sharma.png";
@@ -16,6 +16,7 @@ import "./index.scss";
 import "aos/dist/aos.css";
 import "animate.css";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AboutusPage = () => {
   const { t } = useTranslation();
@@ -23,6 +24,22 @@ const AboutusPage = () => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // useEffect(() => {
   //   dispatch(adsList())
@@ -128,7 +145,17 @@ const AboutusPage = () => {
 
   return (
     <div className='noselect'>
-      <SEO title='Sheकुंज - About us'  />
+      
+      <Helmet>
+        <title>Women Empowerment Organization in India - About Shekunj.com</title>
+        <link rel="canonical" href="https://www.shekunj.com/about-us/" />
+        <meta name="description" content="Shekunj.com works for women empowerment by providing free online 
+        certification courses, career guidance, job and internship opportunities across India."/>
+        <meta name="keywords" content="women empowerment organizations, free online courses in india, free career guidance"/>
+      </Helmet>
+
+      {/* <SEO title='Sheकुंज - About us'  /> */}
+      
       <Header loginPage={false} page='about' />
       <section className='about_ban'>
         <div className='container'>

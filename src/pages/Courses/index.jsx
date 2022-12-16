@@ -25,7 +25,7 @@ import Pagination from "../../components/Pagination";
 
 import axios from "axios";
 import { adsList } from "../../store/ads";
-
+import { Helmet } from "react-helmet-async";
 // accordion
 
 import Accordion from "@mui/material/Accordion";
@@ -440,22 +440,33 @@ const Courses = () => {
 
   return (
     <div>
-      <SEO
-        title={`Best Free Online Courses
+      {/* <SEO
+        title={``}
+        description={``}
+        keywords={``}
+      /> */}
+      <Header loginPage={true} page='courses' />
+      <section className='Cors_sec noselect'>
+
+      <Helmet>
+
+      <link rel="canonical" href="https://www.shekunj.com/courses/" />
+        <title>Best Free Online Courses
       & Certifications in India - Shekunj.
-        com`}
-        description={`Advance your career with the free Online
+        com</title>
+        <link rel="canonical" href="https://www.shekunj.com/about-us/" />
+        <meta name="description" content="Advance your career with the free Online
   Professional development courses and
   certifications with the most in-demand skills
-  specially curated for women.`}
-        keywords={`free online courses in india
+  specially curated for women."/>
+        <meta name="keywords" content="free online courses in india
   best online certificate programs
   free online courses for girls in india
   online certification courses in india
-  free online courses for women`}
-      />
-      <Header loginPage={true} page='courses' />
-      <section className='Cors_sec noselect'>
+  free online courses for women"/>
+      </Helmet>
+
+
         <div className='container'>
           <div className='row'>
             <div className='col-lg-7 col-md-9'>

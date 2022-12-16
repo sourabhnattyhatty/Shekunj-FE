@@ -426,6 +426,8 @@ function MockTestDetail() {
       <Header loginPage={true} page='guidance' subPage='careerTest' />
       <Container>
         <div className='maindiv_prog setmain noselect'>
+
+          
           <div className='select_test' key={guidanceCategory?.id}>
             <h2>Test Started</h2>
 
