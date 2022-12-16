@@ -479,7 +479,7 @@ function MockTest() {
           <div className='mock_test_tit noselect'>
             <Row>
               <Col md={6} xs={12}>
-                <h2>Mock-Test List</h2>
+                <h2>Free Online Mock Test Series</h2>
                 {/* <p>
                   {t("careerTopColleges.other.2")}{" "}
                   {topCollages?.collage_list?.length || 0}{" "}

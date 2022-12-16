@@ -1,544 +1,572 @@
 .SuccStory_banner {
-    background-image: url("../../assets/images/Success/sus_banner.jpg");
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 620px;
-    background-size: cover;
+  background-image: url("../../assets/images/Success/sus_banner.jpg");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 620px;
+  background-size: cover;
+}
+
+.SuccStory_banner h2 {
+  font-family: SegoeUI_bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 31px;
+  line-height: 130%;
+  color: #ffffff;
+  margin-top: 80px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+
+// .SuccStory_banner h2::first-letter {
+//   color: #fff;
+//   font-size: 55px;
+// }
+.global_img {
+  margin-top: 100px;
+}
+
+.global_img img {
+  max-width: 100%;
+}
+
+.SuccStory_banner p {
+  font-family: SegoeUI_medium;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 120%;
+  color: #ffffff;
+}
+
+p.sucess_first_p {
+  color: rgb(255 255 255);
+  font-size: 27px;
+  font-weight: 600;
+  font-family: 'SegoeUI_bold';
+}
+
+.suc_box {
+  margin-top: 30px;
+}
+
+.suc_box h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 120%;
+  color: #d62c79;
+}
+
+.suc_box h3 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 140%;
+  color: #333333;
+}
+
+.suc_box p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  color: #828282;
+}
+
+.suc_btn button {
+  background: #ffe2ec;
+  border: 1px solid #ffe2ec;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 7.5px 20px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  color: #ec498a;
+}
+
+.suc_btn hr {
+  width: 226px;
+  border: 1px solid #e3e4eb;
+}
+
+.suc_btn {
+  display: flex;
+  gap: 1rem;
+}
+
+.suc_box img.quote_img {
+  max-width: 100%;
+  vertical-align: bottom;
+  margin-right: 10px;
+}
+
+.suc_box img {
+  max-width: 100%;
+}
+
+.suc_box ul {
+  padding: 0;
+}
+
+.suc_box ul li {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 18px;
+  padding-bottom: 20px;
+  list-style: none;
+  color: #333333;
+}
+
+.want {
+  background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
+  height: 507px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.want h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 55px;
+  text-transform: capitalize;
+  line-height: 110%;
+  text-align: center;
+  color: #ffffff;
+  max-width: 1057px;
+  margin: 0 auto;
+}
+
+button.want_btn {
+  background: #ec498a;
+  border-radius: 2px;
+  padding: 12px 20px;
+  border: none;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+  margin: 30px 0;
+}
+
+@media screen and (min-device-width: 50px) and (max-device-width: 767px) {
+  .SuccStory_banner {
+    background-image: url("../../assets/images/Success/mob_suc_banner.png");
+    height: 698px;
   }
-  
-  .SuccStory_banner h2 {
-    font-family: SegoeUI_bold;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 31px;
-    line-height: 130%;
-    color: #ffffff;
-    margin-top: 80px;
-    margin-bottom: 15px;
-    text-transform: capitalize;
-  }
-  
-  // .SuccStory_banner h2::first-letter {
-  //   color: #fff;
-  //   font-size: 55px;
-  // }
+
   .global_img {
-    margin-top: 100px;
+    margin-top: 43px;
   }
-  
-  .global_img img {
-    max-width: 100%;
-  }
-  
-  .SuccStory_banner p {
-    font-family: SegoeUI_medium;
-    font-style: normal;
-    font-weight: normal;
+
+  .SuccStory_banner h2 {
+    margin: 0;
     font-size: 24px;
-    line-height: 120%;
-    color: #ffffff;
+    margin-top: 15px;
   }
-  
-  p.sucess_first_p {
-    color: rgb(255 255 255);
-    font-size: 27px;
-    font-weight: 600;
-    font-family: 'SegoeUI_bold';
+
+  .SuccStory_banner p {
+    font-size: 16px;
+    margin-top: 15px;
   }
-  
+
   .suc_box {
+    margin-top: 40px;
+  }
+
+  .suc_btn hr {
+    width: 80px;
+  }
+
+  .suc_btn {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .suc_box h2 {
+    font-size: 16px;
+    padding-top: 20px;
+  }
+
+  .suc_box h3 {
+    font-size: 16px;
+  }
+
+  .suc_box p {
+    font-size: 16px;
+  }
+
+  .want h2 {
+    font-size: 24px;
+  }
+
+  button.want_btn {
+    border-radius: 2px;
+  }
+
+  .want {
+    height: 260px;
     margin-top: 30px;
   }
-  
-  .suc_box h2 {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 120%;
-    color: #d62c79;
+
+  .suc_box .col-md-8.col-12 {
+    order: 2;
   }
-  
-  .suc_box h3 {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 140%;
-    color: #333333;
+
+  .suc_box .col-md-4.col-12 {
+    order: 1;
   }
-  
-  .suc_box p {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 140%;
-    color: #828282;
-  }
-  
-  .suc_btn button {
-    background: #ffe2ec;
-    border: 1px solid #ffe2ec;
-    box-sizing: border-box;
-    border-radius: 5px;
-    padding: 7.5px 20px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 15px;
-    color: #ec498a;
-  }
-  
-  .suc_btn hr {
-    width: 226px;
-    border: 1px solid #e3e4eb;
-  }
-  
-  .suc_btn {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .suc_box img.quote_img {
-    max-width: 100%;
-    vertical-align: bottom;
-    margin-right: 10px;
-  }
-  
-  .suc_box img {
-    max-width: 100%;
-  }
-  
-  .suc_box ul {
-    padding: 0;
-  }
-  
-  .suc_box ul li {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 18px;
-    padding-bottom: 20px;
-    list-style: none;
-    color: #333333;
-  }
-  
-  .want {
-    background: linear-gradient(96.72deg, #fad0c4 6.25%, #e4a8e4 103.39%);
-    height: 507px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    margin-top: 70px;
-  }
-  
-  .want h2 {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 55px;
-    text-transform: capitalize;
-    line-height: 110%;
-    text-align: center;
-    color: #ffffff;
-    max-width: 1057px;
-    margin: 0 auto;
-  }
-  
-  button.want_btn {
-    background: #ec498a;
-    border-radius: 2px;
-    padding: 12px 20px;
-    border: none;
-    font-family: Source Sans Pro;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
-    text-align: center;
-    color: #ffffff;
-    margin: 30px 0;
-  }
-  
-  @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
-    .SuccStory_banner {
-      background-image: url("../../assets/images/Success/mob_suc_banner.png");
-      height: 698px;
-    }
-  
-    .global_img {
-      margin-top: 43px;
-    }
-  
-    .SuccStory_banner h2 {
-      margin: 0;
-      font-size: 24px;
-      margin-top: 15px;
-    }
-  
-    .SuccStory_banner p {
-      font-size: 16px;
-      margin-top: 15px;
-    }
-  
-    .suc_box {
-      margin-top: 40px;
-    }
-  
-    .suc_btn hr {
-      width: 80px;
-    }
-  
-    .suc_btn {
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-  
-    .suc_box h2 {
-      font-size: 16px;
-      padding-top: 20px;
-    }
-  
-    .suc_box h3 {
-      font-size: 16px;
-    }
-  
-    .suc_box p {
-      font-size: 16px;
-    }
-  
-    .want h2 {
-      font-size: 24px;
-    }
-  
-    button.want_btn {
-      border-radius: 2px;
-    }
-  
-    .want {
-      height: 260px;
-      margin-top: 30px;
-    }
-  
-    .suc_box .col-md-8.col-12 {
-      order: 2;
-    }
-  
-    .suc_box .col-md-4.col-12 {
-      order: 1;
-    }
-  
-    .ads_story_cover_img {
-      margin: 10px 0px !important;
-      height: 39px !important;
-      width: 80% !important;
-    }
-  
-    .ads_succ_story {
-      height: 47px !important;
-    }
-  
-  }
-  
-  
-  
-  // @media screen and (max-width: 1280px) {
-  //     .SuccStory_banner {
-  //     height: 534px;
-  // }
-  // }
-  
-  @media screen and (min-width: 1024px) and (max-width: 1400px) {
-    .SuccStory_banner {
-      height: 560px;
-      background-size: 100% 100%;
-      background-position: bottom;
-    }
-  }
-  
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .SuccStory_banner {
-      height: 500px;
-      background-size: 100% 100%;
-      background-position: bottom;
-    }
-  
-    .SuccStory_banner h2 {
-      font-size: 33px;
-    }
-  
-    .SuccStory_banner p {
-      font-size: 19px;
-    }
-  
-    .ads_story_cover_img {
-      margin: 10px 0px !important;
-      height: 39px !important;
-      width: 80% !important;
-    }
-  }
-  
-  .ads_story_cover {
-    text-align: center;
-  }
-  
+
   .ads_story_cover_img {
-    margin: 40px 0px;
-    height: 120px;
-    width: 84%;
-    object-fit: cover;
+    margin: 10px 0px !important;
+    height: 39px !important;
+    width: 80% !important;
   }
-  
+
   .ads_succ_story {
-    margin: 30px 0px;
-    height: 120px;
-    width: 84%;
-    object-fit: cover;
+    height: 47px !important;
   }
-  .iframe{
-    width: 100%;
-    height: 100%;
-    border: none;
-    }
-    
-    .iframe{
-      width: 800px;
-      user-select: none;
-      height: 800px !important;
-      // resize: both;
-      // overflow: auto;
-      // cursor: pointer;
-      touch-action: pan-y;
-    }
-    
-      .modal-footer {
-        // overflow-y: auto;
-        cursor: pointer;
-        }
-    
-      .modal-dialog{
-         max-height: calc(500vh - 180px); // to adjust you can change 180px
-          max-width: calc(200vh - 180px);
-        //  overflow-y: auto;
-         resize: both;
-         cursor: pointer;
-         position: relative;
-         height:1000px !important;
-         touch-action: pan-y;
-      }
-      .modal-body{
-        //  overflow-y: auto;
-         resize: both;
-        //  overflow: auto;
-         cursor: pointer;
-         position: relative;
-         user-select: none;
-        //  overflow-y: scroll;
-         height:700px;
-        //  pointer-events: none; 
-        touch-action: pan-y;
-      }
-      .modal-content{
-        cursor: pointer;
-        position: relative;
-        // overflow-y: auto;
-        // resize: both;
-        touch-action: pan-y;
-        user-select: none;
-        
-      }
-    
-      iframe {  
-        // pointer-events: none; 
-        max-width: calc(200vh - 180px);
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        // overflow-y: scroll;
-        touch-action: pan-y;
-      }
-      .react-pdf__Document canvas{
-       margin-left: 500px;
-      width: 600px !important;
-      height: 600px !important;
-    }
-    // img {
-    //   width: 100%;
-    //   height: 100%;
-    // }
-    .main-page-container {
-      margin: 0 auto;
-    }
-    .magzinePdf{
-        text-align: center !important;
-       color: #a63d67 !important;
-      }
-      .embed:focus {
-        outline: none;
-      }
-      .embed:focus{
-       user-select: none;
-       }
-       .magzineCardBody{
-         text-align: center;
-         background-image: linear-gradient(180deg,#fad0c4, white);
-         transition: ease-in-out;
-       }
-       .createdText{
-         text-align: start !important;
-         color: #6c757d !important;
-       }
-       .updatedText{
-         text-align: end !important;
-         color: #6c757d !important;
-       }
-       .c-heading-6 {
-        font-family: Segoe UI, SegoeUI;
-        font-size: 20px;
-        color: #000000;
-        padding: 10px 0;
-        max-height: 3.6em;
-        line-height: 1.1em;
-        display: inline-block;
-        word-wrap: break-word;
-        overflow: hidden;
-        -webkit-text-stroke-width: thin;
-        width: 83%;
-        height: 3.6em;
-        margin-bottom: -10px;
-      }
-      
-      .card-text {
-        margin: 0 0 10px 0;
-        font-family: Segoe UI, SegoeUI;
-        font-size: 14px;
-        font-weight: 600 !important;
-        color: #000000;
-      }
-      
-      .text-muted {
-        font-family: Segoe UI, SegoeUI;
-      }
-      
-      
-      .Card {
-        padding: 32px 100px;
-        margin: 16px 32px;
-        background-color: #d45d93;
-        box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
-       
-      }
-      
-      .card-title {
-        font-style: normal;
-        font-variant-ligatures: normal;
-        font-variant-caps: normal;
-        font-variant-numeric: normal;
-        font-variant-east-asian: normal;
-        font-weight: 900;
-        font-stretch: normal;
-        font-size: 36px;
-        line-height: normal;
-        font-family: "Playfair Display", serif;
-      }
-      
-      .card {
-        margin: 20px;
-        box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
-        border-radius: 10px;
-      }
-      
-      .Card img {
-        padding: 20px;
-      }
-      
-      .Card h5 {
-        padding: 10px;
-        color: #000000;
-      }
-      
-      .Card h6 {
-        padding: 10px;
-      }
-      
-      .Card a {
-        margin-left: 200px;
-        color: #99130b;
-        font-weight: 700px;
-        font-weight: bold;
-        text-transform: uppercase;
-      }
-      
-      .card-text-details {
-        font-family: "times", "times new roman", serif;
-        letter-spacing: 0.20000000298023224px;
-        color: #6c6c6c;
-        font: 15px Roboto, sans-serif;
-        line-height: 1.6em;
-        padding: 10px;
-      }
-      
-      .Card h3 {
-        color: #000000;
-      }
-      
-      .linkto {
-        color: #99130b;
-      }
-      
-      .col-md-8 {
-        padding-bottom: 30px;
-      }
-      
-      .NavLink {
-        color: #99130b !important;
-        font-weight: 400;
-        font-size: large;
-        font: 20px Roboto, sans-serif;
-      }
-      
-      .NavDrop {
-        color: #0c0c0c !important;
-        font-weight: 400;
-        font-size: large;
-        font-weight: bold;
-        font: 20px Roboto, sans-serif;
-      }
-      
-      .navbar-nav .NavDrop .nav-link {
-        color: #0c0c0c !important;
-      }
-      
-      .navbar-custom {
-        background-color: #ec498a;
-        color: #ffffff !important;
-        justify-content: center;
-      }
-      
-      .navbar-custom h2 {
-        text-align: center !important;
-      }
-     
-      .pdfDetails{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        touch-action: pan-y;
-        cursor: default;
-      }
-      .document-canvas{
-        pointer-events: none;
-        width: 100%;
-        height: 100%;
-      }
-      .reader__canvas-container{
-        height:100%;
-        width:100%;
-      }
-  
+
+}
+
+
+
+// @media screen and (max-width: 1280px) {
+//     .SuccStory_banner {
+//     height: 534px;
+// }
+// }
+
+@media screen and (min-width: 1024px) and (max-width: 1400px) {
+  .SuccStory_banner {
+    height: 560px;
+    background-size: 100% 100%;
+    background-position: bottom;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .SuccStory_banner {
+    height: 500px;
+    background-size: 100% 100%;
+    background-position: bottom;
+  }
+
+  .SuccStory_banner h2 {
+    font-size: 33px;
+  }
+
+  .SuccStory_banner p {
+    font-size: 19px;
+  }
+
+  .ads_story_cover_img {
+    margin: 10px 0px !important;
+    height: 39px !important;
+    width: 80% !important;
+  }
+}
+
+.ads_story_cover {
+  text-align: center;
+}
+
+.ads_story_cover_img {
+  margin: 40px 0px;
+  height: 120px;
+  width: 84%;
+  object-fit: cover;
+}
+
+.ads_succ_story {
+  margin: 30px 0px;
+  height: 120px;
+  width: 84%;
+  object-fit: cover;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.iframe {
+  width: 800px;
+  user-select: none;
+  height: 800px !important;
+  // resize: both;
+  // overflow: auto;
+  // cursor: pointer;
+  touch-action: pan-y;
+}
+
+.modal-footer {
+  // overflow-y: auto;
+  cursor: pointer;
+}
+
+.modal-dialog {
+  max-height: calc(500vh - 180px); // to adjust you can change 180px
+  max-width: calc(200vh - 180px);
+  //  overflow-y: auto;
+  resize: both;
+  cursor: pointer;
+  position: relative;
+  height: 1000px !important;
+  touch-action: pan-y;
+}
+
+.modal-body {
+  //  overflow-y: auto;
+  resize: both;
+  //  overflow: auto;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  //  overflow-y: scroll;
+  height: 700px;
+  //  pointer-events: none; 
+  touch-action: pan-y;
+}
+
+.modal-content {
+  cursor: pointer;
+  position: relative;
+  // overflow-y: auto;
+  // resize: both;
+  touch-action: pan-y;
+  user-select: none;
+
+}
+
+iframe {
+  // pointer-events: none; 
+  max-width: calc(200vh - 180px);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  // overflow-y: scroll;
+  touch-action: pan-y;
+}
+
+.react-pdf__Document canvas {
+  margin-left: 500px;
+  width: 600px !important;
+  height: 600px !important;
+}
+
+// img {
+//   width: 100%;
+//   height: 100%;
+// }
+.main-page-container {
+  margin: 0 auto;
+}
+
+.magzinePdf {
+  text-align: center !important;
+  color: #a63d67 !important;
+}
+
+.embed:focus {
+  outline: none;
+}
+
+.embed:focus {
+  user-select: none;
+}
+
+.magzineCardBody {
+  text-align: center;
+  background-image: linear-gradient(180deg, #fad0c4, white);
+  transition: ease-in-out;
+}
+
+.createdText {
+  text-align: start !important;
+  color: #6c757d !important;
+}
+
+.updatedText {
+  text-align: end !important;
+  color: #6c757d !important;
+}
+
+.c-heading-6 {
+  font-family: Segoe UI, SegoeUI;
+  font-size: 20px;
+  color: #000000;
+  padding: 10px 0;
+  max-height: 3.6em;
+  line-height: 1.1em;
+  display: inline-block;
+  word-wrap: break-word;
+  overflow: hidden;
+  -webkit-text-stroke-width: thin;
+  width: 83%;
+  height: 3.6em;
+  margin-bottom: -10px;
+}
+
+.card-text {
+  margin: 0 0 10px 0;
+  font-family: Segoe UI, SegoeUI;
+  font-size: 14px;
+  font-weight: 600 !important;
+  color: #000000;
+}
+
+.text-muted {
+  font-family: Segoe UI, SegoeUI;
+}
+
+
+.Card {
+  padding: 32px 100px;
+  margin: 16px 32px;
+  background-color: #d45d93;
+  box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+
+}
+
+.card-title {
+  font-style: normal;
+  font-variant-ligatures: normal;
+  font-variant-caps: normal;
+  font-variant-numeric: normal;
+  font-variant-east-asian: normal;
+  font-weight: 900;
+  font-stretch: normal;
+  font-size: 36px;
+  line-height: normal;
+  font-family: "Playfair Display", serif;
+}
+
+.card {
+  margin: 20px;
+  box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+  border-radius: 10px;
+}
+
+.Card img {
+  padding: 20px;
+}
+
+.Card h5 {
+  padding: 10px;
+  color: #000000;
+}
+
+.Card h6 {
+  padding: 10px;
+}
+
+.Card a {
+  margin-left: 200px;
+  color: #99130b;
+  font-weight: 700px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.card-text-details {
+  font-family: "times", "times new roman", serif;
+  letter-spacing: 0.20000000298023224px;
+  color: #6c6c6c;
+  font: 15px Roboto, sans-serif;
+  line-height: 1.6em;
+  padding: 10px;
+}
+
+.Card h3 {
+  color: #000000;
+}
+
+.linkto {
+  color: #99130b;
+}
+
+.col-md-8 {
+  padding-bottom: 30px;
+}
+
+.NavLink {
+  color: #99130b !important;
+  font-weight: 400;
+  font-size: large;
+  font: 20px Roboto, sans-serif;
+}
+
+.NavDrop {
+  color: #0c0c0c !important;
+  font-weight: 400;
+  font-size: large;
+  font-weight: bold;
+  font: 20px Roboto, sans-serif;
+}
+
+.navbar-nav .NavDrop .nav-link {
+  color: #0c0c0c !important;
+}
+
+.navbar-custom {
+  background-color: #ec498a;
+  color: #ffffff !important;
+  justify-content: center;
+}
+
+.navbar-custom h2 {
+  text-align: center !important;
+}
+
+.pdfDetails {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  touch-action: pan-y;
+  cursor: default;
+}
+
+.document-canvas {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+.reader__canvas-container {
+  height: 100%;
+  width: 100%;
+}
+
+.rws-container {
+  width: 100% !important;
+  max-width: 17rem !important;
+}
+
+.rws-backdrop {
+  background: unset !important;
+  justify-content: center !important;
+  width: 69% !important;
+}
+
+.rws-icon {
+  border-radius: 50% !important;
+}

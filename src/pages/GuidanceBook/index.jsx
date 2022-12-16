@@ -315,7 +315,7 @@ const GuidancePage = () => {
 
             <Col md={6} xs={12}>
               <div className='book_sec_content mob_show'>
-                <h2>{t("guidanceBookPage.heading.1")}</h2>
+                <h1>{t("guidanceBookPage.heading.1")}</h1>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur <br /> adipiscing
                   elit.

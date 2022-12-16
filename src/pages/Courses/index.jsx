@@ -155,7 +155,7 @@ const Courses = () => {
 
           <Link
             to={
-              routingConstants.COURSE_DETAILS + obj?.name.split(" ").join("_")
+              routingConstants.COURSE_DETAILS + obj?.id
             }
             className='col-md-6'
             key={obj?.id}

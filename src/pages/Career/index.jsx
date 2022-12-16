@@ -313,7 +313,7 @@ India & Apply - Shekunj.com`}
           <div className='career_tit noselect'>
             <Row>
               <Col md={6} xs={12}>
-                <h2>{t("careerTopColleges.heading.1")}</h2>
+                <h1>{t("careerTopColleges.heading.1")}</h1>
                 <p>
                   {t("careerTopColleges.other.2")}{" "}
                   {topCollages?.collage_list?.length || 0}{" "}

@@ -907,6 +907,11 @@ const Header = ({ page, subPage }) => {
                       >
   {notifications["Notifications "]?.[0] && moment(notifications["Notifications "]?.[0].updated_at).format("MM/DD/YYYY") == moment(Date.now()).format("MM/DD/YYYY") ? (
                           <>
+                            {console.log(notifications["Notifications "]?.[0]?.updated_at, moment(Date.now()).format("MM/DD/YYYY"), moment(
+
+                            ).format("MM/DD/YYYY")
+
+                              , '................date')}
                             <Badge
                               badgeContent='New'
                               style={{ color: "#e83e8c" }}
@@ -1021,7 +1026,7 @@ const Header = ({ page, subPage }) => {
                         className={
                           page === "more" ? "nav-item active" : "nav-item"
                         }
-                        // className={subPage === "AllNotification" && "active"}
+                      // className={subPage === "AllNotification" && "active"}
                       >
                         <strong>View ALL</strong>
                       </MenuItem>

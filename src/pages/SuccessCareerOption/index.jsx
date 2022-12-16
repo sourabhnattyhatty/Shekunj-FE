@@ -42,9 +42,9 @@ career opportunities,"/>
       </Helmet>
 
         <Container>
-          <h2 data-aos='slide-up'>
+          {/* <h2 data-aos='slide-up'>
             {t("successCareerOption.other.3.1")}
-          </h2>
+          </h2> */}
           <h3 data-aos='slide-up'>{t("successCareerOption.other.3.2")}</h3>
         </Container>
       </div>

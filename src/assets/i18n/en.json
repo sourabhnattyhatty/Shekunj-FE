@@ -274,19 +274,19 @@
     "carousel1": {
       "heading": {
         "1": "Our",
-        "2": "Most Popular courses"
+        "2": "Popular Courses in India"
       }
     },
     "carousel2": {
       "heading": {
         "1": "CHALLENGING",
-        "2": "Mock Tests"
+        "2": "Online Mock Test"
       }
     },
     "carousel3": {
       "heading": {
         "1": "Supportive",
-        "2": "Government Schemes"
+        "2": " Government Schemes"
       }
     },
     "resume": {
@@ -299,7 +299,7 @@
       "button": "View All Job Opportunities"
     },
     "community": {
-      "heading": "Trusted By All Women",
+      "heading": "India's Leading Women Empowerment Organization (above trusted by line)",
       "data": "Take a glance at the happy, glittering faces who have enrolled with SheKunj. We understand the importance of education for the solutions of tomorrow. SheKunj is a first-of-its-kind, women-centered, global network dedicated to the women empowerment",
       "button": "View Success Stories"
     },
@@ -484,7 +484,7 @@
   "careerGovExams": {
 
     "heading": {
-      "1": "Government Schemes"
+      "1": "Government Policies and Schemes in India"
     },
     "listItems": {
       "1": "CATEGORIES"
@@ -528,7 +528,7 @@
       "3": "Start for free!"
     },
     "heading": {
-      "1": "Online Courses",
+      "1": "Free Online Courses and Certifications",
       "2": "SheKunj’s courses are designed to kick-start your career and launch you to new heights of success. We want every woman should move to their creative journey forward without putting life on hold. SheKunj's courses are curated to provide practical and theoretical knowledge. We have crafted these courses to help you find inspiration that fits your routine.",
       "3": "So go nowhere and enroll on SheKunj now!"
     },
@@ -659,7 +659,7 @@
   },
   "guidanceBookPage": {
     "heading": {
-      "1": "Get Free Career Guidance Session",
+      "1": "Get Free Online Counselling Session",
       "2": "from finest counsellors",
       "3": "Book a Counsellor"
     }
@@ -697,7 +697,7 @@
   "successCareerOption": {
     "heading": {
       "1": "Choose Your Career",
-      "2": "Career Option"
+      "2": "Best Career Options in India"
       
     },
     "other": {

@@ -200,7 +200,7 @@ free career guidance,"/>
               </div>
             </Col>
             <Col md={6} data-aos='slide-up'>
-              <h2> {t("successStoriesPage.heading.1")}</h2>
+              <h1> {t("successStoriesPage.heading.1")}</h1>
               <p className='sucess_first_p'>
                 {t("successStoriesPage.content.1")}
               </p>

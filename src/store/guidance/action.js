@@ -52,29 +52,29 @@ export const getCareerOption = () => async (dispatch) => {
 
 // export const getGuidanceCategory = (id) => async (dispatch) => {
 export const getGuidanceCategory = (id) =>
-async (dispatch) => {
-  let newId = id == undefined ? "" : id;
-  try {
-    const url = apiConstants.GUIDANCE.CAREER_TEST_CATEGORY+ newId;
-    dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
-    const res = await httpServices.get(url);
-    console.log("onlycategory", res.data);
-    dispatch({
-      type: guidanceTypes.GUIDANCE_CATEGORY_FINISH_PRIVATE,
-      payload: res?.data || [],
-    });
-    dispatch({
-      type: guidanceTypes.GUIDANCE_CATEGORY_FINISH,
-      payload: res?.data || [],
-    });
-  } catch (error) {
-    dispatch({
-      type: guidanceTypes.GUIDANCE_CATEGORY_FAIL,
-      payload: error?.data,
-    });
-    toast.error(error?.data?.message, toasterConfig);
-  }
-};
+  async (dispatch) => {
+    let newId = id == undefined ? "" : id;
+    try {
+      const url = apiConstants.GUIDANCE.CAREER_TEST_CATEGORY + newId;
+      dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
+      const res = await httpServices.get(url);
+      console.log("onlycategory", res.data);
+      dispatch({
+        type: guidanceTypes.GUIDANCE_CATEGORY_FINISH_PRIVATE,
+        payload: res?.data || [],
+      });
+      dispatch({
+        type: guidanceTypes.GUIDANCE_CATEGORY_FINISH,
+        payload: res?.data || [],
+      });
+    } catch (error) {
+      dispatch({
+        type: guidanceTypes.GUIDANCE_CATEGORY_FAIL,
+        payload: error?.data,
+      });
+      toast.error(error?.data?.message, toasterConfig);
+    }
+  };
 
 export const getGuidanceCategoryDetail = (id) => async (dispatch) => {
   let newId = id == undefined ? "" : id;
@@ -108,20 +108,17 @@ export const fetchStartUserCareerTest =
       let res;
       if (module) {
         res = await httpServices.get(
-          `${
-            apiConstants.CAREER.START_USER_CAREER_TEST + id
+          `${apiConstants.CAREER.START_USER_CAREER_TEST + id
           }?test_id=${module}`,
         );
       } else if (module && progress > 0) {
         res = await httpServices.get(
-          `${
-            apiConstants.CAREER.START_USER_CAREER_TEST + id
+          `${apiConstants.CAREER.START_USER_CAREER_TEST + id
           }?test_id=${module}&progress=${progress}`,
         );
       } else if (progress && progress > 0) {
         res = await httpServices.get(
-          `${
-            apiConstants.CAREER.START_USER_CAREER_TEST + id
+          `${apiConstants.CAREER.START_USER_CAREER_TEST + id
           }?progress=${progress}`,
         );
       } else {
@@ -149,7 +146,7 @@ export const fetchStartUserCareerTest =
     }
   };
 
-export const fetchUserCareerTestCount = (id,history) => async (dispatch) => {
+export const fetchUserCareerTestCount = (id, history) => async (dispatch) => {
   try {
     dispatch({
       type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_REQUEST,
@@ -177,36 +174,37 @@ export const fetchUserCareerTestCount = (id,history) => async (dispatch) => {
 
 export const postAnswer =
   (values, history, id, last = false) =>
-  async (dispatch) => {
-    try {
-      dispatch({ type: guidanceTypes.POST_ANSWER_REQUEST });
-      const res = await httpServices.post(
-        apiConstants.CAREER.START_USER_CAREER_TEST + id,
-        values,
-      );
-      dispatch({ type: guidanceTypes.POST_ANSWER_FINISH });
+    async (dispatch) => {
+      try {
+        dispatch({ type: guidanceTypes.POST_ANSWER_REQUEST });
+        const res = await httpServices.post(
+          apiConstants.CAREER.START_USER_CAREER_TEST + id,
+          values,
+        );
+        dispatch({ type: guidanceTypes.POST_ANSWER_FINISH });
 
-      if (res.status_code === 200 && !last) {
-        dispatch({
-          type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_REQUEST,
-        });
-        const res = await httpServices.get(constants.USER_CAREER_COUNT + id);
-        dispatch({
-          type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_SUCCESS,
-          payload: res?.data,
-        });
-      }
+        if (res.status_code === 200 && !last) {
+          dispatch({
+            type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_REQUEST,
+          });
+          const res = await httpServices.get(constants.USER_CAREER_COUNT + id);
+          dispatch({
+            type: guidanceTypes.GUIDANCE_USER_CAREER_TEST_COUNT_SUCCESS,
+            payload: res?.data,
+          });
+        }
 
-      if (res.status_code === 200 && last) {
-        await httpServices.post(apiConstants.CAREER.USER_CAREER_END_TEST + id);
-        history.push(routingConstants.CAREER_TEST_RESULT + id);
-        localStorage.removeItem("isCarrerTestStarted");
-        localStorage.removeItem("selectedCourseCategoryValue");
+        if (res.status_code === 200 && last) {
+          await httpServices.post(apiConstants.CAREER.USER_CAREER_END_TEST + id);
+          history.push(routingConstants.CAREER_TEST_RESULT + id);
+          localStorage.removeItem("isCarrerTestStarted");
+          localStorage.removeItem("selectedCourseCategoryValue");
+        }
+      } catch (err) {
+        console.log(err, '.................................error')
+        dispatch({ type: guidanceTypes.POST_ANSWER_FAIL });
       }
-    } catch (err) {
-      dispatch({ type: guidanceTypes.POST_ANSWER_FAIL });
-    }
-  };
+    };
 
 export const endTest = (id, history) => async (dispatch) => {
   const res = await httpServices.post(
