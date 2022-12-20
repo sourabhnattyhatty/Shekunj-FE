@@ -271,7 +271,7 @@ function MagzineDetails(m) {
           style={{
             width: `${screen1.active ? '90rem' : '59rem'}`,
             height: `${screen1.active ? '70rem' : '36.7rem'}`,
-
+           
           }}
         >
           <FullScreen handle={screen1} onChange={reportChange}>
@@ -305,8 +305,7 @@ function MagzineDetails(m) {
                   </TransformComponent>
                   <div className="icons_div"
                     style={{
-                      width: `${screen1.active ? '95.8rem' : '59rem'}`,
-                      paddingTop: `${screen1.active ? '2rem' : '1rem'}`,
+                      paddingTop: `${screen1.active ? '1.2rem' : '1rem'}`,
                       // marginLeft: `${screen1.active ? '22rem' : ''}`
                     }}>
 

@@ -39,24 +39,21 @@ const EventDetails = () => {
   // const [modalStyle] = useState(getModalStyle);
   // const [modalData, setData] = useState();
 
-  // console.log("EventIdddd",events.extra_info)
   const history = useHistory();
   const { events } = useSelector((state) => state.eventsReducer);
   const { bookEvents } = useSelector((state) => state.eventsReducer);
   const { user } = useSelector((state) => state.authReducer);
-  // console.log("usertype", typeof user);
-  console.log("userdata ---->", user);
-  console.log("bookEvent", bookEvents);
+
   const dispatch = useDispatch();
 
- 
+
   // const { isLoading } = useSelector((state) => state.eventReducer);
   const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
   const extraInfoCopy = events;
-
+  useEffect(() => {
+  }, [user])
   const handleOpen = (index) => {
-    console.log("bookEventsStatusCode", bookEvents);
     if (bookEvents == 200) {
       setOpen(true);
     }
@@ -72,8 +69,6 @@ const EventDetails = () => {
   const [eventDetailsBoxAds, setEventDetailsBoxAds] = useState([]);
   const [extraInfo, setExtraInfo] = useState([]);
   const [name, setName] = useState([]);
-  // console.log("EventExtraInfo", events?.extra_info);
-
   const highEducation = ["10th", "12th", "Graduation", "Post Graduation"];
   const GenderCategory = ["male", "female"];
   const GuidancePurpose = [
@@ -117,16 +112,15 @@ const EventDetails = () => {
       // extra_info_reg:""
     },
     validationSchema,
-    onSubmit(values) {
+
+    onSubmit(values, actions) {
       const date_of_birth = moment(`${values.date_of_birth}`).format(
         "YYYY-MM-DD",
       );
-      // console.log("extra_info_regetlfsd", extraInfo);
       let finalObj = {};
       for (let i = 0; i < extraInfo.length; i++) {
         Object.assign(finalObj, extraInfo[i]);
       }
-      // console.log("onChange Event", finalObj);
 
       values = {
         ...values,
@@ -137,11 +131,10 @@ const EventDetails = () => {
         extra_info_reg: finalObj,
       };
       dispatch(bookEvent(values));
+
+
     },
   });
-
-
-  // console.log("whatsapp_group_link",events?.whatsapp_group_link?.whatsapp_link );
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -170,7 +163,6 @@ const EventDetails = () => {
   //         }
   //       })   .catch((error) => {
   //         // setMessage("No data found");
-  //         console.log(error);
   //     })
   //   });
   //   dispatch(adsList());
@@ -198,7 +190,6 @@ const EventDetails = () => {
                 return item.image_type == "event_detail";
               });
               setEventDetailsBoxAds(filterArray1);
-              // console.log("filterArray1event_detail",filterArray1)
             }
           });
       },
@@ -211,7 +202,6 @@ const EventDetails = () => {
               return item.image_type == "event_detail";
             });
             setEventDetailsBoxAds(filterArray1);
-            // console.log("filterArray1coursebox",filterArray1)
           }
         });
       },
@@ -221,7 +211,6 @@ const EventDetails = () => {
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -237,7 +226,6 @@ const EventDetails = () => {
           longitude: params.longitude.toString(),
         })
         .then((response) => {
-          console.log("addEmailresponse", response);
         });
     });
   };
@@ -258,13 +246,102 @@ const EventDetails = () => {
 
   let evalData = eval(events.extra_info);
 
- 
+  const whatsAppModal = () => {
+    if (events && events?.whatsapp_group_link?.join_group && bookEvents == 200) {
+      return (
+        <Modal
+          aria-labelledby='simple-modal-title'
+          aria-describedby='simple-modal-description'
+          open={open}
+          onClose={handleClose}
+          className='ModalBoxEvent'
+        >
+          <div className='ModalBodyBoxEvent'>
+            <div className='ModalHeadEvent'>
+              <Typography variant='h6' id='modal-title'>
+                Congratulations... you have been registered!
+              </Typography>
+            </div>
+            <div className='ModalMiddleEvent'>
+              <Typography variant='h6' id='simple-modal-description'>
+                You can join our whatsapp group.
+              </Typography>
+              <a href='https://api.whatsapp.com/send?text=%20http%3A%2F%2Flocalhost%3A3000'
+                target="_blank"
+              >
+                <Button variant='contained' className='ModalButtonEvent'>
+                  JOIN WHATSAPP GROUP
+                </Button>
+              </a>
+              <divider />
+              <Typography variant='h4'>
+                Want to learn more? <br />
+                Checkout our other events
+              </Typography>
+              <div className='ModalLinkEvent'>
+                <Link to={routingConstants.MORE_EVENT}>
+                  <strong>Lets have a look... Shekunj Events!</strong>
+                </Link>
+              </div>
+            </div>
+            <div className='ModalBottomEvent'>
+              <Typography variant='h6' id='modal-title'>
+                are you excited to learn ? <br />
+                see you soon !
+              </Typography>
+            </div>
+          </div>
+        </Modal>
+      )
+    }
+    else if (events && events?.whatsapp_group_link?.join_group == false && bookEvents == 200) {
+      return (
+        <Modal
+          aria-labelledby='simple-modal-title'
+          aria-describedby='simple-modal-description'
+          open={open}
+          onClose={handleClose}
+          className='ModalBoxEvent'
+        >
+          <div className='ModalBodyBoxEvent2'>
+            <div className='ModalHeadEvent'>
+              <Typography variant='h6' id='modal-title'>
+                Congratulations... you have been registered!
+              </Typography>
+            </div>
+            <div className='ModalMiddleEvent'>
+              <Typography variant='h3' id='simple-modal-description'>
+                Thank You !
+              </Typography>
+              <br />
+              <divider />
+              <Typography variant='h4'>
+                Want to learn more? <br />
+                Checkout our other events
+              </Typography>
+              <div className='ModalLinkEvent'>
+                <Link to={routingConstants.MORE_EVENT}>
+                  <strong>Lets have a look... Shekunj Events!</strong>
+                </Link>
+              </div>
+            </div>
+            <div className='ModalBottomEvent'>
+              <Typography variant='h6' id='modal-title'>
+                are you excited to learn ? <br />
+                see you soon !
+              </Typography>
+            </div>
+          </div>
+        </Modal>
+      )
+    }
+
+  }
   return (
     <div>
       {/* <SEO title='Sheकुंज - Career' /> */}
       <Header loginPage={true} page='more' />
 
-      {/* {console.log("eventss---Detail", events)} */}
       {/* {events?.event_list?.length > 0 ? (
             events?.event_list?.map((c)=>{
               console.log("c", c);
@@ -311,8 +388,10 @@ const EventDetails = () => {
               <div className='event_con'>
                 <p className='event-form-title'>Registration Form</p>
                 <div className='Event_book_form'>
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit}
+                  >
                     <Row>
+                      {console.log(values.name)}
                       <Col md={6} xs={12}>
                         <div className='form-group'>
                           <TextField
@@ -321,7 +400,6 @@ const EventDetails = () => {
                             placeholder={user?.name}
                             autoComplete='off'
                             onChange={handleChange}
-                            // value={values.name}
                             value={values.name}
                             onBlur={handleBlur}
                             InputProps={{
@@ -447,10 +525,7 @@ const EventDetails = () => {
 
                     {events.id &&
                       Object.entries(events.extra_info).map((key, index) => {
-                        // console.log(
-                        //   "Object.entries",
-                        //   Object.entries(events?.extra_info),
-                        // );
+
                         return (
                           <div>
                             {/* <Row>
@@ -467,20 +542,14 @@ const EventDetails = () => {
                                       [key[0]]: e.target.value,
                                     });
                                   } else {
-                                    console.log(
-                                      "Object.keys(extraInfo",
-                                      extraInfo,
-                                    );
+
                                     let newIndex = extraInfo.findIndex(
                                       (item) => {
-                                        // console.log(
-                                        //   "item00000",
-                                        //   Object.keys(item),
-                                        // );
+
                                         return Object.keys(item)[0] == key[0];
                                       },
                                     );
-                                    // console.log("index0000", newIndex);
+
                                     if (newIndex != -1) {
                                       extraInfo[newIndex][key[0]] =
                                         e.target.value;
@@ -553,89 +622,9 @@ const EventDetails = () => {
           >
             Open
           </Button> */}
-
-      {events && events?.whatsapp_group_link?.join_group ? (
-        <Modal
-          aria-labelledby='simple-modal-title'
-          aria-describedby='simple-modal-description'
-          open={open}
-          onClose={handleClose}
-          className='ModalBoxEvent'
-        >
-          <div className='ModalBodyBoxEvent'>
-            <div className='ModalHeadEvent'>
-              <Typography variant='h6' id='modal-title'>
-                Congratulations... you have been registered!
-              </Typography>
-            </div>
-            <div className='ModalMiddleEvent'>
-              <Typography variant='h6' id='simple-modal-description'>
-                You can join our whatsapp group.
-              </Typography>
-              <a href='events?whatsapp_group_link?.whatsapp_link'>
-                <Button variant='contained' className='ModalButtonEvent'>
-                  JOIN WHATSAPP GROUP
-                </Button>
-              </a>
-              <divider />
-              <Typography variant='h4'>
-                Want to learn more? <br />
-                Checkout our other events
-              </Typography>
-              <div className='ModalLinkEvent'>
-                <Link to={routingConstants.MORE_EVENT}>
-                  <strong>Lets have a look... Shekunj Events!</strong>
-                </Link>
-              </div>
-            </div>
-            <div className='ModalBottomEvent'>
-              <Typography variant='h6' id='modal-title'>
-                are you excited to learn ? <br />
-                see you soon !
-              </Typography>
-            </div>
-          </div>
-        </Modal>
-      ) : (
-        <Modal
-          aria-labelledby='simple-modal-title'
-          aria-describedby='simple-modal-description'
-          open={open}
-          onClose={handleClose}
-          className='ModalBoxEvent'
-        >
-          <div className='ModalBodyBoxEvent2'>
-            <div className='ModalHeadEvent'>
-              <Typography variant='h6' id='modal-title'>
-                Congratulations... you have been registered!
-              </Typography>
-            </div>
-            <div className='ModalMiddleEvent'>
-              <Typography variant='h3' id='simple-modal-description'>
-                Thank You !
-              </Typography>
-              <br />
-              <divider />
-              <Typography variant='h4'>
-                Want to learn more? <br />
-                Checkout our other events
-              </Typography>
-              <div className='ModalLinkEvent'>
-                <Link to={routingConstants.MORE_EVENT}>
-                  <strong>Lets have a look... Shekunj Events!</strong>
-                </Link>
-              </div>
-            </div>
-            <div className='ModalBottomEvent'>
-              <Typography variant='h6' id='modal-title'>
-                are you excited to learn ? <br />
-                see you soon !
-              </Typography>
-            </div>
-          </div>
-        </Modal>
-      )}
-
+      {
+        whatsAppModal()
+      }
       <Footer loginPage={false} />
     </div>
   );

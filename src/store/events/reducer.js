@@ -22,6 +22,12 @@ export const eventsReducer = (state = initialState, action) => {
         bookEvents:action.payload.code,
         error: null,
       };
+    case eventsTypes.BOOK_EVENT_FINISH_CLOSE:
+      return {
+        ...state,
+        bookEvents:0,
+        error: null,
+      };
     case eventsTypes.BOOK_EVENT_FAIL:
       return {
         ...state,
