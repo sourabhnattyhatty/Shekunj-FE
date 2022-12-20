@@ -59,6 +59,13 @@ export const bookEvent = (value) => async (dispatch) => {
       payload: { id: res.data.id,code:res.status_code},
     });
     toast.success(res.message, toasterConfig);
+
+    setTimeout(() => {
+      dispatch({
+        type: eventsTypes.BOOK_EVENT_FINISH_CLOSE,
+        payload: { id: res.data.id,code:res.status_code},
+      });
+    }, 3000);
   } catch (error) {
     dispatch({ type: eventsTypes.BOOK_EVENT_FAIL });
     if (error.data.errors.qualifications) {

@@ -111,7 +111,7 @@ function AllCertificatePage() {
         </Container>
       </div>
 
-      <Footer loginPage={false} />
+      <Footer loginPage={false} subPage='allCertificatePage' />
     </div>
   );
 }

@@ -594,9 +594,9 @@ iframe {
 
 .icons_div {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   // width: 15.62rem;
-  
+  width: 100%;
   position: absolute;
   background-color: #454545;
   bottom: 0;
