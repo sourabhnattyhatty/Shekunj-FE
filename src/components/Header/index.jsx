@@ -390,7 +390,7 @@ const Header = ({ page, subPage }) => {
                   <div className='toggleDrawerOptions'>
                     <Link
                       // className="options"
-                      to='/about'
+                      to='/about-us'
                       style={{
                         color: "#EC498A",
                         fontSize: "20px",
@@ -737,10 +737,10 @@ const Header = ({ page, subPage }) => {
                 <ul className='navbar-nav'>
                   <li
                     className={
-                      page === "about" ? "nav-item active" : "nav-item"
+                      page == "about-us" ? "nav-item active" : "nav-item"
                     }
                   >
-                    <Link className='nav-link' to='/about'>
+                    <Link className='nav-link' to='/about-us'>
                       {t("header.heading.1")}
                     </Link>
                   </li>
