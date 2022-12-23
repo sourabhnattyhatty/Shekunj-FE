@@ -7,7 +7,6 @@ export const adsList =
   (lat = "", long = "") =>
   async (dispatch) => {
     try {
-      console.log("response+++TopSchool", lat, long);
       const add = "/private_adds/private_add?";
       const url = add + `latitude=${lat}&longitude=${long}`;
 

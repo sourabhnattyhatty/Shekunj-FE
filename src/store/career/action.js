@@ -78,18 +78,14 @@ export const getGovernmentExams =
 const handleTopSchoolsFilter = (topSchools, courseSector,ownership) => {
   const url = constants.TOP_SCHOOL_LIST;
   const stateList = topSchools?.state_list?.filter((r) => r?.isChecked);
-  console.log("stateListtttt",stateList)
   let stateIdString = undefined;
   if (stateList?.length > 0) {
     stateIdString = `state__in=${stateList.map((r) => r?.name).join(",")}`;
-    console.log("stateIdStringgggg",stateIdString)
   }
   const cityList = topSchools?.city_list?.filter((r) => r?.isChecked);
-  console.log("cityListtttt",cityList)
   let cityIdString = undefined;
   if (cityList?.length > 0) {
     cityIdString = `city__in=${cityList.map((r) => r?.name).join(",")}`;
-    console.log("cityIdStringgggg",cityIdString)
   }
 
   const categoryList = topSchools?.gender_intech?.filter((r) => r?.isChecked);
@@ -101,7 +97,6 @@ const handleTopSchoolsFilter = (topSchools, courseSector,ownership) => {
   let boardIdString = undefined;
   if (boardList?.length > 0) {
     boardIdString = `board_type__in=${boardList.map((r) => r?.name).join(",")}`;
-    console.log("boardIdStringgggg",boardIdString)
   }
   // const schoolList = topSchools?.school_type?.filter((r) => r?.isChecked);
   // let schoolIdString = undefined;
@@ -117,7 +112,6 @@ const handleTopSchoolsFilter = (topSchools, courseSector,ownership) => {
           .map((r) => r?.name)
           .join(",")}`;
       }
-      console.log("schoolIdString",schoolIdString)
 
       // const collageList = ownership?.rows?.filter((r) => r?.isChecked);
       // let collageIdString = undefined;
@@ -223,7 +217,6 @@ export const getTopSchools =
   (filter = null,lat=null,long=null) =>
     async (dispatch, getState) => {
       try {
-        console.log("response+++TopSchool", lat,long);
 
         const url = constants.TOP_SCHOOL_LIST+`?latitude=${lat}&longitude=${long}`;
         // const url1 = constants.TOP_SCHOOL_LIST;
@@ -387,22 +380,17 @@ const handleTopCollagesFilter = (topCollages, courseSector,ownership) => {
 
   const url = constants.TOP_COLLEGE_LIST;
   const stateList = topCollages?.state_list?.filter((r) => r?.isChecked);
-  console.log("College_stateListtttt",stateList)
-  
 
   let stateIdString = undefined;
   if (stateList?.length > 0) {
     stateIdString = `state__in=${stateList.map((r) => r?.name).join(",")}`;
-    console.log("College_stateIdStringgggg",stateIdString)
   }
 
   const cityList = topCollages?.city_list?.filter((r) => r?.isChecked);
-  console.log("College_cityListtttt",cityList)
 
   let cityIdString = undefined;
   if (cityList?.length > 0) {
     cityIdString = `city__in=${cityList.map((r) => r?.name).join(",")}`;
-    console.log("College_cityIdStringgggg",cityIdString)
   }
 
   const streamList = courseSector?.rows?.filter(
@@ -491,15 +479,12 @@ export const getTopCollages =
     async (dispatch, getState) => {
 
       try {
-        console.log("response+++TopCollege", lat,long);
 
         const url = constants.TOP_COLLEGE_LIST+`?latitude=${lat}&longitude=${long}`;
         // const url1 = constants.TOP_COLLEGE_LIST;
 
         const { courseSector, topCollages,ownership } = getState().careerReducer;
         dispatch({ type: coursesTypes.TOP_COLLAGE_REQUEST });
-
-        console.log("filter", filter)
 
         const res = await httpServices.get(
           filter === true ? handleTopCollagesFilter(topCollages, courseSector,ownership)
@@ -974,8 +959,6 @@ export const allTopcollegeBySearch =
         const res = await httpServices.get(
           `${constants.TOP_COLLEGE_LIST + filter}`
         );
-
-        console.log("res", res)
 
         dispatch({
           type: coursesTypes.TOP_COLLAGE_SEARCH_FINISH,

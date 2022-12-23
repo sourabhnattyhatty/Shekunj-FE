@@ -29,7 +29,6 @@ import { compareAsc, format } from 'date-fns'
 
 const Header = ({ page, subPage }) => {
   const { notifications } = useSelector((state) => state.notificationsReducer);
-  console.log(dateFormat('12/15/2022', "mm/dd/yyyy"), '.........................notifications')
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
   const { lan } = useSelector((state) => state.languageReducer);

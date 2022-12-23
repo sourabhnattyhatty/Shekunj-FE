@@ -58,7 +58,7 @@ export const getGuidanceCategory = (id) =>
       const url = apiConstants.GUIDANCE.CAREER_TEST_CATEGORY + newId;
       dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_REQUEST });
       const res = await httpServices.get(url);
-      console.log("onlycategory", res.data);
+    
       dispatch({
         type: guidanceTypes.GUIDANCE_CATEGORY_FINISH_PRIVATE,
         payload: res?.data || [],
@@ -81,7 +81,7 @@ export const getGuidanceCategoryDetail = (id) => async (dispatch) => {
   try {
     dispatch({ type: guidanceTypes.GUIDANCE_CATEGORY_DETAIL_REQUEST });
     const res = await httpServices.get(constants.GUIDANCE_CATEGORY + newId);
-    console.log("res.dataGuidance", res.data);
+
     dispatch({
       type: guidanceTypes.GUIDANCE_CATEGORY_DETAIL_FINISH,
       payload: res.data || null,
@@ -201,7 +201,7 @@ export const postAnswer =
           localStorage.removeItem("selectedCourseCategoryValue");
         }
       } catch (err) {
-        console.log(err, '.................................error')
+    
         dispatch({ type: guidanceTypes.POST_ANSWER_FAIL });
       }
     };

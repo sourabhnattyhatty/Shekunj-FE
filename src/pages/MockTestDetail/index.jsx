@@ -222,9 +222,6 @@ function MockTestDetail() {
   ]);
 
   const handleFinishQuestion = () => {
-
-    console.log('testDatatestData.........................', testData)
-    console.log('fetchUserCareerTestCount.........................', fetchUserCareerTestCount)
     // return false;
     const data = {
       answer,
@@ -424,7 +421,6 @@ function MockTestDetail() {
     }
   };
 
-  console.log("guidanceCategoryDetail", guidanceCategory);
   return (
     <div>
       <Header loginPage={true} page='guidance' subPage='careerTest' />

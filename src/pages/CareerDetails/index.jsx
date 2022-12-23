@@ -22,7 +22,6 @@ const CareerDetails = () => {
 
     const { id } = useParams();
     const { topCollages } = useSelector((state) => state.careerReducer);
-     console.log("topCollagesssss",topCollages)
     const dispatch = useDispatch();
     const { lan } = useSelector((state) => state.languageReducer);
     const { t } = useTranslation();
@@ -128,7 +127,6 @@ const CareerDetails = () => {
                                                     {topCollages && topCollages?.website}
                                                 </Link>
                                                 <Route exact path={topCollages?.website} />
-                                                {console.log("topCollages?.website", topCollages?.website)}
 
                                             </h6>
                                         </Col>

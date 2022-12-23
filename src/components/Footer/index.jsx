@@ -106,7 +106,6 @@ const Footer = ({ loginPage, subPage }) => {
                 return item.image_type == "footer_2";
               });
               setAdsFooter2(filterArray2);
-              console.log("filterArray1footer_2", filterArray2);
             }
           });
       },
@@ -124,7 +123,6 @@ const Footer = ({ loginPage, subPage }) => {
               return item.image_type == "footer_2";
             });
             setAdsFooter2(filterArray2);
-            console.log("filterArray1coursebox", filterArray2);
           }
         });
       },
@@ -132,7 +130,6 @@ const Footer = ({ loginPage, subPage }) => {
   }, []);
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -200,9 +197,6 @@ const Footer = ({ loginPage, subPage }) => {
                     className='google_ads_footer'
                   />
                 </a>
-
-                {console.log("footer-image", adsFooter1[0]?.image)}
-
                 <a href={adds[0]?.add_email} target='_blank'>
                   {/* <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' /> */}
                 </a>

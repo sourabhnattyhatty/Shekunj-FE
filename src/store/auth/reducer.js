@@ -87,6 +87,12 @@ export const authReducer = (state = initialState, action) => {
         error: null,
       };
     case authTypes.USER_PROFILE_FINISH:
+      let data = {
+        name: action.payload.name,
+        last_name: action.payload.last_name,
+        email: action.payload.email,
+      }
+      localStorage.setItem('login_data', JSON.stringify(data))
       return {
         ...state,
         user: action.payload,

@@ -28,58 +28,21 @@ import GroupTwoToneIcon from "@mui/icons-material/GroupTwoTone";
 // import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
 function EventPage() {
+  const [eventBoxAds, setEventBoxAds] = useState([]);
+  const [image, setImage] = useState("NA");
+  const [adds, setAdds] = useState([]);
+  const [tempData, setTempData] = useState([]);
+
   const history = useHistory();
-  const { events } = useSelector((state) => state.eventsReducer);
   const dispatch = useDispatch();
-
-  console.log("Eventsssssss", events);
-
-  const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
+
+  const { events } = useSelector((state) => state.eventsReducer);
+  const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
     dispatch(getAllEvents());
   }, [dispatch, lan]);
-
-  // const [storiesBannerAds, setStoriesBannerAds] = useState([]);
-  const [eventBoxAds, setEventBoxAds] = useState([]);
-  const [image, setImage] = useState("NA");
-  const [adds, setAdds] = useState([]);
-
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
-  //     const latitude = position.coords.latitude;
-  //     const longitude = position.coords.longitude;
-
-  //     let params = {
-  //       latitude: latitude.toString(),
-  //       longitude: longitude.toString(),
-  //     };
-  //     axios
-  //       .get(
-  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-  //       )
-  //       .then((response) => {
-  //         if (response.data.results.length > 0) {
-  //           let filterArray = response.data.results.filter((item, index) => {
-  //             return item.image_type == "event_index";
-  //           });
-  //           let findImage =
-  //             filterArray.length > 0 ? filterArray[0].image : "NA";
-  //           setImage(findImage);
-  //           setStoriesBoxAds(filterArray);
-  //         }
-  //       }).catch((error) => {
-  //         // setMessage("No data found");
-  //         console.log(error);
-  //     })
-  //   });
-  //   dispatch(adsList());
-  // }, [dispatch]);
-
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
     dispatch(adsList());
@@ -123,7 +86,6 @@ function EventPage() {
   }, []);
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -148,6 +110,136 @@ function EventPage() {
           console.log(error);
         });
     });
+  };
+
+  useEffect(() => {
+    checkFunction()
+  }, [events?.event_list])
+
+  const shuffleFun = (c, index) => {
+    if (c?.id === 'advertistment') {
+      return (
+        <>
+          {
+            eventBoxAds?.length > 0 ?
+              <Grid spacing={1} className='gridContainerEvent flex'>
+
+                <Col md={1} xl={12}>
+                  <Card className='EventOptionCard'>
+                    {eventBoxAds?.length > 0 && (
+                      <div
+                        className='EventOptionCard'
+                        onClick={() =>
+                          addEmail(eventBoxAds[0]?.add_email)
+                        }
+                      >
+                        <a
+                          href={eventBoxAds[0]?.url_adds}
+                          target='_blank'
+                        >
+                          <img
+                            src={eventBoxAds[0]?.image}
+                            alt='Image'
+                            className='EventOptionCardAddImage'
+                          />
+                        </a>
+                        <div className='overlay'></div>
+                      </div>
+                    )}
+                  </Card>
+                </Col>
+              </Grid>
+              :
+              ""
+          }
+        </>
+      )
+    }
+    else {
+      return (
+        <Grid spacing={1} className='gridContainerEvent'>
+          <Col md={1} xl={12}>
+            <Card className='EventOptionCard noselect'>
+              <CardMedia
+                component='img'
+                alt='image'
+                // height='200'
+                image={c && c.image}
+                className='guidanceEventImage'
+              />
+
+              <Typography
+                gutterBottom
+                variant='h6'
+                component='div'
+                className='limited-text-event'
+              >
+                <Link
+                  to={routingConstants.MORE_EVENT + c.id}
+                  className='event-title-link center'
+                  key={c?.id}
+                >
+                  {c && c.title}
+                </Link>
+              </Typography>
+
+              <CardContent class='d-flex flex-column'>
+                <Typography
+                  className='event_mode'
+                  sx={{ mb: 1.5 }}
+                  fullWidth
+                >
+                  <PublicIcon /> {c && c?.type_1}
+                </Typography>
+                <Typography
+                  className='event_mode'
+                  sx={{ mb: 1.5 }}
+                  fullWidth
+                >
+                  <GroupTwoToneIcon /> {c && c?.mode_of_event}
+                </Typography>
+                <Typography className='Date-Time'>
+                  <Typography style={{ marginBottom: "10px" }}>
+                    Date : {c && c?.date}
+                  </Typography>
+                  <Typography style={{ marginBottom: "10px" }}>
+                    Time : {c && c?.time}
+                  </Typography>
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  variant='outlined'
+                  size='medium'
+                  className='eventButtonAction'
+                  href={c && c.form_link}
+                >
+                  <Link
+                    to={routingConstants.MORE_EVENT + c.id}
+                    className='event-button-link'
+                    key={c?.id}
+                  >
+                    Registration and details
+                  </Link>
+                </Button>
+              </CardActions>
+            </Card>
+          </Col>
+        </Grid>
+      )
+    }
+  }
+
+  const checkFunction = () => {
+    let num = Math.floor(Math.random() * (4 - 0) + 0);
+    let res = events?.event_list;
+    let dummydata = {
+      "id": 'advertistment'
+    }
+    res && res.splice(num, 0, dummydata);
+    if (res) {
+      setTempData(res)
+    }
   };
 
   return (
@@ -178,125 +270,20 @@ function EventPage() {
       </div>
       {/* <div className='Home'> */}
       <Container className='eventContainer event_responsive12'>
-        {events?.event_list?.length > 0 ? (
-          events?.event_list?.map((c, index) => {
-            console.log("c", c);
-            return (
-              <>
-                <Grid spacing={1} className='gridContainerEvent'>
-                  {/* <Grid spacing={1} className='gridContainerEvent flex'> */}
-                  <Col md={1} xl={12}>
-                    <Card className='EventOptionCard noselect'>
-                      <CardMedia
-                        component='img'
-                        alt='image'
-                        // height='200'
-                        image={c && c.image}
-                        className='guidanceEventImage'
-                      />
-
-                      <Typography
-                        gutterBottom
-                        variant='h6'
-                        component='div'
-                        className='limited-text-event'
-                      >
-                        <Link
-                          to={routingConstants.MORE_EVENT + c.id}
-                          className='event-title-link center'
-                          key={c?.id}
-                        >
-                          {c && c.title}
-                        </Link>
-                      </Typography>
-
-                      <CardContent class='d-flex flex-column'>
-                        <Typography
-                          className='event_mode'
-                          sx={{ mb: 1.5 }}
-                          fullWidth
-                        >
-                          <PublicIcon /> {c && c?.type_1}
-                        </Typography>
-                        {/* <Typography className="event_mode" sx={{ mb: 1.5 }} fullWidth>
-                          <LocalLibraryTwoToneIcon />{" "}{c && c?.type_2}
-                          </Typography> */}
-                        <Typography
-                          className='event_mode'
-                          sx={{ mb: 1.5 }}
-                          fullWidth
-                        >
-                          <GroupTwoToneIcon /> {c && c?.mode_of_event}
-                        </Typography>
-                        <Typography className='Date-Time'>
-                          <Typography style={{ marginBottom: "10px" }}>
-                            Date : {c && c?.date}
-                          </Typography>
-                          <Typography style={{ marginBottom: "10px" }}>
-                            Time : {c && c?.time}
-                          </Typography>
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button
-                          variant='outlined'
-                          size='medium'
-                          className='eventButtonAction'
-                          href={c && c.form_link}
-                        >
-                          <Link
-                            to={routingConstants.MORE_EVENT + c.id}
-                            className='event-button-link'
-                            key={c?.id}
-                          >
-                            Registration and details
-                          </Link>
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </Col>
-                </Grid>
-                {/* {index % 2 == 1 ? ( */}
-
-                {Math.floor(Math.random() * (3 - 0) + 0) == index ? (
-                  <>
-                    <Grid spacing={1} className='gridContainerEvent flex'>
-                      {/*  */}
-                      <Col md={1} xl={12}>
-                        <Card className='EventOptionCard'>
-                          {eventBoxAds.length > 0 && (
-                            <div
-                              className='EventOptionCard'
-                              onClick={() =>
-                                addEmail(eventBoxAds[0]?.add_email)
-                              }
-                            >
-                              <a
-                                href={eventBoxAds[0]?.url_adds}
-                                target='_blank'
-                              >
-                                <img
-                                  src={eventBoxAds[0]?.image}
-                                  alt='Image'
-                                  className='EventOptionCardAddImage'
-                                />
-                              </a>
-                              <div className='overlay'></div>
-                            </div>
-                          )}
-                        </Card>
-                      </Col>
-                    </Grid>
-                  </>
-                ) : (
-                  ""
-                )}
-              </>
-            );
-          })
-        ) : (
-          <div className='text-center'>{t("common.noDataFound")}</div>
-        )}
+        {
+          // events?.event_list?.length > 0 ? (
+          //   events?.event_list?.map((c, index) => {
+          tempData?.length > 0 ? (
+            tempData?.map((c, index) => {
+              return (
+                <>
+                  {shuffleFun(c, index)}
+                </>
+              );
+            })
+          ) : (
+            <div className='text-center'>{t("common.noDataFound")}</div>
+          )}
       </Container>
       {/* </div> */}
       {/* <div className='want'>

@@ -85,7 +85,6 @@ const CareerPage1 = () => {
   // }, [])
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -206,7 +205,6 @@ const CareerPage1 = () => {
            
           });
           setSchoolBannerAds(filterArray2);
-          console.log("filterArray1top_school_banner",filterArray2)
             }
           })   
     } ,
@@ -223,12 +221,10 @@ const CareerPage1 = () => {
             return item.image_type == "top_school_box";
           });
           setSchoolBoxAds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1)
           let filterArray2 = response.data.results.filter((item, index) => {
             return item.image_type == "top_school_banner"; 
           });
           setSchoolBannerAds(filterArray2);
-          console.log("filterArray1coursebox",filterArray2)  
           }
         })
    }
@@ -365,7 +361,6 @@ const CareerPage1 = () => {
                     rows: topSchools?.gender_intech,
                   }}
                 />
-                {console.log("citiessss", topSchools?.city_list)}
               </div>
 
               <div className='mobile_view_city_selct'>

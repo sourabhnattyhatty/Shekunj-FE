@@ -111,7 +111,6 @@ const CareerPage2 = () => {
   }, [dispatch]);
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -222,13 +221,11 @@ const CareerPage2 = () => {
                 return item.image_type == "govt_scm_box";
               });
               setGovBoxAds(filterArray1);
-              // console.log("filterArray1govt_scm_box",filterArray1)
 
               let filterArray2 = response.data.results.filter((item, index) => {
                 return item.image_type == "govt_scm_side_ads";
               });
               setGovtScmSideAdds(filterArray2);
-              console.log("filterArray1govt_scm_side_ads", filterArray2);
             }
           });
       },
@@ -241,12 +238,10 @@ const CareerPage2 = () => {
               return item.image_type == "govt_scm_box";
             });
             setGovBoxAds(filterArray1);
-            // console.log("filterArray1coursebox",filterArray1)
             let filterArray2 = response.data.results.filter((item, index) => {
               return item.image_type == "govt_scm_side_ads";
             });
             setGovtScmSideAdds(filterArray2);
-            console.log("filterArray1coursebox", filterArray2);
           }
         });
       },

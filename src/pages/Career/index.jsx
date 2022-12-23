@@ -109,7 +109,6 @@ const CareerPage = () => {
   const [image, setImage] = useState("NA");
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -164,7 +163,6 @@ const CareerPage = () => {
            
           });
           setCollegeBannerAds(filterArray2);
-          console.log("filterArray1top_college_banner",filterArray2)
             }
           })   
     } ,
@@ -181,12 +179,10 @@ const CareerPage = () => {
             return item.image_type == "top_college_box";
           });
           setCollegeBoxAds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1)
           let filterArray2 = response.data.results.filter((item, index) => {
             return item.image_type == "top_college_banner"; 
           });
           setCollegeBannerAds(filterArray2);
-          console.log("filterArray1coursebox",filterArray2)  
           }
         })
    }

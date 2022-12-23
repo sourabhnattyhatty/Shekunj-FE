@@ -16,7 +16,7 @@ import GuidanceSelect from "./Select";
 // import { withFormik } from "formik";
 import { routingConstants } from "../../utils/constants";
 import { CircularProgress, TextareaAutosize } from "@mui/material";
-import { bookEvent } from "../../store/events/action";
+import { bookEvent, localStData } from "../../store/events/action";
 import moment from "moment";
 import InputAdornment from "@mui/material/InputAdornment";
 import User2 from "../../assets/icons/user2.png";
@@ -33,6 +33,8 @@ import City from "../../assets/icons/city.png";
 import { Button, Typography, Modal } from "@mui/material";
 
 const EventDetails = () => {
+  let a = JSON.parse(localStorage.getItem('login_data'))
+  let eventData = JSON.parse(localStorage.getItem('event_data'))
   const { id } = useParams();
   const [open, setOpen] = useState(false);
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -43,6 +45,7 @@ const EventDetails = () => {
   const { events } = useSelector((state) => state.eventsReducer);
   const { bookEvents } = useSelector((state) => state.eventsReducer);
   const { user } = useSelector((state) => state.authReducer);
+  const { registerData } = useSelector((state) => state.eventsReducer);
 
   const dispatch = useDispatch();
 
@@ -53,6 +56,7 @@ const EventDetails = () => {
   const extraInfoCopy = events;
   useEffect(() => {
   }, [user])
+
   const handleOpen = (index) => {
     if (bookEvents == 200) {
       setOpen(true);
@@ -65,6 +69,7 @@ const EventDetails = () => {
   };
 
   const [image, setImage] = useState("NA");
+  const [localData, setLocalData] = useState();
   const [adds, setAdds] = useState([]);
   const [eventDetailsBoxAds, setEventDetailsBoxAds] = useState([]);
   const [extraInfo, setExtraInfo] = useState([]);
@@ -90,52 +95,101 @@ const EventDetails = () => {
     gender: Yup.string().required("Select Gender").oneOf(["Male", "Female"]),
     // extra_info_reg:Yup.string().required("enter the value")
   });
+  useEffect(() => {
 
-  const {
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    setFieldValue,
-    setFieldTouched,
+  }, [registerData])
+  const initialValues = {
+    name: "",
+    last_name: "",
+    email: "",
+    contact: "",
+    city: "",
+    gender: "",
+  };
+
+  useEffect(() => {
+    dispatch(localStData());
+    getProfileInfo();
+    let a = JSON.parse(localStorage.getItem('login_data'));
+    setLocalData(a)
+  }, []);
+  useEffect(() => {
+    let d = localStorage.setItem('null_Data', JSON.stringify(user))
+  }, [!registerData])
+  const getProfileInfo = () => {
+    formik.setValues({
+      name: eventData == null ? a?.name : eventData?.name,
+      last_name: eventData == null ? a?.last_name : eventData?.last_name,
+      email: eventData == null ? a?.email : eventData?.email,
+    });
+  };
+
+  const formik = useFormik({
     initialValues,
-  } = useFormik({
-    initialValues: {
-      name: user?.name || "",
-      last_name: user?.last_name || "",
-      email: user?.email || "",
-      contact: "",
-      city: "",
-      gender: "",
-      // extra_info_reg:""
-    },
-    validationSchema,
+    validationSchema: validationSchema,
 
-    onSubmit(values, actions) {
-      const date_of_birth = moment(`${values.date_of_birth}`).format(
-        "YYYY-MM-DD",
-      );
+    onSubmit: (values, setFieldValue) => {
       let finalObj = {};
       for (let i = 0; i < extraInfo.length; i++) {
         Object.assign(finalObj, extraInfo[i]);
       }
-
       values = {
-        ...values,
-        // date_of_birth: dateOfBirth,
+        name: values.name,
+        last_name: values.last_name,
+        email: values.email,
         event_id: parseInt(id),
         qualifications: values?.qualifications,
         gender: values?.gender,
         extra_info_reg: finalObj,
       };
       dispatch(bookEvent(values));
-
-
     },
   });
 
+  // const {
+  //   values,
+  //   errors,
+  //   touched,
+  //   formik.handleChange,
+  //   formik.handleBlur,
+  //   handleSubmit,
+  //   setFieldValue,
+  //   setFieldTouched,
+  //   initialValues,
+  // } = useFormik({
+  //   initialValues: {
+  //     name: user?.name || "",
+  //     last_name: user?.last_name || "",
+  //     email: user?.email || "",
+  //     contact: "",
+  //     city: "",
+  //     gender: "",
+  //     // extra_info_reg:""
+  //   },
+  //   validationSchema,
+
+  //   onSubmit(values, actions) {
+  //     const date_of_birth = moment(`${values.date_of_birth}`).format(
+  //       "YYYY-MM-DD",
+  //     );
+  //     let finalObj = {};
+  //     for (let i = 0; i < extraInfo.length; i++) {
+  //       Object.assign(finalObj, extraInfo[i]);
+  //     }
+
+  //     values = {
+  //       ...values,
+  //       // date_of_birth: dateOfBirth,
+  //       event_id: parseInt(id),
+  //       qualifications: values?.qualifications,
+  //       gender: values?.gender,
+  //       extra_info_reg: finalObj,
+  //     };
+
+  //     setLocalData(values)
+  //     dispatch(bookEvent(values));
+  //   },
+  // });
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
@@ -337,6 +391,7 @@ const EventDetails = () => {
     }
 
   }
+
   return (
     <div>
       {/* <SEO title='Sheकुंज - Career' /> */}
@@ -388,20 +443,22 @@ const EventDetails = () => {
               <div className='event_con'>
                 <p className='event-form-title'>Registration Form</p>
                 <div className='Event_book_form'>
-                  <form onSubmit={handleSubmit}
+                  <form onSubmit={formik.handleSubmit}
                   >
                     <Row>
-                      {console.log(values.name)}
                       <Col md={6} xs={12}>
                         <div className='form-group'>
                           <TextField
                             name='name'
                             type='text'
-                            placeholder={user?.name}
+                            // placeholder={user?.name}
+                            placeholder='Name'
                             autoComplete='off'
-                            onChange={handleChange}
-                            value={values.name}
-                            onBlur={handleBlur}
+                            onChange={formik.handleChange}
+                            // value={values.name}
+                            // value={user?.name ? user?.name : values.name}
+                            value={formik.values.name}
+                            onBlur={formik.handleBlur}
                             InputProps={{
                               startAdornment: (
                                 <InputAdornment position='start'>
@@ -410,7 +467,14 @@ const EventDetails = () => {
                               ),
                             }}
                           />
-                          <Error error={errors.name} touched={touched.name} />
+                          {formik.touched.name && formik.errors.name && (
+                            <div className="fv-plugins-message-container">
+                              <div className="fv-help-block text-danger">
+                                {formik.errors.name}
+                              </div>
+                            </div>
+                          )}
+                          {/* <Error error={errors.name} touched={touched.name} /> */}
                         </div>
                       </Col>
 
@@ -419,11 +483,12 @@ const EventDetails = () => {
                           <TextField
                             name='last_name'
                             type='text'
-                            placeholder={user?.last_name}
+                            // placeholder={user?.last_name}
+                            placeholder='Lastname'
                             autoComplete='off'
-                            onChange={handleChange}
-                            value={values.last_name}
-                            onBlur={handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.last_name}
+                            onBlur={formik.handleBlur}
                             InputProps={{
                               startAdornment: (
                                 <InputAdornment position='start'>
@@ -432,10 +497,17 @@ const EventDetails = () => {
                               ),
                             }}
                           />
-                          <Error
+                          {formik.touched.last_name && formik.errors.last_name && (
+                            <div className="fv-plugins-message-container">
+                              <div className="fv-help-block text-danger">
+                                {formik.errors.name}
+                              </div>
+                            </div>
+                          )}
+                          {/* <Error
                             error={errors.last_name}
                             touched={touched.last_name}
-                          />
+                          /> */}
                         </div>
                       </Col>
                     </Row>
@@ -444,11 +516,12 @@ const EventDetails = () => {
                       <TextField
                         name='email'
                         type='email'
-                        placeholder={user?.email}
+                        // placeholder={user?.email}
+                        placeholder='Email'
                         autoComplete='off'
-                        onChange={handleChange}
-                        value={values.email}
-                        onBlur={handleBlur}
+                        onChange={formik.handleChange}
+                        value={formik.values.email}
+                        onBlur={formik.handleBlur}
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position='start'>
@@ -457,7 +530,13 @@ const EventDetails = () => {
                           ),
                         }}
                       />
-                      <Error error={errors.email} touched={touched.email} />
+                      {formik.touched.email && formik.errors.email && (
+                        <div className="fv-plugins-message-container">
+                          <div className="fv-help-block text-danger">
+                            {formik.errors.email}
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     <div className='form-group'>
@@ -466,9 +545,9 @@ const EventDetails = () => {
                         type='number'
                         placeholder={"Contact"}
                         autoComplete='off'
-                        value={values.contact}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
+                        value={formik.values.contact}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position='start'>
@@ -477,7 +556,13 @@ const EventDetails = () => {
                           ),
                         }}
                       />
-                      <Error error={errors.contact} touched={touched.contact} />
+                      {formik.touched.contact && formik.errors.contact && (
+                        <div className="fv-plugins-message-container">
+                          <div className="fv-help-block text-danger">
+                            {formik.errors.contact}
+                          </div>
+                        </div>
+                      )}
                     </div>
                     <Row>
                       <Col md={6} xs={12}>
@@ -489,13 +574,16 @@ const EventDetails = () => {
                               listItem={["Female", "Male"]}
                               defaultValue=''
                               updateValues={(value) =>
-                                setFieldValue("gender", value)
+                                formik.setFieldValue("gender", value)
                               }
                             />
-                            <Error
-                              error={errors.gender}
-                              touched={touched.gender}
-                            />
+                            {formik.touched.gender && formik.errors.gender && (
+                              <div className="fv-plugins-message-container">
+                                <div className="fv-help-block text-danger">
+                                  {formik.errors.gender}
+                                </div>
+                              </div>
+                            )}
                           </Form.Group>
                         </div>
                       </Col>
@@ -507,9 +595,9 @@ const EventDetails = () => {
                             type='text'
                             placeholder={"City"}
                             autoComplete='off'
-                            onChange={handleChange}
-                            value={values.city}
-                            onBlur={handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.city}
+                            onBlur={formik.handleBlur}
                             InputProps={{
                               startAdornment: (
                                 <InputAdornment position='start'>
@@ -518,7 +606,13 @@ const EventDetails = () => {
                               ),
                             }}
                           />
-                          <Error error={errors.city} touched={touched.city} />
+                          {formik.touched.city && formik.errors.city && (
+                            <div className="fv-plugins-message-container">
+                              <div className="fv-help-block text-danger">
+                                {formik.errors.city}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </Col>
                     </Row>
@@ -561,12 +655,15 @@ const EventDetails = () => {
                                   }
                                   setExtraInfo([...extraInfo]);
                                 }}
-                                onBlur={handleBlur}
+                                onBlur={formik.handleBlur}
                               />
-                              <Error
-                                error={errors.extra_info_reg}
-                                touched={touched.extra_info_reg}
-                              />
+                              {formik.touched.extra_info_reg && formik.errors.extra_info_reg && (
+                                <div className="fv-plugins-message-container">
+                                  <div className="fv-help-block text-danger">
+                                    {formik.errors.extra_info_reg}
+                                  </div>
+                                </div>
+                              )}
                             </div>
                             {/* </Col>
                             </Row> */}

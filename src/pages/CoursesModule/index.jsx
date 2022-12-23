@@ -111,7 +111,6 @@ const CourseModule = () => {
   const [arr, setArray] = React.useState();
   const { courseModulesList, course, isLoading, moduleprogress, currentModal } =
     useSelector((state) => state.coursesReducer);
-  console.log("course", courseModulesList, currentModal);
 
   const lastSelectedIndexOne = useRef();
   const lastSelectedObject = useRef();
@@ -338,7 +337,6 @@ const CourseModule = () => {
   }
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;

@@ -65,7 +65,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
         element.setAttribute("id", "_new_cer_PDF");
         element.classList.add("cer_PDF");
         if (element.getElementsByClassName("cetificateText")[0]) {
-          console.log("thiscer_img1", thiscer_img1?.default);
           element
             .getElementsByClassName("cetificateText")[0]
             .setAttribute("src", thiscer_img1?.default);

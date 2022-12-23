@@ -61,7 +61,6 @@ const Career1Details = () => {
                     </div>
                 </Row>
             </Container>
-            {console.log("topSchools---", topSchools)}
             <div className='DetailMainDiv_career'>
                 <Container>
                     <Row>

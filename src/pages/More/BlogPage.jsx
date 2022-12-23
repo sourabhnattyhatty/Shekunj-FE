@@ -35,9 +35,7 @@ function BlogPage() {
   const { blogs } = useSelector((state) => state.blogsReducer);
   const dispatch = useDispatch();
 
-  console.log("Blogssssss", blogs);
   const { lan } = useSelector((state) => state.languageReducer);
-  console.log("langggggg", lan);
   const { t } = useTranslation();
 
   React.useEffect(() => {
@@ -143,7 +141,6 @@ function BlogPage() {
 
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;

@@ -4,8 +4,7 @@ import { Helmet } from "react-helmet-async";
 const SEO = (props,{
   title = `India's Leading Women
   Empowerment
-  Organization - Shekunj.
-  com`,
+  Organization - Shekunj.com`,
   description = "Start The Journey Of Education with Sheकुंज",
   image = "http://ec2-3-7-4-178.ap-south-1.compute.amazonaws.com/static/media/logo.de3c6070.svg",
   keywords=`women empowerment organizations
@@ -13,7 +12,6 @@ const SEO = (props,{
   free online courses
   free career guidance`
 }) => {
-  console.log('propsprops++',props)
   return (
     <>
       <Helmet>

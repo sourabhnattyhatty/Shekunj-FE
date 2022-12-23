@@ -22,12 +22,9 @@ import "../../pages/HomePage/index.scss";
 import SimpleAccordion from "./Accordian";
 import { routingConstants } from "../../utils/constants";
 import Pagination from "../../components/Pagination";
-
 import axios from "axios";
 import { adsList } from "../../store/ads";
-
 // accordion
-
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -37,19 +34,27 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 const Courses = () => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.coursesReducer);
+  // const {} = useSelector((state) => state.coursesReducer);
   const [isSubSelected, setIsSubSelected] = useState(false);
   const [resetState, setResetState] = useState(false);
   const [categoryId, setCategoryId] = useState(null);
-
+  const [tempData, setTempData] = useState([]);
   const [pageLimit] = useState(5);
-
   const [pageCount, setPageCount] = useState(0);
   const [categoryPageCount, setCategoryPageCount] = useState(0);
+  const [coursesBoxAds, setCoursesBoxAds] = useState([]);
+  const [coursesSideAds, setCoursesSideAds] = useState([]);
+  const [image, setImage] = useState("NA");
+  const [image1, setImage1] = useState("NA");
+  const [searchInput, setSearchInput] = useState("");
+  const [suggestion, setSuggestion] = useState([]);
+  const [disabled, setDisabled] = useState(false);
+  const [hasSuggestion, setHasSuggestion] = useState([suggestion].length > 0);
 
   const dispatch = useDispatch();
 
   const { lan } = useSelector((state) => state.languageReducer);
-
+  const tempVal = [];
   useEffect(() => {
     dispatch(allCourses());
     // dispatch(allCourses(`?limit=${pageLimit}`));
@@ -77,101 +82,126 @@ const Courses = () => {
     setResetState(true);
   };
 
+  const shuffleFun = (obj, index) => {
+
+    let num = Math.floor(Math.random() * (4 - 0) + 0)
+    if (obj?.id === 'advertistment') {
+      return (
+        <>
+          {
+            coursesBoxAds?.length > 0 ?
+              <div className='col-md-6'>
+                <div className='google_add_box box_hov'>
+                  {coursesBoxAds && coursesBoxAds.length > 0 && (
+                    <div className='slide-img'>
+                      <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
+                        <img
+                          src={coursesBoxAds[0]?.image}
+                          alt='Image'
+                          className='google_add_box_img'
+                        />
+                      </a>
+                      <div className='overlay'></div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              :
+              ""
+          }
+        </>
+      )
+    }
+    else {
+      return (
+        <Link
+          to={
+            routingConstants.COURSE_DETAILS + obj?.id
+          }
+          className='col-md-6'
+          key={obj?.id}
+        >
+          <div className='box box_hov'>
+            <div className='slide-img'>
+              <img alt='' src={obj?.image} />
+              <div className='overlay'></div>
+            </div>
+
+            <div className='tag_btn'>
+              <button className='btn btn-info'>{obj?.category_name}</button>
+              <h6>{obj?.name}</h6>
+            </div>
+          </div>
+        </Link>
+      )
+    }
+
+    // }
+    // else if (index == 4) {
+    //   return (
+    //     <div className='col-md-6'>
+    //       <div className='google_add_box box_hov'>
+    //         {coursesBoxAds.length > 0 && (
+    //           <div className='slide-img'>
+    //             <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
+    //               <img
+    //                 src={coursesBoxAds[0]?.image}
+    //                 alt='Image'
+    //                 className='google_add_box_img'
+    //               />
+    //             </a>
+    //             <div className='overlay'></div>
+    //           </div>
+    //         )}
+    //       </div>
+    //     </div>
+    //   )
+    // }
+    // else if (index == 5) {
+    //   return (
+    //     <div className='col-md-6'>
+    //       <div className='google_add_box box_hov'>
+    //         {coursesBoxAds.length > 0 && (
+    //           <div className='slide-img'>
+    //             <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
+    //               <img
+    //                 src={coursesBoxAds[0]?.image}
+    //                 alt='Image'
+    //                 className='google_add_box_img'
+    //               />
+    //             </a>
+    //             <div className='overlay'></div>
+    //           </div>
+    //         )}
+    //       </div>
+    //     </div>
+    //   )
+    // }
+  }
+  useEffect(() => {
+    checkFunction()
+  }, [state?.allCourses?.results])
+
   const checkFunction = () => {
-    return state?.allCourses?.results?.map((obj, index) => {
-      console.log(
-        "course shuffle",
-        Math.floor(Math.random() * (4 - 0) + 0),
-        index,
-        coursesBoxAds,
-      );
+    let num = Math.floor(Math.random() * (6 - 0) + 0);
+    let res = state?.allCourses?.results;
+    let dummydata = {
+      "id": 'advertistment'
+    }
+    res && res.splice(num, 0, dummydata);
+    if (res) {
+      setTempData(res)
+    }
+  };
+
+  const checkFunction1 = () => {
+    return tempData && tempData.map((obj, index) => {
       return (
         <>
           {/* {Math.floor(Math.random()*(4-0)+ 0) == index && ( */}
-
-          {Math.floor(Math.random() * (4 - 0) + 0) == index ? (
-            <>
-              <div className='col-md-6'>
-                <div className='google_add_box box_hov'>
-                  {coursesBoxAds.length > 0 && (
-                    <div className='slide-img'>
-                      <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
-                        <img
-                          src={coursesBoxAds[0]?.image}
-                          alt='Image'
-                          className='google_add_box_img'
-                        />
-                      </a>
-                      <div className='overlay'></div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              {index == 4 && (
-                <>
-                  <div className='col-md-6'>
-                    <div className='google_add_box box_hov'>
-                      {coursesBoxAds.length > 0 && (
-                        <div className='slide-img'>
-                          <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
-                            <img
-                              src={coursesBoxAds[0]?.image}
-                              alt='Image'
-                              className='google_add_box_img'
-                            />
-                          </a>
-                          <div className='overlay'></div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </>
-              )}
-            </>
-          )}
-          {index == 5 && (
-            <>
-              <div className='col-md-6'>
-                <div className='google_add_box box_hov'>
-                  {coursesBoxAds.length > 0 && (
-                    <div className='slide-img'>
-                      <a href={coursesBoxAds[0]?.url_adds} target='_blank'>
-                        <img
-                          src={coursesBoxAds[0]?.image}
-                          alt='Image'
-                          className='google_add_box_img'
-                        />
-                      </a>
-                      <div className='overlay'></div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </>
-          )}
-
-          <Link
-            to={
-              routingConstants.COURSE_DETAILS + obj?.id
-            }
-            className='col-md-6'
-            key={obj?.id}
-          >
-            <div className='box box_hov'>
-              <div className='slide-img'>
-                <img alt='' src={obj?.image} />
-                <div className='overlay'></div>
-              </div>
-
-              <div className='tag_btn'>
-                <button className='btn btn-info'>{obj?.category_name}</button>
-                <h6>{obj?.name}</h6>
-              </div>
-            </div>
-          </Link>
+          {
+            shuffleFun(obj, index)
+          }
           {/* {index % 5 == 4 ? ( */}
 
           {/* {Math.floor(Math.random()*(4-0)+ 0) == index ? (
@@ -210,8 +240,7 @@ const Courses = () => {
       setCategoryPageCount(categoryPageCount - pageLimit);
       dispatch(
         allCourses(
-          `?category_id=${categoryId}&limit=${pageLimit}&offset=${
-            categoryPageCount - pageLimit
+          `?category_id=${categoryId}&limit=${pageLimit}&offset=${categoryPageCount - pageLimit
           }`,
         ),
       );
@@ -228,8 +257,7 @@ const Courses = () => {
       setCategoryPageCount(categoryPageCount + pageLimit);
       dispatch(
         allCourses(
-          `?category_id=${categoryId}&limit=${pageLimit}&offset=${
-            categoryPageCount + pageLimit
+          `?category_id=${categoryId}&limit=${pageLimit}&offset=${categoryPageCount + pageLimit
           }`,
         ),
       );
@@ -242,52 +270,7 @@ const Courses = () => {
     window.scrollTo(0, 1000);
   };
 
-  const [coursesBoxAds, setCoursesBoxAds] = useState([]);
-  const [coursesSideAds, setCoursesSideAds] = useState([]);
-  const [image, setImage] = useState("NA");
-  const [image1, setImage1] = useState("NA");
-
-  // useEffect(() => {
-  //   axios.get('/private_adds/private_add?image_type=courses_box')
-  //     .then((response) => {
-  //       setCoursesBoxAds(response.data.results);
-
-  //     });
-  // }, [])
-
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
-  //     const latitude = position.coords.latitude;
-  //     const longitude = position.coords.longitude;
-
-  //     let params = {
-  //       latitude: latitude.toString(),
-  //       longitude: longitude.toString(),
-  //     };
-  //     axios
-  //       .get(
-  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-  //       )
-  //       .then((response) => {
-  //         if (response.data.results.length > 0) {
-  //           let filterArray = response.data.results.filter((item, index) => {
-  //             return item.image_type == "courses_box";
-  //           });
-  //           let findImage =
-  //             filterArray.length > 0 ? filterArray[0].image : "NA";
-  //           setImage(findImage);
-  //           setCoursesBoxAds(filterArray);
-  //         }
-  //       })   .catch((error) => {
-  //         // setMessage("No data found");
-  //         console.log(error);
-  //     })
-  //   });
-  //   dispatch(adsList());
-  // }, [dispatch]);
-
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -310,39 +293,6 @@ const Courses = () => {
     });
   };
 
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
-  //     const latitude = position.coords.latitude;
-  //     const longitude = position.coords.longitude;
-
-  //     let params = {
-  //       latitude: latitude.toString(),
-  //       longitude: longitude.toString(),
-  //     };
-  //     axios
-  //       .get(
-  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-  //       )
-  //       .then((response) => {
-  //         if (response.data.results.length > 0) {
-  //           let filterArray = response.data.results.filter((item, index) => {
-  //             return item.image_type == "courses_side_ads";
-  //           });
-  //           let findImage =
-  //             filterArray.length > 0 ? filterArray[0].image : "NA";
-  //           setImage(findImage);
-  //           setCoursesSideAds(filterArray);
-  //         }
-  //       })   .catch((error) => {
-  //         // setMessage("No data found");
-  //         console.log(error);
-  //     })
-  //   });
-  //   dispatch(adsList());
-  // }, [dispatch]);
-
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code >>>>>>>>>>>>>>>>>>>>
-
   useEffect(() => {
     dispatch(adsList());
     navigator.geolocation.getCurrentPosition(
@@ -364,18 +314,17 @@ const Courses = () => {
                 return item.image_type == "courses_box";
               });
               setCoursesBoxAds(filterArray1);
-              // console.log("filterArray1courses_box",filterArray1)
+
+              // console.log("filterArray1courses_box", filterArray1)
 
               let filterArray2 = response.data.results.filter((item, index) => {
                 return item.image_type == "courses_side_ads";
               });
               setCoursesSideAds(filterArray2);
-              console.log("filterArray1courses_side_ads", filterArray2);
             }
           });
       },
       function (error) {
-        console.error("Error Code = " + error.code + " - " + error.message);
         // alert("Your location is blocked")
         axios.get(`/private_adds/private_add`).then((response) => {
           if (response && response.data.results.length > 0) {
@@ -388,16 +337,11 @@ const Courses = () => {
               return item.image_type == "courses_side_ads";
             });
             setCoursesSideAds(filterArray2);
-            console.log("filterArray1coursebox", filterArray2);
           }
         });
       },
     );
   }, []);
-
-  const [searchInput, setSearchInput] = useState("");
-
-  console.log("mjjjjjjj", searchInput);
 
   const SearchFilterHandle = (e) => {
     e.preventDefault();
@@ -407,10 +351,6 @@ const Courses = () => {
     dispatch(allCourses());
     setSearchInput("");
   };
-
-  const [suggestion, setSuggestion] = useState([]);
-  const [disabled, setDisabled] = useState(false);
-  const [hasSuggestion, setHasSuggestion] = useState([suggestion].length > 0);
 
   useEffect(() => {
     if (searchInput === "") {
@@ -422,8 +362,6 @@ const Courses = () => {
     }
   }, [searchInput]);
 
-  // const hasSuggestion = suggestion.length > 0;
-
   const searchFieldChanged = (e) => {
     const value = e.target.value;
     if (value === "") {
@@ -433,7 +371,6 @@ const Courses = () => {
   };
 
   const suggestionClicked = (suggestion) => {
-    console.log("dhiv", suggestion);
     setSearchInput(suggestion);
     setHasSuggestion(null);
   };
@@ -651,7 +588,6 @@ const Courses = () => {
               {/* google add */}
               <div className='row'>
                 {coursesSideAds.length > 0 && (
-                  // <div className='col-md-12'>
                   <div
                     className='col-md-12'
                     onClick={() => addEmail(coursesSideAds[0]?.add_email)}
@@ -719,13 +655,14 @@ const Courses = () => {
               </div>
               <div className='filter_right_content'>
                 <div className='row'>
-                  {state?.allCourses?.results?.length > 0 ? (
-                    checkFunction()
-                  ) : (
-                    <div className='text-center mt-2'>
-                      {t("common.noDataFound")}
-                    </div>
-                  )}
+                  {
+                    tempData && tempData.length > 0 ? (
+                      checkFunction1()
+                    ) : (
+                      <div className='text-center mt-2'>
+                        {t("common.noDataFound")}
+                      </div>
+                    )}
                 </div>
                 <div className='paginationDiv'>
                   {state?.allCourses?.count > pageLimit && (
