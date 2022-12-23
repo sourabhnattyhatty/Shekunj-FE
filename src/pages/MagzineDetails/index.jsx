@@ -352,9 +352,9 @@ function MagzineDetails(m) {
           </FullScreen>
         </div>
 
-      </Container >
+      </Container>
 
-      <div className='want'>
+      <div className='want noselect'>
         <Container>
           <h2>{t("successStoriesPage.content.2")}</h2>
           <button onClick={() => history.push("/courses")} className='want_btn'>
@@ -365,8 +365,7 @@ function MagzineDetails(m) {
 
       <Footer loginPage={false} />
 
-
-    </div >
+    </div>
   );
 }
 

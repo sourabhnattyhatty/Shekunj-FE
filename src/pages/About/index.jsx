@@ -138,7 +138,7 @@ const AboutusPage = () => {
               </div>
             </div>
             <div className='col-lg-6 col-md-7'>
-              <div className='about_Con'>
+              <div className='about_Con noselect'>
                 <h2>{t("aboutPage.heading.1")}</h2>
                 <h5>{t("aboutPage.heading.2")}</h5>
                 <p>{t("aboutPage.content1")}</p>
@@ -148,10 +148,10 @@ const AboutusPage = () => {
         </div>
       </section>
 
-      <section className='ban_sec2'>
+      <section className='ban_sec2 noselect'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-6'>
+            <div className='col-md-6 noselect'>
               <img src={img1} class="img-responsive" alt='' srcSet='' />
             </div>
 
@@ -257,7 +257,7 @@ const AboutusPage = () => {
               </div>
             </div>
 
-            <div className='col-md-6'>
+            <div className='col-md-6 noselect'>
               <div className='our_his'>
                 <h2>{t("homePage.highlightStudents.aboutHeading")}</h2>
                 <h5>{t("homePage.highlightStudents.1")}</h5>

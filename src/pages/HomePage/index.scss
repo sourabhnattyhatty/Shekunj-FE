@@ -346,7 +346,16 @@ body {
   font-weight: bold;
   font-style: normal;
   font-size: 40px;
-  line-height: 60px;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+}
+.career_community h2 {
+  font-family: SegoeUI_bold;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 34px;
+  line-height: 48px;
   text-align: center;
   color: #ffffff;
 }
@@ -1439,6 +1448,7 @@ ul.star {
     margin: 5px 0px !important;
     height: 45px !important;
     width: 100% !important;
+    object-fit: contain;
   }
 
 }
