@@ -356,7 +356,7 @@ function HomePage() {
                     </p>
 
                     <Link
-                      to='/guidance-book'
+                      to='guidance/career-counselling'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >

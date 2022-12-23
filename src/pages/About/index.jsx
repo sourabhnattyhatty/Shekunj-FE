@@ -128,7 +128,7 @@ const AboutusPage = () => {
   return (
     <div className='noselect'>
       <SEO title='Sheकुंज - About us'  />
-      <Header loginPage={false} page='about' />
+      <Header loginPage={false} page='about-us' />
       <section className='about_ban'>
         <div className='container'>
           <div className='row'>
