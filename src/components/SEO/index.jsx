@@ -24,8 +24,7 @@ const SEO = (props,{
         <meta property='og:url' content={image} />
         <meta property='og:keywords' content={props.keywords} />
         <meta name='keywords' content={props.keywords} />
-
-
+        <link rel="canonical" href={props.link} />
       </Helmet>
     </>
   );

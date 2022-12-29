@@ -330,7 +330,7 @@ function HomePage() {
                       {t("homePage.mainSlider.subHeading.2")}
                     </p>
                     <Link
-                      to='/top-colleges'
+                      to='/top-colleges-in-india/'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
@@ -382,7 +382,7 @@ function HomePage() {
                     </p>
 
                     <Link
-                      to='/top-schools/'
+                      to='/top-schools-in-india/'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
@@ -824,7 +824,7 @@ function HomePage() {
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
-                      <img className="NikitaSharmaImage img-responsive" src={Nikita} alt='' />
+                      {/* <img className="NikitaSharmaImage img-responsive" src={Nikita} alt='' /> */}
                       <p>{t("aboutPage.review.1")}</p>
                       <ul className='star'>
                         <li>
@@ -845,6 +845,7 @@ function HomePage() {
                       </ul>
                       <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
                       <h6>{t("aboutPage.reviewerDetails.reviewerPost.2")}</h6>
+                      <img className="NikitaSharmaImage img-responsive" src={Nikita} alt='' />
                     </div>
                   </div>
 
@@ -880,7 +881,7 @@ function HomePage() {
 
                   <div data-aos='slide-left'>
                     <div className='tes_box_ankita heg_cha'>
-                      <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' />
+                      {/* <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' /> */}
                       <p>{t("aboutPage.review.3")}</p>
                       <ul className='star'>
                         <li>
@@ -901,6 +902,7 @@ function HomePage() {
                       </ul>
                       <h2>{t("aboutPage.reviewerDetails.reviewerName.2")}</h2>
                       <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
+                      <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' />
                     </div>
                   </div>
                 </div>

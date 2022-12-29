@@ -400,9 +400,9 @@ a.limited-text:hover {
 }
 
 .css-tlelie-MuiListItemText-root{
-  color: #ec498a;
-  padding: 3px;
-  cursor: pointer;
+  color: #ec498a !important;
+  padding: 3px !important;
+  cursor: pointer !important;
 }
 
 .css-1p823my-MuiListItem-root {
@@ -421,12 +421,12 @@ a.limited-text:hover {
 }
 
 .active {
-  background: #ec498a;
+  background: #ec498a !important;
   color: #fff !important;
 }
 
 .css-h4y409-MuiList-root .css-tlelie-MuiListItemText-root .css-10hburv-MuiTypography-root {
   font-weight: 500 !important;
-  font-size: 1.1rem;
+  font-size: 1.1rem !important;
 }
 

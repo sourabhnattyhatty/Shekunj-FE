@@ -18,13 +18,13 @@ const BlogDetails = () => {
   const history = useHistory();
   const { blogs } = useSelector((state) => state.blogsReducer);
   const dispatch = useDispatch();
-  ("Blogssssss", blogs);
+  // ("Blogssssss", blogs);
   const { lan } = useSelector((state) => state.languageReducer);
-  ("langggggg", lan);
+  // ("langggggg", lan);
   const { t } = useTranslation();
 
   const { id } = useParams();
-  ("id!!!!!!", id);
+  // ("id!!!!!!", id);
 
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
@@ -134,7 +134,7 @@ const BlogDetails = () => {
 
 
   const addEmail = (email) => {
-    ("addEmail", email);
+    // ("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -152,7 +152,7 @@ const BlogDetails = () => {
         })
         .then((response) => {
           // setAdds(response.data.results);
-          ("addEmailresponse", response);
+          // ("addEmailresponse", response);
         });
     });
   };

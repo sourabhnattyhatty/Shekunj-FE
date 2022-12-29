@@ -127,7 +127,7 @@ const AboutusPage = () => {
 
   return (
     <div className='noselect'>
-      <SEO title='Sheकुंज - About us'  />
+      <SEO title='Sheकुंज - About us' link='https://www.shekunj.com/about-us' />
       <Header loginPage={false} page='about-us' />
       <section className='about_ban'>
         <div className='container'>
@@ -174,7 +174,7 @@ const AboutusPage = () => {
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
-                      <img className='NikitaSharmaImage img-responsive' src={Nikita} alt='' />
+                      {/* <img className='NikitaSharmaImage img-responsive' src={Nikita} alt='' /> */}
                       <p>"{t("aboutPage.review.1")}"</p>
                       <ul className='star'>
                         <li>
@@ -195,6 +195,7 @@ const AboutusPage = () => {
                       </ul>
                       <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
                       <h6>{t("aboutPage.reviewerDetails.reviewerPost.2")}</h6>
+                      <img className='NikitaSharmaImage img-responsive' src={Nikita} alt='' />
                     </div>
                   </div>
 
@@ -230,7 +231,7 @@ const AboutusPage = () => {
 
                   <div data-aos='slide-left'>
                     <div className='tes_box_ankita heg_cha'>
-                      <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' />
+                      {/* <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' /> */}
                       <p>“{t("aboutPage.review.3")}"</p>
                       <ul className='star'>
                         <li>
@@ -251,6 +252,7 @@ const AboutusPage = () => {
                       </ul>
                       <h2>{t("aboutPage.reviewerDetails.reviewerName.2")}</h2>
                       <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
+                      <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' />
                     </div>
                   </div>
                 </div>
