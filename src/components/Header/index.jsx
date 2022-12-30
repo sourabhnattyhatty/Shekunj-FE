@@ -399,26 +399,29 @@ const Header = ({ page, subPage }) => {
                     onClick={toggleDrawer}
                   />
                   <div className='toggleDrawerOptions'>
-                    <Link to='/about'>
-                      <ListItem className={
-                        page === "about" && "active"
-                      }>
-                        <ListItemText primary="About" style={{ color: page === "about" && '#fff' }} />
-                      </ListItem>
-                    </Link>
-                    <Link to='/courses'>
-                      <ListItem className={
-                        page === "courses" && "active"
-                      }>
-                        <ListItemText primary="Courses" style={{ color: page === "courses" && '#fff' }} />
-                      </ListItem>
-                    </Link>
+                    <ListItem className={
+                      page === "about" && "active-route"
+                    }
+                      onClick={() => { history.push('/about-us') }}
+                    >
+                      <ListItemText primary="About" style={{ color: page === "about" ? '#fff' : '#ec498a' }} />
+                    </ListItem>
+
+                    <ListItem className={
+                      page === "courses" && "active-route"
+                    }
+                      onClick={() => { history.push('/courses') }}
+                    >
+                      <ListItemText primary="Courses" style={{ color: page === "courses" ? '#fff' : '#ec498a' }} />
+                    </ListItem>
 
                     <ListItem id='basic-button2'
                       aria-controls='basic-menu2'
                       aria-haspopup='true'
                       aria-expanded={open2 ? "true" : undefined}
-                      onClick={handleClick2}>
+                      onClick={handleClick2}
+                      style={{ color: '#ec498a' }}
+                    >
                       <ListItemText primary={t("header.heading.3")} />
                     </ListItem>
                     <Menu
@@ -432,36 +435,35 @@ const Header = ({ page, subPage }) => {
                     >
                       <MenuItem
                         onClick={handleGuidance1}
-                        className={subPage === "careerOption" && "active"}
+                        className={subPage === "careerOption" && "active-route"}
                       >
                         {t("headerComponent.menuItem.5")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleGuidance2}
-                        className={subPage === "mockTest" && "active"}
+                        className={subPage === "mockTest" && "active-route"}
                       >
                         {t("headerComponent.menuItem.6")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleGuidance3}
-                        className={subPage === "bookCounsller" && "active"}
+                        className={subPage === "bookCounsller" && "active-route"}
                       >
                         {t("headerComponent.menuItem.7")}
                       </MenuItem>
                     </Menu>
-
-                    <Link to={{ pathname: 'https://octahire.com/Resume_maker' }} target='_blank'>
-                      <ListItem>
-                        <ListItemText primary="Resume Builder" />
-                      </ListItem>
-                    </Link>
+                    <ListItem onClick={() => { window.open('https://octahire.com/Resume_maker', "_blank") }} style={{ color: '#ec498a' }}>
+                      <ListItemText primary="Resume Builder" />
+                    </ListItem>
 
                     <ListItem
                       id='basic-button1'
                       aria-controls='basic-menu1'
                       aria-haspopup='true'
                       aria-expanded={open1 ? "true" : undefined}
-                      onClick={handleClick1}>
+                      onClick={handleClick1}
+                      style={{ color: '#ec498a' }}
+                    >
                       <ListItemText primary={t("header.heading.5")} />
                     </ListItem>
                     <Menu
@@ -475,33 +477,35 @@ const Header = ({ page, subPage }) => {
                     >
                       <MenuItem
                         onClick={handleColleges}
-                        className={subPage === "colleges" && "active"}
+                        className={subPage === "colleges" && "active-route"}
                       >
                         {t("headerComponent.menuItem.8")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleSchools}
-                        className={subPage === "schools" && "active"}
+                        className={subPage === "schools" && "active-route"}
                       >
                         {t("headerComponent.menuItem.9")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleExams}
-                        className={subPage === "govExams" && "active"}
+                        className={subPage === "govExams" && "active-route"}
                       >
                         {t("headerComponent.menuItem.10")}
                       </MenuItem>
                     </Menu>
-                    <Link to={{ pathname: 'https://octahire.com/Home/candidate_register' }} target='_blank'>
-                      <ListItem>
-                        <ListItemText primary='Jobs' style={{ color: page === "about" && '#fff' }} />
-                      </ListItem>
-                    </Link>
+                    <ListItem onClick={() => { window.open('https://octahire.com/Home/candidate_register', "_blank") }}
+                      style={{ color: '#ec498a' }}
+                    >
+                      <ListItemText primary='Jobs' />
+                    </ListItem>
                     <ListItem id='basic-button3'
                       aria-controls='basic-menu3'
                       aria-haspopup='true'
                       aria-expanded={open3 ? "true" : undefined}
-                      onClick={handleClick3}>
+                      onClick={handleClick3}
+                      style={{ color: '#ec498a' }}
+                    >
                       <ListItemText primary={t("header.heading.7")} />
                     </ListItem>
                     <Menu
@@ -515,19 +519,19 @@ const Header = ({ page, subPage }) => {
                     >
                       <MenuItem
                         onClick={handleMoreEvent}
-                        className={subPage === "moreEvent" && "active"}
+                        className={subPage === "moreEvent" && "active-route"}
                       >
                         {t("headerComponent.menuItem.11")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleMoreBlogs}
-                        className={subPage === "moreblog" && "active"}
+                        className={subPage === "moreblog" && "active-route"}
                       >
                         {t("headerComponent.menuItem.13")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleMoreFAQ}
-                        className={subPage === "moreFAQ" && "active"}
+                        className={subPage === "moreFAQ" && "active-route"}
                       >
                         {/* {t("headerComponent.menuItem.14")} */}
                         FAQ
@@ -603,20 +607,18 @@ const Header = ({ page, subPage }) => {
                         }}
                         class='center'
                         className={
-                          page === "more" && "active"
+                          page === "more" && "active-route"
                         }
                       >
                         <strong>View ALL</strong>
                       </MenuItem>
                     </Menu>
 
-                    <Link to='/success-stories'>
-                      <ListItem className={
-                        page === "success-stories" && "active"
-                      }>
-                        <ListItemText primary='Success story' style={{ color: page === "success-stories" && '#fff' }} />
-                      </ListItem>
-                    </Link>
+                    <ListItem className={page === "success-stories" && "active-route"}
+                      onClick={() => { history.push('/success-stories') }}
+                    >
+                      <ListItemText primary='Success story' style={{ color: page === "success-stories" ? '#fff' : '#ec498a' }} />
+                    </ListItem>
                   </div>
                 </List>
                 <Divider />

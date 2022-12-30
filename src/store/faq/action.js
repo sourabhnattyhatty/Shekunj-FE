@@ -8,10 +8,10 @@ import { handleErrorMessage } from "../../utils/utils";
 const constants = apiConstants.FAQ;
 
 export const getFaq =
-  (limit = null, offset = null, lat = "19.8508544", long = "75.3762304") =>
+  (limit = null, offset = null) =>
   async (dispatch) => {
     try {
-      const url = constants.FAQ + `?latitude=${lat}&longitude=${long}`;
+      const url = constants.FAQ ;
       dispatch({ type: faqTypes.FETCH_FAQ_REQUEST });
       const res = await ApiService.get(url);
       dispatch({

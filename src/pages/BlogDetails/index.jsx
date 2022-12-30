@@ -30,6 +30,8 @@ const BlogDetails = () => {
   const [adds, setAdds] = useState([]);
   const [blogDetailsBoxAds, setBlogDetailsBoxAds] = useState([]);
 
+  console.log(blogs,'................................blogs')
+
   useEffect(() => {
     dispatch(singleBlogDetails(id));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -180,7 +182,7 @@ const BlogDetails = () => {
                 </Row>
             </Container> */}
 
-      {("blogss---", blogs)}
+      {/* {("blogss---", blogs)} */}
       {/* {blogs?.length > 0 ? (
             blogs?.map((blogs)=>{
               ("blogs", blogs);

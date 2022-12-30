@@ -400,7 +400,6 @@ a.limited-text:hover {
 }
 
 .css-tlelie-MuiListItemText-root{
-  color: #ec498a !important;
   padding: 3px !important;
   cursor: pointer !important;
 }
@@ -410,17 +409,13 @@ a.limited-text:hover {
   padding-bottom: 0 !important;
 }
 
-.css-h4y409-MuiList-root a {
-  text-decoration: none !important;
-}
-
 .css-h4y409-MuiList-root .css-tlelie-MuiListItemText-root:hover {
   background: #ec498a !important;
   color: #fff !important;
   text-decoration: none !important;
 }
 
-.active {
+.active-route {
   background: #ec498a !important;
   color: #fff !important;
 }

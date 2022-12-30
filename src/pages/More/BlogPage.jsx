@@ -256,13 +256,13 @@ function BlogPage() {
                                   }}
                                 />
                               )}
-                              {/* <Link
-                                to={"/blogs/" + s.id}
-                                className='BlogReadMore'
+                              <Link
+                                to={routingConstants.MORE_BLOG + s.id}
+                                className='BlogReadMore noselect'
                                 key={s?.id}
                               >
                                 Read More
-                              </Link> */}
+                              </Link>
                             </p>
 
                             {/* {s?.about_blog?.length >= 300 && (
