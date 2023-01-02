@@ -703,7 +703,6 @@ export default function AccordionComponent({
       )}
       {type === "governmentExams" && (
         <>
-          {console.log("categories", categories)}
           <Accordion>
             <AccordionSummary
               aria-controls='panel1d-content'

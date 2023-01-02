@@ -64,6 +64,7 @@ export const checkIsSessionExpired = (tokenExpiry = 0) => {
   const currentTime = new Date().getTime();
   const tokenExpireTime = new Date((tokenExpiry - 10) * 1000).getTime();
   if (currentTime > tokenExpireTime) {
+
     return true;
   } else {
     return false;
@@ -165,9 +166,9 @@ export function formatDate(date = null, format = "DD-MM-YYYY") {
 export function formatTime(date = null) {
   return date
     ? {
-        hour: moment(date).format("HH") + i18njs.t("common.time.8"),
-        minute: moment(date).format("mm") + i18njs.t("common.time.2"),
-      }
+      hour: moment(date).format("HH") + i18njs.t("common.time.8"),
+      minute: moment(date).format("mm") + i18njs.t("common.time.2"),
+    }
     : { hour: null, minute: null };
 }
 
@@ -192,14 +193,17 @@ export function timeDifferenceFromDates(sDate, eDate) {
   const endDate = moment(eDate);
   return sDate && eDate
     ? {
-        hour: endDate.diff(startDate, "hour") + i18njs.t("common.time.8"),
-        minute: endDate.diff(startDate, "minute") + i18njs.t("common.time.2"),
-      }
+      hour: endDate.diff(startDate, "hour") + i18njs.t("common.time.8"),
+      minute: endDate.diff(startDate, "minute") + i18njs.t("common.time.2"),
+    }
     : { hour: null, minute: null };
 }
 
 export const removeUnauthorizedUser = () => {
   Cookies.remove("sheToken");
+  localStorage.removeItem('login_data');
+  localStorage.removeItem('event_data');
+  
   toast.error(i18njs.t("error.other.8"));
   window.location.href = routingConstants.LOGIN;
 };
@@ -215,7 +219,7 @@ export const paragraph = (text) => {
 
   let lines = text
   // return lines?.length > 0 ? text.filter((o) => o !== `\r\n` || o !== "") : [];
-  return lines?.length > 0 && typeof(text === 'string') ? text:text.filter((o) => o !== `\r\n` || o !== "");
+  return lines?.length > 0 && typeof (text === 'string') ? text : text.filter((o) => o !== `\r\n` || o !== "");
 };
 
 export async function convertRelativeUriToFile(

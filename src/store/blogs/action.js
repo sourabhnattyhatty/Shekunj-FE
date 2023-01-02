@@ -13,7 +13,6 @@ export const getAllBlogs = (lat="19.8508544",long="75.3762304") => async (dispat
 
     dispatch({ type: blogsTypes.FETCH_BLOGS_REQUEST });
     const res = await ApiService.get(url);
-    console.log("resss", res);
     dispatch({
       type: blogsTypes.FETCH_BLOGS_FINISH,
       payload: { ...res?.data, is_collapse: false },
@@ -39,7 +38,6 @@ export const singleBlogDetails = (id,lat="19.8508544",long="75.3762304") => asyn
       // },
       payload: { ...res?.data, is_collapse: false },
     });
-    console.log("resSingleBlog",res)
   } catch (error) {
     dispatch({ type: blogsTypes.FETCH_BLOGS_FAIL });
   }
@@ -54,7 +52,6 @@ export const setCollapseBlogs = (id, action) => (dispatch, getState) => {
   const idx = updatedPayload?.findIndex((u) => u.id === id);
 
   if (idx !== -1) {
-    console.log("idx!!! ", idx);
     updatedPayload[idx].is_collapse = action;
   }
   dispatch({

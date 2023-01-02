@@ -19,7 +19,7 @@ export const getAllMagzines =
           `?latitude=${lat}&longitude=${long}`,
       });
       const res = await ApiService.get(url);
-      console.log("resss", res);
+
       dispatch({
         type: magzinesTypes.FETCH_MAGZINES_FINISH,
         payload: { ...res?.data, is_collapse: false },
@@ -68,7 +68,7 @@ export const setCollapseMagzines = (id, action) => (dispatch, getState) => {
   const idx = updatedPayload?.findIndex((u) => u.id === id);
 
   if (idx !== -1) {
-    console.log("idx!!! ", idx);
+
     updatedPayload[idx].is_collapse = action;
   }
   dispatch({

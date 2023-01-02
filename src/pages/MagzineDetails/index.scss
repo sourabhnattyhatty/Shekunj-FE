@@ -4,6 +4,7 @@
   width: 100%;
   height: 620px;
   background-size: cover;
+  margin-bottom: 65px;
 }
 
 .SuccStory_banner h2 {
@@ -569,4 +570,41 @@ iframe {
 
 .rws-icon {
   border-radius: 50% !important;
+}
+
+.magazine_div {
+  background: black;
+  // width: 59rem;
+  // height: 36.7rem;
+  // padding: 2.5rem 9.6rem;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+}
+
+.zoom_div {
+  background: black;
+  width: 40rem;
+  height: 25rem;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5rem 9.6rem,
+
+}
+
+.icons_div {
+  display: flex;
+  justify-content: space-evenly;
+  // width: 15.62rem;
+  width: 100%;
+  position: absolute;
+  background-color: #454545;
+  bottom: 0;
+  padding-bottom: 1rem;
+}
+
+.icon_class {
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
 }

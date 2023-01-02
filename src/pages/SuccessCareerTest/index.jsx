@@ -78,7 +78,6 @@ function CourseTest() {
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
     (state) => state?.guidanceReducer,
   );
-  console.log("testDataMockTest", testData);
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
 
   const { t } = useTranslation();

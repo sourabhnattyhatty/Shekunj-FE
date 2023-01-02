@@ -18,13 +18,10 @@ const BlogDetails = () => {
   const history = useHistory();
   const { blogs } = useSelector((state) => state.blogsReducer);
   const dispatch = useDispatch();
-  console.log("Blogssssss", blogs);
   const { lan } = useSelector((state) => state.languageReducer);
-  console.log("langggggg", lan);
   const { t } = useTranslation();
 
   const { id } = useParams();
-  console.log("id!!!!!!", id);
 
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
@@ -76,7 +73,7 @@ const BlogDetails = () => {
   //         }
   //       })   .catch((error) => {
   //         // setMessage("No data found");
-  //         console.log(error);
+  //         (error);
   //     })
   //   });
   //   dispatch(adsList());
@@ -106,7 +103,7 @@ const BlogDetails = () => {
 
             });
             setBlogDetailsBoxAds(filterArray1);
-            // console.log("filterArray1blog_details",filterArray1)
+            // ("filterArray1blog_details",filterArray1)
           }
         })
     },
@@ -123,7 +120,7 @@ const BlogDetails = () => {
                 return item.image_type == "blog_details";
               });
               setBlogDetailsBoxAds(filterArray1);
-              // console.log("filterArray1coursebox",filterArray1) 
+              // ("filterArray1coursebox",filterArray1) 
             }
           })
       }
@@ -134,7 +131,6 @@ const BlogDetails = () => {
 
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -152,7 +148,6 @@ const BlogDetails = () => {
         })
         .then((response) => {
           // setAdds(response.data.results);
-          console.log("addEmailresponse", response);
         });
     });
   };
@@ -180,10 +175,9 @@ const BlogDetails = () => {
                 </Row>
             </Container> */}
 
-      {console.log("blogss---", blogs)}
       {/* {blogs?.length > 0 ? (
             blogs?.map((blogs)=>{
-              console.log("blogs", blogs);
+              ("blogs", blogs);
               return (
                   <> */}
       <div className='DetailMainDiv_career noselect'>

@@ -159,7 +159,6 @@ export default function VerticalTabs() {
 
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -279,10 +278,7 @@ export default function VerticalTabs() {
                   guidanceCategoryDetail?.length > 0 &&
                   guidanceCategoryDetail?.map(
                     (guidanceCategoryDetail, index) => {
-                      console.log(
-                        "guidanceCategoryCatelogList",
-                        guidanceCategoryDetail,
-                      );
+                    
                       return (
                         <Row>
                         {/* <Col md={6} xs={12}> */}
@@ -391,11 +387,7 @@ export default function VerticalTabs() {
             {categoryDetail.isVisible &&
               guidanceCategoryDetail?.length > 0 &&
               guidanceCategoryDetail?.map((guidanceCategoryDetail) => {
-                console.log(
-                  "guidanceCategory",
-                  guidanceCategoryDetail,
-                  categoryDetail,
-                );
+              
                 if (categoryDetail.id == guidanceCategoryDetail.id) {
                   return (
                     <TabPanel>

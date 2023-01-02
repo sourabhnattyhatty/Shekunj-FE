@@ -4,7 +4,9 @@ const initialState = {
   isLoading: false,
   error: null,
   events: {},
-  bookEvents:0,
+  registerData: null,
+  bookEvents: 0,
+
 };
 
 export const eventsReducer = (state = initialState, action) => {
@@ -19,7 +21,13 @@ export const eventsReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        bookEvents:action.payload.code,
+        bookEvents: action.payload.code,
+        error: null,
+      };
+    case eventsTypes.BOOK_EVENT_FINISH_CLOSE:
+      return {
+        ...state,
+        bookEvents: 0,
         error: null,
       };
     case eventsTypes.BOOK_EVENT_FAIL:
@@ -47,6 +55,15 @@ export const eventsReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload,
       };
+    case eventsTypes.GET_LOCAL_DATA:
+      let d = localStorage.getItem('login_data')
+      return {
+        ...state,
+        registerData: d,
+        isLoading: false,
+      };
+
+
     default:
       return state;
   }

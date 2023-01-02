@@ -32,7 +32,6 @@ import FormControl from "@mui/material/FormControl";
 import img1 from "../../assets/images/shekunj_magzine.jpg";
 import global from "../../assets/images/Success/global.png";
 import axios from "axios";
-
 import { routingConstants } from "../../utils/constants";
 import { Header, Footer } from "../../components";
 import {
@@ -44,7 +43,6 @@ import {
 } from "../../store/guidance/action";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import timeIcon from "../../assets/images/Courses/time.png";
-
 import "./index.scss";
 import "../CoursesModule/index.scss";
 import { adsList } from "../../store/ads";
@@ -73,7 +71,6 @@ function MockTest() {
   const [answer, setAnswer] = React.useState();
   const [toggle, setToggle] = React.useState(true);
   const [showTimer, setShowTimer] = React.useState(false);
-
   const [check1, setCheck1] = React.useState(false);
   const [check2, setCheck2] = React.useState(false);
   const [check3, setCheck3] = React.useState(false);
@@ -87,67 +84,30 @@ function MockTest() {
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [tempData, setTempData] = useState([]);
+
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const detect = useDeviceDetect();
+  const { t } = useTranslation();
+  const { lan } = useSelector((state) => state.languageReducer);
 
   const SearchFilterHandle = (e) => {
     e.preventDefault();
     dispatch(getGuidanceCategory(`?search=${searchInput}`));
   };
+
   const handleResetSearch = () => {
     dispatch(getGuidanceCategory());
     setSearchInput("");
   };
 
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const detect = useDeviceDetect();
   // eslint-disable-next-line no-unused-vars
   const { isLoading, guidanceCategory, testData, countData } = useSelector(
     (state) => state?.guidanceReducer,
   );
 
   const progress = Math.round(100 / (countData?.total_career_que || 0)) || 0;
-
-  const { t } = useTranslation();
-  const { lan } = useSelector((state) => state.languageReducer);
-
-  // useEffect(()=> {
-  //   setQuestionNumber(countData?.user_career_test_count + 1)
-  // },[countData])
-
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(async function (position, values) {
-  //     const latitude = position.coords.latitude;
-  //     const longitude = position.coords.longitude;
-
-  //     let params = {
-  //       latitude: latitude.toString(),
-  //       longitude: longitude.toString(),
-  //     };
-  //     axios
-  //       .get(
-  //         `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-  //       )
-  //       .then((response) => {
-  //         if (response.data.results.length > 0) {
-  //           let filterArray = response.data.results.filter((item, index) => {
-  //             return item.image_type == "mock_test";
-  //           });
-  //           let findImage =
-  //             filterArray.length > 0 ? filterArray[0].image : "NA";
-  //           setImage(findImage);
-  //           setMockTestBoxAds(filterArray);
-  //         }
-  //       })   .catch((error) => {
-  //         // setMessage("No data found");
-  //         console.log(error);
-  //     })
-  //   });
-  //   dispatch(adsList());
-  // }, [dispatch]);
-
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>latest code below >>>>>>>>>>>>>>>>>>>>>
 
   useEffect(() => {
     dispatch(adsList());
@@ -175,7 +135,6 @@ function MockTest() {
           });
       },
       function (error) {
-        console.error("Error Code = " + error.code + " - " + error.message);
         // alert("Your location is blocked")
         axios.get(`/private_adds/private_add`).then((response) => {
           if (response && response.data.results.length > 0) {
@@ -191,7 +150,6 @@ function MockTest() {
   }, []);
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -224,12 +182,6 @@ function MockTest() {
       history.push(routingConstants.CAREER_TEST_RESULT + nv);
     }
   }, []);
-
-  // useEffect(() => {
-  //   if (detect.isMobile) {
-  //     history.push(`${routingConstants.HOME_PAGE}?redirect=mobileView`);
-  //   }
-  // }, [history, detect.isMobile, t, dispatch, selectedCourseCategoryValue?.id]);
 
   useEffect(() => {
     return () => {
@@ -449,12 +401,119 @@ function MockTest() {
     }
   };
 
+  useEffect(() => {
+    checkFunction()
+  }, [guidanceCategory])
+
+  const shuffleFun = (gb, index) => {
+    if (gb?.id === 'advertistment') {
+      return (
+        <>
+          {
+            mockTestBoxAds?.length > 0 ?
+              <Grid
+                Container
+                spacing={2}
+                className='gridContainer flex'
+              >
+                <Col md={1} xl={12}>
+                  <Card className='GuidanceOptionCard '>
+
+                    <div
+                      onClick={() =>
+                        addEmail(mockTestBoxAds[0]?.add_email)
+                      }
+                    >
+                      <a
+                        href={mockTestBoxAds[0]?.url_adds}
+                        target='_blank'
+                      >
+                        <img
+                          src={mockTestBoxAds[0]?.image}
+                          alt='Image'
+                          className='guidanceOptionImageAdd'
+                        />
+                      </a>
+                      <div className='overlay'></div>
+                    </div>
+
+                  </Card>
+                </Col>
+              </Grid>
+              :
+              ""
+          }
+        </>
+      )
+    }
+    else {
+      return (
+        <Grid Container spacing={2} className='gridContainer flex'>
+          <Col md={1} xl={12}>
+            <Card className='GuidanceOptionCard noselect'>
+              <CardMedia
+                className='guidanceOptionImage'
+                component='img'
+                image={gb?.image}
+                alt='image'
+              />
+              <CardContent>
+                <Typography
+                  variant='h6'
+                  className='guidanceOptionTitle limited-text-mock-test'
+                  fullWidth
+                >
+                  {gb?.name}
+                </Typography>
+              </CardContent>
+              <Typography
+                sx={{ mb: 1.5 }}
+                className='guidanceOptionTitle2'
+                color='text.secondary'
+                fullWidth
+              >
+                Total Time: {gb?.career_test_time}
+              </Typography>
+              <CardActions className='actions'>
+                <Button
+                  size='small'
+                  variant='contained'
+                  href={gb && gb.form_link}
+                >
+                  <Link
+                    to={routingConstants?.MOCKTEST + gb?.id}
+                    className=''
+                    key={gb?.id}
+                  >
+                    Start Test
+                  </Link>
+                </Button>
+              </CardActions>
+            </Card>
+          </Col>
+        </Grid>
+      )
+    }
+  }
+
+  const checkFunction = () => {
+    let num = Math.floor(Math.random() * (13 - 0) + 0);
+    let res = guidanceCategory;
+    let dummydata = {
+      "id": 'advertistment'
+    }
+    Object.values(res).splice(num, 0, dummydata);
+    if (res) {
+      setTempData(res)
+    }
+  };
+
   return (
     <div className='noselect'>
 
 
-<Helmet>
-<link rel="canonical" href="https://www.shekunj.com/mock-test/" />
+      <Helmet>
+        <link rel="canonical" href="https://www.shekunj.com/mock-test/" />
       </Helmet>
 
       <Header loginPage={true} page='guidance' subPage='mockTest' />
@@ -526,18 +585,14 @@ function MockTest() {
       {/* <Container class="event_responsive13"> */}
       <Container>
         <div class='event_responsive13'>
-          {console.log("guidanceCategory", guidanceCategory)}
-          {guidanceCategory?.length > 0 &&
-            guidanceCategory?.map((gb, index) => {
-              console.log("gb", gb);
+          {/* {guidanceCategory?.length > 0 &&
+            guidanceCategory?.map((gb, index) => { */}
+          {tempData?.length > 0 &&
+            tempData?.map((gb, index) => {
               return (
                 <>
-                  <Grid Container spacing={2} className='gridContainer flex'>
-                    {/* <div className='guidanceCategory' key={gb?.id}> */}
-
-                    {/* <Col sm={1} md={12}> */}
+                  {/* <Grid Container spacing={2} className='gridContainer flex'>
                     <Col md={1} xl={12}>
-                      {/* <Grid item xs={12} sm={4} md={2} > */}
                       <Card className='GuidanceOptionCard noselect'>
                         <CardMedia
                           className='guidanceOptionImage'
@@ -578,17 +633,15 @@ function MockTest() {
                           </Button>
                         </CardActions>
                       </Card>
-                      {/* </Grid> */}
                     </Col>
-                  </Grid>
+                  </Grid> */}
 
-                  {/* {index % 4 == 3 ? ( */}
-                  {/* {Math.floor(Math.random()*(12-0)+ 0) == index && ( */}
+                  {
+                    shuffleFun(gb, index)
+                  }
 
-                  {Math.floor(Math.random() * (12 - 0) + 0) == index ? (
+                  {/* {Math.floor(Math.random() * (12 - 0) + 0) == index ? (
                     <>
-                      {/* <div className='Row'>
-                      <Col md={1} xl={12}> */}
                       <Grid
                         Container
                         spacing={2}
@@ -655,8 +708,7 @@ function MockTest() {
                         </>
                       )}
                     </>
-                  )}
-                  {/* </Grid> */}
+                  )} */}
                 </>
               );
             })}

@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Logo from "../../assets/images/whitelogo.svg";
 import LogoBlack from "../../assets/images/whitelogo.svg";
@@ -16,16 +16,25 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { adsList } from "../../store/ads";
-
-const Footer = ({ loginPage }) => {
+import {
+  Avatar,
+  Divider,
+  Drawer,
+  List,
+  Menu,
+  MenuItem,
+  Badge,
+} from "@mui/material";
+const Footer = ({ loginPage, subPage }) => {
   const { t } = useTranslation();
-
+  const history = useHistory()
   const dispatch = useDispatch();
   const [adsFooter1, setAdsFooter1] = useState([]);
   const [adsFooter2, setAdsFooter2] = useState([]);
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
-
+  const [anchorEl3, setAnchorEl3] = React.useState(null);
+  const open3 = Boolean(anchorEl3);
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
@@ -97,7 +106,6 @@ const Footer = ({ loginPage }) => {
                 return item.image_type == "footer_2";
               });
               setAdsFooter2(filterArray2);
-              console.log("filterArray1footer_2", filterArray2);
             }
           });
       },
@@ -115,7 +123,6 @@ const Footer = ({ loginPage }) => {
               return item.image_type == "footer_2";
             });
             setAdsFooter2(filterArray2);
-            console.log("filterArray1coursebox", filterArray2);
           }
         });
       },
@@ -123,7 +130,6 @@ const Footer = ({ loginPage }) => {
   }, []);
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -149,6 +155,35 @@ const Footer = ({ loginPage }) => {
         });
     });
   };
+
+  const handleMoreEvent = () => {
+    history.push(routingConstants.MORE_EVENT);
+    setAnchorEl3(null);
+  };
+
+  const handleMoreMagazine = () => {
+    history.push(routingConstants.MORE_MAGAZINE);
+    setAnchorEl3(null);
+  };
+
+  const handleMoreFAQ = () => {
+    history.push(routingConstants.FAQ);
+    setAnchorEl3(null);
+  };
+
+  const handleMoreBlogs = () => {
+    history.push(routingConstants.MORE_BLOG);
+    setAnchorEl3(null);
+  };
+
+  const handleClose3 = () => {
+    setAnchorEl3(null);
+  };
+
+  const handleClick3 = (event) => {
+    setAnchorEl3(event.currentTarget);
+  };
+
   return (
     <div className='noselect'>
       {/* google add */}
@@ -167,9 +202,6 @@ const Footer = ({ loginPage }) => {
                     className='google_ads_footer'
                   />
                 </a>
-
-                {console.log("footer-image", adsFooter1[0]?.image)}
-
                 <a href={adds[0]?.add_email} target='_blank'>
                   {/* <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' /> */}
                 </a>
@@ -196,12 +228,60 @@ const Footer = ({ loginPage }) => {
                 </li>
                 <li>
                   <a
-                    href={routingConstants.BLOGS}
+                    // href={routingConstants.BLOGS}
                     target='_blank'
                     rel='noreferrer'
+                    id='basic-button3'
+                    aria-controls='basic-menu3'
+                    aria-haspopup='true'
+                    aria-expanded={open3 ? "true" : undefined}
+                    onClick={handleClick3}
+                    style={{ color: 'white', cursor: 'pointer' }}
                   >
                     {t("header.heading.7")}
                   </a>
+                  <Menu
+                    id='basic-menu3'
+                    anchorEl={anchorEl3}
+                    open={open3}
+                    onClose={handleClose3}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button3",
+                    }}
+                  >
+                    <MenuItem
+                      onClick={handleMoreEvent}
+                      className={subPage === "moreEvent" && "active"}
+                    >
+                      {t("headerComponent.menuItem.11")}
+                    </MenuItem>
+                    {/* <MenuItem
+                        onClick={handleMoreMagazine}
+                        className={subPage === "moreMagazine" && "active"}
+                      >
+                        {t("headerComponent.menuItem.12")}
+                      </MenuItem> */}
+                    <MenuItem
+                      onClick={handleMoreBlogs}
+                      className={subPage === "moreblog" && "active"}
+                    >
+                      {t("headerComponent.menuItem.13")}
+                    </MenuItem>
+                    <MenuItem
+                        onClick={handleMoreMagazine}
+                        className={subPage === "moreMagazine" && "active"}
+                      >
+                        {/* {t("headerComponent.menuItem.12")} */}
+                        Magazine
+                      </MenuItem> 
+                    <MenuItem
+                      onClick={handleMoreFAQ}
+                      className={subPage === "moreFAQ" && "active"}
+                    >
+                      {/* {t("headerComponent.menuItem.14")} */}
+                      FAQ
+                    </MenuItem>
+                  </Menu>
                 </li>
                 <li>
                   <Link to={routingConstants.CONTACT_US}>
@@ -286,7 +366,7 @@ const Footer = ({ loginPage }) => {
                     >
                       <img
                         src={facebook}
-                        //  style={{height:"50px",width:"55px"}}
+                      //  style={{height:"50px",width:"55px"}}
                       ></img>{" "}
                     </a>
                     <a
@@ -296,7 +376,7 @@ const Footer = ({ loginPage }) => {
                     >
                       <img
                         src={twitter1}
-                        // style={{height:"50px",width:"55px"}}
+                      // style={{height:"50px",width:"55px"}}
                       ></img>{" "}
                     </a>
                     <a
@@ -307,7 +387,7 @@ const Footer = ({ loginPage }) => {
                     >
                       <img
                         src={linkedinlogo}
-                        //  style={{height:"50px",width:"55px"}}
+                      //  style={{height:"50px",width:"55px"}}
                       ></img>{" "}
                     </a>
                     <a
@@ -317,7 +397,7 @@ const Footer = ({ loginPage }) => {
                     >
                       <img
                         src={instagram}
-                        // style={{height:"50px",width:"55px"}}
+                      // style={{height:"50px",width:"55px"}}
                       ></img>{" "}
                     </a>
                     <a
@@ -327,7 +407,7 @@ const Footer = ({ loginPage }) => {
                     >
                       <img
                         src={youTube}
-                        // style={{height:"50px",width:"55px"}}
+                      // style={{height:"50px",width:"55px"}}
                       ></img>{" "}
                     </a>
                   </div>
@@ -336,8 +416,8 @@ const Footer = ({ loginPage }) => {
             </div>
           </div>
         </div>
-      </footer>
-    </div>
+      </footer >
+    </div >
   );
 };
 

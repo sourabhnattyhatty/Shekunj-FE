@@ -17,6 +17,7 @@ import "aos/dist/aos.css";
 import "animate.css";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import SEO from '../../components/SEO/index';
 
 const AboutusPage = () => {
   const { t } = useTranslation();
@@ -24,22 +25,6 @@ const AboutusPage = () => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // useEffect(() => {
   //   dispatch(adsList())
@@ -120,7 +105,6 @@ const AboutusPage = () => {
   
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -156,7 +140,9 @@ const AboutusPage = () => {
 
       {/* <SEO title='Sheकुंज - About us'  /> */}
       
-      <Header loginPage={false} page='about' />
+      {/* <Header loginPage={false} page='about' /> */}
+      <SEO title='Sheकुंज - About us'  />
+      <Header loginPage={false} page='about-us' />
       <section className='about_ban'>
         <div className='container'>
           <div className='row'>

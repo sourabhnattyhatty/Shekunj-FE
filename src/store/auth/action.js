@@ -27,7 +27,6 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
           position,
           values,
         ) {
-          console.log("response+++Login", res);
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
 
@@ -35,12 +34,10 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
             latitude: latitude.toString(),
             longitude: longitude.toString(),
           };
-          console.log("response+++", params);
           let result = await httpServices.put(
             constants.LOCATION + res.data.id + "/",
             params,
           );
-          console.log("location_resultLogin", result);
         }),
       );
     }
@@ -56,6 +53,8 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
 
 export const logOut = (history) => async (dispatch) => {
   Cookies.remove("sheToken");
+  localStorage.removeItem('event_data')
+  localStorage.removeItem('login_data')
   dispatch({ type: authTypes.LOGIN_FAIL });
   history.push(routingConstants.LOGIN);
 };
@@ -72,7 +71,6 @@ export const onSignup = (values, history) => async (dispatch) => {
         position,
         values,
       ) {
-        console.log("response+++77", res);
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
@@ -80,12 +78,10 @@ export const onSignup = (values, history) => async (dispatch) => {
           latitude: latitude.toString(),
           longitude: longitude.toString(),
         };
-        console.log("response+++", params);
         let result = await httpServices.put(
           constants.LOCATION + res.data.id + "/",
           params,
         );
-        console.log("location_resultRegister", result);
       }),
     );
   } catch (error) {
@@ -105,8 +101,6 @@ export const registerWithGoogle =
         constants.REGISTER_WITH_GOOGLE,
         value,
         navigator.geolocation.getCurrentPosition(function (position) {
-          console.log("Latitude is :", position.coords.latitude);
-          console.log("Longitude is :", position.coords.longitude);
         }),
       );
       dispatch({
@@ -114,7 +108,6 @@ export const registerWithGoogle =
         payload: { name: res.data.username, email: res.data.email },
       });
       Cookies.set("sheToken", res.data.tokens.access);
-      console.log("response+++73", res);
       if (redirect) {
         history.push(redirect);
       } else {
@@ -124,7 +117,6 @@ export const registerWithGoogle =
             position,
             value,
           ) {
-            console.log("response+++77", res);
 
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
@@ -133,14 +125,10 @@ export const registerWithGoogle =
               latitude: latitude.toString(),
               longitude: longitude.toString(),
             };
-            console.log("response+++", params);
             let result = await httpServices.put(
               constants.LOCATION + res.data.id + "/",
               params,
             );
-
-            console.log("location_result", result);
-            console.log("location_api", result, value);
           }),
         );
       }

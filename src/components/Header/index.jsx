@@ -21,15 +21,14 @@ import ChangeLanguageButton from "../LanguageButton";
 import Logo from "../../assets/images/logo.svg";
 import close from "../../assets/icons/x.png";
 import BellIcon from "react-bell-icon";
-
+import dateFormat, { masks } from "dateformat";
 import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { pink } from "@mui/material/colors";
-
+import { compareAsc, format } from 'date-fns'
+import Cookies from "js-cookie";
 const Header = ({ page, subPage }) => {
   const { notifications } = useSelector((state) => state.notificationsReducer);
-  console.log("notificationsHHHHHHH", notifications["Notifications "]);
-
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
   const { lan } = useSelector((state) => state.languageReducer);
@@ -47,6 +46,13 @@ const Header = ({ page, subPage }) => {
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [anchorEl3, setAnchorEl3] = React.useState(null);
   const [showmenu, setShowmenu] = React.useState(false);
+  const [isAlertVisible, setIsAlertVisible] = React.useState(false);
+  const date = new Date()
+  // useEffect(() => {
+  //   const interval = setInterval(() => getTime(deadline), 1000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const open = Boolean(anchorEl);
   const open77 = Boolean(anchorEl77);
@@ -55,6 +61,12 @@ const Header = ({ page, subPage }) => {
   const open2 = Boolean(anchorEl2);
   const open3 = Boolean(anchorEl3);
 
+  useEffect(() => {
+    if (Cookies.get("sheToken") == undefined || null) {
+      localStorage.removeItem('login_data');
+      localStorage.removeItem('event_data');
+    }
+  }, [])
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -197,6 +209,58 @@ const Header = ({ page, subPage }) => {
 
     setShowmenu(!showmenu);
   };
+
+  const notificationsFunction = (data) => {
+    if (data['Notifications '] == undefined) {
+      return (
+        <BellIcon
+          width='40'
+          active={true}
+          animate={true}
+          color='#ec498a'
+        />
+      )
+    }
+    else if (data['Notifications '].length == 0) {
+      return (<BellIcon
+        width='40'
+        active={true}
+        animate={true}
+        color='#ec498a'
+      />);
+    }
+    else {
+      if (moment(data['Notifications ']?.[0].updated_at).format('MM/DD/YYYY') == moment(Date.now()).format("MM/DD/YYYY")) {
+        return (
+          < Badge
+            badgeContent='New'
+            style={{ color: "#e83e8c" }}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <BellIcon
+              width='40'
+              active={true}
+              animate={true}
+              color='#ec498a'
+            />
+          </Badge>
+        )
+      }
+      else {
+        return (
+          <BellIcon
+            width='40'
+            active={true}
+            animate={true}
+            color='#ec498a'
+          />
+        )
+      }
+    }
+  }
 
   return (
     <div className='noselect'>
@@ -904,46 +968,11 @@ const Header = ({ page, subPage }) => {
                     >
                       <span
                         className='nav-link'
+                      // to={routingConstants.SUCCESS_STORIES}
                       >
-  {notifications["Notifications "]?.[0] && moment(notifications["Notifications "]?.[0].updated_at).format("MM/DD/YYYY") == moment(Date.now()).format("MM/DD/YYYY") ? (
-                          <>
-                            {console.log(notifications["Notifications "]?.[0]?.updated_at, moment(Date.now()).format("MM/DD/YYYY"), moment(
-
-                            ).format("MM/DD/YYYY")
-
-                              , '................date')}
-                            <Badge
-                              badgeContent='New'
-                              style={{ color: "#e83e8c" }}
-                              anchorOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                              }}
-                            >
-                              <BellIcon
-                                width='40'
-                                active={true}
-                                animate={true}
-                                color='#ec498a'
-                              />
-                            </Badge>
-                          </>
-                        ) : ( 
-                          <>
-                            <BellIcon
-                              width='40'
-                              active={true}
-                              animate={true}
-                              color='#ec498a'
-                            />
-                          </>
-                         )} 
+                        {notificationsFunction(notifications)}
                       </span>
                     </Button>
-                     {/* {console.log(
-                      "notifications.updated_at",
-                        notifications["Notifications "]?.[0]
-                    )}  */}
                     <Menu
                       id='basic-menu77'
                       //  anchorEl={anchorEl1}
@@ -1043,9 +1072,9 @@ const Header = ({ page, subPage }) => {
               </div>
             </nav>
           </div>
-        </div>
-      </header>
-    </div>
+        </div >
+      </header >
+    </div >
   );
 };
 

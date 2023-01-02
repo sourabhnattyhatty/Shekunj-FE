@@ -18,9 +18,6 @@ function AllNotification() {
   const history = useHistory();
   const { notifications } = useSelector((state) => state.notificationsReducer);
   const dispatch = useDispatch();
-
-  console.log("notificationsssssss",notifications["Notifications "]);
-
   const { lan } = useSelector((state) => state.languageReducer);
   const { t } = useTranslation();
 
@@ -44,7 +41,6 @@ function AllNotification() {
       <div className='NotificationContainerIndex'>
         {notifications["Notifications "]?.length > 0 ? (
           notifications["Notifications "]?.map((c)=>{
-            console.log("c", c)
             return (
               <>
                {/* <div>

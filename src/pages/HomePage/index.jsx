@@ -190,82 +190,81 @@ function HomePage() {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-  
+
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      } 
+      }
       axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "home_position_1";
-  
-          });
-          setAdsPosition1(filterArray1);
-          // console.log("filterArray1home_position_1",filterArray1)
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
 
-          let filterArray2 = response.data.results.filter((item, index) => {
-            
-            return item.image_type == "home_position_2";
-           
-          });
-          setAdsPosition2(filterArray2);
-          console.log("filterArray1home_position_2",filterArray2)
+              return item.image_type == "home_position_1";
 
-          let filterArray3 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "home_position_3";
-  
-          });
-          setAdsPosition3(filterArray3);
-          // console.log("filterArray1home_position_3",filterArray1)
+            });
+            setAdsPosition1(filterArray1);
+            // console.log("filterArray1home_position_1",filterArray1)
+
+            let filterArray2 = response.data.results.filter((item, index) => {
+
+              return item.image_type == "home_position_2";
+
+            });
+            setAdsPosition2(filterArray2);
+            console.log("filterArray1home_position_2", filterArray2)
+
+            let filterArray3 = response.data.results.filter((item, index) => {
+
+              return item.image_type == "home_position_3";
+
+            });
+            setAdsPosition3(filterArray3);
+            // console.log("filterArray1home_position_3",filterArray1)
 
 
-            }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "home_position_1";
-          });
-          setAdsPosition1(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1)
-          let filterArray2 = response.data.results.filter((item, index) => {
-            return item.image_type == "home_position_2"; 
-          });
-          setAdsPosition2(filterArray2);
-          console.log("filterArray1coursebox",filterArray2)
-          
-          let filterArray3 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "home_position_3";
-  
-          });
-          setAdsPosition3(filterArray3);
-          // console.log("filterArray1home_position_3",filterArray3)
           }
         })
-   }
-  )
-  },[])
- 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")    
+        axios
+          .get(
+            `/private_adds/private_add`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "home_position_1";
+              });
+              setAdsPosition1(filterArray1);
+              // console.log("filterArray1coursebox",filterArray1)
+              let filterArray2 = response.data.results.filter((item, index) => {
+                return item.image_type == "home_position_2";
+              });
+              setAdsPosition2(filterArray2);
+              console.log("filterArray1coursebox", filterArray2)
+
+              let filterArray3 = response.data.results.filter((item, index) => {
+
+                return item.image_type == "home_position_3";
+
+              });
+              setAdsPosition3(filterArray3);
+              // console.log("filterArray1home_position_3",filterArray3)
+            }
+          })
+      }
+    )
+  }, [])
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   const addEmail = (email) => {
-    console.log("addEmail", email);
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -357,7 +356,7 @@ function HomePage() {
                     </p>
 
                     <Link
-                      to='/guidance-book'
+                      to='guidance/career-counselling'
                       className='banner_btn'
                       data-aos='zoom-in'
                     >
@@ -481,6 +480,7 @@ function HomePage() {
       <div className='courses'>
         <Link
           to='/success-career-test'
+          // to='/mock-test'
           style={{ textDecoration: "none" }}
           className='view_test_cate  noselect'
         >
@@ -879,7 +879,7 @@ function HomePage() {
 
                   <div data-aos='slide-left'>
                     <div className='tes_box_ankita heg_cha'>
-                      <img className='AnkitaSharmaImage img-responsive'src={Ankita} alt='' />
+                      <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' />
                       <p>{t("aboutPage.review.3")}</p>
                       <ul className='star'>
                         <li>
