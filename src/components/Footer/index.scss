@@ -75,13 +75,13 @@ footer .set_language .MuiButton-text.MuiButton-textPrimary {
 
   .google_ads_footer {
     margin: 10px 0px !important;
-    height: 120px !important;
+    height: 150px !important;
     width: 100% !important;
   }
 
   .footer_ads_bottom {
-    height: 55px !important;
-    margin-top: 30px !important;
+    height: 80px !important;
+    margin-top: 10px !important;
     width: 100% !important;
   }
 
@@ -137,10 +137,10 @@ footer .set_language .MuiButton-text.MuiButton-textPrimary {
 }
 
 .footer_ads_bottom {
-  height: 79px;
-  margin-top: 30px;
+  height: 100px;
+  margin-top: 10px;
   width: 100%;
-  object-fit: conatin;
+  // object-fit: contain;
 }
 
 .logo img {
