@@ -30,7 +30,7 @@ export const getAllEvents =
       }
     };
 export const singleEventDetails =
-  (id, lat = "19.8508544", long = "75.3762304") =>
+  (id) =>
     async (dispatch) => {
       try {
         dispatch({ type: eventsTypes.FETCH_EVENTS_REQUEST });
@@ -70,7 +70,7 @@ export const bookEvent = (value) => async (dispatch) => {
 
   } catch (error) {
     dispatch({ type: eventsTypes.BOOK_EVENT_FAIL });
-    if (error.data.errors.qualifications) {
+    if (error?.data?.errors?.qualifications) {
       toast.error(
         i18njs.t("login.form1.qualification.required"),
         toasterConfig,

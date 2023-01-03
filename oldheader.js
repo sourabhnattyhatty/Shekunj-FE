@@ -10,13 +10,11 @@ import {
   Menu,
   MenuItem,
   Badge,
-  ListItem,
-  ListItemText,
 } from "@mui/material";
 import { getAllNotifications } from "../../store/notifications";
 import moment from "moment";
 import Button from "@mui/material/Button";
-import { makeStyles } from '@mui/styles';
+
 import { getUserProfile, logOut, refreshPage } from "../../store/auth/action";
 import { isAuthenticated } from "../../utils/utils";
 import ChangeLanguageButton from "../LanguageButton";
@@ -28,29 +26,28 @@ import "./index.scss";
 import { routingConstants } from "../../utils/constants";
 import { pink } from "@mui/material/colors";
 import { compareAsc, format } from 'date-fns'
-import Cookies from "js-cookie";
+
 const Header = ({ page, subPage }) => {
-  const classes = useStyles();
   const { notifications } = useSelector((state) => state.notificationsReducer);
+  console.log(dateFormat('12/15/2022', "mm/dd/yyyy"), '.........................notifications')
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
   const { lan } = useSelector((state) => state.languageReducer);
   const dispatch = useDispatch();
   const history = useHistory();
-  // const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllNotifications());
   }, [dispatch, lan]);
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [anchorEl77, setAnchorEl77] = useState(null);
-  const [anchorEl777, setAnchorEl777] = useState(null);
-  const [anchorEl1, setAnchorEl1] = useState(null);
-  const [anchorEl2, setAnchorEl2] = useState(null);
-  const [anchorEl3, setAnchorEl3] = useState(null);
-  const [showmenu, setShowmenu] = useState(false);
-  const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl77, setAnchorEl77] = React.useState(null);
+  const [anchorEl777, setAnchorEl777] = React.useState(null);
+  const [anchorEl1, setAnchorEl1] = React.useState(null);
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const [anchorEl3, setAnchorEl3] = React.useState(null);
+  const [showmenu, setShowmenu] = React.useState(false);
+  const [isAlertVisible, setIsAlertVisible] = React.useState(false);
   const date = new Date()
   // useEffect(() => {
   //   const interval = setInterval(() => getTime(deadline), 1000);
@@ -65,12 +62,6 @@ const Header = ({ page, subPage }) => {
   const open2 = Boolean(anchorEl2);
   const open3 = Boolean(anchorEl3);
 
-  useEffect(() => {
-    if (Cookies.get("sheToken") == undefined || null) {
-      localStorage.removeItem('login_data');
-      localStorage.removeItem('event_data');
-    }
-  }, [])
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -394,32 +385,54 @@ const Header = ({ page, subPage }) => {
                     }}
                     onClick={toggleDrawer}
                   />
+                  <br />
+                  <br />
                   <div className='toggleDrawerOptions'>
-                    <ListItem className={
-                      page === "about-us" && "active-route"
-                    }
-                      onClick={() => { history.push('/about-us') }}
+                    <Link
+                      // className="options"
+                      to='/about'
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "25px",
+                        marginTop: "20px",
+                      }}
                     >
-                      <ListItemText primary="About" style={{ color: page === "about-us" ? '#fff' : '#ec498a' }} />
-                    </ListItem>
-
-                    <ListItem className={
-                      page === "courses" && "active-route"
-                    }
-                      onClick={() => { history.push('/courses') }}
+                      About
+                    </Link>
+                    <br />
+                    <Link
+                      // className="options"
+                      to='/courses'
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "25px",
+                        marginTop: "20px",
+                      }}
                     >
-                      <ListItemText primary="Courses" style={{ color: page === "courses" ? '#fff' : '#ec498a' }} />
-                    </ListItem>
-
-                    <ListItem id='basic-button2'
+                      Courses
+                    </Link>
+                    <br />
+                    <button
+                      className='nav-link guidence_button'
+                      // className='nav-link guidence_button options'
+                      id='basic-button2'
                       aria-controls='basic-menu2'
                       aria-haspopup='true'
                       aria-expanded={open2 ? "true" : undefined}
                       onClick={handleClick2}
-                      style={{ color: '#ec498a' }}
                     >
-                      <ListItemText primary={t("header.heading.3")} />
-                    </ListItem>
+                      <span
+                        style={{
+                          color: "#EC498A",
+                          fontSize: "20px",
+                          marginLeft: "8px",
+                        }}
+                      >
+                        {t("header.heading.3")}
+                      </span>
+                    </button>
                     <Menu
                       id='basic-menu2'
                       anchorEl={anchorEl2}
@@ -431,37 +444,58 @@ const Header = ({ page, subPage }) => {
                     >
                       <MenuItem
                         onClick={handleGuidance1}
-                        className={subPage === "careerOption" && "active-route"}
+                        className={subPage === "careerOption" && "active"}
                       >
                         {t("headerComponent.menuItem.5")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleGuidance2}
-                        className={subPage === "mockTest" && "active-route"}
+                        className={subPage === "mockTest" && "active"}
                       >
                         {t("headerComponent.menuItem.6")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleGuidance3}
-                        className={subPage === "bookCounsller" && "active-route"}
+                        className={subPage === "bookCounsller" && "active"}
                       >
                         {t("headerComponent.menuItem.7")}
                       </MenuItem>
                     </Menu>
-                    <ListItem onClick={() => { window.open('https://octahire.com/Resume_maker', "_blank") }} style={{ color: '#ec498a' }}>
-                      <ListItemText primary="Resume Builder" />
-                    </ListItem>
-
-                    <ListItem
+                    <a
+                      //  className="options"
+                      href='https://octahire.com/Resume_maker'
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "25px",
+                        marginTop: "20px",
+                        textDecorationLine: "none",
+                      }}
+                    >
+                      Resume Builder
+                    </a>
+                    <br />
+                    <button
+                      className='nav-link guidence_button'
+                      // className='nav-link guidence_button options'
                       id='basic-button1'
                       aria-controls='basic-menu1'
                       aria-haspopup='true'
                       aria-expanded={open1 ? "true" : undefined}
                       onClick={handleClick1}
-                      style={{ color: '#ec498a' }}
                     >
-                      <ListItemText primary={t("header.heading.5")} />
-                    </ListItem>
+                      <span
+                        style={{
+                          color: "#EC498A",
+                          fontSize: "20px",
+                          marginLeft: "8px",
+                          textDecorationLine: "none",
+                        }}
+                      >
+                        {" "}
+                        {t("header.heading.5")}
+                      </span>
+                    </button>
                     <Menu
                       id='basic-menu1'
                       anchorEl={anchorEl1}
@@ -473,37 +507,79 @@ const Header = ({ page, subPage }) => {
                     >
                       <MenuItem
                         onClick={handleColleges}
-                        className={subPage === "colleges" && "active-route"}
+                        className={subPage === "colleges" && "active"}
                       >
                         {t("headerComponent.menuItem.8")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleSchools}
-                        className={subPage === "schools" && "active-route"}
+                        className={subPage === "schools" && "active"}
                       >
                         {t("headerComponent.menuItem.9")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleExams}
-                        className={subPage === "govExams" && "active-route"}
+                        className={subPage === "govExams" && "active"}
                       >
                         {t("headerComponent.menuItem.10")}
                       </MenuItem>
                     </Menu>
-                    <ListItem onClick={() => { window.open('https://octahire.com/Home/candidate_register', "_blank") }}
-                      style={{ color: '#ec498a' }}
+                    <a
+                      href='https://octahire.com/Home/candidate_register'
+                      // className="options"
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "25px",
+                        marginTop: "30px",
+                        textDecorationLine: "none",
+                      }}
                     >
-                      <ListItemText primary='Jobs' />
-                    </ListItem>
-                    <ListItem id='basic-button3'
+                      Jobs
+                    </a>
+                    <br />
+                    {/* <a
+                      href='http://www.thehrnotes.com'
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "25px",
+                        marginTop: "20px",
+                        textDecorationLine: "none",
+                      }}
+                    >
+                      Blog
+                    </a> */}
+
+                    {/* <a
+                      className='nav-link'
+                      rel='noreferrer'
+                      target='_blank'
+                      href={routingConstants.BLOGS}
+                    >
+                      {t("header.heading.7")}
+                    </a> */}
+                    <button
+                      // className='nav-link guidence_button options'
+                      className='nav-link guidence_button'
+                      id='basic-button3'
                       aria-controls='basic-menu3'
                       aria-haspopup='true'
                       aria-expanded={open3 ? "true" : undefined}
                       onClick={handleClick3}
-                      style={{ color: '#ec498a' }}
                     >
-                      <ListItemText primary={t("header.heading.7")} />
-                    </ListItem>
+                      <span
+                        style={{
+                          color: "#EC498A",
+                          fontSize: "20px",
+                          marginLeft: "8px",
+                          textDecorationLine: "none",
+                        }}
+                      >
+                        {" "}
+                        {t("header.heading.7")}
+                      </span>
+                    </button>
                     <Menu
                       id='basic-menu3'
                       anchorEl={anchorEl3}
@@ -515,43 +591,63 @@ const Header = ({ page, subPage }) => {
                     >
                       <MenuItem
                         onClick={handleMoreEvent}
-                        className={subPage === "moreEvent" && "active-route"}
+                        className={subPage === "moreEvent" && "active"}
                       >
                         {t("headerComponent.menuItem.11")}
                       </MenuItem>
+                      {/* <MenuItem
+                        onClick={handleMoreMagazine}
+                        className={subPage === "moreMagazine" && "active"}
+                      >
+                        {t("headerComponent.menuItem.12")}
+                      </MenuItem> */}
                       <MenuItem
                         onClick={handleMoreBlogs}
-                        className={subPage === "moreblog" && "active-route"}
+                        className={subPage === "moreblog" && "active"}
                       >
                         {t("headerComponent.menuItem.13")}
                       </MenuItem>
                       <MenuItem
                         onClick={handleMoreFAQ}
-                        className={subPage === "moreFAQ" && "active-route"}
+                        className={subPage === "moreFAQ" && "active"}
                       >
                         {/* {t("headerComponent.menuItem.14")} */}
                         FAQ
                       </MenuItem>
                     </Menu>
 
+                    {/* <br /> */}
                     <Button
                       id='basic-button777'
                       aria-controls='basic-menu777'
                       className='notificationButton'
                       variant='text'
                       style={{
+                        // top: 13,
                         left: 8,
                       }}
                       aria-haspopup='true'
                       aria-expanded={open777 ? "true" : undefined}
                       onClick={handleClick777}
                     >
-                      <BellIcon
-                        width='30'
-                        active={true}
-                        animate={true}
-                        color='#ec498a'
-                      />
+                      <span
+                      // style={{
+                      //   color: "#EC498A",
+                      //   fontSize: "20px",
+                      //   marginLeft: "8px",
+                      //   textDecorationLine: "none",
+                      // }}
+                      // className='nav-link'
+                      >
+                        <BellIcon
+                          width='30'
+                          active={true}
+                          animate={true}
+                          color='#ec498a'
+                        />
+
+                        {/* Notification */}
+                      </span>
                     </Button>
 
                     <Menu
@@ -571,8 +667,6 @@ const Header = ({ page, subPage }) => {
                         horizontal: "right",
                         vertical: "top",
                       }}
-
-                      sx={{ '&.MuiPaper-root': { minWidth: '350px !important' } }}
                     >
                       {notifications["Notifications "]?.length > 0 ? (
                         notifications["Notifications "]?.map((c) => {
@@ -582,6 +676,7 @@ const Header = ({ page, subPage }) => {
                                 <Link
                                   className='limited-text'
                                   to={`/${c?.url}`}
+                                  // style={{ color: "#757575" }}
                                   style={{ color: "#121212" }}
                                   replace
                                 >
@@ -598,23 +693,34 @@ const Header = ({ page, subPage }) => {
                       <MenuItem
                         onClick={handleNotificationAll}
                         style={{
+                          // color: "#757575"
                           color: "#121212",
                           textAlign: "center",
                         }}
                         class='center'
                         className={
-                          page === "more" && "active-route"
+                          page === "more" ? "nav-item active" : "nav-item"
                         }
                       >
                         <strong>View ALL</strong>
                       </MenuItem>
                     </Menu>
 
-                    <ListItem className={page === "success-stories" && "active-route"}
-                      onClick={() => { history.push('/success-stories') }}
+                    <br />
+                    <Link
+                      to='/success-stories'
+                      // className="options"
+                      style={{
+                        color: "#EC498A",
+                        fontSize: "20px",
+                        marginLeft: "23px",
+                        marginTop: "20px",
+                        textDecorationLine: "none",
+                      }}
                     >
-                      <ListItemText primary='Success story' style={{ color: page === "success-stories" ? '#fff' : '#ec498a' }} />
-                    </ListItem>
+                      Success story
+                    </Link>
+                    <br />
                   </div>
                 </List>
                 <Divider />
@@ -765,6 +871,15 @@ const Header = ({ page, subPage }) => {
                   <li
                     className={page === "more" ? "nav-item active" : "nav-item"}
                   >
+                    {/* <a
+                      className='nav-link'
+                      rel='noreferrer'
+                      target='_blank'
+                      href={routingConstants.BLOGS}
+                    >
+                      {t("header.heading.7")}
+                    </a>  */}
+
                     <button
                       className='nav-link guidence_button'
                       id='basic-button3'
@@ -774,6 +889,7 @@ const Header = ({ page, subPage }) => {
                       onClick={handleClick3}
                     >
                       {t("header.heading.7")}
+                      {/* More */}
                     </button>
                     <Menu
                       id='basic-menu3'
@@ -790,7 +906,12 @@ const Header = ({ page, subPage }) => {
                       >
                         {t("headerComponent.menuItem.11")}
                       </MenuItem>
-
+                      {/* <MenuItem
+                        onClick={handleMoreMagazine}
+                        className={subPage === "moreMagazine" && "active"}
+                      >
+                        {t("headerComponent.menuItem.12")}
+                      </MenuItem> */}
                       <MenuItem
                         onClick={handleMoreBlogs}
                         className={subPage === "moreblog" && "active"}
@@ -801,6 +922,7 @@ const Header = ({ page, subPage }) => {
                         onClick={handleMoreFAQ}
                         className={subPage === "moreFAQ" && "active"}
                       >
+                        {/* {t("headerComponent.menuItem.14")} */}
                         FAQ
                       </MenuItem>
                     </Menu>
@@ -821,61 +943,94 @@ const Header = ({ page, subPage }) => {
 
                   <li>
                     <Button
+                      //  className='nav-link guidence_button'
                       id='basic-button77'
                       aria-controls='basic-menu77'
+                      //  onClick={handleClick3}
                       className='notificationButton'
                       variant='text'
                       style={{
                         top: 13,
                         left: 0,
+                        // transform: "translateY(0) rotate(0)"
                       }}
+                      // aria-controls={
+                      //   open77 ? "demo-positioned-menu" : undefined
+                      // }
                       aria-haspopup='true'
                       aria-expanded={open77 ? "true" : undefined}
                       onClick={handleClick77}
                     >
                       <span
                         className='nav-link'
+                      // to={routingConstants.SUCCESS_STORIES}
                       >
                         {notificationsFunction(notifications)}
                       </span>
                     </Button>
                     <Menu
                       id='basic-menu77'
+                      //  anchorEl={anchorEl1}
+                      //  open={open1}
+                      //  onClose={handleClose1}
                       MenuListProps={{
                         "aria-labelledby": "basic-button77",
                       }}
+                      // id='demo-positioned-menu'
                       aria-labelledby='text'
                       anchorEl={anchorEl77}
                       open={open77}
                       onClose={handleClose77}
                       transformOrigin={{
                         horizontal: "left",
+                        // horizontal: "center",
                         vertical: "top",
                       }}
                       anchorOrigin={{
                         horizontal: "right",
                         vertical: "top",
+                        // vertical: "bottom",
                       }}
                     >
                       {notifications["Notifications "]?.length > 0 ? (
                         notifications["Notifications "]
                           ?.slice(0, 5)
                           ?.map((c) => {
+                            // console.log("c", c.id);
+                            // console.log("c.notification.url",c.url)
                             return (
                               <>
                                 <MenuItem
                                   onClick={handleNotification1}
                                   className='nav-link '
                                 >
+                                  {/* <a
+                                  className='nav-link'
+                                  rel='noreferrer'
+                                  target='_blank'
+                                  href= {`${c?.url}`}           
+                                > */}
                                   <Link
                                     className='limited-text'
                                     to={`/${c?.url}`}
                                     style={{ color: "#121212" }}
+                                    // style={{ color: "#757575" }}
                                     replace
                                   >
                                     {c?.title}
                                   </Link>
+                                  {/* </a> */}
                                 </MenuItem>
+                                {/* <MenuItem onClick={handleNotification2}>
+                                <a
+                                  className='nav-link'
+                                  rel='noreferrer'
+                                  target='_blank'
+                                  href={c?.url}
+                                >
+                                  {c?.title}
+                                </a>
+                              </MenuItem> */}
                                 <Divider />
                               </>
                             );
@@ -886,17 +1041,27 @@ const Header = ({ page, subPage }) => {
                       <MenuItem
                         onClick={handleNotificationAll}
                         style={{
+                          // color: "#757575",
                           color: "#121212",
                           textAlign: "center",
                           cursor: "pointer",
                         }}
+                        class='center'
                         className={
                           page === "more" ? "nav-item active" : "nav-item"
                         }
+                      // className={subPage === "AllNotification" && "active"}
                       >
                         <strong>View ALL</strong>
                       </MenuItem>
                     </Menu>
+
+                    {/* <Link
+                      className='nav-link'
+                      // to={routingConstants.SUCCESS_STORIES}
+                    >
+                    <BellIcon width='40' active={true} animate={true} color='#ec498a' />
+                    </Link> */}
                   </li>
                 </ul>
               </div>

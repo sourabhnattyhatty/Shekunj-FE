@@ -8,15 +8,14 @@ import { handleErrorMessage } from "../../utils/utils";
 const constants = apiConstants.ALL_MAGZINES;
 
 export const getAllMagzines =
-  (lat = "19.8508544", long = "75.3762304") =>
+  () =>
   async (dispatch) => {
     try {
       const url = constants.ALL_MAGZINES;
 
       dispatch({
         type:
-          magzinesTypes.FETCH_MAGZINES_REQUEST +
-          `?latitude=${lat}&longitude=${long}`,
+          magzinesTypes.FETCH_MAGZINES_REQUEST ,
       });
       const res = await ApiService.get(url);
 
@@ -34,12 +33,12 @@ export const getAllMagzines =
   };
 
 export const singleMagzineDetails =
-  (id,history, lat = "19.8508544", long = "75.3762304") =>
+  (id,history) =>
   async (dispatch) => {
     try {
       dispatch({ type: magzinesTypes.FETCH_MAGZINES_REQUEST });
       const res = await httpServices.get(
-        "more/magazines" + "/" + id + `?latitude=${lat}&longitude=${long}`,
+        "more/magazines" + "/" + id ,
       );
       dispatch({
         type: magzinesTypes.FETCH_MAGZINES_FINISH,

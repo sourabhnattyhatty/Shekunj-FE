@@ -49,7 +49,7 @@ const routingConstants = {
   MORE_MAGAZINE: "/more-magazine/",
   FAQ: "/more-faq/",
   MORE_BLOG: "/blogs/",
-  DETAILS_BLOG: "/blog/",
+  // DETAILS_BLOG: "/blog/",
   // DETAILS_MAGZINE: "/magzine/",
   ALL_NOTIFICATION: "/all-notifications/",
   MOCKTEST: "/mock-test/",

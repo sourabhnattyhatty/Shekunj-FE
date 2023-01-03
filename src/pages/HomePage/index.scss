@@ -346,7 +346,17 @@ body {
   font-weight: bold;
   font-style: normal;
   font-size: 40px;
-  line-height: 60px;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.career_community h2 {
+  font-family: SegoeUI_bold;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 34px;
+  line-height: 48px;
   text-align: center;
   color: #ffffff;
 }
@@ -519,6 +529,7 @@ body {
   height: 299px !important;
   position: relative;
 }
+
 .tes_box_ankita {
   background: #ffffff;
   padding: 11px 25px;
@@ -543,6 +554,7 @@ body {
   padding-top: 10px;
   // color: #bdbdbd;
 }
+
 .tes_box_ankita p {
   font-family: SegoeUI_bold;
   font-style: normal;
@@ -564,6 +576,7 @@ body {
   text-align: center;
   color: #25243f;
 }
+
 .tes_box_ankita h2 {
   font-family: SegoeUI_bold;
   font-style: normal;
@@ -583,6 +596,7 @@ body {
   text-align: center;
   color: #3e414e;
 }
+
 .tes_box_ankita h6 {
   font-family: SegoeUI_bold;
   font-style: normal;
@@ -657,6 +671,7 @@ body {
   bottom: -20px;
   z-index: -1;
 }
+
 .tes_box_ankita.heg_cha::before {
   content: "";
   width: 55px;
@@ -701,13 +716,14 @@ ul.star li {
 
 ul.star {
   padding: 0;
-  margin: 0;
+  margin-bottom: 5px;
 }
 
 .tes_box.heg_cha {
   margin-top: 22px;
   height: 280px !important;
 }
+
 .tes_box_ankita.heg_cha {
   margin-top: 22px;
   height: 280px !important;
@@ -1029,6 +1045,7 @@ ul.star {
   .tes_box.heg_cha::before {
     right: -15px;
   }
+
   .tes_box_ankita.heg_cha::before {
     right: -15px;
   }
@@ -1272,6 +1289,7 @@ ul.star {
     margin-top: 22px;
     height: auto;
   }
+
   .tes_box_ankita.heg_cha {
     margin-top: 22px;
     height: auto !important;
@@ -1309,6 +1327,7 @@ ul.star {
     right: -50px;
     bottom: -20px;
   }
+
   .tes_box_ankita.heg_cha::before {
     right: -50px;
     bottom: -20px;
@@ -1317,6 +1336,7 @@ ul.star {
   .tes_box.heg_cha::before {
     right: -15px;
   }
+
   .tes_box_ankita.heg_cha::before {
     right: -15px;
   }
@@ -1439,6 +1459,7 @@ ul.star {
     margin: 5px 0px !important;
     height: 45px !important;
     width: 100% !important;
+    object-fit: contain;
   }
 
 }
@@ -1465,6 +1486,22 @@ ul.star {
     font-size: 21px;
   }
 
+  #myCarousel .carousel-item h5 {
+    font-size: 24px !important;
+  }
+
+  #myCarousel .carousel-item p {
+    font-size: 14px !important;
+  }
+
+  #myCarousel .carousel-item .banner_btn {
+    font-size: 1rem !important;
+    height: 40px !important;
+    padding: 10px 24px !important;
+    margin-top: -20px;
+  }
+
+
   .certificate {
     background-image: none;
   }
@@ -1487,6 +1524,7 @@ ul.star {
 
   .job-opprtunity-bg .jobimg {
     top: -65px;
+    display: none;
   }
 
   .tes_box {
@@ -1510,6 +1548,18 @@ ul.star {
   .highlight_student h3 {
     font-size: 28px;
     line-height: 40px;
+  }
+
+  .row.h_set {
+    margin-top: 1rem !important;
+  }
+
+  .row.h_set h5 {
+    font-size: 1.5rem !important;
+  }
+
+  .row.h_set a {
+    margin-bottom: 1rem !important;
   }
 }
 
@@ -1576,10 +1626,11 @@ ul.star {
 
 .google_ads_home {
   margin: 5px 0px;
-  height: 120px;
+  height: 150px;
   width: 84%;
-  object-fit: cover;
+  object-fit: contain;
 }
+
 .NikitaSharmaImage {
   height: 100px;
   width: 100px;

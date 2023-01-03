@@ -172,11 +172,11 @@ function BlogPage() {
         <Container>
           <Row>
             <Col md={1}>
-              <div className='global_img'>
+              <div className='global_img noselect' >
                 <img src={global} alt='' className='vert-move' />
               </div>
             </Col>
-            <Col md={6} data-aos='slide-up'>
+            <Col md={6} data-aos='slide-up noselect'>
               <h2> {t("successStoriesPage.heading.1")}</h2>
               <p className='sucess_first_p'>
                 {t("successStoriesPage.content.1")}
@@ -189,7 +189,7 @@ function BlogPage() {
       {/* google add */}
       <Container>
         <Row>
-          <div className='col-md-12'>
+          <div className='col-md-12 noselect' >
             {blogBoxAdds.length > 0 && (
               <div
                 className='ads_story_cover'
@@ -208,7 +208,7 @@ function BlogPage() {
         </Row>
       </Container>
 
-      <Container>
+      <Container className="noselect">
         {blogs?.blog_list?.length > 0 &&
           blogs?.blog_list
             ?.slice(0)
@@ -216,14 +216,14 @@ function BlogPage() {
             .map((s, idx) => {
               return (
                 <>
-                  <div className='suc_box_blog' key={s?.id}>
+                  <div className='suc_box_blog noselect' key={s?.id}>
                     <Row>
                       {idx % 2 === 0 ? (
                         <>
                           <Col md={8} xs={12}>
                             <h2>
                               <img
-                                className='quote_img_blog'
+                                className='quote_img_blog noselect'
                                 src={double_quote}
                                 style={{ width: 20, height: 20 }}
                                 alt=''
@@ -248,7 +248,7 @@ function BlogPage() {
                               ) : (
                                 <div
                                   style={{
-                                    maxHeight: "120px",
+                                    maxHeight: "130px",
                                     overflow: "hidden",
                                   }}
                                   dangerouslySetInnerHTML={{
@@ -256,13 +256,13 @@ function BlogPage() {
                                   }}
                                 />
                               )}
-                              {/* <Link
-                                to={"/blogs/" + s.id}
-                                className='BlogReadMore'
+                              <Link
+                                to={routingConstants.MORE_BLOG + s.id}
+                                className='BlogReadMore noselect'
                                 key={s?.id}
                               >
                                 Read More
-                              </Link> */}
+                              </Link>
                             </p>
 
                             {/* {s?.about_blog?.length >= 300 && (
@@ -302,7 +302,7 @@ function BlogPage() {
                           <Col md={8} xs={12}>
                             <h2>
                               <img
-                                className='quote_img_blog'
+                                className='quote_img_blog noselect'
                                 src={double_quote}
                                 style={{ width: 20, height: 20 }}
                                 alt=''
@@ -329,7 +329,7 @@ function BlogPage() {
                               ) : (
                                 <div
                                   style={{
-                                    maxHeight: "120px",
+                                    maxHeight: "130px",
                                     overflow: "hidden",
                                   }}
                                   dangerouslySetInnerHTML={{
@@ -340,7 +340,7 @@ function BlogPage() {
                               )}
                               <Link
                                 to={routingConstants.MORE_BLOG + s.id}
-                                className='BlogReadMore'
+                                className='BlogReadMore noselect'
                                 key={s?.id}
                               >
                                 Read More
@@ -401,14 +401,14 @@ function BlogPage() {
               );
             })}
         {blogs?.blog_list?.length === 0 && (
-          <div className='text-center mt-5'>{t("common.noDataFound")}</div>
+          <div className='text-center mt-5 noselect'>{t("common.noDataFound")}</div>
         )}
       </Container>
 
-      <div className='want'>
+      <div className='want noselect'>
         <Container>
           <h2>{t("successStoriesPage.content.2")}</h2>
-          <button onClick={() => history.push("/courses")} className='want_btn'>
+          <button onClick={() => history.push("/courses")} className='want_btn noselect'>
             {t("successStoriesPage.button.2")}
           </button>
         </Container>

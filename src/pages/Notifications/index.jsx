@@ -34,11 +34,11 @@ function AllNotification() {
       <Header loginPage={true} page='Notifications' subPage='AllNotification' />
       <div className='text-center'>
         {" "}
-        <nav class='navbar navbar-custom'>
+        <nav class='navbar navbar-custom noselect'>
           <h2>All Notifications</h2>
         </nav>
       </div>
-      <div className='NotificationContainerIndex'>
+      <div className='NotificationContainerIndex noselect'>
         {notifications["Notifications "]?.length > 0 ? (
           notifications["Notifications "]?.map((c)=>{
             return (
@@ -85,7 +85,7 @@ function AllNotification() {
             );
           })
         ) : (
-          <div className='text-center'>{t("common.noDataFound")}</div>
+          <div className='text-center noselect'>{t("common.noDataFound")}</div>
         )}
       </div>
     </div>

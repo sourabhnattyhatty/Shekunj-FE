@@ -326,10 +326,10 @@ button.want_btn {
 }
 
 .ads_story_cover_img_blog {
-  margin-top: 40px;
-  height: 100px;
-  // width: 84%;
-  object-fit: cover;
+  margin: 40px 0px;
+  height: 150px;
+  width: 84%;
+  // object-fit: cover;
 }
 
 .ads_story_cover_img {
@@ -337,7 +337,6 @@ button.want_btn {
   height: 100px !important;
   // width: 84%;
   width: 0 !important;
-
   object-fit: cover;
 }
 
@@ -373,8 +372,8 @@ button.want_btn {
   //  background-color:#d45d93 ;
   font-family: SegoeUI_bold;
   color: #de488b;
-  margin: 20px;
-  padding: 5px;
+  margin: 20px 0;
+  padding: 5px 0;
   text-align: end;
 
 }
@@ -815,7 +814,7 @@ button.want_btn {
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 140%;
   color: #828282;
 }
@@ -905,8 +904,8 @@ button.want_btn {
 
 .EventOptionCardAddImage {
   width: 24rem !important;
-  // height:41rem !important;
-  object-fit: cover !important;
+  height:36.8rem !important;
+  // object-fit: cover !important;
   box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
   // margin-bottom: 5px;
 }
@@ -987,7 +986,7 @@ button.want_btn {
   margin-bottom: 5%;
   //  border-color: #d45d93;
   //  color: #d45d93 !important;
-  background: #ec498a;
+  background-color: #ec498a;
   border: 1px solid #ec498a;
   box-sizing: border-box;
   border-radius: 2px;

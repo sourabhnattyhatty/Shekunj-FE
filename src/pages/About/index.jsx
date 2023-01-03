@@ -129,19 +129,7 @@ const AboutusPage = () => {
 
   return (
     <div className='noselect'>
-      
-      <Helmet>
-        <title>Women Empowerment Organization in India - About Shekunj.com</title>
-        <link rel="canonical" href="https://www.shekunj.com/about-us/" />
-        <meta name="description" content="Shekunj.com works for women empowerment by providing free online 
-        certification courses, career guidance, job and internship opportunities across India."/>
-        <meta name="keywords" content="women empowerment organizations, free online courses in india, free career guidance"/>
-      </Helmet>
-
-      {/* <SEO title='Sheकुंज - About us'  /> */}
-      
-      {/* <Header loginPage={false} page='about' /> */}
-      <SEO title='Sheकुंज - About us'  />
+      <SEO title='Sheकुंज - About us' link='https://www.shekunj.com/about-us' />
       <Header loginPage={false} page='about-us' />
       <section className='about_ban'>
         <div className='container'>
@@ -152,7 +140,7 @@ const AboutusPage = () => {
               </div>
             </div>
             <div className='col-lg-6 col-md-7'>
-              <div className='about_Con'>
+              <div className='about_Con noselect'>
                 <h2>{t("aboutPage.heading.1")}</h2>
                 <h5>{t("aboutPage.heading.2")}</h5>
                 <p>{t("aboutPage.content1")}</p>
@@ -162,10 +150,10 @@ const AboutusPage = () => {
         </div>
       </section>
 
-      <section className='ban_sec2'>
+      <section className='ban_sec2 noselect'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-6'>
+            <div className='col-md-6 noselect'>
               <img src={img1} class="img-responsive" alt='' srcSet='' />
             </div>
 
@@ -188,7 +176,7 @@ const AboutusPage = () => {
                 <div className='col-md-6 col-6'>
                   <div data-aos='slide-right'>
                     <div className='tes_box tes-before'>
-                      <img className='NikitaSharmaImage img-responsive' src={Nikita} alt='' />
+                      {/* <img className='NikitaSharmaImage img-responsive' src={Nikita} alt='' /> */}
                       <p>"{t("aboutPage.review.1")}"</p>
                       <ul className='star'>
                         <li>
@@ -209,6 +197,7 @@ const AboutusPage = () => {
                       </ul>
                       <h2>{t("aboutPage.reviewerDetails.reviewerName.1")}</h2>
                       <h6>{t("aboutPage.reviewerDetails.reviewerPost.2")}</h6>
+                      <img className='NikitaSharmaImage img-responsive' src={Nikita} alt='' />
                     </div>
                   </div>
 
@@ -244,7 +233,7 @@ const AboutusPage = () => {
 
                   <div data-aos='slide-left'>
                     <div className='tes_box_ankita heg_cha'>
-                      <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' />
+                      {/* <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' /> */}
                       <p>“{t("aboutPage.review.3")}"</p>
                       <ul className='star'>
                         <li>
@@ -265,13 +254,14 @@ const AboutusPage = () => {
                       </ul>
                       <h2>{t("aboutPage.reviewerDetails.reviewerName.2")}</h2>
                       <h6>{t("aboutPage.reviewerDetails.reviewerPost.1")}</h6>
+                      <img className='AnkitaSharmaImage img-responsive' src={Ankita} alt='' />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className='col-md-6'>
+            <div className='col-md-6 noselect'>
               <div className='our_his'>
                 <h2>{t("homePage.highlightStudents.aboutHeading")}</h2>
                 <h5>{t("homePage.highlightStudents.1")}</h5>

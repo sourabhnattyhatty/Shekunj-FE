@@ -369,8 +369,8 @@ Benefits - Shekunj.com</title>
                                 <h3>
                                   <Link
                                     to={
-                                      routingConstants.GOVERNMENT_SCHEMES +
-                                      c.name.split(" ").join("_")
+                                      routingConstants.GOVERNMENT_SCHEMES + c.id
+                                      // c.name.split(" ").join("_")
                                     }
                                     className=''
                                     key={c?.id}

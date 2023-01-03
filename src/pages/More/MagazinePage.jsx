@@ -313,7 +313,7 @@ function MagzinePage(m) {
 
       </Container>
 
-      <div className='want'>
+      <div className='want noselect'>
         <Container>
           <h2>{t("successStoriesPage.content.2")}</h2>
           <button onClick={() => history.push("/courses")} className='want_btn'>
