@@ -400,11 +400,11 @@ const Header = ({ page, subPage }) => {
                   />
                   <div className='toggleDrawerOptions'>
                     <ListItem className={
-                      page === "about" && "active-route"
+                      page === "about-us" && "active-route"
                     }
                       onClick={() => { history.push('/about-us') }}
                     >
-                      <ListItemText primary="About" style={{ color: page === "about" ? '#fff' : '#ec498a' }} />
+                      <ListItemText primary="About" style={{ color: page === "about-us" ? '#fff' : '#ec498a' }} />
                     </ListItem>
 
                     <ListItem className={

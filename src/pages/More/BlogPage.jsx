@@ -248,7 +248,7 @@ function BlogPage() {
                               ) : (
                                 <div
                                   style={{
-                                    maxHeight: "120px",
+                                    maxHeight: "130px",
                                     overflow: "hidden",
                                   }}
                                   dangerouslySetInnerHTML={{
@@ -329,7 +329,7 @@ function BlogPage() {
                               ) : (
                                 <div
                                   style={{
-                                    maxHeight: "120px",
+                                    maxHeight: "130px",
                                     overflow: "hidden",
                                   }}
                                   dangerouslySetInnerHTML={{
