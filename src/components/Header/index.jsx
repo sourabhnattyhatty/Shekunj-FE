@@ -16,7 +16,7 @@ import {
 import { getAllNotifications } from "../../store/notifications";
 import moment from "moment";
 import Button from "@mui/material/Button";
-import { makeStyles } from '@mui/styles';
+import { makeStyle } from '@mui/styles';
 import { getUserProfile, logOut, refreshPage } from "../../store/auth/action";
 import { isAuthenticated } from "../../utils/utils";
 import ChangeLanguageButton from "../LanguageButton";
@@ -30,7 +30,7 @@ import { pink } from "@mui/material/colors";
 import { compareAsc, format } from 'date-fns'
 import Cookies from "js-cookie";
 const Header = ({ page, subPage }) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const { notifications } = useSelector((state) => state.notificationsReducer);
   const { t } = useTranslation();
   const { isAuth, user } = useSelector((state) => state.authReducer);
@@ -634,7 +634,7 @@ const Header = ({ page, subPage }) => {
                       page === "about" ? "nav-item active" : "nav-item"
                     }
                   >
-                    <Link className='nav-link' to='/about'>
+                    <Link className='nav-link' to='/about-us'>
                       {t("header.heading.1")}
                     </Link>
                   </li>

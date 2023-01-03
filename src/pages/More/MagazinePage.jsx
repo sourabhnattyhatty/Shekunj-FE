@@ -305,11 +305,11 @@ function MagzinePage(m) {
           <div className='text-center'>{t("common.noDataFound")}</div>
         )}
 
-        <DocViewer
+        {/* <DocViewer
           documents={docs}
           pluginRenderers={DocViewerRenderers}
           sandboxed='allow-scripts'
-        />
+        /> */}
 
       </Container>
 

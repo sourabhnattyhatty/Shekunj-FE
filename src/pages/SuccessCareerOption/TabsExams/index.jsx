@@ -116,46 +116,46 @@ export default function VerticalTabs() {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-  
+
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      } 
+      }
       axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "career_option";
-  
-          });
-          setCareerOptionBoxAds(filterArray1);
-          // console.log("filterArray1career_option",filterArray1)
-            }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "career_option";
-          });
-          setCareerOptionBoxAds(filterArray1);
-          // console.log("filterArray1coursebox",filterArray1) 
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
+
+              return item.image_type == "career_option";
+
+            });
+            setCareerOptionBoxAds(filterArray1);
+            // console.log("filterArray1career_option",filterArray1)
           }
         })
-   }
-  )
-  },[])
+    },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")    
+        axios
+          .get(
+            `/private_adds/private_add`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "career_option";
+              });
+              setCareerOptionBoxAds(filterArray1);
+              // console.log("filterArray1coursebox",filterArray1) 
+            }
+          })
+      }
+    )
+  }, [])
 
 
   const addEmail = (email) => {
@@ -204,7 +204,7 @@ export default function VerticalTabs() {
     setTabValue(obj);
     dispatch(resetCategoryDetail());
     dispatch(getGuidanceCategoryDetail(id));
-    ref.current?.scrollIntoView({behavior: 'smooth'});
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleFullView = (id) => {
@@ -271,75 +271,81 @@ export default function VerticalTabs() {
           <Col md={8} xs={12} >
             <TabPanel value={value} index={0}>
               <Row>
-              <Container>
-                {/* {showGovtExams && careerOptions && ( */}
-                {showGovtExams &&
-                  careerOptions &&
-                  guidanceCategoryDetail?.length > 0 &&
-                  guidanceCategoryDetail?.map(
-                    (guidanceCategoryDetail, index) => {
-                    
-                      return (
-                        <Row>
-                        {/* <Col md={6} xs={12}> */}
-                          <div
-                             ref={ref}
-                             style={{marginTop:"20px"}}
-                            className='col-md-6 tabs_box success_test_responsive'
-                            key={guidanceCategoryDetail?.id}
-                          >
-                            <h2>{guidanceCategoryDetail?.name}</h2>
-                            <img
-                              src={guidanceCategoryDetail?.image}
-                              className='GuidanceOptionCardImage'
-                            ></img>
-                            <br />
-                            <button
-                              onClick={() =>
-                                handleFullView(guidanceCategoryDetail?.id)
-                              }
-                            >
-                              {t("successCareerOption.button.1")}
-                            </button>
+                <Container>
+                  {/* {showGovtExams && careerOptions && ( */}
+                  {showGovtExams &&
+                    careerOptions &&
+                    guidanceCategoryDetail?.length > 0 &&
+                    guidanceCategoryDetail?.map(
+                      (guidanceCategoryDetail, index) => {
 
+                        return (
+                          <Row>
                             
-                          </div>
-                          <br />
-                          <div>
-                          {index  == 0 ? (
-                            <div>
-                          {careerOptionBoxAds.length > 0 && (
-                  // <div className='col-md-12'>
-                  <div
-                    className='col-md-6 tabs-box'
-                    onClick={() => addEmail(careerOptionBoxAds[0]?.add_email)}
-                  >
-                    <a href={careerOptionBoxAds[0]?.url_adds} target='_blank'>
-                      <img
-                        src={careerOptionBoxAds[0]?.image}
-                        alt='Image'
-                        className='GuidanceOptionCardImageAdd'
-                      />
-                    </a>
-                  </div>
-                )}
-                </div>
-                            ):(
-                             ""
-                           )} 
-  </div>
-                          <br />
-                        {/* </Col> */}
-                        </Row>
-                      );
-                    },
-                  )}
+                            {/* <Col md={6} xs={12}> */}
+                            {
+                              guidanceCategoryDetail?.image || guidanceCategoryDetail?.name ?
+                                <div
+                                  ref={ref}
+                                  style={{ marginTop: "20px" }}
+                                  className='col-md-6 tabs_box success_test_responsive'
+                                  key={guidanceCategoryDetail?.id}
+                                >
+                                  <h2>{guidanceCategoryDetail?.name}</h2>
+                                  <img
+                                    src={guidanceCategoryDetail?.image}
+                                    className='GuidanceOptionCardImage'
+                                  ></img>
+                                  <br />
+                                  <button
+                                    onClick={() =>
+                                      handleFullView(guidanceCategoryDetail?.id)
+                                    }
+                                  >
+                                    {t("successCareerOption.button.1")}
+                                  </button>
 
-                {/* )} */}
-              {/* </Row> */}
-              </Container>
+
+                                </div>
+                                : ""
+                            }
+
+                            <br />
+                            <div>
+                              {index == 0 ? (
+                                <div>
+                                  {careerOptionBoxAds.length > 0 && (
+                                    // <div className='col-md-12'>
+                                    <div
+                                      className='col-md-6 tabs-box'
+                                      onClick={() => addEmail(careerOptionBoxAds[0]?.add_email)}
+                                    >
+                                      <a href={careerOptionBoxAds[0]?.url_adds} target='_blank'>
+                                        <img
+                                          src={careerOptionBoxAds[0]?.image}
+                                          alt='Image'
+                                          className='GuidanceOptionCardImageAdd'
+                                        />
+                                      </a>
+                                    </div>
+                                  )}
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                            <br />
+                            {/* </Col> */}
+                          </Row>
+                        );
+                      },
+                    )}
+
+                  {/* )} */}
+                  {/* </Row> */}
+                </Container>
               </Row>
-                            {/* <>
+              {/* <>
                                 <div
 
                                   className='col-md-12 ads_home_cover_careerOption'
@@ -365,7 +371,7 @@ export default function VerticalTabs() {
                                 </div>
 
                             </> */}
-                             {/* {careerOptionBoxAds.length > 0 && (
+              {/* {careerOptionBoxAds.length > 0 && (
                   // <div className='col-md-12'>
                   <div
                     className='col-md-12'
@@ -387,7 +393,7 @@ export default function VerticalTabs() {
             {categoryDetail.isVisible &&
               guidanceCategoryDetail?.length > 0 &&
               guidanceCategoryDetail?.map((guidanceCategoryDetail) => {
-              
+
                 if (categoryDetail.id == guidanceCategoryDetail.id) {
                   return (
                     <TabPanel>
