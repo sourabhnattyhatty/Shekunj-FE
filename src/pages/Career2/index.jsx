@@ -258,11 +258,11 @@ const CareerPage2 = () => {
         keywords={``}
       /> */}
 
-<Helmet>
-<link rel="canonical" href="https://www.shekunj.com/government-schemes-in-india/" />
+      <Helmet>
+        <link rel="canonical" href="https://www.shekunj.com/government-schemes-in-india/" />
         <title>List of Government
-Schemes in India -
-Benefits - Shekunj.com</title>
+          Schemes in India -
+          Benefits - Shekunj.com</title>
         <meta name="description" content="List of Government Schemes: Women
   Empowerment Schemes, Beti Bachao Beti
   Padhao, Start Up India Scheme, Bima
@@ -422,15 +422,24 @@ Benefits - Shekunj.com</title>
                                       <p style={{ textAlign: "justify" }}>
                                         <div
                                           dangerouslySetInnerHTML={{
-                                            __html: `<div>${
-                                              c && c.benefits
-                                            }</div>`,
+                                            __html: `<div>${c && c.benefits.substr(0, 150)
+                                              }</div>`,
                                           }}
                                         />
                                       </p>
+                                      <Link
+                                        to={
+                                          routingConstants.GOVERNMENT_SCHEMES + c.id
+                                          // c.name.split(" ").join("_")
+                                        }
+                                        className='BlogReadMore'
+                                        key={c?.id}
+                                      >
+                                        <h6>Read More...</h6>
+                                      </Link>
                                     </Col>
                                   )}
-                                  {c.official_link && (
+                                  {/* {c.official_link && (
                                     <Col md={12} xs={12}>
                                       <span className='gov_scm_heading'>
                                         {t("careerGovExams.other.9")}
@@ -444,7 +453,7 @@ Benefits - Shekunj.com</title>
                                         {c && c.official_link}
                                       </Link>
                                     </Col>
-                                  )}
+                                  )} */}
                                 </Row>
                               </div>
                             </Col>
