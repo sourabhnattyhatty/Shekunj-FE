@@ -224,9 +224,9 @@ function MagzineDetails(m) {
     book.current.pageFlip().flipNext()
     setTurnPageStop(false)
   }
-
+ 
   return (
-    <div>
+    <div className="noselect">
       <Header loginPage={true} page='more' subPage='moreblog' />
       <div className='SuccStory_banner'>
         <Container>
@@ -247,25 +247,31 @@ function MagzineDetails(m) {
         </Container>
       </div>
       {/* google add */}
-      <Container>
-        <Row>
-          <div className='col-md-12'>
-            <div
-              className='ads_story_cover'
-              onClick={() => addEmail(magzineDetailsBoxAds[0]?.add_email)}
-            >
-              <a href={magzineDetailsBoxAds[0]?.url_adds} target='_blank'>
-                <img
-                  src={magzineDetailsBoxAds[0]?.image}
-                  alt='Image'
-                  className='ads_story_cover_img'
-                />
-              </a>
-            </div>
-          </div>
-        </Row>
-      </Container>
-      <div className="magazine_container">
+
+      {/* {
+        advertistImg()
+      } */}
+      
+          <Container>
+            <Row>
+              <div className='col-md-12'>
+                <div
+                  className='ads_story_cover'
+                  onClick={() => addEmail(magzineDetailsBoxAds[0]?.add_email)}
+                >
+                  <a href={magzineDetailsBoxAds[0]?.url_adds} target='_blank'>
+                    <img
+                      src={magzineDetailsBoxAds[0]?.image}
+                      alt='Image'
+                      className='ads_story_cover_img'
+                    />
+                  </a>
+                </div>
+              </div>
+            </Row>
+          </Container>
+      
+      <div className="magazine_container noselect">
         <Container>
           <div className="magazine_div"
             style={{
@@ -280,82 +286,82 @@ function MagzineDetails(m) {
                 maxScale={7}
                 disabled={true}
               >
-              {({ zoomIn, zoomOut, resetTransform, wheel, wheelDisabled }) => (
-                <React.Fragment>
-                  <TransformComponent >
-                    <div className="zoom_div"
+                {({ zoomIn, zoomOut, resetTransform, wheel, wheelDisabled }) => (
+                  <React.Fragment>
+                    <TransformComponent >
+                      <div className="zoom_div"
+                        style={{
+                          marginTop: `${screen1.active ? '12rem' : ''}`,
+                          marginLeft: `${screen1.active ? '22rem' : ''}`
+                        }}>
+
+                        {/* <HTMLFlipBook width={320} height={485} className="flipbook" */}
+                        <HTMLFlipBook width={320} height={485} className="flipbook"
+                          ref={book}
+                        >
+                          {
+                            magzineData && magzineData.map(elem => {
+                              return <div className="demoPage">
+                                {/* <img src={elem.images} width='320px' height="485px" /> */}
+                                <img src={elem.images} height="485px" />
+                              </div>
+
+                            })
+                          }
+                        </HTMLFlipBook>
+
+                      </div>
+                    </TransformComponent>
+                    <div className="icons_div"
                       style={{
-                        marginTop: `${screen1.active ? '12rem' : ''}`,
-                        marginLeft: `${screen1.active ? '22rem' : ''}`
+                        paddingTop: `${screen1.active ? '1.2rem' : '1rem'}`,
+                        // marginLeft: `${screen1.active ? '22rem' : ''}`
                       }}>
 
-                      {/* <HTMLFlipBook width={320} height={485} className="flipbook" */}
-                      <HTMLFlipBook width={320} height={485} className="flipbook"
-                        ref={book}
-                      >
-                        {
-                          magzineData && magzineData.map(elem => {
-                            return <div className="demoPage">
-                              {/* <img src={elem.images} width='320px' height="485px" /> */}
-                              <img src={elem.images} height="485px" />
-                            </div>
+                      <MdArrowBackIosNew
+                        onClick={() => { resetTransform(); handlePrev() }}
+                        className='icon_class' />
+                      <MdArrowForwardIos
+                        onClick={() => { resetTransform(); handleNxt() }}
+                        className='icon_class' />
+                      <BsZoomIn onClick={() => zoomIn(setTurnPageStop(true))}
+                        className='icon_class' />
+                      <BsZoomOut
+                        onClick={() => zoomOut(setTurnPageStop(true),)}
+                        className='icon_class' />
 
-                          })
-                        }
-                      </HTMLFlipBook>
+                      {
+                        !screen1.active ?
+                          <BsFullscreen onClick={screen1.enter}
+                            className='icon_class' />
+                          :
+                          <BsFullscreenExit onClick={screen1.exit}
+                            className='icon_class' />
+                      }
+                      {
+                        !screen1.active ?
+                          <RWebShare
+                            data={{
+                              url: "http://localhost:3000",
+                              title: "Share",
+                            }}
+                            style={{ width: '19%' }}
+                            onClick={() => console.log("shared successfully!")}
+                          >
+                            <AiOutlineShareAlt style={{ color: 'white', cursor: 'pointer', fontSize: '22px' }} />
+                          </RWebShare>
+                          :
+                          ""
+                      }
 
                     </div>
-                  </TransformComponent>
-                  <div className="icons_div"
-                    style={{
-                      paddingTop: `${screen1.active ? '1.2rem' : '1rem'}`,
-                      // marginLeft: `${screen1.active ? '22rem' : ''}`
-                    }}>
+                  </React.Fragment>
+                )}
+              </TransformWrapper>
+            </FullScreen>
+          </div>
 
-                    <MdArrowBackIosNew
-                      onClick={() => { resetTransform(); handlePrev() }}
-                      className='icon_class' />
-                    <MdArrowForwardIos
-                      onClick={() => { resetTransform(); handleNxt() }}
-                      className='icon_class' />
-                    <BsZoomIn onClick={() => zoomIn(setTurnPageStop(true))}
-                      className='icon_class' />
-                    <BsZoomOut
-                      onClick={() => zoomOut(setTurnPageStop(true),)}
-                      className='icon_class' />
-
-                    {
-                      !screen1.active ?
-                        <BsFullscreen onClick={screen1.enter}
-                          className='icon_class' />
-                        :
-                        <BsFullscreenExit onClick={screen1.exit}
-                          className='icon_class' />
-                    }
-                    {
-                      !screen1.active ?
-                        <RWebShare
-                          data={{
-                            url: "http://localhost:3000",
-                            title: "Share",
-                          }}
-                          style={{ width: '19%' }}
-                          onClick={() => console.log("shared successfully!")}
-                        >
-                          <AiOutlineShareAlt style={{ color: 'white', cursor: 'pointer', fontSize: '22px' }} />
-                        </RWebShare>
-                        :
-                        ""
-                    }
-
-                  </div>
-                </React.Fragment>
-              )}
-            </TransformWrapper>
-          </FullScreen>
-      </div>
-
-    </Container>
+        </Container>
       </div >
       <div className='want noselect'>
         <Container>

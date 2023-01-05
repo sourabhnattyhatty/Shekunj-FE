@@ -161,10 +161,10 @@ const Footer = ({ loginPage, subPage }) => {
     setAnchorEl3(null);
   };
 
-  const handleMoreMagazine = () => {
-    history.push(routingConstants.MORE_MAGAZINE);
-    setAnchorEl3(null);
-  };
+  // const handleMoreMagazine = () => {
+  //   history.push(routingConstants.MORE_MAGAZINE);
+  //   setAnchorEl3(null);
+  // };
 
   const handleMoreFAQ = () => {
     history.push(routingConstants.FAQ);
@@ -267,13 +267,12 @@ const Footer = ({ loginPage, subPage }) => {
                     >
                       {t("headerComponent.menuItem.13")}
                     </MenuItem>
-                    <MenuItem
+                    {/* <MenuItem
                         onClick={handleMoreMagazine}
                         className={subPage === "moreMagazine" && "active"}
                       >
-                        {/* {t("headerComponent.menuItem.12")} */}
                         Magazine
-                      </MenuItem> 
+                      </MenuItem>  */}
                     <MenuItem
                       onClick={handleMoreFAQ}
                       className={subPage === "moreFAQ" && "active"}

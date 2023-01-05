@@ -11,6 +11,8 @@
 .accordion_box_all .MuiAccordionDetails-root {
   border: none;
   padding: 0px 0px 0px 10px;
+  overflow-y: auto !important;
+  height: 150px;
 }
 .accordion_box_all .MuiAccordionSummary-content {
   margin-left: 0px;
