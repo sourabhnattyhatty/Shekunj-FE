@@ -185,7 +185,7 @@ function MagzinePage(m) {
 
   return (
     <div>
-      <Header loginPage={true} page='more' subPage='moreblog' />
+      <Header loginPage={true} page='more' subPage='moreMagazine' />
       <div className='SuccStory_banner noselect'>
         <Container>
           <Row>

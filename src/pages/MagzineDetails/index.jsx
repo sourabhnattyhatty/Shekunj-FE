@@ -237,7 +237,7 @@ function MagzineDetails(m) {
               </div>
             </Col>
             <Col md={6} data-aos='slide-up'>
-              {/* <h2> {t("successStoriesPage.heading.1")}</h2> */}
+              <h2> {t("successStoriesPage.heading.1")}</h2>
               <p className='sucess_first_p'>
                 {t("successStoriesPage.content.1")}
               </p>
@@ -265,36 +265,39 @@ function MagzineDetails(m) {
           </div>
         </Row>
       </Container>
+      <div className="magazine_container">
+        <Container>
+          <div className="magazine_div"
+            style={{
+              width: `${screen1.active ? '90rem' : '59rem'}`,
+              height: `${screen1.active ? '70rem' : '36.7rem'}`,
 
-      <Container>
-        <div className="magazine_div"
-          style={{
-            width: `${screen1.active ? '90rem' : '59rem'}`,
-            height: `${screen1.active ? '70rem' : '36.7rem'}`,
-           
-          }}
-        >
-          <FullScreen handle={screen1} onChange={reportChange}>
-            <TransformWrapper
-              initialScale={1}
-              maxScale={7}
-            >
-              {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+            }}
+          >
+            <FullScreen handle={screen1} onChange={reportChange}>
+              <TransformWrapper
+                initialScale={1}
+                maxScale={7}
+                disabled={true}
+              >
+              {({ zoomIn, zoomOut, resetTransform, wheel, wheelDisabled }) => (
                 <React.Fragment>
-                  <TransformComponent>
+                  <TransformComponent >
                     <div className="zoom_div"
                       style={{
                         marginTop: `${screen1.active ? '12rem' : ''}`,
                         marginLeft: `${screen1.active ? '22rem' : ''}`
                       }}>
 
-                      <HTMLFlipBook width={320} height={485}
+                      {/* <HTMLFlipBook width={320} height={485} className="flipbook" */}
+                      <HTMLFlipBook width={320} height={485} className="flipbook"
                         ref={book}
                       >
                         {
                           magzineData && magzineData.map(elem => {
                             return <div className="demoPage">
-                              <img src={elem.images} width='320px' height="485px" />
+                              {/* <img src={elem.images} width='320px' height="485px" /> */}
+                              <img src={elem.images} height="485px" />
                             </div>
 
                           })
@@ -350,10 +353,10 @@ function MagzineDetails(m) {
               )}
             </TransformWrapper>
           </FullScreen>
-        </div>
+      </div>
 
-      </Container>
-
+    </Container>
+      </div >
       <div className='want noselect'>
         <Container>
           <h2>{t("successStoriesPage.content.2")}</h2>
@@ -365,7 +368,7 @@ function MagzineDetails(m) {
 
       <Footer loginPage={false} />
 
-    </div>
+    </div >
   );
 }
 
