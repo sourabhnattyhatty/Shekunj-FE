@@ -250,6 +250,7 @@ function BlogPage() {
                                   style={{
                                     maxHeight: "130px",
                                     overflow: "hidden",
+                                    margin:'10px 0'
                                   }}
                                   dangerouslySetInnerHTML={{
                                     __html: `<div>${s.about_blog}</div>`,
@@ -331,6 +332,7 @@ function BlogPage() {
                                   style={{
                                     maxHeight: "130px",
                                     overflow: "hidden",
+                                    margin:'10px 0'
                                   }}
                                   dangerouslySetInnerHTML={{
                                     __html: `<div>${s.about_blog}</div>`,

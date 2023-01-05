@@ -230,11 +230,11 @@ button.want_btn {
   }
   .ads_story_cover_img {
     margin: 10px 0px !important;
-    height: 46px !important;
+    height: 100px !important;
     width: 100% !important;
   }
   .ads_succ_story{
-    height: 47px !important;
+    height: 100px !important;
   }
 
 }
@@ -271,7 +271,7 @@ button.want_btn {
   }
   .ads_story_cover_img {
     margin: 10px 0px !important;
-    height: 46px !important;
+    height: 100px !important;
     width: 100% !important;
   }
 }
@@ -282,15 +282,15 @@ button.want_btn {
 
 .ads_story_cover_img {
   margin: 40px 0px;
-  height: 120px;
-  width: 84%;
-  object-fit: cover;
+  height: 150px;
+  width: 100%;
+  //object-fit: cover;
 }
 .ads_succ_story{
   margin: 30px 0px;
-  height: 120px;
-  width: 84%;
-  object-fit: cover;
+  height: 150px;
+  width: 100%;
+ // object-fit: cover;
 }
 
 .story_image {
