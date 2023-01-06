@@ -24,6 +24,7 @@ import { adsList } from "../../store/ads";
 // import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import LocalLibraryTwoToneIcon from "@mui/icons-material/LocalLibraryTwoTone";
 import GroupTwoToneIcon from "@mui/icons-material/GroupTwoTone";
+import { Helmet } from "react-helmet-async";
 // import AlarmOnOutlinedIcon from '@mui/icons-material/AlarmOnOutlined';
 // import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
@@ -245,6 +246,14 @@ function EventPage() {
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreEvent' />
+
+      <Helmet>
+
+<title>India's Leading Women Empowerment Organization - Shekunj. com</title>
+<link rel="canonical" href="https://www.shekunj.com/event/" />
+<meta name="description" content="Shekunj.com works on women empowerment and skill development by providing free training, job-oriented courses, jobs & internships and career counseling"/>
+<meta name="keywords" content="Shekunj.com works on women empowerment and skill development by providing free training, job-oriented courses, jobs & internships and career counseling"/>
+</Helmet>
       <div className='SuccStory_banner noselect'>
         {" "}
         <Container>

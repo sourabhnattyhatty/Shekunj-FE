@@ -28,7 +28,7 @@ const routingConstants = {
   DATA_NOT_FOUND: "/data-not-found",
   FORGOT: "/forgot",
   GOVERNMENT_SCHEMES: "/government-schemes-in-india/",
-  GUIDANCE_BOOK: "/guidance/career-counselling/",
+  GUIDANCE_BOOK: "/online-counselling/",
   HELP_AND_SUPPORT: "/help-and-support",
   HOME_PAGE: "/",
   LOGIN: "/login",

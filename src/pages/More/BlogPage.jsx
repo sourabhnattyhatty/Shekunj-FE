@@ -29,7 +29,7 @@ import "./index.scss";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { adsList } from "../../store/ads";
-
+import { Helmet } from "react-helmet-async";
 function BlogPage() {
   const history = useHistory();
   const { blogs } = useSelector((state) => state.blogsReducer);
@@ -168,6 +168,16 @@ function BlogPage() {
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreblog' />
+      <Helmet>
+
+        <title>India's Leading Women Empowerment Organization - Shekunj. com</title>
+        <link rel="canonical" href="https://www.shekunj.com/blogs/" />
+        <meta name="description" 
+        content="Shekunj.com works on women empowerment and skill development by providing free training, job-oriented courses, jobs & internships and career counseling." />
+        <meta name="keywords" 
+        content="Shekunj.com works on women empowerment and skill development by providing free training,
+         job-oriented courses, jobs & internships and career counseling." />
+      </Helmet>
       <div className='SuccStory_banner noselect'>
         <Container>
           <Row>
@@ -250,7 +260,7 @@ function BlogPage() {
                                   style={{
                                     maxHeight: "130px",
                                     overflow: "hidden",
-                                    margin:'10px 0'
+                                    margin: '10px 0'
                                   }}
                                   dangerouslySetInnerHTML={{
                                     __html: `<div>${s.about_blog}</div>`,
@@ -332,7 +342,7 @@ function BlogPage() {
                                   style={{
                                     maxHeight: "130px",
                                     overflow: "hidden",
-                                    margin:'10px 0'
+                                    margin: '10px 0'
                                   }}
                                   dangerouslySetInnerHTML={{
                                     __html: `<div>${s.about_blog}</div>`,

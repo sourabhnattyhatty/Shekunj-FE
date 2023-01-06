@@ -386,23 +386,23 @@ const Courses = () => {
       <Header loginPage={true} page='courses' />
       <section className='Cors_sec noselect'>
 
-      <Helmet>
+        <Helmet>
 
-      <link rel="canonical" href="https://www.shekunj.com/courses/" />
-        <title>Best Free Online Courses
-      & Certifications in India - Shekunj.
-        com</title>
-        <link rel="canonical" href="https://www.shekunj.com/about-us/" />
-        <meta name="description" content="Advance your career with the free Online
+          <link rel="canonical" href="https://www.shekunj.com/courses/" />
+          <title>Best Free Online Courses
+            & Certifications in India - Shekunj.
+            com</title>
+          <link rel="canonical" href="https://www.shekunj.com/about-us/" />
+          <meta name="description" content="Advance your career with the free Online
   Professional development courses and
   certifications with the most in-demand skills
   specially curated for women."/>
-        <meta name="keywords" content="free online courses in india
+          <meta name="keywords" content="free online courses in india
   best online certificate programs
   free online courses for girls in india
   online certification courses in india
   free online courses for women"/>
-      </Helmet>
+        </Helmet>
 
 
         <div className='container'>
