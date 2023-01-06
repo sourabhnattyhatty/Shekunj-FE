@@ -479,7 +479,7 @@ function HomePage() {
       />
       <div className='courses'>
         <Link
-          to='/success-career-test'
+          to='/mock-test'
           // to='/mock-test'
           style={{ textDecoration: "none" }}
           className='view_test_cate  noselect'

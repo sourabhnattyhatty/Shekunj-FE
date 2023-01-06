@@ -43,6 +43,7 @@ function AllNotification() {
           notifications["Notifications "]?.map((c)=>{
             return (
               <>
+
                {/* <div>
                   <Card key={c?.id}>
                   {console.log("c", c)}
@@ -67,11 +68,11 @@ function AllNotification() {
                     <List key={c?.id}>
                       <ListItem>
                       {/* <span> */}
-                        <h3 class='c-heading-6 noselect'>{c && c.title}</h3>
+                        <h3 class='c-heading-6 noselect'>{c?.title}</h3>
                         {/* </span> */}
                       </ListItem>  
                       <Button
-                        href={c && c.url}
+                        href={`/${c?.url}`}
                         className='c-button'
                         variant='primary'
                         key={c?.id}
