@@ -556,7 +556,7 @@ function HomePage() {
       />
       <div className='courses'>
         <Link
-          to='/government-schemes'
+          to='/government-schemes-in-india'
           style={{ textDecoration: "none" }}
           className='view_test_cate'
         >

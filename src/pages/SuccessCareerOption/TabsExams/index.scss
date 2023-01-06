@@ -11,12 +11,12 @@ body {
   text-align: left;
 }
 
-.CompExams button {
-  padding: 0;
-  text-align: left !important;
-  margin: 0;
-  align-items: end;
-}
+// .CompExams button {
+//   padding: 0;
+//   text-align: left !important;
+//   margin: 0;
+//   align-items: end;
+// }
 
 .CompExams button {
   padding: 0;
@@ -25,11 +25,12 @@ body {
   align-items: end;
   font-family: Source Sans Pro;
   font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 1.2rem;
   line-height: 23px;
   color: #000000 !important;
   text-transform: capitalize;
+  padding: 2px 10px;
 }
 
 .Com_title h1 {
@@ -106,23 +107,24 @@ div#vertical-tabpanel-0 {
   background: transparent;
 }
 
-.CompExams button {
-  color: #000000 !important;
-  font-weight: bold;
-  // text-emphasis-color: black !important;
-}
+// .CompExams button {
+//   color: #000000 !important;
+//   font-weight: bold;
+//   // text-emphasis-color: black !important;
+// }
 
 .CompExams button:hover {
   background-color: #ec498a !important;
   color: #ffffff !important;
-  border-radius: 20px;
-  padding: 10px;
+  border-radius: 10px;
+  // padding: 10px;
   // margin: 10px;
 }
 
 .CompExams .MuiTabs-root.MuiTabs-vertical {
-  height: 875px;
-  overflow-y: scroll;
+  // height: 875px;
+  height: 570px;
+  overflow-y: auto;
   display: block;
   margin-bottom: 100px;
 }

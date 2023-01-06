@@ -197,10 +197,10 @@ const Header = ({ page, subPage }) => {
     setAnchorEl3(null);
   };
 
-  // const handleMoreMagazine = () => {
-  //   history.push(routingConstants.MORE_MAGAZINE);
-  //   setAnchorEl3(null);
-  // };
+  const handleMoreMagazine = () => {
+    history.push(routingConstants.MORE_MAGAZINE);
+    setAnchorEl3(null);
+  };
 
   const handleMoreFAQ = () => {
     history.push(routingConstants.FAQ);
@@ -529,12 +529,12 @@ const Header = ({ page, subPage }) => {
                       >
                         {t("headerComponent.menuItem.13")}
                       </MenuItem>
-                      {/* <MenuItem
+                      <MenuItem
                         onClick={handleMoreMagazine}
                         className={subPage === "moreMagazine" && "active-route"}
                       >
                         Magazine
-                      </MenuItem> */}
+                      </MenuItem>
                       <MenuItem
                         onClick={handleMoreFAQ}
                         className={subPage === "moreFAQ" && "active-route"}
@@ -807,12 +807,12 @@ const Header = ({ page, subPage }) => {
                       >
                         {t("headerComponent.menuItem.13")}
                       </MenuItem> 
-                      {/* <MenuItem
+                      <MenuItem
                         onClick={handleMoreMagazine}
                         className={subPage === "moreMagazine" && "active"}
                       >
                        Magazine
-                      </MenuItem> */}
+                      </MenuItem>
                       <MenuItem
                         onClick={handleMoreFAQ}
                         className={subPage === "moreFAQ" && "active"}

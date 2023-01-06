@@ -32,7 +32,6 @@ import { Header, Footer } from "../../components";
 import img1 from "../../assets/images/shekunj_magzine.jpg";
 import down1 from "../../assets/icons/down1.png";
 import up from "../../assets/icons/up.png";
-import double_quote from "../../assets/icons/double_quote.png";
 import global from "../../assets/images/Success/global.png";
 import "./index.scss";
 import { useTranslation } from "react-i18next";
@@ -113,7 +112,7 @@ function MagzinePage(m) {
           }
         })
     },
-      function (error) {   
+      function (error) {
         axios
           .get(
             `/private_adds/private_add`,
@@ -205,10 +204,19 @@ function MagzinePage(m) {
         </Container>
       </div>
       {/* google add */}
-      <Container>
+
+
+      <Container className="comming_soon">
+       
+          <h1 className="comming_soon_h1">COMING SOON
+          </h1>
+          <div className="loader-demo-box">
+          <p className="jumping-dots-loader"> <span></span> <span></span> <span></span> </p>
+        </div>
       </Container>
 
-      <Container>
+      {/* code comment */}
+      {/* <Container>
         {magzines["magazine_list"]?.length > 0 ? (
           magzines["magazine_list"]?.map((m, index) => {
             return (
@@ -268,10 +276,8 @@ function MagzinePage(m) {
                       <>
                         <Col>
                           <Card className='MagzineCardAdd'>
-                            {/* <Card > */}
                             {magzineBoxAdds?.length > 0 && (
                               <div
-                                // className='slide-img-mag-add'
                                 className='slide-imgAdd'
                                 onClick={() =>
                                   addEmail(magzineBoxAdds[0]?.add_email)
@@ -284,7 +290,6 @@ function MagzinePage(m) {
                                   <img
                                     src={magzineBoxAdds[0]?.image}
                                     alt='Image'
-                                    // className='google_add_box_img_mag'
                                     className='magzineImageAdd'
                                   />
                                 </a>
@@ -303,15 +308,15 @@ function MagzinePage(m) {
           })
         ) : (
           <div className='text-center'>{t("common.noDataFound")}</div>
-        )}
+        )} */}
 
-        {/* <DocViewer
+      {/* <DocViewer
           documents={docs}
           pluginRenderers={DocViewerRenderers}
           sandboxed='allow-scripts'
         /> */}
 
-      </Container>
+      {/* </Container>
 
       <div className='want noselect'>
         <Container>
@@ -320,7 +325,7 @@ function MagzinePage(m) {
             {t("successStoriesPage.button.2")}
           </button>
         </Container>
-      </div>
+      </div> */}
 
       <Footer loginPage={false} />
     </div>

@@ -161,10 +161,10 @@ const Footer = ({ loginPage, subPage }) => {
     setAnchorEl3(null);
   };
 
-  // const handleMoreMagazine = () => {
-  //   history.push(routingConstants.MORE_MAGAZINE);
-  //   setAnchorEl3(null);
-  // };
+  const handleMoreMagazine = () => {
+    history.push(routingConstants.MORE_MAGAZINE);
+    setAnchorEl3(null);
+  };
 
   const handleMoreFAQ = () => {
     history.push(routingConstants.FAQ);
@@ -267,12 +267,12 @@ const Footer = ({ loginPage, subPage }) => {
                     >
                       {t("headerComponent.menuItem.13")}
                     </MenuItem>
-                    {/* <MenuItem
+                    <MenuItem
                         onClick={handleMoreMagazine}
                         className={subPage === "moreMagazine" && "active"}
                       >
                         Magazine
-                      </MenuItem>  */}
+                      </MenuItem> 
                     <MenuItem
                       onClick={handleMoreFAQ}
                       className={subPage === "moreFAQ" && "active"}
@@ -369,7 +369,8 @@ const Footer = ({ loginPage, subPage }) => {
                       ></img>{" "}
                     </a>
                     <a
-                      href='https://twitter.com/SheKunj'
+                      // href='https://twitter.com/SheKunj'
+                      href='https://twitter.com/SheKunj_edu'
                       rel='nofollow'
                       target='_blank'
                     >
@@ -400,7 +401,8 @@ const Footer = ({ loginPage, subPage }) => {
                       ></img>{" "}
                     </a>
                     <a
-                      href='https://www.youtube.com/@shekunj643'
+                      // href='https://www.youtube.com/@shekunj643'
+                      href='https://www.youtube.com/@shekunj_edu'
                       rel='nofollow'
                       target='_blank'
                     >
