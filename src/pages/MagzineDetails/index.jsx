@@ -227,7 +227,7 @@ function MagzineDetails(m) {
  
   return (
     <div className="noselect">
-      <Header loginPage={true} page='more' subPage='moreblog' />
+      <Header loginPage={true} page='more' subPage='moreMagazineDetail' />
       <div className='SuccStory_banner'>
         <Container>
           <Row>

@@ -30,8 +30,6 @@ const BlogDetails = () => {
   const [adds, setAdds] = useState([]);
   const [blogDetailsBoxAds, setBlogDetailsBoxAds] = useState([]);
 
-  console.log(blogs,'................................blogs')
-
   useEffect(() => {
     dispatch(singleBlogDetails(id));
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -162,7 +160,7 @@ const BlogDetails = () => {
   return (
     <div>
       <SEO title='Sheकुंज - Career' />
-      <Header loginPage={true} page='career' subPage='colleges' />
+      <Header loginPage={true} page='more' subPage='moreblog' />
 
       {/* <Container className="coverMainSecSchool">
                 <div className="school_detail_cover">

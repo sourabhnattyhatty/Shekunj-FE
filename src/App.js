@@ -157,6 +157,7 @@ function App() {
           <PrivateRoute
           exact
           path={`${routingConstants.MORE_BLOG}:id`}
+          // component={BlogPage}
           component={BlogDetails}
         />
           {/* <PrivateRoute
