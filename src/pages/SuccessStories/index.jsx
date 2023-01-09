@@ -185,10 +185,7 @@ function SuccessStory() {
         <meta name="description" content="Shekunj.com shares success stories of 
         women across India who have made their dreams come true and achieved sky-high
          success. Read our success stories."/>
-        <meta name="keywords" content="women empowerment organizations,
-success stories,
-free online courses,
-free career guidance,"/>
+        <meta name="keywords" content="women empowerment organizations, success stories, free online courses, free career guidance,"/>
       </Helmet>
 
         <Container>

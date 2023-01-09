@@ -270,9 +270,8 @@ const CareerPage = () => {
 
   return (
     <div>
-      <SEO   title={`List of Top Colleges in
-India & Apply - Shekunj.com`}
-
+      <SEO   title={`List of Top Colleges in India & Apply - Shekunj.com`}
+    link={`https://www.shekunj.com/top-colleges-in-india`}
   description={` Find list of top Colleges and Universities in
   India along with the courses offered and
   detailed information.`}

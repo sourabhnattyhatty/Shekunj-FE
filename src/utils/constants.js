@@ -38,7 +38,7 @@ const routingConstants = {
   RESET_PASSWORD: "/authentication/password-reset/:uidb/:token/",
   SIGN_UP: "/sign-up",
   SUCCESS_2: "/success2/",
-  SUCCESS_CAREER_OPTION: "/career-option/",
+  SUCCESS_CAREER_OPTION: "/career-options/",
   SUCCESS_CAREER_TEST: "/success-career-test/",
   SUCCESS_STORIES: "/success-stories/",
   TOP_COLLEGES: "/top-colleges-in-india/",

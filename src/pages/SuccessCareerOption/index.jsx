@@ -30,7 +30,7 @@ function SuccessCareerOption() {
       <div className='SucOption noselect'>
 
       <Helmet>
-        <link rel="canonical" href="https://www.shekunj.com/career-option/" />
+        <link rel="canonical" href="https://www.shekunj.com/career-options/" />
         <title>Best Career Options and Occupations in India - Shekunj.com</title>
         <meta name="description" content="Find out the list of Top Career Options in India;
          Government Sector Finance Careers, 

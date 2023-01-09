@@ -129,7 +129,11 @@ const AboutusPage = () => {
 
   return (
     <div className='noselect'>
-      <SEO title='Sheकुंज - About us' link='https://www.shekunj.com/about-us' />
+      <SEO title='Sheकुंज - About us' link='https://www.shekunj.com/about-us'
+        keyword="women empowerment organizations, free online courses in india, free career guidance"
+        description='Shekunj.com works for women empowerment by providing free online certification courses, 
+          career guidance, job and internship opportunities across India.'
+      />
       <Header loginPage={false} page='about-us' />
       <section className='about_ban'>
         <div className='container'>

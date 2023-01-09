@@ -513,7 +513,11 @@ function MockTest() {
 
 
       <Helmet>
+      <title>Free Online Career Mock Test Series - Shekunj.com</title>
         <link rel="canonical" href="https://www.shekunj.com/mock-test/" />
+        <meta name="description" content="Practice Free Online Test Series & Mock Tests for Banking, SSC, JEE, 
+          NEET, and other Government and Non-Government Exams and score high marks!"/>
+        <meta name="keywords" content="free online mock test, online career test, online career assessment, test series, free online mock test series,"/>
       </Helmet>
 
       <Header loginPage={true} page='guidance' subPage='mockTest' />

@@ -56,13 +56,13 @@ const CareerPage1 = () => {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
       };
-    dispatch(getTopSchools(false, latitude, longitude));
-  },
-  function(error) {
-    console.error("Error Code = " + error.code + " - " + error.message);
-    dispatch(getTopSchools(false));
-  }
-  ) 
+      dispatch(getTopSchools(false, latitude, longitude));
+    },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        dispatch(getTopSchools(false));
+      }
+    )
   }, [dispatch, lan]);
 
   const transformImg = (image) => {
@@ -106,7 +106,7 @@ const CareerPage1 = () => {
         });
     });
   };
-// >>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -135,10 +135,10 @@ const CareerPage1 = () => {
   //         // setMessage("No data found");
   //         console.log(error);
   //     })
-      
+
   //   }) ;
   //   dispatch(adsList());
-   
+
   // }, [dispatch]);
 
 
@@ -180,59 +180,59 @@ const CareerPage1 = () => {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-  
+
       let params = {
         latitude: latitude.toString(),
         longitude: longitude.toString(),
-      } 
+      }
       axios
-      .get(
-        `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
-      )
-      .then((response) => {
-        if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {
-           
-            return item.image_type == "top_school_box";
-  
-          });
-          setSchoolBoxAds(filterArray1);
-          // console.log("filterArray1top_school_box",filterArray1)
+        .get(
+          `/private_adds/private_add?latitude=${latitude}&longitude=${longitude}`,
+        )
+        .then((response) => {
+          if (response && response.data.results.length > 0) {
+            let filterArray1 = response.data.results.filter((item, index) => {
 
-          let filterArray2 = response.data.results.filter((item, index) => {
-            
-            return item.image_type == "top_school_banner";
-           
-          });
-          setSchoolBannerAds(filterArray2);
-            }
-          })   
-    } ,
-    function(error) {
-      console.error("Error Code = " + error.code + " - " + error.message);
-      // alert("Your location is blocked")    
-    axios
-    .get(
-      `/private_adds/private_add`,
-    )
-    .then((response) => {
-      if (response && response.data.results.length > 0) {
-          let filterArray1 = response.data.results.filter((item, index) => {   
-            return item.image_type == "top_school_box";
-          });
-          setSchoolBoxAds(filterArray1);
-          let filterArray2 = response.data.results.filter((item, index) => {
-            return item.image_type == "top_school_banner"; 
-          });
-          setSchoolBannerAds(filterArray2);
+              return item.image_type == "top_school_box";
+
+            });
+            setSchoolBoxAds(filterArray1);
+            // console.log("filterArray1top_school_box",filterArray1)
+
+            let filterArray2 = response.data.results.filter((item, index) => {
+
+              return item.image_type == "top_school_banner";
+
+            });
+            setSchoolBannerAds(filterArray2);
           }
         })
-   }
-  )
-  },[])
- 
- 
-  
+    },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        // alert("Your location is blocked")    
+        axios
+          .get(
+            `/private_adds/private_add`,
+          )
+          .then((response) => {
+            if (response && response.data.results.length > 0) {
+              let filterArray1 = response.data.results.filter((item, index) => {
+                return item.image_type == "top_school_box";
+              });
+              setSchoolBoxAds(filterArray1);
+              let filterArray2 = response.data.results.filter((item, index) => {
+                return item.image_type == "top_school_banner";
+              });
+              setSchoolBannerAds(filterArray2);
+            }
+          })
+      }
+    )
+  }, [])
+
+
+
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   const [searchInput, setSearchInput] = useState("");
@@ -252,19 +252,14 @@ const CareerPage1 = () => {
   description={``}
   keywords={``} /> */}
 
-<Helmet>
-        <link rel="canonical" href="https://www.shekunj.com/career-option/" />
-        <title>Find Top Schools in India
-& Apply - Shekunj.com</title>
+      <Helmet>
+        <link rel="canonical" href="https://www.shekunj.com/top-schools-in-india/" />
+        <title>Find Top Schools in India & Apply - Shekunj.com</title>
         <meta name="description" content="Give high-quality education to your children.
-  Find the list of best schools in India and their
-  detailed information."/>
-        <meta name="keywords" content="top schools in india
-  list of best schools
-  best boys schools
-  top schools in mp
-  boys schools in india
-  girls schools in india"/>
+          Find the list of best schools in India and their
+          detailed information."/>
+        <meta name="keywords" content="top schools in india list of best schools best boys schools top schools in mp 
+          boys schools in india girls schools in india"/>
       </Helmet>
 
       <Header loginPage={true} page='career' subPage='schools' />
@@ -560,22 +555,22 @@ const CareerPage1 = () => {
                     ),
                 )
               ) : //  (
-              //   <div className='text-center'>{t("common.noDataFound")}</div>
-              // )
-              // <ContentLoader viewBox="0 0 380 70">
-              //   {/* Only SVG shapes */}
-              //   <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
-              //   <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
-              //   <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
-              // </ContentLoader>
-              isLoading ? (
-                <div>
-                  <h4>Loading...</h4>
-                  <ClipLoader className='loader' color='#ec498a' />
-                </div>
-              ) : (
-                <div className='text-center'>{t("common.noDataFound")}</div>
-              )}
+                //   <div className='text-center'>{t("common.noDataFound")}</div>
+                // )
+                // <ContentLoader viewBox="0 0 380 70">
+                //   {/* Only SVG shapes */}
+                //   <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
+                //   <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
+                //   <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
+                // </ContentLoader>
+                isLoading ? (
+                  <div>
+                    <h4>Loading...</h4>
+                    <ClipLoader className='loader' color='#ec498a' />
+                  </div>
+                ) : (
+                  <div className='text-center'>{t("common.noDataFound")}</div>
+                )}
             </Col>
           </Row>
         </Container>

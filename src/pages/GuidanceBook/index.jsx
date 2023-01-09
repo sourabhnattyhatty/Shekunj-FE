@@ -285,6 +285,7 @@ const GuidancePage = () => {
 
       <Helmet>
         <title>Get Free Online Counselling For Women in India - Shekunj.com</title>
+        <link rel="canonical" href="https://www.shekunj.com/online-counselling" />
         <meta name="description" content="Choose the right path for you to get free
          online counselling by the best counsellors in India, career counselling, business
           counselling, mental health counselling."/>

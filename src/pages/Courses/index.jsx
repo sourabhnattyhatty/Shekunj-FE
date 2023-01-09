@@ -392,7 +392,6 @@ const Courses = () => {
           <title>Best Free Online Courses
             & Certifications in India - Shekunj.
             com</title>
-          <link rel="canonical" href="https://www.shekunj.com/about-us/" />
           <meta name="description" content="Advance your career with the free Online
   Professional development courses and
   certifications with the most in-demand skills

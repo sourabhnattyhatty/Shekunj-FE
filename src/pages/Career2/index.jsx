@@ -260,16 +260,11 @@ const CareerPage2 = () => {
 
       <Helmet>
         <link rel="canonical" href="https://www.shekunj.com/government-schemes-in-india/" />
-        <title>List of Government
-          Schemes in India -
-          Benefits - Shekunj.com</title>
-        <meta name="description" content="List of Government Schemes: Women
-  Empowerment Schemes, Beti Bachao Beti
-  Padhao, Start Up India Scheme, Bima
-  Yojana, women helpline scheme."/>
+        <title>List of Government Schemes in India - Benefits - Shekunj.com</title>
+        <meta name="description" content="List of Government Schemes: Women Empowerment Schemes, Beti Bachao Beti Padhao, Start Up India Scheme, Bima
+          Yojana, women helpline scheme."/>
         <meta name="keywords" content="government policies and Schemes in india government
-  schemes and programs new government schemes in india
-  central government schemes"/>
+          schemes and programs new government schemes in india central government schemes"/>
       </Helmet>
 
 
