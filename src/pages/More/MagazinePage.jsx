@@ -178,9 +178,9 @@ function MagzinePage(m) {
     dispatch(setCollapseMagzines(id, is_collapse ? false : true));
   };
 
-  document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-  });
+  // document.addEventListener("contextmenu", function (e) {
+  //   e.preventDefault();
+  // });
 
   return (
     <div>
@@ -216,7 +216,7 @@ function MagzinePage(m) {
       </Container>
 
       {/* code comment */}
-      {/* <Container>
+      <Container>
         {magzines["magazine_list"]?.length > 0 ? (
           magzines["magazine_list"]?.map((m, index) => {
             return (
@@ -308,15 +308,15 @@ function MagzinePage(m) {
           })
         ) : (
           <div className='text-center'>{t("common.noDataFound")}</div>
-        )} */}
+        )}
 
-      {/* <DocViewer
+      <DocViewer
           documents={docs}
           pluginRenderers={DocViewerRenderers}
           sandboxed='allow-scripts'
-        /> */}
+        />
 
-      {/* </Container>
+      </Container>
 
       <div className='want noselect'>
         <Container>
@@ -325,7 +325,7 @@ function MagzinePage(m) {
             {t("successStoriesPage.button.2")}
           </button>
         </Container>
-      </div> */}
+      </div>
 
       <Footer loginPage={false} />
     </div>

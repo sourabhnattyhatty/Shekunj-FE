@@ -658,7 +658,7 @@ const CourseModule = () => {
                     </>
                   ) : (
                     <div class='iframe-divarea'>
-                      {manageContent()}
+                      {/* {manageContent()} */}
 
                       {course?.file_link && (
                         <>

@@ -97,9 +97,9 @@ function MagzineDetails(m) {
   }
 
   /*To Prevent right click on screen*/
-  document.addEventListener("contextmenu", (event) => {
-    event.preventDefault();
-  });
+  // document.addEventListener("contextmenu", (event) => {
+  //   event.preventDefault();
+  // });
 
   useEffect(() => {
     dispatch(singleMagzineDetails(id));
@@ -275,13 +275,14 @@ function MagzineDetails(m) {
         <Container>
           <div className="magazine_div"
             style={{
-              width: `${screen1.active ? '90rem' : '59rem'}`,
+              // width: `${screen1.active ? '90rem' : '59rem'}`,
               height: `${screen1.active ? '70rem' : '36.7rem'}`,
 
             }}
           >
             <FullScreen handle={screen1} onChange={reportChange}>
-              <TransformWrapper
+             <div className="scroll-view">
+             <TransformWrapper
                 initialScale={1}
                 maxScale={7}
                 disabled={true}
@@ -296,7 +297,9 @@ function MagzineDetails(m) {
                         }}>
 
                         {/* <HTMLFlipBook width={320} height={485} className="flipbook" */}
-                        <HTMLFlipBook width={320} height={485} className="flipbook"
+                        <HTMLFlipBook height={485} width={320}
+                        className="flipbook" mobileScrollSupport={true}
+                            showCover={true} size="stretch"
                           ref={book}
                         >
                           {
@@ -358,6 +361,7 @@ function MagzineDetails(m) {
                   </React.Fragment>
                 )}
               </TransformWrapper>
+             </div>
             </FullScreen>
           </div>
 
