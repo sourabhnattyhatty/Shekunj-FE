@@ -69,6 +69,7 @@
     "react-pdf": "^5.7.2",
     "react-pdf-flipbook": "^0.1.6",
     "react-pdf-to-image": "^1.0.2",
+    "react-read-more-read-less": "^1.0.7",
     "react-redux": "^7.2.9",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",

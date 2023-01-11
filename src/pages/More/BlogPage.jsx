@@ -234,7 +234,7 @@ function BlogPage() {
                               <img
                                 className='quote_img_blog noselect'
                                 src={double_quote}
-                                style={{ width: 20, height: 20 }}
+                                style={{ width: 100, height: 40 }}
                                 alt=''
                               />
                               {s?.title || t("common.n/a")}{" "}
@@ -314,7 +314,7 @@ function BlogPage() {
                               <img
                                 className='quote_img_blog noselect'
                                 src={double_quote}
-                                style={{ width: 20, height: 20 }}
+                                style={{ width: 100, height: 40 }}
                                 alt=''
                               />
                               {s?.title || t("common.n/a")}{" "}

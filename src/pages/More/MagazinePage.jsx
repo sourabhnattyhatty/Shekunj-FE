@@ -18,6 +18,8 @@ import {
   Modal,
   Button,
 } from "react-bootstrap";
+import ReactReadMoreReadLess from "react-read-more-read-less";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -206,14 +208,14 @@ function MagzinePage(m) {
       {/* google add */}
 
 
-      <Container className="comming_soon">
+      {/* <Container className="comming_soon">
        
           <h1 className="comming_soon_h1">COMING SOON
           </h1>
           <div className="loader-demo-box">
           <p className="jumping-dots-loader"> <span></span> <span></span> <span></span> </p>
         </div>
-      </Container>
+      </Container> */}
 
       {/* code comment */}
       <Container>
@@ -233,7 +235,8 @@ function MagzinePage(m) {
                           href={m?.form_link}
                         >
                           <Link
-                            to={routingConstants.MORE_MAGAZINE + m?.id} key={m?.id}>
+                            to={routingConstants.MORE_MAGAZINE + m?.id} key={m?.id}
+                            style={{ textDecoration: "none" }}>
                             <Card.Img
                               className='magzineImage'
                               variant='top'
@@ -241,32 +244,52 @@ function MagzinePage(m) {
                               alt=''
                               srcSet=''
                             />
-                            <Card.Body className='magzineCardBody'>
-                              <Card.Text className='createdText'>
+                          </Link>
+                          <Card.Body className='magzineCardBody'>
+                            {/* <Card.Text className='createdText'>
                                 Created_at:
                                 <Moment format='D MMM YYYY' withTitle>
                                   {m?.created_at}
                                 </Moment>
-                              </Card.Text>
-
+                              </Card.Text> */}
+                            <Link
+                              to={routingConstants.MORE_MAGAZINE + m?.id} key={m?.id}
+                              style={{ textDecoration: "none",color:"black" }}>
                               <Card.Title>{m?.title}</Card.Title>
-                              <Card.Subtitle className='mb-2 text-muted'>
-                                {" "}
+                            </Link>
+                            <Card.Subtitle className='mb-2 text-muted'>
+                            {/* <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: `<div>
+                              <ReactReadMoreReadLess
+                                charLimit={30}
+                                readMoreText={"Read more ▼"}
+                                readLessText={"Read less ▲"}
+                              >${m?.about_magazine}</ReactReadMoreReadLess>
+                              </div>`,
+                                  }}
+                                /> */}
+                                
                                 <div
                                   dangerouslySetInnerHTML={{
                                     __html: `<div>${m?.about_magazine}</div>`,
                                   }}
                                 />
-                              </Card.Subtitle>
+                                {/* dfggdfgdfhdfgfgfffffffffffffffffffffffffffffffffffffffffffdfggdfgdfhdfgfgfffffffffffffffffffffffffffffffffffffffffffdfggdfgdfhdfgfgfffffffffffffffffffffffffffffffffffffffffff */}
 
-                              <Card.Text className='updatedText'>
+                              {/* </ReactReadMoreReadLess> */}
+                              {" "}
+
+                            </Card.Subtitle>
+
+                            {/* <Card.Text className='updatedText'>
                                 Updated_at :
                                 <Moment format='D MMM YYYY' withTitle>
                                   {m?.updated_at}
                                 </Moment>
-                              </Card.Text>
-                            </Card.Body>
-                          </Link>
+                              </Card.Text> */}
+                          </Card.Body>
+                          {/* </Link> */}
                         </Card>
                       </Card.Link>
                     </Col>
@@ -310,11 +333,11 @@ function MagzinePage(m) {
           <div className='text-center'>{t("common.noDataFound")}</div>
         )}
 
-      <DocViewer
+        {/* <DocViewer
           documents={docs}
           pluginRenderers={DocViewerRenderers}
           sandboxed='allow-scripts'
-        />
+        /> */}
 
       </Container>
 

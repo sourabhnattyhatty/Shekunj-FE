@@ -581,9 +581,11 @@ button.want_btn {
 
 .magzineCardBody {
   text-align: center;
-  background-image: linear-gradient(rgb(251, 224, 228), white);
-  transition: ease-in-out;
+  background-color: white !important;
+  // background-image: linear-gradient(rgb(251, 224, 228), white);
+  // transition: ease-in-out;
   margin-bottom: 50px;
+  // margin-bottom: 50px;
 
 }
 
@@ -754,8 +756,10 @@ button.want_btn {
 }
 
 .magzineImage {
-  width: 300px;
-  height: 280px;
+  // width: 300px;
+  width: 297px;
+  height: 277px;
+  // height: 280px;
   background-size: cover;
 }
 
@@ -770,7 +774,8 @@ button.want_btn {
   flex-wrap: wrap;
   flex-direction: row;
   width: 300px;
-  height: 500px;
+  height: 478px;
+  // height: 500px;
 }
 
 .MagzineCardAdd {
