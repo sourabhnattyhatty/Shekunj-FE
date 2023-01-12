@@ -52,6 +52,7 @@ function MagzinePage(m) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [show, setShow] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   const [docs, setDocs] = useState([]);
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
@@ -183,7 +184,7 @@ function MagzinePage(m) {
   // document.addEventListener("contextmenu", function (e) {
   //   e.preventDefault();
   // });
-
+  let pa = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim accusamus sequi, esse excepturi maiores sint autem repudiandae consectetur aliquam animi quibusdam, in ipsa quos blanditiis rerum cum magnam ullam doloremque!"
   return (
     <div>
       <Header loginPage={true} page='more' subPage='moreMagazine' />
@@ -254,11 +255,56 @@ function MagzinePage(m) {
                               </Card.Text> */}
                             <Link
                               to={routingConstants.MORE_MAGAZINE + m?.id} key={m?.id}
-                              style={{ textDecoration: "none",color:"black" }}>
+                              style={{ textDecoration: "none", color: "black" }}>
                               <Card.Title>{m?.title}</Card.Title>
                             </Link>
                             <Card.Subtitle className='mb-2 text-muted'>
-                            {/* <div
+
+                              <div>
+                                <Link
+                                  to={routingConstants.MORE_MAGAZINE + m?.id} key={m?.id}
+                                  style={{ textDecoration: "none", color: "black" }}>
+                                  {showMore ?
+                                    <div
+                                      dangerouslySetInnerHTML={{
+                                        __html: `<div>${m?.about_magazine}</div>`,
+                                        // __html: `<div>${"Lorem ipsum dolor fgfdgdfgfdgdfgfgfgfgd fgfdgdf gdfg dfgfdgdf dfgfdgdf dfgfdgdf"}</div>`,
+                                      }}
+                                    />
+                                    :
+                                    <div
+                                      dangerouslySetInnerHTML={{
+                                        __html: `<div>${m?.about_magazine.substring(0, 50)}</div>`,
+                                        // __html: `<div>${"Lorem ipsum dolor fgfdgdfgfdgdfgfgfgfgd fgfdgdf gdfg dfgfdgdf dfgfdgdf dfgfdgdf".substring(0, 50)}</div>`,
+                                      }}
+                                    />
+                                  }
+                                </Link>
+                                {
+                                  m?.about_magazine.replace(/(<([^>]+)>)/ig, '').length > 40 ?
+                                  // "Lorem ipsum dolor fgfdgdfgfdgdfgfgfgfgd fgfdgdf gdfg dfgfdgdf dfgfdgdf dfgfdgdf".length > 40 ?
+                                    <button
+                                      style={{
+                                        color: '#e36b8b',
+                                        backgroundColor: 'azure',
+                                        border: '2px solid #e36b8b',
+                                        borderRadius: '20px',
+                                        // marginLeft: '5px',
+                                        marginTop: '10px',
+                                        padding: '5px'
+                                      }}
+                                      onClick={() => setShowMore(!showMore)}>
+                                      {showMore ? "Read less" : "Read more"}
+                                    </button>
+                                    :
+                                    ""
+                                }
+
+                              </div>
+
+
+
+                              {/* <div
                                   dangerouslySetInnerHTML={{
                                     __html: `<div>
                               <ReactReadMoreReadLess
@@ -269,13 +315,13 @@ function MagzinePage(m) {
                               </div>`,
                                   }}
                                 /> */}
-                                
-                                <div
+
+                              {/* <div
                                   dangerouslySetInnerHTML={{
                                     __html: `<div>${m?.about_magazine}</div>`,
                                   }}
-                                />
-                                {/* dfggdfgdfhdfgfgfffffffffffffffffffffffffffffffffffffffffffdfggdfgdfhdfgfgfffffffffffffffffffffffffffffffffffffffffffdfggdfgdfhdfgfgfffffffffffffffffffffffffffffffffffffffffff */}
+                                /> */}
+                              {/* dfggdfgdfhdfgfgfffffffffffffffffffffffffffffffffffffffffffdfggdfgdfhdfgfgfffffffffffffffffffffffffffffffffffffffffffdfggdfgdfhdfgfgfffffffffffffffffffffffffffffffffffffffffff */}
 
                               {/* </ReactReadMoreReadLess> */}
                               {" "}
@@ -351,7 +397,7 @@ function MagzinePage(m) {
       </div>
 
       <Footer loginPage={false} />
-    </div>
+    </div >
   );
 }
 
