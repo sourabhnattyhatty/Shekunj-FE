@@ -53,6 +53,7 @@ import { BsZoomIn, BsZoomOut } from 'react-icons/bs'
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineShareAlt } from 'react-icons/ai'
 import { IoMdShareAlt } from 'react-icons/io'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
+// import {isMobile} from 'react-device-detect';
 import { RWebShare } from "react-web-share";
 import Cookies from "js-cookie";
 const url = "https://cors-anywhere.herokuapp.com/http://www.pdf995.com/samples/pdf.pdf";
@@ -60,6 +61,7 @@ const url = "https://cors-anywhere.herokuapp.com/http://www.pdf995.com/samples/p
 
 function MagzineDetails(m) {
   const [isEnter, setIsEnter] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
 
   const [magzineData, setMagzineData] = useState([]);
   const { id } = useParams();
@@ -73,6 +75,7 @@ function MagzineDetails(m) {
   const screen2 = useFullScreenHandle();
   // const url = `https://cors-anywhere.herokuapp.com/${magzines?.pdf}`;
   // const url = "https://cors-anywhere.herokuapp.com/https://shekunj.s3.amazonaws.com/media/E-magazine/august.pdf";
+  const isMobile = navigator.userAgent.includes("Mobile")
 
   pdfjs.GlobalWorkerOptions.workerSrc =
     `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -216,6 +219,16 @@ function MagzineDetails(m) {
 
   }, [])
 
+  // useEffect(() => {
+  //   var checkDevice = navigator.userAgent.match(
+  //     /(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i
+  //   );
+  //   if (checkDevice) {
+  //     // if we are on mobile device the scroll into view will be managed by the browser
+  //     setIsMobile(true)
+  //   } else setIsMobile(false)
+  // }, [isMobile])
+
   const handlePrev = () => {
     book.current.pageFlip().flipPrev()
     setTurnPageStop(false)
@@ -224,7 +237,7 @@ function MagzineDetails(m) {
     book.current.pageFlip().flipNext()
     setTurnPageStop(false)
   }
- 
+ console.log("===========", isMobile)
   return (
     <div className="noselect">
       <Header loginPage={true} page='more' subPage='moreMagazineDetail' />
@@ -295,18 +308,23 @@ function MagzineDetails(m) {
                           marginTop: `${screen1.active ? '12rem' : ''}`,
                           marginLeft: `${screen1.active ? '22rem' : ''}`
                         }}>
-
-                        {/* <HTMLFlipBook width={320} height={485} className="flipbook" */}
-                        <HTMLFlipBook height={485} width={320}
+                        <HTMLFlipBook height={485} 
+                        width={320}
+                        // width={isMobile ? 500 : 320}
                         className="flipbook" mobileScrollSupport={true}
-                            showCover={true} size="stretch"
+                          showCover={true}
+                          size='fixed'
+                          // size= {isMobile ? "fixed" : "stretch"}
                           ref={book}
                         >
                           {
                             magzineData && magzineData.map(elem => {
-                              return <div className="demoPage">
+                              return <div className="demoPage">                          
                                 {/* <img src={elem.images} width='320px' height="485px" /> */}
-                                <img src={elem.images} height="485px" />
+                                <img src={elem.images} height="485px" 
+                                // style={{ width: isMobile ? "340px" : ''}}
+                                width="340px"
+                                />
                               </div>
 
                             })
@@ -332,8 +350,7 @@ function MagzineDetails(m) {
                       <BsZoomOut
                         onClick={() => zoomOut(setTurnPageStop(true),)}
                         className='icon_class' />
-
-                      {
+                      { 
                         !screen1.active ?
                           <BsFullscreen onClick={screen1.enter}
                             className='icon_class' />
