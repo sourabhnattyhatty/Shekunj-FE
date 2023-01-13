@@ -268,31 +268,24 @@ function MagzinePage(m) {
                                     <div
                                       dangerouslySetInnerHTML={{
                                         __html: `<div>${m?.about_magazine}</div>`,
-                                        // __html: `<div>${"Lorem ipsum dolor fgfdgdfgfdgdfgfgfgfgd fgfdgdf gdfg dfgfdgdf dfgfdgdf dfgfdgdf"}</div>`,
+                                        // __html: `<div>${"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, amet nostrum nam nihil reiciendis ex, voluptatibus repudiandae ad consequatur obcaecati dolorem sunt deleniti dolorum nisi cum repellendus consectetur, ea debitis."}</div>`,
                                       }}
                                     />
                                     :
+
                                     <div
                                       dangerouslySetInnerHTML={{
-                                        __html: `<div>${m?.about_magazine.substring(0, 50)}</div>`,
-                                        // __html: `<div>${"Lorem ipsum dolor fgfdgdfgfdgdfgfgfgfgd fgfdgdf gdfg dfgfdgdf dfgfdgdf dfgfdgdf".substring(0, 50)}</div>`,
+                                        __html: `<div>${m?.about_magazine.substring(0, 40)}</div>`,
+                                        // __html: `<div>${"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, amet nostrum nam nihil reiciendis ex, voluptatibus repudiandae ad consequatur obcaecati dolorem sunt deleniti dolorum nisi cum repellendus consectetur, ea debitis.".substring(0, 50)}</div>`,
                                       }}
                                     />
                                   }
                                 </Link>
                                 {
-                                  m?.about_magazine.replace(/(<([^>]+)>)/ig, '').length > 40 ?
-                                  // "Lorem ipsum dolor fgfdgdfgfdgdfgfgfgfgd fgfdgdf gdfg dfgfdgdf dfgfdgdf dfgfdgdf".length > 40 ?
-                                    <button
-                                      style={{
-                                        color: '#e36b8b',
-                                        backgroundColor: 'azure',
-                                        border: '2px solid #e36b8b',
-                                        borderRadius: '20px',
-                                        // marginLeft: '5px',
-                                        marginTop: '10px',
-                                        padding: '5px'
-                                      }}
+                                  // m?.about_magazine.replace(/(<([^>]+)>)/ig, '').length > 50 ?
+                                  m?.about_magazine.replace(/<[^>]+>/ig,'').length > 60 ?
+                                  // "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, amet nostrum nam nihil reiciendis ex, voluptatibus repudiandae ad consequatur obcaecati dolorem sunt deleniti dolorum nisi cum repellendus consectetur, ea debitis.".length > 50 ?
+                                    <button className="more_less_btn"
                                       onClick={() => setShowMore(!showMore)}>
                                       {showMore ? "Read less" : "Read more"}
                                     </button>

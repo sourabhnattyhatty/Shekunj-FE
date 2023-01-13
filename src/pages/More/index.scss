@@ -394,7 +394,7 @@ button.want_btn {
   font-variant-east-asian: normal;
   font-weight: 900;
   font-stretch: normal;
-  font-size: 36px;
+  font-size: 1.6rem;
   line-height: normal;
   font-family: "Playfair Display", serif;
 }
@@ -584,7 +584,7 @@ button.want_btn {
   background-color: white !important;
   // background-image: linear-gradient(rgb(251, 224, 228), white);
   // transition: ease-in-out;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   // margin-bottom: 50px;
 }
 
@@ -1261,6 +1261,15 @@ button.want_btn {
   animation: bounce 1s ease-in-out 0.66s infinite
 }
 
+.more_less_btn{
+  color: #e36b8b;
+  background-color:white;
+  border: 2px solid #e36b8b;
+  border-radius: 20px;
+  // marginLeft: '5px',
+  margin-top: 10px;
+  padding: 5px 10px;
+}
 @keyframes bounce {
 
   0%,
