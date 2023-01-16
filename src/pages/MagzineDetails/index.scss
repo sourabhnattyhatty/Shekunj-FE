@@ -598,6 +598,17 @@ iframe {
   margin: 1.5rem 9.6rem,
 
 }
+// .zoom_div {
+//   background: black;
+//   // width: 40rem;
+//   width: 100%;
+//   height: 30rem;
+//   justify-content: center;
+//   align-items: center;
+//   margin: 1.5rem 0,
+
+// }
+
 
 .icons_div {
   display: flex;
@@ -634,6 +645,10 @@ iframe {
     width: 100%;
   }
 
+  .scroll-view .stf__block {
+    left: 0px !important;
+  }
+
 }
 
 @media (max-width: 767px) {
@@ -661,4 +676,10 @@ iframe {
   overflow: hidden;
 }
 
+
+}
+
+
+.scroll-view .stf__block {
+  left: 80px;
 }

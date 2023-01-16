@@ -308,8 +308,11 @@ function MagzineDetails(m) {
                           marginTop: `${screen1.active ? '12rem' : ''}`,
                           marginLeft: `${screen1.active ? '22rem' : ''}`
                         }}>
+                          {/* <div style={{height: 1000, width: 1000, backgroundColor: 'blue'}} > */}
                         <HTMLFlipBook height={485} 
                         width={320}
+                        // width={340}
+                        // maxWidth={1000}
                         // width={isMobile ? 500 : 320}
                         className="flipbook" mobileScrollSupport={true}
                           showCover={true}
@@ -330,7 +333,7 @@ function MagzineDetails(m) {
                             })
                           }
                         </HTMLFlipBook>
-
+                        {/* </div> */}
                       </div>
                     </TransformComponent>
                     <div className="icons_div"
