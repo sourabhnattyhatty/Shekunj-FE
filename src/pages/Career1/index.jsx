@@ -28,6 +28,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 const CareerPage1 = () => {
   // const [loading, setLoading] = useState(false);
@@ -76,6 +77,7 @@ const CareerPage1 = () => {
   const [schoolBannerAds, setSchoolBannerAds] = useState([]);
   const [schoolBoxAds, setSchoolBoxAds] = useState([]);
   const [image, setImage] = useState("NA");
+  const detect = useDeviceDetect();
 
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=top_school_banner')
@@ -274,7 +276,7 @@ const CareerPage1 = () => {
               >
                 <a href={schoolBannerAds[0]?.url_adds} target='_blank'>
                   <img
-                    src={schoolBannerAds[0]?.image}
+                   src={ detect.isMobile ? schoolBannerAds[0]?.image_mobile :  schoolBannerAds[0]?.image}
                     alt='Image'
                     className='ads_school'
                   />
@@ -539,7 +541,7 @@ const CareerPage1 = () => {
                                     target='_blank'
                                   >
                                     <img
-                                      src={schoolBoxAds[0]?.image}
+                                    src={ detect.isMobile ? schoolBoxAds[0]?.image_mobile : schoolBoxAds[0]?.image}
                                       alt='Image'
                                       className='ads_school_box'
                                     />

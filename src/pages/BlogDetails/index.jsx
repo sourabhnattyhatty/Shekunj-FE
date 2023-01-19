@@ -13,6 +13,7 @@ import "./index.scss";
 import { adsList } from "../../store/ads";
 import axios from "axios";
 import noImageIcon from "../../assets/images/no-image.jpeg";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 const BlogDetails = () => {
   const history = useHistory();
@@ -29,6 +30,7 @@ const BlogDetails = () => {
   const [image, setImage] = useState("NA");
   const [adds, setAdds] = useState([]);
   const [blogDetailsBoxAds, setBlogDetailsBoxAds] = useState([]);
+  const detect = useDeviceDetect();
 
   useEffect(() => {
     dispatch(singleBlogDetails(id));
@@ -278,10 +280,12 @@ const BlogDetails = () => {
                         target='_blank'
                       >
                         <img
-                          src={blogDetailsBoxAds[0]?.image}
-                          alt='Image'
-                          className='ads_guidence_blog'
-                        />
+                        
+                         src={  detect.isMobile ? blogDetailsBoxAds[0]?.image_mobile : blogDetailsBoxAds[0]?.image}
+                         alt='Image'
+                         className='google_ads_home'
+                       />
+                        
                       </a>
                     </div>
                   </Row>

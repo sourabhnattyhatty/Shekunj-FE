@@ -15,6 +15,7 @@ import { routingConstants } from "../../utils/constants";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 import { adsList } from "../../store/ads";
 import {
   Avatar,
@@ -35,6 +36,7 @@ const Footer = ({ loginPage, subPage }) => {
   const [adds, setAdds] = useState([]);
   const [anchorEl3, setAnchorEl3] = React.useState(null);
   const open3 = Boolean(anchorEl3);
+  const detect = useDeviceDetect();
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // useEffect(() => {
@@ -197,7 +199,8 @@ const Footer = ({ loginPage, subPage }) => {
               >
                 <a href={adsFooter1[0]?.url_adds} target='_blank'>
                   <img
-                    src={adsFooter1[0]?.image}
+                  src={  detect.isMobile ? adsFooter1[0]?.image_mobile :  adsFooter1[0]?.image}
+                    // src={adsFooter1[0]?.image}
                     alt='Image'
                     className='google_ads_footer'
                   />
@@ -255,24 +258,14 @@ const Footer = ({ loginPage, subPage }) => {
                     >
                       {t("headerComponent.menuItem.11")}
                     </MenuItem>
-                    {/* <MenuItem
-                        onClick={handleMoreMagazine}
-                        className={subPage === "moreMagazine" && "active"}
-                      >
-                        {t("headerComponent.menuItem.12")}
-                      </MenuItem> */}
+                    
                     <MenuItem
                       onClick={handleMoreBlogs}
                       className={subPage === "moreblog" && "active"}
                     >
                       {t("headerComponent.menuItem.13")}
                     </MenuItem>
-                    <MenuItem
-                        onClick={handleMoreMagazine}
-                        className={subPage === "moreMagazine" && "active"}
-                      >
-                        Magazine
-                      </MenuItem> 
+                   
                     <MenuItem
                       onClick={handleMoreFAQ}
                       className={subPage === "moreFAQ" && "active"}
@@ -325,7 +318,8 @@ const Footer = ({ loginPage, subPage }) => {
                         >
                           <a href={adsFooter2[0]?.url_adds} target='_blank'>
                             <img
-                              src={adsFooter2[0]?.image}
+                            src={  detect.isMobile ? adsFooter2[0]?.image_mobile :  adsFooter2[0]?.image}
+                              // src={adsFooter2[0]?.image}
                               alt='Image'
                               className='footer_ads_bottom'
                             />

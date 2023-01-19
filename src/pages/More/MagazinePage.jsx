@@ -274,7 +274,7 @@ function MagzinePage(m) {
                     {(index % 2 == 1)
                       ?
                       <>
-                        <Col>
+                        <Col className="magzine_anchore">
                           <Card className='MagzineCardAdd'>
                             {magzineBoxAdds?.length > 0 && (
                               <div

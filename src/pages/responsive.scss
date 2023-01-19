@@ -206,9 +206,9 @@
     margin-top: 30px;
   }
   .google_ads_home {
-    margin: 5px 0px !important;
-    height: 100px !important;
-    width: 100% !important;
+    // margin: 5px 0px !important;
+    // height: 100px !important;
+    // width: 100% !important;
   }
 }
 
@@ -249,8 +249,8 @@
 }
 .google_ads_home {
   margin: 5px 0px !important;
-  height: 150px !important;
-  width: 100% !important;
+  // height: 150px !important;
+  // width: 100% !important;
 }
 .career_box h3 {
   white-space: unset !important;
@@ -306,7 +306,7 @@ img.searchclose {
   max-width: 100% !important;
 }
 .college_ads_box {
-  height: 100px !important;
+  // height: 100px !important;
   // margin-left: 15px !important;
   margin-bottom: 20px !important;
   margin: auto;
@@ -392,7 +392,7 @@ margin-bottom: 30px;
 }
 .google_add_college {
   width: 100% !important;
-  height: 100px !important;
+  // height: 100px !important;
 }
 .top_col_content a {
   overflow-wrap: break-word;
@@ -447,7 +447,43 @@ width: 100% !important;
   margin-left: 0 !important;
   margin-right: 0 !IMPORTANT;
 }
+
+// jan 17
+
+.ads_story_cover_img_blog {
+  margin: 40px 0px;
+  width: 100%;
 }
+
+
+
+
+
+}
+
+// Jan
+
+
+.ads_story_cover_img_blog {
+  // margin: 40px 0px;
+  // height: 150px;
+  // width: 700px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Sep 27
 
@@ -517,3 +553,18 @@ header.other_head ul li svg {
 }
 
 
+.ads_story_cover_img_blog {
+  margin: 40px 0 !important;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+.ads_story_cover {
+  text-align: center;
+  margin: auto;
+  display: table;
+}
+
+.Magzine a{
+  text-decoration: none !important;
+}

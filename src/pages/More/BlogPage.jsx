@@ -30,6 +30,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { adsList } from "../../store/ads";
 import { Helmet } from "react-helmet-async";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 function BlogPage() {
   const history = useHistory();
   const { blogs } = useSelector((state) => state.blogsReducer);
@@ -55,6 +56,7 @@ function BlogPage() {
   const [image, setImage] = useState("NA");
   const [blogBoxAdds, setBlogBoxAdds] = useState([]);
   const [adds, setAdds] = useState([]);
+  const detect = useDeviceDetect();
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -135,6 +137,8 @@ function BlogPage() {
             }
           })
       }
+
+      
     )
   }, [])
 
@@ -206,7 +210,8 @@ function BlogPage() {
               >
                 <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
                   <img
-                    src={blogBoxAdds[0]?.image}
+                   
+                    src={detect.isMobile ? blogBoxAdds[0]?.image_mobile : blogBoxAdds[0]?.image}
                     alt='Image'
                     className='ads_story_cover_img_blog'
                   />

@@ -683,3 +683,45 @@ iframe {
 .scroll-view .stf__block {
   left: 80px;
 }
+
+.MagzineCard a {
+  text-decoration: none;
+}
+
+@media only screen and (min-width:768px) and (max-width:1900px){
+    .magazine_div {
+      background: black;
+      display: flex;
+      margin: 0 auto;
+      width: 58%;
+      
+      display: inline-block;
+      text-align: center;
+      margin: auto;
+      display: block;
+  }
+  .scroll-view .stf__block {
+    left: 0px;
+  }
+  
+  .scroll-view  .zoom_div {
+    margin: 0;
+  }
+  .magazine_div {
+height: 33rem !important;
+  }
+  
+  }
+
+
+  .scroll-view {
+    // left: 29%;
+    // position: absolute;
+}
+
+
+.transform-component-module_content__2jYgh img {
+  // pointer-events: none;
+  // display: none;
+  
+}

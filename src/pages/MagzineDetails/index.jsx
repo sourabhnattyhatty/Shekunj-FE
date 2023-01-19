@@ -81,6 +81,7 @@ function MagzineDetails(m) {
     `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const [fullscreen, setfullopen] = useState(false);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -200,8 +201,11 @@ function MagzineDetails(m) {
     });
   };
   const reportChange = useCallback((state, handle) => {
+    console.log('ksdhkgjhakdhgkjhk')
     if (handle === screen1) {
+     
       console.log('Screen 1 went to', state, handle);
+     
     }
     if (handle === screen2) {
       console.log('Screen 2 went to', state, handle);
@@ -294,7 +298,7 @@ function MagzineDetails(m) {
             }}
           >
             <FullScreen handle={screen1} onChange={reportChange}>
-             <div className="scroll-view">
+             <div style={{width:!screen1.active?680:2000,height:!screen1.active?485:1000,alignContent:!screen1.active?'center':'flex-end',alignItems:!screen1.active?'center':'flex-end',justifyContent:!screen1.active?'center':'flex-end'}} >
              <TransformWrapper
                 initialScale={1}
                 maxScale={7}
@@ -303,30 +307,29 @@ function MagzineDetails(m) {
                 {({ zoomIn, zoomOut, resetTransform, wheel, wheelDisabled }) => (
                   <React.Fragment>
                     <TransformComponent >
-                      <div className="zoom_div"
-                        style={{
-                          marginTop: `${screen1.active ? '12rem' : ''}`,
-                          marginLeft: `${screen1.active ? '22rem' : ''}`
-                        }}>
+                    {!screen1.active  && <div   style={{width:680,height:485,alignContent:'center',alignItems:'center',justifyContent:'center'}}>
+                       
                           {/* <div style={{height: 1000, width: 1000, backgroundColor: 'blue'}} > */}
                         <HTMLFlipBook height={485} 
-                        width={320}
+                        width={340}
                         // width={340}
                         // maxWidth={1000}
                         // width={isMobile ? 500 : 320}
-                        className="flipbook" mobileScrollSupport={true}
+                        // className="flipbook"
+                         mobileScrollSupport={true}
                           showCover={true}
+                          // renderOnlyPageLengthChange={true}
                           size='fixed'
                           // size= {isMobile ? "fixed" : "stretch"}
                           ref={book}
                         >
                           {
                             magzineData && magzineData.map(elem => {
-                              return <div className="demoPage">                          
-                                {/* <img src={elem.images} width='320px' height="485px" /> */}
-                                <img src={elem.images} height="485px" 
-                                // style={{ width: isMobile ? "340px" : ''}}
-                                width="340px"
+                              return <div >                          
+                                {/* <img src={elem.images} width='1000px' height="1000px" /> */}
+                                <img src={elem.images} 
+                                style={{ width: 340,height:485}}
+                               
                                 />
                               </div>
 
@@ -334,7 +337,39 @@ function MagzineDetails(m) {
                           }
                         </HTMLFlipBook>
                         {/* </div> */}
-                      </div>
+                      </div>}
+                      {screen1.active  && <div   style={{width:1580,height:1000,alignContent:'center',alignItems:'center',justifyContent:'center'}}>
+                       
+                       {/* <div style={{height: 1000, width: 1000, backgroundColor: 'blue'}} > */}
+                     <HTMLFlipBook height={1000} 
+                     width={790}
+                     // width={340}
+                     // maxWidth={1000}
+                     // width={isMobile ? 500 : 320}
+                     // className="flipbook"
+                      mobileScrollSupport={true}
+                       showCover={true}
+                       // renderOnlyPageLengthChange={true}
+                       size='fixed'
+                       // size= {isMobile ? "fixed" : "stretch"}
+                       ref={book}
+                     >
+                       {
+                         magzineData && magzineData.map(elem => {
+                           return <div >                          
+                             {/* <img src={elem.images} width='1000px' height="1000px" /> */}
+                             <img src={elem.images} 
+                             style={{ width: 790,height:1000}}
+                            
+                             />
+                           </div>
+
+                         })
+                       }
+                     </HTMLFlipBook>
+                     {/* </div> */}
+                   </div>
+                   }
                     </TransformComponent>
                     <div className="icons_div"
                       style={{

@@ -32,7 +32,7 @@ import { adsList } from "../../store/ads";
 import City from "../../assets/icons/city.png";
 import { Button, Typography, Modal } from "@mui/material";
 import Cookies from "js-cookie";
-
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 const EventDetails = () => {
   let a = JSON.parse(localStorage.getItem('login_data'))
   let eventData = JSON.parse(localStorage.getItem('event_data'))
@@ -47,7 +47,7 @@ const EventDetails = () => {
   const { bookEvents } = useSelector((state) => state.eventsReducer);
   const { user } = useSelector((state) => state.authReducer);
   const { registerData } = useSelector((state) => state.eventsReducer);
-
+  const detect = useDeviceDetect();
   const dispatch = useDispatch();
 
 
@@ -607,7 +607,8 @@ const EventDetails = () => {
                 >
                   <a href={eventDetailsBoxAds[0]?.url_adds} target='_blank'>
                     <img
-                      src={eventDetailsBoxAds[0]?.image}
+                    src={detect.isMobile ? eventDetailsBoxAds[0]?.image_mobile : eventDetailsBoxAds[0]?.image}
+                      // src={eventDetailsBoxAds[0]?.image}
                       alt='Image'
                       className='google_add_box_img_Add'
                     />

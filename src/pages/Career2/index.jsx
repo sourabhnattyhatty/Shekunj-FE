@@ -19,6 +19,7 @@ import "./index.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 const CareerPage2 = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -53,7 +54,7 @@ const CareerPage2 = () => {
   const [govBoxAds, setGovBoxAds] = useState([]);
   const [govtScmSideAdds, setGovtScmSideAdds] = useState([]);
   const [image, setImage] = useState("NA");
-
+  const detect = useDeviceDetect();
   // useEffect(() => {
   //   axios.get('/private_adds/private_add?image_type=govt_scm_cover')
   //     .then((response) => {
@@ -278,7 +279,8 @@ const CareerPage2 = () => {
             >
               <a href={govBannerAds[0]?.url_adds} target='_blank'>
                 <img
-                  src={govBannerAds[0]?.image}
+                src={  detect.isMobile ? govBannerAds[0]?.image_mobile :  govBannerAds[0]?.image}
+                  // src={govBannerAds[0]?.image}
                   alt='Image'
                   className='ads_gov'
                 />
@@ -469,7 +471,8 @@ const CareerPage2 = () => {
                                     target='_blank'
                                   >
                                     <img
-                                      src={govBoxAds[0]?.image}
+                                    src={  detect.isMobile ? govBoxAds[0]?.image_mobile :  govBoxAds[0]?.image}
+                                      // src={govBoxAds[0]?.image}
                                       alt='Image'
                                       className='ads_gov_box'
                                     />

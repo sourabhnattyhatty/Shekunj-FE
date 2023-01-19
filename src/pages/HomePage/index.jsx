@@ -54,6 +54,7 @@ import { Box, Modal, Typography } from "@mui/material";
 // import { useDispatch, useSelector } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import { adsList } from "../../store/ads";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 const style = {
   position: "absolute",
@@ -133,6 +134,9 @@ function HomePage() {
   const [adsPosition3, setAdsPosition3] = useState([]);
   const [image, setImage] = useState("NA");
   const [newImage, setNewImage] = useState([]);
+  const detect = useDeviceDetect();
+  
+
   //   const [lat, setLat] = useState(null);
   //   const [lng, setLng] = useState(null);
   //   const [status, setStatus] = useState(null);
@@ -426,6 +430,9 @@ function HomePage() {
       {/* google add */}
       <section>
         <div className='container'>
+
+
+
           <div className='row'>
             {adsPosition1.length > 0 && (
               // <div className='col-md-12 ads_home_cover'>
@@ -435,7 +442,7 @@ function HomePage() {
               >
                 <a href={adsPosition1[0]?.url_adds} target='_blank'>
                   <img
-                    src={adsPosition1[0]?.image}
+                    src={  detect.isMobile ? adsPosition1[0]?.image_mobile :  adsPosition1[0]?.image}
                     alt='Image'
                     className='google_ads_home'
                   />
@@ -504,7 +511,7 @@ function HomePage() {
               >
                 <a href={adsPosition2[0]?.url_adds} target='_blank'>
                   <img
-                    src={adsPosition2[0]?.image}
+                  src={detect.isMobile ? adsPosition2[0]?.image_mobile :  adsPosition2[0]?.image}
                     alt='Image'
                     className='google_ads_home'
                   />
@@ -576,7 +583,7 @@ function HomePage() {
               >
                 <a href={adsPosition3[0]?.url_adds} target='_blank'>
                   <img
-                    src={adsPosition3[0]?.image}
+                  src={detect.isMobile ? adsPosition3[0]?.image_mobile : adsPosition3[0]?.image}
                     alt='Image'
                     className='google_ads_home'
                   />

@@ -29,6 +29,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 const CareerPage = () => {
   // const [loading, setLoading] = useState(false);
@@ -107,6 +108,7 @@ const CareerPage = () => {
   const [collegeBannerAds, setCollegeBannerAds] = useState([]);
   const [collegeBoxAds, setCollegeBoxAds] = useState([]);
   const [image, setImage] = useState("NA");
+  const detect = useDeviceDetect();
 
   const addEmail = (email) => {
     navigator.geolocation.getCurrentPosition(async function (position, values) {
@@ -292,7 +294,7 @@ const CareerPage = () => {
               >
                 <a href={collegeBannerAds[0]?.url_adds} target='_blank'>
                   <img
-                    src={collegeBannerAds[0]?.image}
+                  src={ detect.isMobile ? collegeBannerAds[0]?.image_mobile :  collegeBannerAds[0]?.image}
                     alt='Image'
                     className=' google_add_college'
                   />
@@ -539,7 +541,7 @@ const CareerPage = () => {
                                   target='_blank'
                                 >
                                   <img
-                                    src={collegeBoxAds[0]?.image}
+                                  src={ detect.isMobile ? collegeBoxAds[0]?.image_mobile :  collegeBoxAds[0]?.image}
                                     alt='Image'
                                     className='college_ads_box'
                                   />

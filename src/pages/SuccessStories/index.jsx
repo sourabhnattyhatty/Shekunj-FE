@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 import {
   setCollapseSuccessStory,
@@ -38,6 +39,7 @@ function SuccessStory() {
   const [storiesBannerAds, setStoriesBannerAds] = useState([]);
   const [storiesBoxAds, setStoriesBoxAds] = useState([]);
   const [image, setImage] = useState("NA");
+  const detect = useDeviceDetect();
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>code below>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -217,7 +219,7 @@ function SuccessStory() {
               >
                 <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
                   <img
-                    src={storiesBannerAds[0]?.image}
+                  src={  detect.isMobile ? storiesBannerAds[0]?.image_mobile :  storiesBannerAds[0]?.image}
                     alt='Image'
                     className='ads_story_cover_img'
                   />
@@ -365,7 +367,8 @@ function SuccessStory() {
                           onClick={() => addEmail(storiesBoxAds[0]?.add_email)}
                         >
                           <img
-                            src={storiesBoxAds[0]?.image}
+                          src={  detect.isMobile ? storiesBoxAds[0]?.image_mobile :  storiesBoxAds[0]?.image}
+                            // src={storiesBoxAds[0]?.image}
                             alt='Image'
                             className='ads_succ_story'
                           />
