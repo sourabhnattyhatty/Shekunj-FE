@@ -218,11 +218,13 @@ function SuccessStory() {
                 onClick={() => addEmail(storiesBannerAds[0]?.add_email)}
               >
                 <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
-                  <img
-                  src={  detect.isMobile ? storiesBannerAds[0]?.image_mobile :  storiesBannerAds[0]?.image}
-                    alt='Image'
-                    className='ads_story_cover_img'
-                  />
+                  { detect.isMobile ? (
+                    storiesBannerAds[0]?.image_mobile && (
+                    <img src={ storiesBannerAds[0]?.image_mobile } alt='Image' className='ads_story_cover_img' />)
+                  ) : (
+                    storiesBannerAds[0]?.image && (
+                    <img src={ storiesBannerAds[0]?.image} alt='Image' className='ads_story_cover_img' />
+                  ))}
                 </a>
               </div>
             )}
@@ -366,12 +368,13 @@ function SuccessStory() {
                           className='ads_story_cover'
                           onClick={() => addEmail(storiesBoxAds[0]?.add_email)}
                         >
-                          <img
-                          src={  detect.isMobile ? storiesBoxAds[0]?.image_mobile :  storiesBoxAds[0]?.image}
-                            // src={storiesBoxAds[0]?.image}
-                            alt='Image'
-                            className='ads_succ_story'
-                          />
+                          { detect.isMobile ? (
+                            storiesBoxAds[0]?.image_mobile && (
+                          <img src={ storiesBoxAds[0]?.image_mobile } alt='Image' className='ads_succ_story' />
+                          )) : (
+                            storiesBoxAds[0]?.image_mobile && (
+                          <img src={ storiesBoxAds[0]?.image} alt='Image' className='ads_succ_story' />
+                          ))}
                         </div>
                       )}
                     </a>

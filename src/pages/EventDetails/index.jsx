@@ -606,12 +606,14 @@ const EventDetails = () => {
                   onClick={() => addEmail(eventDetailsBoxAds[0]?.add_email)}
                 >
                   <a href={eventDetailsBoxAds[0]?.url_adds} target='_blank'>
-                    <img
-                    src={detect.isMobile ? eventDetailsBoxAds[0]?.image_mobile : eventDetailsBoxAds[0]?.image}
-                      // src={eventDetailsBoxAds[0]?.image}
-                      alt='Image'
-                      className='google_add_box_img_Add'
-                    />
+                    { detect.isMobile ? (
+                      eventDetailsBoxAds[0]?.image_mobile && (
+                      <img src={eventDetailsBoxAds[0]?.image_mobile } alt='Image' className='google_add_box_img_Add'/>
+                    )) : (
+                      eventDetailsBoxAds[0]?.image && (
+                      <img src={eventDetailsBoxAds[0]?.image} alt='Image'  className='google_add_box_img_Add'/>
+                    ))}
+                 
                   </a>
                   <div className='overlay'></div>
                 </div>

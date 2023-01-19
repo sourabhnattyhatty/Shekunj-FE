@@ -158,7 +158,6 @@ const CareerPage = () => {
           });
           setCollegeBoxAds(filterArray1);
           // console.log("filterArray1top_college_box",filterArray1)
-
           let filterArray2 = response.data.results.filter((item, index) => {
             
             return item.image_type == "top_college_banner";
@@ -270,6 +269,8 @@ const CareerPage = () => {
     setSearchInput("");
   };
 
+  console.log("===============", !(collegeBannerAds[0]?.image_mobile == null), !(collegeBannerAds[0]?.image == null), !(collegeBoxAds[0]?.image_mobile == null) )
+
   return (
     <div>
       <SEO   title={`List of Top Colleges in India & Apply - Shekunj.com`}
@@ -291,13 +292,13 @@ const CareerPage = () => {
               <div
                 className='add_college_cover'
                 onClick={() => addEmail(collegeBannerAds[0]?.add_email)}
-              >
+              > 
                 <a href={collegeBannerAds[0]?.url_adds} target='_blank'>
-                  <img
-                  src={ detect.isMobile ? collegeBannerAds[0]?.image_mobile :  collegeBannerAds[0]?.image}
-                    alt='Image'
-                    className=' google_add_college'
-                  />
+                {detect.isMobile?  ( collegeBannerAds[0]?.image_mobile && (
+                   <img src={ collegeBannerAds[0]?.image_mobile} alt='Image' className=' google_add_college' /> )): 
+                   (collegeBannerAds[0]?.image && (
+                   <img src={ collegeBannerAds[0]?.image} alt='Image' className=' google_add_college' />))
+                  }
                 </a>
               </div>
             )}
@@ -540,11 +541,14 @@ const CareerPage = () => {
                                   href={collegeBoxAds[0]?.url_adds}
                                   target='_blank'
                                 >
-                                  <img
-                                  src={ detect.isMobile ? collegeBoxAds[0]?.image_mobile :  collegeBoxAds[0]?.image}
-                                    alt='Image'
-                                    className='college_ads_box'
-                                  />
+                                  {detect.isMobile ? 
+                                  ( collegeBoxAds[0]?.image_mobile && (
+                                    <img src={ collegeBoxAds[0]?.image_mobile } alt='Image' className='college_ads_box' />
+                                  ))
+                                 : 
+                                 ( collegeBoxAds[0]?.image && (
+                                  <img src={ collegeBoxAds[0]?.image} alt='Image' className='college_ads_box'/> 
+                                 ))}
                                 </a>{" "}
                               </>
                             ) : (

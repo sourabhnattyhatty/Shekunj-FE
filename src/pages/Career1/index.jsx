@@ -275,11 +275,21 @@ const CareerPage1 = () => {
                 onClick={() => addEmail(schoolBannerAds[0]?.add_email)}
               >
                 <a href={schoolBannerAds[0]?.url_adds} target='_blank'>
-                  <img
-                   src={ detect.isMobile ? schoolBannerAds[0]?.image_mobile :  schoolBannerAds[0]?.image}
-                    alt='Image'
-                    className='ads_school'
-                  />
+                  {detect.isMobile ? ( 
+                    schoolBannerAds[0]?.image_mobile && (
+                     <img
+                     src={ schoolBannerAds[0]?.image_mobile }
+                      alt='Image'
+                      className='ads_school'
+                    />)
+                  ) : (
+                    <img
+                    src={ schoolBannerAds[0]?.image}
+                     alt='Image'
+                     className='ads_school'
+                   />
+                  )}
+               
                 </a>
               </div>
             )}
@@ -540,11 +550,22 @@ const CareerPage1 = () => {
                                     href={schoolBoxAds[0]?.url_adds}
                                     target='_blank'
                                   >
-                                    <img
-                                    src={ detect.isMobile ? schoolBoxAds[0]?.image_mobile : schoolBoxAds[0]?.image}
-                                      alt='Image'
-                                      className='ads_school_box'
-                                    />
+                                    {detect.isMobile ? (
+                                      schoolBoxAds[0]?.image_mobile && (
+                                      <img
+                                      src={ schoolBoxAds[0]?.image_mobile }
+                                        alt='Image'
+                                        className='ads_school_box'
+                                      />)
+                                    ) : (
+                                      schoolBoxAds[0]?.image && (
+                                      <img
+                                      src={ schoolBoxAds[0]?.image}
+                                        alt='Image'
+                                        className='ads_school_box'
+                                      />)
+                                    )}
+                                  
                                   </a>
                                 </div>
                               )}

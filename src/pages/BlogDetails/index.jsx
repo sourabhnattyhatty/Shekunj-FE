@@ -279,13 +279,13 @@ const BlogDetails = () => {
                         className='addimage098'
                         target='_blank'
                       >
-                        <img
-                        
-                         src={  detect.isMobile ? blogDetailsBoxAds[0]?.image_mobile : blogDetailsBoxAds[0]?.image}
-                         alt='Image'
-                         className='google_ads_home'
-                       />
-                        
+                        { detect.isMobile ? (
+                          blogDetailsBoxAds[0]?.image_mobile && (
+                          <img src={ blogDetailsBoxAds[0]?.image_mobile } alt='Image' className='google_ads_home' />
+                        )) : (
+                          blogDetailsBoxAds[0]?.image && (
+                          <img src={blogDetailsBoxAds[0]?.image} alt='Image' className='google_ads_home' />
+                        ))}
                       </a>
                     </div>
                   </Row>

@@ -198,12 +198,15 @@ const Footer = ({ loginPage, subPage }) => {
                 onClick={() => addEmail(adsFooter1[0]?.add_email)}
               >
                 <a href={adsFooter1[0]?.url_adds} target='_blank'>
-                  <img
-                  src={  detect.isMobile ? adsFooter1[0]?.image_mobile :  adsFooter1[0]?.image}
-                    // src={adsFooter1[0]?.image}
-                    alt='Image'
-                    className='google_ads_footer'
-                  />
+                  { detect.isMobile ? (
+                    adsFooter1[0]?.image_mobile && (
+                      <img src={ adsFooter1[0]?.image_mobile } alt='Image' className='google_ads_footer' />)
+                  ) : (
+                    adsFooter1[0]?.image && (
+                    <img src={ adsFooter1[0]?.image} alt='Image' className='google_ads_footer' />
+                  ))
+
+                  }
                 </a>
                 <a href={adds[0]?.add_email} target='_blank'>
                   {/* <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' /> */}
@@ -317,12 +320,24 @@ const Footer = ({ loginPage, subPage }) => {
                           onClick={() => addEmail(adsFooter2[0]?.add_email)}
                         >
                           <a href={adsFooter2[0]?.url_adds} target='_blank'>
-                            <img
-                            src={  detect.isMobile ? adsFooter2[0]?.image_mobile :  adsFooter2[0]?.image}
-                              // src={adsFooter2[0]?.image}
-                              alt='Image'
-                              className='footer_ads_bottom'
-                            />
+                            { detect.isMobile ? (
+                              adsFooter2[0]?.image_mobile && (
+                                 <img
+                                 src={ adsFooter2[0]?.image_mobile }
+                                   // src={adsFooter2[0]?.image}
+                                   alt='Image'
+                                   className='footer_ads_bottom'
+                                 /> )       
+                            ) : (
+                              adsFooter2[0]?.image && (
+                              <img
+                              src={ adsFooter2[0]?.image}
+                                // src={adsFooter2[0]?.image}
+                                alt='Image'
+                                className='footer_ads_bottom'
+                              />)
+                            )}
+                          
                           </a>
                           <a href={adds[0]?.add_email} target='_blank'></a>
                         </div>

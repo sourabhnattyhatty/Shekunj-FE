@@ -441,11 +441,13 @@ function HomePage() {
                 onClick={() => addEmail(adsPosition1[0]?.add_email)}
               >
                 <a href={adsPosition1[0]?.url_adds} target='_blank'>
-                  <img
-                    src={  detect.isMobile ? adsPosition1[0]?.image_mobile :  adsPosition1[0]?.image}
-                    alt='Image'
-                    className='google_ads_home'
-                  />
+                  {detect.isMobile ? (
+                    adsPosition1[0]?.image_mobile && (
+                    <img src={ adsPosition1[0]?.image_mobile } alt='Image' className='google_ads_home' />
+                  )) : (
+                    adsPosition1[0]?.image && (
+                    <img src={ adsPosition1[0]?.image} alt='Image' className='google_ads_home' />
+                  ))}
                 </a>
               </div>
             )}
@@ -510,11 +512,13 @@ function HomePage() {
                 onClick={() => addEmail(adsPosition2[0]?.add_email)}
               >
                 <a href={adsPosition2[0]?.url_adds} target='_blank'>
-                  <img
-                  src={detect.isMobile ? adsPosition2[0]?.image_mobile :  adsPosition2[0]?.image}
-                    alt='Image'
-                    className='google_ads_home'
-                  />
+                  {detect.isMobile ? (
+                    adsPosition2[0]?.image_mobile && (
+                <img src={adsPosition2[0]?.image_mobile} alt='Image' className='google_ads_home' />
+                  )): (
+                    adsPosition2[0]?.image && (
+                    <img src={adsPosition2[0]?.image} alt='Image' className='google_ads_home' />
+                  ))}
                 </a>
               </div>
             )}
@@ -582,11 +586,13 @@ function HomePage() {
                 onClick={() => addEmail(adsPosition3[0]?.add_email)}
               >
                 <a href={adsPosition3[0]?.url_adds} target='_blank'>
-                  <img
-                  src={detect.isMobile ? adsPosition3[0]?.image_mobile : adsPosition3[0]?.image}
-                    alt='Image'
-                    className='google_ads_home'
-                  />
+                  {detect.isMobile ? (
+                    adsPosition3[0]?.image_mobile && (
+                      <img src={adsPosition3[0]?.image_mobile} alt='Image' className='google_ads_home' />
+                  )) : (
+                    adsPosition3[0]?.image && (
+                      <img src={adsPosition3[0]?.image} alt='Image' className='google_ads_home' />
+                  ))}
                 </a>
               </div>
             )}

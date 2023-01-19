@@ -209,12 +209,13 @@ function BlogPage() {
                 onClick={() => addEmail(blogBoxAdds[0]?.add_email)}
               >
                 <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
-                  <img
-                   
-                    src={detect.isMobile ? blogBoxAdds[0]?.image_mobile : blogBoxAdds[0]?.image}
-                    alt='Image'
-                    className='ads_story_cover_img_blog'
-                  />
+                  {detect.isMobile ? (
+                    blogBoxAdds[0]?.image_mobile && (
+                    <img src={blogBoxAdds[0]?.image_mobile} alt='Image' className='ads_story_cover_img_blog' />
+                  )) : (
+                    blogBoxAdds[0]?.image && (
+                    <img src={blogBoxAdds[0]?.image} alt='Image' className='ads_story_cover_img_blog' />
+                  ))}
                 </a>
               </div>
             )}

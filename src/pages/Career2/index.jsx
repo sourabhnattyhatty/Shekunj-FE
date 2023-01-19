@@ -278,12 +278,24 @@ const CareerPage2 = () => {
               onClick={() => addEmail(govBannerAds[0]?.add_email)}
             >
               <a href={govBannerAds[0]?.url_adds} target='_blank'>
-                <img
-                src={  detect.isMobile ? govBannerAds[0]?.image_mobile :  govBannerAds[0]?.image}
-                  // src={govBannerAds[0]?.image}
-                  alt='Image'
-                  className='ads_gov'
-                />
+                {detect.isMobile ? (
+                  govBannerAds[0]?.image_mobile && (
+                  <img
+                  src={ govBannerAds[0]?.image_mobile }
+                    // src={govBannerAds[0]?.image}
+                    alt='Image'
+                    className='ads_gov'
+                  />)
+                ) : (
+                  govBannerAds[0]?.image && (
+                  <img
+                  src={ govBannerAds[0]?.image}
+                    // src={govBannerAds[0]?.image}
+                    alt='Image'
+                    className='ads_gov'
+                  />)
+                )}
+             
               </a>
             </div>
           )}
@@ -466,16 +478,13 @@ const CareerPage2 = () => {
                                 }
                               >
                                 {govBoxAds.length > 0 && (
-                                  <a
-                                    href={govBoxAds[0]?.url_adds}
-                                    target='_blank'
-                                  >
-                                    <img
-                                    src={  detect.isMobile ? govBoxAds[0]?.image_mobile :  govBoxAds[0]?.image}
-                                      // src={govBoxAds[0]?.image}
-                                      alt='Image'
-                                      className='ads_gov_box'
-                                    />
+                                  <a href={govBoxAds[0]?.url_adds} target='_blank'>
+                                    { detect.isMobile ? (
+                                      govBoxAds[0]?.image_mobile && (
+                                        <img src={govBoxAds[0]?.image_mobile} alt='Image' className='ads_gov_box'/>)
+                                    ) : (
+                                      <img src={govBoxAds[0]?.image} alt='Image' className='ads_gov_box'/>
+                                    )}
                                   </a>
                                 )}
                               </div>
