@@ -241,7 +241,7 @@ function MagzineDetails(m) {
     book.current.pageFlip().flipNext()
     setTurnPageStop(false)
   }
- console.log("===========", isMobile)
+
   return (
     <div className="noselect">
       <Header loginPage={true} page='more' subPage='moreMagazineDetail' />

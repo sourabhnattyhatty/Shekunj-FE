@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { contactVerify, onSignup } from "../../../store/auth/action";
@@ -80,13 +80,26 @@ const LoginForm = () => {
     setAlertVisible(true);
   };
 
+  function useQuery() {
+    const { search } = useLocation();
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+
+  let query = useQuery();
+
+  const redirect = query.get("redirect");
+
   return (
     <>
       <div className='login_form'>
         <h2>{t("signup.heading")}</h2>
         <p>
           {t("signup.content")}{" "}
-          <Link to={routingConstants.LOGIN} className='register'>
+          <Link 
+              to={{ pathname: routingConstants.LOGIN, 
+                state: { from: redirect ? redirect : window.location.pathname  }
+              }} 
+            className='register'>
             {" "}
             &nbsp; {t("signup.loginLink")}{" "}
           </Link>

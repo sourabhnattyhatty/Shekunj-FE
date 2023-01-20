@@ -354,7 +354,9 @@ const Header = ({ page, subPage }) => {
                   ) : (
                     <Link
                       className='btn btn-bg-pink ml-xl-3 ml-md-2'
-                      to={routingConstants.LOGIN}
+                      to={{ pathname: routingConstants.LOGIN, 
+                        state: { from: window.location.pathname  }
+                      }}
                     >
                       {t("header.authButton")}
                     </Link>

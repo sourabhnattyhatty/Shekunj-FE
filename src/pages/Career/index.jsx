@@ -268,9 +268,7 @@ const CareerPage = () => {
     dispatch(getTopCollages());
     setSearchInput("");
   };
-
-  console.log("===============", !(collegeBannerAds[0]?.image_mobile == null), !(collegeBannerAds[0]?.image == null), !(collegeBoxAds[0]?.image_mobile == null) )
-
+  
   return (
     <div>
       <SEO   title={`List of Top Colleges in India & Apply - Shekunj.com`}

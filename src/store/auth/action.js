@@ -22,7 +22,8 @@ export const onLogin = (values, history, redirect) => async (dispatch) => {
       history.push(redirect);
     } else {
       history.push(
-        routingConstants.MY_PROGESS,
+        // routingConstants.MY_PROGESS,
+        (history.location.state || history.state.state.from) ?  (history.location.state.from || history.state.state.from) : '/',
         navigator.geolocation.getCurrentPosition(async function (
           position,
           values,
@@ -56,7 +57,7 @@ export const logOut = (history) => async (dispatch) => {
   localStorage.removeItem('event_data')
   localStorage.removeItem('login_data')
   dispatch({ type: authTypes.LOGIN_FAIL });
-  history.push(routingConstants.LOGIN);
+  history.push({ pathname: routingConstants.LOGIN, state: {from: history.location?.pathname }});
 };
 
 export const onSignup = (values, history) => async (dispatch) => {
