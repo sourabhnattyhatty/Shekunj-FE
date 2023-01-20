@@ -82,3 +82,7 @@ export const localStData = () => async (dispatch) => {
   let data = JSON.parse(localStorage.getItem('event_data'))
   dispatch({ type: eventsTypes.GET_LOCAL_DATA, payload: data });
 };
+
+export const fetchForm = () => async (dispatch) => {
+  dispatch({ type: eventsTypes.FETCH_Form });
+}

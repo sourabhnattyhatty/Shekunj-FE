@@ -16,7 +16,7 @@ import GuidanceSelect from "./Select";
 // import { withFormik } from "formik";
 import { routingConstants } from "../../utils/constants";
 import { CircularProgress, TextareaAutosize } from "@mui/material";
-import { bookEvent, localStData } from "../../store/events/action";
+import { bookEvent, localStData, fetchForm } from "../../store/events/action";
 import moment from "moment";
 import InputAdornment from "@mui/material/InputAdornment";
 import User2 from "../../assets/icons/user2.png";
@@ -33,7 +33,9 @@ import City from "../../assets/icons/city.png";
 import { Button, Typography, Modal } from "@mui/material";
 import Cookies from "js-cookie";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
+import { ClipLoader } from "react-spinners";
 const EventDetails = () => {
+
   let a = JSON.parse(localStorage.getItem('login_data'))
   let eventData = JSON.parse(localStorage.getItem('event_data'))
   const { id } = useParams();
@@ -43,7 +45,7 @@ const EventDetails = () => {
   // const [modalData, setData] = useState();
 
   const history = useHistory();
-  const { events } = useSelector((state) => state.eventsReducer);
+  const { events, isLoading } = useSelector((state) => state.eventsReducer);
   const { bookEvents } = useSelector((state) => state.eventsReducer);
   const { user } = useSelector((state) => state.authReducer);
   const { registerData } = useSelector((state) => state.eventsReducer);
@@ -103,20 +105,15 @@ const EventDetails = () => {
   useEffect(() => {
 
   }, [registerData])
-  // const initialValues = {
-  //   name: "",
-  //   last_name: "",
-  //   email: "",
-  //   contact: "",
-  //   city: "",
-  //   gender: "",
-  // };
 
-  useEffect(() => {
-    dispatch(localStData());
+    useEffect( async() => {
+    dispatch(fetchForm())
+    await dispatch(getUserProfile(id))
     let a = JSON.parse(localStorage.getItem('login_data'));
     setLocalData(a)
-  }, []);
+    dispatch(localStData());
+  }, [id]);
+
   useEffect(() => {
   }, [!registerData])
 
@@ -169,6 +166,8 @@ const EventDetails = () => {
   });
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
   useEffect(() => {
     dispatch(adsList());
     navigator.geolocation.getCurrentPosition(
@@ -245,6 +244,8 @@ const EventDetails = () => {
   }, [bookEvents]);
 
   let evalData = eval(events.extra_info);
+
+  console.log("====", eventData, a)
 
   const whatsAppModal = () => {
     if (events && events?.whatsapp_group_link?.join_group && bookEvents == 200) {
@@ -384,7 +385,9 @@ const EventDetails = () => {
                 )}
               </div>
             </Col>
-
+            { isLoading ? (
+                <ClipLoader className='loader' color='#ec498a' />
+            ) : (
             <Col md={6} xs={12}>
               <div className='event_con'>
                 <p className='event-form-title'>Registration Form</p>
@@ -593,7 +596,7 @@ const EventDetails = () => {
                 </div>
               </div>
             </Col>
-
+            )}
             <hr />
           </Row>
 

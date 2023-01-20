@@ -7,4 +7,5 @@ export const eventsTypes = {
     BOOK_EVENT_FAIL: "BOOK_EVENT_FAIL",
     BOOK_EVENT_FINISH_CLOSE: "BOOK_EVENT_FINISH_CLOSE",
     GET_LOCAL_DATA: "GET_LOCAL_DATA",
+    FETCH_Form: "FETCH_Form",
   };

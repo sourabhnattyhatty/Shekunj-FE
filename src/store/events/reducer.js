@@ -39,7 +39,7 @@ export const eventsReducer = (state = initialState, action) => {
     case eventsTypes.FETCH_EVENTS_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        // isLoading: true,/
         error: null,
       };
     case eventsTypes.FETCH_EVENTS_FINISH:
@@ -62,6 +62,12 @@ export const eventsReducer = (state = initialState, action) => {
         registerData: d,
         isLoading: false,
       };
+
+      case eventsTypes.FETCH_Form: 
+      return {
+        ...state,
+        isLoading: true,
+      }
 
 
     default:
