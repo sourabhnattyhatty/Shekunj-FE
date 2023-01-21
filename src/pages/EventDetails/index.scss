@@ -714,13 +714,14 @@ button.book_event_btn:hover {
   top:25%;
   left:30%;
   right:10%;
+  background-color: #ffffff;
 }
 .ModalHeadEvent{
   margin-top: 0px;
   margin-bottom: 0px;
   background-color:#d62c79;
   color: white;
-  height: 50px;
+  height: 100px;
   padding-top: 10px;
 }
 .ModalBottomEvent{
@@ -732,14 +733,14 @@ button.book_event_btn:hover {
   padding-top: 10px;
 }
 .ModalMiddleEvent{
-  margin-top: 20px;
-  margin-bottom: 20px;
+  // margin-top: 20px;
+  // margin-bottom: 20px;
 }
 .ModalButtonEvent{
   color: white;
   background-color:#d62c79;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  // margin-top: 20px;
+  // margin-bottom: 20px;
 }
 .ModalLinkEvent a{
   color:#d62c79 !important;

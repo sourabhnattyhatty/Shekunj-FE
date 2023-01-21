@@ -191,24 +191,50 @@ const Footer = ({ loginPage, subPage }) => {
       {/* google add */}
       <section>
         <div className='container'>
-          <div className='row'>
+          <div className='row footer-add-222'>
             {adsFooter1.length > 0 && (
-              <div
-                className='col-md-12 ads_footer_cover'
-                onClick={() => addEmail(adsFooter1[0]?.add_email)}
-              >
-                <a href={adsFooter1[0]?.url_adds} target='_blank'>
-                  <img
-                  src={  detect.isMobile ? adsFooter1[0]?.image_mobile :  adsFooter1[0]?.image}
-                    // src={adsFooter1[0]?.image}
-                    alt='Image'
-                    className='google_ads_footer'
-                  />
-                </a>
-                <a href={adds[0]?.add_email} target='_blank'>
-                  {/* <img src={adsFooter1[0]?.image} alt='Image' className='google_ads_footer' /> */}
-                </a>
-              </div>
+
+                    <div
+                    className='col-md-12 ads_home_cover'
+                    onClick={() => addEmail(adsFooter1[0]?.add_email)}
+                    >
+                    {
+                      adsFooter1[0]?.image_mobile !== null && detect.isMobile &&
+                      <a href={adsFooter1[0]?.url_adds} target='_blank'>
+                      <img
+                        src={   detect.isMobile ?  adsFooter1[0]?.image_mobile :  adsFooter1[0]?.image}
+                        alt='Image'
+                        className='google_ads_home'
+                      />
+                    </a>
+                    }
+                    {
+                      adsFooter1[0]?.image !== null && !detect.isMobile &&
+                      <a href={adsFooter1[0]?.url_adds} target='_blank'>
+                      <img
+                        src={   detect.isMobile ?  adsFooter1[0]?.image_mobile :  adsFooter1[0]?.image}
+                        alt='Image'
+                        className='google_ads_home'
+                      />
+                    </a>
+                    }
+                    </div>
+
+              // <div
+              //   className='col-md-12 ads_footer_cover'
+              //   onClick={() => addEmail(adsFooter1[0]?.add_email)}
+              // >
+              //   <a href={adsFooter1[0]?.url_adds} target='_blank'>
+              //     <img
+              //     src={  detect.isMobile ? adsFooter1[0]?.image_mobile :  adsFooter1[0]?.image}
+              //       // src={adsFooter1[0]?.image}
+              //       alt='Image'
+              //       className='google_ads_footer'
+              //     />
+              //   </a>
+              //   <a href={adds[0]?.add_email} target='_blank'>
+              //   </a>
+              // </div>
             )}
           </div>
         </div>
@@ -310,22 +336,49 @@ const Footer = ({ loginPage, subPage }) => {
                   <div className='row'>
                     <div className='col-md-12'>
                       {adsFooter2.length > 0 && (
-                        // {/* // <div className="footer_ads_bottom_parent"> */}
 
-                        <div
-                          className='footer_ads_bottom_parent'
+                          <div
+                          className='col-md-12 ads_home_cover'
                           onClick={() => addEmail(adsFooter2[0]?.add_email)}
-                        >
-                          <a href={adsFooter2[0]?.url_adds} target='_blank'>
+                          >
+                          {
+                            adsFooter2[0]?.image_mobile !== null && detect.isMobile &&
+                            <a href={adsFooter2[0]?.url_adds} target='_blank'>
                             <img
-                            src={  detect.isMobile ? adsFooter2[0]?.image_mobile :  adsFooter2[0]?.image}
-                              // src={adsFooter2[0]?.image}
+                              src={   detect.isMobile ?  adsFooter2[0]?.image_mobile :  adsFooter2[0]?.image}
                               alt='Image'
-                              className='footer_ads_bottom'
+                              className='google_ads_home'
                             />
                           </a>
-                          <a href={adds[0]?.add_email} target='_blank'></a>
-                        </div>
+                          }
+                          {
+                            adsFooter2[0]?.image !== null && !detect.isMobile &&
+                            <a href={adsFooter2[0]?.url_adds} target='_blank'>
+                            <img
+                              src={   detect.isMobile ?  adsFooter2[0]?.image_mobile :  adsFooter2[0]?.image}
+                              alt='Image'
+                              className='google_ads_home'
+                            />
+                          </a>
+                          }
+                          </div>
+                        
+
+                        // <div
+                        //   className='footer_ads_bottom_parent'
+                        //   onClick={() => addEmail(adsFooter2[0]?.add_email)}
+                        // >
+                        //   <a href={adsFooter2[0]?.url_adds} target='_blank'>
+                        //     <img
+                        //     src={  detect.isMobile ? adsFooter2[0]?.image_mobile :  adsFooter2[0]?.image}
+                        //       // src={adsFooter2[0]?.image}
+                        //       alt='Image'
+                        //       className='footer_ads_bottom'
+                        //     />
+                        //   </a>
+                        //   <a href={adds[0]?.add_email} target='_blank'></a>
+                        // </div>
+
                       )}
                     </div>
                   </div>

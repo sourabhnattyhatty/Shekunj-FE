@@ -33,6 +33,7 @@ import City from "../../assets/icons/city.png";
 import { Button, Typography, Modal } from "@mui/material";
 import Cookies from "js-cookie";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
+
 const EventDetails = () => {
   let a = JSON.parse(localStorage.getItem('login_data'))
   let eventData = JSON.parse(localStorage.getItem('event_data'))
@@ -245,7 +246,7 @@ const EventDetails = () => {
   }, [bookEvents]);
 
   let evalData = eval(events.extra_info);
-
+const whatsappUrl = `https://api.whatsapp.com/send?text=%20http%3A%2F%2F${events?.whatsapp_link}`
   const whatsAppModal = () => {
     if (events && events?.whatsapp_group_link?.join_group && bookEvents == 200) {
       return (
@@ -266,7 +267,7 @@ const EventDetails = () => {
               <Typography variant='h6' id='simple-modal-description'>
                 You can join our whatsapp group.
               </Typography>
-              <a href='https://api.whatsapp.com/send?text=%20http%3A%2F%2Flocalhost%3A3000'
+              <a href={whatsappUrl}
                 target="_blank"
               >
                 <Button variant='contained' className='ModalButtonEvent'>

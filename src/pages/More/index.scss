@@ -843,9 +843,15 @@ button.want_btn {
 }
 
 .suc_box_blog img.quote_img_blog {
-  max-width: 20%;
-  vertical-align: bottom;
-  margin-right: 10px;
+  // max-width: 20%;
+  // vertical-align: bottom;
+  // margin-right: 10px;
+}
+.suc_box_blog img.quote_img_blog {
+    width: 100px !important;
+    vertical-align: bottom;
+    margin-right: 10px;
+    height: 33px !important;
 }
 
 .suc_box_blog img {
@@ -902,8 +908,9 @@ button.want_btn {
 }
 
 .EventOptionCardAddImage {
-  width: 24rem !important;
-  height: 36.8rem !important;
+  // width: 24rem !important;
+  width: 100% !important;
+  height: 36.8rem;
   // object-fit: cover !important;
   box-shadow: 0 7px 30px -10px rgba(3, 3, 3, 0.5);
   // margin-bottom: 5px;

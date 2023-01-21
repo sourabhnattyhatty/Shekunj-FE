@@ -204,19 +204,46 @@ function BlogPage() {
         <Row>
           <div className='col-md-12 noselect' >
             {blogBoxAdds.length > 0 && (
-              <div
-                className='ads_story_cover'
-                onClick={() => addEmail(blogBoxAdds[0]?.add_email)}
-              >
-                <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
-                  <img
+
+<div
+className='col-md-12 ads_home_cover'
+onClick={() => addEmail(blogBoxAdds[0]?.add_email)}
+>
+{
+  blogBoxAdds[0]?.image_mobile !== null && detect.isMobile &&
+  <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
+  <img
+    src={   detect.isMobile ?  blogBoxAdds[0]?.image_mobile :  blogBoxAdds[0]?.image}
+    alt='Image'
+    className='google_ads_home'
+  />
+</a>
+}
+{
+  blogBoxAdds[0]?.image !== null && !detect.isMobile &&
+  <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
+  <img
+    src={   detect.isMobile ?  blogBoxAdds[0]?.image_mobile :  blogBoxAdds[0]?.image}
+    alt='Image'
+    className='google_ads_home'
+  />
+</a>
+}
+</div>
+
+              // <div
+              //   className='ads_story_cover'
+              //   onClick={() => addEmail(blogBoxAdds[0]?.add_email)}
+              // >
+              //   <a href={blogBoxAdds[0]?.url_adds} target='_blank'>
+              //     <img
                    
-                    src={detect.isMobile ? blogBoxAdds[0]?.image_mobile : blogBoxAdds[0]?.image}
-                    alt='Image'
-                    className='ads_story_cover_img_blog'
-                  />
-                </a>
-              </div>
+              //       src={detect.isMobile ? blogBoxAdds[0]?.image_mobile : blogBoxAdds[0]?.image}
+              //       alt='Image'
+              //       className='ads_story_cover_img_blog'
+              //     />
+              //   </a>
+              // </div>
             )}
           </div>
         </Row>

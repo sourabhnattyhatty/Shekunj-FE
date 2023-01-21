@@ -241,7 +241,7 @@ function MagzineDetails(m) {
     book.current.pageFlip().flipNext()
     setTurnPageStop(false)
   }
- console.log("===========", isMobile)
+ console.log("===========", history)
   return (
     <div className="noselect">
       <Header loginPage={true} page='more' subPage='moreMagazineDetail' />
@@ -400,7 +400,8 @@ function MagzineDetails(m) {
                         !screen1.active ?
                           <RWebShare
                             data={{
-                              url: "http://localhost:3000",
+                              // url: "http://localhost:3000",
+                              url: history.location,
                               title: "Share",
                             }}
                             style={{ width: '19%' }}

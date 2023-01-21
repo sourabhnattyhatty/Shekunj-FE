@@ -213,18 +213,46 @@ function SuccessStory() {
           <div className='col-md-12'>
             {storiesBannerAds.length > 0 && (
               // <div className="ads_story_cover">
+
               <div
-                className='ads_story_cover'
+                className='col-md-12 ads_home_cover'
                 onClick={() => addEmail(storiesBannerAds[0]?.add_email)}
               >
-                <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
+                {
+                  storiesBannerAds[0]?.image_mobile !== null && detect.isMobile &&
+                  <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
                   <img
-                  src={  detect.isMobile ? storiesBannerAds[0]?.image_mobile :  storiesBannerAds[0]?.image}
+                    src={   detect.isMobile ?  storiesBannerAds[0]?.image_mobile :  storiesBannerAds[0]?.image}
                     alt='Image'
-                    className='ads_story_cover_img'
+                    className='google_ads_home'
                   />
                 </a>
+                }
+                {
+                  storiesBannerAds[0]?.image !== null && !detect.isMobile &&
+                  <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
+                  <img
+                    src={   detect.isMobile ?  storiesBannerAds[0]?.image_mobile :  storiesBannerAds[0]?.image}
+                    alt='Image'
+                    className='google_ads_home'
+                  />
+                </a>
+                }
               </div>
+
+              // <div
+              //   className='ads_story_cover'
+              //   onClick={() => addEmail(storiesBannerAds[0]?.add_email)}
+              // >
+              //   <a href={storiesBannerAds[0]?.url_adds} target='_blank'>
+              //     <img
+              //     src={  detect.isMobile ? storiesBannerAds[0]?.image_mobile :  storiesBannerAds[0]?.image}
+              //       alt='Image'
+              //       className='ads_story_cover_img'
+              //     />
+              //   </a>
+              // </div>
+
             )}
           </div>
         </Row>
@@ -362,17 +390,45 @@ function SuccessStory() {
                     <a href={storiesBoxAds[0]?.url_adds} target='_blank'>
                       {storiesBoxAds.length > 0 && (
                         // <div className="ads_story_cover">
+
                         <div
-                          className='ads_story_cover'
-                          onClick={() => addEmail(storiesBoxAds[0]?.add_email)}
-                        >
-                          <img
-                          src={  detect.isMobile ? storiesBoxAds[0]?.image_mobile :  storiesBoxAds[0]?.image}
-                            // src={storiesBoxAds[0]?.image}
-                            alt='Image'
-                            className='ads_succ_story'
-                          />
-                        </div>
+                className='col-md-12 ads_home_cover'
+                onClick={() => addEmail(storiesBoxAds[0]?.add_email)}
+              >
+                {
+                  storiesBoxAds[0]?.image_mobile !== null && detect.isMobile &&
+                  <a href={storiesBoxAds[0]?.url_adds} target='_blank'>
+                  <img
+                    src={   detect.isMobile ?  storiesBoxAds[0]?.image_mobile :  storiesBoxAds[0]?.image}
+                    alt='Image'
+                    className='google_ads_home'
+                  />
+                </a>
+                }
+                {
+                  storiesBoxAds[0]?.image !== null && !detect.isMobile &&
+                  <a href={storiesBoxAds[0]?.url_adds} target='_blank'>
+                  <img
+                    src={   detect.isMobile ?  storiesBoxAds[0]?.image_mobile :  storiesBoxAds[0]?.image}
+                    alt='Image'
+                    className='google_ads_home'
+                  />
+                </a>
+                }
+              </div>
+
+
+                        // <div
+                        //   className='ads_story_cover'
+                        //   onClick={() => addEmail(storiesBoxAds[0]?.add_email)}
+                        // >
+                        //   <img
+                        //   src={  detect.isMobile ? storiesBoxAds[0]?.image_mobile :  storiesBoxAds[0]?.image}
+                        //     // src={storiesBoxAds[0]?.image}
+                        //     alt='Image'
+                        //     className='ads_succ_story'
+                        //   />
+                        // </div>
                       )}
                     </a>
                   ) : (

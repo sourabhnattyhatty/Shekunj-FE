@@ -101,11 +101,18 @@ p.sucess_first_p {
   gap: 1rem;
 }
 
+// .suc_box img.quote_img {
+//   // max-width: 100%;
+//   vertical-align: bottom;
+//   margin-right: 10px;
+// }
 .suc_box img.quote_img {
-  // max-width: 100%;
   vertical-align: bottom;
   margin-right: 10px;
+  width: 100px !important;
+  height: 33px !important;
 }
+
 .suc_box ul {
   padding: 0;
 }

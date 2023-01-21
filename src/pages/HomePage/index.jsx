@@ -440,13 +440,26 @@ function HomePage() {
                 className='col-md-12 ads_home_cover'
                 onClick={() => addEmail(adsPosition1[0]?.add_email)}
               >
-                <a href={adsPosition1[0]?.url_adds} target='_blank'>
+                {
+                  adsPosition1[0]?.image_mobile !== null && detect.isMobile &&
+                  <a href={adsPosition1[0]?.url_adds} target='_blank'>
                   <img
-                    src={  detect.isMobile ? adsPosition1[0]?.image_mobile :  adsPosition1[0]?.image}
+                    src={   detect.isMobile ?  adsPosition1[0]?.image_mobile :  adsPosition1[0]?.image}
                     alt='Image'
                     className='google_ads_home'
                   />
                 </a>
+                }
+                {
+                  adsPosition1[0]?.image !== null && !detect.isMobile &&
+                  <a href={adsPosition1[0]?.url_adds} target='_blank'>
+                  <img
+                    src={   detect.isMobile ?  adsPosition1[0]?.image_mobile :  adsPosition1[0]?.image}
+                    alt='Image'
+                    className='google_ads_home'
+                  />
+                </a>
+                }
               </div>
             )}
           </div>
@@ -504,20 +517,52 @@ function HomePage() {
       <section>
         <div className='container'>
           <div className='row'>
+
             {adsPosition2.length > 0 && (
-              <div
-                className='col-md-12 ads_home_cover'
-                onClick={() => addEmail(adsPosition2[0]?.add_email)}
-              >
-                <a href={adsPosition2[0]?.url_adds} target='_blank'>
-                  <img
-                  src={detect.isMobile ? adsPosition2[0]?.image_mobile :  adsPosition2[0]?.image}
-                    alt='Image'
-                    className='google_ads_home'
-                  />
-                </a>
-              </div>
+
+
+
+                      <div
+                      className='col-md-12 ads_home_cover'
+                      onClick={() => addEmail(adsPosition2[0]?.add_email)}
+                      >
+                      {
+                        adsPosition2[0]?.image_mobile !== null && detect.isMobile &&
+                        <a href={adsPosition2[0]?.url_adds} target='_blank'>
+                        <img
+                          src={   detect.isMobile ?  adsPosition2[0]?.image_mobile :  adsPosition2[0]?.image}
+                          alt='Image'
+                          className='google_ads_home'
+                        />
+                      </a>
+                      }
+                      {
+                        adsPosition2[0]?.image !== null && !detect.isMobile &&
+                        <a href={adsPosition2[0]?.url_adds} target='_blank'>
+                        <img
+                          src={   detect.isMobile ?  adsPosition2[0]?.image_mobile :  adsPosition2[0]?.image}
+                          alt='Image'
+                          className='google_ads_home'
+                        />
+                      </a>
+                      }
+                      </div>
+
+              // <div
+              //   className='col-md-12 ads_home_cover'
+              //   onClick={() => addEmail(adsPosition2[0]?.add_email)}
+              // >
+              //   <a href={adsPosition2[0]?.url_adds} target='_blank'>
+              //     <img
+              //     src={detect.isMobile ? adsPosition2[0]?.image_mobile :  adsPosition2[0]?.image}
+              //       alt='Image'
+              //       className='google_ads_home'
+              //     />
+              //   </a>
+              // </div>
+
             )}
+
           </div>
         </div>
       </section>
@@ -577,18 +622,49 @@ function HomePage() {
           <div className='row'>
             {adsPosition3.length > 0 && (
               // <div className='col-md-12 ads_home_cover'>
+
+
               <div
-                className='col-md-12 ads_home_cover'
-                onClick={() => addEmail(adsPosition3[0]?.add_email)}
-              >
-                <a href={adsPosition3[0]?.url_adds} target='_blank'>
-                  <img
-                  src={detect.isMobile ? adsPosition3[0]?.image_mobile : adsPosition3[0]?.image}
-                    alt='Image'
-                    className='google_ads_home'
-                  />
-                </a>
-              </div>
+                      className='col-md-12 ads_home_cover'
+                      onClick={() => addEmail(adsPosition3[0]?.add_email)}
+                      >
+                      {
+                        adsPosition3[0]?.image_mobile !== null && detect.isMobile &&
+                        <a href={adsPosition3[0]?.url_adds} target='_blank'>
+                        <img
+                          src={   detect.isMobile ?  adsPosition3[0]?.image_mobile :  adsPosition3[0]?.image}
+                          alt='Image'
+                          className='google_ads_home'
+                        />
+                      </a>
+                      }
+                      {
+                        adsPosition3[0]?.image !== null && !detect.isMobile &&
+                        <a href={adsPosition3[0]?.url_adds} target='_blank'>
+                        <img
+                          src={   detect.isMobile ?  adsPosition3[0]?.image_mobile :  adsPosition3[0]?.image}
+                          alt='Image'
+                          className='google_ads_home'
+                        />
+                      </a>
+                      }
+                      </div>
+
+
+
+
+              // <div
+              //   className='col-md-12 ads_home_cover'
+              //   onClick={() => addEmail(adsPosition3[0]?.add_email)}
+              // >
+              //   <a href={adsPosition3[0]?.url_adds} target='_blank'>
+              //     <img
+              //     src={detect.isMobile ? adsPosition3[0]?.image_mobile : adsPosition3[0]?.image}
+              //       alt='Image'
+              //       className='google_ads_home'
+              //     />
+              //   </a>
+              // </div>
             )}
           </div>
         </div>
