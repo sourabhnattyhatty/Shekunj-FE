@@ -47,11 +47,13 @@ const CertificatesDetail = forwardRef((props, ref) => {
   const { lan } = useSelector((state) => state.languageReducer);
 
   useEffect(() => {
-    if (props?.id) {
-      dispatch(getUserCourseCertificateDetail(props?.id, history));
-    } else if (id) {
-      dispatch(getUserCourseCertificateDetail(id, history));
-    } else {
+    if (props?.id || id) {
+      dispatch(getUserCourseCertificateDetail(props?.id || id , history));
+    } 
+    // else if (id) {
+    //   dispatch(getUserCourseCertificateDetail(id, history));
+    // } 
+    else {
       history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
   }, [id, history, dispatch, props?.id, lan]);
@@ -73,17 +75,17 @@ const CertificatesDetail = forwardRef((props, ref) => {
           document.body.appendChild(element);
           downloadPDF(element);
         }, 3000);
-      }, 2000);
+      }, 1000);
     }
   }, []);
 
   const downloadPDF = (node) => {
-    const doc = new jsPDF("landscape", "px", "A4", false);
+    const doc = new jsPDF("landscape", "px", "A4", true);
     htmlToImage.toJpeg(node).then(function (dataUrl) {
       setIsLoaded(true);
       const img = new Image();
       img.src = dataUrl;
-      doc.addImage(img, "JPGE", 0, -5, 630, 440);
+      doc.addImage(img, "JPGE", 0, -5, 630, 440, "FAST");
       //doc.addImage(img, "JPGE", -12, 0, 654, 470);
       doc.save("mycertificate.pdf");
       // doc.save(`${certificate && certificate?.last_name}`);
