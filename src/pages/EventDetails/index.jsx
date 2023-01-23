@@ -86,7 +86,7 @@ const EventDetails = () => {
   };
 
   const [image, setImage] = useState("NA");
-  const [localData, setLocalData] = useState();
+  const [localData, setLocalData] = useState(JSON.parse(localStorage.getItem('login_data')));
   const [adds, setAdds] = useState([]);
   const [eventDetailsBoxAds, setEventDetailsBoxAds] = useState([]);
   const [extraInfo, setExtraInfo] = useState([]);
@@ -109,8 +109,8 @@ const EventDetails = () => {
     useEffect( async() => {
     dispatch(fetchForm())
     await dispatch(getUserProfile(id))
-    let a = JSON.parse(localStorage.getItem('login_data'));
-    setLocalData(a)
+    // let a = JSON.parse(localStorage.getItem('login_data'));
+    // setLocalData(a)
     dispatch(localStData());
   }, [id]);
 
@@ -131,16 +131,16 @@ const EventDetails = () => {
     initialValues,
   } = useFormik({
     initialValues: {
-      name: eventData == null ? a?.name : eventData?.name || "",
-      last_name: eventData == null ? a?.last_name : eventData?.last_name || "",
-      email: eventData == null ? a?.email : eventData?.email || "",
+      name: eventData == null ? user?.name : eventData?.name || "",
+      last_name: eventData == null ? user?.last_name : eventData?.last_name || "",
+      email: eventData == null ? user?.email : eventData?.email || "",
       contact: "",
       city: "",
       gender: "",
       // extra_info_reg:""
     },
     validationSchema,
-
+    enableReinitialize: true,
     onSubmit(values, actions) {
       const date_of_birth = moment(`${values.date_of_birth}`).format(
         "YYYY-MM-DD",
@@ -166,7 +166,7 @@ const EventDetails = () => {
   });
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+console.log(user, eventData)
 
   useEffect(() => {
     dispatch(adsList());
@@ -244,8 +244,6 @@ const EventDetails = () => {
   }, [bookEvents]);
 
   let evalData = eval(events.extra_info);
-
-  console.log("====", eventData, a)
 
   const whatsAppModal = () => {
     if (events && events?.whatsapp_group_link?.join_group && bookEvents == 200) {

@@ -39,7 +39,7 @@ export const eventsReducer = (state = initialState, action) => {
     case eventsTypes.FETCH_EVENTS_REQUEST:
       return {
         ...state,
-        // isLoading: true,/
+        isLoading: true,
         error: null,
       };
     case eventsTypes.FETCH_EVENTS_FINISH:
