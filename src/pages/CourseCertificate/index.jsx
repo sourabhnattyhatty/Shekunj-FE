@@ -46,7 +46,7 @@ function CourseTest() {
     <div>
       <Header loginPage={true} page='courses' />
 
-      <div className='cou_resultBg noselect'>
+      <div className='cou_resultBg noselect view_certificatemain'>
         <Container>
           <Row>
             <Col md={5} xs={12}>

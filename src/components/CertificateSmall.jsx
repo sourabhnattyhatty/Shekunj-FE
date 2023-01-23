@@ -38,8 +38,8 @@ import React, {
   
     return (
       <>       
-        <div className='container p-0'>
-          <div className='mob_box_certificate_small'></div>
+        <div className='container p-0 responsive_certificate34'>
+          <div className='mob_box_certificate_small ayushi-certificate2'></div>
           <div            
             className={
               props.size === "large"

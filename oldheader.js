@@ -595,12 +595,7 @@ const Header = ({ page, subPage }) => {
                       >
                         {t("headerComponent.menuItem.11")}
                       </MenuItem>
-                      {/* <MenuItem
-                        onClick={handleMoreMagazine}
-                        className={subPage === "moreMagazine" && "active"}
-                      >
-                        {t("headerComponent.menuItem.12")}
-                      </MenuItem> */}
+                      
                       <MenuItem
                         onClick={handleMoreBlogs}
                         className={subPage === "moreblog" && "active"}

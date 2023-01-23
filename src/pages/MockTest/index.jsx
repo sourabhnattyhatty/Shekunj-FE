@@ -563,7 +563,7 @@ function MockTest() {
                           placeholder='Search here...'
                         />
                       </div>
-                      <div className='d-flex'>
+                      <div className='d-flex mocktest_submit1'>
                         <button type='submit' className='searchBtn1_mock'>
                           <img
                             src={Search}
