@@ -241,11 +241,6 @@ function MagzineDetails(m) {
     book.current.pageFlip().flipNext()
     setTurnPageStop(false)
   }
-<<<<<<< HEAD
-
-=======
- console.log("===========", history)
->>>>>>> 24-jan-2023
   return (
     <div className="noselect">
       <Header loginPage={true} page='more' subPage='moreMagazineDetail' />
