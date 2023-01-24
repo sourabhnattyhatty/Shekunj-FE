@@ -458,6 +458,221 @@ width: 100% !important;
 
 
 
+// Jan 19
+
+.sec2_con {
+  padding: 50px 0px 10px 0px !important;
+}
+.Srch_sec h1 {
+  font-size: 18px !important;
+}
+.card-img-top {
+  height: auto;
+}
+.select_test button {
+  margin-top: 20px;
+}
+.suc_box_blog p span {
+  line-height: unset !important;
+}
+.SuccStory_banner p {
+  font-size: 14px !important;
+  margin-top: 10px !important;
+}
+.ModalBoxEvent h6{
+  // font-size: 14px;
+  color: #fff;
+}
+  .ModalBoxEvent h3{
+  font-size: 28px !important;
+}
+
+  .ModalBoxEvent h4{
+  font-size: 22px !important;
+}
+.ModalBodyBoxEvent2{
+  width: 100% !important;
+  position: unset !important;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top:0px;
+  
+}
+.ModalBoxEvent{
+  width: 100% !important;
+  left: 0;
+}
+.ModalBoxEvent{
+  top:25% !important;
+  left:0% !important;
+  right:0% !important;
+}
+.google_ads_footer {
+  width: 100%;
+}
+.Event_book_form {
+  padding: 10px 10px  !important;
+}
+.EventOptionCardAddImage {
+  height: auto !important;
+}
+.SuccStory_banner h1 {
+  font-size: 24px !important;
+  margin-top: 15px !important;
+}
+.SuccStory_banner h2 {
+  font-size: 18px !important;
+  margin-top: 10px !important;
+}
+.CouDtl_con {
+  margin-top: 20px !important;
+}
+section.Coutl_sec1.noselect {
+  overflow: hidden;
+}
+.searchInput {
+  width: 100%;
+}
+.MagzineCard {
+  width: 100%;
+    margin: 0;
+}
+.certificate1234 .cercifi_con_large {
+  padding-left: 0px;
+}
+.box_certificate_large {
+  height: 260px;
+}
+.cercifi_con_large {
+  padding-left: 31px;
+}
+.cercifi_con_large img.cer_text {
+  margin-bottom: 0;
+  // max-width: 100%;
+}
+.box_certificate_small {
+  // padding: 0;
+  margin-top: 60px;
+}
+
+.certificate1234 .cercifi_con_small h2 {
+  margin-top: 0;
+}
+.certificate1234 .cercifi_con_small img.last-img {
+  margin-top: 0;
+}
+.certificate1234  .cercifi_con_small h3 {
+  font-size:8px;
+}
+
+.responsive_certificate34  .cercifi_con_small h3{
+  font-size:8px;
+}
+.responsive_certificate34  .cercifi_con_small h5 {
+  font-size:9px;
+}
+.responsive_certificate34 .cercifi_con_small h2 {
+  margin-top: 0;
+}
+.certificate1234  .cercifi_con_small h5 {
+  font-size:9px;
+}
+.certificate1234  .cercifi_con_large img.cer_text {
+  margin-bottom: 0;
+  width: 90%;
+}
+.certificate1234 .cercifi_con_small.row {
+  margin-top: -45px !important;
+}
+.responsive_certificate34 .cercifi_con_small {
+  margin-top: -35px !important;
+  margin-left: 15px !important;
+  width: 80%;
+}
+.responsive_certificate34  hr.hr_line {
+  margin-bottom: 7px;
+}
+.view_certificatemain .cercifi_con_small {
+  width: 90% !important;
+  padding-left: 0px !important;
+  margin-left: 16px !important;
+}
+.view_certificatemain .box_certificate_small p {
+  font-size: 7px !important;
+  line-height: 20px !important;
+}
+.view_certificatemain .certi_img p img {
+  max-width: 75% !important;
+}
+.view_certificatemain p.certificate-downloaddiv {
+  display: flex;
+  grid-gap: 5px;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  height: 47px !important;
+  text-align: center;
+  margin: auto;
+}
+.view_certificate_two.row {
+  margin-left: 50px;
+}
+.view_certificatemain .box_certificate_small {
+  padding: 0;
+  height: 400px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
@@ -567,4 +782,80 @@ header.other_head ul li svg {
 
 .Magzine a{
   text-decoration: none !important;
+}
+.eventButtonAction {
+  background-color: #ec498a !important;
+}
+.footer_other .ads_home_cover img {
+  width: 100%;
+}
+.footer-add-222 {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+img.google_ads_home {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  text-align: center;
+  margin: auto;
+  display: block;
+}
+
+.ayushi-certificate2 {
+  display: none !important;
+}
+
+
+
+@media only screen and (min-width:768px) and (max-width:1900px){
+  .certificate1234 {
+    height: 900px !important;
+}
+.certificate1234 .cercifi_con_small p {
+  font-size: 18px;
+  line-height: 47px;
+}
+.certificate1234  .cercifi_con_small h3 {
+  font-size: 13px;
+}
+.certificate1234 .cercifi_con_small h5 {
+  margin-top: 0%;
+  font-size: 16.0358px;
+}
+
+
+}
+
+
+
+
+// Jan 23
+
+.event_responsive13 button {
+  background: #ec498a !important;
+  color: #fff !important;
+}
+.event_responsive13 button a {
+  color: #fff !important;
+}
+.view_certificatemain .box_certificate_small {
+  padding: 0;
+  height: 370px !important;
+}
+.view_certificatemain .box_certificate_small p {
+  font-size: 9px;
+  line-height: 18px !important;
+}
+.view_certificatemain .certificate-downloaddiv {
+  height: 80px;
+}
+.view_certificatemain .certificate-downloaddiv {
+  height: 80px;
+  text-align: center;
+  padding: 0 !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+.view_certificatemain span.download-cerificate {
+  font-size: 14px;
 }

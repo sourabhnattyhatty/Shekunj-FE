@@ -108,7 +108,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
     >
       {isLoaded === false && <Loader />}
       <div style={{ width: "95%" }} className=' p-0' id='capture'>
-        <div className='mob_box_certificate_small'></div>
+        <div className='mob_box_certificate_small ayushi-certificate2 '></div>
         <div
           id='cer_PDF'
           className={
@@ -200,16 +200,16 @@ const CertificatesDetail = forwardRef((props, ref) => {
     >
       {isLoaded === false && <Loader />}
       <div style={{ width: "95%" }} className=' p-0' id='capture'>
-        <div className='mob_box_certificate_small'></div>
+        <div className='mob_box_certificate_small ayushi-certificate2 '></div>
         <div
           id='download'
           className={
-            props.size === "large"
-              ? "box_certificate_large mt-4"
-              : "box_certificate_small mb-4"
+            props.size === "large---"
+            ? "box_certificate_large mt-4"
+            : "box_certificate_small certificate1234 mb-4"
           }
         >
-          <Row>
+          <Row className=" cercifi_con_small view_certificate_two">
             <Col md={7} xs={12} className='offset-3'>
               <div
                 className={

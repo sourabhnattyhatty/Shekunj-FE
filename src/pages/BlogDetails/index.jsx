@@ -270,7 +270,7 @@ const BlogDetails = () => {
             <Col md={3} xs={12}>
               <Container>
                 {blogDetailsBoxAds.length > 0 && (
-                  <Row>
+                  <Row  style={{marginTop:"50"}}>
                     <div
                       onClick={() => addEmail(blogDetailsBoxAds[0]?.add_email)}
                     >

@@ -531,12 +531,9 @@ const Header = ({ page, subPage }) => {
                       >
                         {t("headerComponent.menuItem.13")}
                       </MenuItem>
-                      <MenuItem
-                        onClick={handleMoreMagazine}
-                        className={subPage === "moreMagazine" && "active-route"}
-                      >
-                        Magazine
-                      </MenuItem>
+
+                      
+
                       <MenuItem
                         onClick={handleMoreFAQ}
                         className={subPage === "moreFAQ" && "active-route"}
@@ -809,12 +806,7 @@ const Header = ({ page, subPage }) => {
                       >
                         {t("headerComponent.menuItem.13")}
                       </MenuItem> 
-                      <MenuItem
-                        onClick={handleMoreMagazine}
-                        className={subPage === "moreMagazine" && "active"}
-                      >
-                       Magazine
-                      </MenuItem>
+                      
                       <MenuItem
                         onClick={handleMoreFAQ}
                         className={subPage === "moreFAQ" && "active"}

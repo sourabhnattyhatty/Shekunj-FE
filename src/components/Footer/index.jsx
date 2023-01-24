@@ -191,7 +191,7 @@ const Footer = ({ loginPage, subPage }) => {
       {/* google add */}
       <section>
         <div className='container'>
-          <div className='row'>
+          <div className='row footer-add-222'>
             {adsFooter1.length > 0 && (
               <div
                 className='col-md-12 ads_footer_cover'
@@ -313,10 +313,9 @@ const Footer = ({ loginPage, subPage }) => {
                   <div className='row'>
                     <div className='col-md-12'>
                       {adsFooter2.length > 0 && (
-                        // {/* // <div className="footer_ads_bottom_parent"> */}
 
-                        <div
-                          className='footer_ads_bottom_parent'
+                          <div
+                          className='col-md-12 ads_home_cover'
                           onClick={() => addEmail(adsFooter2[0]?.add_email)}
                         >
                           <a href={adsFooter2[0]?.url_adds} target='_blank'>
@@ -339,8 +338,24 @@ const Footer = ({ loginPage, subPage }) => {
                             )}
                           
                           </a>
-                          <a href={adds[0]?.add_email} target='_blank'></a>
-                        </div>
+                          </div>
+                        
+
+                        // <div
+                        //   className='footer_ads_bottom_parent'
+                        //   onClick={() => addEmail(adsFooter2[0]?.add_email)}
+                        // >
+                        //   <a href={adsFooter2[0]?.url_adds} target='_blank'>
+                        //     <img
+                        //     src={  detect.isMobile ? adsFooter2[0]?.image_mobile :  adsFooter2[0]?.image}
+                        //       // src={adsFooter2[0]?.image}
+                        //       alt='Image'
+                        //       className='footer_ads_bottom'
+                        //     />
+                        //   </a>
+                        //   <a href={adds[0]?.add_email} target='_blank'></a>
+                        // </div>
+
                       )}
                     </div>
                   </div>

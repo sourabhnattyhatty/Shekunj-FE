@@ -448,7 +448,7 @@ function HomePage() {
                     adsPosition1[0]?.image && (
                     <img src={ adsPosition1[0]?.image} alt='Image' className='google_ads_home' />
                   ))}
-                </a>
+                </a>                
               </div>
             )}
           </div>
@@ -506,6 +506,7 @@ function HomePage() {
       <section>
         <div className='container'>
           <div className='row'>
+
             {adsPosition2.length > 0 && (
               <div
                 className='col-md-12 ads_home_cover'
@@ -522,6 +523,7 @@ function HomePage() {
                 </a>
               </div>
             )}
+
           </div>
         </div>
       </section>
@@ -581,6 +583,8 @@ function HomePage() {
           <div className='row'>
             {adsPosition3.length > 0 && (
               // <div className='col-md-12 ads_home_cover'>
+
+
               <div
                 className='col-md-12 ads_home_cover'
                 onClick={() => addEmail(adsPosition3[0]?.add_email)}

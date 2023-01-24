@@ -241,7 +241,11 @@ function MagzineDetails(m) {
     book.current.pageFlip().flipNext()
     setTurnPageStop(false)
   }
+<<<<<<< HEAD
 
+=======
+ console.log("===========", history)
+>>>>>>> 24-jan-2023
   return (
     <div className="noselect">
       <Header loginPage={true} page='more' subPage='moreMagazineDetail' />
@@ -400,7 +404,8 @@ function MagzineDetails(m) {
                         !screen1.active ?
                           <RWebShare
                             data={{
-                              url: "http://localhost:3000",
+                              // url: "http://localhost:3000",
+                              url: history.location,
                               title: "Share",
                             }}
                             style={{ width: '19%' }}

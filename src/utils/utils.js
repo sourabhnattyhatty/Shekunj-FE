@@ -238,3 +238,4 @@ export async function convertRelativeUriToFile(
   const buffer = await imageUrl.arrayBuffer();
   cb(new File([buffer], fileName, { type: mimeType }));
 }
+
