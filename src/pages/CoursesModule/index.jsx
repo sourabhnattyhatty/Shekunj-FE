@@ -31,6 +31,8 @@ import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import axios from "axios";
 import ContentLoader, { Facebook } from "react-content-loader";
 import { adsList } from "../../store/ads";
+import { ClipLoader } from "react-spinners";
+
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -296,6 +298,7 @@ const CourseModule = () => {
             options={{ cMapUrl: "cmaps/", cMapPacked: true }}
             file={course?.description}
             onLoadSuccess={onDocumentLoadSuccess}
+            loading= {<ClipLoader className='loader' color='#ec498a' />}
           >
             {[...Array(course?.total_pages)]?.map((page, index) => {
               return <Page pageNumber={index + 1} />;
