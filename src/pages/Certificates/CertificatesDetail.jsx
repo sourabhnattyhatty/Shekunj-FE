@@ -31,10 +31,12 @@ import "./index.scss";
 import moment from "moment";
 import { Loader } from "../../components";
 const thiscer_img1 = require("../../assets/images/PSD_Certificate/thiscer_img.png");
+
 const CertificatesDetail = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
+  const divRef = React.useRef();
 
   const { id, isDownload } = useParams();
   const { t } = useTranslation();
@@ -50,9 +52,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
     if (props?.id || id) {
       dispatch(getUserCourseCertificateDetail(props?.id || id , history));
     } 
-    // else if (id) {
-    //   dispatch(getUserCourseCertificateDetail(id, history));
-    // } 
     else {
       history.push(routingConstants.ALL_CERTIFICATE_PAGE);
     }
@@ -80,8 +79,8 @@ const CertificatesDetail = forwardRef((props, ref) => {
   }, []);
 
   const downloadPDF = (node) => {
-    const doc = new jsPDF("landscape", "px", "A4", true);
-    htmlToImage.toJpeg(node).then(function (dataUrl) {
+    const doc = new jsPDF("landscape", "px", "A4", false, true);
+    htmlToImage.toJpeg(node, {quality: 0.25, skipAutoScale: true}).then(function (dataUrl) {
       setIsLoaded(true);
       const img = new Image();
       img.src = dataUrl;
@@ -101,8 +100,10 @@ const CertificatesDetail = forwardRef((props, ref) => {
     },
   }));
 
-  return isDownload ? (
+  return (  
+    isDownload ? (
     <div
+      ref = {divRef}
       className='noselect'
       style={{ width: "100%", display: "flex", justifyContent: "center" }}
     >
@@ -118,7 +119,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
           }
         >
           <Row>
-            <Col md={7} xs={12} className='offset-3'>
+            <Col md={7} xs={12} className='mx-auto'>
               <div
                 className={
                   props.size === "large"
@@ -284,6 +285,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
         )}
       </div>
     </div>
+  )
   );
 });
 

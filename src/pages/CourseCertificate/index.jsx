@@ -107,7 +107,7 @@ function CourseTest() {
                     src={Dawnload}
                     alt=''
                     style={{ cursor: "pointer" }}
-                    //onClick={() => certificateRef.current.generatePDF()}
+                    // onClick={() => certificateRef.current.generatePDF()}
                     onClick={() => redirectToDownload()}
                   />
                   <span className="download-cerificate">Download</span>
