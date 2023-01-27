@@ -576,13 +576,14 @@ hr.hr_line2 {
   color: #454343;
 }
 
-// 
+// n
 
 div.cer_PDF {
   width: 3508px;
   height: 2480px;
   background-size: cover;
   padding-top: 391px;
+  // margin-top: 3000px !important;
   display: block !important;
 }
 div.cer_PDF .cer_logo {
@@ -675,3 +676,125 @@ div.cer_PDF hr.hr_line2 {
       margin-bottom: 0 !important;
   }
 }
+
+@media screen and ( max-width:480px ) {
+
+    .cercifi_con_large {
+        padding-left: 0;
+        margin-top: 30px; 
+    }
+    .cercifi_con_large img.last-img {
+        margin-bottom: 0;
+        max-width: 70%;
+    }
+    .cercifi_con_large h5 {
+        font-size: 15px;
+        line-height: 25px;
+        margin: 0;
+    }
+    p.first-number {
+        font-size: 10px;
+        line-height: 15px;
+        margin-bottom: 10px;
+    }
+    .cercifi_con_large img.cer_text {
+      margin-bottom: 0!important;
+      max-width: 60%;
+    }
+    .cercifi_con_large h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 16.6255px;
+        line-height: 26px;
+        display: flex;
+        align-items: center;
+    
+    }
+    .cercifi_con_large p {
+        font-size: 12px;
+        line-height: 14px;
+        padding-right: 10px;
+    }
+    .cer_logo {
+        display: grid;
+        margin-left: 0;
+        margin-bottom: 0;
+        position: unset;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px 10px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        margin-top: 80px;
+        padding-bottom: 10px;
+    }
+    .box_certificate_large {
+        background-repeat: no-repeat;
+        width: auto;
+        margin: 0 auto;
+        height: auto;
+        position: relative;
+        display: block;
+        padding-top: 0;
+        align-items: center;
+        margin-top: 0px !important;
+    }
+    .box_certificate_large::after {
+        width: 200px;
+        background-size: contain;
+        height: 58px;
+        position: absolute;
+        right: 0;
+        top: 16px;
+        max-width: 90px;
+        background-repeat: no-repeat;
+    }
+    button.back_course {
+        margin: 15px auto;
+        display: block;
+    }
+    .cercifi_con_large img.last-img {
+        margin-bottom: 0;
+        max-width: 96%;
+    }
+    .box_certificate_large .cer_logo img.img1 {
+        height: auto;
+        max-width: 60%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .box_certificate_large .cer_logo img.img2 {
+        height: auto;
+        max-width: 90%;
+    }
+    .box_certificate_large .cer_logo img.img3 {
+        height: auto;
+        max-width: 90%;
+    }
+    .signature_set .name-surname {
+      font-size: 14.4791px;
+      line-height: 18px;
+    }
+    .signature_set {
+      bottom: 70px;
+      right: 10px;
+    }
+    .signature_set .president {
+      font-size: 10.8003px;
+      line-height: 14px;
+    }
+    .cercifi_con_large {
+      padding-left: 0;
+      margin-top: 50px;
+      margin-left: 120px;
+    }
+    .cercifi_con_large h2 {
+      font-size: 24px;
+    }
+    hr.hr_line {
+      margin-bottom: 5px;
+    }
+    .box_certificate_large .signature_set img {
+      max-width: 100px;
+    }
+  }
