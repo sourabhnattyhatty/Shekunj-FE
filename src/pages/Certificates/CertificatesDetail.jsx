@@ -80,7 +80,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
 
   const downloadPDF = (node) => {
     const doc = new jsPDF("landscape", "px", "A4", false, true);
-    htmlToImage.toJpeg(node, {quality: 0.25, skipAutoScale: true}).then(function (dataUrl) {
+    htmlToImage.toJpeg(node, {quality: 0.95, skipAutoScale: true}).then(function (dataUrl) {
       setIsLoaded(true);
       const img = new Image();
       img.src = dataUrl;
@@ -88,7 +88,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
       //doc.addImage(img, "JPGE", -12, 0, 654, 470);
       doc.save("mycertificate.pdf");
       // doc.save(`${certificate && certificate?.last_name}`);
-      document.getElementById("_new_cer_PDF").remove();
+      // document.getElementById("_new_cer_PDF").remove();
     });
   };
 
@@ -119,7 +119,9 @@ const CertificatesDetail = forwardRef((props, ref) => {
           }
         >
           <Row>
-            <Col md={7} xs={12} className='mx-auto'>
+            <Col md={7} xs={12}
+            //  className= {downloadCertificate ? 'offset-3' : "mx-auto"}
+            className="certificateContent">
               <div
                 className={
                   props.size === "large"

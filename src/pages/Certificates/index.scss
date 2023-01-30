@@ -118,6 +118,10 @@
   padding-top: 170px;
   align-items: center;
 }
+
+.certificateContent {
+  margin-left: 25%
+}
 .box_certificate_large::after {
   content: "";
   background-image: url("../../assets/images/AllCertificate/logo2.png");
@@ -930,5 +934,9 @@ div.cer_PDF hr.hr_line2 {
     }
     .box_certificate_large .signature_set img {
       max-width: 100px;
+    }
+    .certificateContent {
+      margin-left: auto;
+      margin-right: auto;
     }
   }
