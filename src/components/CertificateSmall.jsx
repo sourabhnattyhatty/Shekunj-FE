@@ -52,7 +52,7 @@ import React, {
                 <div
                   className={
                     props.size === "large"
-                      ? "cercifi_con_large"
+                      ? "cercifi_sm_con_large"
                       : "cercifi_con_small"
                   }
                 >

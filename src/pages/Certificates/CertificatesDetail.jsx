@@ -26,6 +26,7 @@ import logo11 from "../../assets/images/PSD_Certificate/logo1.png";
 import logo222 from "../../assets/images/PSD_Certificate/logo2.png";
 import logo33 from "../../assets/images/PSD_Certificate/logo3.png";
 import signature_pdf from "../../assets/images/PSD_Certificate/signature_pdf.png";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import "./index.scss";
 import moment from "moment";
@@ -88,7 +89,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
       //doc.addImage(img, "JPGE", -12, 0, 654, 470);
       doc.save("mycertificate.pdf");
       // doc.save(`${certificate && certificate?.last_name}`);
-      // document.getElementById("_new_cer_PDF").remove();
+      document.getElementById("_new_cer_PDF").remove();
     });
   };
 
@@ -209,7 +210,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
           className={
             props.size === "large---"
             ? "box_certificate_large mt-4"
-            : "box_certificate_small certificate1234 mb-4"
+            : "box_certificate_small certificate1234 mb-4 box_small"
           }
         >
           <Row className=" cercifi_con_small view_certificate_two">
@@ -217,7 +218,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
               <div
                 className={
                   props.size === "large"
-                    ? "cercifi_con_large"
+                    ? "cercifi_sm_con_large cercifi_small"
                     : "cercifi_con_small"
                 }
               >
@@ -251,7 +252,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
               </div>
             </Col>
           </Row>
-          <div className='cer_logo'>
+          <div className='cer_logo cer_log_small'>
             <img className='img1' src={logo1} alt='' srcSet='' />
             <img className='img2' src={logo22} alt='' srcSet='' />
             <img className='img3' src={logo3} alt='' srcSet='' />
