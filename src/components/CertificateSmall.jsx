@@ -83,12 +83,12 @@ import React, {
               </Col>
             </Row>
   
-            <div className='cer_logo'>
+            <div className='cer_sm_logo'>
               <img className='img1' src={logo1} alt='' srcSet='' />
               <img className='img2' src={logo22} alt='' srcSet='' />
               <img className='img3' src={logo3} alt='' srcSet='' />
             </div>
-            <div className='signature_set'>
+            <div className='signature_sm_set'>
               <img src={signature} alt='' />
               <hr className='hr_line2' />
               <div className='name-surname'>
