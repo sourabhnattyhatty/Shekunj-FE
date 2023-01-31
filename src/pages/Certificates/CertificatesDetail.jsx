@@ -3,6 +3,7 @@ import React, {
   useState,
   forwardRef,
   useImperativeHandle,
+  createElement,
 } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,10 +28,12 @@ import logo222 from "../../assets/images/PSD_Certificate/logo2.png";
 import logo33 from "../../assets/images/PSD_Certificate/logo3.png";
 import signature_pdf from "../../assets/images/PSD_Certificate/signature_pdf.png";
 import CircularProgress from "@mui/material/CircularProgress";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 import "./index.scss";
 import moment from "moment";
 import { Loader } from "../../components";
+import { display } from "@mui/system";
 const thiscer_img1 = require("../../assets/images/PSD_Certificate/thiscer_img.png");
 
 const CertificatesDetail = forwardRef((props, ref) => {
@@ -38,7 +41,6 @@ const CertificatesDetail = forwardRef((props, ref) => {
   const history = useHistory();
   const location = useLocation();
   const divRef = React.useRef();
-
   const { id, isDownload } = useParams();
   const { t } = useTranslation();
 
@@ -75,6 +77,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
           document.body.appendChild(element);
           downloadPDF(element);
         }, 3000);
+        
       }, 1000);
     }
   }, []);
@@ -111,25 +114,10 @@ const CertificatesDetail = forwardRef((props, ref) => {
       {isLoaded === false && <Loader />}
       <div style={{ width: "95%" }} className=' p-0' id='capture'>
         <div className='mob_box_certificate_small ayushi-certificate2 '></div>
-        <div
-          id='cer_PDF'
-          className={
-            props.size === "large"
-              ? "box_certificate_large mt-4"
-              : "box_certificate_small mb-4"
-          }
-        >
+        <div id='cer_PDF' className={ props.size === "large"  ? "box_certificate_large mt-4" : "box_certificate_small mb-4" }>
           <Row>
-            <Col md={7} xs={12}
-            //  className= {downloadCertificate ? 'offset-3' : "mx-auto"}
-            className="certificateContent">
-              <div
-                className={
-                  props.size === "large"
-                    ? "cercifi_con_large"
-                    : "cercifi_con_small"
-                }
-              >
+            <Col md={7} xs={12} className="certificateContent" >
+              <div className={ props.size === "large" ? "cercifi_con_large" : "cercifi_con_small"}>
                 <img className='cer_text' src={PSD_Certificate} alt='' />
                 <br />
                 <img className='last-img cetificateText' src={para} alt='' />
