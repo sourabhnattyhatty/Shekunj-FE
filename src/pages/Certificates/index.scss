@@ -123,6 +123,10 @@
   margin-left: 25%
 }
 
+.small_certificateContent {
+  margin-left: 25%
+}
+
 .box_certificate_large::after {
   content: "";
   background-image: url("../../assets/images/AllCertificate/logo2.png");
@@ -348,6 +352,12 @@ button.back_course {
   max-width: 60%;
 }
 
+.box_certificate_small .small_certificateContent.col-md-7.col-12 {
+  padding: 0px;
+  flex: 60%;
+  max-width: 60%;
+}
+
 }
 
 .mob_box_certificate_small {
@@ -459,6 +469,9 @@ hr.hr_line {
   margin-bottom: 27px;
 }
 .box_certificate_small .offset-3.col-md-7.col-12 {
+  padding: 0px;
+}
+.box_certificate_small .small_certificateContent.col-md-7.col-12 {
   padding: 0px;
 }
 .certi_img p img {
@@ -892,6 +905,29 @@ div.cer_PDF .certificateContent {
   }
   .content img {
       margin-bottom: 0 !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px)  {
+  .certificateContent {
+    margin-left: 35%;
+  }
+  .signature_set {
+    position: absolute;
+    bottom: 120px;
+    right: 25px;
+    text-align: center;
+  }
+  .cer_logo {
+    gap: 4rem;
+    margin-left: 63px;
+  }
+  .small_certificateContent {
+    margin-left: 33%
+  }
+  .cercifi_con_large img.last-img {
+    margin-bottom: 26px;
+    max-width: 95%;
   }
 }
 
