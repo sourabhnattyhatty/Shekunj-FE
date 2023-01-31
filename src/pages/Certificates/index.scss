@@ -1087,4 +1087,26 @@ div.cer_PDF .certificateContent {
       margin-left: auto;
       margin-right: auto;
     }
+    div.cer_PDF .signature_set img {
+      width: auto;
+      max-width: 100%;
+    }
+    div.cer_PDF .signature_set {
+      right: 153px;
+      position: absolute;
+      bottom: 42px;
+      text-align: center;
+  }
+
+    div.cer_PDF .cer_logo {
+      grid-gap: 11rem;
+      gap: 11rem;
+      margin-left: 153px;
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 45px;
+      position: absolute;
+      bottom: 0;
+
+    }
   }
