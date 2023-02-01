@@ -296,7 +296,7 @@ img.searchclose {
   font-size: 10 !important;
 }
 .box_certificate_small {
-  height: 400px!important;
+  height: 460px!important;
 }
 .certi_img p img {
   max-width: 100% !important;
@@ -316,13 +316,16 @@ img.searchclose {
 .box_certificate_small .signature_set {
   position: absolute;
   bottom: 35px !important;
-  right: 20px !important;
+  right: 5px !important;
   text-align: center;
 }
 .top_clg_add_img {
   width: 100%;
   margin: auto;
   display: block;
+}
+.box_certificate_small .small_set {
+  bottom: 70px !important;
 }
 
 // Sep 15
@@ -587,7 +590,7 @@ section.Coutl_sec1.noselect {
 }
 .responsive_certificate34 .cercifi_con_small {
   margin-top: -35px !important;
-  margin-left: 15px !important;
+  margin-left: 25px !important;
   width: 80%;
 }
 .responsive_certificate34  hr.hr_line {
@@ -618,62 +621,17 @@ section.Coutl_sec1.noselect {
 .view_certificate_two.row {
   margin-left: 50px;
 }
+.view_content_small.row {
+  margin-left: 30px;
+}
 .view_certificatemain .box_certificate_small {
   padding: 0;
   height: 400px !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.box_certificate_small .cer_logo {
+  margin-left: 10px !important;
+  margin-bottom: 10px !important;
+}
 }
 
 // Jan
@@ -684,22 +642,6 @@ section.Coutl_sec1.noselect {
   // height: 150px;
   // width: 700px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Sep 27
 
 .mobile_view_city_selct {

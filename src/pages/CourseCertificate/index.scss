@@ -163,7 +163,7 @@ p.cou_tit {
     height: 290px !important;
   }
   .cercifi_con_small {
-    margin-top: 50px !important;
+    margin-top: 90px !important;
 }
 .certi_img p img {
   max-width: 50% !important;
@@ -182,12 +182,19 @@ hr.hr_line {
 .signature_set {
   right: 9px !important;
 }
+.small_set {
+  right: 9px !important;
+}
 .date_set_small {
   left: 9px !important;
 }
 .google_add_cer{
   width: 100%;
 padding-right: 30px!important;
+}
+.box_certificate_small .cer_logo {
+  margin-left: 10px !important;
+  margin-bottom: 10px !important;
 }
 }
 
@@ -229,12 +236,14 @@ padding-right: 30px!important;
     font-size: 18px !important;
   }
   .box_certificate_small {
-    height: 400px !important;
+    height: 460px !important;
   }
   .box_certificate_small .signature_set {
-    bottom: 40px !important;
-  }
-  
+    bottom: 80px !important;
+  }  
+  .box_certificate_small .small_set {
+    bottom: 80px !important;
+  } 
 
 }
 
@@ -288,25 +297,29 @@ span.download-cerificate {
   left: 0;
   right: 0;
 }
-.cercifi_con_small {
-  margin-top: 0px !important;
+.view_certificate_two .cercifi_con_small_view {
+  width: 98% !important;
 }
+// .cercifi_con_small {
+//   margin-top: 0px !important;
+// }
 .cercifi_con_small h2 {
   font-size: 18px !important;
 }
 .box_certificate_small {
-  height: 400px !important;
+  height: 460px !important;
 }
 .box_certificate_small .signature_set {
   bottom: 40px !important;
 }
 
-
-
-
-
-
-
+.box_certificate_small .small_set {
+  bottom: 70px !important;
+}
+.box_certificate_small .cer_logo {
+  margin-left: 10px !important;
+  margin-bottom: 10px !important;
+}
 
 
 }

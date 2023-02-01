@@ -150,6 +150,13 @@
   text-align: center;
 }
 
+.small_set {
+  position: absolute;
+  bottom: 42px;
+  right: 100px;
+  text-align: center;
+}
+
 .signature_sm_set {
   position: absolute;
   bottom: 42px;
@@ -160,11 +167,18 @@
   width: 75px;
   // margin-bottom: -15%;
 }
+.box_certificate_small .small_set img {
+  width: 75px;
+  // margin-bottom: -15%;
+}
 .box_certificate_small .signature_sm_set img {
   width: 75px;
   // margin-bottom: -15%;
 }
 .box_certificate_large .signature_set img {
+  width: 150px;
+}
+.box_certificate_large .small_set img {
   width: 150px;
 }
 
@@ -343,9 +357,6 @@ button.back_course {
   margin: 30px auto;
   display: block;
 }
-.cercifi_con_small {
-  width: 67%;
-}
 .box_certificate_small .offset-3.col-md-7.col-12 {
   padding: 0px;
   flex: 60%;
@@ -356,6 +367,10 @@ button.back_course {
   padding: 0px;
   flex: 60%;
   max-width: 60%;
+}
+.box_certificate_small .cer_logo {
+  margin-left: 10px !important;
+  margin-bottom: 10px !important;
 }
 
 }
@@ -404,6 +419,13 @@ button.back_course {
   right: 30px;
   text-align: center;
 }
+
+.box_certificate_small .small_set {
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+  text-align: center;
+} 
 
 .box_certificate_small .signature_sm_set {
   position: absolute;
@@ -490,6 +512,26 @@ hr.hr_line {
   color: rgb(69 67 67);
 }
 .signature_set .name-surname {
+  box-shadow: none;
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20.4791px;
+  line-height: 27px;
+  text-transform: uppercase;
+  color: rgb(0 0 0);
+}
+
+.small_set .president {
+  font-family: "SegoeUI_medium";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15.8003px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: rgb(69 67 67);
+}
+.small_set .name-surname {
   box-shadow: none;
   font-family: "SegoeUI_medium";
   font-style: normal;
@@ -724,6 +766,28 @@ hr.hr_line2 {
   color: #454343;
 }
 
+.box_certificate_small .small_set .name-surname {
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 9.43954px;
+  margin-top: -0%;
+  line-height: 13px;
+  margin-bottom: 2.27px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.box_certificate_small .small_set .president {
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 7.2829px;
+  line-height: 10px;
+  text-transform: uppercase;
+  color: #454343;
+}
+
 .box_certificate_small .signature_sm_set .name-surname {
   font-family: Segoe UI;
   font-style: normal;
@@ -765,6 +829,10 @@ div.cer_PDF .cer_sm_logo {
 } 
 
 div.cer_PDF .signature_set {
+  right: 153px;
+}
+
+div.cer_PDF .small_set {
   right: 153px;
 }
 
@@ -872,6 +940,19 @@ div.cer_PDF .signature_set .president {
   line-height: 63px;
 }
 
+div.cer_PDF .small_set .name-surname {
+  font-size: 61.6626px;
+  line-height: 82px;
+  max-width: 550px;
+}
+div.cer_PDF .small_set img {
+  width: auto;
+}
+div.cer_PDF .small_set .president {
+  font-size: 47.5746px;
+  line-height: 63px;
+}
+
 div.cer_PDF .signature_sm_set .name-surname {
   font-size: 61.6626px;
   line-height: 82px;
@@ -913,6 +994,13 @@ div.cer_PDF .certificateContent {
     margin-left: 35%;
   }
   .signature_set {
+    position: absolute;
+    bottom: 120px;
+    right: 25px;
+    text-align: center;
+  }
+
+  .small_set {
     position: absolute;
     bottom: 120px;
     right: 25px;
@@ -1041,6 +1129,10 @@ div.cer_PDF .certificateContent {
         max-width: 90px;
         background-repeat: no-repeat;
     }
+    .box_certificate_small .cer_logo {
+      margin-left: 10px !important;
+      margin-bottom: 10px !important;
+    }
     button.back_course {
         margin: 15px auto;
         display: block;
@@ -1094,6 +1186,19 @@ div.cer_PDF .certificateContent {
       font-size: 10.8003px;
       line-height: 14px;
     }
+
+    .small_set .name-surname {
+      font-size: 14.4791px;
+      line-height: 18px;
+    }
+    .small_set {
+      bottom: 70px;
+      right: 10px;
+    }
+    .small_set .president {
+      font-size: 10.8003px;
+      line-height: 14px;
+    }
     .cercifi_con_large {
       padding-left: 0;
       margin-top: 50px;
@@ -1119,6 +1224,9 @@ div.cer_PDF .certificateContent {
     .box_certificate_large .signature_set img {
       max-width: 100px;
     }
+    .box_certificate_large .small_set img {
+      max-width: 100px;
+    }
     .certificateContent {
       margin-left: auto;
       margin-right: auto;
@@ -1128,11 +1236,21 @@ div.cer_PDF .certificateContent {
       max-width: 100%;
     }
     div.cer_PDF .signature_set {
-      right: 153px;
+      right: 153px !important;
       position: absolute;
       bottom: 42px;
       text-align: center;
   }
+  div.cer_PDF .small_set img {
+    width: auto;
+    max-width: 100%;
+  }
+  div.cer_PDF .small_set {
+    right: 153px !important;
+    position: absolute;
+    bottom: 42px;
+    text-align: center;
+}
 
     div.cer_PDF .cer_logo {
       grid-gap: 11rem;
@@ -1144,5 +1262,8 @@ div.cer_PDF .certificateContent {
       position: absolute;
       bottom: 0;
 
+    }
+    .responsive_certificate34 .cercifi_con_small {
+      bottom: 30px;
     }
   }

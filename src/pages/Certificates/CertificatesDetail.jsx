@@ -201,13 +201,15 @@ const CertificatesDetail = forwardRef((props, ref) => {
             : "box_certificate_small certificate1234 mb-4 box_small"
           }
         >
-          <Row className=" cercifi_con_small view_certificate_two">
+          <Row className= {  props.size === "large" ? "cercifi_con_small view_certificate_two view_content_small" : 
+          "cercifi_con_small view_certificate_two cercifi_con_small_view"
+          }>
             <Col md={7} xs={12} className='offset-3'>
               <div
                 className={
                   props.size === "large"
                     ? "cercifi_sm_con_large cercifi_small"
-                    : "cercifi_con_small"
+                    : "cercifi_con_small cercifi_con_small_view"
                 }
               >
                 <img className='cer_text' src={Certificate_text} alt='' />
@@ -245,7 +247,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
             <img className='img2' src={logo22} alt='' srcSet='' />
             <img className='img3' src={logo3} alt='' srcSet='' />
           </div>
-          <div className='signature_set'>
+          <div className={  props.size === "large" ? "small_set" : 'signature_set'} >
             <img src={signature_pdf} alt='' />
             <hr className='hr_line2' />
             <div className='name-surname'>

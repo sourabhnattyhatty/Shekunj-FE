@@ -102,13 +102,11 @@ function CourseTest() {
                     />
                   </div>
                 </p>
-                <p className='certificate-downloaddiv'>
+                <p className='certificate-downloaddiv' onClick={() => redirectToDownload()} style={{ cursor: "pointer" }}>
                   <img
                     src={Dawnload}
                     alt=''
-                    style={{ cursor: "pointer" }}
                     // onClick={() => certificateRef.current.generatePDF()}
-                    onClick={() => redirectToDownload()}
                   />
                   <span className="download-cerificate">Download</span>
                   <br />
