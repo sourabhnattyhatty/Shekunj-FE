@@ -84,11 +84,11 @@ const CertificatesDetail = forwardRef((props, ref) => {
 
   const downloadPDF = (node) => {
     const doc = new jsPDF("landscape", "px", "A4", false, true);
-    htmlToImage.toJpeg(node, {quality: 0.95, skipAutoScale: true}).then(function (dataUrl) {
+    htmlToImage.toJpeg(node, {quality: 0.95, skipAutoScale: false }).then(function (dataUrl) {
       setIsLoaded(true);
       const img = new Image();
       img.src = dataUrl;
-      doc.addImage(img, "JPGE", 0, -5, 630, 440, "FAST");
+      doc.addImage(img, "JPGE", 0, -5, 630, 448, "FAST");
       //doc.addImage(img, "JPGE", -12, 0, 654, 470);
       doc.save("mycertificate.pdf");
       // doc.save(`${certificate && certificate?.last_name}`);

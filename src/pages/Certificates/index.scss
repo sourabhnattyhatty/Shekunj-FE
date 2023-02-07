@@ -822,6 +822,7 @@ div.cer_PDF {
 }
 div.cer_PDF .cer_logo {
   margin-left: 153px;
+  margin-bottom: 65px;
 }
 
 div.cer_PDF .cer_sm_logo {
@@ -830,6 +831,7 @@ div.cer_PDF .cer_sm_logo {
 
 div.cer_PDF .signature_set {
   right: 153px;
+  bottom: 60px;
 }
 
 div.cer_PDF .small_set {
@@ -917,6 +919,7 @@ div.cer_PDF::after {
 }
 div.cer_PDF {
   background-image: url("../../assets/images/PSD_Certificate/bg.png");
+
 }
 
 div.cer_PDF .cer_logo img.img1 { height: auto;}
