@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { useRef } from "react";
 // import Nikita from "../../../assets/images/Nikita-Sharma.png";
 
 import {
@@ -249,6 +248,7 @@ export default function VerticalTabs() {
     );
   }
 
+
   return (
     <>
       <div className='Com_title'>
@@ -269,8 +269,8 @@ export default function VerticalTabs() {
             </div>
           )}
           <Col md={8} xs={12} >
-            <TabPanel value={value} index={0}>
-              <Row>
+            <TabPanel value={value} index={0} >
+              <Row ref={ref}>
                 <Container>
                   {/* {showGovtExams && careerOptions && ( */}
                   {showGovtExams &&
@@ -286,7 +286,7 @@ export default function VerticalTabs() {
                             {
                               guidanceCategoryDetail?.image || guidanceCategoryDetail?.name ?
                                 <div
-                                  ref={ref}
+                                  // ref={ref}
                                   style={{ marginTop: "20px" }}
                                   className='col-md-6 tabs_box success_test_responsive'
                                   key={guidanceCategoryDetail?.id}
