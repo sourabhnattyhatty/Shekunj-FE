@@ -30,10 +30,13 @@ import "./index.scss";
 import noImageIcon from "../../assets/images/no-image.jpeg";
 import { adsList } from "../../store/ads";
 import City from "../../assets/icons/city.png";
-import { Button, Typography, Modal } from "@mui/material";
+import { Button, Typography, Modal, Box } from "@mui/material";
 import Cookies from "js-cookie";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import { ClipLoader } from "react-spinners";
+import x from "../../assets/images/Career/x.png";
+import CloseIcon from '@mui/icons-material/Close';
+
 const EventDetails = () => {
 
   let a = JSON.parse(localStorage.getItem('login_data'))
@@ -161,12 +164,12 @@ const EventDetails = () => {
 
       setLocalData(values)
       dispatch(bookEvent(values));
+
     },
 
   });
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Latest code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-console.log(user, eventData)
 
   useEffect(() => {
     dispatch(adsList());
@@ -246,7 +249,7 @@ console.log(user, eventData)
   let evalData = eval(events.extra_info);
 const whatsappUrl = `https://api.whatsapp.com/send?text=%20http%3A%2F%2F${events?.whatsapp_link}`
   const whatsAppModal = () => {
-    if (events && events?.whatsapp_group_link?.join_group && bookEvents == 200) {
+    if (events && events?.whatsapp_group_link?.join_group ) {
       return (
         <Modal
           aria-labelledby='simple-modal-title'
@@ -256,6 +259,7 @@ const whatsappUrl = `https://api.whatsapp.com/send?text=%20http%3A%2F%2F${events
           className='ModalBoxEvent'
         >
           <div className='ModalBodyBoxEvent'>
+            <CloseIcon className="ModalClose" onClick={handleClose}/>
             <div className='ModalHeadEvent'>
               <Typography variant='h6' id='modal-title'>
                 Congratulations... you have been registered!
@@ -293,7 +297,7 @@ const whatsappUrl = `https://api.whatsapp.com/send?text=%20http%3A%2F%2F${events
         </Modal>
       )
     }
-    else if (events && events?.whatsapp_group_link?.join_group == false && bookEvents == 200) {
+    else if (events && events?.whatsapp_group_link?.join_group == false) {
       return (
         <Modal
           aria-labelledby='simple-modal-title'
@@ -302,7 +306,15 @@ const whatsappUrl = `https://api.whatsapp.com/send?text=%20http%3A%2F%2F${events
           onClose={handleClose}
           className='ModalBoxEvent'
         >
+         
           <div className='ModalBodyBoxEvent2'>
+            {/* <img
+              className='close_img'
+              src={x}
+              alt='...'
+              onClick={() => handleClose()}
+            /> */}
+            <CloseIcon className="ModalClose" onClick={handleClose}/>
             <div className='ModalHeadEvent'>
               <Typography variant='h6' id='modal-title'>
                 Congratulations... you have been registered!
