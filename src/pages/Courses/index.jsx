@@ -347,6 +347,7 @@ const Courses = () => {
   const SearchFilterHandle = (e) => {
     e.preventDefault();
     dispatch(allCourses(`?search=${searchInput}`));
+    setSuggestion([]);
   };
   const handleResetSearch = () => {
     dispatch(allCourses());
@@ -513,6 +514,7 @@ const Courses = () => {
                               src={Search}
                               alt='Image'
                               className='searchIcon'
+                              // onClick={() => handleResetSearch()}
                             />
                           </button>
                           <img
