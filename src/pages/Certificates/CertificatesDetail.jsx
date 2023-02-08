@@ -84,7 +84,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
 
   const downloadPDF = (node) => {
     const doc = new jsPDF("landscape", "px", "A4", false, true);
-    htmlToImage.toJpeg(node, {quality: 0.95, skipAutoScale: false }).then(function (dataUrl) {
+    htmlToImage.toJpeg(node, {quality: 0.93, skipAutoScale: false }).then(function (dataUrl) {
       setIsLoaded(true);
       const img = new Image();
       img.src = dataUrl;
@@ -176,7 +176,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
               userSelect: "none",
             }}
           >
-            <Link to='/all-certificate-page' style={{ textDecoration: "none" }}>
+            <Link to='/courses' style={{ textDecoration: "none" }}>
               <button className='back_course'>
                 {t("allCertificatePage.button.3")}
               </button>
@@ -269,7 +269,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
               userSelect: "none",
             }}
           >
-            <Link to='/all-certificate-page' style={{ textDecoration: "none" }}>
+            <Link to='/courses' style={{ textDecoration: "none" }}>
               <button className='back_course'>
                 {t("allCertificatePage.button.3")}
               </button>
