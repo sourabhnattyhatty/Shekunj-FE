@@ -235,10 +235,13 @@ function BlogPage() {
                     <Row>
                       {idx % 2 === 0 ? (
                         <>
+                          <Col md={4} xs={12} className="showBlog">
+                            <img src={s?.image} alt='' />
+                          </Col>
                           <Col md={8} xs={12}>
-                            <h2>
+                            <h2 className="noselect">
                               <img
-                                className='quote_img_blog noselect'
+                                className='quote_img_blog'
                                 src={double_quote}
                                 style={{ width: 20, height: 20 }}
                                 alt=''
@@ -306,9 +309,10 @@ function BlogPage() {
                           )} */}
                           </Col>
 
-                          <Col md={4} xs={12}>
+                          <Col md={4} xs={12} className="hideBlog">
                             <img src={s?.image} alt='' />
                           </Col>
+                          
                         </>
                       ) : (
                         <>
@@ -316,9 +320,9 @@ function BlogPage() {
                             <img src={s?.image} alt='' />
                           </Col>
                           <Col md={8} xs={12}>
-                            <h2>
+                            <h2 className="noselect">
                               <img
-                                className='quote_img_blog noselect'
+                                className='quote_img_blog'
                                 src={double_quote}
                                 style={{ width: 20, height: 20 }}
                                 alt=''
@@ -422,7 +426,7 @@ function BlogPage() {
         )}
       </Container>
 
-      <div className='want noselect'>
+      <div className='want'>
         <Container>
           <h2>{t("successStoriesPage.content.2")}</h2>
           <button onClick={() => history.push("/courses")} className='want_btn noselect'>

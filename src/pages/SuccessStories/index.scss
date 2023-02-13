@@ -166,14 +166,21 @@ button.want_btn {
 }
 
 .blog_content {
-  max-height: 120px;
+  max-height: 123px;
+  overflow: hidden;
+}
+.blog_content1 {
+  max-height: 125px;
   overflow: hidden;
 }
 
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
 
+.blog_content1 {
+  max-height: 110px !important;
+}
 .blog_content {
-  max-height: 105px !important;
+  max-height: 109px !important;
 }
   .SuccStory_banner {
     background-image: url("../../assets/images/Success/mob_suc_banner.png");

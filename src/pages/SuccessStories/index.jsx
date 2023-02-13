@@ -280,7 +280,7 @@ function SuccessStory() {
                               />
                             ) : (
                               <div
-                              className="blog_content"
+                              className="blog_content1"
                                 dangerouslySetInnerHTML={{
                                   __html: `<div>${s.description}</div>`,
                                 }}

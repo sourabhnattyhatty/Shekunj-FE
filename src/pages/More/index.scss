@@ -1080,6 +1080,17 @@ button.want_btn {
   height: 500px;
   width: 500px;
 }
+.story_image {
+  width: 100%;
+  height: 410px;
+  object-fit: cover;
+}
+.showBlog {
+  display: none;
+}
+.hideBlog {
+  display: block;
+}
 
 
 @media screen and (max-device-width: 767px) {
@@ -1201,6 +1212,13 @@ button.want_btn {
   .NavHeading {
     font-size: medium;
     // font-weight:600;
+  }
+
+  .showBlog {
+    display: block !important;
+  }
+  .hideBlog {
+    display: none !important;
   }
 
 }
