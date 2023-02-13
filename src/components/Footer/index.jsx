@@ -186,6 +186,10 @@ const Footer = ({ loginPage, subPage }) => {
     setAnchorEl3(event.currentTarget);
   };
 
+  const onTop =() => {
+      window.scrollTo(0, 0)
+  }
+
   return (
     <div className='noselect'>
       {/* google add */}
@@ -279,7 +283,7 @@ const Footer = ({ loginPage, subPage }) => {
                   </Menu>
                 </li>
                 <li>
-                  <Link to={routingConstants.CONTACT_US}>
+                  <Link to={routingConstants.CONTACT_US} onClick={onTop}>
                     {t("footer.links.col1.4")}
                   </Link>
                 </li>
@@ -291,7 +295,7 @@ const Footer = ({ loginPage, subPage }) => {
                 <div className='col-md-3 col-3'>
                   <ul className='p-0'>
                     <li>
-                      <Link to={routingConstants.PRIVACY_POLICY}>
+                      <Link to={routingConstants.PRIVACY_POLICY} onClick={onTop}>
                         {t("footer.links.col3.1")}
                       </Link>
                     </li>
