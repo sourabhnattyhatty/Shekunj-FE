@@ -281,7 +281,7 @@ function SuccessStory() {
                             ) : (
                               <div
                                 style={{
-                                  maxHeight: "120px",
+                                  maxHeight: "105px",
                                   overflow: "hidden",
                                 }}
                                 dangerouslySetInnerHTML={{
@@ -343,7 +343,7 @@ function SuccessStory() {
                             ) : (
                               <div
                                 style={{
-                                  maxHeight: "120px",
+                                  maxHeight: "105px",
                                   overflow: "hidden",
                                 }}
                                 dangerouslySetInnerHTML={{
