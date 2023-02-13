@@ -280,10 +280,7 @@ function SuccessStory() {
                               />
                             ) : (
                               <div
-                                style={{
-                                  maxHeight: "105px",
-                                  overflow: "hidden",
-                                }}
+                              className="blog_content"
                                 dangerouslySetInnerHTML={{
                                   __html: `<div>${s.description}</div>`,
                                 }}
@@ -342,10 +339,7 @@ function SuccessStory() {
                               />
                             ) : (
                               <div
-                                style={{
-                                  maxHeight: "105px",
-                                  overflow: "hidden",
-                                }}
+                                className="blog_content"
                                 dangerouslySetInnerHTML={{
                                   __html: `<div>${s.description}</div>`,
                                 }}
