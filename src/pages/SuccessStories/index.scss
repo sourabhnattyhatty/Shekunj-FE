@@ -72,7 +72,7 @@ p.sucess_first_p {
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 140%;
   color: #828282;
 }
@@ -166,18 +166,18 @@ button.want_btn {
 }
 
 .blog_content {
-  max-height: 123px;
+  max-height: 115px;
   overflow: hidden;
 }
 .blog_content1 {
-  max-height: 125px;
+  max-height: 115px;
   overflow: hidden;
 }
 
 @media screen and (min-device-width: 50px) and (max-device-width: 767px) {
 
 .blog_content1 {
-  max-height: 110px !important;
+  max-height: 109px !important;
 }
 .blog_content {
   max-height: 109px !important;
