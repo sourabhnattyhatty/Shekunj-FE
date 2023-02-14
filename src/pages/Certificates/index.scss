@@ -983,6 +983,18 @@ div.cer_PDF hr.hr_line2 {
 div.cer_PDF .certificateContent {
   margin-left: 25%;
 }
+
+.loader {
+  position: fixed;
+}
+.duplicate_loader{
+  color: transparent;
+  // z-index: 0;
+}
+.set-back {
+  background: none;
+  color: black;
+}
   @media screen and (max-width: 1280px) {
     hr.hr_line2 {
       margin: 4.46px 0 4.39px !important  ;
@@ -1268,5 +1280,8 @@ div.cer_PDF .certificateContent {
     }
     .responsive_certificate34 .cercifi_con_small {
       bottom: 30px;
+    }
+    .loader {
+      position: absolute;
     }
   }

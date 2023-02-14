@@ -43,8 +43,10 @@ const CertificatesDetail = forwardRef((props, ref) => {
   const divRef = React.useRef();
   const { id, isDownload } = useParams();
   const { t } = useTranslation();
+  const detect = useDeviceDetect();
 
   const [isLoaded, setIsLoaded] = useState(true);
+  const [ newCer, setNewCer ] = useState('')
 
   const { certificateDetail: certificate } = useSelector(
     (state) => state.certificateReducer,
@@ -77,7 +79,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
           document.body.appendChild(element);
           downloadPDF(element);
         }, 3000);
-        
+        setNewCer(element)
       }, 1000);
     }
   }, []);
@@ -93,6 +95,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
       doc.save("mycertificate.pdf");
       // doc.save(`${certificate && certificate?.last_name}`);
       document.getElementById("_new_cer_PDF").remove();
+      setNewCer('')
     });
   };
 
@@ -104,6 +107,7 @@ const CertificatesDetail = forwardRef((props, ref) => {
     },
   }));
 
+
   return (  
     isDownload ? (
     <div
@@ -111,7 +115,8 @@ const CertificatesDetail = forwardRef((props, ref) => {
       className='noselect'
       style={{ width: "100%", display: "flex", justifyContent: "center" }}
     >
-      {isLoaded === false && <Loader />}
+      {isLoaded === false && <Loader className={ newCer ? "set-back loader" : "loader"} />}
+      { (detect?.isMobile && newCer && isLoaded === false) && <Loader className="duplicate_loader"/>}
       <div style={{ width: "95%" }} className=' p-0' id='capture'>
         <div className='mob_box_certificate_small ayushi-certificate2 '></div>
         <div id='cer_PDF' className={ props.size === "large"  ? "box_certificate_large mt-4" : "box_certificate_small mb-4" }>
