@@ -43,7 +43,6 @@ function GuidanceSelect(props) {
           onChange={handleChange}
           input={<OutlinedInput />}
           renderValue={(selected) => {
-            if (!selected) {
               return (
                 <>
                   {props.icon && props.title === "User" && (
@@ -76,12 +75,12 @@ function GuidanceSelect(props) {
                   {props.icon && props.title === "Guidance Purpose" && (
                     <img src={Guide} alt='...' />
                   )}
-                  <em>{props?.title}</em>
+                  { selected ? 
+                    <em className="selected_value">{selected}</em> : 
+                    <em>{props?.title}</em>
+                  }
                 </>
               );
-            }
-
-            return selected;
           }}
           inputProps={{ "aria-label": "Without label" }}
         >
