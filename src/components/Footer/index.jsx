@@ -161,6 +161,7 @@ const Footer = ({ loginPage, subPage }) => {
   const handleMoreEvent = () => {
     history.push(routingConstants.MORE_EVENT);
     setAnchorEl3(null);
+    onTop()
   };
 
   const handleMoreMagazine = () => {
@@ -171,11 +172,13 @@ const Footer = ({ loginPage, subPage }) => {
   const handleMoreFAQ = () => {
     history.push(routingConstants.FAQ);
     setAnchorEl3(null);
+    onTop()
   };
 
   const handleMoreBlogs = () => {
     history.push(routingConstants.MORE_BLOG);
     setAnchorEl3(null);
+    onTop()
   };
 
   const handleClose3 = () => {
@@ -227,12 +230,12 @@ const Footer = ({ loginPage, subPage }) => {
             <div className='col-md-3 col-4'>
               <ul className='p-0'>
                 <li>
-                  <Link to={routingConstants.ABOUT}>
+                  <Link to={routingConstants.ABOUT} onClick={onTop}>
                     {t("footer.links.col1.3")}
                   </Link>
                 </li>
                 <li>
-                  <Link to={routingConstants.SUCCESS_STORIES}>
+                  <Link to={routingConstants.SUCCESS_STORIES} onClick={onTop}>
                     {t("header.heading.8")}
                   </Link>
                 </li>
@@ -301,7 +304,7 @@ const Footer = ({ loginPage, subPage }) => {
                     </li>
                     <li>
                       {/* <Link to={routingConstants.HELP_AND_SUPPORT}>{t("footer.links.col2.3")}</Link> */}
-                      <Link to={routingConstants.CONTACT_US}>
+                      <Link to={routingConstants.CONTACT_US} onClick={onTop}>
                         {t("footer.links.col2.3")}
                       </Link>
                     </li>
