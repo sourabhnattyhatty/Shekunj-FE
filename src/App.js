@@ -4,6 +4,7 @@ import PublicRoute from "./routers/PublicRouter";
 import PrivateRoute from "./routers/PrivateRouter";
 import { routingConstants } from "./utils/constants";
 import "./App.css";
+import { successStoriesDetails } from "./store/courses";
 
 const ForgotPage = React.lazy(() => import("./pages/ForgotPage/ForgotPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage/SignupPage"));
@@ -36,6 +37,7 @@ const CourseCertificate = React.lazy(() => import("./pages/CourseCertificate"));
 const FaqPage = React.lazy(() => import("./pages/More/FaqPage"));
 const MockTest = React.lazy(() => import("./pages/MockTest"));
 const MockTestDetail = React.lazy(() => import("./pages/MockTestDetail"));
+const SuccessStoryDetailPage = React.lazy(() => import("./pages/SuccessStoryDetails"));
 // const Magzine = React.lazy(() => import("./pages/Magzine"));
 const CertificateFullView = React.lazy(() =>
   import("./pages/CertificateFullView"),
@@ -159,6 +161,12 @@ function App() {
           path={`${routingConstants.MORE_BLOG}:id`}
           // component={BlogPage}
           component={BlogDetails}
+        />
+         <PrivateRoute
+          exact
+          path={`${routingConstants.SUCCESS_STORIES}:id`}
+          // component={BlogPage}
+          component={SuccessStoryDetailPage}
         />
           {/* <PrivateRoute
           exact

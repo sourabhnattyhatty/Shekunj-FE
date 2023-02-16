@@ -16,7 +16,8 @@ const initialState = {
   selectedFilter: null,
   categoryList: [],
   result: {},
-  currentModal: 0
+  currentModal: 0,
+  successStoriesDetails: [],
 };
 
 export const coursesReducer = (state = initialState, action) => {
@@ -219,6 +220,27 @@ export const coursesReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload,
       };
+    case coursesTypes.SUCCESS_STORY_DETAILS_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case coursesTypes.SUCCESS_STORY_DETAILS_FINISH:
+      return {
+        ...state,
+        isLoading: false,
+        successStoriesDetails: action.payload,
+        error: null,
+      };
+    case coursesTypes.SUCCESS_STORY_DETAILS_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+
+
     case coursesTypes.SELECTED_FILTER:
       return {
         ...state,
@@ -265,9 +287,9 @@ export const coursesReducer = (state = initialState, action) => {
         error: action.payload,
       };
     case coursesTypes.CURRENT_MODAL:
-      return{
+      return {
         ...state,
-        currentModal:action.payload
+        currentModal: action.payload
       }
     default:
       return state;
